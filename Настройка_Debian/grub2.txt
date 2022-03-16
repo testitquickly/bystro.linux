@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T14:03:36+02:00
+
+====== grub2 ======
+
+1 - file 'etc/default/grub'
+
+'''
+# Set the highlight bar to the default loading system. 
+# If 0 = Debian. If 3, then will be loaded Win
+GRUB_DEFAULT=0
+
+# No boot menu will appear, directly loading first line (Debian)
+GRUB_TIMEOUT=0
+
+# But you have one second to press SHIFT for open boot menu
+GRUB_HIDDEN_TIMEOUT=1
+
+# Uncomment to disable graphical terminal (grub-pc only)
+GRUB_TERMINAL=console
+
+# Display the name of booted System, or echo Debian.
+GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian` 
+
+# Do not load system messages
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" 
+
+# Extra kernel options here
+GRUB_CMDLINE_LINUX="quiet splash"
+'''
+
+
+2
+Из-под ''root''
+'''
+
+update-grub
+'''
+
+
+--------------------
+@grub @console 

@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-16T21:22:57+02:00
+
+====== git ======
+
+''sudo apt-get install git-all && git version''
+
+===== SmartGit =====
+
+https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там архив tar.gz Переместить его куда-нибудь в отдельный каталог. Добраться до этого tar.gz в консоли.
+
+''tar xzf'' 
+> нажать Tab 
+> название файла подтянется
+> Enter
+
+Появится новый каталог 'smartgit'. Уже можно запускать smartgit, но лучше перетащить его (под sudo) в [[/otp]] на вечное хранение и уже оттуда запускать.
+
+==== Запуск SmartGit ====
+
+''/opt/smartgit/bin/smartgit.sh''
+
+При первой установке выбрать лицензию ’Non-commercial use’.
+
+==== Добавить SmartGit в общее меню ====
+
+''/opt/smartgit/bin/add-menuitem.sh''
+
+Он появится в разделе «Разработка».
+
+==== Удалить SmartGit из меню ====
+
+''/opt/smartgit/bin/remove-menuitem.sh''
+
+--------------------
+@console @smartgit @git 

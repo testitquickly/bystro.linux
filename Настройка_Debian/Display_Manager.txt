@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T15:16:08+02:00
+
+====== Настроить Display Manager ======
+
+Выяснить текущий:
+
+''cat /etc/X11/default-display-manager''
+
+Если /usr/sbin/lightdm, то всё норм.
+
+Вообще их много: 
+	gdm (Gnome Display Manager), 
+	gdm3 (Gnome Display Manager 3),
+	lightdm (тоже Gnome, альтернатива для gdm), 
+	kdm (старый KDE, устарел), 
+	sddm (Simple Desktop Display Manager для Plasma 5) - исконно кдешный, но заглючил в Debian 11 (не логинил в GUI), я ему не доверяю
+	MDM (Mint Display Manager),
+	SLiM (Simple Login Manager),
+	LXDM (Lubuntu).
+	
+Установить/убрать Display Manager:
+'''
+sudo apt-get install gdm3
+sudo apt-get remove gdm3
+'''
+
+
+Переключиться на другой:
+''sudo dpkg-reconfigure gdm3''
+
+--------------------
+@sddm @lightdm 

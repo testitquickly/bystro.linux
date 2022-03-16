@@ -1,0 +1,139 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T15:11:56+02:00
+
+====== Firefox ======
+
+По-умолчанию его нет в репозиториях Debian, вместо него существует Firefox ESR (Extended support release). Можно его использовать, но он всегда более старый, нежели новейший браузер, поэтому его можно удалить через Apper, а можно и оставить, он не мешает.
+
+https://www.mozilla.org/ru/firefox/new/ > скачать архив > Copy the downloaded file to /opt > 
+
+скачать из сети картинку логотипа firefox.png
+
+remove any available firefox - use Apper
+
+Убедимся в том, что архив скачался
+'''
+cd ~/Загрузки && ls *.bz2
+
+$ tar -jxvf firefox-x.x.xx.tar.bz2
+'''
+
+появляется каталог firefox. 
+
+Из-под root переместить его в /opt/firefox/
+
+Из-под root Change the permissions of the file:
+
+'''
+chown -R astenix:sudo /opt/firefox
+
+chmod 750 /opt/firefox
+'''
+
+==== Create a symbolic link ====
+
+''cd /usr/bin/ && ln -s /opt/firefox/firefox''
+
+там уже может быть файл "firefox", его придётся удалить
+
+=== To make a desktop icon, do this ===
+
+иконку firefox («firefox.png» в моем случае) положить в каталог /opt/firefox/icons/
+
+as a root
+
+'''
+touch /usr/share/applications/firefox.desktop
+
+cd /usr/share/applications/
+'''
+ => отредактировать firefox.desktop
+
+	Contents of firefox.desktop:
+
+**[Desktop Entry]**
+'''
+Encoding=UTF-8
+Name=Mozilla Firefox
+Comment=Browse the World Wide Web
+Type=Application
+Terminal=false
+Exec=/opt/firefox/firefox %U
+Icon=/opt/firefox/icons/firefox.png
+StartupNotify=true
+Categories=Network;WebBrowser;
+'''
+
+Запускаем браузер через ярлык в 
+
+	If you encounter this error:
+	./firefox: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
+	Chances are that you are trying to install the 32 bit version of firefox in a 64 bit Debian environment.
+	You should probably install '''apt install ia32-libs ia32-libs-gtk'''
+
+Проверить, что automatic updates are enabled.
+
+Установить spellchecker для румынского языка
+	https://addons.mozilla.org/ru/firefox/addon/romanian-spellchecking-diction/
+
+==== To install new versions, you are supposed to ====
+
+'''
+# rm -rf /opt/firefox*
+# rm /usr/bin/firefox
+'''
+
+===== Импорт существующего профиля из бэкапа =====
+
+Открыть страницу about:support
+
+1. Найти «Каталог профиля». 
+2. Выключить браузер.
+3. Забэкапить его содержимое (в zip).
+4. Закатать в него содержимое каталога профиля из бэкапа
+5. Включить браузер и убедиться в том, что всё ок.
+6. Почистить кэш браузера полностью, там не меньше гигабайта может освободиться.
+
+https://atolstoy.wordpress.com/2018/10/09/%D0%BE%D1%84%D0%BE%D1%80%D0%BC%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5-plasma-%D1%80%D0%B0%D0%B7%D0%BD%D1%8B%D0%B5-%D1%86%D0%B2%D0%B5%D1%82%D0%B0-%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B9/
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronization-on-debian-10
+
+https://opensource.com/article/20/6/time-date-systemd
+
+===== Как открывать каталог загружено в Firefox через Dolphin =====
+
+По-умолчанию каталог со скачанным файлом открывается через Konqueror. Раздражает. Выполнить в терминале команду, изменения подтянутся сразу же:
+	
+''xdg-mime default kde4-dolphin.desktop inode/directory''
+
+REBOOT
+
+===== Можно, но не нужно добавить flash в Firefox =====
+
+0
+убедиться в том, что в системе есть /usr/lib/mozilla/plugins/
+
+1
+Скачать с https://get.adobe.com/ru/flashplayer/ версию 'tar.gz для Linux' - flash_player_npapi_linux.x86_64.tar.gz
+
+2
+закрыть Firefox
+
+3
+''tar -xzvf flash_player_npapi_linux.x86_64.tar.gz -C flashPlayer''
+// появится каталог /flashPlayer/ со всеми файлами
+
+4
+copy the flash lib to your plugin directory:
+''sudo cp libflashplayer.so /usr/lib/mozilla/plugins/''
+
+5
+copy the flash local settings configuration to your /usr directory:
+''sudo cp -r usr/* /usr''
+
+6
+Запустить Firefox
+
+--------------------
+@Firefox 

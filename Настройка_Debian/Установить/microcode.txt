@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-15T21:28:50+02:00
+
+====== microcode ======
+
+Познать свой процессор: 
+
+''cat /proc/cpuinfo''
+
+Ок, у меня Intel.
+
+sudo apt-get install intel-microcode
+
+	Для машин с  процессором AMD
+	''sudo apt-get install amd64-microcode''
+
+Устанавливать это всё необязательно, проблемы с этим всем маловероятны, но таки бывают. А иногда бывает вот такое: [[Фишки Linux:microcode и dualboot]]
+
+--------------------
+@microcode 
