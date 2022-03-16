@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-24T02:24:05+02:00
+
+====== Исправить проблемы с gpg-key ======
+
+This says that your GPG key for that repository has expired, which means one of two things, either your system has the wrong date or the key really expired. For the later, you need to contact the repository maintainer and import the new key (removing the old one, probably), once the repository updates their keys to sign the files.
+
+You can safely ignore these messages if you aren't using packages of these repositories. The message can be removed if you remove the repository from your source.list file/directory.
+
+Выполнить это:
+''sudo apt-key list  | grep "expired: " | sed -ne 's|pub .*/\([^ ]*\) .*|\1|gp' | xargs -n1 sudo apt-key adv --keyserver keys.gnupg.net --recv-keys'' 
+
+РЕШЕНИЕ (вероятное)
+
+'''
+$ sudo -i
+ # apt-get clean
+ # cd /var/lib/apt
+ # mv lists lists.old
+ # mkdir -p lists/partial
+ # apt-get clean
+ # apt-get update
+'''
+
+
+ПОПРОЩЕ
+
+Download debian-archive-keyring (https://packages.debian.org/buster/all/debian-archive-keyring/download — is for „buster“; choose your Debian version if needed), and install it manually (as root):
+
+dpkg -i debian-archive-keyring_2017.5~deb8u1_all.deb
+
+This will restore the keys in /etc/apt/trusted.gpg.d and you should be able to run apt again.
+
+--------------------
+@gpg @update 

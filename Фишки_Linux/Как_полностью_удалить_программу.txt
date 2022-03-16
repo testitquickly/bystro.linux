@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-24T07:42:52+02:00
+
+====== Как полностью удалить программу ======
+
+на примере vlc
+
+1
+Посмотреть вообще что установлено
+
+vlc --version
+	VLC media player 2.1.6 Rincewind (revision 2.1.6-0-gea01d28)
+	VLC version 2.1.6 Rincewind (2.1.6-0-gea01d28)
+	Compiled by buildd on brownie.buildd (Mar 26 2015 02:41:27)
+	Compiler: gcc version 4.8.2 (Ubuntu 4.8.2-19ubuntu1)
+	This program comes with NO WARRANTY, to the extent permitted by law.
+	You may redistribute it under the terms of the GNU General Public License;
+	see the file named COPYING for details.
+	Written by the VideoLAN team; see the AUTHORS file.
+
+2
+Посмотреть пакеты, которые относятся к программе
+
+dpkg -l | grep vlc*
+
+	ii  libservlet3.0-java  7.0.52-1ubuntu0.3   all  Servlet 3.0 and JSP 2.2 Java API classes
+	ii  libvlc5 2.1.6-0ubuntu14.04.1amd64multimedia player and streamer library
+	и так далее
+	
+3
+Посмотреть зависимоти
+
+apt-cache showpkg vlc | grep -A 1 Dependencies
+
+Dependencies:
+Code:
+
+2.1.6-0ubuntu14.04.1 - fonts-freefont-ttf (0 (null)) vlc-nox (5 2.1.6-0ubuntu14.04.1) libaa1 (2 1.4p5) libc6 (2 2.15) и так далее
+
+4
+Понять, что надо удалить и не являются ли указанные пакеты нужны в другом месте.
+
+5
+Принять решение об удалении через remove или purge.
+
+6
+Удалять пакеты, которые высветились на предыдущих шагах.
+
+Кстати
+	To remove a package and all its dependencies in one command, you can also directly pass the package name as argument to apt-get autoremove:
+
+sudo apt-get autoremove vlc
+
+	If you prefer to purge the packages (to also clean up all configuration files), the way to go is this:
+
+sudo apt-get autoremove --purge vlc
+
+Because of complex dependency tree of vlc. autoremove only removes automatically packages which currently have no installed reverse-dependencies. That means as long as there are other packages which may depend on vlc's dependencies, they will stay. Those other packages are probably vlc-plugin-* packages which depend on vlc but get not removed with that first run yet...
+
+However, if you keep firing sudo apt-get autoremove after that first line, apt-get should slowly start to realize that there's more to remove.
+
+--------------------
+@update @vlc 

@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T19:43:32+02:00
+
+====== Как заблокировать или удалить юзера ======
+
+''sudo usermod --lock --expiredate 1970-01-02 <username>''
+
+	--expiredate can be any date before the current date in the format YYYY-MM-DD
+
+	Explanation:
+	--lock locks the user's password. However, login by other methods (e.g. public key) is still possible.
+	--expiredate YYYY-MM-DD disables the account at the specified date. According to "man shadow 5", the 1970-01-01 is an ambiguous value and shall not be used.
+
+To re-enable the account at a later date you can run:
+
+''sudo usermod --unlock --expiredate '' <username>''
+
+	Другие варианты
+	''sudo chage -E0 <UserName>''
+	OR
+	''sudo usermod -s /sbin/nologin <UserName>''
+
+	Check if the user account is locked.
+	the flag *LK* in the below command output indicates that the account is locked.
+sudo passwd --status <UserName>
+
+''root *LK* 2017-07-19 0 45 7 -1 (Password set, SHA512 crypt.)''
+
+--------------------
+@console @user 
