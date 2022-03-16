@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T15:10:25+02:00
+
+====== Добавить русский язык в систему ======
+
+Preferences > Regional Settings > Add languages 
+
+Move 'russian' to the top.
+
+relogin
+
+Следующий шаг: [[Указать системные каталоги в профиле]]
+
+--------------------
+@keyboard @language @systemSettings

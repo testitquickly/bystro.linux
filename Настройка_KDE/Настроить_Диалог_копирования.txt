@@ -1,0 +1,47 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T15:17:00+02:00
+
+====== Настроить Диалог копирования ======
+
+Both the System Tray track and the Task manager progress need to be disabled before the window for the file transfer progress is available
+
+Disabling 'Track file transfer and other jobs' and restarting the plasma - this can be done by log out, log in.
+
+The setting can be edited by:
+Left clicking the 'Show hidden icons' arrow.
+Right clicking the 'Notifications'
+Left clicking the ' Notification settings'
+
+Since Plasma 5.6.4 (Kubuntu 16.04) I have to disable both:
+
+Notifications / right click - Notifications Settings... / uncheck Track file transfers and other jobs / OK
+right click on the task bar / Task Manager Settings.../ uncheck Show progress and status information in task buttons / OK
+
+Then logout and login.
+
+Надо сделать два действия (первое очевидное, второе нет) и обязательно логаут/логин:
+
+1
+Параметры системы > Уведомления.
+
+Трэй — раскрыть список "Показать скрытые значки" 
+/ правой кнопкой мыши по «Системные уведомления» / выбрать «Настроить виджет "Системные уведомления"» 
+/ отжать опцию «Показывать ход выполнения операций с файлами и других заданий»
+/ OK
+
+В пятой плазме этой настройки может не быть.
+
+2
+На тулбаре правой кнопкой / Настроить виджет "Панель задач" / 
+* отжать галочку "Показывать в кнопках состояние и ход выполнения операций"
+* отжать галочки "Показывать всплывающие подсказки" и указать, что окна не надо группировать.
+* отжать галочку "Выделять окна из остальных" - отключим превью окон при наведении на их заголовки в тулбаре, бо бесит.
+/ OK
+
+Notifications / right click - Notifications Settings... / uncheck Track file transfers and other jobs / OK
+right click on the task bar / Task Manager Settings.../ uncheck Show progress and status information in task buttons / OK
+Then logout and login.
+
+--------------------
+@copy @window 
