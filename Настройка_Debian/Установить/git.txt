@@ -8,6 +8,10 @@ Creation-Date: 2022-03-16T21:22:57+02:00
 
 ===== SmartGit =====
 
+Это очень хороший сам-по-себе GUI-клиент, потому что git в консоли поначалу интересно, а потом нет. Можно всё настроить в IDE, но если речь идет не о разработке, то какой тут IDE?!
+
+	Любопытно, что можно установить SmartGit без предварительной установки git в системе.
+
 https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там архив tar.gz Переместить его куда-нибудь в отдельный каталог. Добраться до этого tar.gz в консоли.
 
 ''tar xzf'' 
@@ -23,15 +27,41 @@ https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там а�
 
 При первой установке выбрать лицензию ’Non-commercial use’.
 
-==== Добавить SmartGit в общее меню ====
+=== Добавить SmartGit в общее меню ===
 
 ''/opt/smartgit/bin/add-menuitem.sh''
 
 Он появится в разделе «Разработка».
 
-==== Удалить SmartGit из меню ====
+=== Удалить SmartGit из меню ===
 
 ''/opt/smartgit/bin/remove-menuitem.sh''
 
+=== Тёмная тема в SmartGit ===
+
+Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]] можно отключить тёмную тему этой строкой:
+
+''org.eclipse.swt.internal.gtk.noThemingFixes=true''
+
+==== Связать SmartGit с GitHub ====
+
+Следуем инструкции https://docs.syntevo.com/SmartGit/Latest/GitHub-integration.html
+
+Preferences > Hosting Providers > [Add]
+
+In the **Add Hosting Provider** dialog, have GitHub selected and invoke **Generate API token**. This should open up your default web browser where you will have to confirm by Authorize Application. 
+
+	Be sure to also Grant Access to all of your organizations, otherwise the corresponding organization repositories won’t show up/can’t be accessed.
+
+Once you have confirmed this page, you will be redirected to syntevo.com, where the generated access code will be displayed. Copy&paste this code into SmartGit’s **Generate API Token** dialog and invoke [Authenticate]. The code will be used to create an application access token which will be used to populate the Token field.
+
+By default, **Use OAuth token for repository authentication** will be selected. This will return the generated OAuth-token when Git asks for credentials (username + password) when connecting to your GitHub repository. 
+
+Finally, confirm the **Add Hosting Provider** dialog using [Add].
+
+Once you have authorized SmartGit, it will show up in your GitHub Settings, section **Authorized Applications**. 
+	
+	If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
+
 --------------------
-@console @smartgit @git 
+@console @smartgit @git @github 
