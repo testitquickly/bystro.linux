@@ -4,6 +4,21 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ====== Software ======
 
+[[+blame]]
+[[+Brave]]
+[[+Firefox]]
+[[+git]]
+[[+LibreOffice]]
+[[+microcode]]
+[[+Midnight Commander]]
+[[+VLC]]
+[[+wget]]
+[[+wine]]
+[[+Контейнеры:flatpak]]
+[[+Контейнеры:snap]]
+
+
+
 
 
 --------------------

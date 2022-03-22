@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T20:55:59+02:00
 
 ====== Настройки LibreOffice ======
 
-См. [[Настройка Debian:Установить:LibreOffice]]
+См. [[Software:LibreOffice]]
 
 ===== Если не работают хоткеи в OpenOffice при русской раскладке =====
 
