@@ -26,7 +26,7 @@ Creation-Date: 2022-02-22T15:28:34+02:00
 	
 	Это привяжет открытие файлов к либреофису вообще, а не к LibreOffice Writer, например.
 	
-См. [[Фишки Linux:Настройки LibreOffice]]
+См. [[+Настройки LibreOffice]]
 
 --------------------
 @LibreOffice @console 
