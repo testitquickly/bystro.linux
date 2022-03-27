@@ -19,7 +19,7 @@ Creation-Date: 2022-03-27T05:10:17+03:00
 ==== Сделать бэкап дефолтного конфиг-файла ====
 Позже очень пригодится.
 
-''cp /etc/vsftpd.conf /etc/vsftpd.conf.bak''
+''sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak''
 
 	Если случится ой, то всегда можно будет ревертнуться:
 	''sudo cp /etc/vsftpd.conf.bak /etc/vsftpd.conf''
@@ -118,7 +118,6 @@ user_sub_token=$USER
 local_root=/home/$USER/
 '''
 
-
 ==== Отключить автозагрузку vsftpd ====
 Сервис по-умолчанию запускается при старте ноута и бесконечно работает. Это норм, если ftp будут пользоваться много/часто. 
 
@@ -144,7 +143,6 @@ local_root=/home/$USER/
 	Active: __active (running)__ since Sun 2021-12-12 20:48:51 EET; 8ms ago
 
 ==== Что ещё можно проверить ====
-
 Глянуть список всех запущенных сервисов в системе:
 ''systemctl list-unit-files --type=service --state=enabled''
 
@@ -152,6 +150,11 @@ local_root=/home/$USER/
 ''systemctl list-unit-files --type=service --state=enabled | grep vsftpd''
 
 Проверка всех доступных сервисов в системе и управление ими через systemd — https://linuxhint.com/disable_unnecessary_services_debian_linux/
+
+===== Как запускать/останавливать vsftpd =====
+1. **Запуск ftp**: ''sudo systemctl start vsftpd && systemctl status vsftpd''
+2. Перекинуть файлы туда/сюда
+3. **Остановить ftp**: ''sudo systemctl stop vsftpd && systemctl status vsftpd''
 
 --------------------
 @console @ftp 
