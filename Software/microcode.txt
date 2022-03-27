@@ -18,4 +18,4 @@ sudo apt-get install intel-microcode
 Устанавливать это всё необязательно, проблемы с этим всем маловероятны, но таки бывают. А иногда бывает вот такое: [[Фишки Linux:microcode и dualboot]]
 
 --------------------
-@microcode 
+@microcode @console 
