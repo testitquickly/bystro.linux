@@ -6,7 +6,7 @@ Creation-Date: 2022-02-22T15:32:36+02:00
 
 @TODO Отсортировать.
 
-[ ] [[+GPG]]
+[ ] [[Software:GPG]]
 [ ] [[+hdd S.M.A.R.T.]]
 [ ] [[+microcode и dualboot]]
 [ ] [[+Mount AND umount iso files]]
@@ -17,8 +17,8 @@ Creation-Date: 2022-02-22T15:32:36+02:00
 [ ] [[Software:wget]]
 [ ] [[Software:wine]]
 [ ] [[+Исправить битые пакеты (held)]]
-[ ] [[+Исправить проблемы с gpg-key]]
-[ ] [[+GPG:Как восстановить Debian public gpg keys]]
+[ ] [[Software:GPG:Исправить проблемы с gpg-key]]
+[ ] [[Software:GPG:Как восстановить Debian public gpg keys]]
 [ ] [[+Как восстановить grub2]]
 [ ] [[+Как выключить компьютер из консоли]]
 [ ] [[+Как добавить диски в качестве репозиториев]]
