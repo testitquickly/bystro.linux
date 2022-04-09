@@ -31,13 +31,13 @@ chown -R astenix:sudo /opt/firefox
 chmod 750 /opt/firefox
 '''
 
-==== Create a symbolic link ====
+==== Сделать symbolic link ====
 
 ''cd /usr/bin/ && ln -s /opt/firefox/firefox''
 
 там уже может быть файл "firefox", его придётся удалить
 
-=== To make a desktop icon, do this ===
+=== Сделать ярлык для запуска ===
 
 иконку firefox («firefox.png» в моем случае) положить в каталог /opt/firefox/icons/
 
@@ -84,7 +84,9 @@ Categories=Network;WebBrowser;
 # rm /usr/bin/firefox
 '''
 
-===== Импорт существующего профиля из бэкапа =====
+===== Общая настройка Firefox =====
+
+==== Импорт существующего профиля из бэкапа ====
 
 Открыть страницу about:support
 
@@ -101,7 +103,13 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-time-synchronizat
 
 https://opensource.com/article/20/6/time-date-systemd
 
-===== Как открывать каталог загружено в Firefox через Dolphin =====
+==== Запретить Firefox предзагружать страницы в фоне ====
+В теории возникает ощущение ускорения загрузки страниц, а на практике это не нужно.
+
+1. [[about:config]]
+2. network.prefetch-next = **false**
+
+==== Как открывать каталог загружено в Firefox через Dolphin ====
 
 По-умолчанию каталог со скачанным файлом открывается через Konqueror. Раздражает. Выполнить в терминале команду, изменения подтянутся сразу же:
 	
