@@ -106,7 +106,7 @@ https://opensource.com/article/20/6/time-date-systemd
 ==== Запретить Firefox предзагружать страницы в фоне ====
 В теории возникает ощущение ускорения загрузки страниц, а на практике это не нужно.
 
-1. [[about:config]]
+1. about:config
 2. network.prefetch-next = **false**
 
 ==== Как открывать каталог загружено в Firefox через Dolphin ====
