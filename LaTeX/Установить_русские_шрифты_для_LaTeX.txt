@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-04-24T22:26:13+03:00
+
+====== Установить русские шрифты для LaTeX ======
+
+
+
+--------------------
+
