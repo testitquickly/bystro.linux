@@ -117,6 +117,9 @@ https://opensource.com/article/20/6/time-date-systemd
 
 REBOOT
 
+==== Расширение для тёмной темы ====
+https://addons.mozilla.org/en-US/firefox/addon/dark-background-light-text/
+
 ===== Можно, но не нужно добавить flash в Firefox =====
 
 0
