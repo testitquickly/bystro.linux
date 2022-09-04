@@ -4,7 +4,37 @@ Creation-Date: 2022-06-08T19:03:04+03:00
 
 ====== Mount Disk ======
 
+Подключить диск (внутри или снаружи через usb).
 
+Залогиниться в OMV.
 
+Storage > Disks 
+
+	Убедиться в том, что диск «определился». Например, usb-диск определился как /dev/sdf
+
+Storage > File Systems > + > Mount
+
+	Выбрать подключенный диск [[/dev/sdf1]]
+	
+	Save > Yes > Apply
+
+	Каталог подключенного диска смотрим в /srv/
+
+Storage > Shared Folder > + > 
+
+Services > SMB/CIFS > Shares > + > выбрать каталог из списка существующих
+
+===== Umount disk =====
+
+==== В SMB отключить shared folders для отключаемого диска ====
+Services > SMB/CIFS > Shares > выбрать каталог из списка существующих > Delete
+
+Именно удалить, а не Edit > отжать галочку Enabled > Save > Yes > Apply
+
+==== В Storage отключить shared folders ====
+Storage > Shared Folder > выбрать удаляемый каталог из списка существующих > Delete
+
+==== В Storage umount ====
+Storage > File Systems > выбрать удаляемый диск > Unmount
 --------------------
 

@@ -27,18 +27,29 @@ Security notes:
 
 ==== KeyGen ====
 
-Файлы можно положить куда угодно и назвать как угодно. Важно только прописать их в системе
+Файлы можно положить куда угодно и назвать как угодно. Важно только прописать их в системе.
 
-ssh-add ~/.ssh/nas/nas_astenix
+По-умолчанию каталог для всех ключей: ''~/.ssh ''Я положу их в ''/home/my_System_Settings/ssh_keys/nas/''
+
+''ssh-add /home/my_System_Settings/ssh_keys/nas/nas_astenix''
+
 Identity added: /home/astenix/.ssh/nas/nas_astenix (alexei_open_ssh@testitquickly.com)
 
-==== Подключение ====
+==== Простое подключение ====
 
 ssh astenix@192.168.50.10
 
-		Также можно выполнить подключение с прямым указанием ключа — разумно, если ключей овердофига, и совершенно не нужно, если ключ один.
+==== Подключение с указанием ключа ====
+
+Разумно, если ключей овердофига, и совершенно не нужно, если ключ один.
+		
+Когда ключ в ~/.ssh/
 		
 		ssh astenix@192.168.50.10 -i ~/.ssh/nas/nas_astenix
+
+Когда ключ в другом месте	
+
+	ssh astenix@192.168.50.10 -i ''/home/my_System_Settings/ssh_keys/nas/nas_astenix''
 
 Ожидаемый ответ
 
@@ -46,7 +57,7 @@ ssh astenix@192.168.50.10
 	ECDSA key fingerprint is SHA256:kMUXGtfu5aCMPjQkdz6H/5oi3XOn6uJwA84bqy1+ViM.
 	Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 
-Ответить «yes». После этого в файле [[/home/astenix/.ssh/known_hosts]] появится запись о новом хосте. Если её удалить, то процесс «знакомства» повторится при последующем подключении.
+Ответить «yes». После этого в файле ~[[/.ssh/known_hosts]] появится запись о новом хосте. Если её удалить, то процесс «знакомства» повторится при последующем подключении.
 
 	Warning: Permanently added '192.168.50.10' (ECDSA) to the list of known hosts.
 	Linux homuser 5.10.0-0.bpo.8-amd64 #1 SMP Debian 5.10.46-4~bpo10+1 (2021-08-07) x86_64

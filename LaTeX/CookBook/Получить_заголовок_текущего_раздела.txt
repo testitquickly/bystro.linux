@@ -4,6 +4,125 @@ Creation-Date: 2022-05-04T21:45:21+03:00
 
 ====== Получить заголовок текущего раздела ======
 
+Звучит сложно, но все просто.
+
+https://tex.stackexchange.com/a/75179/144008
+
+===== Class article =====
+If you use the standard classes that rely on the kernel commands for making headers, then here's a possibility that works unmodified if the class is article (removing the \chapter command, of course).
+
+\documentclass{book}
+
+\usepackage{etoolbox}
+\makeatletter
+\newif\if@chapters
+\@ifundefined{chapter}{\@chaptersfalse}{\@chapterstrue}
+\if@chapters
+  \apptocmd{\@chapter}{\gdef\currentname{#1}}{}{}
+  \apptocmd{\@schapter}{\gdef\currentname{#1}}{}{}
+\fi
+\apptocmd{\@sect}{\gdef\currentname{#7}}{}{}
+\def\currentname{---Still no title given---}
+\makeatother
+
+\begin{document}
+
+\chapter{ABC}
+
+\currentname
+
+\section{My section name}
+The name of the current section is: ``\currentname''
+It should be: ``My section name''
+
+\subsection{My subsection name}
+The name of the current subsection is: ``\currentname''
+It should be: ``My subsection name''
+
+\end{document}
+
+===== memoir class =====
+ there's nothing to do: the class already provides \currenttitle that does exactly what you want.
+
+Note that you shouldn't redefine \todo as you're trying; rather do
+
+\makeatletter
+\renewcommand\todo[2][]{\@todo[#1]{\currentname: #2}}
+\makeatother
+
+
+
+===== The Beamer class =====
+
+provides the commands \secname and \subsecname to get the current sections or subsections name.
+
+This example produces a frame containing the text "Current section: Foo":
+
+\documentclass{beamer}
+\begin{document}
+  \section{Foo}
+  \begin{frame}
+	Current section: \secname
+  \end{frame}
+\end{document}
+
+
+
+===== Package nameref =====
+
+\documentclass{article}
+
+\usepackage{nameref}
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\makeatother
+
+\begin{document}
+
+\section{My section name}
+The name of the current section is: "\currentname".\\
+It should be: "My section name".
+
+\subsection{My subsection name}
+The name of the current subsection is: "\currentname".\\
+It should be: "My subsection name".
+
+\end{document}
+
+
+===== Package titleref =====
+
+\documentclass{article}
+
+\usepackage{titleref}
+\makeatletter
+\newcommand*{\currentname}{\TR@currentTitle}
+\makeatother
+
+\begin{document}
+
+\section{My section name}
+The name of the current section is: "\currentname".\\
+It should be: "My section name".
+
+\subsection{My subsection name}
+The name of the current subsection is: "\currentname".\\
+It should be: "My subsection name".
+
+\end{document}
+
+Same result.
+
+===== Другой способ =====
+
+\let\Chaptermark\chaptermark
+\def\chaptermark#1{\def\Chaptername{#1}\Chaptermark{#1}}
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+\let\Subsectionmark\subsectionmark
+\def\subsectionmark#1{\def\Subsectionname{#1}\Subsectionmark{#1}}
+\let\Subsubsectionmark\subsubsectionmark
+\def\subsubsectionmark#1{\def\Subsubsectionname{#1}\Subsubsectionmark{#1}}
 
 
 --------------------
