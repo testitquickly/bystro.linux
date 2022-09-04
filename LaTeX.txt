@@ -2,9 +2,13 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-22T21:02:26+03:00
 
-====== Настройка LaTeX ======
-
 ====== LaTeX ======
+
+1. [[+Установка LaTeX]]
+2. [[+Установить русские шрифты для LaTeX]]
+3. [[+XeLaTeX]]
+4. [[Software:Kile]]
+
 
 --------------------
 @LaTeX

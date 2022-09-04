@@ -4,7 +4,196 @@ Creation-Date: 2022-04-22T21:03:23+03:00
 
 ====== Kile ======
 
+===== Установить Kile =====
+Kile при установке тащит из репозиториев Debian тамошний TeX, невзирая на наличие уже установленного, и хочет работать только с ним. 
 
+==== Список пакетов, которые устанавливаются с Kile ====
+* dvipng, 
+* fonts-lmodern, 
+* fonts-texgyre, 
+* lmodern, 
+* prerex, 
+* prosper, 
+* tex-common, 
+* tex-gyre, 
+* texlive, 
+* texlive-base, 
+* texlive-binaries, 
+* texlive-extra-utils, 
+* texlive-font-utils, 
+* texlive-fonts-recommended, 
+* texlive-fonts-recommended-doc, 
+* texlive-generic-recommended, 
+* texlive-latex-base, 
+* texlive-latex-base-doc, 
+* texlive-latex-recommended, 
+* texlive-latex-recommended-doc, 
+* texlive-pictures, 
+* texlive-pictures-doc, 
+* texlive-pstricks, 
+* texlive-pstricks-doc, 
+* tipa, 
+* vprerex 
+	
+В обычных условиях это лучший путь, но у нас тут своя атмосфера. Военная хитрость: создадим свой deb-файл, лживые настройки которого заставят Debian поверить в том, что TeX из репозиториев уже установлен, утибоземой, и можно установить всего лишь Kile.
+
+===== Поставить приблуду equivs =====
+
+''sudo aptitude install equivs''
+
+==== Cоздать рабочий файл для будущего проекта deb ====
+Одной командой:
+	1. создать каталог для работы с equivs в /tmp/
+	2. перейти в него
+	3. скачать из сети уже готовый файл с перечнем пакетов, установку которых надо проэмулировать (название файла меняется в зависимости от версии LaTeX)
+	4. создать в equivs новый проект с названием 'texlive-local' (просто файл)
+
+''mkdir /tmp/installKileWithEquivs/ && cd /tmp/installKileWithEquivs/ && wget ''[[http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt|''http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt'']]'' -nd --directory-prefix=/tmp/installKileWithEquivs/ && equivs-control texlive-local && echo 'Done!'''
+
+==== Отредактировать файл «debian-equivs-2019-ex.txt» ====
+
+''mcedit debian-equivs-2019-ex.txt''
+
+Добавить в тамошний перечень пакетов в строке 'Provides:' ещё и «texlive-doc-base», бо его там по-умолчанию не вписали.
+
+==== Скопировать содержимое файла «debian-equivs-2019-ex.txt» в файл «texlive-local» ====
+
+''cp -f debian-equivs-2019-ex.txt texlive-local && echo 'Done!'''
+
+==== Создать файл texlive*.deb ====
+
+''equivs-build texlive-local''
+
+Получить сообщение '''The package has been created''' и что-то ещё, иначе алярм.
+
+==== Установить texlive*.deb ====
+После этого шага Debian искренне «поверит» в то, что у неё установлены все пакеты, которые были перечислены в файле «debian-equivs-2015-ex.txt».
+
+''sudo dpkg -i texlive-local_2019-1_all.deb''
+
+Внимательно прочитать вывод. Если обнаружатся непредвиденные зависимости: установить их. Пакет ''texlive-local'' автоматически настроится.
+
+===== Установить Kile =====
+Не спешить! 
+
+Если во время установки появится сообщение о пакетах, которые будут установлены — остановиться и прочитать их. В этом списке ожидаем только
+
+		'''
+		Следующие НОВЫЕ пакеты будут установлены:
+		kile
+		'''
+
+и ничего более.
+
+		В предыдущих версиях KDE ещё предлагалось поставить ''konsole4-kpart{a}'', что было норм.
+
+Если будет предложен какой-либо пакет, в названии которого есть слово 'tex' — 
+1. остановиться, 
+2. вернуться к предыдущему шагу
+3. добавить в общий список муляжей «лишний» пакет, 
+4. повторить все последующие шаги до этого места
+и лишь затем продолжить установку Kile.
+
+''sudo aptitude install kile''
+
+==== Проверить работоспособность Kile ====
+1. Запустить Kile.
+
+	По-умолчанию запустится System Check. Если нет, то пройти в ''Settings > System Check ''и посмотреть, что он скажет.
+	
+	Может насторожить алерт на отсутствие 'Acroread', но это всего лишь уведомление о том, что не установлен Acrobat Reader, который и так не нужен (есть же 'Evince' или 'Okular'). 
+	
+	Также могут быть сообщения о том, что в системе отсутствует TeX — Kile не может найти «обычный» путь к нему. Это нормально и в моей конфигурации [[LaTeX:Установка LaTeX]] не требуется.
+
+2. Поставить галочку для 'Use the modern configuration for the PDFLaTeX, LuaLaTeX and XeLaTeX tools'.
+3. [Finish]
+
+А equivs можно удалить. Освободится 55,3 kБ.
+
+Также при установке Kile может проснуться гномовский iBus, если он ранее был установлен и вроде бы подавлен — [[Настройка KDE:Клавиатура:Подавить iBus]]
+
+===== Базовые настройки Kile =====
+Build > Live Preview 
+Убрать галочку 'Live Preview for Current Document or Project'
+
+Настройка > убрать галочку для 'Show Document Viewer'
+
+Настройка > Настроить Kile
+
+Сразу самое важное:
+
+Editor > Открытие и сохранение > Главное > Формать файла > убедиться триста раз в том, что СНЯТА галочка для «Использовать отметку о порядке байтов (BOM)», иначе позже будет беда. Всё остальное в разделе Editor настраивать по личным предпочтениям.
+
+Также в будущем быть осторожным и не ставить галочку в Сервис > Добавлять отметку о порядке байтов (BOM)
+
+Сервис > Орфография > снять галочку для «Автоматическая проверка орфографии»
+
+Настройка > Настроить Kile > Kile > General > Default project location > указать свой каталог для проектов
+
+Настройка > Настроить Kile > Kile > General > File Clean-Up Details > поставить галочку для Automatically clean-up files after closing Kile
+В поле списка расширений автоудаляемых файлов добавить этот перечень:
+.aux .backup .bbl .bib~ .bit .blg .dvi .gitignore~ .glg .glo .gls .glx .gxg .gxs .gz .idx .ilg .ind .lof .log .lot .nav .out .plt .ps .sh~ .snm .sty~ .svn .tex~ .toc .xdy
+
+Настройка > Настроить Kile > Kile > Help > Location of TeX documentation: [[/home/LaTeX/texmf-dist/doc/texlive/texlive-ru]]
+
+Настройка > Настроить Kile > Kile > Live Preview > снять галочку для Enable live preview
+
+Настройка > Настроить Kile > LaTeX > General > Double Quotes > снять галочку для Automatically insert opening and closing double quotes for LaTeX
+
+
+Настройка > Настроить Kile > LaTeX > Environments > Automatic Indentation Inside Environments > снять галочку для Use spaces instead of tabs to indent
+
+Настройка > Настроить Kile > Tools > Build
+
+Тут сделаем магию. QuickBuild подразумевает выполнение двух команд последовательно: PDFLaTeX + ViewPDF
+
+Команда PDFLaTeX подразумевает выполнение команды pdflatex с параметрами ''-synctex=1 -interaction=nonstopmode %source''
+
+Команда ViewPDF подразумевает выщов внутренне определенного просмотрщика PDF (обычно Okular) с передачей ему скопмилированного файла pdf. 
+
+Внешне выглядит так: инициировал компиляцию проекта из Kile — открылся готовый pdf.
+
+Мне надо, чтобы компиляция pdf происходила через мой .sh скрипт. Поэтому
+
+Настройка > Настроить Kile > Tools > Build > PDFLaTeX > General > Command: /home/my_System_Settings/MyScripts/LaTeX_Scripts/kile_buildPdfLaTeXWithMetafilesOutside.sh
+
+Содержимое поля Options (-synctex=1 -interaction=nonstopmode %source) можно убрать.
+
+Настройка > Настроить Kile > Tools > Build > ViewPDF > Select: evince
+
+Tools > Build > New = myPDF_Compile > Next > Finish
+
+В настройках билд-тула myPDF_Compile > General > Command: = путь к исполняемому скрипту
+/home/my_System_Settings/MyScripts/LaTeX_Scripts/kile_buildPdfLaTeXWithMetafilesOutside.sh
+
+Advanced > Type = Run Outside of Kile
+Class = Compile
+
+Tools > Build > QuickBuild > протыкать опции PDFLaTeX и ViewPDF и удалить каждую.
+
+Tool: выбрать из списка myPDF_Compile (будет в самом низу).
+Configuration: Current Default (Default) > Add > OK
+В окне Kile выбрать кнопку QuickBuild или нажать Alt+1
+
+Unable to open document “file:///home/astenix/tmp/project_metafiles/%D0%A1%D0%B5%D1%82%D0%B0%D0%BF для преподавания в сети.pdf”.
+
+
+
+==== Kile missing “Settings” dialog ====
+
+Try removing the user specific file for Kile. I had the same problem after I messed with the toolbars.
+
+''rm ~/.kde/share/apps/kile/kileui.rc''
+
+Kile configuration
+''~/.kde/share/config/kilerc''
+
+Kile shortcuts
+''~/.kde/share/apps/katepart/katepartui.rc''
+
+==== Как добавить новые команды в меню ====
+
+==== Как компилировать файлы через внешний скрипт (*.sh) ====
 
 --------------------
-
+@kile @equivs 
