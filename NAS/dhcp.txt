@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-05-07T02:39:19+03:00
+
+====== dhcp ======
+
+
+
+--------------------
+
