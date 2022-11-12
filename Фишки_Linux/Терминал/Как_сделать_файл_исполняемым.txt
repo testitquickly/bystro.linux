@@ -4,8 +4,16 @@ Creation-Date: 2022-11-11T06:01:50+02:00
 
 ====== Как сделать файл исполняемым ======
 
-
-@TODO перевести
+TODO: перевести !
+[>] ТЛТ
+[ ] лолол !!
+[ ] И
+	[ ] Organize party <2017-08-19 !
+		[ ] Send invitations by first of month <2023-08 !!
+		[ ] Cleanup living room
+			[ ] Get rid of moving boxes <2022-12-10
+			[ ] Buy vacuum cleaner <2017-08-15
+		[ ] Buy food & drinks
 
 Each file that is in a POSIX-compatible file system (Ext4, Btrfs, XFS, JFS etc) has "mode bits" assigned to itself.
 
