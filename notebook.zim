@@ -2,7 +2,7 @@
 version=0.4
 name=Install Debian and KDE
 interwiki=
-home=
+home=Home
 icon=
 document_root=
 shared=True

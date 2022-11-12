@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-23T17:55:28+02:00
+
+====== iputils ======
+
+В новых сборках нет старой команды ping, бо многое поменялось. При попытке его установить сообщается о том, что «ping» является виртуальным пакетом, предоставляемым пакетом: //iputils-ping inetutils-ping// Для установки следует выбрать один.
+
+Разница в том, что **inetutils** is the GNU networking utilities, targeting a variety of operating systems and providing lots of different networking tools; **iputils** is Linux-specific and includes fewer utilities. 
+
+1. в Linux (Debian и тд) — ставим //iputils//
+2. в non-Linux (Debian GNU или kFreeBSD) — ставим //inetutils//
+
+''sudo aptitude install iputils-ping''
+
+Между ними есть разница в функиональности, вроде бы //inetutils// лучше работает с IP6, и если оно понадобится, то придётся одно снести, второе поставить.
+
+--------------------
+@ping @console 

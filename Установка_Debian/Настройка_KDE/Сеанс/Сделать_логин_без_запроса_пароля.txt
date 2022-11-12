@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T15:21:20+02:00
+
+====== Сделать логин без запроса пароля ======
+
+===== Для sddm (KDE) =====
+
+Параметры системы 
+> Рабочая среда 
+> Запуск и завершение 
+> Вход в систему (SDDM) 
+> Дополнительно = галочка "Автоматический вход в систему", пользователь **astenix**
+
+===== Для lightdm (Ubuntu) =====
+
+* ''sudo mkdir /etc/lightdm/lightdm.conf.d/''
+* ''sudo touch /etc/lightdm/lightdm.conf.d/12-autologin.conf''
+
+Добавить в этот файл
+
+[**SeatDefaults**]
+'''
+autologin-user=astenix
+autologin-user-timeout=0
+# user-session=kde
+'''
+
+Последняя строка не нужна, но мало ли. Lightdm из убунту, поэтому если на нее перешел, то из кде она напрямую не настраиваемая.
+
+--------------------
+@login @sddm @lightdm 

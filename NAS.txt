@@ -3,11 +3,15 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-03-16T21:21:14+02:00
 
 ====== NAS ======
-[[Software:ssh]]
+Software:ssh
 
 [[+Mount Disk]]
 [[+dhcp]]
 [[+wakeonlan]]
+[[+go root]]
+[[+Update OMV]]
+
+
 
 --------------------
 
