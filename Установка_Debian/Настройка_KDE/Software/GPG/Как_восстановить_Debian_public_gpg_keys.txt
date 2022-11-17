@@ -9,25 +9,18 @@ Creation-Date: 2022-02-23T21:22:10+02:00
 	Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY 9D6D8F6BC857C906  NO_PUBKEY 8B48AD6246925553
 значит утеряны публичные ключи шифрования Debian из /etc/apt/дальше какие-то каталоги. Надо их заново скачать с надежного сервера и установить ИЗ-ПОД ROOT по следующей схеме [номера ключей всюду смотри в сообщениях об ошибках]:
 
-delete theses links from repo file
-
-(/etc/apt/sources.list)
-
-and in any file with the suffix .list under the directory
-
-/etc/apt/sources.list.d/
-
-update again!
-
-1
-Заменить #KEY_NUMBER# на номер ключа, который объявлен недоступным
-
-2
+1. delete theses links from repo file (/etc/apt/sources.list)
+2. and in any file with the suffix .list under the directory [[/etc/apt/sources.list.d/]]
+3. update again!
+4. Заменить #KEY_NUMBER# на номер ключа, который объявлен недоступным
+'''
 sudo -i
 gpg --keyserver pgpkeys.mit.edu --recv-key #KEY_NUMBER#
 gpg -a --export #KEY_NUMBER# | apt-key add -
+'''
 
-ДРУГОЕ РЕШЕНИЕ
+
+===== ДРУГОЕ РЕШЕНИЕ =====
 
 Если сообщения вроде
 
@@ -35,17 +28,14 @@ gpg -a --export #KEY_NUMBER# | apt-key add -
 	E: Репозиторий «http://download.opensuse.org/repositories/home:/selmf/Debian_9.0  Release» не подписан.
 	E: Не удалось загрузить некоторые файлы
 
-First, to delete the expired key:
+1. First, to delete the expired key:
 
-sudo apt-key del 3F3411BE43F8BC1F 
+''sudo apt-key del 3F3411BE43F8BC1F'' 
 
-Then go to the указанный site:
-http://download.opensuse.org/repositories/home:/selmf/Debian_9.0/
+2. Then go to the указанный site http://download.opensuse.org/repositories/home:/selmf/Debian_9.0/ and download "Release.key" file.
+3. Then import the key using the ubuntu14.04 software updater or synaptic package manager
 
-and download "Release.key" file.
-
-Then import the key using the ubuntu14.04 software updater or synaptic package manager
-gpg --import Release.key
+''gpg --import Release.key''
 
 --------------------
 @update @gpg 

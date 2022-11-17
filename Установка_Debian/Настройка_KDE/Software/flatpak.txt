@@ -22,18 +22,20 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 Такие решения называют «universal package system», или же кросс-платформенный фреймворк для запуска ПО без его установки в систему. Назовём всё это грубо и просто словом «контейнеры». **Flatpak **— один из них.
 
 ===== Установка flatpak =====
+Можно не заморачиваться:
 
-Можно сразу подключиться к official PPA Flatpak, чтобы автоматически подтягивались его обновления:
+''sudo apt install flatpak''
+
+А можно подключиться к official PPA Flatpak, чтобы автоматически подтягивались его обновления.
+
+1. Убедиться в том, что в системе должен быть установлен софт для [[GPG]] (оба gpg и kgpg)
+2. Установить flatpak
 
 ''sudo add-apt-repository ppa:alexlarsson/flatpak''
 '''
 sudo apt update
 sudo apt install flatpak
 '''
-
-А можно не заморачиваться:
-
-''sudo apt install flatpak''
 
 С этого момента в систему можно скачивать установочные файлы *.flatpakref с https://flathub.org/home
 
@@ -63,12 +65,6 @@ sudo apt install flatpak
 
 Установленный софт будет доступен в общем меню, что незаметно удобно.
 
-==== Через репозиторий Flatpak ====
-
-''flatpak install <remotes> <ApplicationID>''
-
-Имя "Удаленные репозитории" почти всегда flathub, но бывают нюансы, это зависит от решения разработчиков каждого софта по-отдельности.
-
 ==== Из флэтхаба ====
 
 ''flatpak install flathub org.libreoffice.LibreOffice''
@@ -80,6 +76,11 @@ sudo apt install flatpak
 Если идём по пути скачать .flatpakref на хдд, тогда все проще:
 
 ''flatpak install <ApplicationID>.flatpakref''
+
+==== Через другой репозиторий Flatpak ====
+Почти всегда всё ставят из flathub, но разработчик каждого софта волен поднять собственный репозиторий.
+
+''flatpak install <remoteServer> <ApplicationID>''
 
 ===== Запуск ПО из Flatpak =====
 
