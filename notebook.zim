@@ -3,9 +3,23 @@ version=0.4
 name=Install Debian and KDE
 interwiki=
 home=Home
-icon=
+icon=./icon/Install_Debian_and_KDE.jpg
 document_root=
 shared=True
 endofline=unix
 disable_trash=False
+
+[TaskListPlugin]
+all_checkboxes=True
+labels=FIXME, TODO
+integrate_with_journal=start
+included_subtrees=
+excluded_subtrees=
+nonactionable_tags=
+tag_by_page=True
+use_workweek=False
+
+[JournalPlugin]
+namespace=Journal
+granularity=День
 
