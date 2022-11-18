@@ -15,7 +15,7 @@ sudo apt-get install intel-microcode
 	Для машин с  процессором AMD
 	''sudo apt-get install amd64-microcode''
 
-Устанавливать это всё необязательно, проблемы с этим всем маловероятны, но таки бывают. А иногда бывает вот такое: [[Фишки Linux:microcode и dualboot]]
+Устанавливать это всё необязательно, проблемы с этим всем маловероятны, но таки бывают. А иногда бывает вот такое: Фишки Linux:microcode и dualboot
 
 --------------------
 @microcode @console 
