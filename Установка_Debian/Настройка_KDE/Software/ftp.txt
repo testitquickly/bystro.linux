@@ -91,19 +91,19 @@ write_enable=YES
 Мне достаточно этого конфига:
 
 '''
-listen=YES
-listen_port=21
 anonymous_enable=NO
-local_enable=YES
-use_localtime=YES
-utf8_filesystem=YES
-write_enable=YES
 dirmessage_enable=YES
-secure_chroot_dir=/var/run/vsftpd/empty
+listen_port=21
+listen=YES
+local_enable=YES
 pam_service_name=vsftpd
 rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
 rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+secure_chroot_dir=/var/run/vsftpd/empty
 ssl_enable=NO
+use_localtime=YES
+utf8_filesystem=YES
+write_enable=YES
 '''
 
 === Пример настроек ===
