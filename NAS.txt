@@ -4,7 +4,7 @@ Creation-Date: 2022-03-16T21:21:14+02:00
 
 ====== NAS ======
 
-[[Настройка KDE:Software:ssh]]
+[[Установка Debian:Настройка KDE:Software:ssh]]
 [[+Mount Disk]]
 [[+dhcp]]
 [[+wakeonlan]]
