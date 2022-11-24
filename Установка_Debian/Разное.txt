@@ -4,16 +4,17 @@ Creation-Date: 2022-02-22T15:32:36+02:00
 
 ====== Фишки Linux ======
 
+TODO Пересобрать все страницы во всех подразделах
 
 [[+hdd:hdd S.M.A.R.T.]]
 [[+hdd:Как добавить жесткий диск через консоль]]
 [[+hdd:Как посмотреть все диски]]
 
-[[+microcode и dualboot]]
+[[+HowTo:microcode и dualboot]]
 
-[[+Mount AND umount iso files]]
-[[+Samba. Как расшарить папки на машине с linux для сети windows]]
-[[+swap]]
+[[+HowTo:Mount AND umount iso files]]
+[[+HowTo:Samba. Как расшарить папки на машине с linux для сети windows]]
+[[+HowTo:swap]]
 [[Установка Debian:Настройка Debian:trim SSD]]
 [[+Users:Как добавить нового юзера в систему]]
 [[+Users:Как заблокировать или удалить юзера]]
