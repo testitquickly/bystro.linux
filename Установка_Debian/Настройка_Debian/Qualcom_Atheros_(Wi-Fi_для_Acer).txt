@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-21T23:20:29+02:00
+
+====== Qualcom Atheros (Wi-Fi для Acer) ======
+
+Хорошо, если при настройке вайфай подхватился. Если нет — вот именно поэтому установку системы лучше делать «на проводе».
+
+===== Узнать своё оборудование =====
+
+''lspci | grep -i Network''
+
+Пример ответа:
+	02:00.0 Network controller: Qualcomm Atheros QCA6174 802.11ac Wireless Network Adapter (rev 32)
+
+Для моего ноута нужен  https://wiki.debian.org/ath9k
+
+===== Установить firmware-atheros =====
+
+https://packages.debian.org/bullseye/firmware-atheros
+
+sudo ''aptitude install firmware-atheros''
+
+Появляется каталог ///lib/firmware/ath10k/// - вайфай исчезнет, если его удалить.
+
+''sudo reboot''
+
+Теперь вай-фай будет доступен.
+
+--------------------
+@WiFi @Acer 

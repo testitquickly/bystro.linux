@@ -1,0 +1,137 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T14:56:38+02:00
+
+====== Автообновление времени и даты ======
+
+Перегрузился из винды в Debian, и замечаю, что время-то прошло незаметно, уже 19:32. А часы на стене говорят, что всего 17:32.  
+
+Бородатые дядьки пишут, что
+
+	If you have installed Windows alongside Linux, you may struggle with dual-boot system time issues. The reason is simple: Windows keeps hardware clock in local time and Linux in UTC time.
+
+	Change Windows time settings first to force keeping hardware clock in UTC.
+
+Надо лечить.
+
+===== Windows 10 =====
+
+Отключить автообновление времени, бо сюда я захожу редко (и даже с отключенной сетью), поэтому точное время в винде мне не критично.
+
+„Параметры → Время и язык → Дата и время”, Установить время автоматически = Откл.
+
+	Если что-то есть ещё автоматически обновляемое/настраиваемое, то тоже поотключать.
+
+===== Debian =====
+
+Уходим в консоль.
+
+==== 1) Остановить синхронизацию времени ====
+
+''sudo systemctl stop systemd-timesyncd && sudo systemctl status systemd-timesyncd''
+
+Ожидаемый ответ: Active: inactive (dead)
+
+==== 2) Удалить сервис NTP (Network Time Protocol) ====
+Вероятно, он уже не установлен, но все-таки.
+
+''sudo apt-get remove ntpd ntpstat --purge && sudo apt autoremove''
+
+	С помощью ntpd компьютер может не только забирать время с удаленных серверов, но и выступать в качестве сервера времени для других, то есть ntpd принимает входящие соединения и его некорректная настройка может послужить причиной участия вашего сервера в DDoS-атаки. На своём ноутбуке это всё не нужно, достаточно установить клиента, который будет забирать время с удаленного сервера и синхронизировать ваши часы; именно это и делает systemd-timesyncd.
+
+	Есть вероятность, что в Debian 11 сервер ntp уже не установлен, бо тут синхронизацией времени занимается systemd-timesyncd. В любом случае надо удалить ntpd и ntpstat полностью, иначе systemd-timesyncd не будет синхронизировать время.
+
+==== 3) Установить 'RTC 0' как основу для ориентира по времени ====
+
+''timedatectl set-local-rtc 0''
+
+	The system is configured to read the RTC time in the local time zone. This mode cannot be fully supported. It will create various problems with time zone changes and daylight saving time adjustments. The RTC time is never updated, it relies on external facilities to maintain it. If at all possible, use RTC in UTC by calling
+
+==== 4) Указать системе timezone своего профиля ====
+
+''sudo timedatectl set-timezone Europe/Chisinau''
+
+	Можно глянуть список временных зон по своему региону:
+
+	''timedatectl list-timezones | grep Europe''
+
+	Можно глянуть список всех доступных timezоne (будет очень длинный список)
+
+	''timedatectl list-timezones''
+
+==== 5) Указать сервер для синхронизации времени ====
+
+''sudo mcedit /etc/systemd/timesyncd.conf''
+
+Отредактировать одну строку:
+
+''NTP=0.md.pool.ntp.org''
+
+	Мне нужен сервер из зоны MD (pool.ntp.org/zone/md), но подойдёт и RO, бо мы рядом.
+
+=== 5.1) Проверить связь с сервером синхронизации ===
+
+''timedatectl timesync-status''
+
+==== 6) Запустить systemd-timesyncd ====
+
+''sudo systemctl daemon-reload && sudo systemctl start systemd-timesyncd''
+
+==== 7) Включить службу systemd-timesyncd для синхронизации времени ====
+
+и сразу проверить её работу
+
+''sudo timedatectl set-ntp true''
+
+Да, у systemd есть свой ntp. Это нормально
+
+==== 8) Проверить состояние синхронизации systemd-timesyncd ====
+
+''sudo systemctl status systemd-timesyncd''
+
+Ожидаемый ответ:
+
+	Active: active (running) since Tue 2019-12-10 19:47:09 EET; 21s ago
+
+==== 9) Проверить время и его обновления через сеть ====
+
+''timedatectl (то же самое, что и timedatectl status)''
+
+Для ориентира можно глянуть на https://time.is
+
+Ожидаемый ответ
+
+	System clock synchronized: yes
+	NTP service: active. Это сервис из systemd.
+	RTC in local TZ: no — так и надо, бо у нас real-time clock (RTC) не в локальной TZ (TimeZone).
+
+В некоторых обстоятельствах на этом шаге кому-то может понадобится sudo reboot.
+
+==== 10) Вкл и перезапустить службу systemd-timesyncd ====
+
+''sudo systemctl enable --now systemd-timesyncd''
+
+	На всякий случай: это рестарт:
+
+	''sudo systemctl restart systemd-timesyncd''
+
+Проверить статус службы systemd-timesyncd
+
+''sudo systemctl status systemd-timesyncd''
+
+==== 11) Проверить статус timedatectl (дежурно) ====
+
+''timedatectl status''
+
+Ожидаемый ответ:
+
+	Local time: Вт 2019-12-10 20:59:53 EET
+	Universal time: Вт 2019-12-10 18:59:53 UTC
+	RTC time: Вт 2019-12-10 18:59:53
+	Time zone: Europe/Chisinau (EET, +0200)
+	System clock synchronized: yes
+	NTP service: active
+	RTC in local TZ: no
+
+--------------------
+@console @time
