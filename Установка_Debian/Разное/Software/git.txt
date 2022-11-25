@@ -58,9 +58,6 @@ Edit
 > [Add]
 > Add Hosting Provider
 > GitHub
-'''
-
-'''
 > Generate Token
 > Откроется браузер с GitHub.com
 	> страница ’Confirm your account recovery settings’
@@ -81,7 +78,6 @@ Edit
 > Add
 > [OK]
 '''
-
 
 В профиле GitHub Settings в разделе Integrations > Applications > Authorized OAuth Apps будет отображаться SmartGit (Owned by syntevo)
 	
