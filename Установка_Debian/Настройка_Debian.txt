@@ -6,7 +6,7 @@ Creation-Date: 2022-02-08T16:03:51+02:00
 
 1. [[+Добавить пользователя в группу sudo]]
 2. [[+Кодировка и размер шрифта в консоли]]
-3. Настройка KDE:Software:Midnight Commander
+3. [[Разное:Software:Midnight Commander]]
 4. [[+aptitude]]
 5. [[+iputils]]
 6. [[+Qualcom Atheros (Wi-Fi для Acer)]]
