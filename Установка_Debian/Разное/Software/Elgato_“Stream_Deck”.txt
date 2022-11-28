@@ -220,8 +220,8 @@ Creation-Date: 2022-04-06T02:09:32+03:00
 
 Например, это взаимодействие с obs:
 
-	Command: wmctrl -xa obs
-	Press Keys: ctrl+shift+F1
+	Command: ''wmctrl -xa obs''
+	Press Keys: ''ctrl+shift+F1''
 
 «wmctrl -lx» выводит список всех открытых окон (-l) и название класса окна (-х), чтобы проще воспринимать их по названию программы-родителя.
 
