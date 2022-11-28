@@ -18,9 +18,7 @@ Description
    -ac   set the number of audio channels
    -ar   set the audio sampling frequency
 
-If you need to use it frequently,
-
-STEP 1 : Create a bash function that performs conversion
+==== STEP 1 : Create a bash function that performs conversion ====
 
 **## utilities.sh**
 
@@ -36,12 +34,11 @@ avconv -i $sourceFile -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 $destFile
 }
 '''
 
-
-STEP 2 : source that bash file
+==== STEP 2 : source that bash file ====
 
 ''source utilities.sh''
 
-STEP 3 : start conversion calling above function convertMP4toMP3
+==== STEP 3 : start conversion calling above function convertMP4toMP3 ====
 
  $ convertMP4toMP3
  Enter source mp4 file : Upd_Sanity.mp4

@@ -23,7 +23,8 @@ To re-enable the account at a later date you can run:
 
 	Check if the user account is locked.
 	the flag *LK* in the below command output indicates that the account is locked.
-sudo passwd --status <UserName>
+
+''sudo passwd --status <UserName>''
 
 ''root *LK* 2017-07-19 0 45 7 -1 (Password set, SHA512 crypt.)''
 

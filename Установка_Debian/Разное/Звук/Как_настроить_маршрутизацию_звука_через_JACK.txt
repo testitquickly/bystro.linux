@@ -6,8 +6,9 @@ Creation-Date: 2022-02-24T07:44:57+02:00
 
 https://jackaudio.org/faq/device_naming.html
 	
-	List of PLAYBACK Hardware Devices
-aplay -l
+
+===== List of PLAYBACK Hardware Devices =====
+''aplay -l''
 
 	Вывод
 		card 0: PCH [HDA Intel PCH], device 0: ALC255 Analog [ALC255 Analog]
@@ -17,8 +18,8 @@ aplay -l
 		Subdevices: 1/1
 		Subdevice #0: subdevice #0
 
-	List of CAPTURE Hardware Devices
-arecord -l
+===== List of CAPTURE Hardware Devices =====
+''arecord -l''
 
 	Вывод
 		card 0: PCH [HDA Intel PCH], device 0: ALC255 Analog [ALC255 Analog]
@@ -28,8 +29,8 @@ arecord -l
 		Subdevices: 1/1
 		Subdevice #0: subdevice #0
 
-	Проверить, какие карты подключены
-cat /proc/asound/cards
+===== Проверить, какие карты подключены =====
+''cat /proc/asound/cards''
 
 	Пример вывода
 	0 [PCH]: HDA-Intel - HDA Intel PCH
@@ -48,7 +49,7 @@ cat /proc/asound/cards
 	hw:M2
 	hw:M2,0
 
-	УПРАВЛЕНИЕ
+==== УПРАВЛЕНИЕ ====
 	
 	alsa_in, alsa_out - Jack clients that perform I/O with an alternate audio interface
 
@@ -58,10 +59,10 @@ cat /proc/asound/cards
 		alsa_out will deliver data to it (for playback).
 
 Эта команда укажет драйверу звука, что слушать надо сигнал с устройства hw:1
-		alsa_in -d hw:1
+		''alsa_in -d hw:1''
 	
 	Эта команда укажет драйверу звука, что надо передать сигнал на устройство hw:0
-		alsa_out -d hw:0
+		''alsa_out -d hw:0''
 	
 	Опции настраивают параметры звука — см. man "alsa_in"
 	
