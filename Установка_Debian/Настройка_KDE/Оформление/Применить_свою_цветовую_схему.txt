@@ -5,7 +5,7 @@ Creation-Date: 2022-02-27T04:48:32+02:00
 ====== Применить свою цветовую схему ======
 
 Находится в [[/home/astenix/.kde/share/apps/color-schemes/]]
-AstenixBreezeDarkNeutral.colors
+Файл ''AstenixBreezeDarkNeutral.colors''
 
 --------------------
 @color @systemSettings

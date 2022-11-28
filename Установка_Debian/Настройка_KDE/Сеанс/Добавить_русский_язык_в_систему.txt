@@ -5,12 +5,15 @@ Creation-Date: 2022-02-22T15:10:25+02:00
 ====== Добавить русский язык в систему ======
 
 Preferences 
+'''
 > Regional Settings 
-> Add languages 
+> Add languages
+'''
+ 
 
 Move 'russian' to the top.
 
-relogin
+Релогин.
 
 Следующий шаг: [[Указать системные каталоги в профиле]]
 
