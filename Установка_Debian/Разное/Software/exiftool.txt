@@ -62,11 +62,6 @@ Creation-Date: 2022-12-03T09:14:03+02:00
 
 ''exiftool /media/astenix/myPoketBook/Books/*.pdf -title > all_pdf_from_external_folder_metadata.txt''
 
-==== Получить метаданные из файлов pdf из другого каталога и всех его подкаталогов ====
-Надо всего лишь добавить пробел между путём к файлу и шаблоном имени:
-
-''exiftool /media/astenix/myPoketBook/Books/ *.pdf -Author -Title > all_pdf_from_external_folder_and_subfolder_metadata.txt''
-
 ===== Удалить все метаданные из файла pdf =====
 
 ''exiftool -all:all= *.pdf''
