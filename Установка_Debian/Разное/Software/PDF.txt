@@ -12,6 +12,11 @@ Creation-Date: 2022-03-03T04:36:22+02:00
 
 			Okular caches rendered pages in memory. Large documents can use a significant amount of RAM (but will never saturate available memory). Basically, Okular is using a lot of RAM because you have a lot of (spare) RAM. This behavior can be tuned in the settings: go to Configure > Configure Okular > Performance and check the options under "Memory usage" (Быстродействие > Использование памяти = Экономное). You can set it to "Low" to minimize memory usage at the cost of slower scrolling.
 
+===== Как редактировать метаданные в pdf =====
+Через Calibre. 
+
+В консоли через [[exiftool]]
+
 ===== Удалить Okular =====
 невозможно, он утащит за собой ’kde-standard’ и четверть системы.
 
