@@ -43,7 +43,6 @@ $chmod +x ex2download.sh
 $ex2download.sh
 '''
 
-
 ===== Как скачать сайт целиком с помощью wget =====
 
 ''wget -r -k -p -l 2 -E -nc ''[[http://site.com/|''http://site.com/'']]

@@ -23,7 +23,6 @@ Creation-Date: 2022-03-21T18:56:36+02:00
 при включении ноута, и если что-то не очень нужно, то — убить или подавить.
 
 ==== Простым списком ====
-
 '''
 systemd-analyze blame
 '''
@@ -40,7 +39,6 @@ systemd-analyze blame
  586ms lightdm.service
  583ms plymouth-quit-wait.service
 '''
-
 
 ==== Наглядной цепочкой ====
 
@@ -60,7 +58,6 @@ graphical.target @11.665s
 '''
 
 ==== В графике ====
-
 ''systemd-analyze plot > fileAnalyze.svg && gimp fileAnalyze.svg''
 
  Увеличить и на, смотри последовательно, что после чего загружаеццо…
@@ -81,7 +78,6 @@ graphical.target @11.665s
 	sudo systemctl mask systemd-networkd-wait-online.service
 	'''
 
-
 Последняя команда делает сервису symlink в [[/dev/null.]] Это нужно из-за того, что если стартап какого-то сервиса погашен, но его «попросит» другой сервис/процесс, то сервис всё равно будет загружен.
 
 ==== Забить snap ====
@@ -92,7 +88,6 @@ graphical.target @11.665s
 	sudo systemctl disable snapd.service
 	sudo systemctl mask snapd.service
 	'''
-
 
 --------------------
 @console @systemd 

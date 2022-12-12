@@ -36,11 +36,9 @@ Security notes:
 Identity added: /home/astenix/.ssh/nas/nas_astenix (alexei_open_ssh@testitquickly.com)
 
 ==== Простое подключение ====
-
 ssh astenix@192.168.50.10
 
 ==== Подключение с указанием ключа ====
-
 Разумно, если ключей овердофига, и совершенно не нужно, если ключ один.
 		
 Когда ключ в ~/.ssh/
@@ -73,6 +71,5 @@ ssh astenix@192.168.50.10
 	astenix@homuser:~$ 
 
 Готово, мы залогинены на сервере homuser под юзером astenix. 
-
 
 --------------------

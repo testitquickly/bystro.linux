@@ -6,8 +6,7 @@ Creation-Date: 2022-03-22T23:37:11+02:00
 
 Firefox втихую загружает контент по ссылкам, по которым юзер МОЖЕТ кликнуть. В целом после этого должно возникнуть ощущение «более быстрого интернета», но…
 
-''about:config'''' > network.prefetch-next = false''
-
+''about:config > network.prefetch-next = false''
 
 --------------------
 @firefox 

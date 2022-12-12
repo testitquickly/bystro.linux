@@ -68,7 +68,6 @@ Creation-Date: 2022-04-06T02:09:32+03:00
 Скачивается немного, но процесс может быть медленным.
 
 ==== Создать файл с правилами ====
-
 ''sudoedit /etc/udev/rules.d/70-streamdeck.rules''
 
 	Если экзотичное sudoedit не сработает, открыть через nano или mcedit:
@@ -88,14 +87,12 @@ Creation-Date: 2022-04-06T02:09:32+03:00
 ''cat /etc/udev/rules.d/70-streamdeck.rules''
 
 ==== Перезагрузка udevadm ====
-
 ''sudo udevadm control --reload-rules''
 
 ==== Подключить Stream Deck к ноуту (провод USB). ====
 Все кнопки-иконки должны засветиться и показать один большой логотип Elgato.
 
 ==== Установить streamdeck_ui ====
-
 ''pip3 install --user streamdeck_ui''
 
 Добавить $HOME/.local/bin в PATH:
@@ -244,7 +241,6 @@ Creation-Date: 2022-04-06T02:09:32+03:00
 С импортом ранее сохранённых файлов может быть не всё гладко — надо всё забэкапить, открыть, разобраться с расположение элементов и аккуратно отредактировать. Linux же.
 
 ===== Обновление streamdeck_ui =====
-
 ''pip3 install --upgrade --user streamdeck_ui''
 
 --------------------

@@ -147,7 +147,6 @@ REBOOT
 https://addons.mozilla.org/en-US/firefox/addon/dark-background-light-text/
 
 ===== Можно, но не нужно добавить flash в Firefox =====
-
 0
 убедиться в том, что в системе есть /usr/lib/mozilla/plugins/
 
