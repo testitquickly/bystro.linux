@@ -195,6 +195,10 @@ Creation-Date: 2022-02-22T15:17:00+02:00
 * Прокрутка вверх = ''amixer -q sset Master 15%+''
 * Прокрутка вниз = ''amixer -q sset Master 15%-''
 
+Если нужно зримое отображение прогесс-бара при смене уровня звука, то лучше тыкнуть по «Регулировка (с интерфейсом) (qdbus)». В полях «Команды запуска» появятся команды
+* ''qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "increase_volume"''
+* ''qdbus org.kde.kglobalaccel /component/kmix invokeShortcut "decrease_volume"''
+
 ''> Главная > Другое''
 
 * Убрать галочку «Виджет рабочего стола: показать фон»
