@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-21T23:20:29+02:00
+
+====== Настройка Wi-Fi ======
+
+Хорошо, если при настройке вайфай подхватился. Если нет — вот именно поэтому установку системы лучше делать «на проводе».
+
+===== Проверить состояние сервиса Wi-Fi =====
+
+''systemctl status networking.service''
+
+Если “Active: failed”, значит, железка для Wi-Fi или отсутствует, или нуждается в дравйерах.
+
+===== Узнать своё оборудование =====
+
+''lspci | grep -i Network''
+
+===== Установить драйвера для ноута =====
+
+==== Для ноута //Acer// ====
+Это ответ на //lspci//: 
+	02:00.0 Network controller: //Qualcomm Atheros// QCA6174 802.11ac Wireless Network Adapter (rev 32)
+
+Установить “firmware-atheros”.
+
+''sudo aptitude install firmware-atheros''
+
+Появляется каталог ///lib/firmware/ath10k/// - вайфай исчезнет, если его удалить.
+
+==== Для ноута //Lenovo// ====
+Это ответ на //lspci//: 
+	02:00.0 Network controller: //Realtek// Semiconductor Co., Ltd. RTL8822CE 802.11 ac PCIe Wireless Network Adapter
+
+Установить “firmware-realtek”.
+
+''sudo aptitude install firmware-realtek''
+
+===== Перезагрузка =====
+''sudo reboot''
+
+Вай-фай работает.
+
+--------------------
+@WiFi @Acer 
