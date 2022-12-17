@@ -7,17 +7,19 @@ Creation-Date: 2022-02-22T15:16:08+02:00
 
 ''cat /etc/X11/default-display-manager''
 
-По-умолчанию в KDE 'sddm' (Simple Desktop Display Manager для Plasma 5). Мне норм ''/usr/sbin/lightdm''
+По-умолчанию в KDE 'sddm' (Simple Desktop Display Manager для Plasma 5). 
 
 Вообще их много: 
-	gdm (Gnome Display Manager), 
-	gdm3 (Gnome Display Manager 3),
-	lightdm (тоже Gnome, альтернатива для gdm), 
-	kdm (старый KDE, устарел), 
-	sddm (Simple Desktop Display Manager для Plasma 5) - исконно кдешный, но заглючил в Debian 11 (не логинил в GUI), я ему не доверяю
-	MDM (Mint Display Manager),
-	SLiM (Simple Login Manager),
-	LXDM (Lubuntu).
+	* gdm (Gnome Display Manager), 
+	* gdm3 (Gnome Display Manager 3),
+	* lightdm (тоже Gnome, альтернатива для gdm), 
+	* kdm (старый KDE, устарел), 
+	* **sddm** (Simple Desktop Display Manager для Plasma 5) - исконно кдешный, но заглючил в Debian 11 (не логинил в GUI), я ему не доверяю
+	* MDM (Mint Display Manager),
+	* SLiM (Simple Login Manager),
+	* LXDM (Lubuntu).
+
+Я уже два раза столкнулся с тем, что sddm генерирует неадекватные и неразрешаемые сложности. Я перешел на ''/usr/sbin/lightdm''
 
 ===== Установить/убрать Display Manager =====
 например, gdm:
