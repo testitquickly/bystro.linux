@@ -1,0 +1,81 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-17T22:24:54+02:00
+
+====== SmartGit ======
+
+Это очень хороший сам-по-себе GUI-клиент, потому что git в консоли поначалу интересно, а потом нет. Можно всё настроить в IDE, но если речь идет не о разработке, то какой тут IDE?!
+
+ПО будет установлено в режиме trial. Получить лицензию ’Non-commercial use’ можно отдельным обращением в компанию, при этом надо будет предоставить доказательство своего вклада в опен-соурс (на github).
+
+===== Скачать =====
+
+https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там архив tar.gz Переместить его куда-нибудь в отдельный каталог. Добраться до этого tar.gz в консоли.
+
+''tar xzf'' 
+> нажать Tab 
+> название файла подтянется
+> Enter
+
+Появится новый каталог 'smartgit'. Уже можно запускать smartgit, но лучше перетащить его (под sudo) в [[/otp]] на вечное хранение и уже оттуда запускать.
+
+''sudo mv smartgit/ /opt/''
+
+===== Добавить SmartGit в общее меню =====
+Тут без sudo:
+
+''/opt/smartgit/bin/add-menuitem.sh''
+
+Он появится в разделе «Разработка».
+
+Если захочется удалить SmartGit из меню:
+
+''/opt/smartgit/bin/remove-menuitem.sh''
+
+===== Запуск SmartGit =====
+Тут без sudo:
+
+''/opt/smartgit/bin/smartgit.sh''
+
+===== Связать SmartGit с GitHub =====
+Следуем инструкции https://docs.syntevo.com/SmartGit/Latest/GitHub-integration.html
+
+Edit 
+'''
+> Preferences 
+> Hosting Providers 
+> [Add]
+> Add Hosting Provider
+> GitHub
+> Generate Token
+> Откроется браузер с GitHub.com
+	> страница ’Confirm your account recovery settings’
+> Confirm
+> "SmartGit is requesting additional permissions"
+> Authorize syntevo
+'''
+		> Авторизация зависит от настроек, например, github mobile может быть разумным решением
+		> В браузере же прозойдет перенаправление на страницу GitHub Authorization
+'''
+> Скопировать предлагаемый код
+> Вернуться в настройки SmartGit
+> Вставить код
+> [Authenticate]
+'''
+		> Убедиться в том, что стоит галочка для «Use OAuth token for repository authentication (instead of password)»
+'''
+> Add
+> [OK]
+'''
+
+В профиле GitHub Settings в разделе Integrations > Applications > Authorized OAuth Apps будет отображаться SmartGit (Owned by syntevo)
+	
+	If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
+
+===== Тёмная тема в SmartGit =====
+Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]] можно отключить тёмную тему этой строкой:
+
+''org.eclipse.swt.internal.gtk.noThemingFixes=true''
+
+--------------------
+@console @smartgit @git @github 
