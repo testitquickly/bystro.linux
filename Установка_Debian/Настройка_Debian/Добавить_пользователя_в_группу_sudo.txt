@@ -4,10 +4,11 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 ====== Добавить пользователя в группу sudo ======
 
-''su'' (указать root password)
+* ''su''
+* указать root password
 
 ''usermod -a -G sudo astenix''
-	или
+	или (если команда ''usermod'' не найдена)
 ''gpasswd -a astenix sudo''
 
 Заработает после релогина.
