@@ -57,6 +57,7 @@ TODO Настройки. Дооформить список
 [[Разное:Software:SMPlayer]]
 [[Разное:Software:snap]]
 [[Разное:Software:ssh]]
+[[Разное:Software:Sublime]]
 [[Разное:Software:Thunderbird]]
 [[Разное:Software:VLC]]
 [[Разное:Software:vmware]]
