@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-23T03:25:14+02:00
+
+====== Как собрать несколько txt в один ======
+
+Ну или не txt, не суть важно.
+
+''cat *.txt > ./file.txt''
+
+Или можно их перечислить
+
+''cat file1.txt file2.txt file3.txt file4.txt > ./dfile.txt''
+
+--------------------
+@console @txt 
