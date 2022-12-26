@@ -5,6 +5,7 @@ Creation-Date: 2022-02-22T15:31:18+02:00
 ====== Как удалить пакет deb из dpkg ======
 
 Например, был установлен 
+
 ''sudo dpkg -i digimend-dkms_9_all.deb'' 
 
 Сheck if this package is correctly installed in your system and being listed by dpkg tool:

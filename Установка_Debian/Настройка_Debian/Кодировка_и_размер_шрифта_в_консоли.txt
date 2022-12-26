@@ -21,9 +21,11 @@ sudo apt-get install console-setup keyboard-configuration
 ===== Настроить языковое окружение =====
 
 ==== Настроить англоязычное окружение ====
+
 ''sudo LANG=en_US.UTF-8 dpkg-reconfigure locales''
 
 ==== Настроить русскоязычное окружение ====
+
 ''sudo LANG=ru_RU.UTF-8 dpkg-reconfigure console-setup''
 
 Encoding to use = utf-8 

@@ -13,20 +13,16 @@ Creation-Date: 2022-04-17T14:54:38+03:00
 2. жёсткая (hard link)
 
 ===== Hard link =====
+
+TODO Hardlink/Softlink - переформулировать внятно
+
 В линуксе у одного файла может быть множество имён. 
 
 То же самое другими словами: в линуксе можно назначить несколько имён одному и тому же файлу.
 
-
-
-
-Магия в том, что можно создать триста тысяч хардлинков на какой-нибудь файл,
-
- и даже если кто-то удалит исходный файл, этого никто не заметит. It is deleted from disk only when the last name is removed. 
+Магия в том, что можно создать триста тысяч хардлинков на какой-нибудь файл, и даже если кто-то удалит исходный файл, этого никто не заметит. It is deleted from disk only when the last name is removed. 
 
  — это новый файл, со своим уникальным именем и расположением на диске. Но для системы это просто ещё одно название для файла, который где-то на диске уже существует. Выглядит как ярлык к файлу, а на деле — прямое обращение к файлу. Поэтому при удалении хардлинка файл, на который он ссылался, тоже удаляется.
-
-
 
 
 	A soft link (or "symbolic link", or symlink) is an entirely different animal: it is a small special file that contains a pathname. Thus, soft links can point at files on different filesystems (possibly NFS mounted from different machines), and need not point to actually existing files. When accessed (with the open(2) or stat(2) system calls), a reference to a symlink is replaced by the operating system kernel with a reference to the file named by the path name. (However, with rm(1) and unlink(2) the link itself is removed, not the file it points to. There are special system calls lstat(2) and readlink(2) that read the status of a symlink and the filename it points to. For various other system calls there is some uncertainty and variation between operating systems as to whether the operation acts on the symlink itself, or on the file pointed to.) 

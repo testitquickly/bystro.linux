@@ -45,4 +45,3 @@ find путь_к_директории -name "*.txt" -exec enconv {} \;
 
 --------------------
 @console 
-

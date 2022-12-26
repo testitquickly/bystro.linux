@@ -8,6 +8,7 @@ Creation-Date: 2022-02-27T04:29:38+02:00
 ''sudo aptitude install krename kdiff3 jlha-utils arj unace rar unrar kget locate krusader''
 
 ===== Файл с закладками =====
+
 Закладки Krusader хранятся в ''~/.local/share/krusader/krbookmarks.xml''
 
 Есть смысл этот файл регулярно бэкапить и использовать при переустановках.

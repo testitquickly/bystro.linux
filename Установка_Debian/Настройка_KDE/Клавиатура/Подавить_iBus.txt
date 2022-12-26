@@ -22,6 +22,7 @@ Now ibus should follow whatever layout you've set in Plasma.
 2. Элементы > Состояния приложений > найти IBus Panel и установить «Всегда скрывать»
 
 ===== Удаление ibus =====
+
 Если принято решение от него избавиться, то следует аккуратно удалить это:
 * ibus ibus-gtk ibus-gtk3 ibus-lang ibus-m17n
 

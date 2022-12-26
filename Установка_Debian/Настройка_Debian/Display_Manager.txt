@@ -3,6 +3,7 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:16:08+02:00
 
 ====== Настроить Display Manager ======
+
 Выяснить текущий:
 
 ''cat /etc/X11/default-display-manager''
@@ -24,6 +25,7 @@ Creation-Date: 2022-02-22T15:16:08+02:00
 Я перешел на “''lightdm''”. Всё проще, но работает.
 
 ===== Установить/убрать Display Manager =====
+
 например, gdm:
 '''
 sudo apt-get install gdm3
@@ -31,6 +33,7 @@ sudo apt-get remove gdm3
 '''
 
 ===== Переключиться на другой Display Manager =====
+
 ''sudo dpkg-reconfigure gdm3''
 
 --------------------

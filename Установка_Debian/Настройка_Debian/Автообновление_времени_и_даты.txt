@@ -33,6 +33,7 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 Ожидаемый ответ: Active: inactive (dead)
 
 ==== 2) Удалить сервис NTP (Network Time Protocol) ====
+
 Вероятно, он уже не установлен, но все-таки.
 
 ''sudo apt-get remove ntpd ntpstat --purge && sudo apt autoremove''

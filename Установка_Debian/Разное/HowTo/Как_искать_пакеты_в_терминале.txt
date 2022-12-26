@@ -14,14 +14,12 @@ $ aptitude search apache
 $ aptitude search webserver
 '''
 
-
 или через apt (это не то же, что aptitude)
 '''
 $ apt-cache search {package-name}
 $ apt-cache search apache
 $ apt-cache search 'web server'
 '''
-
 
 Чтобы показать подробности про отдельный пакет
 

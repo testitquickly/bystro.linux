@@ -22,7 +22,6 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 Такие решения называют «universal package system», или же кросс-платформенный фреймворк для запуска ПО без его установки в систему. Назовём всё это грубо и просто словом «контейнеры». **Flatpak **— один из них.
 
 ===== Установка flatpak =====
-Можно не заморачиваться:
 
 ''sudo apt install flatpak''
 
@@ -40,11 +39,13 @@ sudo apt install flatpak
 С этого момента в систему можно скачивать установочные файлы *.flatpakref с https://flathub.org/home
 
 ==== Добавить репозиторий для Flatpak ====
+
 Чтобы ставить ПО через flatpak из консоли
 
 ''flatpak remote-add --if-not-exists flathub ''[[https://flathub.org/repo/flathub.flatpakrepo|''https://flathub.org/repo/flathub.flatpakrepo'']]
 
 ==== Обновление Flatpak ====
+
 ''flatpak update''
 
 После этого можно искать софт в терминале, как через aptitude. Обратить внимание, что софт можно искать довольно безалаберно, без жесткой точности в названии, но устанавливать можно только с повышенной точностью к именам, точнее, к 'ApplicationID'.
@@ -54,6 +55,7 @@ sudo apt install flatpak
 ===== Установка софта =====
 
 ==== Через файлы *.flatpackref ====
+
 Можно даблкликом — откроется Apper и всё поставит.
 
 Можно через терминал:
@@ -63,6 +65,7 @@ sudo apt install flatpak
 Установленный софт будет доступен в общем меню, что незаметно удобно.
 
 ==== Из флэтхаба ====
+
 ''flatpak install flathub org.libreoffice.LibreOffice''
 
 Пример с установкой сразу со стороны спотифая
@@ -74,11 +77,13 @@ sudo apt install flatpak
 ''flatpak install <ApplicationID>.flatpakref''
 
 ==== Через другой репозиторий Flatpak ====
+
 Почти всегда всё ставят из flathub, но разработчик каждого софта волен поднять собственный репозиторий.
 
 ''flatpak install <remoteServer> <ApplicationID>''
 
 ===== Запуск ПО из Flatpak =====
+
 ''flatpak run <ApplicationID>''
 
 Пример с клиентом для спотифая:
@@ -86,14 +91,17 @@ sudo apt install flatpak
 	''flatpak run com.spotify.Client''
 
 ===== Починить вероятные проблемы при установке ПО =====
+
 Если возникают "error: runtime/org.freedesktop.Platform/x86_64/1.6 not installed", то возможное решение:
 
 ''flatpak update -v''
 
 ===== Посмотреть список всего софта флэтпэк в системе =====
+
 ''flatpak list''
 
 ===== Удаление Flatpak app =====
+
 ''flatpak uninstall <ApplicationID>''
 
 	Пример:
@@ -105,21 +113,25 @@ sudo apt install flatpak
 	''flatpak uninstall com.spotify.Client''
 
 ==== Удаление неиспользуемых флэтпэк-приложений ====
+
 Применять осторожно, может бомбануть.
 
 ''flatpak uninstall --unused''
 
 ===== Где найти место запуска =====
+
 В меню программ правый клик по нужному ПО, глянуть путь вызова к файлу .desktop
 
 Обычно флатпаки находятся в ''~/.var/app'' и запускаются из [[/var/lib/flatpak/exports/share/applications|''/var/lib/flatpak/exports/share/applications'']]
 
-=== Открыть его на редактирование ===
+=== Редактирование файла запуска ===
+
 ''sudo mcedit /var/lib/flatpak/app/org.zim_wiki.Zim/current/active/export/share/applications/org.zim_wiki.Zim.desktop''
 
 Найти в этом файле место вызова. Обычно оно в разделе [Desktop Entry], но там может быть несколько точек — посмотреть весь файл внимательно.  Всякие переводы подсказок на другие языки можно (АККУРАТНО!) удалить.
 
 ==== Добавить нюансы ====
+
 Предположим, что шрифт в ПО слишком мелкий. Это можно изменить глобально, добавив в параметры запуска указание про //QT_SCALE_FACTOR//. Оно должно быть добавлено ДО вызова ПО.
 
 Пример для viber:

@@ -15,9 +15,11 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 Убедиться в том, что **монитор НЕ подключен к ноуту**.
 
 ===== Установить драйвера Nvidia =====
+
 Их можно скачать с официального сайта в виде файла ***.run, но лучше сделать это стандартным путём по предписанному рецепту с https://wiki.debian.org/NvidiaGraphicsDrivers — при установке будет проще с зависимостями, а в будущем будет проще с обновлениями.
 
 ==== Определить серию видеокарты ====
+
 У меня «GeForce GTX 1050 Ti Mobile». Она из семества ’10’ — https://ru.wikipedia.org/wiki/GeForce_10
 
 ОС у меня Debian 11 "Bullseye" (''lsb_release -d && cat /etc/debian_version''), поэтому смотрим https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_11_.22Bullseye.22
@@ -27,6 +29,7 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 	Это не отменяет необходимость относиться к бэкпорту с большим подозрением.
 
 === Разрешить бэкпорт ===
+
 * sudo mcedit /etc/apt/sources.list
 * добавить строку
 
@@ -34,6 +37,7 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 
 === Установить новейшие драйвера ===
+
 * ''sudo apt update''
 * ''sudo apt install -t bullseye-backports nvidia-driver firmware-misc-nonfree''
 * ''sudo reboot''
@@ -51,6 +55,7 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 	Но это уже ни на что не повлияет.
 
 ==== Обновить систему ====
+
 * ''sudo apt-get update && sudo apt-get upgrade''
 
 Если будут устаревшие пакеты nvidia, их будет предложено удалить через //autoremove//.
@@ -61,8 +66,9 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 
 	''sudo apt-get update && sudo apt-get upgrade''
 
-===== Поставить утилиту контроля настроек нвидиа =====
-* ''sudo aptitude install nvidia-settings''
+===== Поставить утилиту контроля настроек nvidia =====
+
+''sudo aptitude install nvidia-settings''
 
 В списке программ > Настройка появится «NVIDIA X Server Settings». Если она успешно запускается, то уже почти всё норм. 
 
@@ -71,12 +77,13 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 **Подключить внешний монитор в ноут через дырку hdmi.**
 
 ===== Настройки xrandr =====
+
 Когда-то это всё делалось через настраивание в файле Xorg.conf, но теперь есть утилита Xrandr.
 
 	Is used to set the size, orientation and/or reflection of the outputs for a screen. 
 	It can also set the screen size.
 
-* ''xrandr''
+''xrandr''
 
 Ожидаемый ответ:
 
@@ -89,7 +96,8 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 Ок, это отображается "встроенная" видеокарта процессора, Теперь нужна ещё и внешняя Nvidia.
 
 ==== Выявить все доступные видеокарты ноута ====
-* ''lspci | grep VGA''
+
+''lspci | grep VGA''
 
 Ожидаемый ответ:
 
@@ -113,7 +121,8 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 	Kernel modules: nvidia
 
 ==== Выяснить внутреннюю нумерацию источников видео ====
-* ''xrandr --listproviders''
+
+''xrandr --listproviders''
 
 Ожидаемый ответ:
 	
@@ -131,7 +140,8 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 Если в ответ отображается только «встроенный монитор», то что-то пошло не так, надо смотреть.
 
 ==== Настроить порядок чтения видеоисточников ====
-* ''xrandr --setprovideroutputsource 1 0''
+
+''xrandr --setprovideroutputsource 1 0''
 
 В ответ ожидается тишина.
 
@@ -158,7 +168,8 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 Видит!
 
 ===== Включить вывод в hdmi =====
-* ''xrandr --output HDMI-1-0 --auto''
+
+ ''xrandr --output HDMI-1-0 --auto''
 
 Второй монитор ОЖИЛ.
 
@@ -173,6 +184,7 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 
 
 ===== Сделать скрипт для автозагрузки =====
+
 Изменения не сохранятся после первой же перезагрузки. Разумно сделать исполняемый скрипт и положить его в автозагрузку профиля.
 
 1. Создать в отдельной папке файл с условным названием ''engage_external_monitor.sh'' и следующим содержимым:

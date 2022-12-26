@@ -4,6 +4,8 @@ Creation-Date: 2022-02-23T21:08:26+02:00
 
 ====== Установить софт из backport ======
 
+TODO ПО из backport — переписать внятно
+
 Сперва убедись, что нужный тебе пакет есть в https://packages.debian.org/stretch-backports/
 
 	Backports are recompiled packages from testing (mostly) and unstable (in a few cases only, e.g. security updates) in a stable environment so that they will run without new libraries (whenever it is possible) on a Debian stable distribution

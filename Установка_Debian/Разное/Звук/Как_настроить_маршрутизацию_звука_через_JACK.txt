@@ -8,6 +8,7 @@ https://jackaudio.org/faq/device_naming.html
 	
 
 ===== List of PLAYBACK Hardware Devices =====
+
 ''aplay -l''
 
 	Вывод
@@ -19,6 +20,7 @@ https://jackaudio.org/faq/device_naming.html
 		Subdevice #0: subdevice #0
 
 ===== List of CAPTURE Hardware Devices =====
+
 ''arecord -l''
 
 	Вывод
@@ -30,6 +32,7 @@ https://jackaudio.org/faq/device_naming.html
 		Subdevice #0: subdevice #0
 
 ===== Проверить, какие карты подключены =====
+
 ''cat /proc/asound/cards''
 
 	Пример вывода

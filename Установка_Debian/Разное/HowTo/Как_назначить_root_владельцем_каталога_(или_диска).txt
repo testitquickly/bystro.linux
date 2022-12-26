@@ -46,7 +46,6 @@ chown root:sudo -R /media/astenix/WesternDigital4T/
 chmod 1750 -R /media/astenix/WesternDigital4T/
 '''
 
-
 Теперь ситуация такая:
 * добавлять файлы в каталог /media/astenix/WesternDigital4T/ может только пользователь 'root',
 * новые файлы пользователь 'root' берёт у пользователя 'astenix',

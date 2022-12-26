@@ -29,6 +29,7 @@ Creation-Date: 2022-02-21T23:20:29+02:00
 Появляется каталог ///lib/firmware/ath10k/// - вайфай исчезнет, если его удалить.
 
 ==== Для ноута //Lenovo// ====
+
 Это ответ на //lspci//: 
 	02:00.0 Network controller: //Realtek// Semiconductor Co., Ltd. RTL8822CE 802.11 ac PCIe Wireless Network Adapter
 
@@ -37,6 +38,7 @@ Creation-Date: 2022-02-21T23:20:29+02:00
 ''sudo aptitude install firmware-realtek''
 
 ===== Перезагрузка =====
+
 ''sudo reboot''
 
 Вай-фай работает.

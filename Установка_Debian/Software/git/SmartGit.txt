@@ -20,6 +20,7 @@ https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там а�
 ''sudo mv smartgit/ /opt/''
 
 ===== Добавить SmartGit в общее меню =====
+
 Тут без sudo:
 
 ''/opt/smartgit/bin/add-menuitem.sh''
@@ -31,11 +32,13 @@ https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там а�
 ''/opt/smartgit/bin/remove-menuitem.sh''
 
 ===== Запуск SmartGit =====
+
 Тут без sudo:
 
 ''/opt/smartgit/bin/smartgit.sh''
 
 ===== Связать SmartGit с GitHub =====
+
 Следуем инструкции https://docs.syntevo.com/SmartGit/Latest/GitHub-integration.html
 
 Edit 
@@ -71,6 +74,7 @@ Edit
 	If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
 
 ===== Тёмная тема в SmartGit =====
+
 Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]] можно отключить тёмную тему этой строкой:
 
 ''org.eclipse.swt.internal.gtk.noThemingFixes=true''

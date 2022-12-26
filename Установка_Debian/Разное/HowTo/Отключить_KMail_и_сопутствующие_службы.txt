@@ -5,10 +5,10 @@ Creation-Date: 2022-02-24T07:43:28+02:00
 ====== Отключить KMail и сопутствующие службы ======
 
 # посмотреть, что управляется сервером akonadi
-akonadictl status
+''akonadictl status''
 
 # остановить его
-akonadictl stop
+''akonadictl stop''
 
 --------------------
 @kmail @akonadi 

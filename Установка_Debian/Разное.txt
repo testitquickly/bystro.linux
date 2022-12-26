@@ -13,7 +13,7 @@ TODO Фишки. Пересобрать все страницы во всех п
 [[+HowTo:microcode и dualboot]]
 
 [[+HowTo:Mount AND umount iso files]]
-[[+HowTo:Samba. Как расшарить папки на машине с linux для сети windows]]
+[[Software:Samba]]
 [[+HowTo:swap]]
 [[Установка Debian:Настройка Debian:trim SSD]]
 [[+Users:Как добавить нового юзера в систему]]

@@ -2,7 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:42:33+02:00
 
-====== Samba. Как расшарить папки на машине с linux для сети windows ======
+====== Samba ======
+
+====== Как расшарить папки на машине с linux для сети windows ======
+
+TODO Samba — переписать внятно
 
 Ответ всегда должен быть '[ ok ] Starting smbd (via systemctl): smbd.service', иначе пересматривать конфиг.
 
@@ -38,7 +42,6 @@ locking = no
 guest ok = yes
 browseable = yes
 '''
-
 
 Сохраняем (ctrl+o в nano)
 
@@ -113,7 +116,6 @@ writable = no
 printable = no
 '''
 
-
 3. Стартуем сервер:
 /etc/init.d/smb start
 
@@ -124,7 +126,6 @@ chkconfig smb on
 smb://192.168.1.7/
 
 Теперь любой пользователь на компьютере с windows сможет запустить сканирование локальной сети на предмет наличия ресурсов. Расшаренные директории на сервере с линукс должны быть видны.
-
 
 --------------------
 @samba @console 

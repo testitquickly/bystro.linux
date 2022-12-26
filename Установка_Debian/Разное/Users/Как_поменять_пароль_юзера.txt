@@ -3,6 +3,7 @@ Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:26:56+02:00
 
 ====== Как поменять пароль юзера ======
+
 Из-под root
 
 ''passwd USERNAME''
