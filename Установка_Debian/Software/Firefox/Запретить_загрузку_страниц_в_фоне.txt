@@ -8,5 +8,7 @@ Firefox втихую загружает контент по ссылкам, по
 
 ''about:config > network.prefetch-next = false''
 
+Также можно установить расширение [[https://addons.mozilla.org/en-US/firefox/addon/auto-tab-discard/|Auto Tab Discard]]. Действует кардинально, использовать аккуратно.
+
 --------------------
 @firefox 
