@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-21T23:32:31+02:00
+
+====== Обновить sources.list ======
+
+===== Выбрать самый быстрый ресурс =====
+
+Или просто указываем основной региональный сервер (  http://ftp.md.debian.org/debian/ в моём случае), или же
+
+* ''sudo aptitude install netselect-apt''
+* ''sudo netselect-apt''
+Дождаться строки "The fastest 10 servers seem to be" и выбрать наиболее подходящий ресурс для # MAIN и # UPDATES.
+ 
+Сервер для # SECURITY updates никогда не бывает локальным, его не трогаем.
+
+Удалить файл "sources.list", который создала netselect-apt и внести изменения в свой sources.list.
+
+===== Изменить [[/etc/apt/sources.list]] под релиз =====
+
+* sudo mcedit /etc/apt/sources.list
+
+For Debian 11 ’bullseye’ it will be:
+
+'''
+# MAIN
+deb http://ftp.md.debian.org/debian/ bullseye main contrib non-free
+
+# UPDATES
+deb http://ftp.md.debian.org/debian/ bullseye-updates main contrib non-free
+
+# SECURITY
+deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+'''
+
+* ''sudo apt update''
+* ''sudo reboot''
+
+--------------------
+@console @update @repository 
