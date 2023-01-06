@@ -73,7 +73,61 @@ Edit
 	
 	If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
 
-===== Тёмная тема в SmartGit =====
+===== Общие настройки =====
+
+Русский язык в интерфейсе отсутствует.
+
+==== Формат даты ====
+
+Edit 
+''> Preference''
+''> User Interface''
+''> Date Format = dd.MM.yyyy''
+
+==== Размер шрифта в описании коммита ====
+
+Edit 
+''> Preference''
+''> User Interface''
+''> Built-in Text Editors''
+''> Font = 16 или 18''
+
+Это отобразится в окне предпросмотра измененных файлов, а также в окне добавления описания комита. 
+
+==== Переместить иконки на тулбаре ====
+
+Правой кнопкой мыши по тулбару > Configure Toolbar
+
+Мои иконки:
+* Pull
+* Sync
+* Push
+* Add Tag
+* Branch
+* Conflict Solver
+* ↔
+* Commit
+* ---
+* Stage
+* Index Editor
+* Unstage
+* --- 
+* Discard
+* --- 
+* Save Stash
+* Apply
+* ↔ 
+* Blame
+* Investigate
+* ↔ 
+* Git-Flow
+* ---
+* Merge
+* Rebase
+
+Restart required.
+
+==== Тёмная тема в SmartGit ====
 
 Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]] можно отключить тёмную тему этой строкой:
 
