@@ -98,6 +98,8 @@ Edit
 
 Правой кнопкой мыши по тулбару > Configure Toolbar
 
+Оно же Edit > Configure Toolbar.
+
 Мои иконки:
 * Pull
 * Sync
@@ -126,6 +128,21 @@ Edit
 * Rebase
 
 Restart required.
+
+==== Убрать запрос на мастер-пароль при коммитах ====
+
+TODO SmartGit: Отключение пароля. Пересмотреть, не доразобрался
+
+В рабочем окружении небезопасно, дома опционально.
+
+Edit 
+''> Preference''
+''> Commands''
+''> Authentication''
+''> Change Master Password''
+''> Set new master password''
+
+Оставить поля пустыми. 
 
 ==== Тёмная тема в SmartGit ====
 
