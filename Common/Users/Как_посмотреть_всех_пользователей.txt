@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T19:42:17+02:00
+
+====== Как посмотреть всех пользователей ======
+
+https://linuxize.com/post/how-to-list-users-in-linux/
+
+Как посмотреть ВСЕХ пользователей
+
+''cat /etc/passwd''
+
+Как посмотреть только имена пользователей
+
+''cut -d: -f1 /etc/passwd''
+
+Как посмотреть только реальных пользователей, без системных
+
+''getent passwd {1000..60000}''
+
+Как посмотреть если существует определенный юзер - по его никнейму
+
+''getent passwd astenix''
+
+--------------------
+@console @user 

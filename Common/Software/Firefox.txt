@@ -1,0 +1,209 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T15:11:56+02:00
+
+====== Firefox ======
+
+По-умолчанию его нет в репозиториях Debian, вместо него существует Firefox ESR (Extended support release). Можно его использовать, но он всегда более старый, нежели новейший браузер, поэтому его можно удалить через Apper или Discover, а можно и оставить, он не мешает.
+
+===== Скачать архив с установкой =====
+с https://www.mozilla.org/ru/firefox/new/ 
+
+Обычно он раздаётся в виде файла „''firefox-x.x.xx.tar.bz2''”
+
+Перейти в каталог загрузки и сделать простейшую проверку скачанного файла:
+'''
+
+cd ~/Загрузки && ls *.bz2
+'''
+
+===== Распаковать архив =====
+'''
+
+tar -jxvf firefox-x.x.xx.tar.bz2
+'''
+
+Появляется каталог „firefox”. 
+
+Он может находиться в любом месте на диске, но разумно держать весь «сторонний» софт в одном месте, поэтому его надо переместить в /opt  
+
+''sudo mv ~/Загрузки/firefox /opt''
+
+
+===== Дать права своему пользователю на изменения в ''/opt/firefox'' =====
+
+'''
+sudo chown -R astenix:sudo /opt/firefox
+
+sudo chmod 750 /opt/firefox
+'''
+
+==== Сделать symbolic link на firefox для всей системы ====
+
+Этот шаг можно пропустить, если на ноуте не будет других пользователей, которым нужно запускать «мой» firefox.
+
+Проверить, что в ''/usr/bin/'' нет файла для запуска firefox:
+
+'''
+ls /usr/bin/firefox
+'''
+
+Если есть — его надо удалить.
+
+'''
+sudo rm /usr/bin/firefox
+'''
+
+Создать новый симлинк:
+
+''cd /usr/bin/ && ln -s /opt/firefox/firefox''
+
+=== Сделать ярлык для запуска ===
+
+Скачать из сети картинку логотипа firefox.png, размер любой, понадобится не больше 62 пикселей.
+
+Иконку firefox («firefox.png» в моем случае) переместить в каталог [[/opt/firefox/icons/]] (создать, если таковой отсутствует)
+
+''sudo mv ~/Загрузки/firefox.png /opt/firefox/icons''
+
+“As a root” создать ярлык для приложения «на всю систему»:
+
+'''
+sudo touch /usr/share/applications/firefox.desktop
+'''
+
+		Если нужен ярлык только для одного юзера, то можно сразу создать его в ''/~/.local/share/applications''
+
+==== Отредактировать firefox.desktop ====
+
+'''
+
+sudo mcedit /usr/share/applications/firefox.desktop
+
+'''
+Его содержимое:
+
+**[Desktop Entry]**
+'''
+Encoding=UTF-8
+Name=Mozilla Firefox
+Comment=Browse the World Wide Web
+Type=Application
+Terminal=false
+Exec=/opt/firefox/firefox %U
+Icon=/opt/firefox/icons/firefox.png
+StartupNotify=true
+Categories=Network;WebBrowser;
+'''
+
+==== Запустить браузер из консоли ====
+
+Так можно сразу распознать вероятные проблемы:
+
+''/usr/bin/firefox''
+
+Вероятные проблемы:
+
+	XPCOMGlueLoad error for file /opt/firefox/libxul.so:
+	libdbus-glib-1.so.2: cannot open shared object file: No such file or directory
+	Couldn't load XPCOM.
+
+		Лечение: ''sudo aptitude install libdbus-glib-1-2''
+	или 
+
+	./firefox: error while loading shared libraries: libstdc++.so.6: cannot open shared object file: No such file or directory
+	Chances are that you are trying to install the 32 bit version of firefox in a 64 bit Debian environment.
+	You should probably install '''apt install ia32-libs ia32-libs-gtk'''
+
+	Установить нужные компоненты.
+
+Когда запустится:
+1. Зайти в свой аккаунт Firefox, если есть
+2. Проверить, что “automatic updates are enabled”.
+3. Закрыть браузер и проверить, что он запускается через ярлык из меню приложений (он должен появиться в раздел Интернет).
+
+Установить spellchecker для румынского языка
+	https://addons.mozilla.org/ru/firefox/addon/romanian-spellchecking-diction/
+
+===== Установить новую версию браузера =====
+
+Сперва удалить существующие файлы:
+
+'''
+# rm -rf /opt/firefox*
+# rm /usr/bin/firefox
+'''
+
+Затем устанавливать новое.
+
+===== Бэкап профиля =====
+
+Проверить в настройках браузера, какой именно профиль используется:
+1. в строке поиска ''about:profiles''
+2. профилей может быть несколько, один из них помечен как «Профиль по умолчанию = Да».
+
+По-умолчанию профили создаются и хранятся в [[/~/.mozilla/firefox/,|''/~/.mozilla/firefox/,'']] но всегда есть возможность выбора места хранения.
+
+Рекомендуется регулярно бэкапить содержимое [[/~/.mozilla/firefox/|''/~/.mozilla/firefox/'']]
+
+===== Общая настройка Firefox =====
+
+==== Импорт существующего профиля из бэкапа ====
+
+Открыть страницу ''about:support''
+
+1. Найти «Каталог профиля». 
+2. Выключить браузер.
+3. Забэкапить содержимое каталога профиля в zip.
+4. Очистить каталог профиля.
+5. Закатать в него содержимое каталога профиля из бэкапа
+6. Включить браузер и убедиться в том, что всё ок.
+7. Почистить кэш браузера полностью, там не меньше гигабайта может освободиться.
+
+==== Запретить Firefox предзагружать страницы в фоне ====
+
+В теории возникает ощущение ускорения загрузки страниц, а на практике это не нужно.
+
+1. about:config
+2. network.prefetch-next = **false**
+
+==== Как открывать каталог загружено в Firefox через Dolphin ====
+
+По-умолчанию каталог со скачанным файлом открывается через Konqueror. Раздражает. Выполнить в терминале команду, изменения подтянутся сразу же:
+	
+''xdg-mime default kde4-dolphin.desktop inode/directory''
+
+REBOOT
+
+==== Расширение для тёмной темы ====
+
+https://addons.mozilla.org/en-US/firefox/addon/dark-background-light-text/
+
+===== Можно (но не нужно) добавить flash в Firefox =====
+
+0
+убедиться в том, что в системе есть /usr/lib/mozilla/plugins/
+
+1
+Скачать с https://get.adobe.com/ru/flashplayer/ версию 'tar.gz для Linux' - flash_player_npapi_linux.x86_64.tar.gz
+
+2
+закрыть Firefox
+
+3
+''tar -xzvf flash_player_npapi_linux.x86_64.tar.gz -C flashPlayer''
+// появится каталог /flashPlayer/ со всеми файлами
+
+4
+copy the flash lib to your plugin directory:
+''sudo cp libflashplayer.so /usr/lib/mozilla/plugins/''
+
+5
+copy the flash local settings configuration to your /usr directory:
+''sudo cp -r usr/* /usr''
+
+6
+Запустить Firefox
+
+--------------------
+@Firefox 

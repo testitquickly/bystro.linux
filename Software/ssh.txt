@@ -1,0 +1,78 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-05-13T21:24:12+03:00
+
+====== ssh ======
+
+==== SSH Setup ====
+
+First we go to to the OMV webUI, in the SSH section we enable the service and check-uncheck the following:
+- Disable root login
+- Disable interactive login (disable password)
+- Enable Public key authentication (PKA),
+- Enable TCP forwarding (this is use for SOCKS proxy and tunneling)
+Save. Confirm. Apply.
+
+This schema will provide three layers of security to your ssh access:
+
+	Brute force ssh logins always attempt root user name, in this case root login is disabled, so is another var to take in consideration for a remote attacker
+	Only the ssh-user-access user is authorised to login and only if he posses the private key
+	If your private key is compromised, and someone gains login, he still needs to bypass the restricted shell to become root by trying to guess the password.
+
+Security notes:
+
+	You can forward any port in your router to port 22 in your server. Do no forward port 22. Put a high random port. This brings almost to zero the bots fingering on the WAN line. They are always targeting standard ports
+	As a security policy the private key never leaves the client. That's why you create the key pair in the remote place. The public key can go through txt messages, chats, clipboards, private messaging, mail, etc, without any security concern, so don't worry. If you want to give a friend access to your server, tell him/her to generate their own key pair in their PC machine and sent the public key to you by any transport, then paste the key in place.
+	Don't use passphrase protected keys if you're going to use them in non-interactive mode. Example: Cron task of rsync with ssh.
+
+==== KeyGen ====
+
+Файлы можно положить куда угодно и назвать как угодно. Важно только прописать их в системе.
+
+По-умолчанию каталог для всех ключей: ''~/.ssh ''Я положу их в ''/home/my_System_Settings/ssh_keys/nas/''
+
+''ssh-add /home/my_System_Settings/ssh_keys/nas/nas_astenix''
+
+Identity added: /home/astenix/.ssh/nas/nas_astenix (alexei_open_ssh@testitquickly.com)
+
+==== Простое подключение ====
+
+ssh astenix@192.168.50.10
+
+==== Подключение с указанием ключа ====
+
+Разумно, если ключей овердофига, и совершенно не нужно, если ключ один.
+		
+Когда ключ в ~/.ssh/
+		
+		ssh astenix@192.168.50.10 -i ~/.ssh/nas/nas_astenix
+
+Когда ключ в другом месте	
+
+	ssh astenix@192.168.50.10 -i ''/home/my_System_Settings/ssh_keys/nas/nas_astenix''
+
+Ожидаемый ответ
+
+	The authenticity of host '192.168.50.10 (192.168.50.10)' can't be established.
+	ECDSA key fingerprint is SHA256:kMUXGtfu5aCMPjQkdz6H/5oi3XOn6uJwA84bqy1+ViM.
+	Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Ответить «yes». После этого в файле ~[[/.ssh/known_hosts]] появится запись о новом хосте. Если её удалить, то процесс «знакомства» повторится при последующем подключении.
+
+	Warning: Permanently added '192.168.50.10' (ECDSA) to the list of known hosts.
+	Linux homuser 5.10.0-0.bpo.8-amd64 #1 SMP Debian 5.10.46-4~bpo10+1 (2021-08-07) x86_64
+
+	The programs included with the Debian GNU/Linux system are free software;
+	the exact distribution terms for each program are described in the
+	individual files in /usr/share/doc/*/copyright.
+
+	Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+	permitted by applicable law.
+	Last login: Fri May 13 21:34:36 2022 from 192.168.50.20
+
+	astenix@homuser:~$ 
+
+Готово, мы залогинены на сервере homuser под юзером astenix. 
+
+--------------------
+@ssh 

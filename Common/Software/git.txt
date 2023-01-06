@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-16T21:22:57+02:00
+
+====== git ======
+
+Скорее всего, он уже установлен. Проверка:
+
+''git version''
+
+Если свербит, можно установить git в ПОЛНОМ комплекте:
+
+''sudo apt-get install git-all && git version''
+
+Для постоянной работы будет удобно использовать GUI-клиент. Мне нравится [[+SmartGit]]
+
+--------------------
+@console @smartgit @git @github 
