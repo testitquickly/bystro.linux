@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-11T04:44:18+02:00
 
-====== Установка Debian ======
+====== Debian ======
 
 Выполнено и проверено на
 * Debian 11.3 (bullseye)

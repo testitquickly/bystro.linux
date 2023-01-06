@@ -3,5 +3,65 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-01-06T20:20:25+02:00
 
 ====== Manjaro ======
-Создан Пятница 06 января 2023
+
+===== Управление ПО =====
+
+==== pacman ====
+
+Основной консольный package manager, соединен с репозиторием Manjaro:
+
+$ sudo pacman -S <package name>
+$ sudo pacman -Syyu
+$ sudo pacman -Rs <package name>
+$ sudo pacman [-Ss] [-Qs] [-F] <package name>
+
+==== pamac ====
+
+Это и GUI, и консольный package manager, который соединен и c репозиторием Manjaro, и с AUR, Flatpak и Snaps:
+
+$ pamac install <package name>
+$ pamac upgrade
+$ pamac remove <package name>
+$ pamac search <package name>
+
+===== Помощь в консоли =====
+
+Стандартный мануал (если есть), выход из него через клавишу 'q':
+
+''man ping''
+
+Вызов короткой справки прямо в консоль:
+
+''ping -h''
+
+===== Установить ПО =====
+
+''sudo pacman -S audacity''
+
+==== Удалить ПО - без удаления зависимостей ====
+
+''sudo pacman -R audacity''
+
+==== Удалить ПО - со всеми зависимостями ====
+
+''sudo pacman -Rs audacity''
+
+===== Обновить систему =====
+
+''sudo pacman -Syu''
+
+===== Переключение между ветками =====
+
+	* **Stable** branch: The packages that come to stable have gone through roughly a couple of weeks testing by the users of the Unstable/Testing repos, before they get the packages. These packages are usually free of any problems.
+	* **Testing** branch: This is the second line of defense. Being a larger number of users than those using Unstable, they refine the work done prior to them by providing feedback on the packages they recieve on updates.
+	* **Unstable** branch: Unstable is synced several times a day with Arch package releases. Only a subset of Arch packages are modified to suit Manjaro. Those that use Unstable need to have the skills to get themselves out of trouble when they move their system to this branch. They are the Manjaro users who are most likely to need to use such skills. Due to the feedback from the users of the Unstable repo, many issues are caught and fixed at this level. Although the very latest software will be located here, using the unstable branch is usually safe but - in rare cases - may cause issues with your system!
+
+==== Выяснить текущую ветку ====
+
+''pacman-mirrors -G''
+
+==== Переключиться на другую ветку ====
+
+* ''sudo pacman-mirrors --api --set-branch'' **''stable''** ''(или 'unstable' или 'testing')''
+* ''sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu && sudo pamac upgrade''
 

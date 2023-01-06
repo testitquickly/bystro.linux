@@ -15,7 +15,7 @@ TODO Фишки. Пересобрать все страницы во всех п
 [[+HowTo:Mount AND umount iso files]]
 [[Software:Samba]]
 [[+HowTo:swap]]
-[[Установка Debian:Настройка Debian:trim SSD]]
+[[Настройка Debian:trim SSD]]
 [[+Users:Как добавить нового юзера в систему]]
 [[+Users:Как заблокировать или удалить юзера]]
 [[+Users:Как назначить root владельцем каталога (или диска)]]
