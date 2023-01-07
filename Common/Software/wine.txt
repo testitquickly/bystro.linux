@@ -21,23 +21,29 @@ Winetricks представляет собой графический интер
 ''apt install zenity''
 
 Загружаем winetricks скрипт:
-''cd /usr/local/src && wget ''[[http://winetricks.org/winetricks|''http://winetricks.org/winetricks'']]
+
+''cd /usr/local/src && wget'' [[http://winetricks.org/winetricks|''http://winetricks.org/winetricks'']]
 
 Добавляем права на выполнение (запуск) скачанного скрипта:
+
 ''chmod +x winetricks''
 
 заодно дать этому файлу права на выполнение всеми.
 
 Выйти из сессии root 
+
 ''exit''
 
 Запускаем winetricks, ждем появление окна с настройками:
+
 ''/usr/local/src/winetricks''
 
 Winetricks может использовать в командной строке:
+
 ''./winetricks apps list''
 
 Настроить размер шрифта (из консоли)
+
 	''wine regedit''
 	
 	''HKEY_CURRENT_CONFIG > Software > Fonts''

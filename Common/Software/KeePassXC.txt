@@ -13,6 +13,7 @@ Open-source password manager, работает и под Windows. Продолж
 ===== Установка =====
 
 Для Debian: 
+
 ''sudo apt-get install keepassxc''
 
 Другие варианты (flatpak, appimage и др): https://keepassxc.org/download/#linux
