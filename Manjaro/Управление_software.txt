@@ -4,9 +4,7 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 ====== Управление software ======
 
-===== Основы управления ПО =====
-
-==== pacman ====
+===== pacman =====
 
 Основной консольный package manager, соединен с репозиторием Manjaro:
 
@@ -15,16 +13,7 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 * ''sudo pacman -Rs <package name>''
 * ''sudo pacman [-Ss] [-Qs] [-F] <package name>''
 
-==== pamac ====
-
-Это и GUI, и консольный package manager, который соединен и c репозиторием Manjaro, и с AUR, Flatpak и Snaps:
-
-* ''sudo pamac install <package name>''
-* ''sudo pamac upgrade''
-* ''sudo pamac remove <package name>''
-* ''sudo pamac search <package name>''
-
-===== Установить ПО =====
+==== Установить ПО ====
 
 ''sudo pacman -S audacity''
 
@@ -35,3 +24,42 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 ==== Удалить ПО - со всеми зависимостями ====
 
 ''sudo pacman -Rs audacity''
+
+===== pamac =====
+
+Это и GUI, и консольный package manager, который соединен и c репозиторием Manjaro, и с AUR, Flatpak и Snaps:
+
+* ''sudo pamac install <package name>''
+* ''sudo pamac upgrade''
+* ''sudo pamac remove <package name>''
+* ''sudo pamac search <package name>''
+
+В GUI выбор установки необязательных зависимостей делается кликами мыши. В консоли выбор надо перечислять цифрами через запятую.
+
+Пример: 
+
+'''
+Выберите необязательные зависимости для krusader:
+1:  lhasa: LHA archive support
+2:  cpio: cpio archive support
+3:  unrar: RAR decompression support
+4:  arj: ARJ archive support
+5:  unarj: ARJ decompression support
+6:  unace: ACE decompression support
+7:  kompare: file contents comparison
+8:  kdiff3: file contents comparison
+9:  krename: advanced rename tool
+'''
+
+Перечисляю нужные (мне нужны все):
+
+''Укажите ваш выбор (по умолчанию=нет): 1,2,3,4,5,6,7,8,9''
+
+pamac требователен к подтверждению установки, и это хорошо. В ответ на вопрос
+
+''Применить транзакцию ? [д/Н]''
+
+недостаточно просто нажать Enter, всегда надо набирать на клавиатуре “''y''”, и затем “''Enter''”. Если просто нажать ввод, установка ПО прекратится.
+
+--------------------
+@manjaro @pacman @pamac 
