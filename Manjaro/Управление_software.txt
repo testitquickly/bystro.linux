@@ -10,19 +10,19 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 Основной консольный package manager, соединен с репозиторием Manjaro:
 
-$ sudo pacman -S <package name>
-$ sudo pacman -Syyu
-$ sudo pacman -Rs <package name>
-$ sudo pacman [-Ss] [-Qs] [-F] <package name>
+* ''sudo pacman -S <package name>''
+* ''sudo pacman -Syyu''
+* ''sudo pacman -Rs <package name>''
+* ''sudo pacman [-Ss] [-Qs] [-F] <package name>''
 
 ==== pamac ====
 
 Это и GUI, и консольный package manager, который соединен и c репозиторием Manjaro, и с AUR, Flatpak и Snaps:
 
-$ pamac install <package name>
-$ pamac upgrade
-$ pamac remove <package name>
-$ pamac search <package name>
+* ''sudo pamac install <package name>''
+* ''sudo pamac upgrade''
+* ''sudo pamac remove <package name>''
+* ''sudo pamac search <package name>''
 
 ===== Установить ПО =====
 
