@@ -1,0 +1,217 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-27T05:10:17+03:00
+
+====== ftp ======
+
+За основу можно взять много чего ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
+
+===== Установить vsftpd =====
+
+''sudo aptitude install vsftpd''
+
+Основные управляющие команды:
+
+* ''systemctl stop vsftpd''
+* ''systemctl start vsftpd''
+* ''systemctl restart vsftpd''
+* ''systemctl status vsftpd''
+
+==== Сделать бэкап дефолтного конфиг-файла ====
+
+Позже очень пригодится.
+
+''sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak''
+
+	Если случится ой, то всегда можно будет ревертнуться:
+	''sudo cp /etc/vsftpd.conf.bak /etc/vsftpd.conf''
+
+==== Проверить статус ====
+
+''systemctl status vsftpd''
+
+==== Настроить сервис «под себя» ====
+
+''sudo mcedit /etc/vsftpd.conf''
+
+Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный [[https://security.appspot.com/vsftpd/vsftpd_conf.html|перечень параметров]] с комментариями. Затем грамотный гайд [[https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10|здесь]]. Это всё можно будет глянуть позже.
+
+По-умолчанию настройки читаются из файла /etc/vsftpd.conf
+
+Если запустить сервер с параметрами (например: ''vsftpd -olisten=NO /etc/vsftpd.conf -oftpd_banner=Hello''), то параметры из командной строки будут иметь приоритет над содержимым конфиг-файла /etc/vsftpd.conf
+
+Всегда можно запускать vsftpd с разными конфигами:
+* ''vsftpd /etc/vsftpd.conf.with.guests &''
+* ''vsftpd /etc/vsftpd.conf.without.guests &''
+* ''vsftpd /etc/vsftpd.conf.myPersonalUser &''
+
+=== Общее содержимое файла настроек ===
+
+В основе достаточно этого:
+
+'''
+listen=NO
+listen_port=21
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+'''
+
+Можно то же самое, но с комментариями:
+
+''# Run standalone?  vsftpd can run either'' 
+''# from an inetd or as a standalone''
+''# daemon started from an initscript.''
+''listen=YES''
+
+''# Make sure PORT transfer connections'' 
+''# from port 20 (ftp-data).''
+''listen_port=21''
+
+''# Allow anonymous FTP? (Disabled by default).''
+''anonymous_enable=NO''
+
+''# Uncomment this to allow local users to log in.''
+''local_enable=YES''
+
+''# Uncomment this to enable any form'' 
+''# of FTP write command.''
+''write_enable=YES''
+
+В любом случае учесть:
+* в файле настроек **нельзя** вставлять отступ строк от левого края, сервис остановится с НЕПОНЯТНОЙ ошибкой,
+* между строками можно оставлять только один пустой абзац. Два пустых абзаца уже будут ошибкой и vsftpd остановится,
+* нельзя вставлять комментарии в конце строки с параметром, вроде ''listen_ipv6=NO # modified —'' сервис остановится с ошибкой,
+* разумно сохранять файл /etc/vsftpd.conf после каждого изменения и сразу выполнять проверку статуса сервиса: ''sudo systemctl restart vsftpd && systemctl status vsftpd''
+
+=== Содержимое моего файла настроек ===
+
+Я один, логинюсь на ноут через ftp под **своим** же аккаунтом, поэтому получаю полный доступ ко всей системе и буду терпеть все последствия от вероятного неосторожного удаления чего-либо. Это сойдёт для того чтобы изредка удобно перебрасывать файлы между ноутом и телефоном, но в целом небезопасно. 
+
+		Надо бы поднапрячься и создать отдельного юзера, и расшарить с ним отдельный каталог, и сурово ограничить этого юзера в правах, и запретить анонимные подключения…
+
+Мне достаточно этого конфига:
+
+'''
+anonymous_enable=NO
+dirmessage_enable=YES
+listen_port=21
+listen=YES
+local_enable=YES
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+secure_chroot_dir=/var/run/vsftpd/empty
+ssl_enable=NO
+use_localtime=YES
+utf8_filesystem=YES
+write_enable=YES
+
+# разрешаем юзерам ПОЛНОСТЬЮ записывать/удалять файлы через ftp, но при этом ограничиваем их их же домашними директориями
+allow_writeable_chroot=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+chroot_local_user=YES
+local_root=/home/$USER/
+user_sub_token=$USER
+'''
+
+=== Отключить автозагрузку vsftpd ===
+
+Сервис по-умолчанию запускается при старте ноута и бесконечно работает. Это норм, если ftp будут пользоваться много/часто. 
+
+Второй подход: сервер запускается, но постоянно «спит». Каждое явное обращение к нему начинает его «будить» (иногда это занимает какое-то ощутимое время), заставляет отдавать/принимать какие-то данные, затем сервис «засыпает». Надо учесть, что если группа товарищей то и дело будет обращаться к этому сервису, то циклы «заснул - разбудили - заснул - разбудили» могут полностью дестабилизировать процесс контроля продвижения НАТО на восток, hdd будет очень недоволен.
+
+Поэтому вот третий способ: вручную запускать ftp сервер при необходимости, и позже вручную же его полностью гасить (безопасности ради). 
+
+Рецепт для гашения автозапуска установленного vsftpd:
+1. ''sudo systemctl stop vsftpd && systemctl status vsftpd''
+2. ''sudo systemctl disable vsftpd.service''
+3. ''reboot'' (или релогин)
+
+После перезагрузки (через ''systemctl status vsftpd'') можно будет увидеть, что сервис жив, но мертв:
+
+	● vsftpd.service - vsftpd FTP server
+	Loaded: loaded (/lib/systemd/system/vsftpd.service; __disabled__; vendor preset: enabled)
+	Active: __inactive (dead)__
+
+А после принудительного старта (''sudo systemctl start vsftpd && systemctl status vsftpd'') будет видно, что сервис is disabled для автозапуска:
+
+	● vsftpd.service - vsftpd FTP server
+	Loaded: loaded (/lib/systemd/system/vsftpd.service; __disabled__; vendor preset: enabled)
+	Active: __active (running)__ since Sun 2021-12-12 20:48:51 EET; 8ms ago
+
+=== Что ещё можно проверить ===
+
+Глянуть список всех запущенных сервисов в системе:
+''systemctl list-unit-files --type=service --state=enabled''
+
+Проверить, запущен ли vsftpd в системе:
+''systemctl list-unit-files --type=service --state=enabled | grep vsftpd''
+
+Проверка всех доступных сервисов в системе и управление ими через systemd — https://linuxhint.com/disable_unnecessary_services_debian_linux/
+
+===== Как запускать/останавливать vsftpd =====
+
+1. **Запуск ftp**: ''sudo systemctl start vsftpd && systemctl status vsftpd''
+2. Перекинуть файлы туда/сюда
+3. **Остановить ftp**: ''sudo systemctl stop vsftpd && systemctl status vsftpd''
+
+===== Как подключиться к ноутбуку с телефона =====
+
+1. На Android надо установить подходящий софт:
+	* Total Commander с плагином для соединений по ftp. 
+	* Cx Проводник
+	* DMS Explorer (впрочем, это dlna player)
+2. Узнать IP ноутбука. В трее тыкнуть по иконке связи левой кнопкой мыши, в списке подключений тыкнуть по рабочему подключению и перейти на вкладку «Сведения» > Адрес IPv4.
+3. На смартфоне в Total Commander выйти в корень — там будет список установленных плагинов. 
+4. FTP > Создать соединение > 
+	* Имя сервера = IP ноутбука
+	* Имя пользователя = свой логин на ноутбуке
+	* Пароль = пароль юзера на ноутбуке
+	* Кодировка имён файлов = UTF-8
+
+В принципе можно ходить по всем каталогам, создавать/удалять. Безопасности для, файлы можно только копировать, но не перемещать.
+
+===== Несущественные примеры настроек =====
+
+'''
+allow_writeable_chroot=YES
+anonymous_enable=NO
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+chroot_local_user=YES
+connect_from_port_20=YES
+data_connection_timeout=120
+dirmessage_enable=YES
+ftpd_banner=Welcome to FTP service.
+idle_session_timeout=600
+listen_ipv6=NO
+listen=YES
+listen_port=21
+local_enable=YES
+local_umask=002
+pam_service_name=vsftpd
+ssl_enable=NO
+use_localtime=YES
+utf8_filesystem=YES
+write_enable=YES
+'''
+
+# My
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+secure_chroot_dir=/var/run/vsftpd/empty
+
+'''
+# allow users to write
+# chroot_local_user=YES
+# chroot_list_enable=YES
+# chroot_list_file=/etc/vsftpd.chroot_list
+allow_writeable_chroot=YES
+# user_sub_token=$USER
+# local_root=/home/$USER/
+'''
+
+--------------------
+@console @ftp 
