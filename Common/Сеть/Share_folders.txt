@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2023-01-07T18:00:27+02:00
-
-====== Share folders ======
-Создан Суббота 07 января 2023
-
