@@ -86,4 +86,4 @@ Creation-Date: 2022-12-13T19:54:14+02:00
 Авторизовать, если используется.
 
 --------------------
-@calendar @time 
+@calendar @time @widget 
