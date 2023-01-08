@@ -1,23 +1,29 @@
 [Notebook]
 version=0.4
-name=Install Debian and KDE
+name=Быстрая настройка Linux (KDE)
 interwiki=
 home=Home
-icon=./icon/Install_Debian_and_KDE.jpg
+icon=./icon/project_icon.jpg
 document_root=
+short_links=False
 shared=True
 endofline=unix
 disable_trash=False
+default_file_format=zim-wiki
+default_file_extension=.txt
+notebook_layout=files
 
 [TaskListPlugin]
 all_checkboxes=True
 labels=FIXME, TODO
+waiting_labels=Waiting, Planned
+nonactionable_tags=
 integrate_with_journal=start
 included_subtrees=
 excluded_subtrees=
-nonactionable_tags=
-tag_by_page=True
+show_pages=True
 use_workweek=False
+tag_by_page=True
 
 [JournalPlugin]
 namespace=Journal
