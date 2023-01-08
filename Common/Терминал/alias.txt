@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-08T13:07:01+02:00
+
+====== alias ======
+Создан Воскресенье 08 января 2023
+
