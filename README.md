@@ -30,7 +30,9 @@ Zim — идеальная «настольная wiki». Хранит всё в
 
 Выкачать все файлы из этого репозитория.
 
-Открыть Zim > File > Open Another Notebook (Ctrl+O) > Add > [Browse] > Указать каталог с этими файлами. Подхватится файл notebook.zim — блокнот откроется.
+Открыть Zim <br>> File <br>> Open Another Notebook (Ctrl+O) <br>> Add <br>> [Browse] <br>> Указать каталог с этими файлами.
+
+Подхватится файл notebook.zim — блокнот откроется.
 
 3)
 
