@@ -22,6 +22,10 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 ''sudo pacman -Qs audacity''
 
+==== Запросить описание пакета ====
+
+''pacman -Sii audacity''
+
 ==== Установить пакет ====
 
 ''sudo pacman -S audacity''
