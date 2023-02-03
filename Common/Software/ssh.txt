@@ -4,75 +4,132 @@ Creation-Date: 2022-05-13T21:24:12+03:00
 
 ====== ssh ======
 
-==== SSH Setup ====
+Secure shell (SSH) — наш основной способ коннекта на удалённый компьютер в консоли. 
 
-First we go to to the OMV webUI, in the SSH section we enable the service and check-uncheck the following:
-- Disable root login
-- Disable interactive login (disable password)
-- Enable Public key authentication (PKA),
-- Enable TCP forwarding (this is use for SOCKS proxy and tunneling)
-Save. Confirm. Apply.
+В современных дистрибутивах этот сервис называется „OpenSSH”, и как правило, он установлен и не активен, поэтому всё начинается с [[#Проверить „SSH Service status”|проверки]] его статуса и запуска при необходимости. Но начнём с установки, бо это основа.
 
-This schema will provide three layers of security to your ssh access:
+===== Установить OpenSSH =====
 
-	Brute force ssh logins always attempt root user name, in this case root login is disabled, so is another var to take in consideration for a remote attacker
-	Only the ssh-user-access user is authorised to login and only if he posses the private key
-	If your private key is compromised, and someone gains login, he still needs to bypass the restricted shell to become root by trying to guess the password.
+**manjaro**
+''sudo pacman -S openssh'' 
 
-Security notes:
+**debian**
+''sudo apt-get install openssh''
 
-	You can forward any port in your router to port 22 in your server. Do no forward port 22. Put a high random port. This brings almost to zero the bots fingering on the WAN line. They are always targeting standard ports
-	As a security policy the private key never leaves the client. That's why you create the key pair in the remote place. The public key can go through txt messages, chats, clipboards, private messaging, mail, etc, without any security concern, so don't worry. If you want to give a friend access to your server, tell him/her to generate their own key pair in their PC machine and sent the public key to you by any transport, then paste the key in place.
-	Don't use passphrase protected keys if you're going to use them in non-interactive mode. Example: Cron task of rsync with ssh.
+==== Настроить сервис OpenSSH ====
 
-==== KeyGen ====
+Без явной необходимости править конфиг не рекомендуется категорически. 
 
-Файлы можно положить куда угодно и назвать как угодно. Важно только прописать их в системе.
+Но если надо:
 
-По-умолчанию каталог для всех ключей: ''~/.ssh ''Я положу их в ''/home/my_System_Settings/ssh_keys/nas/''
+''sudo mcedit /etc/ssh/sshd_config''
 
-''ssh-add /home/my_System_Settings/ssh_keys/nas/nas_astenix''
+===== Запустить сервис SSH =====
 
-Identity added: /home/astenix/.ssh/nas/nas_astenix (alexei_open_ssh@testitquickly.com)
+''sudo systemctl enable sshd.service && sudo systemctl start sshd.service && sudo systemctl status sshd.service''
 
-==== Простое подключение ====
+Сервис самостоятельно пропишется в автозапуск.
 
-ssh astenix@192.168.50.10
+==== Проверить „SSH Service status” ====
 
-==== Подключение с указанием ключа ====
+''sudo systemctl status sshd.service''
 
-Разумно, если ключей овердофига, и совершенно не нужно, если ключ один.
-		
-Когда ключ в ~/.ssh/
-		
-		ssh astenix@192.168.50.10 -i ~/.ssh/nas/nas_astenix
+По-умолчанию сервис OpenSSH должен быть отключён:
 
-Когда ключ в другом месте	
+''sshd.service - OpenSSH Daemon''
+''Loaded: loaded (/usr/lib/systemd/system/sshd.service; disabled; preset: disabled)''
+''Active:'' __''inactive''__ ''(dead)''
 
-	ssh astenix@192.168.50.10 -i ''/home/my_System_Settings/ssh_keys/nas/nas_astenix''
+Когда он включён:
 
-Ожидаемый ответ
+''sshd.service - OpenSSH Daemon''
+''Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: disabled)''
+''Active:'' __''active''__ ''(running) since Fri 2023-02-03 15:30:28 EET; 2h 37min ago''
 
-	The authenticity of host '192.168.50.10 (192.168.50.10)' can't be established.
-	ECDSA key fingerprint is SHA256:kMUXGtfu5aCMPjQkdz6H/5oi3XOn6uJwA84bqy1+ViM.
-	Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+==== Проверить подключение ====
 
-Ответить «yes». После этого в файле ~[[/.ssh/known_hosts]] появится запись о новом хосте. Если её удалить, то процесс «знакомства» повторится при последующем подключении.
+Работоспособность подключения можно проверить на своём же компьютере — через подключение к localhost под своим же username:
 
-	Warning: Permanently added '192.168.50.10' (ECDSA) to the list of known hosts.
-	Linux homuser 5.10.0-0.bpo.8-amd64 #1 SMP Debian 5.10.46-4~bpo10+1 (2021-08-07) x86_64
+''ssh username@localhost''
 
-	The programs included with the Debian GNU/Linux system are free software;
-	the exact distribution terms for each program are described in the
-	individual files in /usr/share/doc/*/copyright.
+Ожидаем стандартное предупреждение о том, что хост неизвестен, вот его параметры, и на вопрос «Вы уверены?» пишем „yes”. 
 
-	Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-	permitted by applicable law.
-	Last login: Fri May 13 21:34:36 2022 from 192.168.50.20
+Произойдёт «вход на удалённый ресурс». Внешне в консоли может ничего не измениться.
 
-	astenix@homuser:~$ 
+Завершение подключения через ssh в консоли — командой „exit”.
 
-Готово, мы залогинены на сервере homuser под юзером astenix. 
+===== Добавление ssh-ключей в систему =====
+
+По-умолчанию 
+* каталог для всех ключей — „''~/.ssh”'' 
+* файл с новым ssh-ключом называется „id_rsa”. 
+
+Однако это не обязательно. Файлы с ssh-ключами можно называть как угодно и положить куда угодно, например, в „''/home/ssh_keys/nas/''”''.'' Важно только прописать их в системе — это называется «импорт».
+
+==== Создать новый ssh-ключ ====
+
+У себя на ноуте выполнить:
+
+''ssh-keygen -t rsa -C ”$ЕМАЙЛ”''
+
+„rsa” — тип шифрования для нового ключа. Их несколько: 
+* rsa
+* dsa
+* ecdsa
+* ecdsa-sk
+* ed25519
+* ed25519-sk
+
+Каждый подразумевает разные алгоритмы шифрования, и в некоторых случаях тот или иной формат может быть хорошим решением, а в некоторых большой проблемой, поэтому всегда по-умолчанию выбираем „rsa”.
+
+Емайл при создании нового ключа обязателен. По нему в будущем можно будет идентифицировать ключ.
+
+//Personal key// предлагается сохранить в файл „''∼/.ssh/id_rsa''”. Можно поменять место хранения и даже название этого файла.
+
+//Public key// предлагается сохранить в файл „''∼/.ssh/id_rsa.pub''” Можно поменять место хранения и название файла.
+
+//Passphrase// — пароль, кагбэ. Или оставить его пустым, или написать что-то, что не забудется, бо способов восстановления нет. Если что-то написать, то при подключении через этот ключ ВСЕГДА будет происходить запрос «пароля».
+
+=== Проверить созданный ключ ===
+
+Для простоты предположим, что новый ключ создан с настройками по-умолчанию в файлы „''id_rsa''“.
+
+1. Вывести в консоль содержимое файла с публичным ключом:
+
+''cat ∼/.ssh/id_rsa.pub''
+
+Обычно это читаемый глазами текст, но бывают исключения.
+
+2. Вывести в консоль содержимое файла с личным ключом:
+
+''cat ∼/.ssh/id_rsa''
+
+Содержимое этого файла — машинный код, нечитаемый глазами (без исключений).
+
+==== Импорт уже созданного ssh-ключа ====
+
+В этом примере будет импортирован ключ из файла с названием «nas_astenix» (без расширения), который находится в каталоге „''/home/ssh_keys/nas/''”
+
+=== Установить права файла «только на чтение» ===
+
+Иначе в импорте ключа будет отказано с причиной «Permissions are too open».
+
+1. ''chmod 600 /home/ssh_keys/nas/nas_astenix''
+2. ''ssh-add /home/ssh_keys/nas/nas_astenix''
+
+Если всё хорошо, будет сообщение 
+
+''Identity added: /home/astenix/ssh_keys/nas/nas_astenix (емайл_ключа)''
+
+=== Вероятные проблемы ===
+
+Если ответом будет “Could not open a connection to your authentication agent”, следует принудительно перейти в режим работы с ssh в отдельном процессе:
+
+''ssh-agent /bin/sh'' 
+
+Затем повторить импорт ключа:
+
+''ssh-add /home/ssh_keys/nas/nas_astenix''
 
 --------------------
 @ssh 
