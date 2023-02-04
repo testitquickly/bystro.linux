@@ -14,27 +14,33 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 Следуем общей [[https://www.sublimetext.com/docs/linux_repositories.html|инструкции]]:
 
-1. Install the GPG key:
+1. Установить GPG key:
 
-''wget -qO - ''[[https://download.sublimetext.com/sublimehq-pub.gpg|''https://download.sublimetext.com/sublimehq-pub.gpg'']]'' | sudo apt-key add -''
+''wget -qO -'' [[https://download.sublimetext.com/sublimehq-pub.gpg|''https://download.sublimetext.com/sublimehq-pub.gpg'']] ''| sudo apt-key add -''
 
-2. Ensure apt is set up to work with https sources:
+2. Установить ''apt-transport-https'' (apt сможет работать через https):
 
 ''sudo apt-get install apt-transport-https''
 
-3. Select the Stable channel to use:
+3. Добавить в ''sources'' Stable ветку Sublime:
 
-''echo "deb ''[[https://download.sublimetext.com/|''https://download.sublimetext.com/'']]'' apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list''
+''echo "deb'' [[https://download.sublimetext.com/|''https://download.sublimetext.com/'']] ''apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list''
 
-4. Update apt sources and install Sublime Text
+4. Обновить sources и установить Sublime Text (стабильная версия):
 
 ''sudo apt-get update && sudo apt-get install sublime-text''
+
+===== Установка Sublime Text в Manjaro =====
+
+Исходник находится в AUR, поэтому Sublime можно установить через [[Manjaro:Управление software#Pamac|Pamac]]. Всё будет установлено в /opt/.
+
+Этот же процесс можно сделать вручную, см. [[Manjaro:Управление software:Установка ПО в 'opt']]
 
 ===== Управление пакетами =====
 
 Для управления пакетами в Sublime надо включить Package Control ([[https://packagecontrol.io/installation|офф. инструкция]]):
 
-	''Tools ''
+	''Tools'' 
 	''> Install Package Control…''
 
 Затем
@@ -111,7 +117,7 @@ Preferences
 
 Пусть будет тема “Adaptive”.
 
-''Preferences ''
+''Preferences'' 
 ''> Customize Theme''
 
 Откроется два файла, один нередактируемый (общие настройки), второй редактируемый, бо сугубо пользовательский. Идея в том, что из общего можно копировать строки настроек в пользовательский файл и всё будет норм.

@@ -2,6 +2,79 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-04T19:15:11+02:00
 
-====== Установка ПО в 'opt' ======
+====== Установка ПО в /opt/ ======
 
-//Next step//: 
+В Manjaro проще/мудрее ставить софт через pacman или Pamac. Но можно и поуправлять этим процессом — просто потому, что так интереснее.
+
+В этом примере рассматривается установка Sublime Text из основного репозитория в каталог /opt/.
+
+===== Обновить Manjaro =====
+
+''sudo pacman -Syu''
+
+Иногда может понадобиться перезагрузка, чтобы избежать интересностей вроде такого
+
+{{../../../images/ManjaroWasUpdated.jpg}}
+
+===== Установить yay =====
+
+Это 'pacman wrapper and AUR helper, written in go'. Его можно установить из Pamac, но это не наш путь. 
+
+Читается как «ийей» и переводится как «Yet another Yogurt».
+
+==== Нужен git ====
+
+''sudo pacman -S --needed --noconfirm base-devel git''
+
+==== Снять yay из репозитория AUR ====
+
+Сразу в /opt
+
+''sudo git clone'' [[https://aur.archlinux.org/yay-git.git|''https://aur.archlinux.org/yay-git.git'']] ''/opt/''
+
+===== Build the yay package =====
+
+Перейти в каталог с yay
+
+''cd /opt/yay-git''
+
+И выполнить
+
+''sudo makepkg -si''
+
+Если всё будет ок, то Package management helper 'yay' установлен.
+
+===== Установка Sublime Text =====
+
+Через yay.
+
+Параметр --noconfirm можно убрать, если есть необходимось выбрать какие-то особенные настройки при установке.
+
+''yay -S sublime-text-4 --noconfirm''
+
+===== Управление Sublime Text =====
+
+==== Запуск Sublime Text ====
+
+''subl &''
+
+Через меню приложений:  
+
+'''
+Разработка > «Sublime Text»
+'''
+
+==== Обновление Sublime Text ====
+
+''yay -Syu --devel --timeupdate''
+
+==== Удаление Sublime Text ====
+
+''yay -Rns sublime-text-4 --noconfirm''
+
+И почистить систему от осиротевших пакетиков
+
+''yay -Yc''
+
+--------------------
+@manjaro @sublime 
