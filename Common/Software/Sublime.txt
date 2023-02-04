@@ -43,6 +43,8 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 	''Tools'' 
 	''> Install Package Control…''
 
+Ждём подтверждение о том, что Package Control успешно установлен.
+
 Затем
 
 	'''
@@ -54,24 +56,31 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 	
 Начать набор названия пакета, который надо установить > появятся подсказки > выбрать нужный и даблклик или Enter.
 
-Есть смысл последовательно установить следующие пакеты:
+Есть смысл последовательно установить некоторые пакеты (плагины). Одни из них после установки выводят подтверждающее/благодарственное окно, другие нет. Проверить, какие плагины установлены «''Preferences > Package Settings''»
 
-	1. [[https://packagecontrol.io/packages/AdvancedNewFile|AdvancedNewFile]]
-	2. [[https://packagecontrol.io/packages/Anaconda|Anaconda]] — autocomplete. 
-	3. [[https://packagecontrol.io/packages/All%20Autocomplete|All Autocomplete]] — не то же, что предыдущий, бо “Anaconda” заточен под нужды программистов.
-	4. [[https://packagecontrol.io/packages/AutoFileName|AutoFileName]]
-	5. [[https://packagecontrol.io/packages/Base16%20Color%20Schemes|Base16 Color Schemes]] — стили подсветки кода; мне очень зашло «base16-phd»
-	6. [[https://packagecontrol.io/packages/BracketHighlighter|Bracket​Highlighter]]
+	1. [[https://packagecontrol.io/packages/SublimeLinter|Terminus]] — более продвинутая консолька
+	2. [[https://packagecontrol.io/packages/AdvancedNewFile|AdvancedNewFile]]
+	3. [[https://packagecontrol.io/packages/AutoFileName|AutoFileName]]
+	4. [[https://packagecontrol.io/packages/SideBarEnhancements|SideBarEnhancements]] — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
+	5. [[https://packagecontrol.io/packages/All%20Autocomplete|All Autocomplete]] — autocomplete вообще
+	6. [[https://packagecontrol.io/packages/BracketHighlighter|BracketHighlighter]]
 	7. [[https://packagecontrol.io/packages/DocBlockr|DocBlockr]]
-	8. [[https://packagecontrol.io/packages/Emmet|Emmet]] — шаблоны для верстальщиков (front end)
-	9. [[https://packagecontrol.io/packages/Git|Git]]
-	10. [[https://packagecontrol.io/packages/GitAutoCommit|GitAutoCommit]]
-	11. [[https://packagecontrol.io/packages/GitGutter|GitGutter]]
-	12. [[https://packagecontrol.io/packages/Markdown%20Extended|Markdown Extended]]
-	13. [[https://packagecontrol.io/packages/SideBarEnhancements|SideBarEnhancements]] — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
-	14. [[https://packagecontrol.io/packages/SublimeLinter|SublimeLinter]] — затем плагины для линтеров по определённым правилам для определённых языков
-	15. [[https://packagecontrol.io/packages/SublimeLinter|Terminus]] — более продвинутая консолька
-	16. по слову Theme можно выбрать иную тему оформления, нежели дефолтную Adaptive (кагбэ [[https://www.positronx.io/best-sublime-text-3-themes/|рейтинг тем]]). Для установки темы надо знать её точное название.
+	8. [[https://packagecontrol.io/packages/Git|Git]] (некоторым заходит [[https://packagecontrol.io/packages/GitAutoCommit|GitAutoCommit]], мне он кажется излишним)
+	9. [[https://packagecontrol.io/packages/GitGutter|GitGutter]]
+	10. [[https://packagecontrol.io/packages/Markdown%20Extended|Markdown Extended]]
+	11. [[https://packagecontrol.io/packages/Anaconda|Anaconda]] — autocomplete для программистов
+	12. [[https://packagecontrol.io/packages/SublimeLinter|SublimeLinter]] — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
+	13. [[https://packagecontrol.io/packages/Emmet|Emmet]] — шаблоны для верстальщиков (front end)
+	14. Выбрать оформление Sublime
+	15. Выбрать стиль подсветки кода
+
+С подбором цвета придётся повозиться. 
+
+	Оформление самого Sublime выбирают в ’Preferences > Select theme’. Приятная тёмная тема = Adaptive (кагбэ дефолтная, см. [[https://www.positronx.io/best-sublime-text-3-themes/|рейтинг тем]]). 
+
+	Оформление текстового пространства (подсветка кода) выбирают в ’Preferences > Select Color Scheme’. Мне норм ’RailsBase16-twilight.dark’. 
+ 
+Для установки темы надо знать её точное название. Я предпочитаю 
 
 Restart Sublime Text.
 
@@ -82,14 +91,18 @@ Preferences
 > Settings
 '''
 
+Вставить это:
+
 '''
 {
 	// Общий размер шрифта редактора
-	"font_size": 21,
+	"font_size": 16,
 	"word_wrap": true,
+	
 	// Set to a value other than 0 to force wrapping at that column rather than
 	// the window width. See "wrap_width_style" for extra options.
 	"wrap_width": 100,
+	
 	// Настройки отступов В КАЖДОМ ФАЙЛЕ
 		// Ctrl + Shift + P (to activate the command palette)
 		// Type "Indentation",
@@ -97,15 +110,24 @@ Preferences
 	"detect_indentation": true,
 	"tab_size": 4,
 	"translate_tabs_to_spaces": false,
+	
 	// Тема оформления
 	"theme": "Adaptive.sublime-theme",
+'''
+			''"dark_theme": "Adaptive.sublime-theme",''
+'''
+	"light_theme": "Adaptive.sublime-theme",
+	"color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-twilight.dark.tmTheme",
+	"dark_color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-tomorrow.dark.tmTheme",
+	"light_color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-default.dark.tmTheme",
+'''
+
+'''
 	"ignored_packages":
 	[
 		"Vintage",
 	],
-	"color_scheme": "Packages/Base16 Color Schemes/Themes/base16-phd.tmTheme",
-	"dark_theme": "Adaptive.sublime-theme",
-	"light_theme": "Adaptive.sublime-theme",
+
 }
 '''
 
@@ -138,6 +160,8 @@ Preferences
 }
 '''
 
+Ctrl+S, Alt+F4
+
 ==== Настройка Anaconda ====
 
 В Anaconda встроен довольно строгий линтер, он считает неправильными почти все строки любого кода (и он, конечно, прав), помечая их белыми прямоугольниками. Эту функциональность лучше передать отдельному плагину, бо лучше использовать линтер под свой язык программирования и строго под выбранные юзером правила правописания, которые под тот же Python бывают очень разные. Поэтому
@@ -159,6 +183,19 @@ Preferences
 	}
 }
 '''
+
+Ctrl+S и перезапустить Sublime. Если изменений не будет, то:
+
+'''
+Preferences 
+> Package Settings 
+> Anaconda 
+> Setting — Default
+'''
+
+Прописать параметр ’false’ для "''anaconda_linting''". 
+
+Ctrl+S и (опционально) перезапустить Sublime. 
 
 Позже можно будет использовать возможности Anaconda для автоформатирования кода по CTRL-ALT-R (насколько это, конечно, применимо к тому же питону) в соответствии с правилами PEP8. Там тоже надо настраивать точнее, бо по-умолчанию эта шняга заменяет табы четырьмя пробелами.
 
@@ -184,9 +221,14 @@ View
 
 Надо пореже использовать CTRL-ALT-R и воспитывать в пальцах изначально принудительное правописание и отступы, в Python этот аспект важнее, чем в других ЯП.
 
+И да, я за табы.
+
 ==== Настройка хоткея для вызова Sidebar ====
 
-Вызов или через View > Sidebar, или через последовательное нажатие «Ctrl+k, Ctrl+b».
+По-умолчанию вызывается 
+* или через View > Sidebar, 
+* или через последовательное нажатие «Ctrl+k, Ctrl+b»,
+* или кликом по иконке в левом нижнем углу окна Sublime.
 
 Клавиши можно переназначить, например, на Ctrl+\: 
 '''
@@ -255,19 +297,19 @@ Tools
 }
 '''
 
-Путь ''/usr/bin/python3'' общий, тут можно задать любое направление к разным версиям, буде таковая необходимость соизволит явиться.
+	//Путь ''/usr/bin/python3'' общий, тут можно задать любое направление к разным версиям, буде таковая необходимость соизволит явиться.//
 
-Под виндой, соответственно, в shell_cmd надо указать путь к python.exe, и делать это надо чуть заковыристо, через двойные косые: «shell_cmd»: 
-''D:\\.python_venvs\\general_python\\Scripts\\python.exe -u \"$file\"''
+	//Под виндой, соответственно, в shell_cmd надо указать путь к python.exe, и делать это надо чуть заковыристо, через двойные косые: «shell_cmd»:// 
+	//''D:\\.python_venvs\\general_python\\Scripts\\python.exe -u \"$file\"''//
 
-Эти самые pre_window_hooks и post_window_hooks пришли из плагина close_terminal.py
+	//Кстати, параметры ’pre_window_hooks’ и ’post_window_hooks’ пришли из плагина ’close_terminal.py’//
 
-Ctrl+S > дать новому файлу sublime-build имя вроде ’BuildPython3.sublime-build’ и убедиться в том, что он сохраняется в ''/~/.config/sublime-text/Packages/User/''
+Ctrl+S > дать новому файлу sublime-build имя вроде ’BuildPython.sublime-build’ и дважды убедиться в том, что он сохраняется в ''/~/.config/sublime-text/Packages/User/''
 
 '''
 Tools 
 > Build System 
-> выбрать ’BuildPython3‘
+> выбрать ’BuildPython‘
 '''
 
 Больше эту настройку можно не трогать. Теперь общий хоткей Ctrl+B вызовет консоль Terminus справа от окна с кодом и в ней выполнит код по заветам прописанного интерпретатора Python.
