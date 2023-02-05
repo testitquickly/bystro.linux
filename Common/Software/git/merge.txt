@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-05T02:29:13+02:00
+
+====== merge ======
+
+Merge — слияние веток.
+
+ Общий алгоритм:
+ 
+fast-forward
+слияние веток «перемоткой»
+
+Merge-commit
+
+merge to working tree
+
+squash-merge
