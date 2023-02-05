@@ -10,6 +10,10 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 В основе своей «Sublime Text» разочаровывающе примитивный и требуется время на его освоение и настройку, но — это и хорошо. Можно подключать к простой основе только те расширения (пакеты), которые действительно понадобятся. Unix way же.
 
+Самые удобные удобства в Sublime по-умолчанию:
+* переход в полноэкранный режим > F11
+* переход в режим distracted free > Shift+F11
+
 ===== Установка Sublime Text в Debian =====
 
 Следуем общей [[https://www.sublimetext.com/docs/linux_repositories.html|инструкции]]:
@@ -74,14 +78,12 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 	14. Выбрать оформление Sublime
 	15. Выбрать стиль подсветки кода
 
-С подбором цвета придётся повозиться. 
+С подбором цвета придётся повозиться. Для установки темы надо знать её точное название.
 
 	Оформление самого Sublime выбирают в ’Preferences > Select theme’. Приятная тёмная тема = Adaptive (кагбэ дефолтная, см. [[https://www.positronx.io/best-sublime-text-3-themes/|рейтинг тем]]). 
 
 	Оформление текстового пространства (подсветка кода) выбирают в ’Preferences > Select Color Scheme’. Мне норм ’RailsBase16-twilight.dark’. 
  
-Для установки темы надо знать её точное название. Я предпочитаю 
-
 Restart Sublime Text.
 
 ===== Базовые настройки =====
@@ -95,8 +97,13 @@ Preferences
 
 '''
 {
-	// Общий размер шрифта редактора
+	// Выбор шрифта
+	"font_face": "IBM Plex Sans Text",
+
+	// Размер шрифта
 	"font_size": 16,
+
+	// Перенос слов
 	"word_wrap": true,
 	
 	// Set to a value other than 0 to force wrapping at that column rather than
@@ -113,10 +120,10 @@ Preferences
 	
 	// Тема оформления
 	"theme": "Adaptive.sublime-theme",
-'''
-			''"dark_theme": "Adaptive.sublime-theme",''
-'''
+	"dark_theme": "Adaptive.sublime-theme",
 	"light_theme": "Adaptive.sublime-theme",
+	
+	// Подсветка кода
 	"color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-twilight.dark.tmTheme",
 	"dark_color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-tomorrow.dark.tmTheme",
 	"light_color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-default.dark.tmTheme",
@@ -130,6 +137,21 @@ Preferences
 
 }
 '''
+
+==== Решение проблем ====
+
+1
+Название шрифта надо знать заранее и отдельно. В KDE это всё находится в 
+
+Параметры системы
+''> Внешний вид''
+''> Оформление рабочей среды''
+''> Управление шрифтами''
+
+После Ctrl+S изменения из файла с настройками применяются сразу.
+
+2
+"color_scheme" в моих настройках работает только потому, что схема была предварительно установлена. Если её не будет, Sublime начнёт выбрасывать предупреждающие сообщения.  Строку можно закомментировать и заняться подбором наилучшей схемы посдсветки кода в каждом отдельном случае. 
 
 ===== Тонкая настройка =====
 
