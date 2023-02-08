@@ -17,7 +17,7 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 
 1. [[+Добавить пользователя в группу sudo]]
 2. [[+Кодировка и размер шрифта в консоли]]
-3. [[Common:Software:Midnight Commander]]
+3. [[KDE:Common:Software:Midnight Commander]]
 4. [[+aptitude]]
 5. [[+iputils]]
 6. [[+Настройка Wi-Fi]]
