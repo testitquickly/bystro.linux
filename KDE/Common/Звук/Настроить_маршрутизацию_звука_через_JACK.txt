@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T07:44:57+02:00
 
-====== Как настроить маршрутизацию звука через JACK ======
+====== Настроить маршрутизацию звука через JACK ======
 
 https://jackaudio.org/faq/device_naming.html
 	
