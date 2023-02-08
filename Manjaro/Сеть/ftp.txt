@@ -4,4 +4,194 @@ Creation-Date: 2023-02-08T02:41:52+02:00
 
 ====== ftp ======
 
-//Next step//: 
+===== Установить vsftpd =====
+
+Обновить систему
+
+''sudo pacman -Syu''
+
+Установить vsftpd
+
+''sudo pacman -S vsftpd''
+
+Основные управляющие команды:
+
+* ''systemctl stop vsftpd''
+* ''systemctl start vsftpd''
+* ''systemctl restart vsftpd''
+* ''systemctl status vsftpd''
+
+==== Сделать бэкап дефолтного конфиг-файла ====
+
+Позже очень пригодится.
+
+''sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak''
+
+Если случится ой, то всегда можно будет ревертнуться:
+
+''sudo cp /etc/vsftpd.conf.bak /etc/vsftpd.conf''
+
+==== Основная настройка сервиса ====
+
+=== Остановить vsftpd ===
+
+''systemctl stop vsftpd && systemctl status vsftpd''
+
+=== Изменить /etc/vsftpd.conf ===
+
+''sudo mcedit /etc/vsftpd.conf''
+
+=== Найти в файле соответствующие инструкции ===
+
+и раскомментировать их
+
+''write_enable=YES''
+''local_enable=YES''
+''ascii_upload_enable=YES''
+''ascii_download_enable=YES''
+''chroot_local_user=YES''
+''chroot_list_enable=YES''
+''chroot_list_file=/etc/vsftpd.chroot_list''
+''ls_recurse_enable=YES''
+''seccomp_sandbox=NO''
+''anonymous_enable=NO''
+''local_umask=022''
+
+=== Создать файл vsftpd.chroot_list ===
+
+'''
+sudo mcedit /etc/vsftpd.chroot_list
+'''
+
+Записать в ''/etc/vsftpd.chroot_list'' логины юзеров, которым разрешено делать всё в своей директории (при подключении) — по одному на строку. У меня в этом файле одна строка с логином моего юзера.
+
+=== Сделать отдельного юзера для ftp ===
+
+Это опционально и лишнее, если подключения к ftp будут редкими и только в локальной сети, но важно, если сервер будет работать постоянно, да ещё с доступом из внешнего мира. 
+
+''sudo useradd -g ftp -d /srv/http -s /sbin/nologin ftpmyuser''
+''sudo passwd ftpmyuser''
+
+=== Запустить vsftpd ===
+
+''sudo systemctl start vsftpd''
+
+==== Проверить работоспособность ====
+
+''systemctl start vsftpd && systemctl status vsftpd''
+
+Подключиться к компьютеру из внешнего источника (со смартфона через Total Commander или «Cx Проводник»).
+
+==== Настроить сервис «под себя» ====
+
+''sudo mcedit /etc/vsftpd.conf''
+
+Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный [[https://security.appspot.com/vsftpd/vsftpd_conf.html|перечень параметров]] с комментариями. Затем грамотный гайд [[https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10|здесь]]. Это всё можно будет глянуть позже.
+
+По-умолчанию настройки читаются из файла /etc/vsftpd.conf
+
+Если запустить сервер с параметрами (например: ''vsftpd -olisten=NO /etc/vsftpd.conf -oftpd_banner=Hello''), то параметры из командной строки будут иметь приоритет над содержимым конфиг-файла /etc/vsftpd.conf
+
+Всегда можно запускать vsftpd с разными конфигами:
+* ''vsftpd /etc/vsftpd.conf.with.guests &''
+* ''vsftpd /etc/vsftpd.conf.without.guests &''
+* ''vsftpd /etc/vsftpd.conf.myPersonalUser &''
+
+=== Общее содержимое файла настроек ===
+
+В основе достаточно этого:
+
+'''
+listen=NO
+listen_port=21
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+'''
+
+Можно то же самое, но с комментариями:
+
+''# Run standalone?  vsftpd can run either'' 
+''# from an inetd or as a standalone''
+''# daemon started from an initscript.''
+''listen=YES''
+
+''# Make sure PORT transfer connections'' 
+''# from port 20 (ftp-data).''
+''listen_port=21''
+
+''# Allow anonymous FTP? (Disabled by default).''
+''anonymous_enable=NO''
+
+''# Uncomment this to allow local users to log in.''
+''local_enable=YES''
+
+''# Uncomment this to enable any form'' 
+''# of FTP write command.''
+''write_enable=YES''
+
+В любом случае учесть, что:
+* в файле настроек **нельзя** вставлять отступ строк от левого края, сервис остановится с НЕПОНЯТНОЙ ошибкой,
+* между строками можно оставлять только один пустой абзац. Два пустых абзаца уже будут ошибкой и vsftpd остановится,
+* нельзя вставлять комментарии в конце строки с параметром, вроде ''listen_ipv6=NO # modified —'' сервис остановится с ошибкой,
+* разумно сохранять файл /etc/vsftpd.conf после каждого изменения и сразу выполнять проверку статуса сервиса: ''sudo systemctl restart vsftpd && systemctl status vsftpd''
+
+=== Отключить автозагрузку vsftpd ===
+
+Сервис по-умолчанию запускается при старте ноута и бесконечно работает. Это норм, если ftp будут пользоваться много/часто. 
+
+Второй подход: сервер запускается, но постоянно «спит». Каждое явное обращение к нему начинает его «будить» (иногда это занимает какое-то ощутимое время), заставляет отдавать/принимать какие-то данные, затем сервис «засыпает». Надо учесть, что если группа товарищей то и дело будет обращаться к этому сервису, то циклы «заснул - разбудили - заснул - разбудили» могут полностью дестабилизировать процесс контроля продвижения НАТО на восток, hdd будет очень недоволен.
+
+Поэтому вот третий способ: вручную запускать ftp сервер при необходимости, и позже вручную же его полностью гасить (безопасности ради). 
+
+Рецепт для гашения автозапуска установленного vsftpd:
+1. ''sudo systemctl stop vsftpd && systemctl status vsftpd''
+2. ''sudo systemctl disable vsftpd.service''
+3. ''reboot'' (или релогин)
+
+После перезагрузки (через ''systemctl status vsftpd'') можно будет увидеть, что сервис жив, но мертв:
+
+	● vsftpd.service - vsftpd FTP server
+	Loaded: loaded (/lib/systemd/system/vsftpd.service; __disabled__; vendor preset: enabled)
+	Active: __inactive (dead)__
+
+А после принудительного старта (''sudo systemctl start vsftpd && systemctl status vsftpd'') будет видно, что сервис is disabled для автозапуска:
+
+	● vsftpd.service - vsftpd FTP server
+	Loaded: loaded (/lib/systemd/system/vsftpd.service; __disabled__; vendor preset: enabled)
+	Active: __active (running)__ since Sun 2021-12-12 20:48:51 EET; 8ms ago
+
+=== Что ещё можно проверить ===
+
+Глянуть список всех запущенных сервисов в системе:
+''systemctl list-unit-files --type=service --state=enabled''
+
+Проверить, запущен ли vsftpd в системе:
+''systemctl list-unit-files --type=service --state=enabled | grep vsftpd''
+
+Проверка всех доступных сервисов в системе и управление ими через systemd — https://linuxhint.com/disable_unnecessary_services_debian_linux/
+
+===== Как запускать/останавливать vsftpd =====
+
+1. **Запуск ftp**: ''sudo systemctl start vsftpd && systemctl status vsftpd''
+2. Перекинуть файлы туда/сюда
+3. **Остановить ftp**: ''sudo systemctl stop vsftpd && systemctl status vsftpd''
+
+===== Как подключиться к ноутбуку с телефона =====
+
+1. На Android надо установить подходящий софт:
+	* Total Commander с плагином для соединений по ftp. 
+	* Cx Проводник
+	* DMS Explorer (впрочем, это dlna player)
+2. Узнать IP ноутбука. В трее тыкнуть по иконке связи левой кнопкой мыши, в списке подключений тыкнуть по рабочему подключению и перейти на вкладку «Сведения» > Адрес IPv4.
+3. На смартфоне в Total Commander выйти в корень — там будет список установленных плагинов. 
+4. FTP > Создать соединение > 
+	* Имя сервера = IP ноутбука
+	* Имя пользователя = свой логин на ноутбуке
+	* Пароль = пароль юзера на ноутбуке
+	* Кодировка имён файлов = UTF-8
+
+В принципе можно ходить по всем каталогам, создавать/удалять. 
+
+--------------------
+@console @ftp 
