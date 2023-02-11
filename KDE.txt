@@ -36,7 +36,7 @@ TODO Настройки. Дооформить список
 
 [[+Оформление:Перезагрузить Plasma]]
 
-[[+Common:Сеть:Samba]]
+[[+Software:Samba]]
 
 [[+Оформление:Как увеличить шрифт в окне программы]]
 
@@ -46,7 +46,7 @@ TODO Настройки. Дооформить список
 [[+Software:Elgato “Stream Deck”]]
 [[+Software:Firefox]]
 [[+Software:flatpak]]
-Common:Software:ftp
+[[+Software:ftp]]
 [[+Software:git]]
 [[+Software:GPG]]
 [[+Software:KeePassXC]]
@@ -58,6 +58,7 @@ Common:Software:ftp
 [[+Software:PDF]]
 [[+Software:Python]]
 [[+Software:qmmp]]
+[[+Software:Samba]]
 [[+Software:SMPlayer]]
 [[+Software:snap]]
 [[+Software:ssh]]
