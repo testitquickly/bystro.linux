@@ -14,7 +14,7 @@ Secure shell (SSH) — наш основной способ коннекта н�
 ''sudo pacman -S openssh'' 
 
 **debian**
-''sudo apt-get install openssh''
+''sudo apt-get install openssh-server openssh-client''
 
 ==== Настроить сервис OpenSSH ====
 
@@ -26,13 +26,29 @@ Secure shell (SSH) — наш основной способ коннекта н�
 
 ===== Запустить сервис SSH =====
 
+Manjaro
 ''sudo systemctl enable sshd.service && sudo systemctl start sshd.service && sudo systemctl status sshd.service''
+
+Debian
+''sudo systemctl enable ssh.service && sudo systemctl start ssh && sudo systemctl status ssh''
+
+Ожидаемый ответ (в сокращ.): 
+
+'''
+Active: active (running) since Wed 2023-02-15 20:57:30 EET; 4min 31s ago
+
+sshd[11291]: Server listening on 0.0.0.0 port 22.
+'''
 
 Сервис самостоятельно пропишется в автозапуск.
 
 ===== Проверить статус сервиса SSH =====
 
+Manjaro
 ''sudo systemctl status sshd.service''
+
+Debian
+''sudo systemctl status ssh.service''
 
 По-умолчанию сервис OpenSSH должен быть отключён:
 
