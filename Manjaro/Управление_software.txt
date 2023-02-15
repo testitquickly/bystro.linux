@@ -24,7 +24,7 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 ==== Запросить описание пакета ====
 
-''pacman -Sii audacity''
+''sudo'' ''pacman -Sii audacity''
 
 ==== Установить пакет ====
 
@@ -38,7 +38,7 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 === … и его конфигурационные файлы ===
 
-''pacman -Rn audacity''
+''sudo pacman -Rn audacity''
 
 === … со всеми зависимостями ===
 
@@ -48,59 +48,59 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 === … с зависимостями и конфигурационными файлами ===
 
-''pacman -Rsn audacity''
+''sudo'' ''pacman -Rsn audacity''
 
 ==== Показать список установленных пакетов ====
 
 === … с указанием версий ===
 
-''pacman -Qe''
+''sudo'' ''pacman -Qe''
 
 === … без указания версий ===
 
-''pacman -Qqe''
+''sudo'' ''pacman -Qqe''
 
 ==== Обновление ====
 
 === … баз данных пакетов ===
 
-''pacman -Sy''
+''sudo'' ''pacman -Sy''
 
 === … всей системы ===
 
-''pacman -Su''
+''sudo'' ''pacman -Su''
 
 === … баз данных пакетов и системы ===
 
-''pacman -Syu''
+''sudo'' ''pacman -Syu''
 
 ==== Показать пакеты-сироты ====
 
 === … с указанием версий ===
 
-''pacman -Qdt''
+''sudo'' ''pacman -Qdt''
 
 === … без указания версий ===
 
-''pacman -Qdtq''
+''sudo'' ''pacman -Qdtq''
 
 === Удаление всех пакетов-сирот ===
 
-''pacman -Qqdt'' 
+''sudo'' ''pacman -Qqdt'' 
 
 или
 
-''pacman -Rsn''
+''sudo'' ''pacman -Rsn''
 
 ==== Очистка кэша ====
 
 === … установленных пакетов ===
 
-''pacman -Scc''
+''sudo'' ''pacman -Scc''
 
 === … неустановленных пакетов ===
 
-''pacman -Sc''
+''sudo'' ''pacman -Sc''
 
 ===== Pamac =====
 
