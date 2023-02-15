@@ -70,6 +70,7 @@ TODO Настройки. Дооформить список
 [[+Software:wine]]
 [[+Software:Zim]]
 [[+Software:Spectacle]]
+[[+Common:Устройства:Проверить состояние батареи ноутбука]]
 
 --------------------
 @main @kde 
