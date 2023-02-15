@@ -206,7 +206,7 @@ Preferences
 }
 '''
 
-Ctrl+S и перезапустить Sublime. Если изменений не будет, то:
+Ctrl+S и перезапустить Sublime. Если изменений не будет, то можно задать ту же настройку на глобальном уровне:
 
 '''
 Preferences 
@@ -268,75 +268,7 @@ Preferences
 ]
 '''
 
-==== Настройка консоли для запуска скриптов на Python ====
-
-По-умолчанию дежурный запуск скриптов на Python делается во встроенной консольке через Ctrl+B. Годно, если надо просто что-то выполнить, и нет, если подразумевается интерактивность со стороны юзера.
-
-'''
-Ctrl+Shift+P 
-> Package Control: Install Package 
-> Terminus
-'''
-
-Затем сохранить в каталог с пакетами (/~/.config/sublime-text/Packages/User/) новый файл [[https://gist.github.com/OdatNurd/2aeb8f753a053d9b927a8f125a8e456d|close_terminal.py]] — это плагин для тонкой обработки будущих окон терминала. В частности, он будет при каждом билде скрипта в разработке держать фокус на окне со скриптом и фокус только на одном окне терминала, чтобы не открывалось новое при каждом нажатии Ctrl+B.
-
-'''
-Tools 
-> Build System 
-> New Build System
-'''
- 
-Откроется пустой файл настроек.
-
-'''
-{
-	"target": "terminus_open",
-	"auto_close": false,
-	"title": "Pytnon Output",
-	"cancel": "terminus_cancel_build",
-	"pre_window_hooks":
-		[
-			["windows_focus", {"store": true}],
-			["close_terminus_view_by_title", {"title": "Pytnon Output"}],
-			["windows_focus", {"store": false}],
-		],
-	"post_window_hooks":
-		[
-			["carry_file_to_pane", {"direction": "right"}],
-			["windows_focus", {"store": false}],
-		],
-	"shell_cmd": "/usr/bin/python3 -u \"$file\"",
-	"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-	"selector": "source.python",
-	"env": {"PYTHONIOENCODING": "utf-8"},
-	"variants":
-	[
-		{
-			"name": "Syntax Check",
-			"shell_cmd": "/usr/bin/python3 -m py_compile \"${file}\"",
-		}
-	]
-}
-'''
-
-	//Путь ''/usr/bin/python3'' общий, тут можно задать любое направление к разным версиям, буде таковая необходимость соизволит явиться.//
-
-	//Под виндой, соответственно, в shell_cmd надо указать путь к python.exe, и делать это надо чуть заковыристо, через двойные косые: «shell_cmd»:// 
-	//''D:\\.python_venvs\\general_python\\Scripts\\python.exe -u \"$file\"''//
-
-	//Кстати, параметры ’pre_window_hooks’ и ’post_window_hooks’ пришли из плагина ’close_terminal.py’//
-
-Ctrl+S > дать новому файлу sublime-build имя вроде ’BuildPython.sublime-build’ и дважды убедиться в том, что он сохраняется в ''/~/.config/sublime-text/Packages/User/''
-
-'''
-Tools 
-> Build System 
-> выбрать ’BuildPython‘
-'''
-
-Больше эту настройку можно не трогать. Теперь общий хоткей Ctrl+B вызовет консоль Terminus справа от окна с кодом и в ней выполнит код по заветам прописанного интерпретатора Python.
-
-Перевод фокуса с одной панели на другую с клавиатуры через Ctrl+1 и Ctrl+2 — если на экране две панели (их можно понаоткрывать бесчетно). 
+===== Python =====
 
 [[+Как сделать Python-проект в Sublime]]
 
