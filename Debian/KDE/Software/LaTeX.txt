@@ -3,3 +3,8 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-02-18T01:13:33+02:00
 
 ====== LaTeX ======
+
+TODO LaTeX Debian — добавить инструкцию
+
+--------------------
+@Debian @LaTeX @install 

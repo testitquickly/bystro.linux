@@ -5,6 +5,7 @@ Creation-Date: 2023-02-18T01:21:03+02:00
 ====== Kile ======
 
 TODO kile - дописать текст
+ориентир: [[Manjaro:KDE:Software:LaTeX:Kile]]
 
 ===== Установить Kile =====
 
