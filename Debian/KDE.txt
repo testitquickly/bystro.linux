@@ -50,7 +50,7 @@ TODO Настройки. Дооформить список
 [[+Software:git]]
 [[+Software:GPG]]
 [[+Software:KeePassXC]]
-[[+Software:Kile]]
+[[+Software:LaTeX:Kile]]
 [[+Software:KMyMoney]]
 [[+Software:KRunner]]
 [[+Software:LaTeX]]

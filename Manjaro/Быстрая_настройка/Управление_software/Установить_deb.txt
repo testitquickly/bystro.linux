@@ -1,0 +1,72 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-17T22:56:04+02:00
+
+====== Установить deb ======
+
+DEB — это формат установочных конфигураций пакетов в Debian. Но в отдельных случаях можно поставить deb-packagе в Arch, особенно если они называются идентично. 
+
+Сперва надо убедиться, что нужный пакет можно поставить нативными средствами. 
+
+'''
+sudo pacman -S имя_пакета
+'''
+
+'''
+sudo pamac -S имя_пакета
+'''
+
+Или через AUR helper ’yay’.
+
+''sudo -S yay''
+
+И далее:
+  
+'''
+yay -S имя_пакета
+'''
+ 
+Если нет, то можно попробовать установить deb-пакет через ’''debtap''’.
+
+''yay -S debtap''
+ 
+Перейти в каталог с deb-файлом
+
+'''
+debtap myFile.deb
+'''
+ 
+Debtap создаст новый файл ’myFile.zst’, который можно установить обычным способом:
+ 
+''sudo pacman -U myFile.zst''
+
+Ещё есть хардкорный способ: распаковать содержимое deb-пакета (это же обычный zip) и вручную положить файлы по соответствующим директориям.
+
+''ar x /где_твой_файл/''
+ 
+Then, move into the folder and extract the tarballs with the tar command.
+ 
+'''
+tar xvf control.tar.gz
+tar xvf data.tar.gz
+'''
+
+
+You will find three new folders: etc, opt, and usr. Copy the content inside these folders into the correct directories. For instance, copy the contents of the etc folder into the /etc directory of your system and do the same for the rest accordingly.
+
+ 
+sudo cp ./etc/* /etc/
+sudo cp ./opt/* /opt/
+sudo cp ./usr/* /usr/
+ 
+
+Running the Program
+
+Once all the files have been placed where they belong, you can execute the shell script inside the /usr/bin folder to run the application. For ease of use, consider creating a desktop shortcut to run this program.
+
+This is a pretty tedious method and one that will not work a hundred percent of the time, which is why we suggest you refrain from manual installation and treat it as a last-ditch attempt.
+Now You Can Install DEB Packages on Arch Linux
+
+You can install Debian packages on Arch Linux. However, a package not inherently meant for Arch Linux can often break over time as it gets updated.
+
+With a bleeding-edge distro, all it can take sometimes is one broken package for the entire system to fall apart. It's a crucial practice to regularly scan for broken packages, fix them, and update the package list of your Linux system.
