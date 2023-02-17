@@ -1,0 +1,138 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-16T15:38:30+02:00
+
+====== swap ======
+
+Несмотря на то, что нынче RAM такой огромный, что swap «уже не нужен» — swap нужен. Вопрос только в том, какого рода будет swap и на каком диске его расположить.
+
+	[[KDE:Software:KRunner:Поиск файлов в KRunner]] без рабочего swap вполне может внезапно и надёжно «положить систему».
+
+Прежде всего надо точно знать текущее состояние swap.
+
+''swapon --show''
+
+Если в ответ ничего не возвращается, значит, swap отключён.
+
+Также об этом свидетельствует 
+* отсутствие в системе «спящего режима» (гибернация), 
+* в системном мониторе (ksysguard) в разделе «Память и раздел подкачки» размер Swap указан только как «0.00 ГиБ». В норме он указан «0.00 ГиБ из 16,9 ГиБ»
+
+===== Раздел или файл =====
+
+Согласно вики https://wiki.archlinux.org/title/swap есть два способа добавить swap: 
+
+1. сделать swap-файл, который будет занимать какое-то место на любом hdd/ssd. Он будет жить незаметно и при необходимости будет увеличиваться в размерах, затем спадать. 
+2. сделать отдельную партицию для swap при установке системы. Если есть ssd и hdd, то (имхо) swap нормально будет жить на hdd.
+
+Но есть неявное условие: в UEFI-booted системах swap должен находиться на том же диске, где и корень системы (root, /), иначе его автозагрузка не гарантируется.
+
+	The root partition must be on the same physical disk as the used EFI system partition. Other partitions that will be automounted must be on the same physical disk as the root partition. This basically means that all automounted partitions must share the same physical disk with the ESP.
+
+	См. https://wiki.archlinux.org/title/Systemd#systemd_components
+
+Это мой случай: при установке система была установлена на ssd, а для swap был создан отдельный раздел на hdd. В итоге он есть, но в работе системы не задействован. 
+
+Надо приписать в файл /etc/fstab указание о загрузке swap с партиции (воспринимается как отдельный диск со своим UUID).
+
+===== Выяснить UUI партиции swap =====
+
+''sudo blkid''
+
+Вижу его среди прочих: 
+
+'''
+/dev/sda5: LABEL="swap" UUID="0c82216f-96ae-46e3-8f71-7cac7876880b" TYPE="swap" PARTUUID="f044db32-05"
+'''
+
+Переписать эту строку в формате fstab:
+
+'''
+UUID=0c82216f-96ae-46e3-8f71-7cac7876880b /swap          swap    defaults,noatime 0 0
+'''
+
+Сделать копию оригинального файла:
+
+''sudo cp /etc/fstab /etc/fstab.bkp''
+
+Редактирование:
+
+''sudo mcedit /etc/fstab''
+
+Добавить туда новую строку про swap.
+
+На этом всё, reboot.
+
+Перезагружаемся и проверяем работу swap:
+
+''swapon --show''
+
+Пример ожидаемого ответа:
+
+'''
+NAME      TYPE       SIZE USED PRIO
+/dev/sda5 partition 16,9G   0B   -2
+'''
+
+===== Режим гибернации =====
+
+Если в системе появился swap, значит, будет доступен и режим «замораживания». Надо указать ядру место, из которого будет считано состояние системы через параметр ''resume''. Я туда ещё не дошёл.
+
+	См. https://wiki.archlinux.org/title/Power_management/Suspend_and_hibernate
+
+Hibernate нужен, если речь идёт о ноутбуке в полевых условиях. Во всех остальных случаях вообще не факт, что результат hibernate будет удовлетворительным. Не факт, что можно будет успешно «заморозить» состояние всех открытых программ и получить их в исходном виде после повторного отключения компьютера — это надо выяснить отдельно и относиться к этому с настороженностью.
+
+Из консоли можно перейти в режим гибернации одной командой (осторожно, срабатывает сразу без дополнительных уведомлений!):
+
+''systemctl hibernate''
+
+	Using low level interfaces directly is significantly faster than using any high level interface, since running all the pre- and post-suspend hooks takes time, but hooks can properly set hardware clock, restore wireless etc. 
+
+===== Старые системы с GRUB =====
+
+В системах, загрузкой которых управлял GRUB, надо было указать точно, откуда система должна загружать данные после
+выхода из режима гибернации. 
+
+В этой инструкции автор подразумевал, что swap создан в отдельном файле в каталоге ''/var/'', поэтому для обращения к нему нужно было знать его точное расположение на поверхности hdd — физическое смещение.
+
+Надо было точно знать:
+1. ID раздела, на котором находится файл подкачки
+2. физическое смещение ~~файла подкачки~~ партиции swap. У меня этот ID равен ''0c82216f-96ae-46e3-8f71-7cac7876880b'':
+
+Смещение находим с помощью команды ’swap-offset’, у меня это значение равно 317440:
+
+   ''sudo swap-offset /var/lib/swap/swapfile''
+''resume offset = 317440''
+
+Записываем полученные данные в файл /etc/default/grub. Находим параметр GRUB_CMDLINE_LINUX_DEFAULT и добавляем к нему запись вида ’''resume=UUID=<UUID> resume_offset=<offset>''’. У меня это выглядит так:
+
+'''
+GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet resume=UUID=0c82216f-96ae-46e3-8f71-7cac7876880b resume_offset=317440"
+'''
+
+Когда swap на отдельной партиции, resume_offset не нужен.
+
+Обновить файл конфигурации grub:
+
+'''
+sudo update-grub
+'''
+
+Гибернация уже должна работать, это можно проверить с помощью команды systemctl hibernate. Единственное, чего нам не хватает - возможности перехода в режим гибернации из пользовательского интерфейса. Нужно создать файл /etc/polkit-1/localauthority/50-local.d/99-hibernate.pkla с таким содержимым:
+
+   ''[Enable hibernate in upower]''
+   ''Identity=unix-user:*''
+   ''Action=org.freedesktop.upower.hibernate''
+   ''ResultActive=yes''
+   
+   ''[Enable hibernate in logind]''
+   ''Identity=unix-user:*''
+   ''Action=org.freedesktop.login1.hibernate;org.freedesktop.login1.handle-hibernate-key;org.freedesktop.login1;org.freedesktop.login1.hibernate-multiple-sessions;org.freedesktop.login1.hibernate-ignore-inhibit''
+   ''ResultActive=yes''
+
+Перезагружаемся и проверяем работу режима гибернации.
+
+''swapon --show''
+
+--------------------
+@manjaro @swap @hibernate 
