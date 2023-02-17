@@ -53,6 +53,7 @@ TODO Настройки. Дооформить список
 [[+Software:Kile]]
 [[+Software:KMyMoney]]
 [[+Software:KRunner]]
+[[+Software:LaTeX]]
 [[+Software:LibreOffice]]
 [[+Software:microcode]]
 [[+Software:PDF]]
