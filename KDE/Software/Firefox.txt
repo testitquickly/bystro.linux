@@ -140,9 +140,9 @@ Categories=Network;WebBrowser;
 1. в строке поиска ''about:profiles''
 2. профилей может быть несколько, один из них помечен как «Профиль по умолчанию = Да».
 
-По-умолчанию профили создаются и хранятся в [[/~/.mozilla/firefox/,|''/~/.mozilla/firefox/,'']] но всегда есть возможность выбора места хранения.
+По-умолчанию профили создаются и хранятся в ''/~/.mozilla/firefox/,'' но всегда есть возможность выбора места хранения.
 
-Рекомендуется регулярно бэкапить содержимое [[/~/.mozilla/firefox/|''/~/.mozilla/firefox/'']]
+Рекомендуется регулярно бэкапить содержимое ''/~/.mozilla/firefox/''
 
 ===== Общая настройка Firefox =====
 
@@ -215,4 +215,4 @@ copy the flash local settings configuration to your /usr directory:
 Запустить Firefox
 
 --------------------
-@Firefox 
+@Firefox @symlink 
