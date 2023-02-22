@@ -6,7 +6,7 @@ Creation-Date: 2022-03-27T05:10:17+03:00
 
 За основу можно взять много чего ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
 
-Это инструкция для Debian. В Manjaro [[Manjaro:KDE:Software:ftp|другой подход]] к настройкам.
+Это инструкция для Debian. В Manjaro [[Manjaro:Software:ftp|другой подход]] к настройкам.
 
 ===== Установить vsftpd =====
 
