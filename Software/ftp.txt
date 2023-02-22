@@ -6,7 +6,9 @@ Creation-Date: 2022-03-27T05:10:17+03:00
 
 За основу можно взять много чего ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
 
-Это инструкция для Debian. В Manjaro [[Manjaro:Software:ftp|другой подход]] к настройкам.
+Это инструкция по установке и управлению под Debian. 
+
+Установка в [[Manjaro:Software:ftp]]
 
 ===== Установить vsftpd =====
 
@@ -14,10 +16,10 @@ Creation-Date: 2022-03-27T05:10:17+03:00
 
 Основные управляющие команды:
 
-* ''systemctl stop vsftpd''
-* ''systemctl start vsftpd''
-* ''systemctl restart vsftpd''
 * ''systemctl status vsftpd''
+* ''systemctl start vsftpd''
+* ''systemctl stop vsftpd''
+* ''systemctl restart vsftpd''
 
 ==== Сделать бэкап дефолтного конфиг-файла ====
 
