@@ -23,9 +23,11 @@ Creation-Date: 2022-03-03T04:30:32+02:00
 ===== Установка =====
 
 Поскольку это всё входит в стандартный набор, надо просто проверить версию gpg:
+
 ''gpg --version && kgpg --version''
 
 Если kgpg не установлено:
+
 ''sudo aptitude install gpg kgpg''
 
 ===== Создать новую связку ключей =====
@@ -50,7 +52,20 @@ Creation-Date: 2022-03-03T04:30:32+02:00
 
 ''gpg --list-keys''
 
-Файл-БД для хранения всех gpg-ключей: [[/home/$USER_NAME/.gnupg/pubring.kbx]]
+Файл-БД для хранения всех gpg-ключей: /home/$USER_NAME/.gnupg/pubring.kbx
+
+Можно прочитать его содержимое и так:
+
+''gpg --list-secret-keys --keyid-format LONG''
+
+	* “sec” (secret) укажет количество бит в шифре (например, ''rsa2048''), ID ключа, дату его создания и код “[SC]” или “[E]” или “[A]”: 
+		* E = ready for encrypt/decrypt (decrypt a message you received encrypted for you to read)
+		* S = ready for sign (sign data. For example a file or to send signed e-mail)
+		* C = ready for certify (sign another key, establishing a trust-relation)
+		* A = ready for authentication (log in to SSH with a PGP key; this is relatively new usage).
+	* key fingerprint.
+	* “uid” — ID (имя) владельца ключа.
+	* “ssb” — секретный subkey ключа, который используется для encrypt/decrypt.
 
 === Посмотреть только публичные ключи ===
 
@@ -163,9 +178,11 @@ $USER_EMAIL может быть и полное имя, и его часть, и
 ===== Настройка KGpg =====
 
 При первом запуске KGpg будет предложено указать расположение исполняемого файле GnuPG
+
 ''/usr/bin/gpg2''
 
 и будет создан конфигурационный файл GnuPG
+
 ''/~/.gnupg/gpg.conf''
 
 ==== Запрет открывания KGpg в трее ====
