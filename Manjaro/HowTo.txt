@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-31T16:20:52+03:00
+
+====== HowTo ======
+
+//Next step//: 
