@@ -18,7 +18,7 @@ wget http://www.bchemnet.com/suldr/pool/debian/extra/su/suldr-keyring_2_all.deb
 sudo dpkg -i suldr-keyring_2_all.deb
 '''
 
-		Они, в принципе, должны были бы самостоятельно подхватиться и установиться через ’''sudo wget -O - ''[[http://www.bchemnet.com/suldr/suldr.gpg|''http://www.bchemnet.com/suldr/suldr.gpg'']]'' | sudo apt-key add -’, однако упомянутый файл отсутствует, а самоподхват не срабатывает.''
+		Они, в принципе, должны были бы самостоятельно подхватиться и установиться через ’''sudo wget -O -'' [[http://www.bchemnet.com/suldr/suldr.gpg|''http://www.bchemnet.com/suldr/suldr.gpg'']] ''| sudo apt-key add -’, однако упомянутый файл отсутствует, а самоподхват не срабатывает.''
 
 ===== Обновить ''sources.list'' =====
 
@@ -37,7 +37,7 @@ deb http://www.bchemnet.com/suldr/ debian extra
 Если никаких ошибок не будет — всё норм.
 
 		В теории это можно сделать одной строкой через
-		''sudo bash -c 'echo "deb ''[[http://www.bchemnet.com/suldr/|''http://www.bchemnet.com/suldr/'']]'' debian extra" >> /etc/apt/sources.list'''
+		''sudo bash -c 'echo "deb'' [[http://www.bchemnet.com/suldr/|''http://www.bchemnet.com/suldr/'']] ''debian extra" >> /etc/apt/sources.list'''
 		но для этого в файле ''sources.list последняя строка должна быть пустой. Если нет, то новая строка будет дописана (вклеена, если угодно) к концу уже существующей последней строки. Будет бэмц на ровно месте.''
 
 ===== Установить драйвера принтера =====
@@ -187,7 +187,6 @@ You should see a result similar to this
 [00:34:43.810650] [dll] sane_exit: calling backend `smfp's exit function
 device `smfp:usb;04e8;3413;8J21BAKYC27752X ' is a Samsung SCX-4100 Series on USBScanner
 '''
-
 
 TODO Samsung scan - вылечить
 

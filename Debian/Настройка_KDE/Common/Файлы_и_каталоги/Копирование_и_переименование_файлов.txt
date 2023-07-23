@@ -36,6 +36,5 @@ cp -r * /media/backups
 chmod -R 777 * backups
 '''
 
-
 --------------------
 @console

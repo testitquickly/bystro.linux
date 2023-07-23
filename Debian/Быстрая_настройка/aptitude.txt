@@ -7,5 +7,4 @@ Creation-Date: 2022-02-21T23:47:48+02:00
 ''sudo apt install aptitude''
 
 --------------------
-Настройка Debian
 @console 

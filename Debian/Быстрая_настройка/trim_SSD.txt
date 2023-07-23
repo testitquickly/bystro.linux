@@ -6,7 +6,7 @@ Creation-Date: 2022-02-24T02:44:14+02:00
 
 Наверняка система установлена на быстром SSD. 
 
-Весьма вероятно. что при создании партиции для установки системы были проставлены флаги ''discard, noatime, nodiratime. ''
+Весьма вероятно. что при создании партиции для установки системы были проставлены флаги ''discard, noatime, nodiratime.'' 
 
 Лучше это всё перепроверить и делать самому с нуля, осмысленно.
 
@@ -66,7 +66,7 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 Каждый раз при создании нового файла записывается много всякой служебной информации — она нужна и важна. И каждый раз при обращении к какому-нибудь файлу тоже записывается служебная информация. Монтирование файловой системы с noatime это приказ системе «Do not update inode access times on this filesystem». 
 
-	//Add the "noatime" (or the default "relatime") mount option in /etc/fstab, to disable (or significantly reduce) disk writes whenever a file is read. //
+	//Add the "noatime" (or the default "relatime") mount option in /etc/fstab, to disable (or significantly reduce) disk writes whenever a file is read.// 
 	
 	//This improves filesystem read performance for both SSDs and HDDs.// 
 
@@ -88,7 +88,7 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 ===== Как проверить, включен ли TRIM =====
 
-* ''lsblk --discard''
+''lsblk --discard''
 
 Вариант ответа:
 
@@ -142,7 +142,6 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 /dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
 '''
 
-
 В частности, / у меня на ssd, а [[/home,]] [[/tmp]] и [[/swap]] на hdd. Видно, что trim (через discard) включен и для корня, и для всех остальных разделов. Ранее через «''lsblk --discard''» уже было видно, что для разделов на hdd тримминг хоть и включён, но нифига не работает, бо он там нафиг не нужен.
 
 ===== Как включить trim в уже работающей системе =====
@@ -158,7 +157,7 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 
 Например:
 
-''UUID=69006d4f-bdd7-4fb8-a4ff-fe3adbcc5c73 /  ext4 ''//**''discard''**//'',errors=remount-ro 0   1''
+''UUID=69006d4f-bdd7-4fb8-a4ff-fe3adbcc5c73 /  ext4'' //**''discard''**//'',errors=remount-ro 0   1''
 
 Теперь, после перезагрузки компьютера, помеченные разделы на SSD будут подмонтированы с параметром discard.
 
@@ -177,7 +176,7 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 
 Тем самым, строка fstab может иметь, к примеру, такой вид:
 
-''UUID=aeade6fd-2b24-4e59-bc8c / ext4 noatime,discard,errors=remount-ro,''//**''commit=60''**//'' 0 1''
+''UUID=aeade6fd-2b24-4e59-bc8c / ext4 noatime,discard,errors=remount-ro,''//**''commit=60''**// ''0 1''
 
 ===== Как определить trim под Windows =====
 

@@ -5,7 +5,6 @@ Creation-Date: 2022-02-24T07:44:57+02:00
 ====== Настроить маршрутизацию звука через JACK ======
 
 https://jackaudio.org/faq/device_naming.html
-	
 
 ===== List of PLAYBACK Hardware Devices =====
 

@@ -182,7 +182,6 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 > Экран
 '''
 
-
 ===== Сделать скрипт для автозагрузки =====
 
 Изменения не сохранятся после первой же перезагрузки. Разумно сделать исполняемый скрипт и положить его в автозагрузку профиля.
@@ -210,7 +209,6 @@ deb http://deb.debian.org/debian bullseye-backports main contrib non-free
 > Add… 
 > Add login script
 '''
-
 
 --------------------
 @hdmi @monitor @xrandr 

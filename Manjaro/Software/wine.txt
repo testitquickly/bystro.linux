@@ -4,6 +4,8 @@ Creation-Date: 2023-05-30T17:26:20+03:00
 
 ====== wine ======
 
+TODO Wine — дооформить
+
 Ставим всё сразу
 
 sudo pacman -S wine winetricks wine-mono wine_gecko
