@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-06T15:54:45+03:00
+
+====== LibreOffice ======
+
+https://wiki.archlinux.org/title/LibreOffice
+
+Для Manjaro есть только две опции к установке:
+1. libreoffice-still
+2. libreoffice-fresh
+
+Разумно ставить стабильную версию:
+
+'''
+sudo pacman -Syu
+sudo pacman -S libreoffice-still
+'''
+
+		Ставить отдельно лангпак не требуется, он будет подхвачен по настройкам рабочего профиля.
+
+Ещё можно установить плагин для перегона текстов (таблиц) в [[LaTeX]]
+
+''sudo pacman -S libreoffice-extension-writer2latex''
+
+Множество расширений: https://extensions.libreoffice.org/
+
+Всякие неочевидные настройки LibreOffice: [[Software:LibreOffice:Настройки LibreOffice]]
+
+--------------------
+@libreoffice @manjaro 
