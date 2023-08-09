@@ -152,45 +152,5 @@ deb http://www.bchemnet.com/suldr/ debian extra
 8. Послать на печать все перечисленные НЕчётные страницы.
 9. Вывести на экран очеред печати и постоянно мониторить выходящие страницы. Если что-то пойдёт не так — вмешаться.
 
-===== Device is busy =====
-
-При запуске xsane выводится сообщение о том, что устройство «''smfp:usb;04e8;3413;8J21BAKYC27752X''» занято.
-
-Let's check whether SANE is able to use smfp backend:
-
-''SANE_DEBUG_DLL=5 scanimage -L 2>&1 | grep smfp''
-
-NOTE: In debug mode the scanimage is printing messages to stderr, it's necessary to redirect it to stdout.
-
-You should see a result similar to this
-
-'''
-[00:34:36.105169] [dll] sane_init/read_dlld: considering /etc/sane.d/dll.d/smfp-scanner
-[00:34:36.105182] [dll] sane_init/read_config: reading dll.d/smfp-scanner
-[00:34:36.105192] [dll] add_backend: adding backend `smfp'
-[00:34:36.105200] [dll] sane_init/read_dlld: considering /etc/sane.d/dll.d/smfp-scanner-fix
-[00:34:36.105210] [dll] sane_init/read_config: reading dll.d/smfp-scanner-fix
-[00:34:36.105216] [dll] add_backend: adding backend `xerox_mfp-smfp'
-[00:34:42.484697] [dll] load: searching backend `xerox_mfp-smfp' in `/usr/lib/x86_64-linux-gnu/sane:/usr/lib/sane:/usr/lib64/sane'
-[00:34:42.484715] [dll] load: trying to load `/usr/lib/x86_64-linux-gnu/sane/libsane-xerox_mfp-smfp.so.1'
-[00:34:42.484734] [dll] load: couldn't open `/usr/lib/x86_64-linux-gnu/sane/libsane-xerox_mfp-smfp.so.1' (No such file or directory)
-[00:34:42.484747] [dll] load: trying to load `/usr/lib/sane/libsane-xerox_mfp-smfp.so.1'
-[00:34:42.484765] [dll] load: couldn't open `/usr/lib/sane/libsane-xerox_mfp-smfp.so.1' (No such file or directory)
-[00:34:42.484778] [dll] load: trying to load `/usr/lib64/sane/libsane-xerox_mfp-smfp.so.1'
-[00:34:42.484798] [dll] load: couldn't open `/usr/lib64/sane/libsane-xerox_mfp-smfp.so.1' (No such file or directory)
-[00:34:42.484810] [dll] load: couldn't find backend `xerox_mfp-smfp' (No such file or directory)
-[00:34:42.484828] [dll] load: searching backend `smfp' in `/usr/lib/x86_64-linux-gnu/sane:/usr/lib/sane:/usr/lib64/sane'
-[00:34:42.484844] [dll] load: trying to load `/usr/lib/x86_64-linux-gnu/sane/libsane-smfp.so.1'
-[00:34:42.484869] [dll] load: dlopen()ing `/usr/lib/x86_64-linux-gnu/sane/libsane-smfp.so.1'
-[00:34:42.486391] [dll] init: initializing backend `smfp'
-[00:34:42.486708] [dll] init: backend `smfp' is version 1.0.1
-[00:34:43.810650] [dll] sane_exit: calling backend `smfp's exit function
-device `smfp:usb;04e8;3413;8J21BAKYC27752X ' is a Samsung SCX-4100 Series on USBScanner
-'''
-
-TODO Samsung scan - вылечить
-
-https://forums.debian.net/viewtopic.php?t=146263
-
 --------------------
 @printer @scaner @xsane
