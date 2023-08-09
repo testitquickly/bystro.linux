@@ -4,8 +4,7 @@ Creation-Date: 2023-02-18T01:21:03+02:00
 
 ====== Kile ======
 
-TODO ! kile - дописать текст
-ориентир: [[Manjaro:Software:LaTeX:Kile]]
+глянуть настройки из [[Manjaro:Software:LaTeX:Kile]]
 
 Это инструкция по установке Kile в Debian. В Manjaro Kile ставят иначе: [[Manjaro:Software:LaTeX:Kile]]
 
