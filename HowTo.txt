@@ -7,7 +7,6 @@ Creation-Date: 2022-11-24T03:36:01+02:00
 [[+microcode и dualboot]]
 [[+Mount AND umount iso files]]
 [[+swap]]
-[[+UEFI]]
 [[+Автозамена]]
 [[+Исправить битые пакеты (held)]]
 [[+Как выключить компьютер из консоли]]
