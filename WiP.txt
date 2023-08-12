@@ -4,6 +4,10 @@ Creation-Date: 2023-08-09T03:55:49+03:00
 
 ====== WiP ======
 
+LaTeX 
+* добавить пояснение про XeLaTeX
+* добавить пояснение про build file
+
 * :Debian:HowTo:UEFI
 * :Debian:HowTo:Как восстановить grub2
 * :Debian:HowTo:Как полностью удалить программу
