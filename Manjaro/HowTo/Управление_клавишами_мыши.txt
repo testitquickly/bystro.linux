@@ -203,7 +203,6 @@ https://wiki.archlinux.org/title/Xbindkeys
 
 Можно указать команду ''0xfe03, ISO_Level3_Shift)”''
 
-
 Для отлова клика кнопки можно задействовать gui-приложение: 
 
 '''
@@ -234,5 +233,3 @@ in $HOME/.xbindkeysrc to bind a key.
 '''
 
 Ок, будем считать, что нажатие нужной мне кнопки определяется как “''Mod2+Mod5 + ISO_Level3_Shift''”.
-
-
