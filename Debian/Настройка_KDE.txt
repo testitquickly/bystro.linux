@@ -67,7 +67,7 @@ TODO Настройки. Дооформить список
 [[Software:Sublime]]
 [[Software:Thunderbird]]
 [[Software:VLC]]
-[[Software:vmware]]
+[[Manjaro:Software:vmware]]
 [[Software:wget]]
 [[Software:wine]]
 [[Software:Zim]]
