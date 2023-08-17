@@ -4,6 +4,9 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 ====== Добавить пользователя в группу sudo ======
 
+@sudo @console
+--------------------
+
 * ''su''
 * указать root password
 
@@ -45,5 +48,3 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 sudo chown astenix:sudo -R /home/
 '''
 
---------------------
-@sudo @console
