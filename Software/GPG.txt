@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-03T04:30:32+02:00
 
-@gpg  @kgpg 
---------------------
-
 ====== GPG ======
+
+< @gpg  @kgpg >
 
 Подразумевается, что основы концепции ключей шифрования уже понятны:
 * https://userbase.kde.org/Concepts/OpenPGP_For_Beginners

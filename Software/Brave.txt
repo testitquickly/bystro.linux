@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-27T03:29:14+02:00
 
-@brave @install 
---------------------
-
 ====== Brave ======
+
+< @brave @install >
 
 https://brave.com/linux/#release-channel-installation
 

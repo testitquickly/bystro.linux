@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-17T02:32:09+02:00
 
-@manjaro @autostart 
---------------------
-
 ====== autostart ======
+
+< @manjaro @autostart >
 
 В папке профиля юзера
 

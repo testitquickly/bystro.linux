@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T02:44:14+02:00
 
-@sdd @hdd @trim 
---------------------
-
 ====== trim SSD ======
+
+< @sdd @hdd @trim >
 
 Наверняка система установлена на быстром SSD. 
 

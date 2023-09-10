@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-27T10:35:47+02:00
 
-@firewall 
---------------------
-
 ====== Firewall ======
+
+< @firewall >
 
 ===== Нужен ли файервол? =====
 

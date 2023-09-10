@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-05-15T07:13:54+03:00
 
-@printer @scaner @xsane @samsung 
---------------------
-
 ====== Принтер-сканер Samsung SCX-4100 ======
+
+< @printer @scaner @xsane @samsung >
 
 У меня есть древний принтер/сканер Samsung SCX-4100 (Monochrome Laser Printer). Найти драйвера под линукс на сайте самсунга не удалось. Однако есть репозиторий с подходящими для этой ретротехники драйверами на https://www.bchemnet.com/suldr/ (имя автора неразборчиво). Он сделал сборку ’Samsung Unified Linux Driver’: «//I simply repackage the drivers that Samsung (HP) provides for free, and am not involved in any way with development of them//».
 

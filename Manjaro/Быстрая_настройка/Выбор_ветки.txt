@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-07T01:20:30+02:00
 
-@manjaro @branch 
---------------------
-
 ====== Выбор ветки ======
+
+< @manjaro @branch >
 
 ==== Выяснить текущую ветку ====
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:28:34+02:00
 
-@LibreOffice @console 
---------------------
-
 ====== LibreOffice ======
+
+< @LibreOffice @console >
 
 ===== Установить LibreOffice =====
 

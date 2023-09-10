@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:05:09+02:00
 
-@console @iso 
---------------------
-
 ====== Mount AND umount iso files ======
+
+< @console @iso >
 
 1) You must login as a root user, if not root user then switch to root user using following command:
 

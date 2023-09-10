@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-14T23:48:53+02:00
 
-@windows10 @microcode @dualboot
---------------------
-
 ====== microcode и dualboot ======
+
+< @windows10 @microcode @dualboot >
 
 Debian отказался загружаться.
 

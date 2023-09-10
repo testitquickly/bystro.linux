@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:37:26+02:00
 
-@console @aptitude 
---------------------
-
 ====== Как искать пакеты в терминале ======
+
+< @console @aptitude >
 
 Это просто поиск пакетов по имени. 
 

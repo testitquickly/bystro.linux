@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-05-08T17:21:44+03:00
 
-@manjaro @pulseeffect
---------------------
-
 ====== PulseEffect ======
+
+< @manjaro @pulseeffect >
 
 Установка через Pamac в обычном режиме.
 

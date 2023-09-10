@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:25:36+02:00
 
-@window 
---------------------
-
 ====== Настроить перелистывание окон ======
+
+< @window >
 
 Параметры системы 
 '''

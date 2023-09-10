@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-10-31T22:15:43+02:00
 
-@vmware @console 
---------------------
-
 ====== vmware ======
+
+< @vmware @console >
 
 ===== Подготовка =====
 

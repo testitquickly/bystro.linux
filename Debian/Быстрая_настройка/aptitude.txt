@@ -2,10 +2,22 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-21T23:47:48+02:00
 
-@console 
---------------------
-
 ====== aptitude ======
+
+< @console >
 
 ''sudo apt install aptitude''
 
+Test kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd v
+
+'''
+Text sdsfsd jhsdk fkjsvhd f
+'''
+
+dfdfshg
+'''
+
+dfsdf sdfsd  ffff kjkkkds kk
+'''
+
+Test kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd vTest kjhbdslkfj lkjd lkuasb kajbsuizS LEHfvb zvs vhtCKSAGVZ Dcv,jzxhd v

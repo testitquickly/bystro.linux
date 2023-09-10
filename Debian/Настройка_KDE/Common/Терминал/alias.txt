@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-08T13:07:01+02:00
 
-@console @bashrc 
---------------------
-
 ====== alias ======
+
+< @console @bashrc >
 
 Любые длинные команды в консоли можно заменить алиасом (alias) — короткое слово, которое является переменной.
 

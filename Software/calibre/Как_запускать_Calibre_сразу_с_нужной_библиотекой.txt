@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:55:00+02:00
 
-@calibre @console 
---------------------
-
 ====== Как запускать Calibre сразу с нужной библиотекой ======
+
+< @calibre @console >
 
 Если библиотека находится в каталоге '.Малая библиотэка Calibre', тогда команда:
 

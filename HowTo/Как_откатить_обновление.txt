@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:40:12+02:00
 
-@console @update @debian 
---------------------
-
 ====== Как откатить обновление ======
+
+< @console @update @debian >
 
 Отката нет, можно попробовать найти предыдущую версию пакета
 

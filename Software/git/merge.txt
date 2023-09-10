@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-05T02:29:13+02:00
 
-@git @smartgit @merge 
---------------------
-
 ====== merge ======
+
+< @git @smartgit @merge >
 
 Merge — слияние веток (branch).
 

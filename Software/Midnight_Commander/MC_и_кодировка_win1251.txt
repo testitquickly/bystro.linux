@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:03:19+02:00
 
-@mc @utf8  
---------------------
-
 ====== MC и кодировка win1251 ======
+
+< @mc @utf8 >
 
 ===== Как сделать читаемым файл с кодировкой win1251 =====
 

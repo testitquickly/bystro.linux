@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-07T20:26:09+02:00
 
-@spectacle @screenshot 
---------------------
-
 ====== Spectacle ======
+
+< @spectacle @screenshot >
 
 Скриншотер KDE. По-умолчанию нажатие на кнопку Print и создаёт скриншот всех экранов, и вызывает окно Spectacle.
 

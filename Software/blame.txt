@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-21T18:56:36+02:00
 
-@console @systemd 
---------------------
-
 ====== blame ======
+
+< @console @systemd >
 
 //Это сразу не нужно, но позже будет очень полезно.//
 

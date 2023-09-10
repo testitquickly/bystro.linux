@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:03:36+02:00
 
-@grub @console 
---------------------
-
 ====== grub2 ======
+
+< @grub @console >
 
 sudo mcedit /etc/default/grub
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:11:56+02:00
 
-@Firefox @symlink 
---------------------
-
 ====== Firefox ======
+
+< @Firefox @symlink >
 
 По-умолчанию его нет в репозиториях Debian, вместо него существует Firefox ESR (Extended support release). Можно его использовать, но он всегда более старый, нежели новейший браузер, поэтому его можно удалить через Apper или Discover, а можно и оставить, он не мешает.
 

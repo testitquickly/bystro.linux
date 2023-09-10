@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-03T04:36:22+02:00
 
-@evince @okular @pdf 
---------------------
-
 ====== PDF ======
+
+< @pdf @evince @okular >
 
 В KDE изначально основной просмотрщик — [[Okular]]//,// в Gnome — //Evince//. Но и в KDE можно пользоваться Evince по нескольким причинам:
 * проще выглядит, почти всё спрятано за отдельными кнопками

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-09T22:58:27+03:00
 
-@keyboard @sound @elgato 
---------------------
-
 ====== Переключение выходов звука ======
+
+< @keyboard @sound @elgato >
 
 В Debian, конечно, можно поменять вывод звука на разные источники прямо в консоли. Удобно же.
 

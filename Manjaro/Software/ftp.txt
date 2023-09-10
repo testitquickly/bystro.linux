@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-08T02:41:52+02:00
 
-@manjaro @console @ftp 
---------------------
-
 ====== ftp ======
+
+< @manjaro @console @ftp >
 
 ===== Установить vsftpd =====
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-03-26T14:14:05+03:00
 
-@gpg  @kgpg
---------------------
-
 ====== backup and restore a PGP key ======
+
+< @gpg  @kgpg >
 
 https://www.jwillikers.com/backup-and-restore-a-gpg-key
 

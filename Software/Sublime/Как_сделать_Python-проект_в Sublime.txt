@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-22T04:16:50+02:00
 
-@sublime @python 
---------------------
-
 ====== Как сделать Python-проект в Sublime ======
+
+< @sublime @python >
 
 ===== Сделать каталог для проекта =====
 

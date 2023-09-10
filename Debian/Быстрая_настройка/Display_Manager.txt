@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:16:08+02:00
 
-@sddm @lightdm 
---------------------
-
 ====== Настроить Display Manager ======
+
+< @sddm @lightdm >
 
 Вообще их много: 
 	* gdm (Gnome Display Manager), 
@@ -46,7 +45,9 @@ sudo apt-get install lightdm
 
 Но если в будущем понадобится, то вот:
 
-''sudo dpkg-reconfigure lightdm''
+'''
+sudo dpkg-reconfigure lightdm
+'''
 
 ==== Удалить старый Display Manager ====
 
@@ -56,8 +57,12 @@ sudo apt-get purge sddm
 
 Не помешает
 
-''sudo apt autoremove''
+'''
+sudo apt autoremove
+'''
 
 Последний шаг:
 
-''sudo reboot''
+'''
+sudo reboot
+'''

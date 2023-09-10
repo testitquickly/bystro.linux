@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-27T05:10:17+03:00
 
-@console @ftp 
---------------------
-
 ====== ftp ======
+
+< @console @ftp >
 
 За основу можно взять много чего ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
 

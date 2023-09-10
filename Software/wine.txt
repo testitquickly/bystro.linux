@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:07:16+02:00
 
-@console @wine 
---------------------
-
 ====== wine ======
+
+< @console @wine >
 
 ===== Установка и настройка =====
 

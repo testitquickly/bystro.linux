@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-17T22:20:43+02:00
 
-@KeePassXC
---------------------
-
 ====== KeePassXC ======
+
+< @KeePassXC >
 
 Лучший open-source password manager. Форк умершего “KeePass”. Работает и под Windows.
 

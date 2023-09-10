@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-06T02:18:53+03:00
 
-@python @console 
---------------------
-
 ====== Python ======
+
+< @python @console >
 
 В Debian по-умолчанию Python установлен. Они приходит из общего репозитория и со временем обновляется. 
 

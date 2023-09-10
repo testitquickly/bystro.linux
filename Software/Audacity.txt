@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-06-22T17:15:24+03:00
 
-@Audacity @sound 
---------------------
-
 ====== Audacity ======
+
+< @Audacity @sound >
 
 ===== Настройки внешнего вида =====
 

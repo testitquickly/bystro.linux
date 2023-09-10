@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:13:58+02:00
 
-@console @update 
---------------------
-
 ====== Как установить пакет из unstable (sid) на Debian testing ======
+
+< @console @update >
 
 например https://packages.debian.org/sid/qmmp
 

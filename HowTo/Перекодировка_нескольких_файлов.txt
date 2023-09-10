@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T23:48:10+02:00
 
-@console
---------------------
-
 ====== Перекодировка нескольких файлов ======
+
+< @console >
 
 Например из KOI8-R в UTF8.
 

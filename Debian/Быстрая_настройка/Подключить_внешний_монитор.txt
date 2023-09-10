@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-05T04:39:54+02:00
 
-@hdmi @monitor @xrandr @debian 
---------------------
-
 ====== Подключить внешний монитор ======
+
+< @hdmi @monitor @xrandr @debian >
 
 В моём ноутбуке занятная и когда-то дорогая игровая Nvidia «GeForce GTX 1050 Ti (Mobile)». С другими видеокартами надо искать другие решения.
 

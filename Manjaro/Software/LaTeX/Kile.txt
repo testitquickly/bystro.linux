@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-18T01:12:59+02:00
 
-@manjaro @LaTeX @kile @install 
---------------------
-
 ====== Kile ======
+
+< @manjaro @LaTeX @kile @install >
 
 Kile — один из текстовых редакторов для LaTeX.
 

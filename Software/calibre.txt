@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-08-03T08:47:18+03:00
 
-@calibre @font 
---------------------
-
 ====== calibre ======
+
+< @calibre @font >
 
 Внутренний просмотрщик книг в Calibre по-умолчанию выравнивает текст по краям (justify).
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T04:18:48+02:00
 
-@debian @update @rpm 
---------------------
-
 ====== Установка пакетов .rpm в Debian ======
+
+< @debian @update @rpm >
 
 Debian в принципе не rpm-система, но если надо, то можно и в Deb установить какие-то программы, которые поставляются в виде пакетов rpm.
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:32:44+02:00
 
-@Firefox @Instagram 
---------------------
-
 ====== Как добавить фото в Instagram из браузера ======
+
+< @Firefox @Instagram >
 
 https://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/
 

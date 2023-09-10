@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-18T21:32:00+02:00
 
-@snap @console 
---------------------
-
 ====== snap ======
+
+< @snap @console >
 
 snap — это изоляционное окружение для софта, которое сделал Canonical. Ещё есть [[flatpak]] и другие.
 

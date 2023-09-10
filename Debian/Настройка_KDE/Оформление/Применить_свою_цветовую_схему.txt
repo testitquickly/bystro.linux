@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-27T04:48:32+02:00
 
-@color @systemSettings
---------------------
-
 ====== Применить свою цветовую схему ======
+
+< @color @systemSettings >
 
 Находится в [[/home/astenix/.kde/share/apps/color-schemes/]]
 Файл ''AstenixBreezeDarkNeutral.colors''

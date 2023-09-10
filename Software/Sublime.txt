@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-22T03:34:05+02:00
 
-@sublime @python 
---------------------
-
 ====== Sublime ======
+
+< @sublime @python >
 
 Это текстовый редактор, полностью он называется «[[https://ru.wikipedia.org/wiki/Sublime_Text|Sublime Text]]». Слово “sublime” переводится как «возвышенный, величественный, высокий, грандиозный». Автор — Джон Скиннер.
 

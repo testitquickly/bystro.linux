@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-09T22:57:06+03:00
 
-@keyboard @sound @virtualDesktops 
---------------------
-
 ====== Настройка шорткатов для управления громкостью ======
+
+< @keyboard @sound @virtualDesktops >
 
 Переключиться на английский язык.
 

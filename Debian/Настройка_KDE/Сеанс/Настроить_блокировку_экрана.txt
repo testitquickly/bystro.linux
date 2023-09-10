@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-28T20:29:06+03:00
 
-@power @monitor 
---------------------
-
 ====== Настроить блокировку экрана ======
+
+< @power @monitor >
 
 Параметры системы 
 '''

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:29:28+02:00
 
-@console @timer @shutdown 
---------------------
-
 ====== Как выключить компьютер из консоли ======
+
+< @console @timer @shutdown >
 
 ===== Выключить немедлено =====
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:58:50+02:00
 
-@console @user @rights @chmod @chown 
---------------------
-
 ====== Установить права доступа на запись на все подпапки и файлы ======
+
+< @console @user @rights @chmod @chown >
 
 1
 Chown (от англ. change owner) — программа для изменения владельца и группы на файлы и директории.

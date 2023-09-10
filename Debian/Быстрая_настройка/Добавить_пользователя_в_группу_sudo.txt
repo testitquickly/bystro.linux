@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-21T23:09:07+02:00
 
-@sudo @console
---------------------
-
 ====== Добавить пользователя в группу sudo ======
+
+< @sudo @console >
 
 * ''su''
 * указать root password

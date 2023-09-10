@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-04T18:59:21+03:00
 
-@finance @KMyMoney
---------------------
-
 ====== KMyMoney ======
+
+< @finance @KMyMoney >
 
 Адекватная, старинная аппликуха для учёта финансов. Learning curve может быть тяжеловата. Аналогов море.
 

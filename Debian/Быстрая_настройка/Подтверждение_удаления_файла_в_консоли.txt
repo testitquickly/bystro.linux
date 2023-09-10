@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:27:15+02:00
 
-@bashrc @console
---------------------
-
 ====== Подтверждение удаления файла в консоли ======
+
+< @bashrc @console >
 
 (по-умолчанию она этого не делает)
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-17T22:24:54+02:00
 
-@console @smartgit @git @github 
---------------------
-
 ====== SmartGit ======
+
+< @console @smartgit @git @github >
 
 Это очень хороший сам-по-себе GUI-клиент, потому что git в консоли поначалу интересно, а потом нет. Можно всё настроить в IDE, но если речь идет не о разработке, то какой тут IDE?!
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T07:43:28+02:00
 
-@kmail @akonadi 
---------------------
-
 ====== Отключить KMail и сопутствующие службы ======
+
+< @kmail @akonadi >
 
 # посмотреть, что управляется сервером akonadi
 ''akonadictl status''

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-06-21T19:35:03+03:00
 
-@KMail
---------------------
-
 ====== KMail ======
+
+< @KMail >
 
 Есть неочевидный баг с профилями типа IMAP — из папки INBOX невозможно удалить ни одно письмо.
 

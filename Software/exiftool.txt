@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-03T09:14:03+02:00
 
-@console @mc @pdf @exiftool 
---------------------
-
 ====== exiftool ======
+
+< @console @mc @pdf @exiftool >
 
 Это консольная утилита, которую можно использовать для редактирования метаданных файлов, в том числе и файлов ”pdf”. 
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:11:45+02:00
 
-@wget @console 
---------------------
-
 ====== wget ======
+
+< @wget @console >
 
 Скачиваем все файлы через "файл-лист" с помощью Wget
 

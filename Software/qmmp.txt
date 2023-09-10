@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-24T02:19:35+02:00
 
-@qmmp @sound 
---------------------
-
 ====== qmmp ======
+
+< @qmmp @sound >
 
 Самая удобная обложка: //iAmp1-6.wsz//
 

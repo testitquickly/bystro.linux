@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:50:15+02:00
 
-@update @debian 
---------------------
-
 ====== Обновить Debian ======
+
+< @update @debian >
 
 ===== Проверить версию и релиз Debian =====
 

@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-03-26T14:10:28+03:00
 
-@gpg  @kgpg
---------------------
-
 ====== Если забыл passphrase ======
+
+< @gpg  @kgpg >
 
 https://medium.com/@fro_g/oh-no-i-forgot-my-pgp-private-keys-passphrase-6ec1d0228b48
 

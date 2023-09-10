@@ -2,10 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:59:26+02:00
 
-@vlc
---------------------
-
 ====== VLC ======
+
+< @vlc >
 
 ===== Устранение "квадратиков" в VLC =====
 
