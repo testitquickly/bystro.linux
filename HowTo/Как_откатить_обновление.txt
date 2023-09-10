@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:40:12+02:00
 
+@console @update @debian 
+--------------------
+
 ====== Как откатить обновление ======
 
 Отката нет, можно попробовать найти предыдущую версию пакета
@@ -12,5 +15,4 @@ Creation-Date: 2022-02-23T00:40:12+02:00
 
 ''$ sudo aptitude install package_name=version''
 
---------------------
-@console @update 
+

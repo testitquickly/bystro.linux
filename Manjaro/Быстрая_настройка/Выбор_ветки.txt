@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-07T01:20:30+02:00
 
+@manjaro @branch 
+--------------------
+
 ====== Выбор ветки ======
 
 ==== Выяснить текущую ветку ====
@@ -19,5 +22,3 @@ Creation-Date: 2023-01-07T01:20:30+02:00
 * ''sudo pacman-mirrors --api --set-branch'' **''stable''** ''(или 'unstable' или 'testing')''
 * ''sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syyu && sudo pamac upgrade''
 
---------------------
-@manjaro @branch 

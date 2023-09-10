@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:03:19+02:00
 
+@mc @utf8  
+--------------------
+
 ====== MC и кодировка win1251 ======
 
 ===== Как сделать читаемым файл с кодировкой win1251 =====
@@ -36,7 +39,3 @@ F9 → Настройки → Сохранить настройки
 ''Alt+I'' opens the active panel's directory on the other panel.
 
 ''Alt+O'' opens the directory your cursor is on.
-
-
---------------------
-@mc @utf8  

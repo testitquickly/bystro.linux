@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:46:26+02:00
 
+@console @kernel 
+--------------------
+
 ====== Как узнать какие ядра есть в системе ======
 
 Посмотреть список ВСЕХ ядер
@@ -24,5 +27,3 @@ Creation-Date: 2022-02-23T00:46:26+02:00
 	
 	''aptitude purge linux-image-3.2.0.4-686-pae''
 
---------------------
-@console @kernel 

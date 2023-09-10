@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:09:08+02:00
 
+@swap @console 
+--------------------
+
 ====== swap ======
 
 ===== Очистить SWAP =====
@@ -25,5 +28,3 @@ Creation-Date: 2022-02-23T21:09:08+02:00
 	Ещё можно сделать так (из-под root), но это что-то мудреное:
 ''echo 3 > /proc/sys/vm/drop_caches && swapoff -a && sleep 3 && swapon -a && free -h''
 
---------------------
-@swap @console 

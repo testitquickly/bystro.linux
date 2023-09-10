@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-21T23:32:31+02:00
 
+@console @update @repository @debian 
+--------------------
+
 ====== Обновить sources.list ======
 
 ===== Выбрать самый быстрый ресурс =====
@@ -39,5 +42,3 @@ deb http://security.debian.org/debian-security bullseye-security main contrib no
 * ''sudo apt update''
 * ''sudo reboot''
 
---------------------
-@console @update @repository 

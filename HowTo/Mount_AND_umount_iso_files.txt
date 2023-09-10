@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:05:09+02:00
 
+@console @iso 
+--------------------
+
 ====== Mount AND umount iso files ======
 
 1) You must login as a root user, if not root user then switch to root user using following command:
@@ -43,6 +46,3 @@ You can also force unmount (if it is giving some error), enter:
 
 Процессы можно проверить и убить, если надо, через htop. Затем сделать 
 ''umount /mnt/iso_files''
-
---------------------
-@console @iso 

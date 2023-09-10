@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:16:06+02:00
 
+@fonts @LibreOffice @Krusader 
+--------------------
+
 ====== Кракозябры в русских названиях каталогов в Krusader и LibreOffice ======
 
 1
@@ -29,5 +32,3 @@ russian  ru-RU.UTF-8
 
 Полностью разлогиниться и снова залогиниться в системе.
 
---------------------
-@fonts @LibreOffice @Krusader 

@@ -2,9 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:28:55+02:00
 
+@console 
+--------------------
+
 ====== Как сделать cd eject ======
 
 ''umount /media/cdrom0/''
-
---------------------
-@console

@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:50:15+02:00
 
+@update @debian 
+--------------------
+
 ====== Обновить Debian ======
 
 ===== Проверить версию и релиз Debian =====
@@ -74,6 +77,3 @@ sudo apt dist-upgrade
 ===== Если обновления проверяются только из кэша =====
 
 [[HowTo:Как заставить aptitude обновляться из сети, а не из кэша]]
-
---------------------
-@update 

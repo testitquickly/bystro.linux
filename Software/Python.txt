@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-06T02:18:53+03:00
 
+@python @console 
+--------------------
+
 ====== Python ======
 
 В Debian по-умолчанию Python установлен. Они приходит из общего репозитория и со временем обновляется. 
@@ -17,7 +20,7 @@ Creation-Date: 2022-04-06T02:18:53+03:00
 * ''python3 --version''
 * ''python3.9 --version''
 
-Пример ответа в обоих случаях: «//Python 3.9.2». //
+Пример ответа в обоих случаях: «//Python 3.9.2».// 
 		
 		3.9 — это общая версия языка. 
 		3.9.2 — конкретная версия интерпретатора.
@@ -47,7 +50,7 @@ Creation-Date: 2022-04-06T02:18:53+03:00
 
 Это можно из консоли в любом месте:
 
-''wget ''[[https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz|''https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz'']]'' -P ''[[~/PythonSource|''~/PythonSource'']]'' && cd ''[[~/PythonSource|''~/PythonSource'']]
+''wget'' [[https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz|''https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz'']] ''-P'' [[~/PythonSource|''~/PythonSource'']] ''&& cd'' [[~/PythonSource|''~/PythonSource'']]
 
 ==== Распаковать снятый архив ====
 
@@ -154,5 +157,3 @@ $ pyenv local 2.7.X
 $ pyenv global 3.5.X
 '''
 
---------------------
-@python @console 

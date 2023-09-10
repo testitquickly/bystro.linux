@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:17:00+02:00
 
+@toolbar @copy @window @virtual_desktops @fonts @time @calendar @погода 
+--------------------
+
 ====== Настроить тулбар ======
 
 А заодно и всякое другое.
@@ -98,5 +101,3 @@ Creation-Date: 2022-02-22T15:17:00+02:00
 
 [[+Виджет «Просмотр папки»]]
 
---------------------
-@toolbar @copy @window @virtual_desktops @fonts @time @calendar @погода 

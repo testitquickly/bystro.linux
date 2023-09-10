@@ -2,9 +2,12 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-17T22:20:43+02:00
 
+@KeePassXC
+--------------------
+
 ====== KeePassXC ======
 
-Open-source password manager, работает и под Windows. Продолжение идей KeePass, который перестали поддерживать. 
+Лучший open-source password manager. Форк умершего “KeePass”. Работает и под Windows.
 
 Для андроид есть ''Keepass2Android'' — если положить файл с базой в Dropbox, то обновление файла будет происходить на лету. При возникновении нестыковок — записывает изменения в новую копию файла в Dropbox.
 
@@ -18,5 +21,3 @@ Open-source password manager, работает и под Windows. Продолж
 
 Другие варианты (flatpak, appimage и др): https://keepassxc.org/download/#linux
 
---------------------
-@KeePassXC 

@@ -2,11 +2,14 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:11:45+02:00
 
+@wget @console 
+--------------------
+
 ====== wget ======
 
 Скачиваем все файлы через "файл-лист" с помощью Wget
 
-''wget -i ''[[http://www.example.ua/filelist/your_list_here.urls|''http://www.example.ua/filelist/your_list_here.urls'']]'' --trust-server-names=on --restrict-file-names=nocontrol''
+''wget -i'' [[http://www.example.ua/filelist/your_list_here.urls|''http://www.example.ua/filelist/your_list_here.urls'']] ''--trust-server-names=on --restrict-file-names=nocontrol''
 
 2
 Вероятны траблы, если файлы именованы на русском языке. Тогда надо настроить Wget в обход --trust-server-names=on — в файле "~/.wgetrc" сделать так:
@@ -45,7 +48,7 @@ $ex2download.sh
 
 ===== Как скачать сайт целиком с помощью wget =====
 
-''wget -r -k -p -l 2 -E -nc ''[[http://site.com/|''http://site.com/'']]
+''wget -r -k -p -l 2 -E -nc'' [[http://site.com/|''http://site.com/'']]
 
 После выполнения данной команды в директорию site.com будет загружена локальная копия сайта http://site.com. Чтобы открыть главную страницу сайта нужно открыть файл index.html.
 
@@ -56,6 +59,3 @@ $ex2download.sh
 * -l — определяет максимальную глубину вложенности страниц, которые wget должен скачать (по умолчанию значение равно 5, в примере мы установили 2). В большинстве случаев сайты имеют страницы с большой степенью вложенности и wget может просто «закопаться», скачивая новые страницы. Чтобы этого не произошло можно использовать параметр -l.
 * -E — добавлять к загруженным файлам расширение .html.
 * -nc — при использовании данного параметра существующие файлы не будут перезаписаны. Это удобно, когда нужно продолжить загрузку сайта, прерванную в предыдущий раз.
-
---------------------
-@wget @console 

@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:30:20+02:00
 
+@console @fonts @Microsoft 
+--------------------
+
 ====== Шрифты ======
 
 Можно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex
@@ -46,5 +49,3 @@ sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts
 sudo fc-cache -fv
 '''
 
---------------------
-@console @fonts @Microsoft 

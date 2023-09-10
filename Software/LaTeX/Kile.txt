@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-18T01:21:03+02:00
 
+@kile @equivs @latex  
+--------------------
+
 ====== Kile ======
 
 глянуть настройки из [[Manjaro:Software:LaTeX:Kile]]
@@ -207,5 +210,3 @@ TODO ! Kile - новые команды
 
 TODO ! Kile - компиляция файлов через внешний скрипт
 
---------------------
-@kile @equivs 

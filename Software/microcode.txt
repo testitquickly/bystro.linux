@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-15T21:28:50+02:00
 
+@microcode @console 
+--------------------
+
 ====== microcode ======
 
 Познать свой процессор: 
@@ -16,6 +19,3 @@ sudo apt-get install intel-microcode
 	''sudo apt-get install amd64-microcode''
 
 Устанавливать это всё необязательно, проблемы с этим всем маловероятны, но таки бывают. А иногда бывает вот такое: Фишки Linux:microcode и dualboot
-
---------------------
-@microcode @console 

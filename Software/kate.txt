@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:57:09+02:00
 
+@kate @fonts 
+--------------------
+
 ====== kate ======
 
 Лучший шрифт 
@@ -13,5 +16,3 @@ Creation-Date: 2022-02-22T14:57:09+02:00
 * Noto Mono 
 * Source Code Pro 
 
---------------------
-@kate @fonts 

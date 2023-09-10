@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:56:38+02:00
 
+@console @time
+--------------------
+
 ====== Автообновление времени и даты ======
 
 Перегрузился из винды в Debian, и замечаю, что время-то прошло незаметно, уже 19:32. А часы на стене говорят, что всего 17:32.  
@@ -133,6 +136,3 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 	System clock synchronized: yes
 	NTP service: active
 	RTC in local TZ: no
-
---------------------
-@console @time

@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T02:44:14+02:00
 
+@sdd @hdd @trim 
+--------------------
+
 ====== trim SSD ======
 
 Наверняка система установлена на быстром SSD. 
@@ -187,6 +190,3 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 
 Если команда TRIM выключена, то чтобы включить команду TRIM надо ввести команду 
 ''fsutil behavior set disabledeletenotify 0''
-
---------------------
-@sdd @hdd @trim 

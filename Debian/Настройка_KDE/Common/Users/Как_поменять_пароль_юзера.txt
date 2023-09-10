@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:26:56+02:00
 
+@console @user
+--------------------
+
 ====== Как поменять пароль юзера ======
 
 Из-под root
@@ -12,5 +15,3 @@ Creation-Date: 2022-02-23T00:26:56+02:00
 
 ''passwd -g GROUPNAME''
 
---------------------
-@console @user

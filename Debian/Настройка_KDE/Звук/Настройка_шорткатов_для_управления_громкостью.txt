@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-09T22:57:06+03:00
 
+@keyboard @sound @virtualDesktops 
+--------------------
+
 ====== Настройка шорткатов для управления громкостью ======
 
 Переключиться на английский язык.
@@ -17,5 +20,4 @@ Creation-Date: 2022-04-09T22:57:06+03:00
 * Увеличить громкость = Shift + Alt + Up
 * Уменьшить громкость = Shift + Alt + Down
 
---------------------
-@keyboard @sound @virtualDesktops 
+

@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:57:12+02:00
 
+@hdd @smart 
+--------------------
+
 ====== hdd S.M.A.R.T. ======
 
 ===== Узнать данные S.M.A.R.T. =====
@@ -100,7 +103,7 @@ Creation-Date: 2022-02-23T20:57:12+02:00
 
 Прервать выполнение теста можно только так:
 
-''sudo smartctl -X ''[[/dev/sdb|''/dev/sdb'']]
+''sudo smartctl -X'' [[/dev/sdb|''/dev/sdb'']]
 
 ===== Просмотр итогов =====
 
@@ -114,5 +117,3 @@ SMART overall-health self-assessment test result: PASSED
 
 Если всё плохо: забэкапиться и заменить диск.
 
---------------------
-@hdd @smart 

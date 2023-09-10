@@ -2,12 +2,14 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-24T20:53:19+02:00
 
+@keyboard 
+--------------------
+
 ====== OnBoard ======
 
 Экранная клавиатура. Иногда очень удобно.
 
 ''sudo apt install onboard''
 
---------------------
-@keyboard 
+
 

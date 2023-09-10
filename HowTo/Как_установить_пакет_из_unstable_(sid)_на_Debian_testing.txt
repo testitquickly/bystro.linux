@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:13:58+02:00
 
+@console @update 
+--------------------
+
 ====== Как установить пакет из unstable (sid) на Debian testing ======
 
 например https://packages.debian.org/sid/qmmp
@@ -31,5 +34,3 @@ aptitude -t unstable install nvidia-glx
 
 если не указывать другим пакетам вручную ветку, из которой следует их поставить, то они будут устанавливаться из той ветки, которая прописана как Default-Release. Вот и всё.
 
---------------------
-@console @update 

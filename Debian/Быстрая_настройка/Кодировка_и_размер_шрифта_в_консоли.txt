@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:59:36+02:00
 
+@console @grub @fonts 
+--------------------
+
 ====== Кодировка и размер шрифта в консоли ======
 
 Выйти в отдельную сессию (Ctrl+Alt+F1) и залогиниться под своим юзером.
@@ -70,5 +73,3 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet nomodeset"
 
 ''sudo update-grub''
 
---------------------
-@console @grub @fonts 

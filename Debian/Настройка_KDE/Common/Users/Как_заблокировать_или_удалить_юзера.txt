@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T19:43:32+02:00
 
+@console @user 
+--------------------
+
 ====== Как заблокировать или удалить юзера ======
 
 ''sudo usermod --lock --expiredate 1970-01-02 <username>''
@@ -14,7 +17,7 @@ Creation-Date: 2022-02-22T19:43:32+02:00
 
 To re-enable the account at a later date you can run:
 
-''sudo usermod --unlock --expiredate '' <username>''
+''sudo usermod --unlock --expiredate''  <username>''
 
 	Другие варианты
 	''sudo chage -E0 <UserName>''
@@ -28,5 +31,3 @@ To re-enable the account at a later date you can run:
 
 ''root *LK* 2017-07-19 0 45 7 -1 (Password set, SHA512 crypt.)''
 
---------------------
-@console @user 

@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-05T06:42:32+02:00
 
+@font @viber @flatpak 
+--------------------
+
 ====== Как увеличить шрифт в окне программы ======
 
 На примере Viber — там по-умолчанию системный шрифт очень мелкий, в чате текст сообщений увеличить невозможно.
@@ -31,11 +34,11 @@ Creation-Date: 2022-03-05T06:42:32+02:00
 
 И оно обязательно должно быть добавлено ДО вызова ПО (пример для viber):
 
-''flatpak override --user ''**''--env="QT_SCALE_FACTOR=1.25"''**'' com.viber.Viber''
+''flatpak override --user'' **''--env="QT_SCALE_FACTOR=1.25"''** ''com.viber.Viber''
 
 Может быть и так (пример для zim):
 
-''/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=zim --file-forwarding --env="QT_SCALE_FACTOR=1.25" ''**''org.zim_wiki.Zim''**
+''/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=zim --file-forwarding --env="QT_SCALE_FACTOR=1.25"'' **''org.zim_wiki.Zim''**
 
 Другой софт может запускаться так
 
@@ -45,5 +48,3 @@ Creation-Date: 2022-03-05T06:42:32+02:00
 
 Проверить каталог [[/etc/profile.d/]] — если там есть что-то вроде ‘qt-scaling.sh’ внутри которого задан QT_SCALE_FACTOR=0.5 globaly — удалить его или только соответствующую строку.
 
---------------------
-@font @viber @flatpak 

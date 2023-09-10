@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-17T02:41:53+02:00
 
+@console @mask 
+--------------------
+
 ====== Как «подавить» сервис ======
 
 Необязательно сразу удалять что-либо, бо иногда зависимости могут серьёзно порушить работоспособность системы. Разумно подавить и замаскировать ненужный сервис — будет создан симлинк сервиса на /dev/null.
@@ -13,9 +16,3 @@ Creation-Date: 2023-01-17T02:41:53+02:00
 	3. ''sudo systemctl disable systemd-networkd-wait-online.service''
 	4. ''sudo systemctl mask systemd-networkd-wait-online.service''
 	5. ''sudo systemctl status systemd-networkd-wait-online.service''
-
---------------------
-@console @mask 
-	'''
-	
-	'''

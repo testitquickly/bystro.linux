@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:11:20+02:00
 
+@keyboard @iBus 
+--------------------
+
 ====== Подавить iBus ======
 
 Это менеджер клавиатуры из Gnome. Если перешел на display менеджер lightdm, то весьма вероятно что эта штука придёт с ним. Или с чем-то другим.
@@ -34,5 +37,3 @@ Now ibus should follow whatever layout you've set in Plasma.
 
 Ребоот.
 
---------------------
-@keyboard @iBus 

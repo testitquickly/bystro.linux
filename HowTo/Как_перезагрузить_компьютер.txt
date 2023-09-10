@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:29:55+02:00
 
+@console
+--------------------
+
 ====== Как перезагрузить компьютер ======
 
 Или 
@@ -10,5 +13,3 @@ Creation-Date: 2022-02-22T15:29:55+02:00
 или
 ''systemctl reboot''
 
---------------------
-@console

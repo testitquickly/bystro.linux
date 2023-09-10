@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:21:42+02:00
 
+@mouse @touchpad 
+--------------------
+
 ====== Настроить сенсорную панель ======
 
 Параметры системы 
@@ -22,5 +25,4 @@ Creation-Date: 2022-02-22T15:21:42+02:00
 
 ''aptitude install kde-config-touchpad''
 
---------------------
-@mouse @touchpad 
+

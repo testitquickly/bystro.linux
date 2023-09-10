@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-15T21:10:56+02:00
 
+@debian @battery 
+--------------------
+
 ====== Проверить состояние батареи ноутбука ======
 
 Вся информация о состоянии батареи ноутбука хранится в файлах из ''/sys/class/power_supply/BAT1/''
@@ -20,5 +23,3 @@ Creation-Date: 2023-02-15T21:10:56+02:00
 
 ''cat /proc/acpi/button/lid/LID0/state''
 
---------------------
-@debian @battery 

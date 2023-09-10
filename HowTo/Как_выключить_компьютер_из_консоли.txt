@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:29:28+02:00
 
+@console @timer @shutdown 
+--------------------
+
 ====== Как выключить компьютер из консоли ======
 
 ===== Выключить немедлено =====
@@ -48,8 +51,3 @@ Creation-Date: 2022-02-22T15:29:28+02:00
 ===== Как отменить запланированное отключение =====
 
 ''sudo shutdown -c''
-
---------------------
-@console @timer @shutdown 
-
-

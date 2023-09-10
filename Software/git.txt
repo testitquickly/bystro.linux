@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-16T21:22:57+02:00
 
+@console @smartgit @git @github 
+--------------------
+
 ====== git ======
 
 Скорее всего, он уже установлен. Проверка:
@@ -16,5 +19,3 @@ Creation-Date: 2022-03-16T21:22:57+02:00
 
 Краткий видеокурс по основам git https://youtube.com/playlist?list=PLDyvV36pndZFHXjXuwA_NywNrVQO0aQqb (Илья Кантор)
 
---------------------
-@console @smartgit @git @github 

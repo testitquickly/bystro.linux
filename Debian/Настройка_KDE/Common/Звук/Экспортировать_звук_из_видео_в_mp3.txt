@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:57:47+02:00
 
+@mp3 @sound 
+--------------------
+
 ====== Экспортировать звук из видео в mp3 ======
 
 Можно программой WinFF (оболочка, которая все равно все делает через командную строку, но удобно)
@@ -50,5 +53,3 @@ avconv -i $sourceFile -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 $destFile
 
 ''find . -type f -name '*.m4a' -exec bash -c 'avconv -i "$0" "${0/%m4a/mp3}"' '{}' \;''
 
---------------------
-@mp3 @sound 

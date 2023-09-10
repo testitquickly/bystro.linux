@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T04:12:39+02:00
 
+@main @ls @bashrc 
+--------------------
+
 ====== Команда ls ======
 
 идеальный алиас для .bashrc
@@ -35,5 +38,3 @@ Creation-Date: 2022-02-24T04:12:39+02:00
 * *.txt		вывести только файлы с расширением .txt
 * *.{html,php,txt}	вывести только файлы с перечисленными расширениями (.html, .php и .txt)
 
---------------------
-@main @ls @bashrc 

@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:16:08+02:00
 
+@sddm @lightdm 
+--------------------
+
 ====== Настроить Display Manager ======
 
 Вообще их много: 
@@ -58,6 +61,3 @@ sudo apt-get purge sddm
 Последний шаг:
 
 ''sudo reboot''
-
---------------------
-@sddm @lightdm 

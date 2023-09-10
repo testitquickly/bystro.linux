@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-04-09T22:58:27+03:00
 
+@keyboard @sound @elgato 
+--------------------
+
 ====== Переключение выходов звука ======
 
 В Debian, конечно, можно поменять вывод звука на разные источники прямо в консоли. Удобно же.
@@ -30,13 +33,13 @@ Creation-Date: 2022-04-09T22:58:27+03:00
 Примерно так:
 
 ''0 [PCH            ]: HDA-Intel - HDA Intel PCH''
-					''  HDA Intel PCH at 0xa4520000 irq 132''
+					  ''HDA Intel PCH at 0xa4520000 irq 132''
 ''1 [NVidia         ]: HDA-Intel - HDA NVidia''
-					''  HDA NVidia at 0xa4000000 irq 17''
+					  ''HDA NVidia at 0xa4000000 irq 17''
 ''2 [M2             ]: USB-Audio - M2''
-					''  MOTU M2 at usb-0000:00:14.0-3, high speed''
+					  ''MOTU M2 at usb-0000:00:14.0-3, high speed''
 ''3 [USB            ]: USB-Audio - Jabra SPEAK 410 USB''
-					''  Jabra SPEAK 410 USB at usb-0000:00:14.0-5.4.1, full speed''
+					  ''Jabra SPEAK 410 USB at usb-0000:00:14.0-5.4.1, full speed''
 
 ==== Определить индекс каждого устройства ====
 
@@ -52,7 +55,7 @@ Creation-Date: 2022-04-09T22:58:27+03:00
 		''name: <alsa_output.usb-MOTU_M2_M20000023287-00.analog-stereo>''
 ''index: 1''
 		''name: <alsa_output.pci-0000_00_1f.3.analog-stereo>''
-	*'' index: 3''
+	* ''index: 3''
 		''name: <alsa_output.pci-0000_01_00.1.hdmi-stereo>''
 ''index: 4''
 		''name: <alsa_output.usb-0b0e_Jabra_SPEAK_410_USB_30507557996Ex011200-00.analog-stereo>''
@@ -160,5 +163,3 @@ to set the default **input** sink
 	F6 - Select Sound Card
 	Esc - Exit the menu
 
---------------------
-@keyboard @sound @elgato 

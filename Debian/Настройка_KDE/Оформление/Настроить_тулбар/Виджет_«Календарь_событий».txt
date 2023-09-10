@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-13T19:54:14+02:00
 
+@calendar @time @widget 
+--------------------
+
 ====== Виджет «Календарь событий» ======
 
 ===== Заменить в трее часы на «Календарь событий» =====
@@ -84,6 +87,3 @@ Creation-Date: 2022-12-13T19:54:14+02:00
 ''> Google Calendar''
 
 Авторизовать, если используется.
-
---------------------
-@calendar @time @widget 

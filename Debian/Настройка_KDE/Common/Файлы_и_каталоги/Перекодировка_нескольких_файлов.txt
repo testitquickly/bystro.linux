@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T23:48:10+02:00
 
+@console @utf8 
+--------------------
+
 ====== Перекодировка нескольких файлов ======
 
 Например из KOI8-R в UTF8.
@@ -42,6 +45,3 @@ find путь_к_директории -name "*.txt" -exec enconv {} \;
 
 ПРИМЕР
 ''find /home/astenix/.LaTeXWorkspace/text/ -type f -exec recode cp1251/..UTF-8 '{}' ';'''
-
---------------------
-@console 

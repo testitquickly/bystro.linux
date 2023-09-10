@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:21:34+02:00
 
+@aptitude @update 
+--------------------
+
 ====== Как заставить aptitude обновляться из сети, а не из кэша ======
 
 Под рутом зайти в ''/var/lib/apt/lists/'' и поудалять там ВСЕ файлы.
@@ -12,5 +15,3 @@ Creation-Date: 2022-02-23T21:21:34+02:00
 
 Надо перепроверить содержимое /etc/apt/sources.list
 
---------------------
-@aptitude @update 

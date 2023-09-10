@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:19:33+02:00
 
+@mp3 @sound 
+--------------------
+
 ====== Перекодировка тэгов mp3 в Unicode ======
 
 Чтобы сконвертировать тэги в универсальный Unicode
@@ -29,6 +32,3 @@ find /media/sda1/music/ -iname "*.mp3" -print0 | xargs -0 mid3iconv -e CP1251 -d
 find /home/astenix/Музыка/_Библиотэка Музыки/ -iname "*.mp3" -print0 | xargs -0 mid3iconv -e CP1251 -d --remove-v1
 '''
 
-
---------------------
-@mp3 @sound 

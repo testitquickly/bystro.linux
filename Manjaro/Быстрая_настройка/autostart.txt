@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-17T02:32:09+02:00
 
+@manjaro @autostart 
+--------------------
+
 ====== autostart ======
 
 В папке профиля юзера
@@ -16,5 +19,4 @@ Creation-Date: 2023-01-17T02:32:09+02:00
 
 Автостарт вообще в KDE:  [[Debian:Настройка KDE:Сеанс:autostart]]
 
---------------------
-@manjaro @autostart 
+

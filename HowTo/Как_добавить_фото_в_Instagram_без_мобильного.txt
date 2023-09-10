@@ -2,7 +2,10 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:32:44+02:00
 
-====== Как добавить фото в Instagram без мобильного ======
+@Firefox @Instagram 
+--------------------
+
+====== Как добавить фото в Instagram из браузера ======
 
 https://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/
 
@@ -17,6 +20,3 @@ option content:
 Заходим в instagram и видим кнопку добавления фотографий.
 
 После этого все сайты будут думать, что это инстаграмовский родной аппликух, поэтому после того, как всё закончится, надо правой мышкой выбрать опцию "Сбросить" - содержимое опции обнулится.
-
---------------------
-@Firefox @Instagram 

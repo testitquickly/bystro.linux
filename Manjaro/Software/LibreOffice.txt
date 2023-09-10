@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-08-06T15:54:45+03:00
 
+@libreoffice @manjaro 
+--------------------
+
 ====== LibreOffice ======
 
 https://wiki.archlinux.org/title/LibreOffice
@@ -27,5 +30,3 @@ sudo pacman -S libreoffice-still
 
 Всякие неочевидные настройки LibreOffice: [[Software:LibreOffice:Настройки LibreOffice]]
 
---------------------
-@libreoffice @manjaro 

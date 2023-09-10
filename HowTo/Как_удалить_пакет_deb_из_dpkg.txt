@@ -2,6 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:31:18+02:00
 
+@console @dpkg
+--------------------
+
 ====== Как удалить пакет deb из dpkg ======
 
 Например, был установлен 
@@ -31,5 +34,3 @@ You may check if the package has been removed successfully - simply run again:
 
 If the package has been removed without configuration files, you'll see the rc status near the package name, otherwise, if you have purged the package completely, the output will be empty.
 
---------------------
-@console @dpkg
