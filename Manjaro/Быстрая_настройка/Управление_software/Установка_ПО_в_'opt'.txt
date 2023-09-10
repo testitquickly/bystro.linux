@@ -2,6 +2,8 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-04T19:15:11+02:00
 
+@manjaro @sublime 
+--------------------
 ====== Установка ПО в /opt/ ======
 
 В Manjaro проще/мудрее ставить софт через pacman или Pamac. Но можно и поуправлять этим процессом — просто потому, что так интереснее.
@@ -16,37 +18,9 @@ Creation-Date: 2023-02-04T19:15:11+02:00
 
 {{../../../../images/ManjaroWasUpdated.jpg}}
 
-===== Установить yay =====
-
-Это 'pacman wrapper and AUR helper, written in go'. Его можно установить из Pamac, но это не наш путь. 
-
-Читается как «ийей» и переводится как «Yet another Yogurt».
-
-==== Нужен git ====
-
-''sudo pacman -S --needed --noconfirm base-devel git''
-
-==== Снять yay из репозитория AUR ====
-
-Сразу в /opt
-
-''sudo git clone'' [[https://aur.archlinux.org/yay-git.git|''https://aur.archlinux.org/yay-git.git'']] ''/opt/''
-
-===== Build the yay package =====
-
-Перейти в каталог с yay
-
-''cd /opt/yay-git''
-
-И выполнить
-
-''sudo makepkg -si''
-
-Если всё будет ок, то Package management helper 'yay' установлен.
-
 ===== Установка Sublime Text =====
 
-Через yay.
+Через [[Управление software#yay|yay]].
 
 Параметр --noconfirm можно убрать, если есть необходимось выбрать какие-то особенные настройки при установке.
 
@@ -75,6 +49,3 @@ Creation-Date: 2023-02-04T19:15:11+02:00
 И почистить систему от осиротевших пакетиков
 
 ''yay -Yc''
-
---------------------
-@manjaro @sublime 
