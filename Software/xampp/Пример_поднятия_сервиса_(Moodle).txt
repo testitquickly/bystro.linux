@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-20T10:46:24+03:00
+
+====== Пример поднятия сервиса (Moodle) ======
+Создан Четверг 20 апреля 2023
+
