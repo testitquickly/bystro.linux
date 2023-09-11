@@ -10,7 +10,7 @@ Creation-Date: 2022-03-27T05:10:17+03:00
 
 Это инструкция по установке и управлению под Debian. 
 
-Установка в [[Manjaro:Software:ftp]]
+Установка в [[Manjaro:Install Software:ftp]]
 
 ===== Установить vsftpd =====
 
