@@ -1,0 +1,1018 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-20T10:46:24+03:00
+
+====== Как установить веб-сервис на localhost ======
+
+Это инструкция по установке какого-нибудь веб-сервиса (“Moodle”) в Debian на localhost по адресу http://moodle.yuh (кто ж мне запретит?!) в древнем, классическом, романтическом стиле через установку LAMP.
+
+В современности проще использовать [[Software:xampp]], но… 
+
+===== Установить MariaDB =====
+
+Раньше ставили “MySQL”, но теперь есть MariaDB.
+
+Установить и сервер, и клиент:
+
+''sudo apt install mariadb-server mariadb-client''
+
+Проверить статус сервиса БД:
+
+''systemctl status mariadb''
+
+Ожидаемый ответ «Active: active (running)». 
+
+Выход по «q».
+
+==== Управление сервисом ====
+
+* ''systemctl start mariadb''
+* ''systemctl stop mariadb''
+* ''systemctl restart mariadb''
+
+При запуске ”systemctl start mariadb” следует терпеливо ждать ответа от системы. Если будет fail, следует вынести логи в отдельный файл и посмотреть, в чём дело
+
+''sudo journalctl -xe > logs.txt && kate logs.txt &''
+
+	Иногда решение безусловно очевидное, иногда нет.
+
+По-умолчанию сервис MariaBD будет постоянно запускаться вместе с системой. На сегодняшних компьютерах это незаметно.
+
+Для порядка этот сервис полагалось бы запускать/гасить вручную, но systemd запускает его как-то… largo maestoso. Можно кикнуть его автозапуск (systemctl disable mariadb), но тогда при ”systemctl start mariadb” начнутся глобальные проблемы с mysql вроде «”Could not increase number of max_open_files to more than” when starting MySQL or MariaDB» — невозможно установить макс количество файлов, которые mysqld разрешено открывать, бо НЕТ ФАЙЛОВ НАСТРОЕК для mysql, ведь сервис не запущен. 
+		
+		См. https://haydenjames.io/could-not-increase-number-of-max_open_files-to-more-than/
+		
+
+=== Запускать сервер MariaDB при загрузке системы ===
+
+''systemctl enable mariadb''
+
+Ожидаемый ответ:
+	Created symlink /etc/systemd/system/mysql.service → /lib/systemd/system/mariadb.service.
+	Created symlink /etc/systemd/system/mysqld.service → /lib/systemd/system/mariadb.service.
+	Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.service → [[/lib/systemd/system/mariadb.service.]]
+
+=== Запретить запуск сервера MariaDB при загрузке системы (не надо) ===
+
+''systemctl disable mariadb''
+
+Ожидаемый ответ:
+	Removed /etc/systemd/system/mysqld.service.
+	Removed /etc/systemd/system/multi-user.target.wants/mariadb.service.
+	Removed /etc/systemd/system/mysql.service.
+
+==== Настроить СУБД ====
+
+Запустить автоматический скрипт настройкий безопасности MariaDB.
+
+''sudo mysql_secure_installation''
+
+На первом шаге задать пароль для “root” user к СУБД (и немедленно записать его в бумажный блокнот). 
+	
+	Не путать этого “root” с “root” всей системы!
+	
+Повсюду отвечать "Y".
+
+	* Set root password? [Y/n] – 
+		Type Y and press Enter to create a strong root password for your database. 
+		Сразу записать его в блокнот.
+	* Remove anonymous users? [Y/n] = Y
+	* Disallow root login remotely? [Y/n] = Y
+	* Remove test database and access to it? [Y/n] = Y
+	* Reload privilege tables now? [Y/n] = Y
+
+=== Залогиниться как “root” в MariaDB ===
+
+Указать пароль из предыдущего шага. Ожидаемый ответ — приглашение к вводу команд для СУБД:  //''MariaDB [(none)]>''//
+
+''mysql -u root -p''
+
+Позже может случиться так, что логин под root в СУБД будет невозможен. Если так:
+	* убедиться в том, что запрошен пароль для доступа к БД, а не пароль для sudo (особенно если команда по какой-то причине выглядит как ”''sudo mysql -u root -p''”,
+	* переубедиться в том, что при вводе пароля не было ошибок,
+	* см. в конце этого файла раздел «Как сбросить пароль root в MariaDB на localhost», но то крайняя мера.
+
+=== Посмотреть существующие базы ===
+
+''SHOW DATABASES;''
+
+== Как создать новую базу даных с названием test_database ==
+
+'''
+CREATE DATABASE test_database;
+SHOW DATABASES;
+'''
+
+== Как удалить test_database ==
+
+'''
+DROP DATABASE test_database;
+SHOW DATABASES;
+'''
+
+=== Сделать отдельного юзера в БД для работы с БД ===
+
+Потому что постоянно ходить в БД под root — is a security risk.
+
+Например, назвать его ''ordinary_user_name / ordinary_user_password''. Записать это в блокнот. Заходить в БД только под этим юзером. 
+
+''CREATE USER 'ordinary_user_name'@'localhost' IDENTIFIED BY 'ordinary_user_password';''
+''exit''
+
+==== Создать базу для ”Moodle” ====
+
+Залогиниться под безопасным юзером:
+
+''mysql -u ordinary_user_name -p''
+
+=== Создать базу с основными настройками (взято из мануала по moodle): ===
+
+'''
+CREATE DATABASE moodle CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+'''
+Убедиться в том, что она создана:
+'''
+
+SHOW DATABASES;
+
+exit
+'''
+
+==== Рестарт mysql ====
+
+''systemctl restart mysql''
+
+===== Установить PHP =====
+
+Установить сразу со всеми зависимостями, которые понадобятся позже для запуска moodle:
+
+''sudo apt install php php-mysql php-gd php-intl php-mbstring php-soap php-curl php-zip php-xml php-xmlrpc''
+
+==== Проверить работоспособность PHP на localhost ====
+	
+Создать в ”/var/www/html/” файл info.php (под root):
+
+''mcedit /var/www/html/info.php''
+
+Вставить/Сохранить:
+
+'''
+<?php 
+phpinfo();
+?>
+'''
+
+
+Открыть эту страницу в браузере. Можно прямо из консоли:
+
+''firefox http://localhost/info.php &''
+
+Если загрузилась «фиолетовая» страница с информацией о PHP — все ок.
+
+На боевом сервере этот файл лучше сразу удалить, бо он приносит слишком много служебной информации для будущего взломщика.
+
+===== Установить Apache =====
+
+''sudo apt install apache2 libapache2-mod-php''
+
+Открыть http://localhost/
+
+Apache ищет в /var/www/html/ файлы вроде index.html или index.php. Если они там оба, то он откроет index.html. Если таких файлов нет, в браузере откроется содержимое каталога /var/www/html/
+
+Команды для управления этим сервисом:
+	* systemctl start apache2.service 
+	* systemctl restart apache2.service 
+	* systemctl stop apache2.service
+	* systemctl reload apache2.service 
+	* systemctl status apache2.service
+	* apache2ctl -S /вывод справки о запущенных VirtualHost и ряде действующих настроек/
+
+===== Установить PHPMyAdmin =====
+
+Не факт, что пакет phpmyadmin есть в Stable Debian. Его можно найти в сети через wget.
+
+''wget -P phpMyAdminInstaller ''[[https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz|''https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz'']]
+
+В текущем каталоге будет создан подкаталог «phpMyAdminInstaller»:
+
+Также скачать phpMyAdmin GPG Key
+
+''wget -P phpMyAdminInstaller ''[[https://files.phpmyadmin.net/phpmyadmin.keyring|''https://files.phpmyadmin.net/phpmyadmin.keyring'']]
+
+==== Импортировать ключи phpmyadmin ====
+	
+Перейти в папку установщика:
+
+''cd phpMyAdminInstaller''
+
+Импортировать ключи
+
+''gpg --import phpmyadmin.keyring''
+
+Скачать .asc file для phpMyAdmin:
+
+''wget -P ''[[https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz.asc|''https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz.asc'']]
+
+Проверить .asc file:
+
+''gpg --verify phpMyAdmin-latest-all-languages.tar.gz.asc''
+
+Глазами сравнить указанный хэш ключа (в моем случае 3D06A59ECE730EB71B511C17CE752F178259BD92) с опубликованным на https://docs.phpmyadmin.net/en/latest/setup.html#verifying-phpmyadmin-releases
+
+==== Настроить phpMyAdmin ====
+
+Сделать каталог для phpMyAdmin в web root directory Apache:
+
+''sudo mkdir /var/www/html/phpMyAdmin''
+
+Распаковать туда 'phpMyAdmin' tar.gz (мы все ещё в 'phpMyAdminInstaller'):
+
+''sudo tar xvf phpMyAdmin-latest-all-languages.tar.gz --strip-components=1 -C /var/www/html/phpMyAdmin''
+
+=== Создать конфигурационный файл ===
+
+''sudo cp /var/www/html/phpMyAdmin/config.sample.inc.php /var/www/html/phpMyAdmin/config.inc.php''
+
+=== Добавить в конф. файл secret passphrase ===
+
+Под root:
+
+''mcedit /var/www/html/phpMyAdmin/config.inc.php''
+
+Найти строку:
+
+''$cfg['blowfish_secret'] = '';''
+
+Придумать YOUR_SECRET_PASSPHRASE (записать этот пароль в блокнот) и прописать её в предложенную строку:
+
+''$cfg['blowfish_secret'] = 'YOUR_SECRET_PASSPHRASE';''
+
+Сохранить config.inc.php файл и выйти. 
+
+=== Поменять разрешения файла config.inc.php ===
+
+''sudo chmod 660 /var/www/html/phpMyAdmin/config.inc.php''
+
+''sudo chown -R www-data:www-data /var/www/html/phpMyAdmin''
+
+==== Перезагрузить Apache ====
+
+''sudo systemctl restart apache2''
+
+=== Открыть phpMyAdmin ===
+
+http://localhost/phpMyAdmin/
+
+	Успешно логинимся с ранее созданным “//ordinary_user_name//”.
+
+===== Проверить возможность поднимать сайты на localhost =====
+
+==== Создать в /var/www/html/ каталог 'proverka' ====
+
+Под root:
+
+''mkdir /var/www/html/proverka/''
+
+=== Создать в этом каталоге файл index.html ===
+
+Под root:
+
+''mcedit /var/www/html/proverka/index.html''
+
+Добавить в этот файл проверочную строку. Без html тэгов и прочего:
+
+''This is site PROVERKA.''
+
+Save & Exit:
+
+'''
+[F2]
+[F10]
+'''
+
+==== Назначить системному юзеру 'www-data' права на запись в этот каталог ====
+
+''sudo chown -R www-data:www-data /var/www/html/proverka/ && sudo chmod -R 755 /var/www/html/proverka/''
+
+==== Прописать эти сайты в /etc/hosts ====
+
+Редактирование этого файла разрешено только уполномоченным лицам с прямыми /dev/hands :
+
+''sudo mcedit /etc/hosts''
+
+Добавить новую строку для нового сайта.
+
+'''
+127.0.0.1	localhost
+127.0.0.1	proverka.local.com
+'''
+
+Напоминалка:
+	127.0.0.1 — IP для localhost.
+	192.168.0.1 — IP для выхода в сеть, к которой подключён данный компьютер. Обычно по этому адресу находится роутер.
+	Первая строка в этом файле:
+	127.0.0.1	localhost
+		Может быть несколько сервисов, которые доступны с одного IP, это нормально. Можно для каждого сервиса назначить разные IP (это моё решение).
+		Имена могут быть как уникальными, так и уже существующими. Например:
+			127.0.0.1	google.com
+		Теперь при обращении к google.com с данного компьютера в действительности произойдёт принудительный переход на адрес http://127.0.0.1 
+
+==== Создать конфигурационные файлы Apache для каждого сайта ====
+	
+''cd /etc/apache2/sites-available/ && ls''
+
+Там будет шаблон конфига с названием вроде '000-default.conf'. Переименовать его в default.conf — пусть остаётся как пример. 
+
+''sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/default.conf''
+
+=== Отредактировать содержимое файла-примера ===
+
+''sudo mcedit /etc/apache2/sites-available/default.conf''
+
+Удалить всё. Вставить это (ничего не менять, это общий шаблон):
+
+'''
+<VirtualHost *:80>
+
+ServerAdmin admin@localhost
+DocumentRoot /var/www/html
+		# http://httpd.apache.org/docs/2.0/mod/core.html says: 
+		# The DocumentRoot should be specified without a trailing slash.
+	# ServerName ***
+	# ServerAlias ***
+
+<Directory /var/www/html/>
+		# The Directory should be specified with a trailing slash.
+Options +FollowSymlinks
+AllowOverride All
+Require all granted
+</Directory>
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+'''
+
+Save & Exit:
+
+'''
+[F2]
+[F10]
+'''
+
+
+=== Сделать конфиг для сайта 'proverka' ===
+
+Есть два пути: 
+	* или сделать один большой conf-файл, в котором будут последовательно прописаны все сайты данного сервера;
+	* или сделать отдельный conf-файл для каждого сайта.
+
+Мне второй путь кажется более адекватным.
+
+''sudo cp /etc/apache2/sites-available/default.conf /etc/apache2/sites-available/proverka.conf''
+
+== Отредактировать конфиг сайта 'proverka' ==
+
+''sudo mcedit /etc/apache2/sites-available/proverka.conf''
+
+Заменить всё согласно логике.
+
+ServerName и ServerAlias должны быть те самые, что были прописаны в hosts.
+
+'''
+<VirtualHost *:80>
+
+DocumentRoot /var/www/html/proverka
+ServerName proverka.local.com
+ServerAlias www.proverka.local.com
+
+<Directory /var/www/html/proverka/>
+Options +FollowSymlinks
+AllowOverride All
+Require all granted
+</Directory>
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+'''
+
+==== Запустить Apache virtual host files ====
+
+=== Включить модуль rewrite ===
+	
+Module mod_rewrite is a very powerful and sophisticated module which provides a way to do URL manipulations. With it, you can do nearly all types of URL rewriting that you may need. There is a tendency to treat rewrite rules as magic incantation, using them without actually understanding what they do.
+
+Если когда-то понадобится его отключить: sudo a2dismod rewrite
+
+''sudo a2enmod rewrite''
+
+=== Сделать симлинки на конфиг-файлы новых сайтов ===
+
+Они появятся в служебном каталоге /etc/apache2/mods-enabled 
+
+''sudo a2ensite example.conf proverka.conf''
+
+===== Отключение и переименовывание сайта =====
+
+TODO apache — уточнить инструкцию отключение или переименовывания сайта
+
+Если надо "отключить сайт" — использовать команду ''a2dissite НАЗВАНИЕ_ФАЙЛА.conf'':
+
+''sudo a2dissite proverka.conf''
+
+	Ожидаемый ответ: 
+		a2dissite proverka
+		Site proverka disabled.
+
+Чтобы применить новые настройки:
+
+''systemctl reload apache2''
+
+Перезагрузить Apache (хост исчезнет)
+
+''sudo systemctl restart apache2 && systemctl status apache2''
+
+Отредактировать НАЗВАНИЕ_ФАЙЛА.conf
+
+''sudo mv proverka.conf newproverka.conf''
+
+Отредактировать содержимое нового файла
+
+''sudo mcedit newproverka.conf''
+
+Поменять название, но оставить каталог сайта (DocumentRoot) прежним:
+
+'''
+<VirtualHost *:80>
+
+DocumentRoot /var/www/html/proverka
+ServerName newproverka.local.com
+ServerAlias www.newproverka.local.com
+
+<Directory /var/www/html/proverka/>
+Options +FollowSymlinks
+AllowOverride All
+Require all granted
+</Directory>
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+'''
+
+Обновить настройки:
+
+''sudo a2ensite НАЗВАНИЕ_ФАЙЛА.conf''
+
+=== Перезагрузить Apache ===
+
+''sudo systemctl restart apache2 && systemctl status apache2''
+
+Дежурная проверка всех открытых хостов на данный момент
+
+''apache2ctl -S''
+
+==== Открыть сайт в браузере ====
+
+http://proverka.local.com
+
+===== Установить Moodle =====
+
+==== Лишний раз убедиться в том, что запущены сервисы LAMP: ====
+
+''systemctl status apache2 mariadb''
+
+==== Снять файлы moodle из сети ====
+
+https://download.moodle.org/
+
+	Снять последний релиз со знаком + (там багфиксы). 
+	Также снять Language packs. Их содержимое должно пойти в /moodle/lang/
+
+		Можно снять moodle с гитхаба https://github.com/moodle/
+		Но (а) там вместо 80 mb придётся скачивать всю историю коммитов — 300 mb, и (б) Там лежат все версии, alpha, beta, release-candidates… Слишком велика вероятность скачать версию с неизвестными багами (даже в установке), и обнаружить это только после долго периода «Да почему ты не работаешь, падла?!». 
+
+	[6.3]
+
+==== Подготовка moodle к установке ====
+	
+	Отсюда уже разумно ”sudo mc”, бо это зона доступа только для админов.
+
+	[6.3.1]
+
+=== Сделать в /var/www/html/ отдельный каталог для moodle: ===
+
+sudo mkdir /var/www/html/moodle/
+
+	[6.3.2]
+
+=== Скопировать все файлы moodle из [6.2] в /var/www/html/moodle/ ===
+
+		Удалить файл /var/www/html/moodle/index.html — если такой есть. Главным должен быть index.php
+
+	[6.3.3]
+
+=== Подготовить конфиг Moodle ===
+
+	В каталоге с файлами moodle в файле config-dist.php отредактировать следующие строки:
+
+$CFG->dbtype    = 'mariadb'; 
+$CFG->dblibrary = 'native'; /по-умолчанию, но важно проверить
+$CFG->dbname    = 'moodle'; /по-умолчанию, но важно проверить. База уже создана в [1.3.1]
+$CFG->dbuser    = '***'; /имя юзера для БД из [1.2.3]
+$CFG->dbpass    = '***'; / пароль юзера для БД из [1.2.3]
+
+	[6.3.4]
+
+=== Создать в /var/www/html/moodle/ скрытый файл с инструкциями '.htaccess': ===
+
+sudo touch /var/www/html/moodle/.htaccess
+
+	…и вписать в него инструкцию для PHP — set number of variables your server is set to handle in each function (под root):
+
+mcedit /var/www/html/moodle/.htaccess
+
+max_input_vars = 3000
+
+	Save and exit
+
+	[6.3.5]
+
+=== Создать каталог для данных для Moodle. ===
+	
+	Там будут храниться данные про юзеров, курсы и всё такое прочее.
+	Его нельзя сделать внутри /var/www/html/moodle/, бо ему будут нужны отдельные настройки доступа. 
+	Надо положить его куда-то в /home/.
+
+mkdir /home/moodledata
+
+	[6.3.5.1]
+
+== Set ownership and permissions so that Apache can access the var/www folder. ==
+	
+	В debian есть юзер ”www-data” специально для этих целей. Ему надо разрешить запись в каталог moodle, обычно с уровнем 755. 
+	Для боевого сервера настройки доступа могут быть иными.
+
+sudo chown -R www-data:www-data /var/www/html/moodle/ && sudo chmod -R 755 /var/www/html/moodle/ && sudo chown www-data /home/moodledata
+
+	Если всё ок, ответ будет silent. Иначе ой.
+
+	On a production server, you may want to tighten up privileges.
+
+		Если позже, при установке Moodle, будет сообщение о том, что в эти каталоги нет доступа, то решение может быть следующее:
+		* delete all files under moodledata directory, 
+		* delete the database 
+		* recreate again 
+		* reconfigure again.
+
+	[6.3.6]
+
+=== Отредактировать настройки PHP. ===
+	
+	Найти /etc/php/ПОСЛЕДНЯЯ_ВЕРСИЯ/apache2/php.ini > edit > cпуститься в самый низ и добавить это:
+
+[moodle]
+extension=mysql.so 
+extension=gd.so
+memory_limit = 100M
+post_max_size = 100M
+upload_max_filesize = 100M
+
+	[6.5]
+
+==== Install Moodle. ====
+
+http://localhost/moodle/install.php 
+
+	and follow the instructions step by step.
+
+	Перепроверить:
+
+Веб-адрес = http://localhost/moodle
+Каталог Moodle = /var/www/html/moodle
+Каталог данных = /home/moodledata
+
+	Выберите драйвер базы данных
+
+MariaDB
+
+	Настройки базы данных
+
+Сервер баз данных = localhost /по-умолчанию
+Название базы данных = moodle /по-умолчанию
+Пользователь базы данных = прописать ordinary_user_name из [1.2.3]
+Пароль = прописать пароль ordinary_user_name из [1.2.3]
+Префикс имен таблиц = mdl_ /по-умолчанию
+
+Обнаружено, что ваш сайт не защищен с помощью HTTPS.
+	Это можно отложить на позже.
+
+	[6.5.1]
+
+=== Убедиться в доступности сервиса: ===
+	
+http://localhost/moodle
+
+	На боевом сервере рекомендуется удалить и файл install.php, и каталог 'install'.
+	На localhost это несущественно.
+
+	[6.6]
+
+==== Настроить доступ к moodle на localhost по адресу http://moodle.yuh ====
+
+	[6.6.1]
+
+=== Отредактировать внутренний конфиг moodle (под root): ===
+
+mcedit /var/www/html/moodle/config.php
+
+	Найти строку:
+
+	$CFG->wwwroot = 'http://localhost/moodle'
+	
+	Переписать её так:
+
+$CFG->wwwroot = 'http://moodle.yuh'
+
+		Это очень неочевидная и поэтому подлая настройка.
+		Закомментировать её нельзя: Fatal error: $CFG->wwwroot is not configured! Exiting. 
+		
+		Если в будущем захочется поменять url для доступа к Moodle, надо будет последовательно отредактировать три файла:
+			/etc/apache2/sites-available/moodle.conf
+			/etc/hosts
+			/var/www/html/moodle/config.php
+
+	[6.6.2]
+
+=== Прописать новый сайт в /etc/hosts ===
+
+sudo mcedit /etc/hosts
+
+	Добавить строку:
+
+127.0.0.3	moodle.yuh	# /var/www/html/moodle
+
+	Save & Exit.
+
+	[6.6.3]
+
+=== Создать Apache conf file для Moodle. ===
+
+	Название конфиг-файла будет по имени каталога, в котором будет работать moodle:
+
+sudo touch /etc/apache2/sites-available/moodle.conf
+
+	[6.6.3.1]
+
+== Отредактировать конфиг: ==
+	
+sudo mcedit /etc/apache2/sites-available/moodle.conf
+
+	Вставить это:
+
+<VirtualHost *:80>
+
+ServerAdmin admin@localhost
+
+DocumentRoot /var/www/html/moodle
+ServerName moodle.yuh
+ServerAlias www.moodle.yuh
+
+<Directory /var/www/html/moodle/>
+Options +FollowSymlinks
+AllowOverride All
+Require all granted
+</Directory>
+
+ErrorLog ${APACHE_LOG_DIR}/error.log
+CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+=== [6.6.4] ===
+
+sudo a2ensite moodle.conf
+
+	[6.6.5]
+
+=== Перезагрузить Apache ===
+
+sudo systemctl restart apache2 && systemctl status apache2
+
+	[6.6.5.1]
+
+== Дежурная проверка всех открытых хостов на данный момент: ==
+
+apache2ctl -S
+
+	[6.7]
+
+==== Открыть в браузере: ====
+
+http://moodle.yuh
+
+					.THE END.
+
+
+https://tproger.ru/articles/set-up-and-configure-an-apache-server/
+
+Перевод на https:
+$CFG->wwwroot   = 'https://localhost';
+
+===== Настроить SSL =====
+
+SSL (Secure Sockets Layer) — это технология, которая позволяет нам шифровать данные, связанные с соединением между клиентом и сервером. При использовании SSL-сертификатов HTTPS (Hyper Text Transfer Protocol Secure) заменяет HTTP в URL-адресе.
+
+SSL-сертификаты выдаются центром сертификации и могут быть очень дорогими, однако есть два других способа получить сертификат: создать самозаверяющий сертификат или воспользоваться сервисом Let’s encrypt.
+Создаём самоподписанный SSL-сертификат
+
+Создание самозаверенного сертификата — несложная задача. Это может быть удобно, если вы просто хотите получить шифрование. Мы можем создать самозаверяющий сертификат с помощью утилиты OpenSSL:
+
+$ sudo openssl req -x509 \
+ -days 365 \
+ -sha256 \
+ -newkey rsa:2048 \
+ -nodes \
+ -keyout example.key \
+ -out example-cert.pem
+
+Посмотрим, что делает эта команда. Первая опция, -x509определяет, что формируется сертификат стандарта X509.
+
+С помощью -days мы устанавливаем срок действия сертификата в днях. Следующая опция — -newkey. С её помощью мы создаём новый ключ, в данном случае RSA-ключ размером 2048 бит. В тестовом примере нам не нужно шифровать файл закрытого ключа, поэтому используем -nodes. Если эта опция не указана, файл, в котором хранится ключ, будет защищён паролем, который нужно будет предъявлять каждый раз при перезапуске веб-сервера.
+
+С помощью -keyout и -out мы указываем файл для записи сгенерированного ключа и сертификата соответственно. При запуске команды нам будет предложено ответить на несколько вопросов, после чего будет сгенерирован ключ и сертификат.
+
+Скопируйте сгенерированный ключ и сертификат в каталоги /etc/ssl/private и /etc/ssl/ssl-certs соответственно:
+
+$ sudo cp example-cert.pem /etc/ssl/certs
+
+Сертификат является общедоступным, поэтому не требует специального разрешения.
+
+Теперь ключ:
+
+$ sudo cp example.key /etc/ssl/private
+
+Важно настроить права доступа к файлу ключа. Папка /etc/ssl/private принадлежит root-пользователю и группе ssl-cert, и у неё есть права доступа 710. Это означает, что владелец имеет на неё полные права, а владелец группы может только получить к ней доступ и перечислить её содержимое, но не может дать разрешение другим:
+
+$ ls -ld /etc/ssl/private
+drwx--x--- 2 root ssl-cert 4096 Mar 16 11:57 /etc/ssl/private
+
+Изменим права доступа к файлу ключа, предоставив владельцу права на чтение и запись, а группе — только для чтения:
+
+$ sudo chown root:ssl-cert /etc/ssl/private/example.key
+$ sudo chmod 640 /etc/ssl/private/example.key
+
+Теперь, чтобы использовать сертификат, нужно включить модуль SSL с помощью команды a2enmod:
+
+$ sudo a2enmod ssl
+
+Почти всё готово. Теперь пришло время изменить наш виртуальный хост и настроить его следующим образом:
+
+<VirtualHost *:443>
+	DocumentRoot /var/www/example
+	ServerName www.example.local
+
+	# Enable ssl engine
+	SSLEngine on
+
+	SSLCertificate /etc/ssl/certs/example-cert.pem
+	SSLCertificateKeyFile /etc/ssl/private/example.key
+</VirtualHost>
+
+Порт 443 в строке 1 — это порт, используемый для HTTPS (вместо порта 80, используемого для HTTP).
+
+Мы также добавили инструкцию SSLEngine on в строке 6.
+
+Наконец, в строках 8–9 мы определили пути для сертификата и файла ключей, используя инструкции SSLCertificateFile и SSLCertificateKeyFile.
+
+Теперь следуйте инструкциям по открытию порты брандмауэра из начале статьи, но на этот раз чтобы разрешить HTTPS-службу:
+
+$ sudo ufw allow https
+
+Наконец, перезагрузите конфигурацию Apache:
+
+$ sudo systemctl reload apache2
+
+Готово. Теперь, если мы перейдём по адресу https://www.example.local, мы должны увидеть веб-сервер, предупреждающий нас о том, что используемый сертификат небезопасен. Это, однако, признак того, что наш сертификат работает, и трафик между клиентом и сервером будет зашифрован (вам необходимо добавить исключение для сертификата, чтобы использовать его).
+Настройка Let’s encrypt
+
+Альтернатива коммерческим и самозаверенным сертификатам — «Let’s encrypt». Это бесплатный, автоматизированный и открытый центр сертификации. Его цель — дать возможность автоматически получить сертификат, которому доверяет браузер, без какого-либо вмешательства человека.
+
+Для этого используется протокол ACME (certificate management agent), который запускается на сервере.
+
+Чтобы получить сертификат, вы должны подтвердить, что у вас есть контроль над доменом, для которого вы хотите его использовать. Если у вас нет доступа к shell на сервере, нужно связаться с вашим поставщиком услуг, чтобы активировать сертификат от вашего имени, но, возможно, на панели конфигурации сервиса есть специальный раздел.
+
+Если же у вас есть доступ к shell, необходимо установить клиент certbotACME.
+
+Для установки Certbot на Ubuntu 18.04 достаточно запустить:
+
+$ sudo apt-get update && apt-get install certbot python-certbot-apache
+
+Пакет Certbot поставляется с модулем systemd timer, который будет запускать Certbot два раза в день, чтобы поддерживать сертификат в актуальном состоянии. Получить сертификат довольно просто:
+
+$ sudo certbot --apache -m  -d 
+
+Очевидно, чтобы это работало, домен должен правильно указывать на ваш общедоступный IP-адрес. Certbot предложит вам несколько вопросов для настройки конфигурации, и, если всё пойдёт хорошо, сертификат и ключ будут сохранены в каталоге /etc/letsencrypt/live/. Просто настройте файл виртуального хоста, чтобы указать на них, и всё готово.
+
+
+===== Траблшутинг =====
+
+==== если MariaDB не запускается ====
+
+Иногда такое бывает после обновлений, но чаще после неосмотрительных действий. После запуска всё долго думает, затем
+Job for mariadb.service failed because the control process exited with error code
+See “systemctl status mariadb.service” and “journalctl -xe” for details.
+
+	Удалить содержимое каталога /var/lib/mysql
+
+cd /var/lib/mysql
+
+rm -r *
+
+	Если такого каталога нет — создать его:
+
+sudo mkdir /var/lib/mysql
+
+	Назначить права на него системному юзеру mysql из группы mysql:
+
+sudo chown -R mysql:mysql /var/lib/mysql
+
+	Инициализировать бд:
+
+sudo mysqld --initialize
+
+	Установить mysql (марию, соппсно) с юзером mysql в каталог /var/lib/mysql
+
+sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+	Если всё будет ок, на экране будут подсказки и рекомендации о том, что надо марию засетапить.
+	Ее также можно запускать так: /usr/bin/mysqld_safe --datadir='/var/lib/mysql'
+	Проигнорируем это всё.
+
+	Глянуть содержимое каталога с файлами БД. 
+	Там будут служебные файлы. Там же будут появляться каталоги для будущих баз данных (при их создании):
+
+cd /var/lib/mysql && ls
+
+	Запускаем марию и проверяем ее статус:
+
+sudo systemctl start mariadb && systemctl status mariadb
+
+	Запустить автоматический скрипт настройкий безопасности MariaDB:
+
+sudo mysql_secure_installation
+
+	Дальше всё по необходимости, создаются юзеры и базы.
+	
+
+==== Как сбросить пароль root в MariaDB на localhost ====
+
+	Остановить сервис:
+
+sudo systemctl stop mariadb
+
+	Перезапустить сервис без проверки Permission:
+	Амперсанд в конце строки заставить запускаемый процесс работать в фоне, и можно продолжить командовать в том же окне консоли.
+
+sudo mysqld_safe --skip-grant-tables --skip-networking &
+
+	Подключиться к базе как root, пароль для которого не будет запрошен:
+	Ожидаемый ответ: MariaDB [(none)]>
+
+mysql -u root
+ 
+	Update permission tables.
+	Они же grant tables (таблицы данных юзеров в БД, пароли, явки, разрешения):
+
+FLUSH PRIVILEGES;
+
+	Придумать новый пароль, записать его в блокнот.
+
+	Поменять пароль root для localhost (вместо new_password написать свой новый пароль):
+	Ожидаемый ответ: Query OK, 0 rows affected (0.00 sec)
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+
+	Выйти из коннекшна к БД
+
+Exit
+
+	Зайти с паролем
+
+sudo mysql -u root -p
+
+			Если это не сработает — проблема серьезнее, чем кажется.
+			
+			Вероятное решение (вместо new_password написать свой новый пароль):
+		UPDATE mysql.user SET authentication_string = PASSWORD('new_password') WHERE User = 'root' AND Host = 'localhost';
+
+			Update permission tables:
+
+		FLUSH PRIVILEGES;
+
+			Выйти из коннекшна к БД
+
+		Exit
+
+			Убить процесс mariadb
+
+		sudo kill '/var/run/mariadb/mariadb.pid'
+
+			Запустить новый процесс mariadb
+
+		sudo systemctl start mariadb
+
+			Зайти как root с новым паролем
+
+		mysql -u root -p
+
+		Ну или переустановить всё к чертям.
+
+==== Переустановка MariaDB ====
+
+sudo apt remove mariadb-server mariadb-client
+sudo rm -R /var/lib/mysql
+sudo apt install mariadb-server mariadb-client
+systemctl start mariadb
+
+systemctl enable mariadb
+
+==== Как дать права (все сразу) юзеру 'ordinary_user_name' на базу ’test’ в MariaBD: ====
+
+GRANT ALL PRIVILEGES ON test.* TO 'ordinary_user_name'@'localhost';
+
+	Update permission tables:
+
+FLUSH PRIVILEGES;
+
+exit
+
+	Убедиться в том, что у нового юзера есть все права.
+	
+	Залогиниться под созданным юзером.
+	Ожидаемый ответ: MariaDB [(none)]>:
+
+mysql -u ordinary_user_name -p
+
+SHOW DATABASES;
+
+	Ожидаемый ответ — название "test" в списке доступных баз данных:
+
+exit
+
+==== Есть вероятность, что каких-то зависимостей не будет ====
+
+ Читаем внимательно сообщения на экране и действуем.
+
+	apt-cache search php | egrep 'module' | grep default
+
+	Хочет 'php-xml'. Ok. Ещё понадобятся curl и Zip и много всего, можно поставить сразу всё необходимое.
+	
+	 && sudo systemctl reload apache2 && systemctl status apache2
+
+	browser > http://localhost/phpMyAdmin/
+
+===== Куда это положить? =====
+	
+	The sites-available method (generally considered the "Debian Way") suppose following:
+			"main" config in /etc/apache2/apache2.conf
+			"user" config in /etc/apache2/httpd.conf
+			vhosts in /etc/apache2/sites-available files (one per file, typically)
+				you might want to number them, e.g. 
+				00-domain.com, 
+				01-otherdomain.com
+			ports (Listen directives) in /etc/apache2/ports.conf
+			mods in /etc/apache2/mods-available
+		You can manipulate these with symlinks.
+		Depending on personal preference, you can restart Apache using apachectl, /etc/init.d/apache2 (start|stop|reload|restart), or service apache2 (start|stop|reload|restart)
+		An example where you would use httpd.conf instead of a vhost entry would be for a global redirect or rewrite rule, for example.
+
+		В файле default.conf должна быть следующая информация, всё остальное опционально:
+
+			<VirtualHost *:80>
+
+			ServerAdmin admin@localhost
+			DocumentRoot /var/www/html/
+				#ServerName ***
+				#ServerAlias ***
+
+			<Directory /var/www/html/>
+			Options +FollowSymlinks
+			AllowOverride All
+			Require all granted
+			</Directory>
+
+				# RedirectMatch ^/$ /moodle.tiq/
+
+			ErrorLog ${APACHE_LOG_DIR}/error.log
+			CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+			</VirtualHost>
+			
+--------------------
+@moodle @mariadb @php @apache 

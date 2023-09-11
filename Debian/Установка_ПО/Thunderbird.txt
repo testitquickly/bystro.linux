@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-11T20:20:02+03:00
+
+====== Thunderbird ======
+
+< @thunderbird @install >
+
+В репозиториях Stable новый Thunderbird появится после второго пришествия, поэтому 
+
+===== Забэкапить существующий профиль =====
+
+Каталог /~/.thunderbird/ или скопировать, или закатать в архив.
+
+===== Удалить существующий Thunderbird =====
+
+Через Apper или в консоли.
+
+===== Взять файлы нового Thunderbird =====
+
+https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
+
+Распаковать его через sudo в /opt/
+
+===== Сделать ярлык для запуска =====
+
+''/opt/thunderbird/thunderbird %u''
+

@@ -38,7 +38,7 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 ===== Установка Sublime Text в Manjaro =====
 
-Исходник находится в AUR, поэтому Sublime можно установить через [[Manjaro:Быстрая настройка:Управление software#pamac|Pamac]]. Всё будет установлено в /opt/.
+Исходник находится в AUR, поэтому Sublime можно установить через Pamac. Всё будет установлено в /opt/.
 
 Этот же процесс можно сделать вручную, см. [[Manjaro:Быстрая настройка:Управление software:Установка ПО в 'opt']]
 
@@ -68,12 +68,12 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 	2. [[https://packagecontrol.io/packages/AdvancedNewFile|AdvancedNewFile]]
 	3. [[https://packagecontrol.io/packages/AutoFileName|AutoFileName]]
 	4. [[https://packagecontrol.io/packages/SideBarEnhancements|SideBarEnhancements]] — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
-	5. [[https://packagecontrol.io/packages/All%20Autocomplete|All Autocomplete]] — autocomplete вообще
+	5. [[https://packagecontrol.io/packages/All Autocomplete|All Autocomplete]] — autocomplete вообще
 	6. [[https://packagecontrol.io/packages/BracketHighlighter|BracketHighlighter]]
 	7. [[https://packagecontrol.io/packages/DocBlockr|DocBlockr]]
 	8. [[https://packagecontrol.io/packages/Git|Git]] (некоторым заходит [[https://packagecontrol.io/packages/GitAutoCommit|GitAutoCommit]], мне он кажется излишним)
 	9. [[https://packagecontrol.io/packages/GitGutter|GitGutter]]
-	10. [[https://packagecontrol.io/packages/Markdown%20Extended|Markdown Extended]]
+	10. [[https://packagecontrol.io/packages/Markdown Extended|Markdown Extended]]
 	11. [[https://packagecontrol.io/packages/Anaconda|Anaconda]] — autocomplete для программистов
 	12. [[https://packagecontrol.io/packages/SublimeLinter|SublimeLinter]] — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
 	13. [[https://packagecontrol.io/packages/Emmet|Emmet]] — шаблоны для верстальщиков (front end)
