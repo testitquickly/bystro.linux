@@ -50,11 +50,16 @@ sudo reboot
 
 Отслеживать порядковый номер и имя доступных релизов — https://www.debian.org/releases/ Я сижу на stable Debian и стараюсь не обновлять систему как можно дольше — это мой выбор. 
 
-Когда уже точно надо обновляться — [[Обновить sources.list]] и внести туда имя нового релиза.
+Когда уже точно надо обновляться 
 
-1. ''sudo aptitude update''
-2. ''sudo aptitude upgrade''
-3. ''sudo reboot''
+==== Обновить sources.list ====
+
+[[Обновить sources.list]] по имени нового релиза.
+
+==== Обновить систему ====
+
+1. ''sudo aptitude update && sudo aptitude upgrade''
+2. ''sudo reboot''
 			— и очень внимательно посмотреть, если всё норм и не хочется ли сделать шаг назад
 4. ''sudo aptitude full-upgrade''
 
