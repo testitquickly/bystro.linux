@@ -17,29 +17,30 @@ Creation-Date: 2022-02-21T23:32:31+02:00
  
 Сервер для # SECURITY updates никогда не бывает локальным, его не трогаем.
 
-==== Обновить sources.list ====
+===== Обновить sources.list =====
 
 Удалить файл "sources.list", который автоматически создала утилита netselect-apt и внести изменения в //свой// sources.list.
 
 ===== Изменить /etc/apt/sources.list под релиз =====
 
-''sudo mcedit /etc/apt/sources.list''
+1. ''sudo mcedit /etc/apt/sources.list''
 
 Содержимое смотреть на https://wiki.debian.org/SourcesList
 
-Пример для Debian 11 ’bullseye’:
+	Пример для Debian 11 ’bullseye’:
+	
+	'''
+	# MAIN
+	deb http://ftp.md.debian.org/debian/ bullseye main contrib non-free
+	
+	# UPDATES
+	deb http://ftp.md.debian.org/debian/ bullseye-updates main contrib non-free
+	
+	# SECURITY
+	deb http://security.debian.org/debian-security bullseye-security main contrib non-free
+	'''
 
-'''
-# MAIN
-deb http://ftp.md.debian.org/debian/ bullseye main contrib non-free
+2. ''sudo aptitude update && sudo aptitude upgrade --full-resolver''
 
-# UPDATES
-deb http://ftp.md.debian.org/debian/ bullseye-updates main contrib non-free
-
-# SECURITY
-deb http://security.debian.org/debian-security bullseye-security main contrib non-free
-'''
-
-* ''sudo apt update''
-* ''sudo reboot''
+Параметр  “--full-resolver” необходим для отмены таймаута при автоматическом разрешение конфликтов зависимостей. 
 
