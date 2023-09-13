@@ -1,0 +1,71 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-13T13:34:12+03:00
+
+====== pgAdmin ======
+
+< @debian @install @DB @pgadmin >
+
+Инструмент для работы с PostgresSQL. 
+
+===== Установка postgres =====
+
+Следовать https://wiki.postgresql.org/wiki/Apt но есть нюансы:
+* это установка для debian bookworm
+* обратиться к apt.postgresql.org.__pgp__ вместо apt.postgresql.org.asc
+
+1. ''sudo apt install curl ca-certificates''
+2. ''sudo install -d /usr/share/postgresql-common/pgdg''
+3. ''sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail'' [[https://www.postgresql.org/media/keys/ACCC4CF8.asc|''https://www.postgresql.org/media/keys/ACCC4CF8.asc'']]
+4. ''sudo touch /etc/apt/sources.list.d/pgdg.list && sudo mcedit /etc/apt/sources.list.d/pgdg.list''
+
+Вставить в файл:
+	''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.''__''pgp''__'']'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
+
+'''
+5. sudo apt-get update
+6. sudo apt-get install postgresql-15 phppgadmin
+'''
+
+===== Установка pgAdmin =====
+
+''sudo curl'' [[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''https://www.pgadmin.org/static/packages_pgadmin_org.pub'']] ''| sudo apt-key add''
+
+Then create the repository configuration file:
+
+'''
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
+'''
+
+Проверить содержимое файла
+
+cat /etc/apt/sources.list.d/pgadmin4.list
+
+Внутри должно быть 
+
+''deb'' [[https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm|''https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/''__''bookworm''__]] ''pgadmin4 main''
+
+==== Установить десткоп-аппу pgAdmin4 ====
+
+''sudo apt update && sudo apt install pgadmin4''
+
+Будут установлены и pgadmin4-desktop, и pgadmin4-web. В списке программ в разделе «Разработка» появится ярлык для запуска настольного приложения ”pgAdmin 4”. Можно запустить, первый раз будет шуршать долго, это нормально.
+
+Дальше по существу — добавить новый удаленный сервер, подключиться, все дела.
+
+=== Настроить веб-сервер pgAdmin4 ===
+
+''sudo /usr/pgadmin4/bin/setup-web.sh''
+
+Надо будет создать основной user account (или живой емайл, или условный admin@localhost), базу данных и так далее. 
+
+Если есть UFW firewall, надо разрешить трафик http и https:
+
+''sudo ufw allow http''
+''sudo ufw allow https''
+
+Дэшбоард: http://127.0.0.1/pgadmin4
+
+Залогиниться записанными юзером > Add New Server (локальный или удаленный). 
+
+Дальше согласно документации — https://www.pgadmin.org/docs/

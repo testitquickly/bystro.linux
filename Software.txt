@@ -32,7 +32,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Midnight Commander]]
 [[+Okular]]
 [[+PDF]]
-[[+pgAdmin]]
 [[+Python]]
 [[+QBittorrent]]
 [[+qmmp]]
