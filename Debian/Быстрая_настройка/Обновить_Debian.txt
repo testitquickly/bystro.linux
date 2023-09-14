@@ -8,11 +8,11 @@ Creation-Date: 2022-02-23T00:50:15+02:00
 
 ===== Проверить версию и релиз Debian =====
 
+''lsb_release -d && cat /etc/debian_version''
+
 Здесь:
 * lsb = [[https://wiki.linuxfoundation.org/lsb/start|Linux Standard Base]], a standard that describes the minimum set of APIs a distribution must support.
 * lsb_release = утилита выдачи установленной на компьютере версии Linux Standard Base. Но она выдаёт общий порядковый номер, поэтому ещё считаем содержимое файла /etc/debian_version
-
-''lsb_release -d && cat /etc/debian_version''
 
 Пример ответа: 
 
@@ -37,10 +37,8 @@ Creation-Date: 2022-02-23T00:50:15+02:00
 	
 Списки пакетов обновляются из всех репозиториев, указанных в файле /etc/apt/sources.list а также в Система > Менеджер пакетов Synaptic > Настройки > Репозитории > Other Software 
 
-'''
-sudo aptitude install some-linux-image-version
-sudo reboot
-'''
+	1. ''sudo aptitude install REQUIRED-linux-image-version''
+	2. ''sudo reboot''
 
 Если после загрузки все идёт хорошо, тогда подтягиваем зависимости для нового ядра, разрешив Debian автоматом удалять старые зависимости:
 
@@ -66,17 +64,17 @@ sudo reboot
 
 Если ни один пакет не указан в командной строке, aptitude попытается обновить //каждый// пакет, который может быть обновлен. 
 
-Команда //full-upgrade// изначально назвывалась //dist-upgrade//. aptitude все ещё распознает dist-upgrade как синоним full-upgrade.
+	Команда //full-upgrade// изначально назвывалась //dist-upgrade//. aptitude все ещё распознает dist-upgrade как синоним full-upgrade.
 
-===== Простое и бесконтрольное обновление =====
+Вот тут уже точно нужно „sudo reboot” и посмотреть, что получилось.
+
+=== Простое и бесконтрольное обновление ===
 
 Чревато последствиями, но если бессмертно и бесстрашно…
 
-'''
-sudo apt update
-sudo apt dist-upgrade
-'''
+	1. ''sudo apt update''
+	2. ''sudo apt dist-upgrade''
 
-===== Если обновления проверяются только из кэша =====
+==== Если обновления проверяются только из кэша ====
 
 [[HowTo:Как заставить aptitude обновляться из сети, а не из кэша]]
