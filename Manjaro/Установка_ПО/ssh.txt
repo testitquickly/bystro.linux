@@ -4,4 +4,10 @@ Creation-Date: 2023-09-16T23:34:03+03:00
 
 ====== ssh ======
 
-//Next step//: 
+< @manjaro @install @ssh >
+
+''sudo pacman -S openssh'' 
+
+===== Настройки =====
+
+[[Software:ssh]]

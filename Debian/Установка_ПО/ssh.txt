@@ -4,4 +4,10 @@ Creation-Date: 2023-09-16T23:36:15+03:00
 
 ====== ssh ======
 
-//Next step//: 
+< @debian @install @ssh >
+
+''sudo apt-get install openssh-server openssh-client''
+
+===== Настройки =====
+
+[[Software:ssh]]
