@@ -4,7 +4,7 @@ Creation-Date: 2023-09-16T23:07:24+03:00
 
 ====== vpn ======
 
-< @debian @vpn @install >
+< @debian @install @vpn >
 
 ===== Установить openvpn и openconnect =====
 

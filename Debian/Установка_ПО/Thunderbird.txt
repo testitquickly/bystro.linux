@@ -4,7 +4,7 @@ Creation-Date: 2023-09-11T20:20:02+03:00
 
 ====== Thunderbird ======
 
-< @thunderbird @install >
+< @debian @install @thunderbird >
 
 В репозиториях Stable новый Thunderbird появится после второго пришествия, поэтому 
 

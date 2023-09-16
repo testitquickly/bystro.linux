@@ -4,7 +4,7 @@ Creation-Date: 2022-10-31T22:15:43+02:00
 
 ====== vmware ======
 
-< @vmware @console >
+< @manjaro @install @vmware @console >
 
 ===== Подготовка =====
 

@@ -12,11 +12,8 @@ Secure shell (SSH) — наш основной способ коннекта н�
 
 ===== Установить OpenSSH =====
 
-**manjaro**
-''sudo pacman -S openssh'' 
-
-**debian**
-''sudo apt-get install openssh-server openssh-client''
+* [[Manjaro:Установка ПО:ssh]]
+* [[Debian:Установка ПО:ssh]]
 
 ==== Настроить сервис OpenSSH ====
 
