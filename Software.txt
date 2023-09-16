@@ -4,7 +4,8 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ====== Software ======
 
-[[+Akonadi]]
+< @settings >
+
 [[+Audacious]]
 [[+Audacity]]
 [[+blame]]
@@ -20,6 +21,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+GPG]]
 [[+JACK audio interface]]
 [[+kate]]
+[[+KDE Connect]]
 [[+KeePassXC]]
 [[+KMail]]
 [[+KMyMoney]]
@@ -43,6 +45,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Sublime]]
 [[+Thunderbird]]
 [[+VLC]]
+[[+vpn]]
 [[+wget]]
 [[+wine]]
 [[+xampp]]
