@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-16T23:07:24+03:00
+
+====== vpn ======
+
+< @debian @install @vpn >
+
+===== Установить openvpn и openconnect =====
+
+''sudo aptitude install openvpn openconnect network-manager-openvpn''
+
+===== Настроить vpn =====
+
+[[Software:vpn]]

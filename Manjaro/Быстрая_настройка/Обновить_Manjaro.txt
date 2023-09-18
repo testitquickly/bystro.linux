@@ -3,7 +3,7 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-01-07T01:19:45+02:00
 
 ====== Обновить Manjaro ======
-< @manjaro @update >
+< @manjaro @update @pacman @yay >
 
-''sudo pacman -Syu''
+''sudo pacman -Syu && yay -Syu''
 

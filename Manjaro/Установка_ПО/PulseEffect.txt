@@ -4,7 +4,7 @@ Creation-Date: 2023-05-08T17:21:44+03:00
 
 ====== PulseEffect ======
 
-< @manjaro @pulseeffect >
+< @manjaro @install @pulseeffect >
 
 Установка через Pamac в обычном режиме.
 

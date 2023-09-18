@@ -4,7 +4,7 @@ Creation-Date: 2023-02-08T02:41:52+02:00
 
 ====== ftp ======
 
-< @manjaro @console @ftp >
+< @manjaro @install @console @ftp >
 
 ===== Установить vsftpd =====
 
