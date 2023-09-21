@@ -36,7 +36,7 @@ zip -r archivename.zip directory_name
 
 ===== Запаролить архив =====
 
-''zip -e  archivename.zip directory_name''
+''zip -e archivename.zip directory_name''
 
 ===== Разорвать архив на маленькие файлы =====
 
