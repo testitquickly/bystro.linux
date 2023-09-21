@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-21T20:34:43+03:00
+
+====== zip ======
+
+< @console @zip @archive >
+
+===== Запаковать файлы =====
+
+''zip archivename.zip filename1 filename2 filename3''
+
+Чтобы не выводить лог на экран, нужен параметр “-q”:
+
+''zip -q archivename.zip filename1 filename2 filename3''
+
+===== Запаковать каталог =====
+
+'''
+zip -r archivename.zip directory_name
+'''
+
+Можно комбинировать упаковку нескольких определенных каталогов и файлов по-отдельности:
+
+''zip -r archivename.zip directory_name1 directory_name2 file1 file1''
+
+===== Настроить уровень сжатия =====
+
+По-умолчанию уровень сжатия “-6”. 0 = без компрессии. 9 = наиплотнейше (от этого процессор будет дольше и сильнее пыхтеть).
+
+''zip -9 -r archivename.zip directory_name''
+
+Алгоритм сжатия (надо знать заранее) выбирают через параметр “-Z”:
+
+''zip -r -Z bzip2 archivename.zip directory_name''
+
+===== Запаролить архив =====
+
+''zip -e  archivename.zip directory_name''
+
+===== Разорвать архив на маленькие файлы =====
+
+Если файла на пять гигов, а надо разбить их на одногиговые, то:
+
+''zip -s 1g -r archivename.zip directory_name''
+
+Появятся последовательно названные файлы:
+
+archivename.zip
+archivename.z01
+archivename.z02
+archivename.z03
+archivename.z04
+
+===== Мелочи =====
+
+Собрать в архив все mp3 из текущего каталога и установить сжатие ”0”:
+
+''zip -0 archivename *.mp3''
+
+Упаковать все файлы в каталоге:
+
+''zip archivename *''
+
+Упаковать все скрытые файлы в каталоге:
+
+''zip archivename .* *''
+
+===== Распаковать =====
+
+''unzip archivename.zip''
+
+Если в архиве есть другие zip-файлы, то распаковать вообще всё:
+
+''unzip -W \*.zip''
