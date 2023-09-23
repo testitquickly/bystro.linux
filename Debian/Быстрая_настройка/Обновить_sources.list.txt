@@ -43,5 +43,3 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 2. ''sudo aptitude update && sudo aptitude upgrade --full-resolver''
 
 Параметр  “--full-resolver” необходим для отмены таймаута при автоматическом разрешение конфликтов зависимостей. 
-
-//Next step//: 

@@ -105,5 +105,3 @@ To take effect run
 	On modern unices, there's an added complication related to ~/.profile. If you log in in a graphical environment (that is, if the program where you type your password is running in graphics mode), you don't automatically get a login shell that reads ~/.profile. Depending on the graphical login program, on the window manager or desktop environment you run afterwards, and on how your distribution configured these programs, your ~/.profile may or may not be read. If it's not, there's usually another place where you can define environment variables and programs to launch when you log in, but there is unfortunately no standard location.
 	
 	Note that you may see here and there recommendations to either put environment variable definitions in ~/.bashrc or always launch login shells in terminals. Both are bad ideas. The most common problem with either of these ideas is that your environment variables will only be set in programs launched via the terminal, not in programs started directly with an icon or menu or keyboard shortcut.
-
-//Next step//: 

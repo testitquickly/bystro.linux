@@ -45,5 +45,3 @@ Creation-Date: 2022-02-21T23:20:29+02:00
 ''sudo reboot''
 
 Вай-фай работает.
-
-//Next step//: 

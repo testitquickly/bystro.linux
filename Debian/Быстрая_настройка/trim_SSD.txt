@@ -188,4 +188,5 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 	* Если DisableDeleteNotify = 0, то функция TRIM активна. Если DisableDeleteNotify = 1, то функция TRIM выключена. При наборе команд не включайте кавычки.
 
 Если команда TRIM выключена, то чтобы включить команду TRIM надо ввести команду 
+
 ''fsutil behavior set disabledeletenotify 0''

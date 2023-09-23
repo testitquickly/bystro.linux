@@ -71,5 +71,3 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet nomodeset"
 Можно quiet nomodeset убрать совсем — тогда вместо заставки с логотипом будет отображаться процесс загрузки в тексте.
 
 ''sudo update-grub''
-
-//Next step//: 
