@@ -6,48 +6,58 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 < @install @settings >
 
-[[+Audacious]]
+===== Нужное =====
+
 [[+Audacity]]
-[[+blame]]
 [[+Brave]]
 [[+calibre]]
-[[+Elgato “Stream Deck”]]
 [[+exiftool]]
 [[+Firefox]]
-[[+Firewall]]
-[[+flatpak]]
 [[+ftp]]
 [[+git]]
 [[+GPG]]
-[[+JACK audio interface]]
 [[+kate]]
-[[+KDE Connect]]
 [[+KeePassXC]]
 [[+KMail]]
 [[+KMyMoney]]
 [[+konsole]]
 [[+KRunner]]
 [[+Krusader]]
-[[+LaTeX]]
 [[+LibreOffice]]
 [[+microcode]]
 [[+Midnight Commander]]
 [[+Okular]]
 [[+PDF]]
-[[+Python]]
 [[+QBittorrent]]
 [[+qmmp]]
 [[+Samba]]
+Slack
 [[+SMPlayer]]
-[[+snap]]
 [[+Spectacle]]
 [[+ssh]]
-[[+Sublime]]
+Telegram
 [[+Thunderbird]]
-[[+VLC]]
 [[+vpn]]
 [[+wget]]
+[[+Zim]]
+
+==== Всё остальное ====
+
+[[+Audacious]]
+[[+blame]]
+[[+Elgato “Stream Deck”]]
+[[+Firewall]]
+[[+flatpak]]
+[[+JACK audio interface]]
+[[+KDE Connect]]
+[[+LaTeX]]
+onboard (экранная клавиатура)
+[[+Python]]
+[[+snap]]
+[[+Sublime]]
+[[+VLC]]
 [[+wine]]
 [[+xampp]]
-[[+Zim]]
 [[+Zoom]]
+vokoscreenNG
+
