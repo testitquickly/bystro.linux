@@ -13,20 +13,9 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 	или (если команда ''usermod'' не найдена)
 ''gpasswd -a astenix sudo''
 
-Заработает после релогина:
+Заработает после релогина ([[HowTo:Log Out из консоли]]):
 
 ''loginctl terminate-user astenix''
-
-https://losst.pro/en/how-to-use-loginctl
-
-
-
-loginctl kill-session [--signal=] has exactly the same effect as systemctl kill – both end up calling systemd's KillUnit(signal) via D-Bus on the .scope unit object. (Note that both default to sending a SIGTERM, not SIGKILL.)
-
-Similarly, loginctl terminate-session has mostly the same effect as systemctl stop, both commands will call systemd's StopUnit() via D-Bus. (However, loginctl will explicitly mark the .scope as "abandoned" before trying to stop it, causing systemd to log about any leftover processes.)
-
-A small difference in both cases is that the calls made by loginctl are proxied through the logind daemon, which applies different polkit authorization rules than a direct call to systemd would. (For example, normally non-root users cannot call systemd directly.)
-
 
 ===== Проверить, находится ли пользователь 'astenix' в группе 'sudo' =====
 

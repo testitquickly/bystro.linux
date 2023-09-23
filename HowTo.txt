@@ -4,6 +4,7 @@ Creation-Date: 2022-11-24T03:36:01+02:00
 
 ====== HowTo ======
 
+[[+Log Out из консоли]]
 [[+microcode и dualboot]]
 [[+Mount AND umount iso files]]
 [[+swap]]
