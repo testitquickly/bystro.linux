@@ -49,3 +49,4 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 sudo chown astenix:sudo -R /home/
 '''
 
+//Next step//: [[HowTo:Настроить подтверждение удаления файла в консоли]]

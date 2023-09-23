@@ -47,4 +47,3 @@ sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts
 
 sudo fc-cache -fv
 '''
-

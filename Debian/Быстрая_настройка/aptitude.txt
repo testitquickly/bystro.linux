@@ -7,4 +7,3 @@ Creation-Date: 2022-02-21T23:47:48+02:00
 < @console >
 
 ''sudo apt install aptitude''
-

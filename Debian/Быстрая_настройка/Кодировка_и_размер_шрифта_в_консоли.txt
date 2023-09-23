@@ -72,3 +72,4 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet nomodeset"
 
 ''sudo update-grub''
 
+//Next step//: 
