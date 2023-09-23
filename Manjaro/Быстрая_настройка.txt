@@ -4,6 +4,8 @@ Creation-Date: 2023-02-18T01:31:04+02:00
 
 ====== Быстрая настройка ======
 
+< @manjaro @quicksetup >
+
 [[+autostart]]
 [[+swap]]
 [[+Выбор ветки]]
