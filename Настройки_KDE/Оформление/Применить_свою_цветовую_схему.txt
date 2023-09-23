@@ -6,6 +6,8 @@ Creation-Date: 2022-02-27T04:48:32+02:00
 
 < @color @systemSettings >
 
-Находится в [[/home/astenix/.kde/share/apps/color-schemes/]]
-Файл ''AstenixBreezeDarkNeutral.colors''
-
+Параметры системы
+''> Оформление рабочей среды''
+''> Цвета''
+ 
+Настроить по своему вкусу. Изменения будет предложено сохранить под новым именем. Предполагается, что файл с расширением ''.colors'' сохраняется в [[/home/astenix/.kde/share/apps/color-schemes/]],  но это надо перепроверить.
