@@ -4,10 +4,12 @@ Creation-Date: 2023-09-25T11:05:11+03:00
 
 ====== tar ======
 
-https://linux.die.net/man/1/ncftp
-https://duckduckgo.com/?q=console+read+content+of+a+tar+file+over+ftp&t=ffab&ia=web
-https://askubuntu.com/questions/175671/automate-transfer-of-tar-files-over-ftp
-https://www.cs.colostate.edu/helpdocs/ftp.html
-https://unix.stackexchange.com/questions/95993/how-to-make-tar-save-the-archive-on-a-remote-machine-using-sftp-or-ftp
-https://unix.stackexchange.com/questions/208482/view-a-file-in-a-tar-archive-without-extracting-it
-https://www.gnu.org/software/tar/manual/tar.html#operations
+TODO объяснить себе суть и способы работы с архивами tar
+
+	1. https://linux.die.net/man/1/ncftp
+	2. https://duckduckgo.com/?q=console+read+content+of+a+tar+file+over+ftp&t=ffab&ia=web
+	3. https://askubuntu.com/questions/175671/automate-transfer-of-tar-files-over-ftp
+	4. https://www.cs.colostate.edu/helpdocs/ftp.html
+	5. https://unix.stackexchange.com/questions/95993/how-to-make-tar-save-the-archive-on-a-remote-machine-using-sftp-or-ftp
+	6. https://unix.stackexchange.com/questions/208482/view-a-file-in-a-tar-archive-without-extracting-it
+	7. https://www.gnu.org/software/tar/manual/tar.html#operations
