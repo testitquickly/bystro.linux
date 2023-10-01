@@ -12,4 +12,4 @@ Creation-Date: 2023-09-16T23:08:20+03:00
 
 ===== Настроить vpn =====
 
-[[Software:vpn]]
+[[Linux:Software:vpn]]

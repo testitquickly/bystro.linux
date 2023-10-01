@@ -13,7 +13,7 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 	или (если команда ''usermod'' не найдена)
 ''gpasswd -a astenix sudo''
 
-Заработает после релогина ([[HowTo:Log Out из консоли]]):
+Заработает после релогина ([[Linux:HowTo:Log Out из консоли]]):
 
 ''loginctl terminate-user astenix''
 
@@ -49,4 +49,4 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 sudo chown astenix:sudo -R /home/
 '''
 
-//Next step//: [[HowTo:Настроить подтверждение удаления файла в консоли]]
+//Next step//: [[Linux:HowTo:Настроить подтверждение удаления файла в консоли]]

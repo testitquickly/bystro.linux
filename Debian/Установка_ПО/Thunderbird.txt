@@ -28,5 +28,5 @@ https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 
 ===== Настройки Thunderbird =====
 
-[[Software:Thunderbird]]
+[[Linux:Software:Thunderbird]]
 

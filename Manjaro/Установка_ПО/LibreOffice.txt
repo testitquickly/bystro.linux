@@ -27,4 +27,4 @@ sudo pacman -S libreoffice-still
 
 Множество расширений: https://extensions.libreoffice.org/
 
-Всякие неочевидные настройки LibreOffice: [[Software:LibreOffice:Настройки LibreOffice]]
+Всякие неочевидные настройки LibreOffice: [[Linux:Software:LibreOffice:Настройки LibreOffice]]

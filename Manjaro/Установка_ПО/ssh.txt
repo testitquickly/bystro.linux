@@ -10,4 +10,4 @@ Creation-Date: 2023-09-16T23:34:03+03:00
 
 ===== Настройки =====
 
-[[Software:ssh]]
+[[Linux:Software:ssh]]
