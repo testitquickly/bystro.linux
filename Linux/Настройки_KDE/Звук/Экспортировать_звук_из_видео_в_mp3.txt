@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-23T20:57:47+02:00
+
+====== Экспортировать звук из видео в mp3 ======
+
+< @mp3 @sound >
+
+Можно программой WinFF (оболочка, которая все равно все делает через командную строку, но удобно)
+
+А можно руками:
+
+''avconv -i Upd_Sanity.mp4 -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 Upd_Sanity.mp3''
+
+Description
+
+   -iinput file name
+   -vn   disable video recording
+   -acodec   force audio codec to libmp3lame
+   -ac   set the number of audio channels
+   -ar   set the audio sampling frequency
+
+==== STEP 1 : Create a bash function that performs conversion ====
+
+**## utilities.sh**
+
+'''
+convertMP4toMP3(){
+echo -n "Enter source mp4 file : "
+read sourceFile
+
+echo -n "Enter destination mp3 file : "
+read destFile
+
+avconv -i $sourceFile -vn -acodec libmp3lame -ac 2 -ab 160k -ar 48000 $destFile
+}
+'''
+
+==== STEP 2 : source that bash file ====
+
+''source utilities.sh''
+
+==== STEP 3 : start conversion calling above function convertMP4toMP3 ====
+
+ $ convertMP4toMP3
+ Enter source mp4 file : Upd_Sanity.mp4
+ Enter destination mp3 file : UPd_sanity.mp3
+
+===== Как перегнать m4a в mp3 =====
+
+Через avconv (это форк ffmpeg) в каталоге с m4a файлами выполнить:
+
+''find . -type f -name '*.m4a' -exec bash -c 'avconv -i "$0" "${0/%m4a/mp3}"' '{}' \;''
+

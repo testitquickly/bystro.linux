@@ -1,0 +1,22 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-23T20:46:18+02:00
+
+====== Как поменять MAC address для WiFi ======
+
+< @console @WiFi >
+
+Будет установлен random адрес.
+
+Узнать текущий mac address
+
+''sudo ip a'' 
+
+Выключить wi-fi.
+
+Применить изменение мак-адреса:
+
+''sudo macchanger -r wlan0''
+
+Включить wi-fi.
+

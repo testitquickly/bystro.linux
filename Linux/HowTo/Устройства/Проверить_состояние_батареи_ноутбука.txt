@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-15T21:10:56+02:00
+
+====== Проверить состояние батареи ноутбука ======
+
+< @debian @battery >
+
+Вся информация о состоянии батареи ноутбука хранится в файлах из ''/sys/class/power_supply/BAT1/''
+
+''cat /sys/class/power_supply/BAT1/status && cat /sys/class/power_supply/BAT1/capacity''
+
+Если нет питания от сети, то в этих файлах будет написано что-то другое, вроде Discharged и количество оставшегося заряда.
+
+А ещё можно установить утилиту upower:
+
+''upower -i /sys/class/power_supply/BAT1''
+
+Она прочитает содержимое файлов в каталоге и выведет их содержимое в виде перечня параметров.
+
+Также можно узнать, открыта или закрыта крышка ноутбука:
+
+''cat /proc/acpi/button/lid/LID0/state''
+
