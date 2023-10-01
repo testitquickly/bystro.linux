@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-25T11:05:11+03:00
+
+====== tar ======
+
+https://linux.die.net/man/1/ncftp
+https://duckduckgo.com/?q=console+read+content+of+a+tar+file+over+ftp&t=ffab&ia=web
+https://askubuntu.com/questions/175671/automate-transfer-of-tar-files-over-ftp
+https://www.cs.colostate.edu/helpdocs/ftp.html
+https://unix.stackexchange.com/questions/95993/how-to-make-tar-save-the-archive-on-a-remote-machine-using-sftp-or-ftp
+https://unix.stackexchange.com/questions/208482/view-a-file-in-a-tar-archive-without-extracting-it
+https://www.gnu.org/software/tar/manual/tar.html#operations

@@ -1,0 +1,200 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-05-17T01:11:42+03:00
+
+====== JACK audio interface ======
+
+< @jack @sound >
+
+Cadence
+Catia
+драм-машина «Hydrogen»
+MIDI-клавиатура «AKAI X2 mini»
+Что такое ALSA
+Что такое Pulse
+Что такое JACK
+
+===== Подключить MIDI-клавиатуру по USB =====
+
+Можно и по midi в аудиоинтерфейс, но сейчас это не существенно.
+
+Убедиться в том, что клавиатура работает (кнопки светятся) и распознаётся как новое устройство. Можно просто 
+
+''lsusb''
+
+будет показан список всех устройств. Можно его сократить:
+
+'''
+lsusb | grep idi
+'''
+
+Результат:
+
+'''
+Bus 001 Device 007: ID 1acc:1a31 Midiplus Co, Ltd. X2mini
+'''
+
+Далее он будет отображаться как 
+
+''X2mini MIDI 1''
+
+===== Настроить JACK =====
+
+Запустить Cadence.
+
+System > JACK Status
+по-умолчанию Stopped
+
+[Configure]
+Engine > Properties > Realtime = yes
+
+	остальное игноровать
+
+Driver > ALSA
+Device/Interface = будет интерфейс вывода звука по-умолчанию. Выбрать другой, если нужен другой, но пока что этим не заморачиваться.
+Properties 
+> Sample Rate = 44100 (cd quality)
+> Buffer Size = 1024
+> Periods/Buffer = 2
+Остальное проигнорировать, если нет явной нужды.
+[OK]
+
+JACK Status > [Start]
+
+Вкладка Tools
+> JACK Patchbay
+
+	Once you have these settings set up, you can then use any JACK aware programs and they will run with those settings. Some programs will allow you to change your buffer size, so that you can adjust audio latency without having to restart JACK.
+	
+	So, even though JACK is very powerful, you needn't be intimidated. At its most basic, it is very easy to set up your interface and get started. You can learn more about the power of JACK as you go along but don't get too bogged down starting off when all you want to do is learn to use some new software.
+	    
+	Note - If you are having trouble getting JACK to run, or recognize your interface, make sure your interface is both connected up, and turned on before opening up your JACK manager. If you are still having issues, try rebooting your system while your interface is hooked up.
+
+Тут можно запустить Hydrogen.
+
+{{../../images/jack_settings_01.jpg}}
+
+Соединить PulseAudio JACK Source с PulseAudio JACK Sink (аудиоканалы раздельные, поэтому front-left подключить к front-left и далее соответственно):
+
+{{../../images/jack_settings_02.jpg}}
+
+===== Hydrogen — Настроить драйвер =====
+
+''> Параметры'' 
+''> Звуковая система''
+	''Audio System = JACK''
+	''Вывод дорожки = Постфейдер''
+	''BBT sync method = constant measure''
+	''Connect to default JACK output ports = yes''
+	''Enable JACK timebase master support = yes''
+	''[Apply and restart output]''
+
+С такой схемой подключения звук из Hydrogen можно будет выводить куда угодно, например, в Audacity. Там нужно будет указать 
+метод вывода звука = JACK Audio Connection KIT
+устройство записи = hydrogen
+запустить запись
+в hydrogen запустить воспроизведение
+
+Но в целом это оверкилл, бо нет нужды записывать щелчки из Hydrogen в Audacity в режиме live, можно всё экспортировать в wav и занести файл в Audacity. Поэтому рассматриваем более простое подключение:
+
+''> Параметры'' 
+''> Звуковая система''
+	'''
+	Audio System = PulseAudio
+	Размер буфера = 1024
+	Частота сэмплирования = 44100
+	[Apply and restart output]
+	'''
+
+===== Назначение кнопок с миди-клавиатуры =====
+
+Hydrogen 
+''> Параметры'' 
+''> MIDI System''
+	''MIDI driver = ALSA''
+	''Вход = X2mini MIDI 1''
+	''Выход = none''
+	''Канал = Все''
+	''Enable MIDI feedback = yes''
+	''Discard MIDI messages after action has been triggered = yes''
+	''Use output note as input note = yes''
+
+Всего у «AKAI X2 mini» шесть управляющих кнопок. По-умолчанию у них красная подсветка. Если сперва зажать shift (слева от четырех  крутилок), то кнопки будут подсвечены синим.
+
+Можно автоматически распознать кнопки на midi-клавиатуре. Слева от Incoming Event есть красная кнопка — её нажатие вызывает функцию распознавания кнопки на клавиатуре. Нажимаем на midi-клавиатуре любую управляющую кнопку (над клавишами клавиатуры) и смотрим, если в Incoming Event что-то подтянется.
+
+	Какие-то кнопки могут не распознаваться, это нормально.
+
+==== Красная подсветка ====
+
+1. MMC_REWIND = #1
+2. MMC_FAST_FORWARD = #2
+3. MMC_STOP = #3
+4. MMC_PLAY = #4
+5. #5 не автоопределилась
+6. MMC_RECORD_STROBE = #6
+
+==== Синяя подсветка ====
+
+Автоматическое определение подтянуло event CC по каждой из шести кнопок, но с разными event parameter: #1
+
+1. CC [57] = #1
+2. CC [64] = #2
+3. CC [65] = #3
+4. CC [66] = #4
+5. CC [67] = #5
+6. CC [68] = #6
+
+==== Крутилки ====
+
+Автоопределение:
+1. CC [7] = #1
+2. CC [10] = #2
+3. CC [11] = #3
+4. CC [91] = #4
+
+на крутилке T1
+CC [7] = 
+на крутилке T2
+CC [10] = 
+на крутилке T3
+CC [11] = 
+Микшер > уровень звука МЕТРОНОМА — на крутилке T4
+CC [91] = MASTER_VOLUME_ABSOLUTE
+
+==== Без кнопок ====
+
+MMC_DEFFERED_PLAY
+MMC_RECORD_EXIT 
+MMC_RECORD_READY 
+MMC_PAUSE 
+NOTE 
+PROGRAM_CHANGE 
+
+===== Удобное назначение кнопок =====
+
+В принципе удобнее (и тише щелчок) нажимать клавиши на черно-белой клавиатуре.
+
+На второй октаве:
+C = NOTE 60 = play/stop_toggle (кнопка «PLAY», она же «STOP»)
+c# = NOTE 61 = PLAY 
+D =  NOTE 62 = 
+d# =  NOTE 64 = STOP
+E =  NOTE 65 = 
+
+Перемотка в начало не нужна, если остановка происходит по команде STOP. Это глобальный стоп. 
+
+Мьют фонового трэка = #1 (MMC_REWIND = ***
+Перемотка в начало = #2 (MMC_FAST_FORWARD) 
+Стоп = #3 (MMC_STOP = STOP)
+Запуск = #4 (MMC_PLAY = PLAY)
+Режим Pattern = #5 ()
+Режим Song = #6 (MMC_RECORD_STROBE = )
+
+#5 не автоопределилась
+
+===== Итого =====
+
+* Можно управлять START/STOP и уровнем звука метронома в Hydrogen
+* Нет необходимости настраивать роутинг в JACK
+* Можно выводить звук как в колонки ноута, так и во внешнюю аудиокарту нативными средствами KDE

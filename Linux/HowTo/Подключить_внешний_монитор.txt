@@ -1,0 +1,213 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-05T04:39:54+02:00
+
+====== Подключить внешний монитор ======
+
+< @hdmi @monitor @xrandr @debian >
+
+В моём ноутбуке занятная и когда-то дорогая игровая Nvidia «GeForce GTX 1050 Ti (Mobile)». С другими видеокартами надо искать другие решения.
+
+Исходные данные: в моем ноутбуке видео обслуживают два устройства:
+1. встроенный «Intel Corporation HD Graphics 630»
+2. отдельное Nvidia «GeForce GTX 1050 Ti Mobile»
+
+Задача: первое устройство будет обслуживать монитор ноут, а второе будет обслуживать внешний монитор через hdmi.
+
+===== Установить драйвера Nvidia =====
+
+Убедиться в том, что **монитор НЕ подключен к ноуту**.
+
+Их можно скачать с официального сайта в виде файла ***.run, но лучше сделать это стандартным путём по предписанному рецепту с https://wiki.debian.org/NvidiaGraphicsDrivers — при установке будет проще с зависимостями, а в будущем будет проще с обновлениями.
+
+==== Определить серию видеокарты ====
+
+У меня «GeForce GTX 1050 Ti Mobile». Она из семества ’10’ — https://ru.wikipedia.org/wiki/GeForce_10
+
+ОС у меня Debian 11 "Bullseye" (''lsb_release -d && cat /etc/debian_version''), поэтому смотрим https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_11_.22Bullseye.22
+
+Надо решить, будем ли ставить новейшие драйвера (но тогда будет бэкпорт), или те, что постарее (но не факт, что всё запустится). Чем новее, тем лучше. 
+	
+	Это не отменяет необходимость относиться к бэкпорту с большим подозрением.
+
+=== Разрешить бэкпорт ===
+
+* sudo mcedit /etc/apt/sources.list
+* добавить строку
+
+	# for nvidia drivers - backports
+deb http://deb.debian.org/debian bullseye-backports main contrib non-free
+
+=== Установить новейшие драйвера ===
+
+* ''sudo apt update''
+* ''sudo apt install -t bullseye-backports nvidia-driver firmware-misc-nonfree''
+* ''sudo reboot''
+
+При установке драйвер Nouveau не будет удалён (это и не надо), но он автоматически заблэклистится: появится файл /etc/modprobe.d/blacklist-nvidia-nouveau.conf с содержимым «blacklist nouveau»
+
+	Можно (если свербит) ещё добавить файл ''sudo mcedit /etc/modprobe.d/blacklist.conf'' с перечнем всех модулей всех свободных драйверов:
+
+	* blacklist vga16fb
+	* blacklist nouveau
+	* blacklist rivafb
+	* blacklist nvidiafb
+	* blacklist rivatv
+
+	Но это уже ни на что не повлияет.
+
+==== Обновить систему ====
+
+* ''sudo apt-get update && sudo apt-get upgrade''
+
+Если будут устаревшие пакеты nvidia, их будет предложено удалить через //autoremove//.
+
+	''sudo apt autoremove''
+
+	Затем ещё раз 
+
+	''sudo apt-get update && sudo apt-get upgrade''
+
+===== Поставить утилиту контроля настроек nvidia =====
+
+''sudo aptitude install nvidia-settings''
+
+В списке программ > Настройка появится «NVIDIA X Server Settings». Если она успешно запускается, то уже почти всё норм. 
+
+Если нет — хз, надо смотреть. Вероятно, нужно поставить другие драйвера.
+
+**Подключить внешний монитор в ноут через дырку hdmi.**
+
+===== Настройки xrandr =====
+
+Когда-то это всё делалось через настраивание в файле Xorg.conf, но теперь есть утилита Xrandr.
+
+	Is used to set the size, orientation and/or reflection of the outputs for a screen. 
+	It can also set the screen size.
+
+''xrandr''
+
+Ожидаемый ответ:
+
+1. Screen 0: minimum 320 x 200, current 1920 x 1080, maximum 16384 x 16384
+2. eDP-1 connected primary 1920x1080+0+0 (normal left inverted right x axis y axis) 382mm x 215mm
+   1920x1080     60.02*+  60.01    59.97    59.96    59.93  
+   1680x1050     59.95    59.88  
+   и тд
+
+Ок, это отображается "встроенная" видеокарта процессора, Теперь нужна ещё и внешняя Nvidia.
+
+==== Выявить все доступные видеокарты ноута ====
+
+''lspci | grep VGA''
+
+Ожидаемый ответ:
+
+* 00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)
+* 01:00.0 VGA compatible controller: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile] (rev a1)
+
+Хорошо, система видит оба источника.
+
+	Можно посмотреть то же самое детальнее:
+
+	''lspci -k | grep -iEA5 'vga|3d|display'''
+
+	00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)
+	Subsystem: Acer Incorporated [ALI] HD Graphics 630
+	Kernel driver in use: i915
+	Kernel modules: i915
+	--
+	01:00.0 VGA compatible controller: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile] (rev a1)
+	Subsystem: Acer Incorporated [ALI] GP107M [GeForce GTX 1050 Ti Mobile]
+	Kernel driver in use: nvidia
+	Kernel modules: nvidia
+
+==== Выяснить внутреннюю нумерацию источников видео ====
+
+''xrandr --listproviders''
+
+Ожидаемый ответ:
+	
+	Providers: number : **2**
+	
+	**Provider 0**: id: 0x43 cap: 0xf, Source Output, Sink Output, Source Offload, Sink Offload crtcs: 3 outputs: 1 associated providers: 0 name:modesetting
+	
+	**Provider 1**: id: 0x248 cap: 0x2, Sink Output crtcs: 4 outputs: 1 associated providers: 0 name:NVIDIA-G0
+
+Здесь:
+
+	Provider 0 — встроенный монитор.
+	Provider 1 — видеокарта Nvidia.
+
+Если в ответ отображается только «встроенный монитор», то что-то пошло не так, надо смотреть.
+
+==== Настроить порядок чтения видеоисточников ====
+
+''xrandr --setprovideroutputsource 1 0''
+
+В ответ ожидается тишина.
+
+Убедимся в том, что теперь система видит оба монитора:
+
+* ''xrandr -q''
+
+	-q, --query. When this option is present, or when no configuration changes are requested, xrandr will display the current state of the system.
+
+		Screen 0: minimum 320 x 200, current 1920 x 1080, maximum 16384 x 16384
+		**eDP-1 connected primary** 1920x1080+0+0 (normal left inverted right x axis y axis) 382mm x 215mm
+		   1920x1080     60.02*+  60.01    59.97    59.96    59.93  
+		   1680x1050     59.95    59.88  
+		   1600x1024     60.17  
+		   1400x1050     59.98  
+			и тд
+			
+		**HDMI-1-0 connected** (normal left inverted right x axis y axis)
+		   2560x1440     59.95 + 143.91   120.00
+		   3840x2160     59.94    50.00
+		   1920x1080    119.88    60.00    59.94    50.00    60.00    50.04
+			и тд
+
+Видит!
+
+===== Включить вывод в hdmi =====
+
+ ''xrandr --output HDMI-1-0 --auto''
+
+Второй монитор ОЖИЛ.
+
+Можно запустить nvidia-settings, где теперь количество бесполезной информации зашкаливает гангстерскую душу немногочисленными, но рабочими настройками.
+
+Дальнейше управление мониторами: 
+'''
+Параметры системы
+> Оборудование 
+> Экран
+'''
+
+===== Сделать скрипт для автозагрузки =====
+
+Изменения не сохранятся после первой же перезагрузки. Разумно сделать исполняемый скрипт и положить его в автозагрузку профиля.
+
+1. Создать в отдельной папке файл с условным названием ''engage_external_monitor.sh'' и следующим содержимым:
+
+	#!/bin/sh
+	''xrandr --setprovideroutputsource 1 0''
+	''xrandr --output HDMI-1-0 --auto''
+
+2. Сделать файл исполняемым
+
+''chmod u+x engage_external_monitor.sh''
+
+	Запускать из терминала так:
+	''./engage_external_monitor.sh''
+
+3. Добавить файл в автозагрузку:
+
+Параметры системы 
+'''
+> Рабочая среда 
+> Запуск и завершение 
+> Автозапуск 
+> Add… 
+> Add login script
+'''

@@ -1,0 +1,276 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-12-22T03:34:05+02:00
+
+====== Sublime ======
+
+< @sublime @python >
+
+Это текстовый редактор, полностью он называется «[[https://ru.wikipedia.org/wiki/Sublime_Text|Sublime Text]]». Слово “sublime” переводится как «возвышенный, величественный, высокий, грандиозный». Автор — Джон Скиннер.
+
+Приложение в принципе хочет каких-то денег, но не настойчиво да и не особо много.
+
+В основе своей «Sublime Text» разочаровывающе примитивный и требуется время на его освоение и настройку, но — это и хорошо. Можно подключать к простой основе только те расширения (пакеты), которые действительно понадобятся. Unix way же.
+
+Самые удобные удобства в Sublime по-умолчанию:
+* переход в полноэкранный режим > F11
+* переход в режим distracted free > Shift+F11
+
+===== Установка Sublime Text в Debian =====
+
+Следуем общей [[https://www.sublimetext.com/docs/linux_repositories.html|инструкции]]:
+
+1. Установить GPG key:
+
+''wget -qO -'' [[https://download.sublimetext.com/sublimehq-pub.gpg|''https://download.sublimetext.com/sublimehq-pub.gpg'']] ''| sudo apt-key add -''
+
+2. Установить ''apt-transport-https'' (apt сможет работать через https):
+
+''sudo apt-get install apt-transport-https''
+
+3. Добавить в ''sources'' Stable ветку Sublime:
+
+''echo "deb'' [[https://download.sublimetext.com/|''https://download.sublimetext.com/'']] ''apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list''
+
+4. Обновить sources и установить Sublime Text (стабильная версия):
+
+''sudo apt-get update && sudo apt-get install sublime-text''
+
+===== Установка Sublime Text в Manjaro =====
+
+Исходник находится в AUR, поэтому Sublime можно установить через Pamac. Всё будет установлено в /opt/.
+
+Этот же процесс можно сделать вручную, см. [[Manjaro:Управление Manjaro:Установка ПО в 'opt']]
+
+===== Управление пакетами =====
+
+Для управления пакетами в Sublime надо включить Package Control ([[https://packagecontrol.io/installation|офф. инструкция]]):
+
+	''Tools'' 
+	''> Install Package Control…''
+
+Ждём подтверждение о том, что Package Control успешно установлен.
+
+Затем
+
+	'''
+	Tools 
+	> Command Palette… (Ctrl+Shift+P)
+	'''
+
+Начать набор команды «install» > появятся подсказки > выбрать «Package Control: Install package»
+	
+Начать набор названия пакета, который надо установить > появятся подсказки > выбрать нужный и даблклик или Enter.
+
+Есть смысл последовательно установить некоторые пакеты (плагины). Одни из них после установки выводят подтверждающее/благодарственное окно, другие нет. Проверить, какие плагины установлены «''Preferences > Package Settings''»
+
+	1. [[https://packagecontrol.io/packages/SublimeLinter|Terminus]] — более продвинутая консолька
+	2. [[https://packagecontrol.io/packages/AdvancedNewFile|AdvancedNewFile]]
+	3. [[https://packagecontrol.io/packages/AutoFileName|AutoFileName]]
+	4. [[https://packagecontrol.io/packages/SideBarEnhancements|SideBarEnhancements]] — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
+	5. [[https://packagecontrol.io/packages/All Autocomplete|All Autocomplete]] — autocomplete вообще
+	6. [[https://packagecontrol.io/packages/BracketHighlighter|BracketHighlighter]]
+	7. [[https://packagecontrol.io/packages/DocBlockr|DocBlockr]]
+	8. [[https://packagecontrol.io/packages/Git|Git]] (некоторым заходит [[https://packagecontrol.io/packages/GitAutoCommit|GitAutoCommit]], мне он кажется излишним)
+	9. [[https://packagecontrol.io/packages/GitGutter|GitGutter]]
+	10. [[https://packagecontrol.io/packages/Markdown Extended|Markdown Extended]]
+	11. [[https://packagecontrol.io/packages/Anaconda|Anaconda]] — autocomplete для программистов
+	12. [[https://packagecontrol.io/packages/SublimeLinter|SublimeLinter]] — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
+	13. [[https://packagecontrol.io/packages/Emmet|Emmet]] — шаблоны для верстальщиков (front end)
+	14. Выбрать оформление Sublime
+	15. Выбрать стиль подсветки кода
+
+С подбором цвета придётся повозиться. Для установки темы надо знать её точное название.
+
+	Оформление самого Sublime выбирают в ’Preferences > Select theme’. Приятная тёмная тема = Adaptive (кагбэ дефолтная, см. [[https://www.positronx.io/best-sublime-text-3-themes/|рейтинг тем]]). 
+
+	Оформление текстового пространства (подсветка кода) выбирают в ’Preferences > Select Color Scheme’. Мне норм ’RailsBase16-twilight.dark’. 
+ 
+Restart Sublime Text.
+
+===== Базовые настройки =====
+
+'''
+Preferences 
+> Settings
+'''
+
+Вставить это:
+
+'''
+{
+	// Выбор шрифта
+	"font_face": "IBM Plex Sans Text",
+
+	// Размер шрифта
+	"font_size": 16,
+
+	// Перенос слов
+	"word_wrap": true,
+	
+	// Set to a value other than 0 to force wrapping at that column rather than
+	// the window width. See "wrap_width_style" for extra options.
+	"wrap_width": 100,
+	
+	// Настройки отступов В КАЖДОМ ФАЙЛЕ
+		// Ctrl + Shift + P (to activate the command palette)
+		// Type "Indentation",
+		// Choose "Indentation: Convert to Tabs"
+	"detect_indentation": true,
+	"tab_size": 4,
+	"translate_tabs_to_spaces": false,
+	
+	// Тема оформления
+	"theme": "Adaptive.sublime-theme",
+	"dark_theme": "Adaptive.sublime-theme",
+	"light_theme": "Adaptive.sublime-theme",
+	
+	// Подсветка кода
+	"color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-twilight.dark.tmTheme",
+	"dark_color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-tomorrow.dark.tmTheme",
+	"light_color_scheme": "Packages/RailsBase16 Color Schemes/RailsBase16-default.dark.tmTheme",
+'''
+
+'''
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+
+}
+'''
+
+==== Решение проблем ====
+
+1
+Название шрифта надо знать заранее и отдельно. В KDE это всё находится в 
+
+Параметры системы
+''> Внешний вид''
+''> Оформление рабочей среды''
+''> Управление шрифтами''
+
+После Ctrl+S изменения из файла с настройками применяются сразу.
+
+2
+"color_scheme" в моих настройках работает только потому, что схема была предварительно установлена. Если её не будет, Sublime начнёт выбрасывать предупреждающие сообщения.  Строку можно закомментировать и заняться подбором наилучшей схемы посдсветки кода в каждом отдельном случае. 
+
+===== Тонкая настройка =====
+
+каждого плагина Sublime Text по-отдельности займет некоторое время, но оно того стоит. Ковыряние в файлах настроек и прописывание инструкций приносит ощущение полного контроля и управления. Unix way же!
+
+==== Настройка темы ====
+
+Пусть будет тема “Adaptive”.
+
+''Preferences'' 
+''> Customize Theme''
+
+Откроется два файла, один нередактируемый (общие настройки), второй редактируемый, бо сугубо пользовательский. Идея в том, что из общего можно копировать строки настроек в пользовательский файл и всё будет норм.
+
+Иногда эти файлы открываются поодиночке.
+
+Например, впишем это.
+
+'''
+// Documentation at https://www.sublimetext.com/docs/themes.html
+{
+"variables":
+	{
+	"font_size_sm": 24,	// размер шрифта вкладки
+	"font_size": 20,	// размер шрифта названия файла в Side bar
+	"font_size_lg": 18,	// размер шрифта группы файлов в Side bar
+	},
+}
+'''
+
+Ctrl+S, Alt+F4
+
+==== Настройка Anaconda ====
+
+В Anaconda встроен довольно строгий линтер, он считает неправильными почти все строки любого кода (и он, конечно, прав), помечая их белыми прямоугольниками. Эту функциональность лучше передать отдельному плагину, бо лучше использовать линтер под свой язык программирования и строго под выбранные юзером правила правописания, которые под тот же Python бывают очень разные. Поэтому
+
+'''
+Preferences 
+> Package Settings 
+> Anaconda 
+> Setting — User
+'''
+
+Этот файл пуст, можно прописать там и отключение линтера анаконды, и путь к рабочей версии Python:
+
+'''
+{
+	"settings": {
+		"python_interpreter": "/usr/bin/python3",
+		"anaconda_linting": false
+	}
+}
+'''
+
+Ctrl+S и перезапустить Sublime. Если изменений не будет, то можно задать ту же настройку на глобальном уровне:
+
+'''
+Preferences 
+> Package Settings 
+> Anaconda 
+> Setting — Default
+'''
+
+Прописать параметр ’false’ для "''anaconda_linting''". 
+
+Ctrl+S и (опционально) перезапустить Sublime. 
+
+Позже можно будет использовать возможности Anaconda для автоформатирования кода по CTRL-ALT-R (насколько это, конечно, применимо к тому же питону) в соответствии с правилами PEP8. Там тоже надо настраивать точнее, бо по-умолчанию эта шняга заменяет табы четырьмя пробелами.
+
+Быстрое решение:
+
+'''
+View 
+> Indentation 
+> Tab Width: 4 //эту настройку в будущем уже не трогаем
+'''
+
+'''
+View 
+> Indentation 
+> Convert Indentations to Tabs
+'''
+
+Или же:
+
+	В правом нижнем углу окна отображается эта же настройка ‘Tab Size: 4’.
+
+	Левомышечный клик по ней открывает то же самое меню, что из View. Остаётся кликнуть по последней команде: Convert Indentations to Tabs. Можно использовать каждый раз после CTRL-ALT-R.
+
+Надо пореже использовать CTRL-ALT-R и воспитывать в пальцах изначально принудительное правописание и отступы, в Python этот аспект важнее, чем в других ЯП.
+
+И да, я за табы.
+
+==== Настройка хоткея для вызова Sidebar ====
+
+По-умолчанию вызывается 
+* или через View > Sidebar, 
+* или через последовательное нажатие «Ctrl+k, Ctrl+b»,
+* или кликом по иконке в левом нижнем углу окна Sublime.
+
+Клавиши можно переназначить, например, на Ctrl+\: 
+'''
+Preferences 
+> Package Settings 
+> Side Bar 
+> Key Bindings — User
+'''
+
+Код:
+'''
+[
+  	// Toggle the Sidebar
+  {"keys": ["ctrl+\\"], "command": "toggle_side_bar"},
+]
+'''
+
+===== Python =====
+
+[[+Как сделать Python-проект в Sublime]]
+

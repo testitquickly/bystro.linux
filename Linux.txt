@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-01T18:25:43+03:00
+
+====== Linux ======
+
+< @main @linux >
+
+Перечень общего ПО и общие настройки KDE без привязки к дистрибутиву.
+
+[[+HowTo]]
+[[+Software]]
+[[+Настройки KDE]]
+

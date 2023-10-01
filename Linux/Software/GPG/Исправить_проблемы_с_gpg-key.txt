@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-24T02:24:05+02:00
+
+====== Исправить проблемы с gpg-key ======
+
+< @gpg  @kgpg >
+
+Если при обновлении ПО возникает сообщение о том, что какой-то GPG-ключ для какого-то репозитория устарел. Причин тому может быть сразу две:
+1. да, ключ устарел. Это может произойти с любым репозиторием, даже с дебиановским. Нужно импортировать новый или удалить связь с причинным репозиторием, если его ПО не используется.
+2. в системе установлено неправильное время.
+
+Можно удалить линки к репозиториям с устаревшими ключами безопасности:
+''sudo apt-key list  | grep "expired: " | sed -ne 's|pub .*/\([^ ]*\) .*|\1|gp' | xargs -n1 sudo apt-key adv --keyserver keys.gnupg.net --recv-keys'' 
+
+А можно так:
+
+'''
+$ sudo -i
+ # apt-get clean
+ # cd /var/lib/apt
+ # mv lists lists.old
+ # mkdir -p lists/partial
+ # apt-get clean
+ # apt-get update
+'''
+
+ПОПРОЩЕ
+
+Download debian-archive-keyring (https://packages.debian.org/buster/all/debian-archive-keyring/download — is for „buster“; choose your Debian version if needed), and install it manually (as root):
+
+''dpkg -i debian-archive-keyring_2017.5~deb8u1_all.deb''
+
+This will restore the keys in /etc/apt/trusted.gpg.d and you should be able to run apt again.
+
+--------------------
+@gpg @update 

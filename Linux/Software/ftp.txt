@@ -1,0 +1,359 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-03-27T05:10:17+03:00
+
+====== ftp ======
+
+< @debian @console @ftp @lftp @ncftp >
+
+На всякий случай надо знать: File Transfer Protocol (FTP) был придуман в начале 1970х и безопасность там до сих пор условная, логин и пароль возможны, но передаются в открытом виде. Есть разработка SSH File Transfer Protocol (SFTP), но это создаётся и настраиватся при создании ftp-сервера, поэтому оно sftp есть, но не везде.
+
+===== Работа с файлами на ftp-сервере =====
+
+Подразумеваем, что есть удаленный ftp-ресурс вроде шаред-каталога на домашнем NAS, и к нему можно обращаться по условному url или по ip „''192.168.10.10:21”,'' где 21 — стандартный порт для ftp, и что нам надо закинуть туда туда каталоги/файлы и снять с него на hdd другие.
+
+==== Простейший способ ====
+
+Любое ПО для работы с файлами, в том числе и по ftp:
+	a. [[:Linux:Software:Krusader]] 
+	b. FileZilla
+	c. LeechFTP
+	d. что угодно ещё…
+
+Или в консоли через утилиту „ncftp”. 
+
+	В консоли нативно невозможно закачивать на удалённый ftp-сервер каталоги — только файлы, и также бывают бесконечно неиллюзорные трудности с удалением каталогов, внутри которых есть файлы и/или другие каталоги. „ncftp” решает всё это незаметно.
+
+Пример закачивания каталога со всем его содержимым на удалённый ftp-сервер с запросом пароля у пользователя:
+	1. ''ncftpput -R -v -u ТВОЙ_ftp_ЛОГИН 192.168.10.10 /ПОЛНЫЙ_ПУТЬ/КАТАЛОГ_НА_FTP/ /полный_путь/каталог_с_файлами/на_hdd/*''
+	2. будет запрошен пароль, при вводе его заменят *****
+
+Пример закачивания каталога со всем его содержимым на удалённый ftp-сервер без взаимодействия с пользователем (идеально для автоматизации действий в bash):
+	1. ''ncftpput -R -v -u ТВОЙ_ftp_ЛОГИН'' **''-p ТВОЙ_ftp_ПАРОЛЬ''** ''192.168.10.10 /ПОЛНЫЙ_ПУТЬ/КАТАЛОГ_НА_FTP/ /полный_путь/каталог_с_файлами/на_hdd/*''
+
+==== Как деды завещали ====
+
+''sudo aptitude install ftp lftp''
+
+Когда сервер принимает гостевые подключения:
+
+''ftp 192.168.10.10''
+
+Когда нужно залогиниться:
+
+''ftp astenix@192.168.10.10''
+
+Откроется приглашение вводить команды на ftp:
+
+''ftp>'' 
+
+„?” или „help” — посмотреть все команды, доступные для взаимодействия с удаленным ftp сервером
+
+Команды есть стандартные, но их следует сперва изучить: 
+
+	„ls” — посмотреть файлы на удаленном ftp сервере
+	„!ls” — посмотреть файлы на своём hdd
+	„lpwd” — посмотреть текущий каталог на своём hdd
+	„lcd” — переместиться в другой каталог на своём hdd (аналог обычной команды „cd“; названия подхватываются через [tab])
+	„mkdir foldername” — создать каталог на удаленном сервере
+	„get filename.txt” — снять с удаленного сервера на hdd один файл
+	„mget *.txt” — снять на свой hdd с удалённого сервера несколько файлов
+	„put filename.txt” — закачать с hdd на удаленный сервер один файл (filename.txt) 
+	„mput *.txt” — закачать с hdd на удаленный сервер несколько файлов
+	„rename filename.txt newfilename.txt” — переименовать файл filename.txt на newfilename.txt на удаленном сервере
+	„delete filename.txt” — удалить файл на удаленном сервере
+	„mdelete filename.txt” — удалить множество файлов на удаленном сервере
+		С удалением каталогов посложнее. Обычно достаточно „rmdir folder”, но если внутри есть другие файлы/подкаталоги, то сперва нужно удалить их — „mdelete folder*/*” — затем уже удалить сам каталог — „rmdir folder”.
+		Считается проще зайти на ftp через утилиту lftp: „''lftp -u <user>,<pass> <server>''” и выполнить „''rm -r <directory>/''”.
+		А можно сделать „''rmdir <directory>/''” при подключении к ftp-серверу через утилиту ''ncftp.''
+	„exit” или „bye” — разорвать соединение 
+
+=== Скачать несколько файлов с ftp ===
+
+Если залогинился на удаленный ftp-сервер, то:
+
+''mget *.txt''
+
+Но за каждый скачиваемый файл консоль будет требовать подтверждения, поэтому разумно сперва отключить этот запрос:
+
+''prompt''
+
+В ответ получим „Interactive mode off”. Ещё раз повторить mget и все файлы, попадающие под запрос, будут сняты на hdd.
+
+Можно не логиниться, а снять файлы через wget — но только файлы, каталоги будут проигнорированы в любом варианте:
+
+''wget --user='ТВОЙ_ftp_ЛОГИН' --password='ТВОЙ_ftp_ПАРОЛЬ''' ''ftp://192.168.10.10/folder/file.txt''
+
+=== Закачать на ftp-сервер файлы ===
+
+Зайти в каталог с нужными файлами на hdd.
+
+''mput *''
+
+=== Закачать на ftp-сервер каталоги ===
+
+В консоли в нативном окружении это невозможно. Закачивать на ftp можно только файлы, а каталоги (и подкаталоги) на ftp-серевере надо создавать с нуля и закачивать в них файлы последовательно.
+
+Стандартное решение — архивы tar:
+	1. на hdd добавить все нужные каталоги/файлы в [[:Linux:HowTo:zip]] (или в tar, мы же наследники древнего unix; в „tar“ проще дописывать файлы или прямо в консоли — вынимать из него файлы и каталоги по-отдельности)
+	2. закинуть этот файл-архив по ftp
+	3. распаковать его на ftp
+
+==== Автоматизировать на bash закачивание файлов на ftp ====
+
+Подразумеваем, что на ftp-сервере постоянно находится директория „inbox“, в которую надо залить все файлы из определенного каталога с hdd (назовем его /home/user/sendToFtp)
+
+Создать исполняемый sh-файл с таким содержимым:
+
+''#!/bin/bash''
+	''# add variables''
+''REMOTEHOST='192.168.10.10'''
+''USER='логин'''
+''PASSWORD='пароль'''
+''LOCALFOLDER='/home/user/sendToFtp'''
+''REMOTEFOLDER='/ПОЛНЫЙ_ПУТЬ/inbox'''
+
+''ftp -n -v $REMOTEHOST << EOT''
+''ascii''
+''user $USER $PASSWORD''
+''prompt''
+''lcd $LOCALFOLDER''
+''cd $REMOTEFOLDER''
+''mput *''
+''ls -la''
+''bye''
+''EOT''
+
+Но будут заброшены только файлы, каталоги ftp игнорирует. Или добавить команды для создания промежуточного файла-контейнера без компрессии „filename.tar“, и через „''put filename.tar” закинуть его на ftp-сервер (и распаковать, если надо), или же используем однострочник, в котором даже нет смысла отдельно заявлять переменные:''
+
+'''
+#!/bin/bash
+
+ncftpput -R -v -u ТВОЙ_ЛОГИН -p ТВОЙ_ПАРОЛЬ 192.168.10.10 /ПОЛНЫЙ_ПУТЬ/inbox/ /home/user/sendToFtp/*
+'''
+
+И всё содержимое „/home/user/sendToFtp/” улетает на сервер — и файлы, и каталоги с сохранением всей структуры.
+
+===== Поднять свой ftp-сервер =====
+
+Это инструкция по установке и управлению vsftpd под Debian. 
+Установка в [[Manjaro:Установка ПО:ftp]]
+
+В линуксах есть много ftp-серверов ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
+
+==== Установить vsftpd ====
+
+''sudo aptitude install vsftpd''
+
+Основные управляющие команды:
+
+* ''systemctl status vsftpd''
+* ''systemctl start vsftpd''
+* ''systemctl stop vsftpd''
+* ''systemctl restart vsftpd''
+
+==== Сделать бэкап дефолтного конфиг-файла ====
+
+Позже очень пригодится.
+
+''sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak''
+
+Если случится ой, то всегда можно будет ревертнуться:
+
+''sudo cp /etc/vsftpd.conf.bak /etc/vsftpd.conf''
+
+=== Проверить работоспособность ===
+
+''systemctl start vsftpd && systemctl status vsftpd''
+
+Подключиться к компьютеру из внешнего источника (со смартфона через Total Commander или «Cx Проводник»).
+
+Если на этом этапе что-то пойдёт не так — надо разбираться.
+
+==== Настроить сервис «под себя» ====
+
+''sudo mcedit /etc/vsftpd.conf''
+
+Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный [[https://security.appspot.com/vsftpd/vsftpd_conf.html|перечень параметров]] с комментариями. Затем грамотный гайд [[https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10|здесь]]. Это всё можно будет глянуть позже.
+
+По-умолчанию настройки читаются из файла /etc/vsftpd.conf
+
+Если запустить сервер с параметрами (например: ''vsftpd -olisten=NO /etc/vsftpd.conf -oftpd_banner=Hello''), то параметры из командной строки будут иметь приоритет над содержимым конфиг-файла /etc/vsftpd.conf
+
+Всегда можно запускать vsftpd с разными конфигами:
+* ''vsftpd /etc/vsftpd.conf.with.guests &''
+* ''vsftpd /etc/vsftpd.conf.without.guests &''
+* ''vsftpd /etc/vsftpd.conf.myPersonalUser &''
+
+=== Общее содержимое файла настроек ===
+
+В основе достаточно этого:
+
+'''
+listen=NO
+listen_port=21
+anonymous_enable=NO
+local_enable=YES
+write_enable=YES
+'''
+
+Можно то же самое, но с комментариями:
+
+''# Run standalone?  vsftpd can run either'' 
+''# from an inetd or as a standalone''
+''# daemon started from an initscript.''
+''listen=YES''
+
+''# Make sure PORT transfer connections'' 
+''# from port 20 (ftp-data).''
+''listen_port=21''
+
+''# Allow anonymous FTP? (Disabled by default).''
+''anonymous_enable=NO''
+
+''# Uncomment this to allow local users to log in.''
+''local_enable=YES''
+
+''# Uncomment this to enable any form'' 
+''# of FTP write command.''
+''write_enable=YES''
+
+В любом случае учесть, что:
+* в файле настроек **нельзя** вставлять отступ строк от левого края, сервис остановится с НЕПОНЯТНОЙ ошибкой,
+* между строками можно оставлять только один пустой абзац. Два пустых абзаца уже будут ошибкой и vsftpd остановится,
+* нельзя вставлять комментарии в конце строки с параметром, вроде ''listen_ipv6=NO # modified —'' сервис остановится с ошибкой,
+* разумно сохранять файл /etc/vsftpd.conf после каждого изменения и сразу выполнять проверку статуса сервиса: ''sudo systemctl restart vsftpd && systemctl status vsftpd''
+
+=== Содержимое моего файла настроек ===
+
+Я один, логинюсь на ноут через ftp под **своим** же аккаунтом, поэтому получаю полный доступ ко всей системе и буду терпеть все последствия от вероятного неосторожного удаления чего-либо. Это сойдёт для того чтобы изредка удобно перебрасывать файлы между ноутом и телефоном, но в целом небезопасно. 
+
+		Надо бы поднапрячься и создать отдельного юзера, и расшарить с ним отдельный каталог, и сурово ограничить этого юзера в правах, и запретить анонимные подключения…
+
+Мне достаточно этого конфига:
+
+'''
+anonymous_enable=NO
+dirmessage_enable=YES
+listen_port=21
+listen=YES
+local_enable=YES
+pam_service_name=vsftpd
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+secure_chroot_dir=/var/run/vsftpd/empty
+ssl_enable=NO
+use_localtime=YES
+utf8_filesystem=YES
+write_enable=YES
+'''
+
+Можно, но не нужно добавить дополнительные ОЧЕНЬ ГЛОБАЛЬНЫЕ разрешения:
+'''
+
+# разрешаем юзерам ПОЛНОСТЬЮ записывать/удалять файлы через ftp, но при этом ограничиваем их их же домашними директориями
+allow_writeable_chroot=YES
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+chroot_local_user=YES
+local_root=/home/$USER/
+user_sub_token=$USER
+'''
+
+==== Отключить автозагрузку vsftpd ====
+
+Сервис по-умолчанию запускается при старте ноута и бесконечно работает. Это норм, если ftp будут пользоваться много/часто. 
+
+Второй подход: сервер запускается, но постоянно «спит». Каждое явное обращение к нему начинает его «будить» (иногда это занимает какое-то ощутимое время), заставляет отдавать/принимать какие-то данные, затем сервис «засыпает». Надо учесть, что если группа товарищей то и дело будет обращаться к этому сервису, то циклы «заснул - разбудили - заснул - разбудили» могут полностью дестабилизировать процесс контроля продвижения НАТО на восток, hdd будет очень недоволен.
+
+Поэтому вот третий способ: вручную запускать ftp сервер при необходимости, и позже вручную же его полностью гасить (безопасности ради). 
+
+Рецепт для гашения автозапуска установленного vsftpd:
+1. ''sudo systemctl stop vsftpd && systemctl status vsftpd''
+2. ''sudo systemctl disable vsftpd.service''
+3. ''reboot'' (или релогин)
+
+После перезагрузки (через ''systemctl status vsftpd'') можно будет увидеть, что сервис жив, но мертв:
+
+	● vsftpd.service - vsftpd FTP server
+	Loaded: loaded (/lib/systemd/system/vsftpd.service; __disabled__; vendor preset: enabled)
+	Active: __inactive (dead)__
+
+А после принудительного старта (''sudo systemctl start vsftpd && systemctl status vsftpd'') будет видно, что сервис is disabled для автозапуска:
+
+	● vsftpd.service - vsftpd FTP server
+	Loaded: loaded (/lib/systemd/system/vsftpd.service; __disabled__; vendor preset: enabled)
+	Active: __active (running)__ since Sun 2021-12-12 20:48:51 EET; 8ms ago
+
+=== Что ещё можно проверить ===
+
+Глянуть список всех запущенных сервисов в системе:
+''systemctl list-unit-files --type=service --state=enabled''
+
+Проверить, запущен ли vsftpd в системе:
+''systemctl list-unit-files --type=service --state=enabled | grep vsftpd''
+
+Проверка всех доступных сервисов в системе и управление ими через systemd — https://linuxhint.com/disable_unnecessary_services_debian_linux/
+
+==== Как запускать/останавливать vsftpd ====
+
+1. **Запуск ftp**: ''sudo systemctl start vsftpd && systemctl status vsftpd''
+2. Перекинуть файлы туда/сюда
+3. **Остановить ftp**: ''sudo systemctl stop vsftpd && systemctl status vsftpd''
+
+===== Как подключиться к ноутбуку с телефона =====
+
+1. На Android надо установить подходящий софт:
+	* Total Commander с плагином для соединений по ftp. 
+	* Cx Проводник
+	* DMS Explorer (впрочем, это dlna player)
+2. Узнать IP ноутбука. В трее тыкнуть по иконке связи левой кнопкой мыши, в списке подключений тыкнуть по рабочему подключению и перейти на вкладку «Сведения» > Адрес IPv4.
+3. На смартфоне в Total Commander выйти в корень — там будет список установленных плагинов. 
+4. FTP > Создать соединение > 
+	* Имя сервера = IP ноутбука
+	* Имя пользователя = свой логин на ноутбуке
+	* Пароль = пароль юзера на ноутбуке
+	* Кодировка имён файлов = UTF-8
+
+В принципе можно ходить по всем каталогам, создавать/удалять. Безопасности для, файлы можно только копировать, но не перемещать.
+
+===== Несущественные примеры настроек vsftpd =====
+
+'''
+allow_writeable_chroot=YES
+anonymous_enable=NO
+chroot_list_enable=YES
+chroot_list_file=/etc/vsftpd.chroot_list
+chroot_local_user=YES
+connect_from_port_20=YES
+data_connection_timeout=120
+dirmessage_enable=YES
+ftpd_banner=Welcome to FTP service.
+idle_session_timeout=600
+listen_ipv6=NO
+listen=YES
+listen_port=21
+local_enable=YES
+local_umask=002
+pam_service_name=vsftpd
+ssl_enable=NO
+use_localtime=YES
+utf8_filesystem=YES
+write_enable=YES
+'''
+
+# My
+rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+secure_chroot_dir=/var/run/vsftpd/empty
+
+'''
+# allow users to write
+# chroot_local_user=YES
+# chroot_list_enable=YES
+# chroot_list_file=/etc/vsftpd.chroot_list
+allow_writeable_chroot=YES
+# user_sub_token=$USER
+# local_root=/home/$USER/
+'''
+

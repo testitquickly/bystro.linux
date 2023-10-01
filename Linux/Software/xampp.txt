@@ -1,0 +1,157 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-04-19T11:21:17+03:00
+
+====== xampp ======
+
+< @xampp @LAMP @MariaDB @apache >
+
+===== Установить =====
+
+https://www.apachefriends.org/download.html
+
+По-умолчанию нужна stable версия.
+
+Для установки в Linux будет предложен файл вроде «xampp-linux-x64-***.run»
+
+'''
+chmod 755 xampp-linux-x64-8.0.15-0-installer.run
+
+sudo ./xampp-linux-x64-8.0.15-0-installer.run
+'''
+
+Откроется окно настроек установки. Клик-клик-клик по-умолчанию, всё будет установлено в каталог «''/opt/lampp/''».
+
+	То, что ''xampp'' устанавливается в каталог ''lampp'' — иронично, но все привыкли.
+
+На последнем шаге будет стоять галочка «Запустить сервис».
+
+===== Запустить =====
+
+Есть два файла: 
+	* /opt/lampp/xampp
+	* /opt/lampp/@lampp
+
+Первый это скрипт, который всё делает. Второй — ссылка на первый файл.
+
+''sudo /opt/lampp/xampp start''
+
+Будет запущен сервис “Apache Web Server”. 
+
+	Ещё есть “MySQL Database” и, вероятно, другие, но к ним перейдём позже.
+
+Открыть в браузере 
+
+''http://localhost/dashboard/'' 
+
+Ожидаем страницу «//Welcome to XAMPP for Linux ***//». Под «***» подразумеваем омер установленной версии XAMPP.
+
+Проверить базы данных: 
+
+	''http://localhost/phpmyadmin/'' 
+
+По-умолчанию предложена MariaDB (свободный клон MySQL).
+
+==== Узнать статус сервисов XAMPP ====
+
+В консоли:
+
+''sudo /opt/lampp/lampp status''
+
+Ещё есть приложение:
+
+''sudo /opt/lampp/manager-linux-x64.run''
+
+Смысла в нём особо нет, разве что можно посмотреть на статус сервисов на отдельной вкладке.
+
+===== Установить ПО =====
+
+==== Самостоятельно ====
+
+Все сайты должны быть развёрнуты в “Web server document root directory” — ''/otp/lampp/htdocs'' — и «зарегистрированы» в файле ''/etc/hosts'' (через sudo).
+
+После добавления нового сайта (все) сервисы XAMPP надо перезапустить, если он уже запущен.
+
+==== Через Bitnami ====
+
+Сервис контейнеров от vmware: https://bitnami.com/stacks 
+
+Есть уже готовые сборки Wordpress, Moodle и много другого. Дичайше удобно, если надо просто быстро что-то «поднять». Под виндой устанавливается вместе с XAMPP (также можно что-то запускать в облаке), под Linux — нет.
+
+		Вордпрессов там аж несколько:
+		* https://bitnami.com/stack/wordpress-production-ready (связка с AWS)
+		* https://bitnami.com/stack/wordpress-with-nginx
+		* https://bitnami.com/stack/wordpress-pro (nginx + SSL от Let’s Encrypt)
+
+Для скачивания будет предложено использовать аккаунты Google или завести свой на bitnami.
+
+=== Устаревший гайд ===
+
+Будет скачан инсталлер вида «bitnami-wordpress-5.8.3-0-module-linux-x64-installer.run». Установка стандартная, разве что сперва надо убедиться в том, что сервисы из XAMPP уже запущены (Apache, PHP и что там ещё).
+
+'''
+sudo /opt/lampp/xampp status
+
+chmod 755 bitnami-wordpress-5.8.3-0-module-linux-x64-installer.run
+
+sudo ./bitnami-wordpress-5.8.3-0-module-linux-x64-installer.run
+'''
+
+Откроется окно настроек установки. Клик-клик.
+
+Установленный софт перечислен на ''http://localhost/applications.html''
+
+Вордпресс открывается на ''http://localhost/wordpress/''
+		
+		Его администрирование: ''http://localhost/wordpress/admin''
+
+Юзер при установке хоть и был указан, но в БД его не будет. Там какой-то user с неизвестным паролем. Можно его отредактировать прямо в БД: ''http://localhost/phpmyadmin/'' — пройти к БД WP — таблица “''wp_users''”
+
+В таблице ''wp_users'' открыть строку с юзером по-умолчанию на редактирование (Изменить)
+* user_login = свой логин
+* user_pass = написать свой пароль в открытом виде, затем из выпадающего поля "Функция" выбрать "MD5". Он сохранится в виде хэша пароля. Если хочется, отредактировать и емайл. 
+
+Внизу справа submit
+	
+''http://localhost/wordpress/admin'' — логин и новый пароль.
+
+===== Безопасность =====
+
+XAMPP делали для локалхоста и быстрого внесения изменений. В нём разрешено ВСЁ сразу.
+	* The MySQL administrator (root) has no password.
+	* The MySQL daemon is accessible via network.
+	* ProFTPD uses the password "lampp" for user "daemon".
+
+Если надо сделать приложение для прода, это всё надо исправить:
+
+''sudo /opt/lampp/lampp security''
+
+и смотреть, где что будет предложено изменить.
+
+===== Остановить XAMPP =====
+
+''sudo /opt/lampp/lampp stop''
+
+===== Удалить XAMPP =====
+
+'''
+cd /opt/lampp
+
+sudo ./uninstall
+
+sudo rm –r /opt/lampp
+'''
+
+===== РАЗНОЕ =====
+
+==== XAMPP runs, but why are none of the images being displayed? ====
+
+That's a special problem with some Linux systems. Please open your /opt/lampp/etc/httpd.conf and look for these two lines:
+
+	#EnableMMAP off
+	#EnableSendfile off
+
+Remove the # in both lines and restart your Apache. Your images should be back.
+
+--------------------
+@xampp @LAMP @MariaDB @apache  

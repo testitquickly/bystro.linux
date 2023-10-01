@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-05T06:31:12+02:00
+
+====== Подключение к блокноту Zim по ssh ======
+
+< @console @zim @ssh @sshfs >
+
+Сгенерировать ssh-ключ для подключения к удалённому компьютеру —см. [[ssh]] > Создать новый ssh-ключ — с базовыми настройками и пустым 'passphrase'.
+
+Установить его на удалённый ресурс:
+
+	ssh-copy-id USER@REMOTE
+
+===== Zim полностью работает удалённо =====
+
+	ssh -XC USER@REMOTE zim --no-daemon
+
+===== Zim работает локально, файлы на remote =====
+
+Нужен ’sshfs’. 
+
+Подключиться к удалённой машине
+
+''ssh://USER@REMOTE/home/USER''
+
+Или смонтировать свой каталог на удалённой машине:
+
+'''
+mkdir -p ~/mnt/REMOTE
+sshfs USER@REMOTE:/home/USER ~/mnt/REMOTE
+'''
+
+Го в подмонтированный каталог, найти файл notebook.zim и запустить его.
