@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:22:10+02:00
 
 ====== Как восстановить Debian public gpg keys ======
 
-< @gpg  @kgpg >
+< @debian @gpg  @kgpg >
 
 Если при aptitude update выводятся сообщения вроде 
 	Ошибка  http://security.debian.org stretch/updates InRelease
