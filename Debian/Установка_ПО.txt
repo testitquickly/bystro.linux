@@ -6,8 +6,11 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 < @debian @install >
 
+[[+hplip]] (принтеры HP)
 [[+iputils]]
+[[+kgpg]]
 [[+pgAdmin]]
+[[+Slack]]
 [[+ssh]]
 [[+Thunderbird]]
 [[+vpn]]
