@@ -8,6 +8,9 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 Инструмент для работы с PostgresSQL. 
 
+	Manjaro — установить ''postgresql postgresql16 phppgadmin''
+	дополнительно — ''sudo pacman -S clang15 llvm15''
+
 ===== Установка postgres =====
 
 Следовать https://wiki.postgresql.org/wiki/Apt но есть нюансы:
@@ -19,24 +22,22 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 3. ''sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail'' [[https://www.postgresql.org/media/keys/ACCC4CF8.asc|''https://www.postgresql.org/media/keys/ACCC4CF8.asc'']]
 4. ''sudo touch /etc/apt/sources.list.d/pgdg.list && sudo mcedit /etc/apt/sources.list.d/pgdg.list''
 
-Вставить в файл:
+	Вставить в файл:
 	''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.''__''pgp''__'']'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
 
-'''
-5. sudo apt-get update
-6. sudo apt-get install -y postgresql phppgadmin
-'''
+5. ''sudo apt-get update''
+6. ''sudo apt-get install -y postgresql phppgadmin''
 
-	Параметр -y означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
+	Параметр „-y” означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
 	
 	Можно установить определенную версию postgresql: “postgresql-15”.
 
-Запустить ostgreSQL service и указать ему запускаться при старте системы:
+Запустить PostgreSQL service и указать ему запускаться при старте системы:
 '''
 
 '''
-7. ''sudo systemctl start postgresql.service''
-8. ''sudo systemctl enable postgresql.service''
+7. ''sudo systemctl enable postgresql.service''
+8. ''sudo systemctl start postgresql.service''
 
 Проверить статус PostgreSQL server:
 '''
@@ -46,15 +47,13 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 '''
 
 '''
-Ожидаем сообщение “active (running)”.
+	Ожидаем сообщение “active (running)”.
 '''
 
 '''
-Проверить порт, по которому работает Postgres service — по-умолчанию 5432. Ожидаемый ответ: ''[::1]:5432''  
-'''
+10. Проверить порт, по которому работает Postgres service — по-умолчанию 5432. Ожидаемый ответ: ''[::1]:5432''  
 
-'''
-10. ''ss -antpl | grep 5432''
+''ss -antpl | grep 5432''
 
 ===== Установка pgAdmin =====
 
@@ -68,7 +67,7 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 Проверить содержимое файла
 
-cat /etc/apt/sources.list.d/pgadmin4.list
+''cat /etc/apt/sources.list.d/pgadmin4.list''
 
 Внутри должно быть 
 
@@ -78,23 +77,6 @@ cat /etc/apt/sources.list.d/pgadmin4.list
 
 ''sudo apt update && sudo apt install -y pgadmin4''
 
-Будут установлены и pgadmin4-desktop, и pgadmin4-web. В списке программ в разделе «Разработка» появится ярлык для запуска настольного приложения ”pgAdmin 4”. Можно запустить, первый раз будет шуршать долго, это нормально. По-сути происходит запуск сервера, и открывается браузер в виде приложения (то же, что и у Postman).
+Будут установлены и pgadmin4-desktop, и pgadmin4-web. В списке программ в разделе «Разработка» появится ярлык для запуска настольного приложения ”pgAdmin 4”.
 
-Дальше по существу — добавить новый удаленный сервер, подключиться, все дела.
-
-=== Настроить веб-сервер pgAdmin4 ===
-
-''sudo /usr/pgadmin4/bin/setup-web.sh''
-
-Надо будет создать основной user account (или живой емайл, или условный admin@localhost), базу данных и так далее. 
-
-Если есть UFW firewall, надо разрешить трафик http и https:
-
-''sudo ufw allow http''
-''sudo ufw allow https''
-
-Дэшбоард: http://127.0.0.1/pgadmin4
-
-Залогиниться записанными юзером > Add New Server (локальный или удаленный). 
-
-Дальше согласно документации — https://www.pgadmin.org/docs/
+[[Linux:Software:pgAdmin]]
