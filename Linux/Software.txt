@@ -44,6 +44,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ==== Всё остальное ====
 
+[[+ab (ApacheBench tool)]]
 [[+Audacious]]
 [[+blame]]
 [[+Elgato “Stream Deck”]]
@@ -61,6 +62,6 @@ onboard (экранная клавиатура)
 [[+xampp]]
 [[+Zoom]]
 vokoscreenNG
-[[+Принтеры и Сканеры]]
+[[HowTo:Принтеры и Сканеры]]
 
 
