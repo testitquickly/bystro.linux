@@ -31,15 +31,16 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+QBittorrent]]
 [[+qmmp]]
 [[+Samba]]
-Slack
+[[+Slack]]
 [[+SMPlayer]]
 [[+Spectacle]]
 [[+ssh]]
-Telegram
 [[+Thunderbird]]
+[[+UEFI]]
 [[+vpn]]
 [[+wget]]
 [[+Zim]]
+[[+Команда ls]]
 
 ==== Всё остальное ====
 
@@ -60,4 +61,6 @@ onboard (экранная клавиатура)
 [[+xampp]]
 [[+Zoom]]
 vokoscreenNG
+[[+Принтеры и Сканеры]]
+
 
