@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-09T22:49:50+03:00
+
+====== Узнать версию Manjaro ======
+
+< @manjaro @version >
+
+''cat /etc/lsb-release''
+
+Пример ответа:
+
+	DISTRIB_ID="ManjaroLinux"
+	DISTRIB_RELEASE="23.0.2"
+	DISTRIB_CODENAME="Uranos"
+	DISTRIB_DESCRIPTION="Manjaro Linux"
