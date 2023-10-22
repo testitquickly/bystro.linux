@@ -9,9 +9,9 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 * ''su''
 * указать root password
 
-''usermod -a -G sudo astenix''
-	или (если команда ''usermod'' не найдена)
 ''gpasswd -a astenix sudo''
+
+	Также можно выполнить „''usermod -a -G sudo astenix”но обычно usermod'' по-умолчанию не установлена.
 
 Заработает после релогина ([[Linux:HowTo:Log Out из консоли]]):
 
