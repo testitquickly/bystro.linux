@@ -12,6 +12,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+pgAdmin]]
 [[+Slack]]
 [[+ssh]]
+[[+Telegram]]
 [[+Thunderbird]]
 [[+vpn]]
 [[+Счетчики температуры hdd]]
