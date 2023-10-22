@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-22T23:04:31+03:00
+
+====== ab ======
+
+< @manjaro @install @apache @ab >
+
+'''
+pacman -Sy
+pacman -S apache
+'''
+
+[[Linux:Software:ab (ApacheBench tool)]]

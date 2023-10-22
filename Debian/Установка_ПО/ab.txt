@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-22T23:06:55+03:00
+
+====== ab ======
+
+< @debian @install @apache @ab >
+
+''apt-get install apache2-utils''
+
+[[Linux:Software:ab (ApacheBench tool)]]
