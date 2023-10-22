@@ -3,5 +3,70 @@ Wiki-Format: zim 0.6
 Creation-Date: 2023-10-22T23:14:01+03:00
 
 ====== Telegram ======
-Создан Воскресенье 22 октября 2023
 
+< @debian @install @telegram >
+
+https://desktop.telegram.org/ > скачать „Telegram для Linux 64”
+
+Подразумеваем, что файл находится в ~/Загрузки:
+
+''cd ~/Загрузки''
+
+Распаковать:
+
+'''
+tar -xvf tsetup*
+'''
+
+С этого момента Telegram сам устанавливает себя «куда ему надо», потому что это AppImage, но можно сделать это всё самостоятельно. 
+
+===== Переместить каталог с Telegram в /opt =====
+
+''sudo mv Telegram /opt''
+
+===== Дать права своему пользователю на изменения в каталоге /opt/Telegram =====
+
+'''
+sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
+'''
+
+==== Сделать symbolic link на Telegram ====
+
+Это инструкция для установки Telegram только для своего пользователя на ноутбуке.
+
+''cd ~/.local/bin/ && ln -s /opt/Telegram/Telegram''
+
+==== Сделать ярлык для запуска ====
+
+Скачать из сети картинку логотипа файл условно "telegram.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
+
+Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог [[/opt/Telegram/]] для этого лучшее решение (создать, если таковой отсутствует).
+
+''sudo mv Telegram.png /opt/Telegram/''
+
+=== Создать файл „Telegram.desktop” ===
+
+Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
+
+''mcedit ~/.local/share/applications/Telegram.desktop''
+
+Вставить в него такой набор букв:
+
+**[Desktop Entry]**
+'''
+Encoding=UTF-8
+Name=Telegram
+Comment=from /otp
+Type=Application
+Terminal=false
+Exec=/opt/Telegram/Telegram %U
+Icon=/opt/Telegram/Telegram.png
+StartupNotify=true
+Categories=Network;
+'''
+
+[F2] [Esc] [Esc]
+
+==== Сделать файл исполняемым ====
+
+''chmod u+x ~/.local/applications/Telegram.desktop''
