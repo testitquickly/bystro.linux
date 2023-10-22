@@ -4,22 +4,18 @@ Creation-Date: 2022-02-22T15:16:08+02:00
 
 ====== Настроить Display Manager ======
 
-< @sddm @lightdm >
+< @debian @sddm @lightdm @DisplayManager >
 
-Вообще их много: 
-	* gdm (Gnome Display Manager), 
-	* gdm3 (Gnome Display Manager 3),
-	* lightdm (тоже Gnome, но не требует гномокомпонентов для работы), 
-	* kdm (старый KDE, устарел), 
-	* **sddm** (Simple Desktop Display Manager для Plasma 5) - исконно кдешный, но заглючил в Debian 11 (не логинил в GUI), я ему не доверяю
-а также
-	* MDM (Mint Display Manager), в KDE не устанавливается.
-	* SLiM (Simple Login Manager), заброшен.
+Их много: 
+	* kdm (старый KDE) — устарел;
+	* sddm (Simple Desktop Display Manager для Plasma 5) — исконно кдешный, предлагается по-умолчанию, но __заглючил__ в Debian 11 (не логинил в GUI), я ему не доверяю;
+		* “''sddm''” генерирует неадекватные и неразрешаемые сложности. Один из косвенных признаков: ошибка “Failed to start KDE Global shortcuts Server”, после которой иксы просто не запускаются, зависая на каких-то шагах вроде «Настройка CUPS» (которое тут ни при чём).
+	* lightdm (Gnome) — это мой выбор, не требует гномокомпонентов для работы, с KDE никаких проблем;
+	* gdm (Gnome Display Manager);
+	* gdm3 (Gnome Display Manager 3);
+	* MDM (Mint Display Manager) — в KDE не устанавливается;
+	* SLiM (Simple Login Manager) — заброшен;
 	* LXDM (Lubuntu).
-
-По-умолчанию в KDE “''sddm''” (Simple Desktop Display Manager для Plasma 5). 
-
-Я уже два раза столкнулся с тем, что “''sddm''” генерирует неадекватные и неразрешаемые сложности. Один из признаков: ошибка “Failed to start KDE Global shortcuts Server”, после которой иксы просто не запускаются, зависая на каких-то шагах вроде «Настройка CUPS» (которое тут ни при чём).
 
 ===== Выяснить текущий =====
 
