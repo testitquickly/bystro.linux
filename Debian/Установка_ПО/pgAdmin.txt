@@ -8,42 +8,49 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 Инструмент для работы с PostgresSQL. 
 
-	Manjaro — установить ''postgresql postgresql16 phppgadmin''
-	дополнительно — ''sudo pacman -S clang15 llvm15''
-
 ===== Установка postgres =====
 
 Следовать https://wiki.postgresql.org/wiki/Apt но есть нюансы:
-* это установка для debian bookworm
-* обратиться к apt.postgresql.org.__pgp__ вместо apt.postgresql.org.asc
+	* это установка для debian bookworm
+	* надо обратиться к apt.postgresql.org.//pgp//, а не к apt.postgresql.org.//asc//, как указано в документации (походу, адрес ключа поменяли и забыли в документах указать)
 
-1. ''sudo apt install curl ca-certificates''
-2. ''sudo install -d /usr/share/postgresql-common/pgdg''
-3. ''sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail'' [[https://www.postgresql.org/media/keys/ACCC4CF8.asc|''https://www.postgresql.org/media/keys/ACCC4CF8.asc'']]
-4. ''sudo touch /etc/apt/sources.list.d/pgdg.list && sudo mcedit /etc/apt/sources.list.d/pgdg.list''
+Выполнить последовательно
 
-	Вставить в файл:
-	''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.''__''pgp''__'']'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
+''sudo apt install curl ca-certificates''
 
-5. ''sudo apt-get update''
-6. ''sudo apt-get install -y postgresql phppgadmin''
+''sudo install -d /usr/share/postgresql-common/pgdg''
 
-	Параметр „-y” означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
+''sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp --fail'' [[https://www.postgresql.org/media/keys/ACCC4CF8.asc|''https://www.postgresql.org/media/keys/ACCC4CF8.asc'']]
+
+Создать файл с настройками:
+
+''sudo touch /etc/apt/sources.list.d/pgdg.list && sudo mcedit /etc/apt/sources.list.d/pgdg.list''
+
+Вставить эту строку в созданный файл:
+
+''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp]'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
+
+'''
+sudo apt-get update
+'''
+
+'''
+sudo apt-get install -y postgresql phppgadmin
+'''
+
+		Параметр „-y” означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
 	
-	Можно установить определенную версию postgresql: “postgresql-15”.
+		Можно установить postgresql не вообще, а определенную версию postgresql: “postgresql-15”.
 
-Запустить PostgreSQL service и указать ему запускаться при старте системы:
-'''
+Запустить postgreSQL service и указать ему запускаться при старте системы:
 
-'''
-7. ''sudo systemctl enable postgresql.service''
-8. ''sudo systemctl start postgresql.service''
+''sudo systemctl start postgresql.service''
 
-Проверить статус PostgreSQL server:
-'''
+''sudo systemctl enable postgresql.service''
 
-'''
-9. ''sudo systemctl status postgresql.service''
+И сразу проверить статус PostgreSQL server:
+
+''sudo systemctl status postgresql.service''
 '''
 
 '''
@@ -51,9 +58,15 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 '''
 
 '''
-10. Проверить порт, по которому работает Postgres service — по-умолчанию 5432. Ожидаемый ответ: ''[::1]:5432''  
+Проверить порт, по которому работает Postgres service (по-умолчанию 5432):
+'''
 
+'''
 ''ss -antpl | grep 5432''
+
+Ожидаемый ответ: 
+
+''[::1]:5432''  
 
 ===== Установка pgAdmin =====
 
@@ -71,12 +84,31 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 Внутри должно быть 
 
-''deb'' [[https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm|''https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/''__''bookworm''__]] ''pgadmin4 main''
+''deb'' [[https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm|''https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm'']] ''pgadmin4 main''
 
 ==== Установить десткоп-аппу pgAdmin4 ====
 
 ''sudo apt update && sudo apt install -y pgadmin4''
 
-Будут установлены и pgadmin4-desktop, и pgadmin4-web. В списке программ в разделе «Разработка» появится ярлык для запуска настольного приложения ”pgAdmin 4”.
+Будут установлены и pgadmin4-desktop, и pgadmin4-web. В списке программ в разделе «Разработка» появится ярлык для запуска настольного приложения ”pgAdmin 4”. Можно запустить, первый раз будет шуршать долго, это нормально. По-сути происходит запуск сервера, и открывается браузер в виде приложения (то же, что и у Postman).
 
-[[Linux:Software:pgAdmin]]
+Дальше по существу — добавить новый удаленный сервер, подключиться, все дела.
+
+===== Настроить веб-сервер pgAdmin4 =====
+
+Это если нужно держать свой веб-сервер для БД.
+
+''sudo /usr/pgadmin4/bin/setup-web.sh''
+
+Надо будет создать основной user account (или живой емайл, или условный admin@localhost), базу данных и так далее. 
+
+Если есть UFW firewall, надо разрешить трафик http и https:
+
+''sudo ufw allow http''
+''sudo ufw allow https''
+
+Дэшбоард: http://127.0.0.1/pgadmin4
+
+Залогиниться записанными юзером > Add New Server (локальный или удаленный). 
+
+Дальше согласно документации — https://www.pgadmin.org/docs/
