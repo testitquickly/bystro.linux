@@ -6,9 +6,7 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 < @console @time >
 
-Перегрузился из винды в Debian, и замечаю, что время-то прошло незаметно, уже 19:32. А часы на стене говорят, что всего 17:32.  
-
-Бородатые дядьки пишут, что
+С настройкой времени может быть неявная проблема:
 
 	If you have installed Windows alongside Linux, you may struggle with dual-boot system time issues. The reason is simple: Windows keeps hardware clock in local time and Linux in UTC time.
 
@@ -27,6 +25,14 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 ===== Debian =====
 
 Уходим в консоль.
+
+В Debian 12 считывать время с RTC (real-time clock) не рекомендуется, потому что будут проблемы со сменой временных зон и перехода между летним и зимним временем. Рекомендуется использовать RTC в UTC через 
+
+''timedatectl set-local-rtc 0''
+
+===== Архивный раздел =====
+
+В предыдущих версиях Debian это делалось так:
 
 ==== 1) Остановить синхронизацию времени ====
 

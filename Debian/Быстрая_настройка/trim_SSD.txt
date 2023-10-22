@@ -28,11 +28,11 @@ https://hddiq.ru/tverdotelnye-nakopiteli-ssd/trim-ssd#_TRIM_Linux
 
 ==== Как проверить, что trim поддерживается на моем ssd ====
 
-* ''sudo aptitude install hdparm''
+''sudo aptitude install hdparm''
 
 Если ssd на [[/dev/sda,]] то
 
-* ''sudo hdparm -I /dev/sda | grep "TRIM supported"''
+''sudo hdparm -I /dev/sda | grep "TRIM supported"''
 
 If there's no output, your drive doesn't support TRIM. Если поддерживается, то ждем ответ вроде //Data Set Management TRIM supported (limit 8 blocks).//
 
@@ -76,9 +76,11 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 ===== Нужен ли discard для swap =====
 
-Да, если swap установлен на ssd. Если на hdd, то можно не заморачиваться. Очевидно, что //не надо// ставить swap на ssd, если есть hdd.
+Да, если swap установлен на ssd. Если на hdd, то можно не заморачиваться. 
 
-Внимание, "noatime" (и его дочернее "nodiratime") для swap //не нужно//.
+Нужно ли ставить swap на ssd, если есть hdd? Когда-то это было важно, для современных ssd это не имеет особого значения.
+
+Опции "noatime" (и его дочернее "nodiratime") для swap точно //не нужно//.
 
 ===== Нужен ли discard для зашифрованных разделов =====
 
@@ -118,8 +120,11 @@ sdb           0        0B       0B         0
 
 ''sudo fstrim -v /''
 
-Подождать ответ вроде 
-///: 119,5 GiB (128270147584 bytes) trimmed//
+Очень терпеливо подождать ответ вроде 
+
+'''
+/: 119,5 GiB (128270147584 bytes) trimmed
+'''
 
 Если его нет, значит, TRIM для корневого диска системы НЕ работает. 
 

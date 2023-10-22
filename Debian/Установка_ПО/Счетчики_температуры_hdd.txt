@@ -6,5 +6,5 @@ Creation-Date: 2022-02-23T20:41:15+02:00
 
 < @console @xsensors @hddtemp >
 
-''sudo aptitude install xsensors hddtemp''
+''sudo aptitude install xsensors''
 

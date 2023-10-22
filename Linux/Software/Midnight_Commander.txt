@@ -74,15 +74,16 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 ===== mcedit как основной редактор =====
 
 Add to your ~/.profile and ~/.bashrc files line
+
 ''export EDITOR=mcedit''
 
 Do not put quotes around 'mcedit' word. 
 
 To take effect run
-	'''
-	source ~/.profile 
-	source ~/.bashrc
-	'''
+
+'''
+source ~/.profile && source ~/.bashrc
+'''
 
 Или дождаться перезагрузки, и переменная подхватится.
 
