@@ -4,5 +4,6 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 ====== hplip ======
 
+< @debian @printer @scaner @drivers @xsane @hp @install >
 
-
+TODO — debian install hplip
