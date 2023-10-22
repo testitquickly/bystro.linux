@@ -81,7 +81,7 @@ deb http://www.bchemnet.com/suldr/ debian extra
 
 Запустить Xsane. Если сканер не определяется — перезагрузить ноутбук.
 
-==== Удалить все драйвера ====
+===== Удалить все драйвера =====
 
 ''sudo apt-get remove suld-driver*''
 
