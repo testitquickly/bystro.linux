@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-10T22:40:03+03:00
+
+====== ab (ApacheBench tool) ======
+
+===== Установка =====
+
+[[Debian:Установка ПО:ab]]
+[[Manjaro:Установка ПО:ab]]
+
+===== Использование =====
+
+Сделать замер отзывчивости условного [[https://website.net/|''https://website.net'']]
+
+''ab -n20 -c 4 -H 'Accept-Encoding: gzip, deflate, br' "''[[https://website.net/|''https://website.net/'']]''"'' 
+
+Пример ответа:
+
+''Benchmarking website.net (be patient).....done'' 
+ 
+''Server Software:       cloudflare'' 
+''Server Hostname:       website.net''
+''Server Port:           443'' 
+''SSL/TLS Protocol:      TLSv1.3,TLS_AES_256_GCM_SHA384,256,256'' 
+''Server Temp Key:       X25519 253 bits'' 
+''TLS Server Name:       website.net''
+ 
+''Document Path:         /'' 
+''Document Length:       93175 bytes'' 
+ 
+''Concurrency Level:     4'' 
+''Time taken for tests:  16.284 seconds'' 
+''Complete requests:     20'' 
+''Failed requests:       19'' 
+''(Connect: 0, Receive: 0, Length: 19, Exceptions: 0)'' 
+''Total transferred:     1877540 bytes'' 
+''HTML transferred:      1860018 bytes'' 
+''Requests per second:   1.23 [#/sec] (mean)'' 
+''Time per request:      3256.847 [ms] (mean)'' 
+''Time per request:      814.212 [ms] (mean, across all concurrent requests)'' 
+''Transfer rate:         112.60 [Kbytes/sec] received'' 
+ 
+''Connection Times (ms)'' 
+''min mean[+/-sd] median  max'' 
+''Connect:      83  88  6.2    86    109'' 
+''Processing: 1294 2491 661.8  2704   3673'' 
+''Waiting:    1017 2085 643.5  2043   3397'' 
+''Total:      1388 2580 660.8  2792   3756'' 
+ 
+''Percentage of the requests served within a certain time (ms)'' 
+''50%  2792'' 
+''66%  2950'' 
+''75%  3028'' 
+''80%  3095'' 
+''90%  3366'' 
+''95%  3756'' 
+''98%  3756'' 
+''99%  3756'' 
+''100%  3756 (longest request)''

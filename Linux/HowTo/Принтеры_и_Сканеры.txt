@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-09T22:36:54+03:00
+
+====== Принтеры и Сканеры ======
+
+< @install @drivers >
+
+[[+HP (Hewlett-Packard)]]
+[[+Samsung]]
