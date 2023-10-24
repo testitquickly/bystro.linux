@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:21:20+02:00
 
-====== Сделать логин без запроса пароля ======
+====== Автоматический login ======
 
 < @login @sddm @lightdm >
 
