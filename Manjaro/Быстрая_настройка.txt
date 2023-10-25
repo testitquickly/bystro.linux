@@ -9,6 +9,6 @@ Creation-Date: 2023-02-18T01:31:04+02:00
 [[+autostart]]
 [[+swap]]
 [[Управление Manjaro:Выбор ветки]]
-[[+Обновить Manjaro]]
+[[Управление Manjaro:Обновить Manjaro]]
 [[Управление Manjaro]]
 [[+Шрифты]]
