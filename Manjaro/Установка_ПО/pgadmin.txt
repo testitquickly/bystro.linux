@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-07T15:57:20+02:00
+
+====== pgadmin ======
+
+//Next step//: 
