@@ -2,48 +2,61 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-11-07T15:57:20+02:00
 
-====== pgadmin ======
+====== pgAdmin ======
 
 ===== Установить postgres =====
 
 Должен быть установлен [[Управление Manjaro:Управление пакетами:yay]]
 
-''sudo pacman -S yay''
+В теории на этом шаге можно было установить сразу postgres и pgadmin, но что-то изменилось, и нативный клиент pgadmin установить невозможно. Его можно установить отдельно через python в виде веб-сервера.
 
-В теории на этом шаге можно было установить сразу postgres и pgadmin, но pgadmin надо будет установить отдельно.
+''sudo yay postgresql''
 
-''yay postgresql''
+В системе появится сервис ''postgres'' и новый юзер „postgres” (по-умолчанию без пароля, он будет задан позже).
 
-В системе появится и сервис, и новый юзер „postgres” (без пароля).
+==== Настроить сервис postgres ====
 
-===== Настроить сервис postgres =====
+=== Задать каталог для сервиса postgres ===
 
-==== Залогиниться как юзер „postgres” ====
+(Непонятно почему, но…) Этот шаг рекомендуется выполнить в отдельном окне с консолью.
 
 '''
 sudo -u postgres -i
 initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
 exit
+exit
 '''
 
-==== Запустить сервис ====
+Окно консоли будет закрыто. Открыть новое. 
+
+=== Запустить сервис postgres ===
 
 ''sudo systemctl enable --now postgresql && sudo systemctl status postgresql''
 
-==== Задать пароль юзеру „postgres” ====
+Подразумевается, что отныне сервис postgres будет запускаться вместе с системой.
+
+=== Задать пароль юзеру „postgres” ===
+
+Пароль придумать, записать в блокнот, запомнить, блокнот прожевать и проглотить.
 
 '''
 psql -U postgres
 postgres=# \password
 '''
 
-Указать пароль. Записать его блокнот, запомнить, блокнот прожевать и проглотить.
+Указать пароль, подтвердить.
 
-==== Настроить безопасность PostgreSQL Client Authentication ====
+Выйти из shell:
+
+''\q''
+
+=== Настроить безопасность PostgreSQL Client Authentication ===
+
+Опциональный шаг. 
 
 Если речь идет про учебный проект или доступ к сервису будет только на localhost,  то дефолтные настройки норм, никто нигде не будет спрашивать пароль при подключении.
 
-Если надо настроить несколько подключений к сервису Postgres и будет несколько пользователей, то  „Method = trust” опасен, метод логина должен быть „md5”.
+Если надо настроить несколько подключений к сервису Postgres извне и будет несколько пользователей, то настройка  „Method = trust” опасен, его надо поменять на „md5”.
 
 Логин как root и перейти в каталог с настройками
 
@@ -76,9 +89,9 @@ cp pg_hba.conf pg_hba.conf.backup && mcedit pg_hba.conf
 
 Поменять все инструкции „trust” на „md5”.
 
-==== Настроить быстрое открытие определенной БД ====
+=== Настроить быстрое открытие определенной БД ===
 
-В некоторых обстоятельствах удобно сразу открывать определенную БД, например „DB_NAME”
+В некоторых обстоятельствах удобно сразу открывать определенную БД, например „DB_NAME”:
 
 ''> psql DB_NAME postgres''
 
@@ -94,99 +107,63 @@ postgres=# \dt                      # see list of tables
 
 ===== Установить pgAdmin =====
 
-Он будет работать как веб-сервер на localhost.
+==== Проверить, что запущен postgres service ====
 
-The pgAdmin4 is a client for PostgreSQL databases whereas PostgreSQL is an advanced Object-Relational database management system. The pgAdmin4 eases the management of PostgreSQL by providing a visual interface. The notable use of the pgAdmin4 tool is to execute queries, read results, update data, and create databases.
+Он уже был запущен на предыдущих шагах, но можно и повторить
 
-The pgAdmin4 tool can be obtained on Linux, macOS, and Windows from the project’s website. However, the available setup support cannot be used to install pgAdmin4 on Manjaro Linux. In this article, we have compiled an installation and usage guide of pgadmin4 on Manjaro.
-Prerequisites
+''sudo systemctl enable --now postgresql && sudo systemctl status postgresql''
 
-As pgAdmin4 is meant to serve as a graphical interface for managing Postgres databases. That means an installation and configuration of PostgreSQL is necessary to carry out. For this, follow the steps provided below.
+==== Создать основные директории для pgadmin ====
 
-Step 1 : Install the PostgreSQL server on Manjaro, as it is necessary to run pgAdmin4 on your system.
-$ sudo pacman -S postgresql
+''sudo mkdir /var/lib/pgadmin && sudo mkdir /var/log/pgadmin''
 
-Text Description automatically generated
+Назначить своего юзера владельцем этих директорий:
 
-Step 2 : Login as a postgres user with the help of command provided below.
-$ sudo -u postgres -i
+''sudo chown $USER /var/lib/pgadmin''
+''sudo chown $USER /var/log/pgadmin''
 
-After logging into postgres, you have to create a PostgreSQL cluster by issuing the below-stated command.
-$ initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+==== Создать Python-based virtual environment ====
 
-Text Description automatically generated
+''python3 -m venv pgadmin4''
 
-Step 3 : Restart your terminal and then use the following command to enable the postgres service.
-$ sudo systemctl enable postgresql
+Подразумеваем, что каталог для этого окружения будет создан в профиле пользователя, которому это всё нужно. 
 
-Text Description automatically generated
+==== Установить pgAdmin4 ====
 
-After enabling, check the status of the service to verify its running or not.
-$ sudo systemctl status postgresql
+''pip install pgadmin4''
 
-Text Description automatically generated
+==== Запустить pgAdmin4 ====
 
-Step 4 : This step comprises several commands that are related to the security settings of postgres.
-$ psql -U postgres
+Активировать окружение для запуска pgAdmin
 
-Graphical user interface, text, application Description automatically generated
+''source ~/pgadmin4/bin/activate''
 
-After accessing the postgres shell, type “\password” to set a password. Choose the password and enter again to confirm:
-\password
+Будет запущен shell, зрительно это выглядит так: 
 
-A screenshot of a computer Description automatically generated with medium confidence
+''(pgadmin4) user@hostname:~$''
 
-Now, come out of postgres shell by typing “\q“. It is recommended to note down the username and password as it would be required in connecting with pgAdmin4
+В этом shell перейти в каталог с pgAdmin и запустить сервис pgadmin:
 
-A screenshot of a computer Description automatically generated with medium confidence
-How to install and use pgAdmin4 on Manjaro Linux
+''cd ~/pgadmin4/ && pgadmin4''
 
-The installation and usage of pgAdmin4 are linked with creating the virtual environment of pgAdmin4. So, in this section, a step-by-step procedural guide will lead you to create a Python-based virtual environment of pgAdmin4 and then use it to perform several database-related operations.
+Дождаться сообщения 
 
-Step 1 : Make the essential directories, /var/lib and /var/log for pgadmin. Where /var/lib directory is used by the server applications to store data and /var/log files contains the log files. To create these files, use the below-mentioned command.
-$ sudo mkdir /var/lib/pgadmin
+''Starting pgAdmin 4. Please navigate to'' [[http://127.0.0.1:5050|''http://127.0.0.1:5050'']] ''in your browser.''
 
-$ sudo mkdir /var/log/pgadmin
+Это окно с консолью закрывать нельзя — сервис схлопнется.
 
-Graphical user interface Description automatically generated
+Разумно закатать эту последовательность команд для запуска сервиса в один исполняемый sh-файл.
 
-Step 2 : Change the owner of the files using the commands provided below.
-$ sudo chown $USER /var/lib/pgadmin
+===== Открыть СУДБ =====
 
-$ sudo chown $USER /var/log/pgadmin
+Доступ только из браузера.
 
-A picture containing graphical user interface Description automatically generated
+Открыть браузер 
+> http://127.0.0.1:5050 
+> залогиниться в pgAdmin
+> подключиться к нужной БД
 
-Step 3 : Create the Python-based virtual environment by issuing the command written below.
-$ python3 -m venv pgadmin4
-
-Graphical user interface Description automatically generated
-
-Activate the environment with the help of the command written below.
-$ source pgadmin4/bin/activate
-
-Step 4 : Now run the following command to install pgAdmin4
-$ pip install pgadmin4
-
-Text Description automatically generated
-
-Step 5 : Navigate to the pgAdmin4 and start the pgAdmin4 service by using the command provided below.
-$ cd pgadmin4
-
-Graphical user interface Description automatically generated with medium confidence
-
-After executing the below mentioned command, you will be asked to enter the email address and password that will be used to log in to the web interface.
-$ pgadmin4
-
-Text Description automatically generated
-
-You must observe that the output is notifying you to navigate to address https://127.0.0.1:5050. Enter the address in any browser and you would observe the following interface. Where a login prompt will appear. Use the email and password that you chose in the above steps.
-
-Graphical user interface, website Description automatically generated
-
-After successful login, the interface is provided below. Click on “Add New Server” option to add a new server for your postgres databases.
-
-По-умолчанию будет доступна БД на локалхосте:
+По-умолчанию доступна БД на локалхосте:
 
 '''
 Host: localhost
@@ -196,67 +173,4 @@ Username: postgres
 Password: <your password>
 '''
 
-And PgAdmin should work just fine.
-
-Graphical user interface, text, application, Word Description automatically generated
-
-In the “General” tab, enter the server’s name, for instance we have set it to “linuxhint“.
-
-Graphical user interface, application Description automatically generated
-
-For further configurations, navigate to the next tab named “Connection“, and here you have to enter the details in the following options:
-
-	Enter the Hostname or address that would be “localhost”
-	Provide the Username and Password of the postgres database user. For this, refer to step 4 of the Prerequisites section.
-
-After that, navigate to “Save” option;
-
-Graphical user interface, application Description automatically generated
-
-Once it is saved, the “linuxhint” server can be seen on the “Dashboard” of pgAdmin4. Under the “linuxhint” tab you would observe the default databases, the login roles for the users.
-
-Graphical user interface, application Description automatically generated
-
-Create a database using pgAdmin4 : To create a database, right click on the “Databases” and then navigate to “Create” followed by the “Database…” option.
-
-Graphical user interface, application Description automatically generated
-
-Choose the name and click on “Save” to create that database.
-
-Graphical user interface, text, application Description automatically generated
-
-You would observe “linux_db” is created but not connected yet:
-
-Graphical user interface, table Description automatically generated
-
-To connect the database with the server, click on the database name and you will receive a database connected prompt that shows your database has been connected.
-
-Graphical user interface, application Description automatically generated
-
-Create a table in the database using pgAdmin : For the creation of tables, you must locate the tables option in that database. To do so, perform the following actions:
-
-	Click on the database and then look for “Schemas” in that drop down menu.
-	In the Schemas, open the “public” schema and scroll down, you would see the “Tables” option and right click on it to create new table.
-
-Graphical user interface Description automatically generated with medium confidence
-
-After that, you have to choose the name for that table (distributions in our case):
-
-Graphical user interface, application Description automatically generated
-
-To add columns, you must navigate to the “Columns” tab and then perform the following steps.
-
-	Click on the “+” option and then type the name of the column with the data type you want to assign
-	(Optional) Turn the toggle button to ON if the column is a primary key
-	After that, click on Save to create columns and tables successfully
-
-Graphical user interface, application, Word Description automatically generated
-
-Once the tables and columns are created, you can see them by navigating to “Schemas” and then under “public” schema, you can observe the “distributions” table.
-
-Graphical user interface, application, Word Description automatically generated
-Conclusion
-
-In this technologically rich era, the graphical interface 
-
-https://linuxhint.com/install-pgadmin4-manjaro-linux/
+//Next step//: [[Linux:Software:pgAdmin]]

@@ -4,11 +4,11 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 ====== pgAdmin ======
 
-< @debian @install @DB @pgadmin >
+< @debian @install @DB @postgreSQL @pgadmin >
 
 Инструмент для работы с PostgresSQL. 
 
-===== Установка postgres =====
+===== Установка postgreSQL =====
 
 Следовать https://wiki.postgresql.org/wiki/Apt но есть нюансы:
 	* это установка для debian bookworm
@@ -111,4 +111,4 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 Залогиниться записанными юзером > Add New Server (локальный или удаленный). 
 
-Дальше согласно документации — https://www.pgadmin.org/docs/
+//Next step//: [[Linux:Software:pgAdmin]]
