@@ -152,7 +152,18 @@ postgres=# \dt                      # see list of tables
 
 Это окно с консолью закрывать нельзя — сервис схлопнется.
 
-Разумно закатать эту последовательность команд для запуска сервиса в один исполняемый sh-файл.
+Разумно закатать эту последовательность команд для запуска сервиса в один исполняемый sh-файл и запускать страницу управления СУБД в Firefox (с рабочим профилем „profileNameWork”):
+
+'''
+#!/bin/bash
+# запуск окружения для работы pgadmin в Manjaro
+source ~/pgadmin4/bin/activate
+	echo "Env activated"
+cd ~/pgadmin4 & sleep 1 & pgadmin4 &
+	echo "pgAdmin activated"
+firefox -p profileNameWork --new-tab http://127.0.0.1:5050 &
+	echo "Done!"
+'''
 
 ===== Открыть СУДБ =====
 
