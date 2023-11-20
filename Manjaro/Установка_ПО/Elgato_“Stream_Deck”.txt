@@ -4,7 +4,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ====== Elgato “Stream Deck” ======
 
-< @elgato @streamDeck @python @console @manjaro @install >
+< @manjaro @install @elgato @streamDeck @python @console >
 
 ===== [психологическая] Подготовка к установке =====
 
@@ -54,83 +54,68 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Проверить, что железка отключена.
 
-Убедиться в том, что в системе установлен [[Linux:Software:Python]] и его PIP. 
+В системе должен быть установлен [[Linux:Software:Python]] и его PIP.
 
-''sudo apt install -y python3-pip python3-setuptools''
+==== Установить hidapi ====
 
-''sudo apt install -y libudev-dev libusb-1.0-0-dev libhidapi-libusb0 libxcb-xinerama0 libjpeg-dev zlib1g-dev libopenjp2-7 libtiff5 wmctrl''
+''sudo pacman -Sy hidapi python-pip qt6-base''
 
-''pip3 install wheel pillow''
+Добавить ''~/.local/bin'' в path: 
 
-Скачивается немного, но процесс может быть медленным.
+''mcedit ~/.bashrc''
 
-==== Создать файл с правилами ====
+В последнюю строку записать:
 
-''sudoedit /etc/udev/rules.d/70-streamdeck.rules''
+''PATH=$PATH:$HOME/.local/bin''
 
-	Если экзотичное sudoedit не сработает, открыть через nano или mcedit:
-	''sudo mcedit /etc/udev/rules.d/70-streamdeck.rules''
+Перечитать содержимое файла:
 
-Вставить в файл “''70-streamdeck.rules''” эти строки:
+''source ~/.bashrc''
 
-	'''
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", GROUP="users", TAG+="uaccess"
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0063", GROUP="users", TAG+="uaccess"
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006c", GROUP="users", TAG+="uaccess"
-	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006d", GROUP="users", TAG+="uaccess"
-	'''
+==== Настроить виртуальное окружение Python для запуска приложения Stream Deck ====
+
+=== Создать a virtual environment ===
+
+На диске сделать отдельную папку вроде ''/python/env/''
+
+''python3 -m venv ~/python/env''
+
+=== Установить/обновить pip в этом окружении ===
+
+''~/python/env/bin/python3 -m pip install --upgrade pip''
+''~/python/env/bin/python3 -m pip install setuptools''
+
+==== Настроить доступ к устройству Elgato ====
+
+Создать файл с настройками udev:
+
+''sudo sh -c 'echo "SUBSYSTEM==\"usb\", ATTRS{idVendor}==\"0fd9\", TAG+=\"uaccess\"" > /etc/udev/rules.d/70-streamdeck.rules'''
 
 Проверить, что всё записалось:
 
 ''cat /etc/udev/rules.d/70-streamdeck.rules''
 
-==== Перезагрузка udevadm ====
+Применить новые правила:
 
-''sudo udevadm control --reload-rules''
+''sudo udevadm trigger''
 
-==== Подключить Stream Deck к ноуту (USB) ====
+===== Установить Stream Deck UI =====
 
-Все кнопки-иконки должны засветиться и показать один большой логотип Elgato.
+''~/python/env/bin/python3 -m pip install streamdeck-ui''
 
-==== Установить streamdeck_ui ====
+===== Включить устройство =====
 
-''pip3 install --user streamdeck_ui''
+Воткнуть его в USB.
 
-В ''~/.local/bin'' должен появиться исполняемый файл ’streamdeck’ (скрипт на python). 
+Кнопки должны подсветиться логотипом Stream Deck.
 
-Добавить этот каталог в PATH. Это можно сделать двумя способами:
+==== Запуск ====
 
-''export PATH=~/.local/bin:$PATH''
-
-''PATH=$PATH:$HOME/.local/bin''
-
-Но лучше просто добавить новую строку в ''~/.bashrc''
-
-''PATH=$HOME/.local/bin:$PATH''
-
-Если такая строка уже есть (например, для LaTeX), то новый каталог нужно добавить после двоеточия:
-
-''PATH=/home/LaTeX/bin/x86_64-linux:$HOME/.local/bin:$PATH''
-
-Принудительно перечитать содержимое ''.bashrc'' (в ответ ожидаем тишину):
-
-''source ~/.bashrc''
-
-Команду ''streamdeck'' можно сунуть в автозапуск (''~/.local/bin/streamdeck''), софт маленький и даже если железка не будет подключена, на системе это не скажется.
-
-Запустить приложение
-
-''streamdeck &''
-
-		Предполагается, что процесс при запуске отвяжется от консоли, но на самом деле нет. Автозапуск при загрузке системы происходит где-то в фоне и живёт незаметно.
+''~/python/env/bin/python3 streamdeck''
 
 Откроется это:
 
 {{./StreamDeckUI_initial.jpg}}
-
-Позже, после полной настройки, будет открываться нечто подобное:
-
-{{./StreamDeckUI_done.jpg}}
 
 Выключать это приложение не следует.
 
