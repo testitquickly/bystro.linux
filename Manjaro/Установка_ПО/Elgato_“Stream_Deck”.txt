@@ -4,4 +4,140 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ====== Elgato “Stream Deck” ======
 
-//Next step//: 
+< @elgato @streamDeck @python @console @manjaro @install >
+
+===== [психологическая] Подготовка к установке =====
+
+Основной источник информации по установке и настройке https://timothycrosley.github.io/streamdeck-ui/
+
+Если к ноуту уже подключено устройство “Stream Deck” по USB (просто чтобы убедиться в том, что оно работает) — его надо выдернуть.
+
+Если в наличии несколько устройств, то надо сперва решить, которое из них будет «установлено». 
+
+		Под виндой их можно перевтыкивать без особых сложностей, внутренний софт определяет их и меня конфигурацию кнопок на лету. 
+	
+		В Debian «перевтык» не сработает, и даже импорт настроек из сохранённого файла не поможет. Полагаю, что при установке происходит жёсткая призявка к железке.
+
+		Жизненный опыт: 32-ухкнопочная клавиатурка всегда удобнее 15-тикнопочной.
+
+На каждом шаге что-то может пойти не так. Если что-то пошло не туда — остановиться и гуглить. А пойти что-то не так вполне может, known issues (мне не помешали):
+
+		* Some users have reported that the Stream Deck device does not work on all on specific USB ports, as it draws quite a bit of power and/or has strict bandwidth requirements. Try a different USB port. (Подтверждаю. Особенно эта штука не любит подключения через внешние usb-хабы, она предпочитает постоянный отдельный вход).
+		* Streamdeck uses pynput for simulating Key Presses but it lacks proper support for **Wayland**. Generally your results will be good when using X (Ubuntu/Linux Mint).
+		* Key Press or Write Text does not work on **Fedora** (outside of the streamdeck itself), which is not particularly useful. However, still do a lot with the Command feature.
+		* On **Ubuntu** the Key Press ctrl+alt+t doesn't work. However using the Command gnome-terminal achieves the same result.
+		* Version 1.0.2 lacks error handling when executing Command and Key Press actions. As a result, you have to be careful - an invalid command or key press makes everything else also stop working. The 1.0.3 release and above resolve this.
+		* If you're using **GNOME** shell, you might need to manually install an extension that adds [[https://extensions.gnome.org/extension/615/appindicator-support/|KStatusNotifierItem/AppIndicator]] Support to make the tray icon show up.
+
+По сравнению с приложением под виндой, приложение под линукс примитивнее:
+
+		* Нет предустановленных кнопок. 
+		* Невозможно перетаскивать кнопки на другие уровни. 
+		* Невозможно настроить две иконки на одну кнопку (например, для кнопки включения/отключения звука можно подложить иконки разного цвета под оба состояния), поэтому сразу фидбэк от нажатия кнопки отсутствует — надо подождать и смотреть на экране, если что-то получилось. 
+		* Не будет таймера на кнопке. 
+		* Нет (да и не особо нужно, debian же, но всё же) возможности под одну кнопку подстроить выполнение нескольких команд последовательно. 
+
+Поначалу это ощущается как недостаток, но чуть позже всё становится проще. Одна кнопка, одно действие. Если нужно несколько действий последовательно — закатать всё в файл .sh и повесить его однократный вызов на отдельную кнопку.
+
+==== Питание железки ====
+
+**Есть проблема**: эти клавиатурки постоянно получают энергию из usb-дырок, даже если ноут отключён (батарея и сеть работают). В темноте клавиатурки Elgato очень ярко светятся, и если это дело оставить как есть, то когда-нибудь или пиксели на кнопках начнут выгорать к едреням, или нервные окончания.
+
+**Есть несколько решений**: 
+
+1. втыкать Elgato только в USB 3.0 (синего цвета). Иногда на этом всё решено, иногда нет.
+2. если есть только USB 2.0 — выдирать провод из usb после каждого выключения ноутбука. Это расстраивает, да и ~~дырка~~ контакты usb разбалтываются.
+3. У некоторых компьютеров в BIOS-Advanced есть опция Deep Sleep, её можно переключить в Enabled, и после выключения ноута к usb не будет поступать электрический ток. В моём ноуте такой опции нет.
+4. клавиатуры Elgato не любят подключение через usb-хабы, но иногда их можно успешно подключать через  usb-хаб с отдельными кнопками отключения на каждом порту — есть четырехпортовые и семипортовые, дешёвые и дорогие, их надёжность и долгосрочность работы обсуждаемая, но не суть. Такие штучки не пригодны для питания подключаемых устройств (телефон на этом не зарядишь), они только передают данные. После выключения ноутбука всё полностью гаснет и включается только вместе с ноутбуком. Ну и можно отключать отдельные устройства.
+
+===== Установка окружения =====
+
+Проверить, что железка отключена.
+
+Убедиться в том, что в системе установлен [[Linux:Software:Python]] и его PIP. 
+
+''sudo apt install -y python3-pip python3-setuptools''
+
+''sudo apt install -y libudev-dev libusb-1.0-0-dev libhidapi-libusb0 libxcb-xinerama0 libjpeg-dev zlib1g-dev libopenjp2-7 libtiff5 wmctrl''
+
+''pip3 install wheel pillow''
+
+Скачивается немного, но процесс может быть медленным.
+
+==== Создать файл с правилами ====
+
+''sudoedit /etc/udev/rules.d/70-streamdeck.rules''
+
+	Если экзотичное sudoedit не сработает, открыть через nano или mcedit:
+	''sudo mcedit /etc/udev/rules.d/70-streamdeck.rules''
+
+Вставить в файл “''70-streamdeck.rules''” эти строки:
+
+	'''
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0060", GROUP="users", TAG+="uaccess"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="0063", GROUP="users", TAG+="uaccess"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006c", GROUP="users", TAG+="uaccess"
+	SUBSYSTEM=="usb", ATTRS{idVendor}=="0fd9", ATTRS{idProduct}=="006d", GROUP="users", TAG+="uaccess"
+	'''
+
+Проверить, что всё записалось:
+
+''cat /etc/udev/rules.d/70-streamdeck.rules''
+
+==== Перезагрузка udevadm ====
+
+''sudo udevadm control --reload-rules''
+
+==== Подключить Stream Deck к ноуту (USB) ====
+
+Все кнопки-иконки должны засветиться и показать один большой логотип Elgato.
+
+==== Установить streamdeck_ui ====
+
+''pip3 install --user streamdeck_ui''
+
+В ''~/.local/bin'' должен появиться исполняемый файл ’streamdeck’ (скрипт на python). 
+
+Добавить этот каталог в PATH. Это можно сделать двумя способами:
+
+''export PATH=~/.local/bin:$PATH''
+
+''PATH=$PATH:$HOME/.local/bin''
+
+Но лучше просто добавить новую строку в ''~/.bashrc''
+
+''PATH=$HOME/.local/bin:$PATH''
+
+Если такая строка уже есть (например, для LaTeX), то новый каталог нужно добавить после двоеточия:
+
+''PATH=/home/LaTeX/bin/x86_64-linux:$HOME/.local/bin:$PATH''
+
+Принудительно перечитать содержимое ''.bashrc'' (в ответ ожидаем тишину):
+
+''source ~/.bashrc''
+
+Команду ''streamdeck'' можно сунуть в автозапуск (''~/.local/bin/streamdeck''), софт маленький и даже если железка не будет подключена, на системе это не скажется.
+
+Запустить приложение
+
+''streamdeck &''
+
+		Предполагается, что процесс при запуске отвяжется от консоли, но на самом деле нет. Автозапуск при загрузке системы происходит где-то в фоне и живёт незаметно.
+
+Откроется это:
+
+{{./StreamDeckUI_initial.jpg}}
+
+Позже, после полной настройки, будет открываться нечто подобное:
+
+{{./StreamDeckUI_done.jpg}}
+
+Выключать это приложение не следует.
+
+===== Обновление streamdeck_ui =====
+
+''pip3 install --upgrade --user streamdeck_ui''
+
+===== Настройки =====
+
+[[Linux:Software:Elgato “Stream Deck”]]
