@@ -6,6 +6,8 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 < @manjaro @install @elgato @streamDeck @python @console >
 
+Ноябрь 2023 — клавиатурка Stream Deck подключилась, ПО для неё работает, можно назначать команды на клавиши и иконки. Но нажатия на кнопки ни к чему не приводят, и при попытке настроить интенсивность свечения кнопок в консоли вываливаются ошибки записи инструкций в файлы Streamdeck. Я застрял, решение не найдено. Под Debian то же устройство работает безупречно. Или это сложности под Arch, или есть какие-то неочевидные настройки, про которые я не могу догадаться.
+
 ===== [психологическая] Подготовка к установке =====
 
 Основной источник информации по установке и настройке https://timothycrosley.github.io/streamdeck-ui/
@@ -39,6 +41,14 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Поначалу это ощущается как недостаток, но чуть позже всё становится проще. Одна кнопка, одно действие. Если нужно несколько действий последовательно — закатать всё в файл .sh и повесить его однократный вызов на отдельную кнопку.
 
+===== Wayland vs X11 =====
+
+Под Wayland это всё не работает. 
+
+Выяснить действующую графсистему:
+
+''loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'''
+
 ==== Питание железки ====
 
 **Есть проблема**: эти клавиатурки постоянно получают энергию из usb-дырок, даже если ноут отключён (батарея и сеть работают). В темноте клавиатурки Elgato очень ярко светятся, и если это дело оставить как есть, то когда-нибудь или пиксели на кнопках начнут выгорать к едреням, или нервные окончания.
@@ -58,7 +68,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ==== Установить hidapi ====
 
-''sudo pacman -Sy hidapi python-pip qt6-base''
+''pacman -Sy hidapi python-pip qt6-base''
 
 Добавить ''~/.local/bin'' в path: 
 
@@ -72,18 +82,10 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ''source ~/.bashrc''
 
-==== Настроить виртуальное окружение Python для запуска приложения Stream Deck ====
+==== Настроить Python для запуска приложения Stream Deck ====
 
-=== Создать a virtual environment ===
-
-На диске сделать отдельную папку вроде ''/python/env/''
-
-''python3 -m venv ~/python/env''
-
-=== Установить/обновить pip в этом окружении ===
-
-''~/python/env/bin/python3 -m pip install --upgrade pip''
-''~/python/env/bin/python3 -m pip install setuptools''
+* ''python3 -m pip install --upgrade pip --break-system-packages''
+* ''python3 -m pip install setuptools --break-system-packages''
 
 ==== Настроить доступ к устройству Elgato ====
 
@@ -101,7 +103,9 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ===== Установить Stream Deck UI =====
 
-''~/python/env/bin/python3 -m pip install streamdeck-ui''
+''python3 -m pip install streamdeck-ui --user --break-system-packages''
+
+Приложение будет установлено в ~/.local/lib/python3.11/site-packages/ — там появятся несколько каталогов, среди которых /streamdeck_ui StreamDeck.
 
 ===== Включить устройство =====
 
@@ -111,7 +115,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ==== Запуск ====
 
-''~/python/env/bin/python3 streamdeck''
+''streamdeck''
 
 Откроется это:
 
@@ -119,9 +123,11 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Выключать это приложение не следует.
 
+Приложение может ощутимо «подвисать» при настройке отдельных кнопок.
+
 ===== Обновление streamdeck_ui =====
 
-''pip3 install --upgrade --user streamdeck_ui''
+''pip3 install --upgrade --user streamdeck_ui --break-system-packages''
 
 ===== Настройки =====
 
