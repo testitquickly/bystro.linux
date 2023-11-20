@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-11-20T15:50:50+02:00
+
+====== Elgato “Stream Deck” ======
+
+//Next step//: 
