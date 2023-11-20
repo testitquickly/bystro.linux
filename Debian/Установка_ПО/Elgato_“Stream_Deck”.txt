@@ -4,7 +4,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ====== Elgato “Stream Deck” ======
 
-< @elgato @streamDeck @python @console @debian @install >
+< @debian @install @elgato @streamDeck @python @console >
 
 ===== [психологическая] Подготовка к установке =====
 
@@ -58,7 +58,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ''sudo apt install -y python3-pip python3-setuptools''
 
-''sudo apt install -y libudev-dev libusb-1.0-0-dev libhidapi-libusb0 libxcb-xinerama0 libjpeg-dev zlib1g-dev libopenjp2-7 libtiff5 wmctrl''
+''sudo apt install -y libudev-dev libusb-1.0-0-dev libhidapi-libusb0 libxcb-xinerama0 libjpeg-dev zlib1g-dev libopenjp2-7 libtiff5''
 
 ''pip3 install wheel pillow''
 
