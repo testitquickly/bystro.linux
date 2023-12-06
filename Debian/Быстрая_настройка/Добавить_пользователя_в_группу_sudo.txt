@@ -4,7 +4,7 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 ====== Добавить пользователя в группу sudo ======
 
-< @sudo @console >
+< @debian @sudo @console >
 
 * ''su''
 * указать root password
