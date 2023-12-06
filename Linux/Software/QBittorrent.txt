@@ -4,7 +4,7 @@ Creation-Date: 2022-11-17T22:28:28+02:00
 
 ====== QBittorrent ======
 
-< @qbittorrent @flatpak >
+< @debian @qbittorrent @flatpak >
 
 Для Debian
 

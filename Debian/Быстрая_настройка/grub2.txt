@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T14:03:36+02:00
 
 ====== grub2 ======
 
-< @grub @console >
+< @debian @grub @console >
 
 Сделать копию основного файла:
 
@@ -28,7 +28,7 @@ GRUB_TIMEOUT=0
 GRUB_HIDDEN_TIMEOUT=1
 
 # Uncomment to disable graphical terminal (grub-pc only)
-GRUB_TERMINAL=console
+#GRUB_TERMINAL=console
 
 # Display the name of booted System, or echo Debian.
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian` 
@@ -66,4 +66,3 @@ Its output will be used to detect bootable binaries on them and create new boot 
 Found Windows 10 on /dev/sda1
 done
 '''
-
