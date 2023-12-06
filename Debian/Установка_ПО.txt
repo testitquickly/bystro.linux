@@ -6,6 +6,9 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 < @debian @install >
 
+[[+ab]]
+[[+Elgato “Stream Deck”]]
+[[+Firefox]]
 [[+hplip]] (принтеры HP)
 [[+iputils]]
 [[+kgpg]]
