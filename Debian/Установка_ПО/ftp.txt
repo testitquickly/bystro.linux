@@ -1,7 +1,7 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2023-02-08T02:41:52+02:00
+Creation-Date: 2023-12-04T22:19:50+02:00
 
 ====== ftp ======
 
-[[+vsftpd]]
+[[+vsfptd]]

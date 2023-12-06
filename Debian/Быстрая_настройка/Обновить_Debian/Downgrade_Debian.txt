@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-03T03:32:05+02:00
+
+====== Downgrade Debian ======
+
+< @debian @downgrade >
+
+If you switch back from testing «trixie» to stable «bookworm» by replacing “testing” with “stable”, you won’t get any errors, but you’ll pretty much stay stuck with whatever versions of the packages you have currently, at least those which were upgraded to “testing” versions: they are all newer than the corresponding versions in Debian 12 (bookworm), and apt won’t downgrade by default.
+
+(Note that you should specify “stretch” in your sources.list, rather than “stable”; otherwise you’ll end up upgrading to Debian 13 as soon as it’s released, rather than when you choose to do so.)
+
+If you want to fully revert to Debian 12, you’ll need to downgrade your packages. You can do that manually, by investigating the packages which were upgraded:
+
+''apt list --installed | grep /testing''
+
+or
+
+''apt list --installed | grep /now''
+
+will tell you what they are. (The /testing variant will work if your sources.list still include “testing”, the /now variant will work otherwise.)
+
+Там будет овердофига пакетов.
+
+Or you can do it “automatically”, by pinning “bookworm” to 1001; add the following to /etc/apt/preferences, creating it if necessary:
+
+''sudoi mcedit /etc/apt/preferences''
+
+записать туда
+
+''Package: *''
+''Pin: release n=bookworm''
+''Pin-Priority: 1001''
+
+Then apt dist-upgrade will attempt to downgrade all appropriate packages to their Debian 12 stable version. 
+
+Note that this is untested and unsupported (downgrades aren’t supported as a general rule), so do pay close attention to what apt is going to do before letting it proceed.
+
+You can reduce the amount of work involved in all this by adding Stretch backports, since that has versions of some packages which are closer to those in testing; add
+
+''deb ТВОЙ_СЕРВЕР trixie-backports main''
+
+to your sources.list.
