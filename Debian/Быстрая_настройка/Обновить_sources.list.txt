@@ -4,7 +4,7 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 ====== Обновить sources.list ======
 
-< @console @update @repository @debian >
+< @debian @update @repository >
 
 ===== Выбрать самый быстрый ресурс =====
 
@@ -23,9 +23,11 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 ===== Изменить /etc/apt/sources.list под релиз =====
 
-1. ''sudo mcedit /etc/apt/sources.list''
+''sudo mcedit /etc/apt/sources.list''
 
-Содержимое смотреть на https://wiki.debian.org/SourcesList
+Содержимое этого файла при каждом большом обновлении может поменяться. Сперва посмотреть на https://wiki.debian.org/SourcesList
+
+Также можно посмотреть список всех репозиториев Debian — https://www.debian.org/mirror/list Всегда есть вероятность, что какой-то из ближайших репозиториев не будет обновлён.
 
 	Пример для Debian 11 ’bullseye’:
 	
@@ -40,6 +42,8 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 	deb http://security.debian.org/debian-security bullseye-security main contrib non-free
 	'''
 
-2. ''sudo aptitude update && sudo aptitude upgrade --full-resolver''
+Когда всё норм — обновить систему одной командой:
+
+''sudo aptitude update && sudo aptitude upgrade --full-resolver''
 
 Параметр  “--full-resolver” необходим для отмены таймаута при автоматическом разрешение конфликтов зависимостей. 
