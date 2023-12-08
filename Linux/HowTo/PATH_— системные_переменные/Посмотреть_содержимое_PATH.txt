@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-08T02:38:44+02:00
+
+====== Посмотреть содержимое PATH ======
+
+< @path >
+
+''set | grep PATH''
+
+или 
+
+''echo $PATH''

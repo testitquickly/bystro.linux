@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-08T02:40:05+02:00
+
+====== Удалить что-то из PATH ======
+
+< @path >
+
+В консоли сперва сделать переменную с названием каталога, который надо удалить из PATH (это особенно важно, если в пути есть пробелы, их надо экранировать). 
+
+Затем уже остальные команды.
+
+'''
+directory_to_remove=/home/astenix/Dev_Workspace/selenium/
+PATH=:$PATH:
+PATH=${PATH//:$directory_to_remove:/:}
+PATH=${PATH#:}; PATH=${PATH%:}
+echo $PATH
+'''
+

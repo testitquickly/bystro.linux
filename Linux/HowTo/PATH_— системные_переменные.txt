@@ -2,11 +2,13 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T23:43:53+02:00
 
-====== Как посмотреть содержимое всех системных переменных ======
+====== PATH — системные переменные ======
 
 < @console >
 
-''printenv'' выведет список всех системных переменных и их содержимого.
+Их много.
+
+Команда «''printenv''» выведет список всех системных переменных и их содержимого.
 
 Если надо посмотреть что-то конкретное, например, содержимое переменной 'USER', тогда
 
@@ -20,9 +22,7 @@ Creation-Date: 2022-02-22T23:43:53+02:00
 
 ''printenv | grep 'USER'''
 
-===== Common Environmental and Shell Variables =====
-
-Some environmental and shell variables are very useful and are referenced fairly often. Here are some common environmental variables that you will come across:
+Список системных переменных:
 
 	* SHELL: This describes the shell that will be interpreting any commands you type in. In most cases, this will be bash by default, but other values can be set if you prefer other options.
 	* TERM: This specifies the type of terminal to emulate when running the shell. Different hardware terminals can be emulated for different operating requirements. You usually won’t need to worry about this though.
@@ -51,21 +51,7 @@ In addition to these environmental variables, some shell variables that you’ll
 	* SHELLOPTS: Shell options that can be set with the set option.
 	* UID: The UID of the current user.
 
-==== Посмотреть содержимое ВСЕХ переменных в системе: ====
-
-''set''
-
-Осторожно, будет неебический список.
-
-==== Как посмотреть содержимое определенной переменной (например, PATH): ====
-
-''set | grep PATH''
-
-или 
-
-''echo $PATH''
-
-==== Где вообще находятся переменные? ====
+==== Где находятся переменные ====
 
 При логине система ищет их в следующих файлах в указанном порядке:
 * /etc/profile
@@ -73,29 +59,8 @@ In addition to these environmental variables, some shell variables that you’ll
 * ~/.bash_login
 * ~/.profile
 
-===== Как добавить в системную переменную новые данные =====
-
-Рекомендуется из-под своего юзера в своем домашнем каталоге сделать файл .bash_profile (простой текстовый), и вписать в него буквально построчно нужные данные. Для того, чтобы распространить изменения на всю систему, надо редактировать  файл [[/etc/profile]] — но это опасно.
-
-Например, надо добавить в переменную PATH путь к файлам LaTeX /usr/local/texlive/2014/bin/i386-linux. Для этого в файл .bash_profile надо добавить одну строчку:
-
-''PATH=/usr/local/texlive/2014/bin/i386-linux:$PATH''
-
-Перелогиниться.
-
-Содержимое этой переменной будет работать только для того юзера, в домашнем каталоге которого находится этот самый файл .bash_profile c этой самой строчкой.
-
-===== Как удалить что-то из PATH =====
-
-В консоли сперва сделать переменную с названием каталога, который надо удалить из PATH (это особенно важно, если в пути есть пробелы, их надо экранировать). 
-
-Затем уже остальные команды.
-
-'''
-directory_to_remove=/home/astenix/Dev_Workspace/selenium/
-PATH=:$PATH:
-PATH=${PATH//:$directory_to_remove:/:}
-PATH=${PATH#:}; PATH=${PATH%:}
-echo $PATH
-'''
+[[+Добавить новый путь в PATH]]
+[[+Посмотреть содержимое PATH]]
+[[+Посмотреть содержимое ВСЕХ системных переменных]]
+[[+Удалить что-то из PATH]]
 
