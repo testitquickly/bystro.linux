@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-10T14:53:48+02:00
+
+====== KeePassXC ======
+
+< @debian @install @keepassxc >
+
+Для Debian: 
+
+''sudo apt-get install keepassxc''
+
+Другие варианты (flatpak, appimage и др): https://keepassxc.org/download/#linux
+
+См. дальше [[Linux:Software:KeePassXC]]
