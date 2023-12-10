@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-01-17T02:41:53+02:00
 
-====== Как «подавить» сервис ======
+====== Подавить сервис ======
 
 < @console @mask >
 

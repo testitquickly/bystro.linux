@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:21:34+02:00
 
-====== Как заставить aptitude обновляться из сети, а не из кэша ======
+====== Заставить aptitude обновляться из сети, а не из кэша ======
 
 < @aptitude @update >
 

@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:57:47+02:00
 
-====== Как перегнать звук из видео в mp3 ======
+====== Перегнать звук из видео в mp3 ======
 
 < @mp3 @sound >
 

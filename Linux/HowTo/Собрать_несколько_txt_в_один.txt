@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-12-23T03:25:14+02:00
 
-====== Как собрать несколько txt в один ======
+====== Собрать несколько txt в один ======
 
 < @console @txt >
 
