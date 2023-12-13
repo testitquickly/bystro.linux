@@ -74,17 +74,17 @@ sudo rm /usr/bin/firefox
 
 ''mcedit ~/.local/share/applications/firefox.desktop''
 
-Вставить в него такой набор букв:
+Вставить в него условно такой набор букв:
 
-**[Desktop Entry]**
 '''
+[Desktop Entry]
 Encoding=UTF-8
 Name=Firefox
-Comment=from /otp
+Comment=opt
 Type=Application
 Terminal=false
-Exec=/opt/firefox/firefox %U
-Icon=/opt/firefox/icons/firefox.png
+Exec=/opt/firefox/firefox -p astenix
+Icon=/home/mySettings/icons/firefox.png
 StartupNotify=true
 Categories=Network;WebBrowser;
 '''
