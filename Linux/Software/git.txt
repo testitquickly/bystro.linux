@@ -14,7 +14,7 @@ Creation-Date: 2022-03-16T21:22:57+02:00
 
 ''sudo apt-get install git-all && git version''
 
-Для постоянной работы будет удобно использовать GUI-клиент. Мне нравится [[+SmartGit]]
+Для постоянной работы будет удобно использовать GUI-клиент. Мне нравится [[SmartGit]]
 
 Краткий видеокурс по основам git https://youtube.com/playlist?list=PLDyvV36pndZFHXjXuwA_NywNrVQO0aQqb (Илья Кантор)
 
