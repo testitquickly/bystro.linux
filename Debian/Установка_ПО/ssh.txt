@@ -8,6 +8,74 @@ Creation-Date: 2023-09-16T23:36:15+03:00
 
 ''sudo apt-get install openssh-server openssh-client''
 
-===== Настройки =====
+==== Настроить сервис OpenSSH ====
 
-[[Linux:Software:ssh]]
+Без явной необходимости править конфиг не рекомендуется категорически. 
+
+Но если надо:
+
+''sudo mcedit /etc/ssh/sshd_config''
+
+===== Запустить сервис SSH =====
+
+''sudo systemctl enable ssh.service && sudo systemctl start ssh && sudo systemctl status ssh''
+
+Ожидаемый ответ (в сокращ.): 
+
+'''
+Active: active (running) since Wed 2023-02-15 20:57:30 EET; 4min 31s ago
+
+sshd[11291]: Server listening on 0.0.0.0 port 22.
+'''
+
+Сервис самостоятельно пропишется в автозапуск.
+
+===== Проверить статус сервиса SSH =====
+
+''sudo systemctl status ssh.service''
+
+По-умолчанию сервис OpenSSH должен быть отключён:
+
+''sshd.service - OpenSSH Daemon''
+''Loaded: loaded (/usr/lib/systemd/system/sshd.service; disabled; preset: disabled)''
+''Active:'' __''inactive''__ ''(dead)''
+
+Когда он включён:
+
+''sshd.service - OpenSSH Daemon''
+''Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: disabled)''
+''Active:'' __''active''__ ''(running) since Fri 2023-02-03 15:30:28 EET; 2h 37min ago''
+
+==== Проверить подключение ====
+
+=== Подключение к localhost ===
+
+Простейший способ — зайти по ssh на localhost под своим же пользователем (условно «username») со своим же паролем:
+
+''ssh username@localhost''
+
+При первом подключении к серверу по ssh всегда происходит автообмен автосоздаваемыми ключами, которые система сгенерирует «сама для себя». Выглядит это так:
+
+''The authenticity of host ’localhost (::1)’ can’t be established.''
+''ECDSA key fingerprint is SHA256:kMUX_и так далее.''
+''Are you sure you want to continue connecting (yes/no/[fingerprint])? ='' 
+
+		На самом деле это не просто дежурный вопрос, а ещё и стандартная, условная, но всё-таки защита от ошибок при указании адреса подключения, поэтому относиться к ней следует серьёзно.
+
+Набрать на клавиатуре «Yes», ввод. 
+
+В ответ будет последнее предупреждение о том, что новый хост добавлен в список «знакомых ресурсов»:
+
+''Warning: Permanently added ’192.168.1.20’ (ECDSA) to the list of known hosts.''
+
+Произойдёт «вход на удалённый ресурс». Внешне в консоли может ничего не измениться.
+
+Завершение подключения через ssh в консоли — командой „exit”.
+
+=== Подключение к другому компьютеру ===
+
+Этот шаг преждевременный, сперва ключи надо создать и зарегистрировать на удалённом компьютере. Но если это всё уже сделано, то здесь и далее подразумевается, что на удалённом компьютере с известным нам адресом есть известный нам логин (условно „''login“''), и нам известен его пароль.
+
+''ssh login@192.168.1.20''
+
+См. прочие настройки [[Linux:Software:ssh]]

@@ -1,0 +1,132 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-16T11:41:04+02:00
+
+====== ssh-ключ для bitbucket ======
+
+< @ssh @bitbucket >
+
+===== Проверить, что ssh работает =====
+
+''ssh -V''
+
+Пример ответа: 
+
+''OpenSSH_9.2p1 Debian-2+deb12u1, OpenSSL 3.0.11 19 Sep 2023''
+
+===== Зайти в каталог для ssh-ключей =====
+
+Опционально. По-умолчанию ssh-keys лежат в ~/.ssh, но я предпочитаю держать их в отдельном каталоге.
+
+===== Запустить SSH agent =====
+
+По-умолчанию он постоянно работает в фоне. Проверить, если это так:
+
+''ps -auxc | grep ssh-agent''
+
+Пример положительного ответа:
+
+''astenix     1053  0.0  0.0   7664  1860 ?        Ss   03:04   0:00 ssh-agent''
+
+Всё норм.
+
+Если ответ отрицательный, то агент запускается так:
+
+''eval $(ssh-agent)''
+
+===== Сгенерировать ssh-ключ =====
+
+Например, такой:
+
+''ssh-keygen -t ed25519 -b 4096 -C "user@email" -f my-bitbucket-work-ssh-key''
+
+Но сперва надо понять все настройки по-отдельности и принять правильное решение.
+
+Здесь:
+* ed25519 — тип шифрования для нового ключа. 
+	Вообще их несколько: 
+	* rsa (якобы устарел, но нет)
+	* dsa
+	* ecdsa
+	* ecdsa-sk
+	* ed25519
+	* ed25519-sk
+* user@email — почта владельца ключа. Нужен реальный адрес аккаунта в bitbucket.
+* my-personal-ssh-key — произвольное имя ключа. Использовать здравый смысл для совместной работы с другими людьми и администраторами.
+* 4096 — количество битов в ключе
+
+Если подключение будет происходить через git в консоли, то всё норм. Если подключение будет происходить через [[SmartGit]] или OpenMediaVault (для NAS) — там работают только ключи в формате OpenSSH, которые надо генерировать в виде 
+
+''ssh-keygen -t rsa -b 4096 -C "user@email" -f my-bitbucket-work-open-ssh-key''
+
+В рабочем ключе, конечно же, нужен „passphrase”!
+
+В итоге появятся два файла:
+* my-bitbucket-work-ssh-key
+* my-bitbucket-work-ssh-key.pub
+
+И будет сообщен „key fingerprint” (текстовая строка с емайлом в конце) и randomart image. Сохранить их куда-то.
+
+===== Добавить новые ключи в SSH agent =====
+
+Использовать private key (файл без расширения):
+
+''ssh-add /полныйПутьДоКаталогаСКлючами/my-bitbucket-work-ssh-key''
+
+Указать passphrase.
+
+Ожидаемый ответ:
+
+''Identity added''
+
+Посмотреть все ssh-ключи в системе:
+
+''ssh-add -l''
+
+===== Обновить SSH configuration file =====
+ 
+''mcedit ~/.ssh/config''
+
+Добавить туда запись для учёта public key:
+
+''Host bitbucket.org''
+	''AddKeysToAgent yes''
+	''IdentityFile /полныйПутьДоКаталогаСКлючами/my-bitbucket-work-ssh-key''
+
+===== Занести свой public key в Bitbucket Cloud =====
+
+В браузере на странице доступных репозиторев зайти в Settings (иконка якобы шестеренка)
+> Settings dropdown menu
+> Personal Bitbucket settings
+> SSH keys
+> Add key
+
+Указать Label для идентификации ключа. Их может быть много, рекомендуется указать компьютер, с которого подключаешься.
+
+Открыть свой __public__ SSH key file (тот, у которого расширение .pub)
+
+''cat /полныйПутьДоКаталогаСКлючами/my-bitbucket-work-ssh-key.pub''
+
+ и скопировать оттуда fingerprint (строка с емайлом в конце).
+
+Вставить его в Key field > [Add].
+
+Если всё норм, то диалог молча завершится. Если нет, то будут соответствующие сообщения.
+
+===== Проверить, что SSH authentication работает =====
+
+В консоли выполнить
+
+''ssh -T'' [[git@bitbucket.org|''git@bitbucket.org'']]
+
+На вопрос „Are you sure you want to continue connecting (yes/no/[fingerprint])?” напечатать „Yes”.
+
+Ожидаемый ответ:
+
+''Warning: Permanently added 'bitbucket.org' (ED25519) to the list of known hosts.''
+
+''authenticated via ssh key.''
+
+''You can use git to connect to Bitbucket. Shell access is disabled''
+
+Отсюда можно перейти к клонированию репозитория на свой компьютер. Можно в консоли, можно через [[SmartGit]]
