@@ -24,7 +24,7 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 Создать файл с настройками:
 
-''sudo touch /etc/apt/sources.list.d/pgdg.list && sudo mcedit /etc/apt/sources.list.d/pgdg.list''
+''sudo mcedit /etc/apt/sources.list.d/pgdg.list''
 
 Вставить эту строку в созданный файл:
 
@@ -42,15 +42,13 @@ sudo apt-get install -y postgresql phppgadmin
 	
 		Можно установить postgresql не вообще, а определенную версию postgresql: “postgresql-15”.
 
-Запустить postgreSQL service и указать ему запускаться при старте системы:
+Запустить postgreSQL service:
 
 ''sudo systemctl start postgresql.service''
 
-''sudo systemctl enable postgresql.service''
+ и указать ему запускаться при старте системы (и сразу проверить его статус):
 
-И сразу проверить статус PostgreSQL server:
-
-''sudo systemctl status postgresql.service''
+''sudo systemctl enable postgresql.service && systemctl status postgresql.service''
 '''
 
 '''
@@ -66,11 +64,32 @@ sudo apt-get install -y postgresql phppgadmin
 
 Ожидаемый ответ: 
 
-''[::1]:5432''  
+''[::1]:5432'' 
+
+Если в ответ пусто, вероятно, было обновление и что-то поменялось. Посмотреть вообще все порты, которые в данный момент обслуживают какие-то процессы:
+
+''sudo netstat -nlp''
+
+среди ответов выцепил две строки
+
+''127.0.0.1:5433          0.0.0.0:*               LISTEN      4005/postgres''
+''::1:5433                :::*                    LISTEN      4005/postgres''
+
+Можно глянуть точнее
+
+''sudo netstat -nlp | grep 5433''
+
+Ответ:
+
+''tcp        0      0 127.0.0.1:5433          0.0.0.0:*               LISTEN      4005/postgres''
+''tcp6       0      0 ::1:5433                :::*                    LISTEN      4005/postgres''
+''unix  2      [ ACC ]     STREAM     LISTENING     43601    4005/postgres        /var/run/postgresql/.s.PGSQL.5433''
+
+А надо, чтобы обслуживался порт ''5432'', иначе подключения к БД не будет. Есть [[https://askubuntu.com/questions/50621/can-not-connect-to-postgresql-listening-on-port-5432|много предложений]] как это исправить. В целом это может быть проблемой для запуска баз данных на локалхосте, удаленные базы работают по своим портам.
 
 ===== Установка pgAdmin =====
 
-''sudo curl'' [[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''https://www.pgadmin.org/static/packages_pgadmin_org.pub'']] ''| sudo apt-key add''
+''sudo curl'' [[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''https://www.pgadmin.org/static/packages_pgadmin_org.pub'']] ''| gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/''[[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''pgadmin4'']].gpg
 
 Создать конфигурационный файл:
 
@@ -96,7 +115,7 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 ===== Настроить веб-сервер pgAdmin4 =====
 
-Это если нужно держать свой веб-сервер для БД.
+Это если нужно держать СВОЙ веб-сервер для БД.
 
 ''sudo /usr/pgadmin4/bin/setup-web.sh''
 
