@@ -85,7 +85,7 @@ sudo apt-get install -y postgresql phppgadmin
 ''tcp6       0      0 ::1:5433                :::*                    LISTEN      4005/postgres''
 ''unix  2      [ ACC ]     STREAM     LISTENING     43601    4005/postgres        /var/run/postgresql/.s.PGSQL.5433''
 
-А надо, чтобы обслуживался порт ''5432'', иначе подключения к БД не будет. Есть [[https://askubuntu.com/questions/50621/can-not-connect-to-postgresql-listening-on-port-5432|много предложений]] как это исправить. В целом это может быть проблемой для запуска баз данных на локалхосте, удаленные базы работают по своим портам.
+А надо, чтобы обслуживался порт ''5432'', иначе подключения к БД не будет. Есть разные ([[https://askubuntu.com/questions/50621/can-not-connect-to-postgresql-listening-on-port-5432|1]], [[https://stackoverflow.com/a/65212948|2]]) идеи о том, как это исправить.
 
 ===== Установка pgAdmin =====
 
