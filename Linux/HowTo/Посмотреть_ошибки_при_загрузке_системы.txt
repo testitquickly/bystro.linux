@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-31T15:32:06+02:00
+
+====== Посмотреть ошибки при загрузке системы ======
+
+< @systemd >
+
+''sudo journalctl -b -p err''
+
