@@ -2,9 +2,9 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:41:15+02:00
 
-====== Счетчики температуры hdd ======
+====== Установить счетчики температуры hdd ======
 
-< @console @xsensors @hddtemp >
+< @debian @console @xsensors @hddtemp >
 
 ''sudo aptitude install xsensors''
 
