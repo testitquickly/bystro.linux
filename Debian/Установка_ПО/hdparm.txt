@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-25T23:02:34+02:00
+
+====== hdparm ======
+
+< @debian @install @hdparm >
+
+''sudo aptitude install hdparm''
