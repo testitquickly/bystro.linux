@@ -1,12 +1,14 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2022-02-22T14:59:36+02:00
+Creation-Date: 2023-12-25T22:27:32+02:00
 
 ====== Кодировка и размер шрифта в консоли ======
 
-< @debian @console @grub @fonts >
+< @manjaro @console @grub @fonts >
 
 Выйти в отдельную сессию (Ctrl+Alt+F1) и залогиниться под своим юзером.
+
+TODO Manjaro Настройка шрифта в консоли
 
 ''sudo apt-get remove --purge console-cyrillic''
 	
