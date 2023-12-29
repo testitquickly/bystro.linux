@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 ====== Шрифты ======
 
-< @console @fonts @Microsoft >
+< @debian @console @fonts @Microsoft >
 
 Можно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex
 
