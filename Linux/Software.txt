@@ -53,7 +53,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+JACK audio interface]]
 [[+KDE Connect]]
 [[+LaTeX]]
-[[Настройки KDE:Клавиатура:OnBoard]] (экранная клавиатура)
+[[Debian:Установка ПО:OnBoard]] (экранная клавиатура)
 [[+Python]]
 [[+snap]]
 [[+Sublime]]
