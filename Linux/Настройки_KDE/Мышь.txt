@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-20T08:57:13+02:00
+
+====== Мышь ======
+Создан Среда 20 декабря 2023
+
