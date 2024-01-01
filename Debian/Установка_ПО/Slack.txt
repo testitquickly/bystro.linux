@@ -8,11 +8,19 @@ Creation-Date: 2023-09-26T20:41:48+03:00
 
 ===== Установить =====
 
-https://slack.com/downloads/linux > https://slack.com/downloads/instructions/ubuntu
+https://slack.com/downloads/linux > найти неприметный линк «Download .DEB app». По клику произойдет переход на страницу логина в приложение и начнётся скачивание файла для установки.
 
-Скачать deb-файл.
+Когда deb-файл скачан:
 
-''sudo dpkg -i название_файла.deb''
+''sudo dpkg -i slack*.deb''
+
+Если речь идет о переустановке, возможно, сперва надо удалить предыдущие файлы:
+
+''sudo dpkg -r slack''
+
+Повторить установку:
+
+''sudo dpkg -i slack*.deb''
 
 ===== Удалить =====
 
