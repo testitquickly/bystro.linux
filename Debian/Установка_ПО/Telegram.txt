@@ -8,6 +8,10 @@ Creation-Date: 2023-10-22T23:14:01+03:00
 
 https://desktop.telegram.org/ > скачать „Telegram для Linux 64”
 
+По-умолчанию это будет файл ''*.tar.xz''
+
+===== Простая установка =====
+
 Подразумеваем, что файл находится в ~/Загрузки:
 
 ''cd ~/Загрузки''
@@ -15,16 +19,24 @@ https://desktop.telegram.org/ > скачать „Telegram для Linux 64”
 Распаковать:
 
 '''
-tar -xvf tsetup*
+tar -xf tsetup*
 '''
 
-С этого момента Telegram сам устанавливает себя «куда ему надо», потому что это AppImage, но можно сделать это всё самостоятельно. 
+В каталоге ~/Загрузки появится подкаталог /Telegram с двум исполняемыми файлами внутри. Это AppImage, поэтому достаточно запустить файл ''Telegram''.
 
-===== Переместить каталог с Telegram в /opt =====
+===== Контролируемая установка =====
+
+==== Распаковать из архива каталог с Telegram ====
+
+'''
+tar -xf tsetup*
+'''
+
+==== И переместить его в /opt ====
 
 ''sudo mv Telegram /opt''
 
-===== Дать права своему пользователю на изменения в каталоге /opt/Telegram =====
+==== Дать права своему пользователю на изменения в каталоге /opt/Telegram ====
 
 '''
 sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
@@ -42,7 +54,7 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 
 Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог [[/opt/Telegram/]] для этого лучшее решение (создать, если таковой отсутствует).
 
-''sudo mv Telegram.png /opt/Telegram/''
+''sudo mv telegram.png /opt/Telegram/''
 
 === Создать файл „Telegram.desktop” ===
 
@@ -60,7 +72,7 @@ Comment=from /otp
 Type=Application
 Terminal=false
 Exec=/opt/Telegram/Telegram %U
-Icon=/opt/Telegram/Telegram.png
+Icon=/opt/Telegram/telegram.png
 StartupNotify=true
 Categories=Network;
 '''
@@ -69,4 +81,6 @@ Categories=Network;
 
 ==== Сделать файл исполняемым ====
 
-''chmod u+x ~/.local/applications/Telegram.desktop''
+''chmod u+x ~/.local/share/applications/Telegram.desktop''
+
+Найти иконку нового приложения в меню > Интернет и пройти процедуру привязки нового устройства к аккаунту.
