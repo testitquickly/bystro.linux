@@ -30,6 +30,8 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 ''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp]'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
 
+Сохранить и выйти.
+
 '''
 sudo apt-get update
 '''
