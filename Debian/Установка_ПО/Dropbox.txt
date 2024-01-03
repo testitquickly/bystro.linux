@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-03T11:12:18+02:00
+
+====== Dropbox ======
+
+< @debian @install @dropbox >
+
+https://www.dropbox.com/install
+
+Установка Dropbox через командную строку
+
+''cd ~ && wget -O - "''[[https://www.dropbox.com/download?plat=lnx.x86_64|''https://www.dropbox.com/download?plat=lnx.x86_64'']]''" | tar xzf -''
+
+После этого запустите демон Dropbox из вновь созданной папки .dropbox-dist.
+
+''~/.dropbox-dist/dropboxd''
+
+Эту команду можно запустить из консоли, а можно прописать в Параметры системы 
+''> Запуск и завершение'' 
+''> Автозапуск'' 
+''> [+Добавить]'' 
+''> [Добавить сценарий входа в систему]'' 
+вписать эту команду as is в поле «Имя»
+
+Ещё был deb-файл с клиентом Dropbox, но указанный способ проще.
