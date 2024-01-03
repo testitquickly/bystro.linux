@@ -10,7 +10,14 @@ Creation-Date: 2023-11-07T15:57:20+02:00
 
 В теории на этом шаге можно было установить сразу postgres и pgadmin, но что-то изменилось, и нативный клиент pgadmin установить невозможно. Его можно установить отдельно через python в виде веб-сервера.
 
-''sudo yay postgresql''
+''yay postgresql''
+
+Будет предложено множество вариантов, нам нужен 
+
+''1 extra/postgresql 16.1-4 (20.0 MiB 64.2 MiB)''
+''Sophisticated object-relational DBMS''
+
+поэтому указать цифру «1» и «Приступить к установке?» > Y.
 
 В системе появится сервис ''postgres'' и новый юзер „postgres” (по-умолчанию без пароля, он будет задан позже).
 
@@ -22,8 +29,17 @@ Creation-Date: 2023-11-07T15:57:20+02:00
 
 '''
 sudo -u postgres -i
+'''
+
+'''
 initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
+'''
+
+'''
 exit
+'''
+
+'''
 exit
 '''
 
@@ -37,11 +53,22 @@ exit
 
 === Задать пароль юзеру „postgres” ===
 
-Пароль придумать, записать в блокнот, запомнить, блокнот прожевать и проглотить.
+Зайти в оболочку для управления postgres
 
 '''
 psql -U postgres
-postgres=# \password
+'''
+
+Строка ввода теперь должна начинаться так:
+
+'''
+postgres=#
+'''
+
+Придумать пароль для этого юзера, записать в блокнот, запомнить, блокнот прожевать и проглотить. 
+'''
+
+\password
 '''
 
 Указать пароль, подтвердить.
@@ -119,8 +146,7 @@ postgres=# \dt                      # see list of tables
 
 Назначить своего юзера владельцем этих директорий:
 
-''sudo chown $USER /var/lib/pgadmin''
-''sudo chown $USER /var/log/pgadmin''
+''sudo chown $USER /var/lib/pgadmin && sudo chown $USER /var/log/pgadmin''
 
 ==== Создать Python-based virtual environment ====
 
@@ -136,7 +162,9 @@ postgres=# \dt                      # see list of tables
 
 ==== Установить pgAdmin4 ====
 
-''pip install pgadmin4''
+Сделаем это грубо:
+
+''pip install pgadmin4 --break-system-packages''
 
 ==== Запустить pgAdmin4 ====
 
@@ -154,11 +182,31 @@ postgres=# \dt                      # see list of tables
 
 ''cd ~/pgadmin4/ && pgadmin4''
 
-Дождаться сообщения 
+Ожидаемый ответ: 
+
+''Enter the email address and password to use for the initial pgAdmin user account:''
+
+и так далее до
 
 ''Starting pgAdmin 4. Please navigate to'' [[http://127.0.0.1:5050|''http://127.0.0.1:5050'']] ''in your browser.''
 
-Это окно с консолью закрывать нельзя — сервис схлопнется.
+Если есть этот ответ — ок. Это окно с консолью закрывать нельзя — сервис схлопнется.
+
+==== Если что-то не так ====
+
+Не факт, что всё пойдёт как надо. 
+
+''ModuleNotFoundError: No module named 'pkg_resources'''
+
+читать так: отсутствует\поломался пакет ''setuptools'' из Python.
+
+''sudo pacman -S python-setuptools''
+
+Опционально:
+
+''pip install --upgrade setuptools && pip install --upgrade distribute'' 
+
+Вернуться в shell и сновы выполнить ''pgadmin4''.
 
 === Сделать исполняемый sh-файл ===
 
