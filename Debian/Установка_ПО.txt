@@ -7,11 +7,21 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 < @debian @install >
 
 [[+ab]]
+[[+Brave]]
+[[+Dropbox]]
 [[+Elgato “Stream Deck”]]
 [[+Firefox]]
+[[+ftp]]
+[[+hdparm]]
 [[+hplip]] (принтеры HP)
 [[+iputils]]
+[[+KeePassXC]]
 [[+kgpg]]
+[[+Kile]]
+[[+LaTeX]]
+[[+LibreOffice]]
+[[+Midnight Commander]]
+[[+OnBoard]]
 [[+pgAdmin]]
 [[+Postman]]
 [[+Slack]]
@@ -19,4 +29,4 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Telegram]]
 [[+Thunderbird]]
 [[+vpn]]
-[[+Установить счетчики температуры hdd]]
+[[+xsensors]]
