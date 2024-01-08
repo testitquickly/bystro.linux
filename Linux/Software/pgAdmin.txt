@@ -6,8 +6,8 @@ Creation-Date: 2023-11-08T11:58:48+02:00
 
 < @pgadmin >
 
-[[Debian:Установка ПО:pgAdmin]]
-[[Manjaro:Установка ПО:pgAdmin]]
+* [[Debian:Установка ПО:pgAdmin]]
+* [[Manjaro:Установка ПО:pgAdmin]]
 
 Дальше согласно документации — https://www.pgadmin.org/docs/
 
