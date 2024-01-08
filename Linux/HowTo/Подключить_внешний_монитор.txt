@@ -40,10 +40,12 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 
 ''sudo mcedit /etc/apt/sources.list''
 
-Добавить строку (сперва перепроверить назввание дистрибутива):
+Дважды перепроверить название дистрибутива. 
 
-	''# nvidia drivers - backports''
-''deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware''
+Добавить в строку для снятия main апдейтов добавить открытие бэкпорта. В норме обращаемся к „''deb.debian.org/debian/”, но адрес сервера может быть любым из наиболее подходящих'':
+
+	# main (plus backports for nvidia drivers)
+deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 
 Сохранить изменения.
 
@@ -75,11 +77,11 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 
 Если будут устаревшие пакеты nvidia, их будет предложено автоудалить:
 
-	''sudo apt autoremove''
+''sudo apt autoremove''
 
-	Затем ещё раз 
+Затем ещё раз 
 
-	''sudo apt-get update && sudo apt-get upgrade''
+''sudo apt-get update && sudo apt-get upgrade''
 
 ===== Поставить утилиту контроля настроек nvidia =====
 
