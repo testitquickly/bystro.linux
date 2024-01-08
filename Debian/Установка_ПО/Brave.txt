@@ -12,6 +12,4 @@ Creation-Date: 2023-12-06T08:39:26+02:00
 
 ''echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg]'' [[https://brave-browser-apt-release.s3.brave.com/|''https://brave-browser-apt-release.s3.brave.com/'']] ''stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list''
 
-''sudo apt update''
-
-''sudo apt install brave-browser''
+''sudo apt update && sudo apt install brave-browser -y''
