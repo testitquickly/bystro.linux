@@ -14,8 +14,8 @@ Creation-Date: 2022-03-21T18:56:36+02:00
 
 Пример ответа:
 
-	Startup finished in 4.056s (kernel) + 18.995s (userspace) = 23.052s
-	graphical.target reached after 18.984s in userspace
+	''Startup finished in 4.056s (kernel) + 18.995s (userspace) = 23.052s''
+	''graphical.target reached after 18.984s in userspace''
 
 На всякий случай — в одной секунде тысяча милисекунд. 
 
@@ -71,28 +71,31 @@ graphical.target @11.665s
 
 Очень осторожно! В погоне за секундой можно запороть систему.
 
-В принципе безопасно отключить штатный «NetworkManager-wait-online.service» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит восемь секунд. 
+«systemd-timesyncd.service» точно //не надо// отключать.
 
-	Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
+В принципе безопасно отключить штатный «''NetworkManager-wait-online.service''» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит восемь секунд. Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
 
-А вот «systemd-timesyncd.service» точно незачем отключать.
-
-	'''
-	sudo systemctl status systemd-networkd-wait-online.service
-	sudo systemctl stop systemd-networkd-wait-online.service
-	sudo systemctl disable systemd-networkd-wait-online.service
-	sudo systemctl mask systemd-networkd-wait-online.service
-	'''
+''sudo systemctl status systemd-networkd-wait-online.service''
+''sudo systemctl stop systemd-networkd-wait-online.service''
+''sudo systemctl disable systemd-networkd-wait-online.service''
+''sudo systemctl mask systemd-networkd-wait-online.service''
 
 Последняя команда делает сервису symlink в [[/dev/null.]] Это нужно из-за того, что если стартап какого-то сервиса погашен, но его «попросит» другой сервис/процесс, то сервис всё равно будет загружен.
+
+Ещё можно по аналогичной схеме «прибить» сервис bluetooth.service — если он, конечно же, не нужен и //не будет// нужен позже. Возможно, будет разумнее отключить его в 
+Параметры системы 
+> Запуск и завершение
+> Управление службами
+
+''sudo systemctl status bluetooth.service''
+''sudo systemctl stop bluetooth.service''
+''sudo systemctl disable bluetooth.service''
+''sudo systemctl mask bluetooth.service''
 
 ==== Забить snap ====
 
 Это будет посложнее. Вместо «sudo systemctl disable snapd.service» надо проверить, есть ли у него родственники: «systemd-analyze blame | grep snap» (если проверяем snap). Если таки да, то лучше сервис дополнительно ещё и замаскировать:
 
-	'''
-	sudo systemctl stop snapd.service
-	sudo systemctl disable snapd.service
-	sudo systemctl mask snapd.service
-	'''
-
+''sudo systemctl stop snapd.service''
+''sudo systemctl disable snapd.service''
+''sudo systemctl mask snapd.service''
