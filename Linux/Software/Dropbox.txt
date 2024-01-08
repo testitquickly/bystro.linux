@@ -4,3 +4,5 @@ Creation-Date: 2024-01-03T11:13:35+02:00
 
 ====== Dropbox ======
 
+* [[Debian:Установка ПО:Dropbox]]
+* [[Manjaro:Установка ПО:Dropbox]]
