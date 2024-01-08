@@ -20,7 +20,78 @@ Creation-Date: 2023-09-11T20:20:02+03:00
 
 https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 
-Распаковать его через sudo в /opt/
+Обычно он раздаётся в виде файла „''thunderbird-x.x.xx.tar.bz2''”
+
+===== Распаковать архив =====
+'''
+
+tar -jxvf thunderbird*
+'''
+
+Появляется каталог „thunderbird” с файлами браузера внутри. 
+
+===== Переместить файлы в /opt =====
+
+Разумно держать весь «сторонний» софт в одном месте, поэтому  
+
+''sudo mv thunderbird /opt''
+
+===== Дать права своему пользователю на изменения в каталоге /opt =====
+
+'''
+sudo chown -R astenix:sudo /opt/thunderbird && sudo chmod 750 /opt/thunderbird
+'''
+
+==== Сделать symbolic link на thunderbird ====
+
+Это инструкция для установки нового ''thunderbird'' только для своего пользователя на ноутбуке.
+
+''cd ~/.local/bin/ && ln -s /opt/thunderbird/thunderbird''
+
+==== Сделать ярлык для запуска ====
+
+Скачать из сети картинку логотипа файл условно "thunderbird.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
+
+Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог /opt/thunderbird/icons/ для этого лучшее решение (создать, если таковой отсутствует).
+
+''sudo mv thunderbird.png /opt/thunderbird/icons/''
+
+=== Создать файл „thunderbird.desktop” ===
+
+Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
+
+''mcedit ~/.local/share/applications/thunderbird.desktop''
+
+Вставить в него условно такой набор букв:
+
+'''
+[Desktop Entry]
+Encoding=UTF-8
+Name=thunderbird
+Comment=opt
+Type=Application
+Terminal=false
+Exec=/opt/thunderbird/thunderbird -p astenix
+Icon=/home/mySettings/icons/thunderbird.png
+StartupNotify=true
+Categories=Network;WebBrowser;
+'''
+
+[F2] [Esc] [Esc]
+
+=== Сделать файл исполняемым ===
+
+''chmod u+x ~/.local/share/applications/thunderbird.desktop''
+
+==== Запустить браузер из консоли ====
+
+Так можно сразу распознать вероятные проблемы. 
+
+Я запускаю его с диалогом выбора профиля. В принципе он должен загрузиться с профилем по-умолчанию, но у меня уже есть сохраненные профили:
+
+''/opt/thunderbird/thunderbird -p''
+
+Добавить профили, запустить.
 
 ===== Сделать ярлык для запуска =====
 
@@ -29,4 +100,3 @@ https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 ===== Настройки Thunderbird =====
 
 [[Linux:Software:Thunderbird]]
-
