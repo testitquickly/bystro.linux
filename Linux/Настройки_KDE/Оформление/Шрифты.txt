@@ -8,9 +8,11 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 Можно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex
 
-''sudo apt install software-properties-common -y && sudo apt-add-repository contrib non-free -y''
+''sudo apt install software-properties-common -y''
 
-''sudo apt install ttf-mscorefonts-installer fonts-ibm-plex''
+''sudo apt-add-repository contrib non-free -y''
+
+''sudo apt install ttf-mscorefonts-installer fonts-ibm-plex fonts-cantarell -y''
 
 От MS придут
 
@@ -28,13 +30,15 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 Чтоб система увидела новые шрифты:
 
-	''sudo fc-cache -fv''
+''sudo fc-cache -fv''
 
-Также можно 
+Тут рекомендуется обычное 
+
+''sudo apt-get update && sudo apt-get upgrade''
 
 ===== Установить все шрифты из Windows =====
 
-Если она была параллельно установлена. Учесть, что будет очень много лишних шрифтов. 
+Очень опционально, Если винда была параллельно установлена, можно взять шрифты от неё. Учесть, что будет очень много лишних шрифтов. 
 
 Для этого надо скопировать шрифты из винды C:\WINDOWS\Fonts в /usr/share/fonts/truetype/msttcorefonts
 
