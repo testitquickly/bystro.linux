@@ -6,11 +6,31 @@ Creation-Date: 2023-10-22T23:14:01+03:00
 
 < @debian @install @telegram >
 
+===== flatpak =====
+
+'''
+flatpak install flathub org.telegram.desktop && flatpak run org.telegram.desktop
+'''
+
+==== Найти файл telegram.desktop ====
+
+Flatpak сам сделает соответствующий файл для запуска в своём каталоге, и назовёт его по принципу ’полное название пакета.desktop’:
+
+''/var/lib/flatpak/exports/share/applications/org.telegram.desktop.desktop''
+
+Возможно, проще искать исполняемые файлы flatpak в ''/var/lib/flatpak/exports/bin/''
+
+==== Сделать ярлыки на telegram.desktop ====
+
+''cd ~/.local/share/applications/ && ln -s /var/lib/flatpak/exports/share/applications/org.telegram.desktop.desktop && mv org.telegram.desktop.desktop Telegram.desktop''
+
+В главном меню в разделе Интернет появится ярлык на запуск Telegram.
+
+===== Распаковка в /opt =====
+
 https://desktop.telegram.org/ > скачать „Telegram для Linux 64”
 
 По-умолчанию это будет файл ''*.tar.xz''
-
-===== Простая установка =====
 
 Подразумеваем, что файл находится в ~/Загрузки:
 
@@ -22,21 +42,15 @@ https://desktop.telegram.org/ > скачать „Telegram для Linux 64”
 tar -xf tsetup*
 '''
 
-В каталоге ~/Загрузки появится подкаталог /Telegram с двум исполняемыми файлами внутри. Это AppImage, поэтому достаточно запустить файл ''Telegram''.
+В каталоге ~/Загрузки появится подкаталог /Telegram с двум исполняемыми файлами внутри. Это AppImage, поэтому можно сразу запустить файл ''Telegram''.
 
-===== Контролируемая установка =====
+Но лучше сперва 
 
-==== Распаковать из архива каталог с Telegram ====
-
-'''
-tar -xf tsetup*
-'''
-
-==== И переместить его в /opt ====
+==== Переместить каталог в /opt ====
 
 ''sudo mv Telegram /opt''
 
-==== Дать права своему пользователю на изменения в каталоге /opt/Telegram ====
+==== Назначить права в каталоге /opt/Telegram ====
 
 '''
 sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
@@ -60,7 +74,7 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 
 Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
 
-''mcedit ~/.local/share/applications/Telegram.desktop''
+''mcedit ~/.local/share/applications/telegram.desktop''
 
 Вставить в него такой набор букв:
 
