@@ -1,0 +1,107 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-08T10:06:14+02:00
+
+====== v4l2 ======
+
+< @debian@video @webcam >
+
+ПО для управления вебкамерами.
+
+* [[Debian:Установка ПО:v4l2]]
+
+===== Посмотреть работающие устройства =====
+
+''ls -ltrh /dev/video*''
+
+или удобнее для чтения:
+
+''v4l2-ctl --list-devices''
+
+Пример ответа:
+
+''HD Webcam C615 (usb-0000:00:14.0-2.4.3):''
+	''/dev/video2''
+	''/dev/video3''
+	''/dev/media1''
+
+''HD WebCam: HD WebCam (usb-0000:00:14.0-9):''
+	''/dev/video0''
+	''/dev/video1''
+	''/dev/media0''
+
+Ок, есть внешняя камера и встроенная.
+
+Можно установить гномовскую ''cheese''
+
+Можно установить ''kamoso''
+
+Можно установить [[OBS studio]]
+
+==== Получить изображение ====
+
+Можно из консоли:
+
+''ffplay /dev/video0''
+
+или через mpv
+
+''mpv /dev/video0''
+
+Откроется окно с видео с камеры. Никаких настроек и прочей ерунды (все настройки задаются в виде параметров в строке запуска).
+
+==== Сделать фото ====
+
+''ffmpeg -f v4l2 -video_size 1280x720 -i /dev/video0 -frames 1 out.jpg''
+
+==== Записать видео ====
+
+''ffmpeg -f v4l2 -framerate 30 -video_size 1280x720 -input_format mjpeg -i /dev/video0 -c copy out.mkv''
+
+''ffprobe out.mkv''
+
+===== Настройки =====
+
+Чем больше разрешение веб-камеры, тем ниже fps (frame per seconds). 
+
+''1920x1080 5.000fps''
+''640x480 30.000fps''
+
+Определить доступный pixelformat для вебкамеры
+
+v4l2-ctl --list-formats
+
+Доступные настройки
+
+''v4l2-ctl -d /dev/video2 --list-ctrls''
+
+Пример ответа:
+
+'''
+User Controls
+
+brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128
+contrast 0x00980901 (int)    : min=0 max=255 step=1 default=32 value=32
+saturation 0x00980902 (int)    : min=0 max=255 step=1 default=32 value=32
+white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+gain 0x00980913 (int)    : min=0 max=255 step=1 default=64 value=124
+power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=2 value=2 (60 Hz)
+white_balance_temperature 0x0098091a (int)    : min=2800 max=6500 step=1 default=4000 value=5400 flags=inactive
+sharpness 0x0098091b (int)    : min=0 max=255 step=1 default=22 value=22
+backlight_compensation 0x0098091c (int)    : min=0 max=1 step=1 default=1 value=1
+
+Camera Controls
+
+auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=3 value=3 (Aperture Priority Mode)
+exposure_time_absolute 0x009a0902 (int)    : min=3 max=2047 step=1 default=166 value=1328 flags=inactive
+exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=1
+pan_absolute 0x009a0908 (int)    : min=-36000 max=36000 step=3600 default=0 value=0
+tilt_absolute 0x009a0909 (int)    : min=-36000 max=36000 step=3600 default=0 value=0
+focus_absolute 0x009a090a (int)    : min=0 max=255 step=17 default=51 value=68 flags=inactive
+focus_automatic_continuous 0x009a090c (bool)   : default=1 value=1
+zoom_absolute 0x009a090d (int)    : min=1 max=5 step=1 default=1 value=1
+'''
+
+
+v4l2-ctl --set-fmt-video=width=720,height=480 && ffplay /dev/video2
+

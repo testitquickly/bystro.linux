@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-08T10:30:33+02:00
+
+====== v4l2 ======
+
+< @debian @install @video @webcam >
+
+''sudo apt-get install v4l-utils ffmpeg''
+
+Настройки: [[Linux:Software:v4l2]]
