@@ -6,6 +6,8 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 < @debian @sudo @console >
 
+Тут и далее подразумеваем, что пользователь называется „astenix”.
+
 * ''su''
 * указать root password
 
