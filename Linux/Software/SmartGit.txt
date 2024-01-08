@@ -18,8 +18,7 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там архив tar.gz Переместить его куда-нибудь в отдельный каталог. Добраться до этого tar.gz в консоли.
 
-''tar xzf > нажать Tab > название файла подтянется''
-''> Enter''
+''tar xzf smartgit*''
 
 ===== Установить =====
 
