@@ -6,42 +6,10 @@ Creation-Date: 2023-02-18T01:20:35+02:00
 
 < @manjaro @install @LaTeX >
 
-Это пошаговая инструкция для нестандартной, но исключительно однозначной, точной и грамотной ручной установки всего набора LaTeX из его официального iso-файла с неординарной установкой редактора Kile (KDE) в Manjaro.
+Это пошаговая инструкция для нестандартной, но исключительно однозначной, точной и грамотной ручной установки всего набора LaTeX из его официального iso-файла в Manjaro.
 
-===== Стандартная установка =====
+===== Предусловия установки =====
 
-Можно поставить через Pamac ’texlive-full’ и ’Kile’. LaTeX будет установлен в автоматическом режиме в /opt/ 
-
-	Точнее, что-то вроде //''/opt/texlive/2019/''//
-
-Добавить в системную переменную PATH путь к установленному LaTeX:
-
-'''
-mcedit ~/.profile
-'''
-
-Добавить путь к исполняемым файлам LaTeX в его нижнюю часть:
-
-''export PATH="$PATH:''//''/opt/texlive/2019/''//''bin/x86_64-linux"''
-
-В каталог /usr/local/bin добавить два symbolic links к исполняемым скриптам:
-
-'''
-sudo ln -s /opt/texlive/2019/bin/x86_64-linux/latexmk
-sudo ln -s /opt/texlive/2019/bin/x86_64-linux/bibtex
-'''
-
-Restart and enjoy your TeXLive.
-
-Но я предпочитаю нестандартную установку.
-
-TODO ! LaTeX — почему нестандартно
-
-TODO ! LaTeX — добавить внешний файл
-
-===== Предусловия нестандартной установки =====
-
-1. 
 В этом файле полно упоминаний переменной "''$userHomeFolder''". Разумно сразу же объявить эту переменную и её содержимое. Пример:
 
 ''userHomeFolder=/home/astenix''
@@ -50,36 +18,41 @@ TODO ! LaTeX — добавить внешний файл
 
 ''echo $userHomeFolder''
 
-2. 
-Редактор для файлов *.tex — по вкусу. Его можно поставить и ДО LaTeX, и ПОСЛЕ. Мне нравится кдешный [[+Kile]].
-
 ===== 1. Подготовить систему =====
 
-Убеждаемся в том, что в системе нет ни TEX, ни Kile из репозиториев, бо при установке этого удобнейшего редактора для LaTeX принудительно устанавливается и TEX из репозитория, но это не наш метод.
+==== Установить Kile ====
 
-Если ранее был установлен LaTeX, его надо сперва грамотно снести, бо апгрейд между версиями не предусмотрен.
-    
-	И это правильно. С любой версией LaTeX можно работать чуть менее, чем бесконечно, если нет действительной нужды в использовании каких-то обновлённых утилит.
+* [[Kile]]
 
-==== Очистить систему от вероятных установок TeX из репозитория ====
+Через Pamac поставить сразу оба компонента (Kile без texlive не установится):
+* Kile
+* texlive-full
 
-	1. Run the application add/remove software i.e. pamac-manager.
-	2. Check if you have any partial texlive installations.
-	3. Uninstall every texlive-(…) other than “full” previously installed (you’ll probably find texlive-bin and texlive-core.
+LaTeX будет установлен в автоматическом режиме в /opt/. 
 
-Выполнить дежурный запрос об указании месторасположения LaTeX
+	Точнее, что-то вроде //''/opt/texlive/2019/''//
 
-''which tex''
-
-Ожидаем сообщение о том, что ничего не найдено, иначе крушить/удалять.
-
-==== Проверить отстутствие Kile ====
-
-Он с собой приносит основные части LaTeX из репозитория, а они не нужны.
+2
+Добавить в системную переменную PATH путь к установленному LaTeX:
 
 '''
-which kile
+mcedit ~/.profile
 '''
+
+3
+Добавить путь к исполняемым файлам LaTeX в его нижнюю часть:
+
+''export PATH="$PATH:''//''/opt/texlive/2019/''//''bin/x86_64-linux"''
+
+4
+В каталог /usr/local/bin добавить два symbolic links к исполняемым скриптам:
+
+'''
+sudo ln -s /opt/texlive/2019/bin/x86_64-linux/latexmk
+sudo ln -s /opt/texlive/2019/bin/x86_64-linux/bibtex
+'''
+
+Done.
 
 ==== Установить 'Perl/Tk module' ====
 
@@ -147,30 +120,16 @@ MANPATH=/home/LaTeX/texmf-dist/doc/man:$MANPATH
 
 Выбирать на https://ctan.org/mirrors
 
-Например, мастер-хост проекта LaTeX находится в Германии:
-	ftp://ftp.dante.de/tex-archive
+Например, зеркало в Германии: http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/ 
+Или в США: http://mirrors.mit.edu/CTAN/systems/texlive/Images/
 
-		и ещё Германия
-		http://ctan.127001.ovh/systems/texlive/Images/
+В обоих случаях в браузере откроется обычный каталог с файлами. К скачиванию могут быть предложены разные файлы. Если предлагается выбор между «texlive2020-20200406.iso» и «texlive2020.iso» — **всегда** выбираем второй. Первый наверняка посвежее, но не факт, что подмонтируется.
 
-		и Беларусь
-		http://mirror.datacenter.by/pub/mirrors/CTAN/systems/texlive/Images/
+Скачать выбранный файл можно в консоли:
 
-Украины на этой карте мира нет.
+''wget http://mirrors.mit.edu/CTAN/systems/texlive/Images/texlive2023.iso --directory-prefix=$userHomeFolder/tmp_LaTeX_Installation/ && echo 'Done!'''
 
-==== Cкачать texlive[ГодВыпуска].iso ====
-
-http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/
-
-		ВНИМАНИЕ!
-
-		К скачиванию могут быть предложены разные файлы.
-		
-		Если предлагается выбор между «texlive2020-20200406.iso» и «texlive2020.iso» — всегда выбираем второй. Первый наверняка посвежее, но не факт, что подмонтируется.
-    
-Открыть новое окно Konsole и через wget скачать всё в каталог для установки:
-
-''wget'' http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/texlive2022.iso ''--directory-prefix=$userHomeFolder/tmp_LaTeX_Installation/ && echo 'Done!'''
+Размер файла — около пяти гигабайт. Скорость скачивания зависит от настроек каждого сервера и от скорости подключения.
 
 ==== Монтировать iso-файл ====
 
@@ -430,29 +389,10 @@ exit
 
 		Однажды (07.12.2020) LaTex беспричинно не смог сгенерировать pdf, и только слабая интуиция подсказала, что в тот день прилетело обновление ядра, и надо бы эти два факта связать. И это помогло.
 
-===== 7. Проверить работу LaTeX =====
+===== 7. Удалить временные файлы =====
 
-В консоли перейти в каталог с рабочим проектом.
+Размонтировать iso и удалить и его, и каталог /tmp_LaTeX_Installation одной командой.
 
-В любой файл (в тот же main.tex) добавить условное проверочное слово.
+''sudo umount /tmp/latex_iso && rm -R ~/tmp_LaTeX_Installation''
 
-Вызвать компилятор из внешнего источника:
-
-''/home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''
-
-Если результат неудачный — разобраться.
-
-===== 8. Удалить временные файлы =====
-
-==== Размонтировать iso ====
-
-''sudo umount /tmp/latex_iso''
-
-==== Удалить каталог /tmp_LaTeX_Installation ====
-
-вместе с iso-файлом
-
-''rm -R ~/tmp_LaTeX_Installation''
-
-Установить [[+Kile]]
-
+См. дальше настройку sh-файла для билда LaTeX или XeLaTeX — [[Linux:Software:LaTeX]]
