@@ -4,9 +4,11 @@ Creation-Date: 2023-10-22T23:14:01+03:00
 
 ====== Telegram ======
 
-< @debian @install @telegram >
+< @debian @install @telegram @flatpak >
 
 ===== flatpak =====
+
+ Должно работать легко и просто, на деле — не факт. Но стоит попробовать для начала.
 
 '''
 flatpak install flathub org.telegram.desktop && flatpak run org.telegram.desktop
@@ -25,6 +27,8 @@ Flatpak сам сделает соответствующий файл для з�
 ''cd ~/.local/share/applications/ && ln -s /var/lib/flatpak/exports/share/applications/org.telegram.desktop.desktop && mv org.telegram.desktop.desktop Telegram.desktop''
 
 В главном меню в разделе Интернет появится ярлык на запуск Telegram.
+
+Если будет падать — удалить тоже через [[Linux:Software:flatpak]]
 
 ===== Распаковка в /opt =====
 
@@ -74,7 +78,7 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 
 Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
 
-''mcedit ~/.local/share/applications/telegram.desktop''
+''mcedit ~/.local/share/applications/Telegram.desktop''
 
 Вставить в него такой набор букв:
 
@@ -82,7 +86,7 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 '''
 Encoding=UTF-8
 Name=Telegram
-Comment=from /otp
+Comment=from /opt
 Type=Application
 Terminal=false
 Exec=/opt/Telegram/Telegram %U

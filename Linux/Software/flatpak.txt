@@ -100,19 +100,17 @@ sudo apt install flatpak
 
 ===== Посмотреть список всего софта флэтпэк в системе =====
 
+Это нужно для того, чтобы точно знать название ПО, которое будем удалять.
+
 ''flatpak list''
+
+Пример ответа
+
+	''flatpak uninstall com.spotify.Client''
 
 ===== Удаление Flatpak app =====
 
 ''flatpak uninstall <ApplicationID>''
-
-	Пример:
-
-	''flatpak list''
-	
-	Посмотреть точное название ПО, которое будем удалять (пример по тому же Spotify)
-
-	''flatpak uninstall com.spotify.Client''
 
 ==== Удаление неиспользуемых флэтпэк-приложений ====
 
