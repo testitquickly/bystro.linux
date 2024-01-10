@@ -6,26 +6,6 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 < @Debian @LaTeX @install >
 
-===== Установить Kile =====
+TODO ! LaTeX — установка под Debian
+Взять из [[Manjaro:Установка ПО:LaTeX]]
 
-[[Debian:Установка ПО:Kile]]
-[[Manjaro:Установка ПО:Kile]]
-
-===== Установить LaTeX =====
-
-[[Debian:Установка ПО:LaTeX]]
-[[Manjaro:Установка ПО:LaTeX]]
-
-===== Настроить билд LaTeX из внешнего sh-файла =====
-
-TODO LaTeX Настроить билд LaTeX из внешнего sh-файла
-
-В консоли перейти в каталог с рабочим проектом.
-
-В любой файл (в тот же main.tex) добавить условное проверочное слово.
-
-Вызвать компилятор из внешнего источника:
-
-''/home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''
-
-Если результат неудачный — разобраться.
