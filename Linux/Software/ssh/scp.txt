@@ -1,0 +1,58 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-13T09:17:27+02:00
+
+====== scp ======
+
+< @debian @ssh @scp >
+
+scp — OpenSSH Secure file Copy. Входит в [[https://ru.wikipedia.org/wiki/OpenSSH#%D0%A1%D0%BE%D1%81%D1%82%D0%B0%D0%B2|набор утилит]] OpenSSH.  Помогает обменивать файлы с удаленным сервером по соединению [[ssh]] через протокол sftp.
+
+===== Синтаксис =====
+
+''scp опции пользователь1@хост1:файл пользователь2@хост2:файл''
+
+	-1 - использовать протокол SSH1;
+	-2 - использовать протокол SSH2;
+	-B - пакетный режим для передачи нескольких файлов;
+	-C - включить сжатие;
+	- l - установить ограничение скорости в кбит/сек;
+	-o - задать нужную опцию SSH;
+	-p - сохранять время модификации;
+	-r - рекурсивное копирование директорий;
+	-v - более подробный режим.
+
+===== Скопировать файл =====
+
+''scp /home/username/images/file.jpg remote_user@remote.server:/remote_user/images/''
+
+* @remote.server может быть указан в виде IP.
+* remote_user должен иметь права на запись в указанный каталог.
+
+===== Скопировать каталог =====
+
+''scp -r /home/username/images remote_user@remote.server:/remote_user/''
+
+У исходного каталога нет косой черты, а у каталога назначения — есть. 
+
+===== Скопировать все файлы из каталога на удаленный сервер =====
+
+''scp -r /home/username/images/* remote_user@remote.server:/remote_user/''
+
+===== Скопировать файлы с сервера на свой ноут =====
+
+''scp remote_user@remote.server:/remote_user/file /home/username/images''
+
+===== Скопировать каталоги с сервера на свой ноут =====
+
+''scp -r remote_user@remote.server:/remote_user/images /home/username/''
+
+Указание каталога, в который надо скопировать каталоги, надо завершать косой чертой, иначе каталог, которую копируется, запишется вместо того, в который всё нужно скопировать.
+
+===== Переслать файл с одного сервера на другой =====
+
+''scp remote_user@remote.server:/home/remote_user/index.html remote_user@remote.server:/home/remote_user/www/''
+
+===== Переслать каталог с одного сервера на другой =====
+
+''scp remote_user@remote.server:/remote_user/photos remote_user@remote.server:/home/remote_user/www/''
