@@ -17,7 +17,7 @@ Creation-Date: 2023-10-16T18:07:33+03:00
 Оно же https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
 > выбрать «свой linux» из выпадающего списка,
 > получить файл вроде „hplip-3.23.8.run”,
-> сделать его выполняемым,
+> сделать его выполняемым, ''chmod u+x hplip-3.23.8.run''
 > выполнить его согласно официальной [[https://developers.hp.com/hp-linux-imaging-and-printing/install/install/index|инструкции]].
 
 ''./hplip-3.23.8.run''
@@ -46,5 +46,5 @@ Creation-Date: 2023-10-16T18:07:33+03:00
 3. Выполнить тестовую печать.
 4. Вызвать xsane и выполнить тестовое сканирование.
 
-[[Linux:HowTo:Принтеры и Сканеры:HP (Hewlett-Packard)]]
+См. дальше [[Linux:Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]
 
