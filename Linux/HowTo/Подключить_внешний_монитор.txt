@@ -167,7 +167,7 @@ deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-fir
 
 Убедимся в том, что теперь система видит оба монитора:
 
-* ''xrandr -q''
+''xrandr -q''
 
 	-q, --query. When this option is present, or when no configuration changes are requested, xrandr will display the current state of the system.
 
