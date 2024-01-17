@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-17T08:45:21+02:00
+
+====== du (folder size) ======
+
+< @debian @folder > 
+
+Узнать размер текущего каталога (в kb):
+
+''du''
+
+Узнать размер каталога в более удобном формате (1K, 234M, 2G):
+
+''du -h /home/user/folder''
+
+Иногда есть разница между размером файла\каталога и количеством занятого места на диске. Узнать „Total disk usage”:
+
+''du -hc /home/user/folder''
