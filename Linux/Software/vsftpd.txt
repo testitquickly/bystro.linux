@@ -10,8 +10,8 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ===== Установить vsftpd =====
 
-[[Debian:Установка ПО:ftp:vsfptd]]
-[[Manjaro:Установка ПО:ftp:vsftpd]]
+[[Debian:Установка ПО:vsfptd]]
+[[Manjaro:Установка ПО:vsftpd]]
 
 ===== Основные управляющие команды =====
 
