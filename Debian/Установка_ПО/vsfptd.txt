@@ -1,18 +1,18 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2023-12-04T22:24:16+02:00
+Creation-Date: 2023-12-04T22:25:57+02:00
 
-====== vsftpd ======
+====== vsfptd ======
 
-< @manjaro @install @console @ftp >
+< @debian @install @console @ftp >
 
 Обновить систему
 
-''sudo pacman -Syu''
+''sudo aptitude update && sudo aptitude upgrade''
 
 Установить vsftpd
 
-''sudo pacman -S vsftpd''
+''sudo aptitude install vsftpd''
 
 Основные управляющие команды:
 
@@ -21,4 +21,4 @@ Creation-Date: 2023-12-04T22:24:16+02:00
 * ''systemctl stop vsftpd''
 * ''systemctl restart vsftpd''
 
-Дальше [[Linux:Software:ftp:vsftpd]]
+Дальше [[Linux:Software:vsftpd]]
