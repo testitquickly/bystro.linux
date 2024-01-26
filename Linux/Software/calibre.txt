@@ -6,6 +6,158 @@ Creation-Date: 2022-08-03T08:47:18+03:00
 
 < @calibre @font >
 
+===== Основные настройки =====
+
+https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created-columns-and-saved-searches/
+
+===== Убрать месяц в поле «Опубликована» (Published) =====
+
+Надо будет перезапустить Calibre.
+
+Параметры > Расширенные > Твики (Preferences >Tweaks)
+
+Найти «Настройка отображения дат»
+
+В поле «Редактировать настройку» по-умолчанию такой текст:
+
+''# Настройка отображения дат''
+
+''gui_pubdate_display_format = 'MMM yyyy'''
+
+''gui_timestamp_display_format = 'dd MMM yyyy'''
+
+''gui_last_modified_display_format = 'dd MMM yyyy'''
+
+Заменить его этим текстом:
+
+''# Настройка отображения дат''
+
+''gui_pubdate_display_format = '''**''yyyy''**'''''
+
+''gui_timestamp_display_format = 'dd MMM yyyy'''
+
+''gui_last_modified_display_format = 'dd MMM yyyy'''
+
+Применить > Да, перезапустить Calibre
+
+===== Creating User Defined Columns =====
+
+To create a column, CTRL/CMD + P (This opens Preferences).  From the first row of icons, click on the button: Add your own columns.
+
+add your own columns
+
+Or simply position your mouse on the header bar of the database page and right click:
+
+Right click add your own columns
+
+Use the green and red buttons to add and delete user create columns.   Here I’ve created “want” “read”, “price”, “reader comments”.    You can define the type of column.   Want and Read are Yes/No while Price is an integer and Reader Comments is long form text.  If you downloaded the Pages plugin we discussed last week, you would want to create a “Word Count” and “Page Count” plugin, both integer.  The checkmarks indicate which columns will show on the database page.
+
+I marked the books that I want to buy under “want” as yes.   I’ve marked books under “Read” as “blank/Yes/No.”   Blank means “To be read”.   The yes/no type column actually has three choices.   Also important to remember is the lookup name for the user generated column. The lookup name will be vital for searching.  You cannot have spaces in the Lookup name.
+
+Now that I have marked my wants, I can create a buy list.
+
+want calibre search
+
+First, I am going to create a custom search.   For all my user created columns, I need to use # in front of the lookup name for the column. For “want“, I would enter in the “search box.”
+
+	#want:yes
+
+I am going to save this search by naming it in the “Saved Searches”   (Click and start typing).   I’ve named this my “To Buy List” search.   Click on the green plus sign. You can double check by clicking on the saved searches drop down box.
+
+You can also create a TBR search by
+
+	#read:false
+
+The false means that there is no entry at all (neither yes or no).   Enter “TBR” (or whatever you would want to name this list) in the “saved searches” box and then click the green plus sign to save.
+
+So now you have a searchable and sortable list for your wants and your TBRs.   You can continue to create as many columns and saved searches as you want.  Some other columns that might be helpful:
+
+	Price
+	Print/eBook
+	Location of purchase
+	Date Begun
+	Date Finished
+	Date Abandoned
+	Original/Republication
+	Genre
+	Subgenre
+
+You can select which columns you see. Simply right click on the header bar and hide and add columns as you like.
+
+===== Multiple Libraries =====
+
+You can have as many libraries as you want. Instead of creating a column that sorts Paper and Digital books perhaps you want to create a different library for just paper books.   Click on the bookshelf button in the toolbar
+
+library icon
+Then change the location of the ebooks to a new folder such as “My Dropbox\Calibre\PaperBooks”.   I maintain three: one for books I’ve purchased, one for ARCs and one that contains no ebook files but generates the Dear Author coming soon catalogs.
+move library to new location calibre
+
+===== Table of Contents =====
+
+https://dearauthor.com/ebooks/creating-a-table-of-contents-in-calibre/
+
+===== Каталог бумажных книг =====
+
+https://dearauthor.com/ebooks/dear-jane-ebooks/dear-jane-can-i-use-calibre-to-manage-my-paper-books/
+
+===== Plugboards =====
+
+Plugboards are difficult for me to understand but one great feature is the ability to use a plugboard to insert the series name into a file when it is sent to your device.  That way your books can be sorted on your device, in order of their series appearance.  This is to get around the lame way that ebook readers allow you to sort your content.  Basically you are using the calibre template language to combine already existing fields into new fields.
+
+	{series}{series_index:0>2s| – | – }{title}:  Turner Brothers – 01 – Unveiled
+
+Let’s unpack this.  The field name inside the brackets {} correspond to the field lookup name.  In the above example, we have the following metadata:
+
+metadata example of author title series
+
+By using a plugboard, we are asking Calibre to change the title when it it sent to the device from “Unveiled” to  “Turner Brothers – 01 – Unveiled” which is the {series} + {series_index:0>2s| – | – } + {title}.
+
+	series=Turner Brothers
+	series_index:0>2s| – | –
+		0>2s – two digits with leading zeros.  If you did 0>3s it would be three digits with leading zeros.  0<3s would result in a digit with three trailing zeros.
+		“| – | – ” places the dashes around the series. field:|prefix_text|suffix_text is the formula.  Here we have space pipe space as the prefix (or the text before the digit) and space pipe space as the suffix (the text after the digit).  If I changed it {series_index:0>2s|*|*} the result would be Turner Brothers*01*Unveiled.  Notice the lack of spaces.
+	title=Unveiled
+
+Putting this together, access Preferences and then select Plugboard:
+
+plugboard preferences calibre
+
+Format: Here you choose which format you to apply the plugboard to.  Perhaps you have a Kindle and an iPad and want to use different plugboards for Mobi and ePub.
+
+	Device: Choose the device you want to apply the plugboard to.  I’ve selected “email” so that every time I email a file to myself, the title becomes title, series, series number.
+	Source template: This where you enter the fields:{title}{series_index:0>2s| [|] }{series}
+	Destination field: authors, author_sort, language, publisher, tags, title, title_sort.  Here I’ve chose Title. (Click on image for larger image).  I like to use a slightly different format:  {title}{series_index:0>2s| [|] }{series}
+
+calibre plugboard email
+
+SAVE  your plugboard.  You can test out what the plugboard will look like by creating a custom column created from other columns. Review the top of this post to refresh your recollection on how to create a custom column.  This time you are going to create a custom column based on other columns which is essentially what you do with plugboards.  Paste in the formula you would like to use for the title.  Remember in the Lookup name you cannot have blank spaces.
+
+custom column created from other columns
+
+ 
+
+You’ll have to restart every time you add a new column, however, you can edit the formula (and tweak it to get it just right) without restarting Calibre by simply clicking in the new column you created.  When you restart, the column will be filled in (or populated) from the other metadata that is already in the database.
+
+results of the test plugboard column
+
+And this is what it looks like on my iPhone:
+
+iPhone results after plugboard
+
+But, if you can only sort by Title or Author, then you want to start with the series.  Turner Brothers [01] – Unveiled.
+
+Series series number title
+
+You can use custom columns created from other columns to eliminate things like articles from the series names like “The”, “A”, etc.  This would be akin to the “author sort” or “title sort”.  Create a “series_sort” custom column.  In the “Template” section enter the following:  {series:re(^(A|The|An)\s+,)||}
+
+This takes the series and strips out “A”, “The”, and “An”.  Then when doing the plugboard, instead of {series} you would use {#series_sort} (you need to add the # for any user generated column).  Actually, if you create a custom column, then just reference the custom column in the plugboard.  That way any modifications you make to the custom title will be automatically reflected in the plugboard.
+
+Whew.  Plugboards require a little concentration but it is a powerful harnessing of data that is already entered.
+
+===== Внутренний просмотрщик =====
+
+==== Прижать текст влево ====
+
 Внутренний просмотрщик книг в Calibre по-умолчанию выравнивает текст по краям (justify).
 
 Чтобы прижать текст влево:
