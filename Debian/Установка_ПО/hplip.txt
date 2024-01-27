@@ -18,9 +18,140 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 * убедиться в том, что любые package management systems (YaST, Adept, Synaptic, Up2date, etc) не задействованы,
 * согласиться с тем, что в ходе установки будет установлен AppArmor.
 
-На январь 2024 debian-12 не поддерживается, к установке предлагается версия пакета для debian-11.
+На январь 2024 в HP Linux Imaging and Printing System (ver. 3.23.12) и HPLIP Installer ver. 5.1 наш «Debian 12» не поддерживается, к установке предлагается версия пакета для «Debian 11».
 
-===== Установить драйвера hplip =====
+===== Ручная установка =====
+
+Согласно https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/debian — но там может быть старый текст.
+
+но сперва лучше посмотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/other
+
+https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/ubuntu
+
+
+Тут нужен пароль root, а не sudo:
+
+''su -c "apt-get update"''
+
+''su -c "apt-get install --force-yes -y libcups2 libcups2-dev cups-bsd cups-client libcupsimage2 libcupsimage2-dev libdbus-1-dev g++ gs-esp libssl-dev libjpeg62-dev libsnmp-dev libc6 libtool libusb-1.0.0-dev make wget python-imaging policykit-1 policykit-1-gnome python-qt4 python-qt4-dbus python-dbus python-gobject python-dev python-notify python python-reportlab sane libsane-dev sane-utils xsane"''
+
+Вероятно, какие-то из перечисленных пакетов отсутствуют. Прочитать ответ и принять решение по каждому.
+
+libjpeg62-dev 
+libusb-1.0-0-dev
+libjpeg62-turbo-dev
+python-dev-is-python3
+gs-esp
+libjpeg62-dev
+python
+python-imaging
+python-dbus
+python-dev
+python-gobject
+python-is-python3 2to3
+python-qt4
+python-qt4-dbus
+python-notify
+python-reportlab
+
+
+
+Step 3: Download HPLIP
+
+Note
+
+We recommend that you download the HPLIP tarball to your home or desktop directory.
+
+A. Download the Regular Tarball http://prdownloads.sourceforge.net/hplip/hplip-3.12.6.tar.gz
+
+B. Go to the directory where you downloaded the HPLIP tarball.
+
+C. Uncompress the tarball.
+
+''tar xvfz hplip-3.12.6.tar.gz''
+
+This will create a directory with the same name as the tarball file.
+
+D. Change your working directory to the hplip-3.12.6 directory.
+
+cd hplip-3.12.6
+
+Step 4: Configure HPLIP for installation
+
+A. This step configures the development environment and checks that your system is ready to install HPLIP.
+For specific information on using ./configure and the different options please go https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/debian#
+
+Also reference your distro documentation and configuration for additional information on which tags are relevant.
+
+Enter this command (select the appropriate command depending on your system configuration):
+
+Note
+
+For Debian 5.0x use one of the commands:
+
+32 bit distro users (most users will use this command):
+
+./configure --with-hpppddir=/usr/share/ppd/HP --prefix=/usr --enable-qt4 --enable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
+
+64 bit distro users:
+
+./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/usr --enable-qt4 --enable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
+
+Note
+
+For Debian 6.0x use one of the commands:
+
+32 bit distro users (most users will use this command):
+
+./configure --with-hpppddir=/usr/share/ppd/HP --prefix=/usr --enable-qt4 --disable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
+
+64 bit distro users:
+
+./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/usr --enable-qt4 --disable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
+
+Step 5: Run Make
+
+A. This step will compile the HPLIP source.
+
+Important
+
+You want to run make as a regular user, NOT as root.
+
+Enter this command:
+
+make
+
+Step 6: Run Make Install
+
+A. This step will install HPLIP.
+
+Enter this command:
+
+su -c "make install"
+
+Step 7: Post Installation Step(s)
+
+A. For normal users other than root add user name to "lp" group:
+
+su -c "usermod -a -G lp username"
+
+Restart your PC (or) logout and login.
+
+B. If you are going to be setting up a printer with USB and the printer is already plugged in, you will need to do one of the following:
+
+	Unlpug and re-plug in the USB printer, or
+	Restart your PC.
+
+Failure to do this will cause your USB printer to not be detected by HPLIP.
+Step 8: Configuring your printer using hp-setup
+
+Continue to hp-setup https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
+
+
+
+
+
+===== Автоматическая установка =====
 
 1. https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
 2. выбрать «свой linux» из выпадающего списка,
@@ -40,6 +171,43 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 Для сборки системе понадобится собрать множество других пакетов, поэтому это всё НАДОЛГО и с риском поломаться в любой момент. Надо присматривать за процессом и не отходить далеко, потому что в какой-то момент будет запрошен пароль или выбор юзера.
 
 Во всех источниках после этого рекомендуется перезагрузить компьютер.
+
+./configure
+make
+make install
+
+
+ 
+
+
+Using 'hp-setup' to configure your printer
+This guide will walk you through configuring your printer using 'hp-setup'.
+
+Step 11: Select How Your Printer will be Connected to Your Computer
+The first step is to select the printer connection type:
+
+ 
+screenshots_sm_hp_setup_step1
+
+Step 12: Select the Printer to be Configured
+Next the setup tool will display printers detected (depending on the connection type selected):
+
+ 
+screenshots_sm_hp_setup_step2
+
+Step 13: Select the PPD file (or driver) to be Used for Your Printer
+The PPD files (drivers) which are most similar to your printer are displayed. Select the appropriate PPD file for your printer.
+
+Note:
+
+Usually you will want to select the recommended PPD file.
+
+ 
+screenshots_sm_hp_setup_step3
+
+Step 14: Confirm the Printer Settings and Finish the Configuration Process
+Click "AddPrinter" to complete the printer setup process:
+
 
 ===== Подключить принтер к компьютеру =====
 

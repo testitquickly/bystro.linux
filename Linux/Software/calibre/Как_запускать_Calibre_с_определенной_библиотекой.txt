@@ -2,7 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:55:00+02:00
 
+<<<<<<< HEAD
 ====== Как запускать Calibre с определенной библиотекой ======
+=======
+====== Как запускать Calibre сразу с нужной библиотекой ======
+>>>>>>> origin/main
 
 < @calibre @console >
 
