@@ -14,7 +14,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Brave]]
 [[+calibre]]
 [[+Dropbox]]
-[[+du (folder size)]]
+[[+du (disk usage)]]
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
 [[+Firefox]]

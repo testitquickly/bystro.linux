@@ -2,9 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-01-17T08:45:21+02:00
 
-====== du (folder size) ======
+====== du (disk usage) ======
 
 < @debian @folder > 
+
+du = Disk Usage.
 
 Узнать размер текущего каталога (в kb):
 
