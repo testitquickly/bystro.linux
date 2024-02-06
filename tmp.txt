@@ -4,6 +4,21 @@ Creation-Date: 2024-02-05T03:33:59+02:00
 
 ====== tmp ======
 
+1,"TODO Kile - новые команды",,,Debian:Установка ПО:Kile
+1,"TODO Kile - компиляция файлов через внешний скрипт",,,Debian:Установка ПО:Kile
+1,"TODO LaTeX — установка под Debian",,,Linux:Software:LaTeX
+1,"TODO LaTeX — почему нестандартно",,,Manjaro:Установка ПО:LaTeX
+1,"TODO LaTeX — добавить внешний файл",,,Manjaro:Установка ПО:LaTeX
+0,"TODO Downgrade Debian — переписать внятно",,,Debian:Быстрая настройка:Обновить Debian:Downgrade Debian
+0,"TODO Как проверить хардлинк",,,Linux:HowTo:Сделать hardlink
+0,"TODO LibreOffice как добавить библиографию",,,Linux:Software:LibreOffice
+0,"TODO объяснить себе суть и способы работы с архивами tar",,,Linux:Software:tar
+0,"TODO apache — уточнить инструкцию отключение или переименовывания сайта",,,Linux:Software:xampp:Как установить веб-сервис на localhost
+0,"TODO принтер HP - общие настройки",,,Linux:Software:Принтеры и Сканеры:HP (Hewlett-Packard)
+0,"TODO Manjaro Настройка шрифта в консоли",,,Manjaro:Быстрая настройка:Кодировка и размер шрифта в консоли
+0,"TODO Kile Настроить build через внешний sh-скрипт",,,Manjaro:Установка ПО:Kile
+
+
 https://testengineer.ru/qa-linux-interview/
 
 ===== Что такое загрузчик Linux? =====
