@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2024-02-05T03:33:59+02:00
-
-====== tmp ======
-Создан Понедельник 05 февраля 2024
-
