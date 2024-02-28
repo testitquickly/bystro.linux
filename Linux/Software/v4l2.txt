@@ -105,3 +105,33 @@ zoom_absolute 0x009a090d (int)    : min=1 max=5 step=1 default=1 value=1
 
 v4l2-ctl --set-fmt-video=width=720,height=480 && ffplay /dev/video2
 
+===== Linux virtual camera =====
+
+You can easily create a virtual camera with some component, you just need to load module named v4l2loopback.
+
+''sudo apt-get update''
+''sudo apt-get -y install v4l2loopback-dkms''         
+
+Once installed, you can load your virtual camera like that.
+
+''sudo modprobe v4l2loopback devices=1 video_nr=1 card_label='MyWebCam'''        
+
+After you can check list video camera like this
+
+''ls /dev/video*''
+
+Ожидаемый ответ:
+
+''/dev/video1''
+
+As you defined video_nr=1, you should see /dev/video1 appearing.
+
+In the case of Web RTC, If you need your virtual camera must be visible by your browser, you need to add an option in command line exclusive_caps=1. If this option is not activated only your applications like Teams, WebEx… could detect the virtual camera.
+
+''sudo modprobe v4l2loopback devices=1 video_nr=1 card_label='MyWebCam' exclusive_caps=1''        
+
+Also you can create a mutliple virtual camera with v4l2loopback like this.
+
+''sudo modprobe v4l2loopback devices=2 video_nr=1,2 card_label="'MyWebCam1','MyWebCam2'" exclusive_caps=1,1 Windows virtual camera''        
+
+
