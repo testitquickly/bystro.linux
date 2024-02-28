@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-02-26T19:36:58+02:00
+
+====== Cadence ======
+
+< @debian @install @sound @cadence >
+
+Установка Cadence в Debian очень нетривиальна, см. [[Debian:Установка ПО:Cadence]]
+
+Вероятно, проще 
+
+''sudo aptitude install jackd2''
+
+Но если надо, то см. [[Debian:Установка ПО:Cadence]]
+

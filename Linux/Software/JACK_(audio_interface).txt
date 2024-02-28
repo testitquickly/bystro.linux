@@ -2,11 +2,14 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-05-17T01:11:42+03:00
 
-====== JACK audio interface ======
+====== JACK (audio interface) ======
 
 < @jack @sound >
 
-Cadence
+Видео про настройку подключений Motu M2 через JACK
+https://www.youtube.com/watch?v=XcSRd4X_xPo&list=WL&index=4&t=238s
+
+[[Cadence]]
 Catia
 драм-машина «Hydrogen»
 MIDI-клавиатура «AKAI X2 mini»
@@ -72,11 +75,11 @@ JACK Status > [Start]
 
 Тут можно запустить Hydrogen.
 
-{{../../images/jack_settings_01.jpg}}
+{{../../../images/jack_settings_01.jpg}}
 
 Соединить PulseAudio JACK Source с PulseAudio JACK Sink (аудиоканалы раздельные, поэтому front-left подключить к front-left и далее соответственно):
 
-{{../../images/jack_settings_02.jpg}}
+{{../../../images/jack_settings_02.jpg}}
 
 ===== Hydrogen — Настроить драйвер =====
 

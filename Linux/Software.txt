@@ -23,7 +23,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+ftp]]
 [[+git]]
 [[+GPG]]
-[[+JACK audio interface]]
+[[+JACK (audio interface)]]
 [[+k3b (прожиг дисков)]]
 [[+kate]]
 [[+KDE Connect]]

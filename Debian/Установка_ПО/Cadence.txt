@@ -1,0 +1,171 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-02-26T19:38:08+02:00
+
+====== Cadence ======
+
+< @debian @install @sound @cadence >
+
+https://ece451web.groups.et.byu.net/cadence-help/getstarted.html (множество картинок)
+
+===== Setting up Cadence for the Linux Machines =====
+
+This tutorial explains the process that the BYU ECE department followed when installing the Cadence software during the summer of 2004. Therefore, if this tutorial is used significantly later than 2004, there may be differences, due to changes in software. The Cadence installation process was completed with Linux using Debian (version#?).
+
+==== Download Installscape ====
+
+The first step in the installation process is to download the software that speeds up downloading all of the Cadence tools. This tool will also allow testing and configuring of each tool after download. First, go to http://downloads.cadence.com/. You will be prompted to enter a username and password. In order to have a username and password you must be signed up with Cadence to access to this site, so most likely, if you are wondering why you don't have a password, you probably shouldn't be reading this tutorial.
+
+Next, after entering username and password, you will be brought to the main page where there should be a link to install "Installscape 3.0". Follow the necessary links and install the software probably under the /usr/local directory or where ever is desirable. After installation is complete, you are now ready to download the Cadence tools. The first time when you are prompted about saving or opening the Cadence tool you are downloading, you will need to select "Open it with" and follow the hierarchy to the directory where you installed Installscape. In other words, open each Cadence installation file with .iscape.
+
+==== Setup Main Cadence Directory ====
+
+Follow the steps listed to create the directory that all of the Cadence tools will be installed under.
+
+	Logon as root.
+	Create directory in desired place (possibly /usr/local/) and call this directory "cadence".
+	Set the owner of the directory using the "chown" command. Ex: chown owner1 /usr/local/cadence, where owner1 is the owner.
+	Exit root. 
+
+==== Download and Setup All Cadence Tools ====
+
+The following releases of Cadence tool packages need to be installed on the Linux machines:
+
+	IC
+	ICC
+	LDV
+	SPR 
+
+Any other tools can be installed that are included in the license. After logging into the "downloads.cadence.com" website, select the platform that your computer is running on. Select a tool package (start with IC5033 or the latest version that the license covers) from the list and you will be brought to a webpage that will list base downloads, updates, and hot fixes for that tool package. The most current version of each of these files needs to be selected for download in the order of base, update, and hot fix. Some tools will not have all three. If there is only a base download and a hot fix, download the base first.
+
+For each download, select Download by Installscape. When you are prompted on opening or saving the file, choose to open it with Installscape, as described earlier in this tutorial.
+
+Use the same login and password that you used to enter the Cadence website.
+
+Select Install without Saving an Archive.
+
+If you have a list that contains all of the Cadence tools covered under the license (Product_List.txt), then choose to select the list and browse through the directories to find it.
+
+It doesn't matter where the cache directory is since it is temporary.
+
+Next, choose the install directory. Make a new directory within the "cadence" directory and name it the name of the tool package you are installing. If you are installing IC5033, then name the directory within the cadence directory, "IC5033".
+
+Next, a list with the different tools covered by license are checked. Make sure that any "Softshare License" and any "Release Information for System Admins" tools are checked before proceeding.
+
+After the download is complete, in the Wizard View, select Test and ensure that the download completed without any errors. Then, select Configure and configure the license.
+
+Then, exit the Wizard View, and follow the same procedure for any updates or hot fixes (in order). Only install the most recent updates and hot fixes. Install them in the same directory as you installed the base.
+
+After finishing this process, logout of the Cadence website.
+
+Next, to make the process easier, some symbolic links need to be created. In the cadence directory, create a link for IC5033 (or whatever the latest version is) called "ic". For ICC111, name it "icc". For the others, do the same. The main reason for doing this is so when there is a new release of a tool package, the link can linked to the new package and any path references to the tool package will automatically know where to look. It boils down to one change needed instead of several.
+
+In each tool package directory, there is a tools.lnx86 directory. For each package, create a symbolic link called "tools" in the same directory as tools.lnx86.
+
+A couple of lines of code need to be added to your "bash" or "cshrc" file to properly link paths of the Cadence tools. Add the following:
+
+export LM_LICENSE_FILE= (put here where your license server or file is located)
+export CDS_LIC_FILE = (put here where your license server or file is located)
+export LD_LIBRARY_PATH = (library paths of ic and ldv ic/tools/lib, ldv/tools/lib, spr/tools/lib, soc/tools/lib)
+export CDS_SITE = (location of NCSU design kit installation directory - .../NCSU/local)
+export CDS_Netlisting_Mode=Analog
+export USE_NCSU_CDK
+export CDS = (NCSU design kit directory .../NCSU/local/cdssetup)
+export PATH=$PATH:(all cadence tool directories that are required are listed below)
+
+	.../ic/tools/bin
+	.../ic/tools/dfII/bin
+	.../ic/tools/concice/bin
+	.../ic/tools/dracula/bin
+	.../ic/tools/plot/bin
+	.../ldv/tools/bin
+	.../spr/tools/bin
+	.../soc/tools/bin
+	.../icc/tools/iccraft/bin 
+
+As tools are upgraded in the future, make sure correct paths are included in environment variables.
+
+==== Download and Setup NCSU Design Kit ====
+
+The NCSU Design Kit is a kit used widely by many universities for Cadence. The kit provides many standard cells. It also configures user-friendly settings for the Cadence tools (i.e. hotkeys). To obtain the design kit, visit the NCSU (North Carolina State University) website to obtain permission here.
+
+After filling your contact information and selecting the latest version of the kit, select "Submit Form". You will later receive an e-mail with a link to the gzipped tar file, NCSU_CDK.1.4.tar.gz. Download and untar this file in a desired directory. A good place to put it may be in your cadence directory under a new directory entitled "NCSU". Access the directory and unzip/tar the file.
+
+tar -xvvzf NCSU_CDK.1.4.tar.gz
+
+In your NCSU directory, a local directory should have been created. Now access, this local directory. Access the bin directory. Now, the NCSU design kit needs to be properly installed configured. This can be done by running the script "install.pl".
+
+perl install.pl
+
+The script will ask several questions, in which you should respond with the following answers:
+
+Where is the IC tools root directory (e.g. /ncsu/cadence/ic445)?
+
+/usr/local/cadence/ic (or wherever you put the symbolic link "ic")
+
+You should have untarred the NCSU CDK tarfile in the directory in which you want it to reside. (If you have not, please do so before continuing.) Where is that directory?
+
+/usr/local/cadence/NCSU
+
+If you use HSPICE enter the following, or < return > to skip. Where is the HSPICE root directory?:
+
+< return >
+
+A "local" directory already exists at "/usr/local/cadence/ic/tools.lnx86/dfII/local"
+This directory probably contains your site's customizations.
+I can move the existing directory to "local.bak" and make
+"/usr/local/cadence/ic/tools.lnx86/dfII/local" a link to /usr/local/cadence/NCSU/local.
+
+If you do not want me to do this, I can add code to your setup
+files so that the NCSU CDK customizations will be used only
+when the environment variable "USE_NCSU_CDK" is set.
+
+Do you want me to move your existing local/ directory? [y]
+
+y
+
+For the question regarding HSpice, if you do use HSpice, enter the location of the HSpice root directory. The same applies to the last question about using the NCSU CDK customizations. If you do want to give the user a choice, then select "n" and answer the applicable questions that will follow.
+
+The next thing you need to do is to add a line in your "bash" or "cshrc" file so that the correct paths can be linked for the NCSU CDK. Add the following:
+
+export CDS_SITE=/usr/local/cadence/NCSU/local/ (or wherever your NCSU/local directory is located)
+
+==== Permission Changes to Make Things Work ====
+
+If a user tries to start the Cadence tools and is not the "owner" of the cadence directory, then there will be errors. Therefore, the permissions on a few files need to be changed in order to eliminate these errors. The following files need to have their permissions changed to the respective value shown:
+
+
+~/cadence/NCSU/local/cdssetup/cdsenv    644
+~/cadence/NCSU/local/skill/misc/netlist_proc.il   644 
+~/cadence/NCSU/local/skill/misc/delChangeBox.il    444
+~/cadence/NCSU/local/lib    777   (use the chmod -R option to change all directories and files within the "lib" directory)
+~/cadence/NCSU/local/models/spectre   (make it so all files in each directory of /spectre have 644 access, all folders should have 755)
+
+==== Other Changes ====
+
+Some problems have arisen during the installation process either due to Debian or other reasons. If these problems occur, follow the suggested solution. If the solution doesn't work and further assistance is needed, contact Cadence. Cadence's support staff was extremely helpful to BYU during the installation process in solving various issues.
+
+1. A message occurs when starting "icfb" in the shell window about xmesg not working because "wish" is not installed. A message would display about new versions of the software, but will not if "wish" is not installed. To eliminate this message from showing up each time, access the cdsinit file located under ~/cadence/NCSU/local/cdssetup and make the following changes:
+
+At approximately line 171, there is a comment stating "---- Print "new version" message ----". Under this comment there is a variable definition for "xmesg". Comment this line out. In the if-statement, remove anything referring to xmesg. so that the new line reads:
+
+if( getShellEnvVar( "SKIP_CDS_DIALOG" ) == nil && isFile( newusermesg ) system( strcat( " newusermesg "&") ) )
+
+This solution is only a simple quick fix to the message occuring when starting the Cadence tools. It may be a good idea to copy the if statement, comment it out, and make changes to the original. This will enable you to go back to the original settings if "wish" is later installed and you want this feature to be available, but it is nowhere near to crucial for Cadence operating properly.
+
+2. When a config file is created, Cadence freezes and is unable to open Hierarchy Editor. This problem is a java problem that is Debian-version specific. Therefore, one of the old Debian java library files needs to be installed in order to fix this problem. This file can be found out the following url:
+
+http://packages.debian.org/stable/oldlibs/libstdc++2.9-glibc2.1
+
+The file is "libstdc++2.9-glibc2.1-2.91.deb".
+
+When the file is opened, "kpackage", a Konqueror tool, should open it and install it. You may need to log in as root to complete this process.
+
+3. There are issues when trying to open documentation. The issues involve opening the web browser to read the documentation. The Linux SPICE machines have mozilla installed, but cadence looks for netscape. When a mozilla browser is already open, then the documentation will open up in the browser window. If a mozilla browser isn't open, an error message will be given. To workaround this problem, follow the steps listed:
+
+	type at the prompt: which mozilla (make note of the directory returned)
+	type at the prompt: which cdsdoc (make note of this directory)
+	go to the directory that contains cdsdoc
+	Create a link called 'netscape' to the mozilla executable: ln -s /mozilla netscape 
+
+Problem solved! 
