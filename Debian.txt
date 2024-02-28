@@ -12,3 +12,5 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 [[+Установка ПО]]
 [[+HowTo]]
 [[Linux:Software]]
+[[Linux:Настройки KDE:Оформление:Перезагрузить Plasma]]
+[[Linux:HowTo:Сделать symlink]]
