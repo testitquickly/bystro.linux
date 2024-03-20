@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-20T19:21:55+02:00
+
+====== Tor Browser ======
+
+< @debian @tor @firefox >
+
+Раньше каждый в меру своих способностей должен был искать сервера для подключения и настраивать подключение через proxy в Firefox. Со временем все эти сложные настройки были вынесены в отдельные расширения, а потом для большего контроля вообще всё было вынесено в отдельный экземпляр Firefox — Tor Browser.
+
+===== Установка =====
+
+[[Debian:Установка ПО:Tor Browser]]
+
+===== Настройка =====
+
+Настройки > Подключение
+
+	Быстрый старт > Всегда подключаться автоматически
+
+	Мосты > В первый раз надо «Выберите один из встроенных мостов браузера Tor» — „obfs4” по-умолчанию будет ок.
+
+===== Куда дальше =====
+
+* The Hidden Wiki — https://thehiddenwiki.org/ или http://6nhmgdpnyoljh5uzr5kwlatx2u3diou4ldeommfxjz3wkhalzgjqxzqd.onion/
+
+==== Поиск ====
+
+* DuckDuckGo https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion/
+* Ahmia http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/
+* Haystak http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion/
+* Torch http://xmh57jrknzkhv6y3ls3ubitzfqnkrwxhopf5aygthi7d6rplyvk3noyd.onion/
+* Tor Links http://torlinksge6enmcyyuxjpjkoouw4oorgdgeo7ftnq3zodj7g2zxi3kyd.onion/
+
+==== Libraries ====
+
+* Just Another Library http://libraryfyuybp7oyidyya3ah5xvwgyx6weauoini7zyz555litmmumad.onion/
+* Comic Book Library http://nv3x2jozywh63fkohn5mwp2d73vasusjixn3im3ueof52fmbjsigw6ad.onion/
+* Sci-Hub https://sci-hub.se
+
+==== Новости ====
+
+* ProPublica http://p53lf57qovyuvwsc6xnrppyply3vtqm7l6pcobkmyqsiofyeznfu5uqd.onion/
+* Archive Today http://archiveiya74codqgiix%E2%80%8Bo33q62qlrqtkgmcitqx5%E2%80%8Bu2oeqnmn5bpcbiyd.onion/
+* The New York Times https://www.nytimesn7cgmftshazwhfgzm37qxb44r64ytbb2dj3x62d2lljsciiyd.onion/
+* BBC https://www.bbcnewsd73hkzno2ini43t4gblxvycyac5aw4gnv7t2rccijh7745uqd.onion/
+* Facebook https://www.facebookwkhpilnemxj7asaniu7vnjjbiltxjqhye3mhbshg7kx5tfyd.onion/
+* CIA http://ciadotgov4sjwlzihbbgxnqg3xiyrg7so2r2o3lt5wz5ypk4sxyjstad.onion
+
+==== Bitcoin wallets ====
+
+* Wasabi Wallet http://wasabiukrxmkdgve5kynjztuovbg43uxcbcxn6y2okcrsg7gb6jdmbad.onion
+ 
+==== Email services ====
+
+* ProtonMail https://protonmailrmez3lotccipshtkleegetolb73fuirgj7r4o4vfu7ozyd.onion/
+* Riseup http://vww6ybal4bd7szmgncyruucpgfkqahzddi37ktceo3ah7ngmcopnpyyd.onion
+
+==== Other privacy tools and services ====
+
+* Keybase http://keybase5wmilwokqirssclfnsqrjdsi7jdir5wy7y7iu3tanwmtp6oid.onion/
+* ZeroBin http://zerobinftagjpeeebbvyzjcqyjpmjvynj5qlexwyxe7l3vqejxnqv5qd.onion/
+* SecureDrop http://sdolvtfhatvsysc6l34d65ymdwxcujausv7k5jk4cy5ttzhjoi6fzvyd.onion/
+* Impreza Hosting https://imprezareshna326gqgmbdzwmnad2wnjmeowh45bs2buxarh5qummjad.onion/

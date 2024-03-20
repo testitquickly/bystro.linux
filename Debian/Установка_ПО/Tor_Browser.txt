@@ -1,0 +1,107 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-20T19:47:16+02:00
+
+====== Tor Browser ======
+
+< @debian @tor @firefox @install >
+
+===== Скачать =====
+
+https://www.torproject.org/download/ — для Linux распространяется как архив *tar.xz
+
+===== Установить =====
+
+Ставим в /opt
+
+===== Распаковать архив =====
+
+'''
+tar -xpJf tor-browser*
+'''
+
+Появляется каталог „tor-browser” с файлами браузера внутри. 
+
+===== Переместить всё в /opt =====
+
+Разумно держать весь «сторонний» софт в одном месте, поэтому  
+
+''sudo mv tor-browser /opt''
+
+===== Дать права своему пользователю на изменения в каталоге браузера =====
+
+'''
+sudo chown -R astenix:sudo /opt/tor-browser && sudo chmod 750 /opt/tor-browser
+'''
+
+==== Сделать ярлык для запуска ====
+
+В каталоге tor-browser уже есть файл для запуска
+
+''/opt/tor-browser/start-tor-browser.desktop''
+
+но не факт, что он запустится.
+
+Сделать на него ссылку в общем меню приложений:
+
+''mcedit ~/.local/share/applications/firefox-tor.desktop''
+
+Вставить в него условно такой набор букв:
+
+'''
+[Desktop Entry]
+Encoding=UTF-8
+Name=Tor Firefox
+Comment=from /opt
+Type=Application
+Terminal=false
+Exec=/opt/tor-browser/Browser/start-tor-browser
+Icon=/home/mySettings/icons/firefox.png
+StartupNotify=true
+Categories=Network;WebBrowser;
+'''
+
+[F2] [Esc] [Esc]
+
+=== Сделать файл исполняемым ===
+
+''chmod u+x ~/.local/share/applications/firefox-tor.desktop''
+
+В общем меню приложений > Интернет появится новый ярлык «Tor Firefox».
+
+==== Запустить браузер из консоли ====
+
+Первый запуск надо всегда делать из консоли — так можно сразу распознать вероятные проблемы. 
+
+===== Установить новую версию браузера =====
+
+Сперва удалить существующие файлы:
+
+'''
+# rm -rf /opt/firefox*
+# rm /usr/bin/firefox
+'''
+
+Затем устанавливать новое.
+
+===== Бэкап профиля =====
+
+Проверить в настройках браузера, какой именно профиль используется:
+
+	1. в строке поиска ''about:profiles''
+	2. профилей может быть несколько, один из них помечен как «Профиль по умолчанию = Да».
+
+По-умолчанию профили создаются и хранятся в ''/~/.mozilla/firefox/,'' но всегда есть возможность выбора места хранения.
+
+Рекомендуется регулярно бэкапить содержимое ''/~/.mozilla/firefox/''
+
+===== Tor на Android =====
+
+	Download the Tor Browser app https://www.torproject.org/download/
+	Open Tor Browser
+	Click “Connect”
+	Once a connection is established, you should see an onion icon in your status bar
+
+===== Настройка =====
+
+[[Linux:Software:Tor Browser]]

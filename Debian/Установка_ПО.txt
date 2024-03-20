@@ -30,6 +30,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+ssh]]
 [[+Telegram]]
 [[+Thunderbird]]
+[[+Tor Browser]]
 [[+v4l2]]
 [[+vpn]]
 [[+vsfptd]]
