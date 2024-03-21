@@ -1,0 +1,70 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-21T10:08:38+02:00
+
+====== NodeJS (Playwright) ======
+
+< @debian @install @nodejs @playwright > 
+
+===== Установить NodeJS =====
+
+''sudo apt update && sudo apt install nodejs npm''
+
+Проверить:
+
+''nodejs --version''
+
+Пример ожидаемого ответа:
+
+''v10.15.2''
+
+==== Installing Development Tools ====
+
+The development tools are necessary for compiling and installing native add-ons from the npm registry. Install the package by running:
+
+''sudo apt install build-essential''
+
+===== Uninstalling Node.js =====
+
+''sudo apt remove nodejs npm''
+
+===== Установить Playwright =====
+
+Сперва зайти в каталог, в котором всё будет установлено — english name only, и без пробелов.
+
+''npm init playwright@latest''
+
+==== Проверить Playwright ====
+
+В каталоге, в котором он установлен, выполнить запуск end-to-end tests:
+
+''npx playwright test''
+
+Перед этим можно (но не обязательно) проверить содержимое трех файлов:
+- ./tests/example.spec.ts - Example end-to-end test
+- ./tests-examples/demo-todo-app.spec.ts - Demo Todo App end-to-end tests
+- ./playwright.config.ts - Playwright Test configuration
+
+В итоге проверить результат запуска тестов:
+
+''npx playwright show-report''
+
+Откроется окно бразуера по-умолчанию по адресу http://localhost:9323/
+
+==== Другие возможности ====
+
+Starts the interactive UI mode
+''npx playwright test --ui''
+
+Runs the tests only on Desktop Chrome
+''npx playwright test --project=chromium''
+
+Runs the tests in a specific file
+''npx playwright test example''
+
+Runs the tests in debug mode
+''npx playwright test --debug''
+
+Auto generate tests with Codegen
+''npx playwright codegen''
+
