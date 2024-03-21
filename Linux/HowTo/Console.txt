@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-04-18T22:05:28+03:00
+
+====== Console ======
+
+[[+alias]]
+[[+logout user]]
+[[+reboot компьютер]]
+[[+shutdown компьютер]]
+[[+Как раскрасить терминал в цвета]]

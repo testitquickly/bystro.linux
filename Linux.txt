@@ -11,5 +11,9 @@ Creation-Date: 2023-10-01T18:25:43+03:00
 [[+HowTo]]
 [[+Software]]
 [[+Настройки KDE]]
+
+==== Quick links ====
+
+[[+HowTo:Sound:Restart PulseAudio]]
 [[+Настройки KDE:Оформление:Перезагрузить Plasma]]
 

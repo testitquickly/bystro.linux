@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-10-09T21:48:25+03:00
+
+====== Узнать свой IP ======
+
+< @console @ip >
+
+===== Internal IP =====
+
+''hostname -I | awk '{print $1}''' 
+
+===== External IP =====
+
+Простейший способ:
+
+''curl ifconfig.me''
+
+Веселейший способ:
+
+''curl wtfismyip.com/json''
+
+См. [[Manjaro:HowTo:Узнать свой внутренний IP]] (там отдельный подход)

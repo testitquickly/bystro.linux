@@ -2,5 +2,5 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-03-13T10:33:23+02:00
 
-====== Звук ======
+====== Sound ======
 
