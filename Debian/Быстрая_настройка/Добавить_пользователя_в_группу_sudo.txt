@@ -13,7 +13,7 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 ''gpasswd -a astenix sudo''
 
-	Также можно выполнить „''usermod -a -G sudo astenix”но обычно usermod'' по-умолчанию не установлена.
+	Также можно выполнить „''usermod -a -G sudo astenix''”, ''но обычно usermod'' по-умолчанию не установлена.
 
 Заработает после релогина ([[Linux:HowTo:Console:logout user]]):
 
