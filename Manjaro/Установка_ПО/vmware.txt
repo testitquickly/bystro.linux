@@ -15,7 +15,7 @@ Creation-Date: 2022-10-31T22:15:43+02:00
 
 	Из неочевидного: более старая версия vmware (16 вместо нынешней 17-й) может потребовать более старые linux64-headers —  “6.1.44-1-MANJARO” вместо свежайших 6.4.9-1 (проверка: ''pacman -Q | grep headers'' или ''uname -r'').
 
-	Возможно, будет необходимо сделать downgrade — [[Manjaro:HowTo:linux headers]]
+	Возможно, будет необходимо сделать downgrade — [[Управление Manjaro:Обновить Manjaro:linux headers]]
 
 3. [[https://customerconnect.vmware.com/account-registration|завести]] аккаунт на сайте vmware
 4. в аккаунте указать запрашиваемые данные о персонализации (без этого скачивания не будет)
