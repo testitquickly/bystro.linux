@@ -12,7 +12,7 @@ C установочного диска Debian одной командой
 
 ''su''
 ''apt install aptitude mc zim xsensors curl krusader keepassxc onboard openssh-server openssh-client openvpn openconnect network-manager-openvpn vsftpd audacity calibre qbittorrent krename jlha-utils arj unace rar unrar rpm'' 
-''qmmp vlc smplayer'' 
+''qmmp vlc smplayer kget kdiff3 locate''
 
 ===== Настроить систему =====
 
