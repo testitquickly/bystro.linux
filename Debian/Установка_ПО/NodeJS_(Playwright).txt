@@ -30,6 +30,16 @@ The development tools are necessary for compiling and installing native add-ons 
 
 ===== Установить Playwright =====
 
+Тут надо решить, как он будет использовать — или Playwright как есть, и дальше разруливаться в файлах самостоятельно (через тот же [[Linux:Software:Sublime]]), или проекты будут управляться через определенную IDE — например, „Aqua” от jetBrains.
+
+https://www.jetbrains.com/aqua/download/#section=linux
+файл tar.gz
+tar -xvf archive.tar.gz
+есть snap — 
+''sudo snap install jetbrains aqua --classic''
+
+Если через IDE, тогда надо сперва установить саму IDE, а Playwright установить из её консоли.
+
 Сперва зайти в каталог, в котором всё будет установлено — english name only, и без пробелов.
 
 ''npm init playwright@latest''
@@ -67,4 +77,16 @@ Runs the tests in debug mode
 
 Auto generate tests with Codegen
 ''npx playwright codegen''
+
+alexei.lupan
+anastasiia.veremenko
+anatoli.casap
+konstantin.shchuchkin
+luda.cordier
+mariia.kraiushkina
+nikita.shumik
+olena.dobranytsia
+olena.mylenka
+orest.voitiuk
+roman.fedorchuk
 
