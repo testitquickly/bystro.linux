@@ -29,9 +29,7 @@ tar -jxvf firefox*
 ===== Дать права своему пользователю на изменения в каталоге /opt/firefox =====
 
 '''
-sudo chown -R astenix:sudo /opt/firefox
-
-sudo chmod 750 /opt/firefox
+sudo chown -R astenix:sudo /opt/firefox && sudo chmod 750 /opt/firefox
 '''
 
 ==== Сделать symbolic link на firefox ====
