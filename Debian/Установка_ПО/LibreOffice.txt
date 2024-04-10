@@ -28,7 +28,7 @@ Creation-Date: 2023-12-10T16:48:34+02:00
 ==== Удалить нынешнюю версию LibreOffice ====
 
 '''
-sudo rm -R /opt/LibreOffice*
+sudo rm -R /opt/libreoffice*
 '''
 
 Можно не удалять, если нужно в системе одновременно несколько версий LibreOffice.
