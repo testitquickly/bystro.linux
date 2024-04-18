@@ -46,5 +46,5 @@ Creation-Date: 2023-10-16T18:07:33+03:00
 3. Выполнить тестовую печать.
 4. Вызвать xsane и выполнить тестовое сканирование.
 
-См. дальше [[Linux:Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]
+См. дальше [[Common:Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]
 

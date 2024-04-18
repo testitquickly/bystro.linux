@@ -99,4 +99,4 @@ Categories=Network;WebBrowser;
 
 ===== Настройки Thunderbird =====
 
-[[Linux:Software:Thunderbird]]
+[[Common:Software:Thunderbird]]

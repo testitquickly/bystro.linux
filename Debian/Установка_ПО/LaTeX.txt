@@ -367,4 +367,4 @@ exit
 
 ''sudo umount /tmp/latex_iso && rm -R ~/tmp_LaTeX_Installation''
 
-См. дальше настройку sh-файла для билда LaTeX или XeLaTeX — [[Linux:Software:LaTeX]]
+См. дальше настройку sh-файла для билда LaTeX или XeLaTeX — [[Common:Software:LaTeX]]

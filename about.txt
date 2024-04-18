@@ -21,7 +21,7 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 
 Все инструкции расположены по разделам:
 
-* [[Linux]]
+* [[Common]]
 * [[Debian]]
 * [[Manjaro]]
 
@@ -47,7 +47,7 @@ Manjaro:
 
 ''sudo pacman -S zim''
 
-Можно поставить и через [[Linux:Software:flatpak]] или [[Linux:Software:snap]], но в нативной установке проще настроить внешнее оформление Zim (я подсел на тёмную тему).
+Можно поставить и через [[Common:Software:flatpak]] или [[Common:Software:snap]], но в нативной установке проще настроить внешнее оформление Zim (я подсел на тёмную тему).
 
 ==== Снять файлы ====
 
@@ -67,4 +67,4 @@ Manjaro:
 
 ==== Поменять стилевое оформление Zim ====
 
-См. [[https://github.com/testitquickly/bystro.linux/wiki/%D0%9D%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B0-%D1%82%D1%91%D0%BC%D0%BD%D0%BE%D0%B9-%D1%82%D0%B5%D0%BC%D1%8B-Zim|инструкцию]] по натягиванию тёмной темы.
+См. [[https://github.com/testitquickly/bystro.linux/wiki/Настройка-тёмной-темы-Zim|инструкцию]] по натягиванию тёмной темы.

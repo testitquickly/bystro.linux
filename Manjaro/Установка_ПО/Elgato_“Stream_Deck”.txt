@@ -64,7 +64,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Проверить, что железка отключена.
 
-В системе должен быть установлен [[Linux:Software:Python]] и его PIP.
+В системе должен быть установлен [[Common:Software:Python]] и его PIP.
 
 ==== Установить hidapi ====
 
@@ -131,4 +131,4 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ===== Настройки =====
 
-[[Linux:Software:Elgato “Stream Deck”]]
+[[Common:Software:Elgato “Stream Deck”]]

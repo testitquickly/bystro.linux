@@ -104,4 +104,4 @@ Categories=Network;WebBrowser;
 
 ===== Настройка =====
 
-[[Linux:Software:Tor Browser]]
+[[Common:Software:Tor Browser]]
