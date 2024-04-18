@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-18T20:32:41+03:00
+
+====== zim ======
+
+< @debian @install @zim >
+
+''sudo apt-get install zim''
+
+Можно поставить и через [[Common:Software:flatpak]] или [[Common:Software:snap]], но в нативной установке проще настроить внешнее оформление Zim (я подсел на тёмную тему).
+
+Детальные настройки см. в [[Common:Software:Zim]]
