@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-23T06:35:57+03:00
+
+====== Kile ======
+Создан Вторник 23 апреля 2024
+
