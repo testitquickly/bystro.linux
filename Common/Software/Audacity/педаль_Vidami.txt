@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-29T16:52:14+03:00
+
+====== педаль Vidami ======
+
+Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Online Videos for Faster Learning) — напольная педаль для музыкантов.
+
+В базе должна управлять проигрыванием видео с Youtube в бразуере. Делает это через расширение, которое доступно только в Google Chrome и Safari. В Firefox тоже работает безо всякого расширения, но только одна клавиша — «play/pause».
+
+Кнопки на педальке соответствуют определенным клавишам на клавиатуре:
+ 
+| Кнопка     | Клавиша en | Клавиша ru |
+|:-----------|:-----------|:-----------|
+| speed      | `          | ё          |
+| loop       | ;          | ж          |
+| back       | {          | Х          |
+| play/pause | K          | Л          |
+| forward    | }          | Ъ          |
+
+В Audacity (да и в Okular) можно назначить эти символы на шорткаты для выполнения каких-то действий.
+
+Вернуться к [[Audacity]]
