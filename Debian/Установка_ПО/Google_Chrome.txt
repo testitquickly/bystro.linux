@@ -23,3 +23,5 @@ Creation-Date: 2024-01-08T07:08:47+02:00
 или даже 
 
 ''sudo apt install google-chrome-unstable''
+
+См. [[Common:Software:Google Chrome]]

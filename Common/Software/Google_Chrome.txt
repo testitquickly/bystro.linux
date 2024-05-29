@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-05-29T11:32:51+03:00
+
+====== Google Chrome ======
+
+< @debian @settings @googleChrome >
+
+Установка браузера — [[Debian:Установка ПО:Google Chrome]]
+
+Все профили хранятся в ~/.config/google-chrome, но механизм их именования имеет особенности. Каталог основного профиля называется Default, каталог второго профиля называется Profile 1, каталог третьего профиля называется Profile 2…
+
+В самом браузере они отображаются под заданными именами.
+
+===== Определить путь к каталогам действующего профиля =====
+
+В строке URL перейти на chrome://version/
+ 
+===== Запуск с определенным профилем =====
+
+''/usr/bin/google-chrome-stable --profile-directory=Default''
+ну или 
+''/opt/google/chrome/google-chrome --profile-directory=Default''
+
+==== Прописать свойства ярлыка запуска ====
+
+* Программа = ''/usr/bin/google-chrome-stable''
+* Аргументы = '''--profile-directory=Default' %U''
+
+Если профилей несколько, и нужен второй
+
+В свойствах ярлыка запуска:
+* Программа = ''/usr/bin/google-chrome-stable''
+* Аргументы = '''--profile-directory=Profile 1' %U''
