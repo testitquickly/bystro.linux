@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-14T18:31:37+03:00
+
+====== ntfs-3g ======
+
+< @debian @concole @mount @windows >
+
+Утилита для монтирования read/write партиций ntfs, типичных для Windows. Подробности https://wiki.debian.org/NTFS
+
+===== Установка =====
+
+[[Debian:Установка ПО:ntfs-3g]]
+
+===== Типичный сценарий =====
+
+Подразумеваем, что Windows находится в ''/dev/sda1''; это проверяемо через ''cat /etc/fstab'' или через KDE 'partitionmanager'.
+
+''sudo mkdir /mnt/windows && sudo mount -t ntfs-3g /dev/sda1 /mnt/windows''

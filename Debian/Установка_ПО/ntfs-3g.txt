@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-06-14T18:36:57+03:00
+
+====== ntfs-3g ======
+
+< @debian @install @ntfs @windows >
+
+Как правило, утилита находится в составе Debian.
+
+''sudo aptitude install ntfs-3g''
+
+См. [[Common:Software:ntfs-3g]]

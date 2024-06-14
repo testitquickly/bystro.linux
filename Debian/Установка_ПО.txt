@@ -23,6 +23,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+LibreOffice]]
 [[+Midnight Commander]]
 [[+NodeJS (Playwright)]]
+[[+ntfs-3g]]
 [[+OBS studio]]
 [[+OnBoard]]
 [[+pgAdmin]]

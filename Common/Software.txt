@@ -37,6 +37,8 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+LibreOffice]]
 [[+microcode]]
 [[+Midnight Commander]]
+[[+neofetch]]
+[[+ntfs-3g]]
 [[+OBS studio]]
 [[+Okular]]
 [[+PDF]]
