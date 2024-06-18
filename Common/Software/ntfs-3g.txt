@@ -14,6 +14,14 @@ Creation-Date: 2024-06-14T18:31:37+03:00
 
 ===== Типичный сценарий =====
 
-Подразумеваем, что Windows находится в ''/dev/sda1''; это проверяемо через ''cat /etc/fstab'' или через KDE 'partitionmanager'.
+Подразумеваем, что Windows находится в ''/dev/sda1''
 
-''sudo mkdir /mnt/windows && sudo mount -t ntfs-3g /dev/sda1 /mnt/windows''
+	Это проверяемо через 
+	1. ''cat /etc/fstab'' (но не факт, что присутствует)
+	2. или через KDE 'partitionmanager' (оно же «Меню приложений > Система > Диспетчер разделов от KDE»
+
+''sudo mkdir /mnt/windows && sudo mount -t ntfs-3g /dev/sda1 /mnt/windows && df -hT''
+
+Последняя команда выведет все партиции, которые Debian «видит». Среди них должно быть и новое подключение.
+
+Точка монтирования останется на месте до следующей перезагрузки системы. Если надо отмонтировать — [[HowTo:Mount AND umount iso files]]
