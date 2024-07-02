@@ -1,0 +1,570 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-04-23T06:35:57+03:00
+
+====== Kile ======
+
+< @LaTeX @kile >
+
+Kile — один из текстовых редакторов для [[LaTeX]].
+
+===== Установка =====
+
+* [[Debian:Установка ПО:Kile]]
+* [[Manjaro:Установка ПО:Kile]]
+
+===== Настройка =====
+
+==== Базовые настройки ====
+
+Сборка
+''> Live Preview = убрать''
+	
+Сервис
+''> Добавлять отметку о порядке байтов (BOM)'' = если есть, то убрать (и впредь следить, чтобы не нажалось даже случайно)
+	
+Настройка
+''> Show document viewer'' = убрать
+
+== ==== ==
+
+==== Необязательно, но можно добавить симлинки на TeXовские утилиты из iso ====
+
+Или одной командой
+
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/{tex,pdftex,latex,pdflatex,dvips,dvipdfmx,bibtex,makeindex,dvipng} /usr/bin/''
+
+Или последовательно
+
+''cd /usr/bin''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/tex''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/latex''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/pdftex''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/pdflatex''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/makeindex''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/dvips''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/dvipng''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/dvipdfmx''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/bibtex''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/xelatex''
+'''
+sudo ln -s /home/LaTeX/bin/x86_64-linux/biber
+sudo ln -s /home/LaTeX/bin/x86_64-linux/kpsepath
+sudo ln -s /home/LaTeX/bin/x86_64-linux/kpsewhich
+sudo ln -s /home/LaTeX/bin/x86_64-linux/makeglossaries
+sudo ln -s /home/LaTeX/bin/x86_64-linux/updmap
+'''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/xetex''
+
+В ’/home/LaTeX/bin/x86_64-linux/’ 479 утилит и не все они нужны. Важно сделать симлинки на основные, от которых зависит  работа Kile и xelatex. 
+
+В будущем, когда что-то «не захочет работать», можно будет добавить симлинк на соответствующую службу.
+
+== ====== ==
+
+Kile
+''> Настройка''
+''> Проверка системы''
+''> Далее''
+
+Ждём, чтобы все проверки были зелёными.
+
+==== Настроить build ====
+
+Компиляция проектов в Kile будет происходить через вызов внешнего скрипта из исполняемого sh-файла вроде ’''/home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''’ по нажатию Alt+1 (дефолтный шорткат).
+
+Можно сделать разные sh-файлы — один для сборки с xelatex, другой для сборки с pdflatex. Их можно указать в разных сборках в Kile. И тогда проект в xelatex можно собирать по Alt+1, а проект pdflatex по Alt+2…
+
+Иногда может быть удобнее настроить механизм сборки проекта в каждом проекте по-отдельности. Лучше этого не делать.
+
+''Проект'' 
+''> Настроить проект''
+''> Свойства''
+''> Конфигурация QuickBuild''
+''> выбрать нужный движок''
+
+Лучше оставить там опцию «(use global settings)» и управлять сборкой проектов централизовано.
+
+Теперь сборка будет происходить по нажатию стандартного Alt+1.
+
+==== ① Настройка компиляции через вызов консоли ====
+
+Способ логичный, но есть моменты: 
+
+1. при КАЖДОЙ компиляции будет открываться, быстро пролистываться и закрываться консольное окно.
+2. в исполняемом файле есть команда для принудительного открытия файла в evince. При вызове в консоли команда работает. При вызове из Kile открытие evince или не происходит, или, вероятно, происходит, но после закрытия консоли evince, как полагается подчиненному процессу, тоже закрывается настолько быстро, что кажется, что он и не открывался.
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> QuickBuild''
+''> Конфигурация для инструмента QuickBuild = «Konsole XeLaTex+ViewPDF»''
+''> Дополнительно''
+	''Тип = Запускать в Konsole''
+	''Класс = Compile''
+''> Главное''
+''> Команда = полный путь к исполняемому скрипту — /home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''
+''> [OK]''
+
+==== ② Настройка компиляции средствами Kile ====
+
+=== Сбросить всё к исходным параметрам ===
+
+Сперва всё очистим и сбросим к исходным параметрам.
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> [Восстановить стандартные инструменты]''
+
+=== Настроить инструмент XeLaTeX ===
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> XeLaTeX''
+''> Главное''
+	''Команда = полный путь к исполняемому sh-файлу.''
+''> Дополнительно''
+	''Тип = Запускать вне Kile''
+	''Класс = Compile''
+	''Выходное расширение = pdf''
+
+По-умолчанию в инструменте ’XeLaTeX’ класс = ’LaTeX’. 
+
+	Но из-за моей схемы с компилированием через внешний файл Kile будет обязан выбрасывать сообщение об ошибке 
+
+	''«Открыть файл журнала не удалось; вы запускали LaTeX?»''
+
+	И да, с точки зрения Kile не запускал. А дальше Kile будет «зависать» в ожидании моего ответа на свой вопрос. И если я сделаю изменения в файлах и снова запущу компиляцию, он ничего не сделает, бо на предыдущий вопрос не было ответа — а там надо было нажать Esc.
+
+	А если класс = Compile, то Kile выбросить сообщение об ошибке, и после этого сразу объявит о том, что выполнение [XeLaTeX] прервано. И дальше всё работает безупречно.
+
+Всё остальное не трогать.
+
+=== Настроить инструмент ViewPDF ===
+
+Можно пропустить, ведь открытие pdf прописано в моем внешнем скрипте. 
+
+К тому же, из-за моей схемы с компилированием через внешний файл Kile будет обязан выбрасывать сообщение об ошибке 
+
+''«[ViewPDF] Файл /путь_к_нему/main.pdf не существует; вы скомпилировали исходный файл?»'' 
+
+А этот файл и не должен существовать, мой скрипт его уже переименовал и скопировал в корень каталога проекта, и evince откроет его, ориентируясь по его новому имени. И если класс будет указан «LaTeX», то Kile будет «зависать» в ожидании моего ответа на свой вопрос. И если я сделаю изменения в файлах и снова запущу компиляцию, он ничего не сделает, бо на предыдущий вопрос не было ответа — там надо было нажать Esc.
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> ViewPDF''
+''> Конфигурация для инструмента ViewPDF''
+	''Select = evince''
+''> Дополнительно''
+	''Тип = Use document viewer''
+	''Класс = View''
+	''Source Extention = pdf''
+	''Выходное расширение = pdf''
+	
+Всё остальное не трогать.
+
+=== Изменить последовательность действий в QuickBuild ===
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> [Создать] = назвать «QuickBuild»''
+''> Конфигурация для инструмента QuickBuild = «Default»''
+''> Дополнительно''
+	''Тип = Запустить последовательность команд''
+	''Класс = Sequence''
+''> Главное''
+''> Инструмент = XeLaTex''
+''> [Добавить] (в списке действий появится 'XeLaTeX')''
+''[OK]''
+
+Обычно в QuickBuild вместе с инструментом ’XeLaTex’ добавляют инструмент ’ViewPDF’. Его настройки такие:
+	Проверять главный документ = галочка
+	Переходить к первой ошибке = галочка
+	Автоматически запускать дополнительные параметры = убрать галочу
+
+Но в моём случае без этого инструмента можно обойтись.
+
+==== Скомпилировать проект ====
+
+Открыть проект в Kile. 
+
+Открыть файл main.tex
+
+Настройка
+''> Сделать текущий документ «главным»''
+
+Нажать Alt+1. 
+
+Убедиться в том, что ошибок нет и документ компилируется.
+
+==== Настроить build через внешний sh-скрипт ====
+
+TODO Kile Настроить build через внешний sh-скрипт
+
+Продолжение установки [[Manjaro:Установка ПО:LaTeX]]. 
+
+
+
+
+== ===================== ==
+
+===== Базовые настройки Kile =====
+
+Build 
+> Live Preview 
+Убрать галочку 'Live Preview for Current Document or Project'
+
+Настройка 
+> убрать галочку для 'Show Document Viewer'
+
+Настройка 
+> Настроить Kile
+
+Сразу самое важное:
+
+Editor 
+> Открытие и сохранение 
+> Главное 
+> Формат файла 
+> убедиться триста раз в том, что СНЯТА галочка для «Использовать отметку о порядке байтов (BOM)», иначе позже будет беда. Всё остальное в разделе Editor настраивать по личным предпочтениям.
+
+Также в будущем быть осторожным и не ставить галочку в Сервис > Добавлять отметку о порядке байтов (BOM)
+
+Сервис 
+> Орфография 
+> снять галочку для «Автоматическая проверка орфографии»
+
+Настройка 
+> Настроить Kile 
+> Kile 
+> General 
+> Default project location 
+> указать свой каталог для проектов
+
+Настройка 
+> Настроить Kile 
+> Kile 
+> General 
+> File Clean-Up Details 
+> поставить галочку для Automatically clean-up files after closing Kile
+
+В поле списка расширений автоудаляемых файлов добавить этот перечень:
+.aux .backup .bbl .bib~ .bit .blg .dvi .gitignore~ .glg .glo .gls .glx .gxg .gxs .gz .idx .ilg .ind .lof .log .lot .nav .out .plt .ps .sh~ .snm .sty~ .svn .tex~ .toc .xdy
+
+Настройка 
+> Настроить Kile 
+> Kile 
+> Help 
+> Location of TeX documentation: [[/home/LaTeX/texmf-dist/doc/texlive/texlive-ru]]
+
+Настройка 
+> Настроить Kile 
+> Kile 
+> Live Preview 
+> снять галочку для Enable live preview
+
+Настройка 
+> Настроить Kile 
+> LaTeX 
+> General 
+> Double Quotes 
+> снять галочку для Automatically insert opening and closing double quotes for LaTeX
+
+Настройка 
+> Настроить Kile 
+> LaTeX 
+> Environments 
+> Automatic Indentation Inside Environments 
+> снять галочку для Use spaces instead of tabs to indent
+
+Настройка 
+> Настроить Kile 
+> Tools 
+> Build
+
+Тут сделаем магию. QuickBuild подразумевает выполнение двух команд последовательно: PDFLaTeX + ViewPDF
+
+Команда PDFLaTeX подразумевает выполнение команды pdflatex с параметрами ''-synctex=1 -interaction=nonstopmode %source''
+
+Команда ViewPDF подразумевает выщов внутренне определенного просмотрщика PDF (обычно Okular) с передачей ему скопмилированного файла pdf. 
+
+Внешне выглядит так: инициировал компиляцию проекта из Kile — открылся готовый pdf.
+
+Мне надо, чтобы компиляция pdf происходила через мой .sh скрипт. Поэтому
+
+Настройка > Настроить Kile > Tools > Build > PDFLaTeX > General > Command: /home/my_System_Settings/MyScripts/LaTeX_Scripts/kile_buildPdfLaTeXWithMetafilesOutside.sh
+
+Содержимое поля Options (-synctex=1 -interaction=nonstopmode %source) можно убрать.
+
+Настройка 
+> Настроить Kile 
+> Tools 
+> Build 
+> ViewPDF 
+> Select: okular
+
+Tools 
+> Build 
+> New = myPDF_Compile 
+> Next 
+> Finish
+
+В настройках билд-тула myPDF_Compile > General > Command: = путь к исполняемому скрипту
+/home/my_System_Settings/MyScripts/LaTeX_Scripts/kile_buildPdfLaTeXWithMetafilesOutside.sh
+
+Advanced 
+> Type = Run Outside of Kile
+Class = Compile
+
+Tools 
+> Build 
+> QuickBuild 
+> протыкать опции PDFLaTeX и ViewPDF и удалить каждую.
+
+Tool: выбрать из списка myPDF_Compile (будет в самом низу).
+Configuration: Current Default (Default) > Add > OK
+В окне Kile выбрать кнопку QuickBuild или нажать Alt+1
+
+==== Kile missing “Settings” dialog ====
+
+Во второй версии Kile бывало, что тулбар с управляющими кнопками исчезал. Решалось это удалением файла с настройками тулбара:
+
+''rm ~/.kde/share/apps/kile/kileui.rc''
+
+Если интересно, есть и другие файлы настроек Kile в профиле пользователя — хорошо бы их иногда бэкапить:
+
+1. Kile configuration
+''~/.kde/share/config/kilerc''
+
+2. Kile shortcuts
+''~/.kde/share/apps/katepart/katepartui.rc''
+
+==== Как добавить новые команды в меню ====
+
+TODO ! Kile - новые команды
+
+==== Настроить build через внешний sh-скрипт ====
+
+TODO ! Kile - компиляция файлов через внешний скрипт
+
+
+
+--------------------
+
+
+For now I could solve the issue where Kile can find the Tex Live 2020 binaries (manually installed) when it is run from graphical menu or launcher icon. I am listing the two solutions I found (links are provided below):
+
+	Open Settings --> Configure Kile window. Click on the menu Build. It will list all of the known TeX tools. For example, select LaTeX. Go to the General tab and add the texlive binaries PATH in command field to include /latex, which will then look like this: /usr/local/texlive/2020/bin/x86_64-linux/latex
+
+The above steps are repeated for each of the TeX tools we use frequently.
+
+Once all are done run Settings --> System Check to see if Kile executes the LaTeX processes from the PATH assigned.
+
+(Step 1 is explained in detail here).
+
+	The second solution is to edit the file /etc/login.defs:
+
+ENV_SUPATH  PATH=/usr/local/texlive/2020/bin/x86_64-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV_PATH  PATH=/usr/local/texlive/2020/bin/x86_64-linux:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+This solution was suggested to me here on raising a similar question for a TeX software (LaTexDraw). It too had similar issue like Kile.
+
+I find Step 2 to work with any of TeX software (atleast for the two I have) where on starting it from graphical menu or launcher icon, it can locate all the latest LaTeX binaries.
+
+===== Настроить Kile =====
+
+Основные: 
+
+	Сборка
+	''> Live Preview = убрать''
+	
+	Сервис
+	''> Добавлять отметку о порядке байтов (BOM)'' = убрать и впредь следить, чтобы не нажалось даже случайно
+	
+	Настройка
+	''> Show document viewer'' = убрать
+
+Прочие настройки по вкусу.
+
+Самое главное — настроить build. 
+
+	Компиляция проектов в Kile будет происходить через вызов внешнего скрипта из исполняемого sh-файла ’''/home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''’ по нажатию Alt+1 (дефолтный шорткат).
+
+	Можно сделать разные sh-файлы — один для сборки с xelatex, другой для сборки с pdflatex. Их можно указать в разных сборках в Kile. И тогда проект в xelatex можно собирать по Alt+1, а проект pdflatex по Alt+2…
+
+	Но удобнее настроить механизм сборки проекта в каждом проекте по-отдельности. 
+	Проект 
+	> Настроить проект
+	> Свойства
+	> Конфигурация QuickBuild
+	> выбрать нужный движок
+
+	Теперь сборка будет происходить по нажатию стандартного Alt+1 — не промахнёшься.
+
+Можно или (1) указать одну команду, и на этом всё, или (2) попереключаться между несколькими инструментами внутри Kile. Второй вариант лучше.
+
+==== ① Настройка компиляции через вызов консоли ====
+
+Способ логичный, но есть моменты: 
+1. при КАЖДОЙ компиляции будет открываться, быстро пролистываться и закрываться консольное окно.
+2. в исполняемом файле есть команда для принудительного открытия файла в evince. При вызове в консоли команда работает. При вызове из Kile открытие evince или не происходит, или, вероятно, происходит, но после закрытия консоли evince, как полагается подчиненному процессу, тоже закрывается настолько быстро, что кажется, что он и не открывался.
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> QuickBuild''
+''> Конфигурация для инструмента QuickBuild = «Konsole XeLaTex+ViewPDF»''
+''> Дополнительно''
+	''Тип = Запускать в Konsole''
+	''Класс = Compile''
+''> Главное''
+''> Команда = полный путь к исполняемому скрипту — /home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''
+''> [OK]''
+
+==== ② Настройка компиляции средствами Kile ====
+
+=== Сбросить всё к исходным параметрам ===
+
+Сперва всё очистим и сбросим к исходным параметрам.
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> [Восстановить стандартные инструменты]''
+
+=== Настроить инструмент XeLaTeX ===
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> XeLaTeX''
+''> Главное''
+	''Команда = полный путь к исполняемому sh-файлу.''
+''> Дополнительно''
+	''Тип = Запускать вне Kile''
+	''Класс = Compile''
+	''Выходное расширение = pdf''
+
+По-умолчанию в инструменте ’XeLaTeX’ класс = ’LaTeX’. 
+
+	Но из-за моей схемы с компилированием через внешний файл Kile будет обязан выбрасывать сообщение об ошибке 
+
+	''«Открыть файл журнала не удалось; вы запускали LaTeX?»''
+
+	И да, с точки зрения Kile не запускал. А дальше Kile будет «зависать» в ожидании моего ответа на свой вопрос. И если я сделаю изменения в файлах и снова запущу компиляцию, он ничего не сделает, бо на предыдущий вопрос не было ответа — а там надо было нажать Esc.
+
+	А если класс = Compile, то Kile выбросить сообщение об ошибке, и после этого сразу объявит о том, что выполнение [XeLaTeX] прервано. И дальше всё работает безупречно.
+
+Всё остальное не трогать.
+
+=== Настроить инструмент ViewPDF ===
+
+Можно пропустить, ведь открытие pdf прописано в моем внешнем скрипте. 
+
+К тому же, из-за моей схемы с компилированием через внешний файл Kile будет обязан выбрасывать сообщение об ошибке 
+
+''«[ViewPDF] Файл /путь_к_нему/main.pdf не существует; вы скомпилировали исходный файл?»'' 
+
+А этот файл и не должен существовать, мой скрипт его уже переименовал и скопировал в корень каталога проекта, и evince откроет его, ориентируясь по его новому имени. И если класс будет указан «LaTeX», то Kile будет «зависать» в ожидании моего ответа на свой вопрос. И если я сделаю изменения в файлах и снова запущу компиляцию, он ничего не сделает, бо на предыдущий вопрос не было ответа — там надо было нажать Esc.
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> ViewPDF''
+''> Конфигурация для инструмента ViewPDF''
+	''Select = evince''
+''> Дополнительно''
+	''Тип = Use document viewer''
+	''Класс = View''
+	''Source Extention = pdf''
+	''Выходное расширение = pdf''
+	
+Всё остальное не трогать.
+
+=== Изменить последовательность действий в QuickBuild ===
+
+Настройка
+''> Настроить Kile''
+''> Инструменты''
+''> Сборка''
+''> Список инструментов''
+''> [Создать] = назвать «QuickBuild»''
+''> Конфигурация для инструмента QuickBuild = «Default»''
+''> Дополнительно''
+	''Тип = Запустить последовательность команд''
+	''Класс = Sequence''
+''> Главное''
+''> Инструмент = XeLaTex''
+''> [Добавить] (в списке действий появится 'XeLaTeX')''
+''[OK]''
+
+Обычно в QuickBuild вместе с инструментом ’XeLaTex’ добавляют инструмент ’ViewPDF’. Его настройки такие:
+	Проверять главный документ = галочка
+	Переходить к первой ошибке = галочка
+	Автоматически запускать дополнительные параметры = убрать галочу
+
+Но в моём случае без этого инструмента можно обойтись.
+
+==== Скомпилировать проект ====
+
+Открыть проект в Kile. 
+
+Открыть файл main.tex
+
+Настройка
+''> Сделать текущий документ «главным»''
+
+Нажать Alt+1. 
+
+Убедиться в том, что ошибок нет и документ компилируется.
+
+==== Настроить build через внешний sh-скрипт ====
+
+TODO Kile Настроить build через внешний sh-скрипт
+
+
+
+
+--------------------
+
+
+For now I could solve the issue where Kile can find the Tex Live 2020 binaries (manually installed) when it is run from graphical menu or launcher icon. I am listing the two solutions I found (links are provided below):
+
+	Open Settings --> Configure Kile window. Click on the menu Build. It will list all of the known TeX tools. For example, select LaTeX. Go to the General tab and add the texlive binaries PATH in command field to include /latex, which will then look like this: /usr/local/texlive/2020/bin/x86_64-linux/latex
+
+The above steps are repeated for each of the TeX tools we use frequently.
+
+Once all are done run Settings --> System Check to see if Kile executes the LaTeX processes from the PATH assigned.
+
+(Step 1 is explained in detail here).
+
+	The second solution is to edit the file /etc/login.defs:
+
+ENV_SUPATH  PATH=/usr/local/texlive/2020/bin/x86_64-linux:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV_PATH  PATH=/usr/local/texlive/2020/bin/x86_64-linux:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
+This solution was suggested to me here on raising a similar question for a TeX software (LaTexDraw). It too had similar issue like Kile.
+
+I find Step 2 to work with any of TeX software (atleast for the two I have) where on starting it from graphical menu or launcher icon, it can locate all the latest LaTeX binaries.

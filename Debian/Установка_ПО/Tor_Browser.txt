@@ -104,4 +104,4 @@ Categories=Network;WebBrowser;
 
 ===== Настройка =====
 
-[[Common:Software:Tor Browser]]
+[[Software:Tor Browser]]

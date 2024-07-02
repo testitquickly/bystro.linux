@@ -14,8 +14,8 @@ Creation-Date: 2023-01-17T02:32:09+02:00
 
 ''cd /etc/xdg/autostart/''
 
-Разумно не удалять сразу всё, а гасить запуск сервисов через systemd: [[:Common:HowTo:Подавить сервис]]
+Разумно не удалять сразу всё, а гасить запуск сервисов через systemd: [[:Common HowTo:Подавить сервис]]
 
-Автостарт вообще в KDE:  [[Common:Настройки KDE:Сеанс:autostart]]
+Автостарт вообще в KDE:  [[Common KDE settings:Сеанс:autostart]]
 
 

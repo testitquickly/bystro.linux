@@ -354,4 +354,4 @@ Password: <your password>
 
 ''Starting pgAdmin 4. Please navigate to'' [[http://127.0.0.1:5050|''http://127.0.0.1:5050'']] ''in your browser.''
 
-//Next step//: [[Common:Software:pgAdmin]]
+//Next step//: [[Software:pgAdmin]]

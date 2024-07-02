@@ -15,7 +15,7 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 	Также можно выполнить „''usermod -a -G sudo astenix''”, ''но обычно usermod'' по-умолчанию не установлена.
 
-Заработает после релогина ([[Common:HowTo:Console:logout user]]):
+Заработает после релогина ([[Common HowTo:Console:logout user]]):
 
 ''loginctl terminate-user astenix''
 
@@ -51,4 +51,4 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 sudo chown astenix:sudo -R /home/
 '''
 
-//Next step//: [[Common:HowTo:Files and Folders:Настроить подтверждение удаления файла в консоли]]
+//Next step//: [[Common HowTo:Files and Folders:Настроить подтверждение удаления файла в консоли]]

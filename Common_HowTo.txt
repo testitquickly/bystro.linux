@@ -2,9 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-11-24T03:36:01+02:00
 
-====== HowTo ======
+====== Common HowTo ======
 
 < @debian @howto >
+
+Общие рецепты без привязки к дистрибутиву.
 
 [[+hdd S.M.A.R.T.]]
 [[+Console:logout user]]
@@ -69,6 +71,11 @@ Creation-Date: 2022-11-24T03:36:01+02:00
 [[+Files and Folders:Сделать много подкаталогов]]
 [[+Files and Folders:Создать новый каталог]]
 [[+Files and Folders:Удалить файлы и каталоги]]
+
+==== Quick links ====
+
+[[+Sound:Restart PulseAudio]]
+[[Common KDE settings:Оформление:Перезагрузить Plasma]]
 
 ===== TODO к удалению =====
 

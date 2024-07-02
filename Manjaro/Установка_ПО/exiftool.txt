@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-03T00:10:24+03:00
+
+====== exiftool ======
+
+< @manjaro @install @exiftool >
+
+'''
+sudo pacman -S perl-image-exiftool
+'''
+
+См. [[Software:exiftool]]

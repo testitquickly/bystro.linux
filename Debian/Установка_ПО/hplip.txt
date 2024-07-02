@@ -221,4 +221,4 @@ Click "AddPrinter" to complete the printer setup process:
 * и выполнить тестовую печать.
 * и если речь идет про МФУ — вызвать ''xsane'' и выполнить тестовое сканирование.
 
-См. дальше [[Common:Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]
+См. дальше [[Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]

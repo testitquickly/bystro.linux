@@ -171,7 +171,7 @@ user_sub_token=$USER
 
 ===== Сделать симлинк для запуска vsftpd =====
 
-[[HowTo:Сделать symlink]]
+[[Common HowTo:Сделать symlink]]
 
 ===== Как запускать/останавливать vsftpd =====
 
