@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-15T12:14:04+03:00
+
+====== paprefs ======
+
+< @debian @install @paprefs @sound @pulseaudio >
+
+''sudo apt install paprefs''
+
+См. настройки [[Software:paprefs]]

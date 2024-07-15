@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-15T12:15:00+03:00
+
+====== paprefs ======
+
+< @manjaro @install @paprefs @sound @pulseaudio >
+
+''sudo pacman -S paprefs''
+
+См. настройки [[Software:paprefs]]
