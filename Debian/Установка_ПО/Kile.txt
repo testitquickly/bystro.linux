@@ -38,10 +38,10 @@ which kile
 2. Поставить галочки для 'Use the modern configuration for the PDFLaTeX, LuaLaTeX and XeLaTeX tools'.
 3. [Finish]
 
-Также при установке Kile может проснуться гномовский iBus, если он ранее был установлен и вроде бы подавлен — [[Common HowTo:Подавить iBus]]
+Также при установке Kile может проснуться гномовский iBus, если он ранее был установлен и вроде бы подавлен — [[Common:HowTo:Подавить iBus]]
 
 См. установку [[LaTeX]] из iso.
 
 ===== Настройки Kile =====
 
-См. [[Software:Kile]]
+См. [[Common:Software:Kile]]

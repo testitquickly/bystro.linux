@@ -50,4 +50,4 @@ https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там а�
 
 ''/opt/smartgit/bin/smartgit.sh''
 
-См. далее настройки — [[Software:SmartGit]]
+См. далее настройки — [[Common:Software:SmartGit]]

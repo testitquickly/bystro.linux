@@ -1,0 +1,172 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-07-05T20:36:36+03:00
+
+====== Трюк с перепубликацией части текста на разных страницах ======
+
+===== thesis =====
+
+==== Как задать ====
+
+% ========== ТЕЗИСЫ ==========
+
+	% The \phantomsection command is needed to create a link to a place in the document that is not a figure, equation, table, section, subsection, chapter, etc, like \label OR \addcontentsline OR \hyperref.
+		% Without the \phantomsection line, both the contents line and the link would point to the beginning of the current section (or subsection, etc.)
+		% https://en.wikibooks.org/wiki/LaTeX/Labels_and_Cross-referencing#Anchor_manual_positioning
+		% Usage:
+		% \phantomsection
+		% \label{Bradbury:1953}
+	''\providecommand\phantomsection{}''
+	
+		% Как использовать механизм labeltext
+			% Пример: Это текст \labelText{Содержимое заданной ссылки}{label:thesis1}
+			% \ref{thesis1} = «Содержимое заданной ссылки»
+		%avoid expanding it when in a textual label
+	''\MakeRobust{\ref}''
+	''\makeatletter''
+	''\newcommand{\labeltext}[2]{%''
+		''\@bsphack''
+			''% if hyperref is used''
+		''\csname phantomsection\endcsname''
+		''\def\@currentlabel{#1}{\label{#2}}%''
+		''\@esphack''
+		''}''
+	''\makeatother''
+
+		% Форма для тезисов
+		% Первая строка — тезис. Оформлен шрифтом чуть крупнее нормы, «маленькие заглавные». Он же текст ссылки labeltext с именем вроде thesis1 и так далее. Имя ссылки прописывается сразу при её создании.
+		% Вторая строка — комментарий, если нужен. Оформлен как цитата (с отступом), размер шрифта помельче.
+		% Пример: \thesis{Вопрос}{thesis2}{Ответ.}
+	''\newcommand{\thesis}[3]{''
+		''{\large \scshape {#1} \labeltext{#1}{#2}}''
+		''\begin{quote} \small  {#3} \normalsize \end{quote}''
+		''}''
+
+==== Как использовать ====
+
+''\section{Тезисы}'' 
+
+''\subsection{Первый тезис}''
+
+''\thesis{Первый тезис}{thesis1}{комментарий тезис 1}''
+
+''\subsection{Второй тезис}''
+
+''\thesis{Второй тезис}{thesis2}	{комментарий тезис 2}''
+
+''\subsection{Третий тезис}\label{TEZIS3}''
+
+''\ref{test}''
+
+''\thesis{''
+	''\begin{myVerse}''
+	''{\pugachev}''
+	''{Ох, как устал и как болит нога!..\newline''
+	  ''Ржет дорога в жуткое пространство.\newline''
+			''\myNote{Лиричнее}''
+	  ''О, помог\'и же, степн\'ая мгла,\newline''
+	  ''Грозно свершить мой замысел!}''
+	  ''\end{myVerse}''
+	  ''}{pugachev1}{}''
+
+	  ''\subsection{Тезисы} \label{test}''
+	
+''\ref{TEZIS3}''
+
+''thesis1''
+
+''\ref{thesis1}''
+
+''thesis2''
+
+''\ref{thesis2}''
+
+''цитата pugachev1''
+
+''\ref{pugachev1}''
+      
+''\newpage''
+
+===== \newcommand =====
+
+Запрещено — и в этом есть резон https://tex.stackexchange.com/a/9720 — использовать цифры в названии \newcommand. 
+
+==== Как задать ====
+
+''\newcommand{\pugachevUnu}{%''
+ ''\begin{myVerse}''
+	   ''{\pugachev}''
+	   ''{ПЕРВЫЙ ТЕКСТ'' 
+       
+	   ''Ох, как устал и как болит нога!..''
+ 
+	   ''Ржет дорога в жуткое пространство.''
+ 
+	   ''Ты ли, ты ли, разбойный Чаган,''
+ 
+	   ''Приют дикарей и оборванцев?''
+ 
+	   ''\myNote{Как можно лиричнее и спокойнее}''
+       
+	   ''Мне нравится степей твоих медь''     
+ 
+	   ''Грозно свершить мой замысел!}''
+	   ''\end{myVerse}''
+	   ''\label{pugachev1}''
+ ''}''
+ 
+ ''\newcommand{\storojUnu}{%''
+	 ''\begin{myVerse}''
+ ''{\storoj}''
+ ''{ ВТОРОЙ ТЕКСТ'' 
+ 
+ ''Кто ты, странник? Что бродишь долом?''
+ 
+   ''Что тревожишь ты ночи гладь?''
+ 
+   ''Отчего, словно яблоко тяжелое,''
+ 
+   ''Виснет с шеи твоя голова?}''
+ ''\end{myVerse}''
+	 ''\label{storoj1}''
+ ''}''
+
+==== Как использовать ====
+
+''% \subsection{Ньюкомманды}''
+
+''% \pugachevUnu''
+
+''% \storojUnu''
+
+===== NewCommand с цифрами в названии =====
+
+Да, запрещено — и в этом есть резон https://tex.stackexchange.com/a/9720 — использовать цифры в названии \newcommand. Но если очень хочется, то можно.
+
+Вот  подход, который безупречно работает, но условно считается неэлегантным и «Настолько многословным, что его невозможно использовать» — https://tex.stackexchange.com/questions/373572/how-to-define-a-command-to-make-new-commands-with-numbers-in-the-name На деле все норм, надо только его подтюнить.
+
+Его можно использовать его в любом месте документа, а не только ДО ''\begin{document}''
+
+шаблон
+''\expandafter\def\csname pugachev1 \endcsname{ }''
+
+==== Как задать ====
+
+% шаблон
+% \expandafter\def\csname pugachev1 \endcsname{ }
+
+===== experiment =====
+
+''\newcommand{\myReplika}[2]{'' \expandafter\def\csname {#1} \endcsname{#2} }
+
+
+
+''\newcommand{\myPersonage}[1]{#1}''
+''\newcommand{\myText}[1]{\begin{verse} #1\end{verse}}''
+''\newenvironment{myVerse}[2]''
+  ''{''
+  ''\begin{mdframed} % обрамление в mdframed вроде бы решает проблему «чтобы имя персонажа и его реплика не оказались на разных страницах». На деле —  решает частично, но это лучше, чем ничего, особенно если заюзать линии по краям фрейма (достаточно по нижнему), иногда это даже зрительно полезно.'' 
+  ''\myPersonage{#1}''       
+	''\myText{#2}''  
+	''\end{mdframed}''
+ ''}''

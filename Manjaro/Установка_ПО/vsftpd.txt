@@ -21,4 +21,4 @@ Creation-Date: 2023-12-04T22:24:16+02:00
 * ''systemctl stop vsftpd''
 * ''systemctl restart vsftpd''
 
-Дальше [[Software:vsftpd]]
+Дальше [[Common:Software:vsftpd]]

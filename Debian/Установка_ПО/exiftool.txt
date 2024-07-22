@@ -8,4 +8,4 @@ Creation-Date: 2024-07-03T00:08:25+03:00
 
 ''sudo aptitude install exiftool''
 
-См. [[Software:exiftool]]
+См. [[Common:Software:exiftool]]

@@ -25,9 +25,9 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 
 * [[Debian]]
 * [[Manjaro]]
-* [[Software]]
-* [[Common HowTo]]
-* [[Common KDE settings]]
+* [[Common:Software]]
+* [[Common:HowTo]]
+* [[Common:KDE settings]]
 
 Навигация по документу выстроена через индекс страниц — https://testitquickly.com/bystro.linux/index.html (она же полная иерархя инструкций в проекте). В каждый головной файл каждого раздела должны быть добавлены ссылки на все страницы/подстраницы (вроде бы).
 

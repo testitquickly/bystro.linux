@@ -30,7 +30,7 @@ The development tools are necessary for compiling and installing native add-ons 
 
 ===== Установить Playwright =====
 
-Тут надо решить, как он будет использовать — или Playwright как есть, и дальше разруливаться в файлах самостоятельно (через тот же [[Software:Sublime]]), или проекты будут управляться через определенную IDE — например, „Aqua” от jetBrains.
+Тут надо решить, как он будет использовать — или Playwright как есть, и дальше разруливаться в файлах самостоятельно (через тот же [[Common:Software:Sublime]]), или проекты будут управляться через определенную IDE — например, „Aqua” от jetBrains.
 
 https://www.jetbrains.com/aqua/download/#section=linux
 файл tar.gz

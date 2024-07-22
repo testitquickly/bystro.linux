@@ -10,4 +10,4 @@ Creation-Date: 2024-07-03T00:10:24+03:00
 sudo pacman -S perl-image-exiftool
 '''
 
-См. [[Software:exiftool]]
+См. [[Common:Software:exiftool]]

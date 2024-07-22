@@ -8,4 +8,4 @@ Creation-Date: 2023-10-22T23:06:55+03:00
 
 ''sudo apt-get install apache2-utils''
 
-[[Software:ab (ApacheBench tool)]]
+[[Common:Software:ab (ApacheBench tool)]]
