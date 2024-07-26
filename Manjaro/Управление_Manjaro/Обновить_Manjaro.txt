@@ -48,3 +48,26 @@ Creation-Date: 2023-01-07T01:19:45+02:00
 Мне помогла полная перезагрузка ноутбука, и уже затем 
 
 ''sudo pacman -Syuu''
+
+==== Устаревшие подписи пакетов ====
+
+Пример ошибки
+
+''spdlog: signature from "Brett Cornwall <''[[brett@i--b.com|''brett@i--b.com'']]''>" is unknown trust''
+
+Решение 1:
+
+''sudo pacman-key --populate archlinux''
+''sudo pacman -S archlinux-keyring''
+''sudo pacman -Syyu && yay -Syu''
+
+Решение 2 (не применял):
+
+1. ''sudo mcedit /etc/pacman.conf''
+2. change all SigLevel entries to Never (comment the old ones out)
+3. ''pacman -Syu''
+4. change ''/etc/pacman.conf back''
+5. ''rm -r /etc/pacman.d/gnupg''
+6. ''pacman-key --init''
+7. ''pacman-key --populate archlinux manjaro''
+8. ''pacman-key --refresh-keys''
