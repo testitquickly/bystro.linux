@@ -6,15 +6,15 @@ Creation-Date: 2023-01-07T01:19:45+02:00
 
 < @manjaro @update @pacman @yay >
 
+Будем обновлять по-серьезному, с обновлением внутренней базы данных всего ПО (в обычном режиме это излишне):
+
+''sudo pacman -Syyu && yay -Syu''
+
 ''-S'': synchronize system packages and their dependencies with repository versions
 ''-y'': download a new copy from the master package database
 ''-yy'': forces a refresh even if databases already appear to be up-to-date.
 ''-u'': upgrade all installed packages
 ''-uu'': if any of your newly installed packages aren’t working properly, the double -u option will downgrade packages to their previous version.
-
-Будем обновлять по-серьезному, с обновлением внутренней базы данных всего ПО (в обычном режиме это излишне):
-
-''sudo pacman -Syyu && yay -Syu''
 
 Во время обновления поглядывать в консоль, потому что будет много вопросов. Если вовремя не ответить, выполнение остановится и позже придётся всё начинать заново.
 
