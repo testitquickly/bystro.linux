@@ -4,6 +4,8 @@ Creation-Date: 2024-07-05T20:36:36+03:00
 
 ====== Трюк с перепубликацией части текста на разных страницах ======
 
+TODO ! LaTeX — Трюк с перепубликацией части текста на разных страницах
+
 ===== thesis =====
 
 ==== Как задать ====
@@ -158,8 +160,6 @@ Creation-Date: 2024-07-05T20:36:36+03:00
 ===== experiment =====
 
 ''\newcommand{\myReplika}[2]{'' \expandafter\def\csname {#1} \endcsname{#2} }
-
-
 
 ''\newcommand{\myPersonage}[1]{#1}''
 ''\newcommand{\myText}[1]{\begin{verse} #1\end{verse}}''
