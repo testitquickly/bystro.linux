@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-19T23:17:37+03:00
+
+====== whereis ======
+
+< @whereis @console >
+
+Идеальный способ узнать, откуда запускается софт.
+
+''whereis yt-dlp''
+''yt-dlp: /usr/bin/yt-dlp /usr/share/man/man1/yt-dlp.1.gz''
+
+А это один из моих скриптов (исполняемый .sh) — софтлинк на него находится в ''~/.local/bin/'':
+
+''whereis my-debian-update''
+''my-debian-update: /home/astenix/.local/bin/my-debian-update''
