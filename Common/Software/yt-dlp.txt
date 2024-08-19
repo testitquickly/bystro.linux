@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-08-19T23:20:56+03:00
+
+====== yt-dlp ======
+
+< @console @youtube >
+
+Утилита для скачивания с Youtube видео или аудио из видео. Ранее называлась ''youtube-dl''. В Youtube её очень не любят и периодически что-то меняют в выдаче своих видео, отчего утилита перестаёт работать.
+
+Есть множество настроек. Можно сделать алиас в файле ~/.bashrc вида
+
+''alias yv='yt-dlp --config-location /home/mySettings/myScripts/youtube-dl/youtube-dl_video_config'''
+''alias ya='yt-dlp --config-location /home/mySettings/myScripts/youtube-dl//youtube-dl_audio_config'''
+
+и скачивать видео так
+
+''yv https://www.youtube.com/watch?v=V-J6hep_y4o''
+
