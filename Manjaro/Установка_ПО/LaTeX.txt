@@ -216,11 +216,9 @@ http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/
 
 Создать файл профиля для установки LaTeX
 
-''touch ~/.LaTeX_Settings/installation.profile''
+''mcedit ~/.LaTeX_Settings/installation.profile''
 
 В этот файл вписать текст, который указан МЕЖДУ "START" и "END":
-
-''mcedit ~/.LaTeX_Settings/installation.profile''
 
 Учесть два момента:
 
@@ -232,9 +230,9 @@ http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/
 ''TEXMFLOCAL /home/LaTeX/texmf-local''
 ''TEXMFSYSCONFIG /home/LaTeX/texmf-config''
 ''TEXMFSYSVAR /home/LaTeX/texmf-var''
-''TEXMFCONFIG /home/---yourUserHomeFolder---/.LaTeX_Settings/texmf-config''
-''TEXMFHOME /home/---yourUserHomeFolder---/.LaTeX_Settings/texmf''
-''TEXMFVAR /home/---yourUserHomeFolder---/.LaTeX_Settings/texmf-var''
+''TEXMFCONFIG /home/''__''---yourUserHomeFolder---''__''/.LaTeX_Settings/texmf-config''
+''TEXMFHOME /home/''__''---yourUserHomeFolder---''__''/.LaTeX_Settings/texmf''
+''TEXMFVAR /home/''__''---yourUserHomeFolder---''__''/.LaTeX_Settings/texmf-var''
 ''binary_x86_64-linux 1''
 ''instopt_adjustpath 0''
 ''instopt_adjustrepo 1''
@@ -312,7 +310,7 @@ http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/
 
 Посмотреть документ
 
-''evince sample2e.pdf''
+''okular sample2e.pdf''
 
 === Посмотреть значение каждой переменной LaTeX по-отдельности ===
 
@@ -446,13 +444,11 @@ exit
 
 ==== Размонтировать iso ====
 
-''sudo umount /tmp/latex_iso''
+''cd /tmp && sudo umount /tmp/latex_iso''
 
 ==== Удалить каталог /tmp_LaTeX_Installation ====
 
 вместе с iso-файлом
 
 ''rm -R ~/tmp_LaTeX_Installation''
-
-Установить Kile
 
