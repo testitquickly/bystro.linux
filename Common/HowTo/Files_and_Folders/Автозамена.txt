@@ -8,52 +8,15 @@ Creation-Date: 2023-08-12T05:37:28+03:00
 
 Легко сделать автозамену текста (и управляющих символов вроде табуляции), если случай реально простой.
 
-1) Во всех .tex файлах в каталоге и дальше в подкаталогах заменить слово «peace» на слово «wing»: 
+Во всех .tex файлах в каталоге и дальше в подкаталогах заменить слово «peace» на слово «wing»: 
 
-''find -type f -name \*.tex -exec sed -i 's/zebra/horse/g' {} \;''
+''find -type f -name \*.tex -exec sed -i -r 's/peace/wing/g' {} \;''
 
-‘find‘ is attractive because it can limit the output to just files (directories would cause sed to throw errors), and you can also specify whether it should be recursive (the default), or you want to limit the depth.
-
-Here is the reverse replacement, but limited to just files in the immediate directory (not subfolders) ending with ‘.txt’.
-
-find . -maxdepth 1 -type f -name '*.txt' -exec sed -i 's/horse/zebra/g' {} \;
-
-''find -type f -name \*.tex -exec'' 
-''sed --in-place -- 's/peace/wing/g' *.tex''
-
-''{} \;''
-
-s: substitute
-g: Global
--i (--in-place) : realtime works with file inplace. When dealing with symlinks, it is good to add --follow-symlinks otherwise -i will turn symlink into a (edited) copy of the file. 
-
-
-find -type f -name \*.tex: Эта часть команды ищет все файлы с расширением .tex в текущем каталоге и всех подкаталогах. Опция -type f указывает, что искать нужно только файлы, а -name \*.tex — что файлы должны иметь расширение .tex. Обратите внимание на экранирование символа * с помощью обратного слэша \, чтобы избежать его интерпретации оболочкой.
-
--exec sed -i -e 's/,/,~/g; s/./.~/g; s/!/!~/g; s/?/?~/g' {} \;: Для каждого найденного файла выполняется команда sed, которая делает следующие замены:
-
-	s/,/,~/g: Заменяет каждую запятую , на запятую с тильдой ,~.
-	s/./.~/g: Заменяет каждую точку . на точку с тильдой .~. (Эта замена может повлиять на другие символы, кроме точки, поскольку . является специальным символом в регулярных выражениях, обозначающим любой символ. Если вы хотите заменить только точку, следует экранировать её как \..)
-	s/!/!~/g: Заменяет каждую восклицательный знак ! на восклицательный знак с тильдой !~.
-	s/?/?~/g: Заменяет каждый вопросительный знак ? на вопросительный знак с тильдой ?~.
-
-Опция -i указывает sed изменять файлы на месте, то есть выполнять замену непосредственно в файлах. Опция -e позволяет задать команду sed для выполнения. {} — это место, куда будет подставлен путь к каждому найденному файлу.
-
-Когда надо сделать несколько автозамен, надо написать команды замены последовательно:
-
-sed -e 's/a/b/g ; s/b/d/g' file
-
-''find -type f -name \*.tex -exec sed -i -e 's/peace/wing/g; s/window/door/g; s/car/boat/g' {} \;''
-
-Всегда лучше прописывать ключи полностью, чтобы в будущем не дергаться о том, что делает тот же ''-r''…
-
-''find -type f -name \*.tex -exec sed -i --regexp-extended 's/peace/wing/g' {} \;''
-
-2) Во всех .tex файлах в каталоге и дальше в подкаталогах заменить восемь пробелов на символ табуляции: 
+Во всех .tex файлах в каталоге и дальше в подкаталогах заменить восемь пробелов на символ табуляции: 
 
 ''find -type f -name \*.tex -exec sed -i -r 's/        /\t/g' {} \;''
 
-3) Показать все файлы, в которых есть слово «колыбелька»:
+Показать все файлы, в которых есть слово «колыбелька»:
 
 ''find . | xargs grep "колыбелька"''
 
@@ -62,14 +25,3 @@ sed -e 's/a/b/g ; s/b/d/g' file
 ''# sed -i -r 's/колыбелька/Устройство\ для\ качания\ младенцев/g' * ;''
 
 См. и другие [[https://linux-notes.org/poisk-i-zamena-slov-v-fajlah-linux/|примеры]].
-
-''find -type f -name \*.tex -exec sed --in-place --regexp-extended 's/,/,~/g' -e 's/./.~/g' -e 's/!/!~/g' -e 's/?/?~/g''' ''{} \;''
-
-https://linux-notes.org/poisk-i-zamena-slov-v-fajlah-linux/
-
-https://unix.stackexchange.com/questions/268640/make-multiple-edits-with-a-single-call-to-sed
-
-https://www.cyberciti.biz/faq/how-to-use-sed-to-find-and-replace-text-in-files-in-linux-unix-shell/
-
-https://unix.stackexchange.com/questions/97428/sed-how-to-do-several-consecutive-substitutions-but-process-file-only-once
-
