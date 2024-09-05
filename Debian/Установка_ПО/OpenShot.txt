@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-05T11:26:23+03:00
+
+====== OpenShot ======
+
+< @debian @openshot @install > 
+
+''sudo aptitude install openshot-qt''
+
+===== Установить через AppImage =====
+
+В AppImage всегда гораздо более новая версия OpenShot, чем в общем репозитории Debian (например, 3.2.1 против 2.6.1).
+
+* Скачать файл c https://www.openshot.org/download/
+* правой кнопкой мыши по нему > Properties > Права > чекнуть „Является выполняемым”,
+* даблклик по файлу > или же правкой кнопкой мыши > Execute (or Run).
+
+Возможно ещё понадобится 
+
+''sudo apt install libfuse2''
+
+См. [[Common:Software:OpenShot]]
