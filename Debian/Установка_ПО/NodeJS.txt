@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-21T10:08:38+02:00
+
+====== NodeJS ======
+
+< @debian @install @nodejs >
+
+===== Установить NodeJS =====
+
+''sudo apt update && sudo apt install nodejs npm''
+
+Проверить:
+
+''nodejs --version''
+
+Пример ожидаемого ответа:
+
+''v10.15.2''
+
+==== Installing Development Tools ====
+
+The development tools are necessary for compiling and installing native add-ons from the npm registry. Install the package by running:
+
+''sudo apt install build-essential''
+
+===== Uninstalling Node.js =====
+
+''sudo apt remove nodejs npm''
