@@ -16,6 +16,10 @@ Creation-Date: 2022-02-22T15:11:56+02:00
 
 [[+Профили в Firefox]]
 
+===== Настройки консоли =====
+
+https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html
+
 ===== Импорт существующего профиля из бэкапа =====
 
 Открыть страницу ''about:support''
