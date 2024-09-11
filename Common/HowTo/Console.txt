@@ -4,7 +4,7 @@ Creation-Date: 2022-04-18T22:05:28+03:00
 
 ====== Console ======
 
-[[+alias]]
+[[Как сделать alias]]
 [[+logout user]]
 [[+reboot компьютер]]
 [[+shutdown компьютер]]

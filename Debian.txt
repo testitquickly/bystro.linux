@@ -15,4 +15,4 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 ==== Quick links ====
 
 [[Common:Software]]
-[[Common:HowTo:Сделать symlink]]
+[[Common:HowTo:Как сделать symlink]]
