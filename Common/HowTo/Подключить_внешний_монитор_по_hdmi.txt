@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-05T04:39:54+02:00
 
-====== Подключить внешний монитор ======
+====== Подключить внешний монитор по hdmi ======
 
 < @hdmi @monitor @xrandr @debian >
 
