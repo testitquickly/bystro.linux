@@ -1,0 +1,76 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-14T00:00:59+03:00
+
+====== find ======
+
+< @search >
+
+Основная утилита для поиска файлов в консоли.
+
+''find abc.txt''
+
+Поиск в другой директории
+
+''find folder/abc.txt''
+
+	Если каталог «внизу», то перед его названием слэш не нужен.
+
+Поиск файлов по расширению
+
+''find *.txt''
+
+Поиск файлов по имени
+
+''find folder/ -name abc.txt''
+
+Поиск без учета регистра буква
+
+''find . -iname abc.txt''
+
+	Точка в запросе работает только для текущего каталога, и выводит найденные файлы в виде списка.
+
+Поиск файлов по их типу
+
+''find folder -type <тип файла>''
+
+	* b block (buffered) special
+	* c character (unbuffered) special
+	* d directory
+	* p named pipe
+	* f regular file
+	* l symbolic link
+
+	Поиск «обычных» файлов
+
+''find folder -type f''
+
+Поиск файлов с несколькими расширениями
+
+''find . -type f -empty''
+
+Поиск всех пустых каталогов
+
+''find . -type d -empty''
+
+Поиск файлов по размеру
+
+	* c: bytes
+	* k: Kilobytes
+	* M: Megabytes
+	* G: Gigabytes
+	* b: 512 bytes block
+
+''find . -size 50c''
+
+Поиск файлов размером больше 50 байт
+
+''find . -size +50c''
+
+	меньше 50 байт
+
+''find . -size -50c''
+
+Поиск файлов по их владельцу
+
+''find folder -user <username>''
