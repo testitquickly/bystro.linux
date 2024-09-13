@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-14T00:00:32+03:00
+
+====== Krusader ======
+
+< @debian @install @krusader >
+
+Сперва поставить всякие утилиты; среди них и KGet, затем уже сам krusader:
+
+''sudo aptitude install krename kdiff3 jlha-utils arj unace rar unrar kget locate krusader''
+
+См. [[Common:Software:Krusader]]
