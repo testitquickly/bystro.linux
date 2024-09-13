@@ -12,7 +12,7 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 
 C установочного диска Debian одной командой:
 
-''apt install aptitude mc zim xsensors curl krusader keepassxc onboard openssh-server openssh-client openvpn openconnect network-manager-openvpn vsftpd audacity calibre qbittorrent krename jlha-utils arj unace rar unrar rpm qmmp vlc smplayer kget kdiff3 locate''
+''apt install aptitude mc zim xsensors curl krusader keepassxc onboard openssh-server openssh-client openvpn openconnect network-manager-openvpn vsftpd audacity calibre qbittorrent krename jlha-utils arj unace rar unrar rpm qmmp vlc smplayer kget kdiff3 locate qalculate-gtk''
 
 ===== Настроить систему =====
 
