@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-14T19:52:49+03:00
+
+====== Recoll ======
+
+< @debian @install @recoll @gpg >
+
+Импортировать gpg-ключ:
+
+''cd /usr/share/keyrings/ && sudo wget https://www.lesbonscomptes.com/pages/lesbonscomptes.gpg''
+
+Скачать файл с указанием sources:
+
+''cd /etc/apt/sources.list.d/ && sudo wget https://www.recoll.org/pages/recoll-bookworm.list''
+
+Установить:
+
+''sudo apt-get update && sudo apt-get install recoll python3-recoll libposix-strptime-perl libencode-eucjpascii-perl libencode-hanextra-perl libpod2-base-perl libinotifytools0 untex wv''
+
+См. [[Common:Software:Recoll]]
