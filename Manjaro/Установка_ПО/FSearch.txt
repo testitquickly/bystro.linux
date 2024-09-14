@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-14T19:46:13+03:00
+
+====== FSearch ======
+
+< @manjaro @install @search >
+
+''yay -S fsearch''
+
+См. [[Common:Software:FSearch]]

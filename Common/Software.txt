@@ -20,7 +20,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+du (disk usage)]]
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
-[[+find]]
 [[+Firefox]]
 [[+Firewall]]
 [[+flatpak]]
@@ -41,7 +40,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Krusader]]
 [[+LaTeX]]
 [[+LibreOffice]]
-[[+locate]]
 [[+ls]]
 [[+microcode]]
 [[+Midnight Commander]]
@@ -82,3 +80,11 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Калькуляторы]]
 [[+Принтеры и Сканеры]]
 [[+Скриншотеры]]
+
+===== Поиск =====
+
+[[+Baloo]]
+[[+find]]
++FSearch
+[[+locate]]
+[[+Recoll]]
