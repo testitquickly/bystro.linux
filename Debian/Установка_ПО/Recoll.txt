@@ -16,6 +16,6 @@ Creation-Date: 2024-09-14T19:52:49+03:00
 
 Установить:
 
-''sudo apt-get update && sudo apt-get install recoll python3-recoll libposix-strptime-perl libencode-eucjpascii-perl libencode-hanextra-perl libpod2-base-perl libinotifytools0 untex wv''
+''sudo apt-get update && sudo apt-get install recoll python3-recoll libposix-strptime-perl libencode-eucjpascii-perl libencode-hanextra-perl libpod2-base-perl libinotifytools0 untex wv catdvi djvulibre-bin''
 
 См. [[Common:Software:Recoll]]
