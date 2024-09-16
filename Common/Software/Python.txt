@@ -147,6 +147,7 @@ __Не надо__ использовать стандартный ''make install
 ''sudo aptitude install python3-pip''
 
 Проверка:
+
 ''pip --version''
 
 Ожидаемый ответ: //pip 20.3.4 from /usr/lib/python3/dist-packages/pip (python 3.9)//
@@ -170,3 +171,8 @@ $ pyenv local 2.7.X
 $ pyenv global 3.5.X
 '''
 
+===== Установить idle3 =====
+
+Integrated Development Environment
+
+''sudo apt-get install idle3''
