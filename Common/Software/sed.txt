@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-16T22:13:51+03:00
+
+====== sed ======
+
+< @sed >
+
+sed — Stream Editor. 
+
+https://ru.linux-console.net/?p=16738
+
+https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html
+
+Используется для построчного редактирования файлов или входных данных из пайплайна.
+
+===== Вывод первых 5 строк из файла example.txt =====
+
+''sed -n 1,5p example.txt''
+
+===== Из файла abc.txt передать строки с 5 по 10 в файл xyz.txt =====
+
+-n — не выводить строки в консоль
+-p — выводить строки в консоль
+
+''sed -n 5,10p abc.txt > xyz.txt''
