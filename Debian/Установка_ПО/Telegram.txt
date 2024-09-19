@@ -76,14 +76,14 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 
 === Создать файл „Telegram.desktop” ===
 
-Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
+Это можно пропустить — по-умолчанию Telegram сам установит ссылку на себя в меню приложений Интернет. Но если хочется своё, то исполняемый файл надо положить  куда-нибудь, где его никто случайно не грохнет.
 
 ''mcedit ~/.local/share/applications/Telegram.desktop''
 
 Вставить в него такой набор букв:
 
-**[Desktop Entry]**
 '''
+[Desktop Entry]
 Encoding=UTF-8
 Name=Telegram
 Comment=from /opt
@@ -101,4 +101,4 @@ Categories=Network;
 
 ''chmod u+x ~/.local/share/applications/Telegram.desktop''
 
-Найти иконку нового приложения в меню > Интернет и пройти процедуру привязки нового устройства к аккаунту.
+Запустить, пройти процедуру привязки нового устройства к аккаунту.
