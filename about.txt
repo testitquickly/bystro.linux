@@ -2,11 +2,15 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-04-18T19:23:47+03:00
 
-===== Что такое «bystro.linux» =====
+===== Что это =====
 
 < @main @about >
 
-Это сборник инструкций для настройки KDE и сопутствующего ПО в Debian (или Manjaro). Он собран в [[https://github.com/zim-desktop-wiki/zim-desktop-wiki|Zim]] — фантастише мультиплатформед-десктоп-текст-редактор wiki-pages на основе plain-text файлов с markdown разметкой и экспортирован в html на https://testitquickly.com/bystro.linux/index.html Исходные файлы проекта находятся в https://github.com/testitquickly/bystro.linux 
+Это сборник инструкций для настройки рабочего стола KDE а также программного обеспечения в операционной системе Debian (иногда в Manjaro). 
+
+Это экспортированные страницы из [[https://github.com/zim-desktop-wiki/zim-desktop-wiki|Zim]] — по-моему, это лучший десктоп-редактор для wiki-pages, который основан на plain-text файлах с markdown разметкой.
+
+Исходные файлы проекта находятся в https://github.com/testitquickly/bystro.linux 
 
 Ещё есть https://github.com/testitquickly/bystro.linux.nas — аналогичный сборник инструкций для управления NAS на основе OMV.
 
@@ -40,8 +44,8 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 
 ==== Снять файлы ====
 
-1. Выкачать все файлы из https://github.com/testitquickly/bystro.linux/
-2. Открыть в Zim файл „notebook.zim”.
+1. скачать все файлы из https://github.com/testitquickly/bystro.linux/
+2. открыть в Zim файл „notebook.zim”.
 
 Также можно добавить новый блокнот во внутренний список блокнотов Zim:
 
