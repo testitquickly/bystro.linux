@@ -4,6 +4,8 @@ Creation-Date: 2022-02-24T02:25:16+02:00
 
 ====== Как восстановить grub2 ======
 
+< @console @update @grub >
+
 TODO grub2 — переписать внятно
 
 Mount the partition your Ubuntu Installation is on. If you are not sure which it is, launch GParted (included in the Live CD) and find out. It is usually a EXT4 Partition. Replace the XY with the drive letter, and partition number, for example: 
@@ -70,5 +72,3 @@ V) If you have more than one OS installed, re-detect OSes like so:
 
 	sudo update-grub
 
---------------------
-@console @update @grub 

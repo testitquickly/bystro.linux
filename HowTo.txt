@@ -1,8 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2023-10-01T18:22:58+03:00
-
-====== HowTo ======
-
-[[+Узнать свой внутренний IP]]
-[[Common:KDE settings:Оформление:Перезагрузить Plasma]]

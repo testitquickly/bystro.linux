@@ -4,6 +4,8 @@ Creation-Date: 2022-02-24T07:42:52+02:00
 
 ====== Как полностью удалить программу ======
 
+< @update @vlc >
+
 TODO Удаление ПО — переписать внятно
 
 на примере vlc
@@ -62,5 +64,3 @@ Because of complex dependency tree of vlc. autoremove only removes automatically
 
 However, if you keep firing sudo apt-get autoremove after that first line, apt-get should slowly start to realize that there's more to remove.
 
---------------------
-@update @vlc 

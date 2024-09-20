@@ -4,6 +4,10 @@ Creation-Date: 2022-12-17T03:47:56+02:00
 
 ====== UEFI ======
 
+< @debian @uefi >
+
+TODO Debian Uefi
+
 Поставить Debian на моноблок Lenovo “IdeaCentre AIO 3” (такой себе «монитор с ноутбуком внутри» производства 2022-го года) оказалось нетривиальной задачей. Там UEFI.
 
 UEFI — Unified Extensible Firmware Interface.
@@ -153,7 +157,7 @@ Startup
 ==== Отключить «сон компьютера» ====
 Не принципиально, но можно. Если уже выключать компьютер, то полностью:
 
-''Power ''
+''Power'' 
 ''> After Power Loss = Power Off''
 ''> Enchanced Power Saving Mode = Disabled''
 
