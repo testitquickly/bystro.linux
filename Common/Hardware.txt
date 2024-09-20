@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-20T21:33:10+03:00
+
+====== Hardware ======
+
+[[+Мышь]]
+[[+Роутер]]

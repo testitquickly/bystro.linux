@@ -7,3 +7,4 @@ Creation-Date: 2024-07-22T07:51:23+03:00
 [[+HowTo]]
 [[+KDE settings]]
 [[+Software]]
+[[+Hardware]]

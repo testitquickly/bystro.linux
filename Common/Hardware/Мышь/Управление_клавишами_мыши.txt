@@ -4,7 +4,7 @@ Creation-Date: 2023-12-20T08:57:22+02:00
 
 ====== Управление клавишами мыши ======
 
-< @debian @mouse @xbindkeys @xev @xdotool >
+< @debian @hardware @mouse @xbindkeys @xev @xdotool >
 
 У меня мышь с дополнительными клавишами. Хочу одну из них назначить на дабл-клик.
 
