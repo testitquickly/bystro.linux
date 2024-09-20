@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-08-09T03:55:49+03:00
+
+====== WiP ======
+
+LaTeX 
+* добавить пояснение про XeLaTeX
+* добавить пояснение про build file
+
+* HowTo:UEFI
+* HowTo:Как восстановить grub2
+* HowTo:Как полностью удалить программу
+* HowTo/Установить_софт_из_backport.txt
+* HowTo/Проблема_с_потерянными_файлами_на_диске.txt
+* Debian/Настройка_KDE/Common/hdd/Как_добавить_жесткий_диск_через_консоль.txt
+* Debian/Настройка_KDE/Common/hdd/Как_посмотреть_все_диски.txt
+* Debian/Настройка_KDE/Common/Устройства/Принтер-сканер_Samsung_SCX-4100.txt - удалил раздел "Device is busy" - разобраться, как это лечить
+* Debian/Настройка_KDE/Common/Users/Как_назначить_root_владельцем_каталога_(или_диска).txt
+* Debian/Настройка_KDE/Common/Терминал/Как_сделать_файл_исполняемым.txt
+* Manjaro/Быстрая_настройка/Кодировка_и_размер_шрифта_в_консоли.txt
+* Manjaro/Software/wine.txt
+* Software/Samba/Тонкие_настройки.txt
+* Software/vmware.txt
+
+
+
+
+
+
+
+
+
