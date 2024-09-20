@@ -4,7 +4,7 @@ Creation-Date: 2023-12-04T22:25:57+02:00
 
 ====== vsfptd ======
 
-< @debian @install @console @ftp >
+< @debian @install @console @ftp @vsftpd >
 
 Обновить систему
 

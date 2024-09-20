@@ -4,7 +4,7 @@ Creation-Date: 2022-03-27T05:10:17+03:00
 
 ====== ftp ======
 
-< @debian @console @ftp @lftp @ncftp >
+< @debian @console @ftp @lftp @ncftp @vsftpd >
 
 На всякий случай надо знать: File Transfer Protocol (FTP) был придуман в начале 1970х и безопасность там до сих пор условная, логин и пароль возможны, но передаются в открытом виде. Есть разработка SSH File Transfer Protocol (SFTP), но это создаётся и настраиватся при создании ftp-сервера, поэтому оно sftp есть, но не везде.
 

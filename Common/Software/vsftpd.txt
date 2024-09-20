@@ -4,7 +4,7 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ====== vsftpd ======
 
-< @debian @settings @ftp >
+< @debian @settings @ftp @vsftpd >
 
 В линуксах есть много ftp-серверов ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
 

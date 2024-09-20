@@ -4,7 +4,7 @@ Creation-Date: 2023-12-04T22:24:16+02:00
 
 ====== vsftpd ======
 
-< @manjaro @install @console @ftp >
+< @manjaro @install @console @ftp @vsftpd >
 
 Обновить систему
 
