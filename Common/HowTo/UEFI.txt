@@ -6,7 +6,7 @@ Creation-Date: 2022-12-17T03:47:56+02:00
 
 < @debian @uefi >
 
-TODO Debian Uefi
+	#todo Debian Uefi
 
 Поставить Debian на моноблок Lenovo “IdeaCentre AIO 3” (такой себе «монитор с ноутбуком внутри» производства 2022-го года) оказалось нетривиальной задачей. Там UEFI.
 

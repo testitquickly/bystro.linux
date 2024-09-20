@@ -4,7 +4,7 @@ Creation-Date: 2023-09-25T11:05:11+03:00
 
 ====== tar ======
 
-TODO объяснить себе суть и способы работы с архивами tar
+	todo !! объяснить  суть и способы работы с архивами tar
 https://linuxize.com/post/how-to-extract-unzip-tar-gz-file/
 
 	1. https://linux.die.net/man/1/ncftp

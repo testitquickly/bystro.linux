@@ -21,4 +21,4 @@ Creation-Date: 2023-10-09T22:39:06+03:00
 
 ===== HP LaserJet Tank MFP 2602dn =====
 
-TODO принтер HP - общие настройки
+	#todo принтер HP - общие настройки

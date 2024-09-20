@@ -15,10 +15,10 @@ notebook_layout=files
 
 [TaskListPlugin]
 all_checkboxes=True
-labels=FIXME, TODO
+labels=FIXME, TODO, #todo, $todo, todo
 waiting_labels=Waiting, Planned
 nonactionable_tags=
-integrate_with_journal=start
+integrate_with_journal=due
 included_subtrees=
 excluded_subtrees=
 show_pages=True

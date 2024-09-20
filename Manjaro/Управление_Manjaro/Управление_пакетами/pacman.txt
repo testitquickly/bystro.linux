@@ -12,7 +12,7 @@ Creation-Date: 2023-11-08T00:35:52+02:00
 
 ===== Настройка pacman =====
 
-TODO Настройка pacman
+	#todo Настройка pacman
 
 https://habr.com/ru/articles/813829/
 

@@ -192,13 +192,13 @@ Apache ищет в /var/www/html/ файлы вроде index.html или index.
 
 Не факт, что пакет phpmyadmin есть в Stable Debian. Его можно найти в сети через wget.
 
-''wget -P phpMyAdminInstaller ''[[https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz|''https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz'']]
+''wget -P phpMyAdminInstaller'' [[https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz|''https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz'']]
 
 В текущем каталоге будет создан подкаталог «phpMyAdminInstaller»:
 
 Также скачать phpMyAdmin GPG Key
 
-''wget -P phpMyAdminInstaller ''[[https://files.phpmyadmin.net/phpmyadmin.keyring|''https://files.phpmyadmin.net/phpmyadmin.keyring'']]
+''wget -P phpMyAdminInstaller'' [[https://files.phpmyadmin.net/phpmyadmin.keyring|''https://files.phpmyadmin.net/phpmyadmin.keyring'']]
 
 ==== Импортировать ключи phpmyadmin ====
 	
@@ -212,7 +212,7 @@ Apache ищет в /var/www/html/ файлы вроде index.html или index.
 
 Скачать .asc file для phpMyAdmin:
 
-''wget -P ''[[https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz.asc|''https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz.asc'']]
+''wget -P'' [[https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz.asc|''https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz.asc'']]
 
 Проверить .asc file:
 
@@ -242,7 +242,7 @@ Apache ищет в /var/www/html/ файлы вроде index.html или index.
 
 Найти строку:
 
-''$cfg['blowfish_secret'] = '';''
+''$cfg['blowfish_secret'] ='' ;''
 
 Придумать YOUR_SECRET_PASSPHRASE (записать этот пароль в блокнот) и прописать её в предложенную строку:
 
@@ -418,7 +418,7 @@ Module mod_rewrite is a very powerful and sophisticated module which provides a 
 
 ===== Отключение и переименовывание сайта =====
 
-TODO apache — уточнить инструкцию отключение или переименовывания сайта
+	#todo apache — уточнить инструкцию отключение или переименовывания сайта
 
 Если надо "отключить сайт" — использовать команду ''a2dissite НАЗВАНИЕ_ФАЙЛА.conf'':
 
