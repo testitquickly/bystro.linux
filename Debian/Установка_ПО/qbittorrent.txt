@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-20T02:35:41+03:00
+
+====== qbittorrent ======
+
+< @debian @install @qbittorrent >
+
+''sudo aptitude install qbittorrent''
+
+===== flatpak =====
+
+Если что-то не так (бывают баги), ~~можно~~ обязательно нужно удалить дебиановскую софтину и поставить официальный AppImage https://www.qbittorrent.org/download.php или flatpak
+
+''flatpak install flathub org.qbittorrent.qBittorrent''
+
+Как правило, в контейнерах версия ПО выше, чем в репозиториях Debian.
+
+См. [[Common:Software:QBittorrent]]

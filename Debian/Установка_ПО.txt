@@ -36,6 +36,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+pgAdmin]]
 [[+Playwright]]
 [[+Postman]]
+[[+qbittorrent]]
 [[+Recoll]]
 [[+Slack]]
 [[+SmartGit]]

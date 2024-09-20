@@ -6,15 +6,9 @@ Creation-Date: 2022-11-17T22:28:28+02:00
 
 < @debian @qbittorrent @flatpak >
 
-Для Debian
+===== Установка =====
 
-''sudo aptitude install qbittorrent''
-
-Если что-то не так (бывают баги), ~~можно~~ обязательно нужно удалить дебиановскую софтину и поставить официальный AppImage https://www.qbittorrent.org/download.php или flatpak
-
-''flatpak install flathub org.qbittorrent.qBittorrent''
-
-Как правило, в контейнерах версия ПО выше, чем в репозиториях Debian.
+[[Debian:Установка ПО:qbittorrent]]
 
 ===== Важная настройка =====
 
