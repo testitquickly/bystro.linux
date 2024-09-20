@@ -4,7 +4,7 @@ Creation-Date: 2022-04-09T22:57:06+03:00
 
 ====== Настройка шорткатов для управления громкостью ======
 
-< @keyboard @sound @virtualDesktops >
+< @keyboard @sound @virtual_desktops >
 
 Переключиться на английский язык.
 
