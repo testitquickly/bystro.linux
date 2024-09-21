@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:17:45+02:00
 
 ====== Искать дубликаты изображений ======
 
-< @console @images >
+< @console @findimages >
 
 http://manpages.ubuntu.com/manpages/trusty/man1/findimagedupes.1p.html
 

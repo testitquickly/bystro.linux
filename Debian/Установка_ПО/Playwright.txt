@@ -10,10 +10,12 @@ Creation-Date: 2024-09-05T15:21:05+03:00
 
 Тут надо решить, как он будет использовать — или Playwright как есть, и дальше разруливаться в файлах самостоятельно (через тот же [[Common:Software:Sublime]]), или проекты будут управляться через определенную IDE — например, „Aqua” от jetBrains.
 
-https://www.jetbrains.com/aqua/download/#section=linux
-файл tar.gz
-tar -xvf archive.tar.gz
-есть snap — 
+https://www.jetbrains.com/aqua/download/#section=linux — там файл tar.gz
+
+''tar -xvf archive.tar.gz''
+
+есть snap:
+
 ''sudo snap install jetbrains aqua --classic''
 
 Если через IDE, тогда надо сперва установить саму IDE, а Playwright установить из её консоли.

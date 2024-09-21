@@ -2,9 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-03-26T14:14:05+03:00
 
-====== backup and restore a PGP key ======
+====== Бэкап и восстановление ключа PGP ======
 
 < @gpg  @kgpg >
+
+	#todo PGP — перевод
 
 https://www.jwillikers.com/backup-and-restore-a-gpg-key
 

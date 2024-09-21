@@ -63,4 +63,3 @@ Creation-Date: 2022-12-27T10:35:47+02:00
 1. Простые настройки UFW — https://itsfoss.com/ufw-ubuntu/
 2. Продвинутые настройки UFW — https://itsfoss.com/set-up-firewall-gufw/
 3. Книга «Linux Firewalls» by Steve Suehring.
-

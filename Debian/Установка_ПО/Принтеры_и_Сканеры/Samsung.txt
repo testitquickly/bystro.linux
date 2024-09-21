@@ -8,7 +8,7 @@ Creation-Date: 2022-05-15T07:13:54+03:00
 
 Есть древний (2006-й) принтер/сканер Samsung „SCX-4100” (Monochrome Laser Printer). 
 
-{{../../../../images/сканер-samsung-scx-4100.png}}
+	{{../../../../images/scaner_samsung_scx_4100.png}}
 
 Найти для него драйвера под линукс на сайте самсунга невозможно. Но есть репозиторий с подходящими для этой ретротехники драйверами на https://www.bchemnet.com/suldr/ (имя автора неразборчиво). Он сделал сборку „Samsung Unified Linux Driver”: «//I simply repackage the drivers that Samsung (HP) provides for free, and am not involved in any way with development of them//».
 
@@ -31,10 +31,9 @@ sudo dpkg -i suldr-keyring_2_all.deb
 ''sudo mcedit /etc/apt/sources.list''
 
 Добавить туда строку 
-'''
-# драйвера для Samsung SCX-4100
-deb http://www.bchemnet.com/suldr/ debian extra
-'''
+
+''# драйвера для Samsung SCX-4100''
+''deb http://www.bchemnet.com/suldr/ debian extra''
 
 Очень важно (об этом предупреждает сам автор репозитория) ничего не менять в этой строке. Неважно, какая версия Debian на нашей стороне.
 
@@ -43,7 +42,9 @@ deb http://www.bchemnet.com/suldr/ debian extra
 Если никаких ошибок не будет — всё норм.
 
 		В теории это можно сделать одной строкой через
+
 		''sudo bash -c 'echo "deb'' [[http://www.bchemnet.com/suldr/|''http://www.bchemnet.com/suldr/'']] ''debian extra" >> /etc/apt/sources.list'''
+
 		но для этого в файле ''sources.list последняя строка должна быть пустой. Если нет, то новая строка будет дописана (вклеена, если угодно) к концу уже существующей последней строки. Будет бэмц на ровно месте.''
 
 ===== Установить драйвера принтера =====
@@ -55,9 +56,8 @@ deb http://www.bchemnet.com/suldr/ debian extra
   suld-driver-4.00.39 4.00.39-5
   suld-driver-3.00.65 3.00.65-5
   suld-driver-3.00.37 3.00.37-5
-Вы должны явно указать, какой именно вы хотите установить.
 
-Можно установить новейший (но это не обязательно):
+Надо явно указать, какой именно надо установить. Можно установить новейший (но это не обязательно):
 
 ''sudo apt-get install suld-driver-4.01.17''
 

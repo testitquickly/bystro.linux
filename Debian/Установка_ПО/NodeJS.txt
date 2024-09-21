@@ -8,7 +8,7 @@ Creation-Date: 2024-03-21T10:08:38+02:00
 
 ===== Установить NodeJS =====
 
-''sudo apt update && sudo apt install nodejs npm''
+''sudo apt update && sudo apt install nodejs npm build-essential''
 
 Проверить:
 
@@ -18,12 +18,8 @@ Creation-Date: 2024-03-21T10:08:38+02:00
 
 ''v10.15.2''
 
-==== Installing Development Tools ====
+‘build-essential‘ — это Development Tools, нужны для компиляции и установки дополнений из npm registry. 
 
-The development tools are necessary for compiling and installing native add-ons from the npm registry. Install the package by running:
-
-''sudo apt install build-essential''
-
-===== Uninstalling Node.js =====
+===== Удалить =====
 
 ''sudo apt remove nodejs npm''

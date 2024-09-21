@@ -28,7 +28,7 @@ chown astenix:sudo -R $ASSIGNED_FOLDER && chmod -R 750 $ASSIGNED_FOLDER && echo 
 exit
 '''
 
--- ОБЪЯСНЕНИЕ --
+===== Объяснение =====
 
 смена прав, -R рекурсивно, т.е. изменит и то, что внутри каталога astenix 
 

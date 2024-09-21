@@ -27,11 +27,9 @@ $ sudo -i
 
 ПОПРОЩЕ
 
-Download debian-archive-keyring (https://packages.debian.org/buster/all/debian-archive-keyring/download — is for „buster“; choose your Debian version if needed), and install it manually (as root):
+Скачать debian-archive-keyring — сперва выбрать свою версию Debian — https://packages.debian.org/buster/all/debian-archive-keyring/download и установить его из-под root:
 
-''dpkg -i debian-archive-keyring_2017.5~deb8u1_all.deb''
+''dpkg -i debian-archive-keyring_*.deb''
 
-This will restore the keys in /etc/apt/trusted.gpg.d and you should be able to run apt again.
+Это восстановит ключи в /etc/apt/trusted.gpg.d и можно будет снова запустить apt.
 
---------------------
-@gpg @update 

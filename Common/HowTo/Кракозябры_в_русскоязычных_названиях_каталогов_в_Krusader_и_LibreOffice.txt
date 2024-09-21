@@ -2,9 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:16:06+02:00
 
-====== Кракозябры в русских названиях каталогов в Krusader и LibreOffice ======
+====== Кракозябры в русскоязычных названиях каталогов в Krusader и LibreOffice ======
 
 < @fonts @LibreOffice @Krusader >
+
+	#todo Про кракозябры в русскоязычных названиях каталогов
 
 1
 If you hava a file ~/.config/plasma-locale-settings.sh, try deleting it and restarting the session

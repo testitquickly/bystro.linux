@@ -6,6 +6,8 @@ Creation-Date: 2023-10-22T23:04:31+03:00
 
 < @manjaro @install @apache @ab >
 
+Это Apache Benchmark Tool для нагрузочного тестирования сайтов.
+
 '''
 pacman -Sy
 pacman -S apache

@@ -4,18 +4,20 @@ Creation-Date: 2023-05-17T01:11:42+03:00
 
 ====== JACK (audio interface) ======
 
-< @jack @sound >
+< @jack @sound @изображения >
 
 Видео про настройку подключений Motu M2 через JACK
 https://www.youtube.com/watch?v=XcSRd4X_xPo&list=WL&index=4&t=238s
 
-[[Cadence]]
-Catia
-драм-машина «Hydrogen»
-MIDI-клавиатура «AKAI X2 mini»
-Что такое ALSA
-Что такое Pulse
-Что такое JACK
+	#todo JACK — добавить разделы
+
+* [[Cadence]]
+* Catia
+* драм-машина «Hydrogen»
+* MIDI-клавиатура «AKAI X2 mini»
+* Что такое ALSA
+* Что такое Pulse
+* Что такое JACK
 
 ===== Подключить MIDI-клавиатуру по USB =====
 
@@ -73,13 +75,13 @@ JACK Status > [Start]
 	    
 	Note - If you are having trouble getting JACK to run, or recognize your interface, make sure your interface is both connected up, and turned on before opening up your JACK manager. If you are still having issues, try rebooting your system while your interface is hooked up.
 
-Тут можно запустить Hydrogen.
+Тут можно запустить Hydrogen:
 
-{{../../../images/jack_settings_01.jpg}}
+	{{../../../images/jack_settings_01.jpg}}
 
 Соединить PulseAudio JACK Source с PulseAudio JACK Sink (аудиоканалы раздельные, поэтому front-left подключить к front-left и далее соответственно):
 
-{{../../../images/jack_settings_02.jpg}}
+	{{../../../images/jack_settings_02.jpg}}
 
 ===== Hydrogen — Настроить драйвер =====
 
@@ -109,7 +111,7 @@ JACK Status > [Start]
 	[Apply and restart output]
 	'''
 
-===== Назначение кнопок с миди-клавиатуры =====
+===== Назначение кнопок с миди-клавиатуры Akai =====
 
 Hydrogen 
 ''> Параметры'' 

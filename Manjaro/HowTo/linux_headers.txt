@@ -4,8 +4,7 @@ Creation-Date: 2023-08-17T07:11:47+03:00
 
 ====== linux headers ======
 
-@manjaro @headers 
---------------------
+< @manjaro @headers >
 
 ===== Выяснить текущие =====
 

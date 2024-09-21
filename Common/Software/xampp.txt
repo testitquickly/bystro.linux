@@ -4,7 +4,7 @@ Creation-Date: 2023-04-19T11:21:17+03:00
 
 ====== xampp ======
 
-< @xampp @LAMP @MariaDB @apache >
+< @xampp @lamp @maria_db @apache >
 
 ===== Установить =====
 
@@ -152,6 +152,3 @@ That's a special problem with some Linux systems. Please open your /opt/lampp/et
 	#EnableSendfile off
 
 Remove the # in both lines and restart your Apache. Your images should be back.
-
---------------------
-@xampp @LAMP @MariaDB @apache  

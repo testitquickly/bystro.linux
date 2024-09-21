@@ -6,4 +6,8 @@ Creation-Date: 2023-12-25T23:02:34+02:00
 
 < @debian @install @hdparm >
 
+Программа для настройки параметров жёсткого диска для повышения производительности. Отображает параметры приводов SATA/IDE в Linux. Многие новые (начиная с 2008 года) USB-устройства поддерживают интерфейс SAT (SCSI-ATA Command Translation) и потому могут также настраиваться утилитой hdparm. 
+
 ''sudo aptitude install hdparm''
+
+См. далее [[Common:HowTo:trim SSD]]

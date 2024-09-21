@@ -6,6 +6,8 @@ Creation-Date: 2024-07-03T00:10:24+03:00
 
 < @manjaro @install @exiftool >
 
+Это консольная утилита, которую можно использовать для редактирования метаданных файлов, в том числе и файлов ”pdf”. 
+
 '''
 sudo pacman -S perl-image-exiftool
 '''

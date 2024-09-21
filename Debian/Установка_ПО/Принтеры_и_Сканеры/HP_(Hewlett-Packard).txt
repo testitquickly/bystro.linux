@@ -12,7 +12,7 @@ Creation-Date: 2023-10-09T22:39:06+03:00
 
 Если это первая установка, то надо включить сервис через 
 
-	''sudo systemctl enable --now cups''
+''sudo systemctl enable --now cups''
 
 ===== Установка драйвера =====
 

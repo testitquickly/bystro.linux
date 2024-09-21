@@ -139,7 +139,6 @@ JavaOptions*
 
 http://rus-linux.net/MyLDP/BOOKS/spo_in_office/strukt/base.html
 
-
 1. Создать базу со списком книг
 
 Открыть тот же LibreOffice Writer,
@@ -149,6 +148,8 @@ CreateBibliographyDatabase-SelectDatabase*
 CreateBibliographyDatabase-SaveAndProceed*
 
 Выбрать место на жестком диске, где будет сохранен новый *.odb файл.
+
+	#todo LibreOffice — перевод
 
 CreateBibliographyDatabase-ChooseWhereToSave
 

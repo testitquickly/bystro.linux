@@ -4,7 +4,7 @@ Creation-Date: 2022-02-21T23:20:29+02:00
 
 ====== Настройка Wi-Fi ======
 
-< @debian @WiFi @Acer >
+< @debian @wi_fi @acer >
 
 Хорошо, если при настройке вайфай подхватился. Если нет — вот именно поэтому установку системы лучше делать «на проводе».
 
@@ -23,6 +23,7 @@ Creation-Date: 2022-02-21T23:20:29+02:00
 ==== Для ноута //Acer// ====
 
 Это ответ на //lspci//: 
+
 	02:00.0 Network controller: //Qualcomm Atheros// QCA6174 802.11ac Wireless Network Adapter (rev 32)
 
 Установить “firmware-atheros”.
@@ -34,6 +35,7 @@ Creation-Date: 2022-02-21T23:20:29+02:00
 ==== Для ноута //Lenovo// ====
 
 Это ответ на //lspci//: 
+
 	02:00.0 Network controller: //Realtek// Semiconductor Co., Ltd. RTL8822CE 802.11 ac PCIe Wireless Network Adapter
 
 Установить “firmware-realtek”.

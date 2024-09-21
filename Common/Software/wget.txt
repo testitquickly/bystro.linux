@@ -28,6 +28,7 @@ restrict_file_names = nocontrol
 --------------------
 
 Тогда закачка очень простая:
+
 ''wget -i your_list_here.urls''
 
 3
@@ -39,11 +40,9 @@ restrict_file_names = nocontrol
 
 Замену можно произвести автоматически, выполнив команды последовательно:
 
-'''
-$sed 's/http/wget -c --content-disposition http/g' filename.url > ex2download.sh
-$chmod +x ex2download.sh
-$ex2download.sh
-'''
+''sed 's/http/wget -c --content-disposition http/g' filename.url > ex2download.sh''
+''chmod +x ex2download.sh''
+''ex2download.sh''
 
 ===== Как скачать сайт целиком с помощью wget =====
 

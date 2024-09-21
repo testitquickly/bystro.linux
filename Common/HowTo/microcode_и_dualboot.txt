@@ -4,7 +4,7 @@ Creation-Date: 2022-03-14T23:48:53+02:00
 
 ====== microcode и dualboot ======
 
-< @windows10 @microcode @dualboot >
+< @debian @windows10 @microcode @dualboot >
 
 Debian отказался загружаться.
 

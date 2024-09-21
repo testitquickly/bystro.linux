@@ -113,6 +113,7 @@ ssh-add -l
 '''
 
 Пример ответа: 
+
 «''3072 SHA256:YyaZeTckxJHbwiuew98098yeikgjw7f/Sbdw+LJFejbfke user_email (RSA)»''
 
 в расширенном формате

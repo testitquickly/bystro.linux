@@ -6,6 +6,8 @@ Creation-Date: 2024-07-15T12:15:00+03:00
 
 < @manjaro @install @paprefs @sound @pulseaudio >
 
+Утилита «Pulse Audio Preferences». 
+
 ''sudo pacman -S paprefs''
 
 См. настройки [[Common:Software:paprefs]]

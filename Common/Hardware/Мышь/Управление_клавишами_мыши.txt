@@ -4,7 +4,7 @@ Creation-Date: 2023-12-20T08:57:22+02:00
 
 ====== Управление клавишами мыши ======
 
-< @debian @hardware @mouse @xbindkeys @xev @xdotool >
+< @debian @hardware @mouse @xbindkeys @xev @xdotool @изображения >
 
 У меня мышь с дополнительными клавишами. Хочу одну из них назначить на дабл-клик.
 
@@ -197,7 +197,7 @@ killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindk
 
 Вызов кнопки “c:133”  всегда сопровождается дополнительной командой''. На картинке видно, что сразу после вызова “c:133” отображается ещё одно сочетание клавиш — “Control + Super_L”.''
 
-{{~/Notebooks/images/xbindkeys_show.gif}}
+	{{../../../../images/mouse_xbindkeys_show.gif}}
 
 А “Super_L” это левая кнопка “Win”. И если нажать “Ctrl + Win” то откроется новое окно Konsole, как и прописано в файле.
 

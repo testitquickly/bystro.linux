@@ -8,15 +8,17 @@ Creation-Date: 2024-01-08T10:19:38+02:00
 
 ''sudo pacman -S obs-studio''
 
-Или через yay (AUR helper), только не через Pamac (стандартное Add/Remove Software).
+Или через yay (AUR helper), только НЕ через Pamac (стандартное Add/Remove Software), там будут глюки.
 
 	obs-studio-browser provides OBS Studio with:
 		VST 2 plugins, RIST protocol and AJA device support.
 		Browser module with the same CEF as official builds.
+
 	obs-studio-tytan652 provides OBS Studio with:
 		VST 2 plugins, RIST protocol and AJA device support.
 		Browser module with the same CEF as official builds.
 		Some quality of life patches and fixes.
+
 	obs-studio-rc provides OBS Studio latest version (including Beta and Release Candidates) with:
 		VST 2 plugins, RIST protocol and AJA device support.
 		Browser module with the same CEF as official builds.

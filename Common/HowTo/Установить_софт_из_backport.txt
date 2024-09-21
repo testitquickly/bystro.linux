@@ -4,6 +4,8 @@ Creation-Date: 2022-02-23T21:08:26+02:00
 
 ====== Установить софт из backport ======
 
+< @main @update >
+
 	#todo ПО из backport — переписать внятно
 
 Сперва убедись, что нужный тебе пакет есть в https://packages.debian.org/stretch-backports/
@@ -36,7 +38,4 @@ To guarantee a clean upgrade path from a previously stable distribution to the n
 
 You can use it exactly as the current backports distribution, just add another line to your sources.list and install new packages via apt -t wheezy-backports-sloppy install or apt -t jessie-backports install 
 
-Если не работает apt update
-
---------------------
-@main @update 
+Если не работает apt update…

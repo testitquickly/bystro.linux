@@ -4,7 +4,7 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 ====== pgAdmin ======
 
-< @debian @install @DB @postgreSQL @pgadmin >
+< @debian @install @data_base @postgre_sql @pg_admin >
 
 Инструмент для работы с PostgresSQL. 
 

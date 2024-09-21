@@ -4,7 +4,7 @@ Creation-Date: 2023-12-12T09:28:00+02:00
 
 ====== Equivs ======
 
-< @archive @equivs >
+< @archive @equivs @deprecated >
 
 ==== Список пакетов, которые устанавливаются с Kile ====
 

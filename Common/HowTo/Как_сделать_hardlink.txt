@@ -21,6 +21,7 @@ hardlink — аналог symlink (см. [[Как сделать symlink#объ�
 ''ls -l updeb''
 
 Ожидаем ответ такого вида:
+
 ''lrwxrwxrwx 1 [UserName] [UserGroup] 62 дек 15 03:21 updeb -> /home/mySettings/myScripts/debian/debian_update_and_upgrade.sh''
 
 Читается так: 

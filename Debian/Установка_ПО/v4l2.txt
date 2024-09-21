@@ -6,6 +6,8 @@ Creation-Date: 2024-01-08T10:30:33+02:00
 
 < @debian @install @video @webcam >
 
+Софт для работы с вебкамерами.
+
 ''sudo apt-get install v4l-utils ffmpeg''
 
 Настройки: [[Common:Software:v4l2]]

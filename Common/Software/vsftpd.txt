@@ -49,6 +49,7 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 Если запустить сервер с параметрами (например: ''vsftpd -olisten=NO /etc/vsftpd.conf -oftpd_banner=Hello''), то параметры из командной строки будут иметь приоритет над содержимым конфиг-файла /etc/vsftpd.conf
 
 Всегда можно запускать vsftpd с разными конфигами:
+
 * ''vsftpd /etc/vsftpd.conf.with.guests &''
 * ''vsftpd /etc/vsftpd.conf.without.guests &''
 * ''vsftpd /etc/vsftpd.conf.myPersonalUser &''
@@ -87,6 +88,7 @@ write_enable=YES
 ''write_enable=YES''
 
 В любом случае учесть, что:
+
 * в файле настроек **нельзя** вставлять отступ строк от левого края, сервис остановится с НЕПОНЯТНОЙ ошибкой,
 * между строками можно оставлять только один пустой абзац. Два пустых абзаца уже будут ошибкой и vsftpd остановится,
 * нельзя вставлять комментарии в конце строки с параметром, вроде ''listen_ipv6=NO # modified —'' сервис остановится с ошибкой,
@@ -141,6 +143,7 @@ user_sub_token=$USER
 Поэтому вот третий способ: вручную запускать ftp сервер при необходимости, и позже вручную же его полностью гасить (безопасности ради). 
 
 Рецепт для гашения автозапуска установленного vsftpd:
+
 1. ''sudo systemctl stop vsftpd && systemctl status vsftpd''
 2. ''sudo systemctl disable vsftpd.service && systemctl status vsftpd''
 3. ''reboot'' (или релогин)
@@ -160,9 +163,11 @@ user_sub_token=$USER
 === Что ещё можно проверить ===
 
 Глянуть список всех запущенных сервисов в системе:
+
 ''systemctl list-unit-files --type=service --state=enabled''
 
 Проверить, запущен ли vsftpd в системе:
+
 ''systemctl list-unit-files --type=service --state=enabled | grep vsftpd''
 
 Если не запущен, никаких сообщений об этом не выводится.

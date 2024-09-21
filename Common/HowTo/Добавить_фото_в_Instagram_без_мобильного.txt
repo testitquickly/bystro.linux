@@ -9,11 +9,13 @@ Creation-Date: 2022-02-22T15:32:44+02:00
 https://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/
 
 Firefox
+
 ''about:config''
 
 ''general.useragent.override'' (create, if needed - string)
 
 option content:
+
 	Mozilla/5.0 (Linux; Android 7.0; SM-G930T Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/58.0.3029.83 Mobile Safari/537.36 Instagram 10.24.0 Android (24/7.0; 480dpi; 1080x1920; samsung; SM-G930T; heroqltetmo; qcom; en_US)
 
 Заходим в instagram и видим кнопку добавления фотографий.

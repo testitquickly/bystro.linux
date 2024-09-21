@@ -6,7 +6,7 @@ Creation-Date: 2024-06-14T18:36:57+03:00
 
 < @debian @install @ntfs @windows >
 
-Как правило, утилита находится в составе Debian.
+Утилита для доступа к файловой системе NTFS (стандарт для Windows). Как правило, поставляется вместе с Debian.
 
 ''sudo aptitude install ntfs-3g''
 

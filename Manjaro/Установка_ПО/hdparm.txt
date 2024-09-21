@@ -6,4 +6,8 @@ Creation-Date: 2023-12-25T23:03:16+02:00
 
 < @manjaro @install @hdparm >
 
+Утилита для управления дисками.
+
 ''sudo pacman -S hdparm''
+
+См. [[Common:HowTo:trim SSD]]

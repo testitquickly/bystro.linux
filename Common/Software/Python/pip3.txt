@@ -4,7 +4,9 @@ Creation-Date: 2023-12-08T02:15:54+02:00
 
 ====== pip3 ======
 
-< @python >
+< @python @pip3 >
+
+	#todo Python pip — пересмотреть полностью
 
 При использовании команд установки вроде «''pip3 install somePackage»'' может возникнуть ошибка «''error: externally-managed-environment''».
 

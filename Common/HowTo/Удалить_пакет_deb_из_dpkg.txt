@@ -14,10 +14,15 @@ Creation-Date: 2022-02-22T15:31:18+02:00
 
 ''dpkg -l | grep digimend''
 
-Ответ: ii  digimend-dkms
+Ответ: 
+
+''ii  digimend-dkms''
 
 Дальше ориентируемся по этому полному имени, digimend-dkms.
-Параметр "ii" in the first column of the output - that means 'installed ok installed'.
+
+Параметр "ii" означает, что пакет установлен.
+
+	#todo dpkg — завершить перевод
 
 If you'd like to remove the package itself (without the configuration files), you'll have to run:
 

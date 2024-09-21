@@ -4,7 +4,7 @@ Creation-Date: 2024-01-08T07:08:47+02:00
 
 ====== Google Chrome ======
 
-< @debian @install @googleChrome >
+< @debian @install @google_chrome >
 
 ''sudo apt install software-properties-common apt-transport-https ca-certificates curl -y''
 

@@ -6,8 +6,6 @@ Creation-Date: 2022-04-06T02:18:53+03:00
 
 < @python @console >
 
-https://realpython.com/python-main-function/
-
 В современных дистрибутивах Python установлен по-умолчанию. Он приходит из общего репозитория и со временем обновляется. 
 
 Одновременно может быть установлено несколько версий. 
@@ -232,3 +230,9 @@ __Не надо__ использовать стандартный ''make install
 
 * ''python3 hello.py'' 
 * ''python3.8.9 hello.py''
+
+===== TMP =====
+
+	#todo Python глянуть линк
+	
+https://realpython.com/python-main-function/

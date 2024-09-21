@@ -6,6 +6,8 @@ Creation-Date: 2024-09-14T19:46:13+03:00
 
 < @manjaro @install @search >
 
+Продвинутый поиск по файлам.
+
 ''yay -S fsearch''
 
 См. [[Common:Software:FSearch]]

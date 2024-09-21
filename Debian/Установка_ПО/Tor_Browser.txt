@@ -12,7 +12,7 @@ https://www.torproject.org/download/ — для Linux распространяе
 
 ===== Установить =====
 
-Ставим в /opt
+Ставим в ''/opt''
 
 ===== Распаковать архив =====
 
@@ -48,18 +48,16 @@ sudo chown -R astenix:sudo /opt/tor-browser && sudo chmod 750 /opt/tor-browser
 
 Вставить в него условно такой набор букв:
 
-'''
-[Desktop Entry]
-Encoding=UTF-8
-Name=Tor Firefox
-Comment=from /opt
-Type=Application
-Terminal=false
-Exec=/opt/tor-browser/Browser/start-tor-browser
-Icon=/home/mySettings/icons/firefox.png
-StartupNotify=true
-Categories=Network;WebBrowser;
-'''
+''[Desktop Entry]''
+''Encoding=UTF-8''
+''Name=Tor Firefox''
+''Comment=from /opt''
+''Type=Application''
+''Terminal=false''
+''Exec=/opt/tor-browser/Browser/start-tor-browser''
+''Icon=/home/mySettings/icons/firefox.png''
+''StartupNotify=true''
+''Categories=Network;WebBrowser;''
 
 [F2] [Esc] [Esc]
 
@@ -77,10 +75,7 @@ Categories=Network;WebBrowser;
 
 Сперва удалить существующие файлы:
 
-'''
-# rm -rf /opt/firefox*
-# rm /usr/bin/firefox
-'''
+''rm -rf /opt/firefox* && rm /usr/bin/firefox''
 
 Затем устанавливать новое.
 
@@ -97,10 +92,10 @@ Categories=Network;WebBrowser;
 
 ===== Tor на Android =====
 
-	Download the Tor Browser app https://www.torproject.org/download/
-	Open Tor Browser
-	Click “Connect”
-	Once a connection is established, you should see an onion icon in your status bar
+1. Download the Tor Browser app https://www.torproject.org/download/
+2. Open Tor Browser
+3. Click “Connect”
+4. Once a connection is established, you should see an onion icon in your status bar
 
 ===== Настройка =====
 

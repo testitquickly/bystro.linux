@@ -26,8 +26,6 @@ Kile — один из текстовых редакторов для [[LaTeX]]
 Настройка
 ''> Show document viewer'' = убрать
 
-== ==== ==
-
 ==== Необязательно, но можно добавить симлинки на TeXовские утилиты из iso ====
 
 Или одной командой
@@ -59,8 +57,6 @@ sudo ln -s /home/LaTeX/bin/x86_64-linux/updmap
 В ’/home/LaTeX/bin/x86_64-linux/’ 479 утилит и не все они нужны. Важно сделать симлинки на основные, от которых зависит  работа Kile и xelatex. 
 
 В будущем, когда что-то «не захочет работать», можно будет добавить симлинк на соответствующую службу.
-
-== ====== ==
 
 Kile
 ''> Настройка''
@@ -217,8 +213,6 @@ Kile
 
 Продолжение установки [[Manjaro:Установка ПО:LaTeX]]. 
 
-== ===================== ==
-
 ===== Базовые настройки Kile =====
 
 Build 
@@ -371,6 +365,7 @@ QuickBuild = Alt+1
 
 --------------------
 
+	#todo Kile — перевод
 
 For now I could solve the issue where Kile can find the Tex Live 2020 binaries (manually installed) when it is run from graphical menu or launcher icon. I am listing the two solutions I found (links are provided below):
 

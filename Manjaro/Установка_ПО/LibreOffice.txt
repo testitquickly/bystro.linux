@@ -9,6 +9,7 @@ Creation-Date: 2023-08-06T15:54:45+03:00
 https://wiki.archlinux.org/title/LibreOffice
 
 Для Manjaro есть только две опции к установке:
+
 1. libreoffice-still
 2. libreoffice-fresh
 

@@ -12,19 +12,18 @@ Creation-Date: 2022-02-23T21:13:58+02:00
 
 Нет ничего проще, нужно сделать всего-то ничего:
 
-1)добавить в /etc/apt/sources.list ветку unstable:
+1. добавить в /etc/apt/sources.list ветку unstable:
 
 '''
 deb http://ftp.de.debian.org/debian testing main contrib non-free
 deb http://ftp.de.debian.org/debian unstable main contrib non-free
 '''
 
-
-2)чтобы не потянуть из unstable еще кучу зависимостей, прописать основной веткой testing в файл /etc/apt/apt.conf (скорее всего вам потребуется создать этот файл):
+2. чтобы не потянуть из unstable еще кучу зависимостей, прописать основной веткой testing в файл /etc/apt/apt.conf (скорее всего вам потребуется создать этот файл):
 
 ''APT::Default-Release "testing";''
 
-3)теперь все //почти// как обычно. Обновляем список пакетов, и ставим нужный пакет из нужной ветки:
+3. теперь все //почти// как обычно. Обновляем список пакетов, и ставим нужный пакет из нужной ветки:
 
 '''
 aptitude update

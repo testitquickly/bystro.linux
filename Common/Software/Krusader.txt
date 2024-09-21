@@ -12,7 +12,7 @@ Creation-Date: 2022-02-27T04:29:38+02:00
 
 ===== Файл с закладками =====
 
-Закладки Krusader хранятся в ''~/.local/share/krusader/krbookmarks.xml''
+Закладки Krusader хранятся в файле ''~/.local/share/krusader/krbookmarks.xml''
 
 Есть смысл этот файл регулярно бэкапить и использовать при переустановках.
 

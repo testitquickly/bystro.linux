@@ -42,7 +42,8 @@ Creation-Date: 2022-02-22T15:00:12+02:00
 
 ''echo | perl''
 
-	ДЕПРЕКЕТЕД
+DEPRECATED:
+
 ''sudo apt install kde-l10n-ru''
 
 ===== Добавить русский язык в настройки профиля =====

@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:18:02+02:00
 
 ====== KRunner ======
 
-< @KRunner @search @window >
+< @k_runner @search @window >
 
 ===== Настройка расположения окна =====
 

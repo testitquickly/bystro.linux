@@ -4,6 +4,8 @@ Creation-Date: 2024-04-29T16:52:14+03:00
 
 ====== педаль Vidami ======
 
+< @hardware @vidami @youtube >
+
 Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Online Videos for Faster Learning) — напольная педаль для музыкантов.
 
 В базе должна управлять проигрыванием видео с Youtube в бразуере. Делает это через расширение, которое доступно только в Google Chrome и Safari. В Firefox тоже работает безо всякого расширения, но только одна клавиша — «play/pause».
@@ -20,4 +22,4 @@ Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Onl
 
 В Audacity (да и в Okular) можно назначить эти символы на шорткаты для выполнения каких-то действий.
 
-Вернуться к [[Audacity]]
+Вернуться к [[Software:Audacity]]

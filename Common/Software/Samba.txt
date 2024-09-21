@@ -4,7 +4,7 @@ Creation-Date: 2023-01-07T18:00:27+02:00
 
 ====== Samba ======
 
-< @samba @WiFi >
+< @samba @wi_fi >
 
 ===== Теория =====
 
@@ -118,17 +118,17 @@ chmod 777 /media/smb/private
 
 Редактируем настройки и добавляем настройку для приватного каталога:
 
-[Папка для авторизированных пользователей]
-comment = Staff Folder
-path = /media/smb/private
-public = no
-writable = yes
-read only = no
-guest ok = no
-create mask = 0777
-directory mask = 0777
-force create mode = 0777
-force directory mode = 0777
+''[Папка для авторизированных пользователей]''
+''comment = Staff Folder''
+''path = /media/smb/private''
+''public = no''
+''writable = yes''
+''read only = no''
+''guest ok = no''
+''create mask = 0777''
+''directory mask = 0777''
+''force create mode = 0777''
+''force directory mode = 0777''
 
 где настройки похожи на те, что использовались выше, отметим различия:
 
@@ -201,7 +201,7 @@ smbclient -U shara 192.168.1.1\private
 
 ''sudo apt-get install kdenetwork-filesharing libsmbclient samba smbclient''
 
-Dolphin 
+''Dolphin'' 
 ''> правой кнопкой по каталогу «для расшары»''
 ''> Свойства''
 ''> Публикация''
@@ -210,7 +210,7 @@ Dolphin
 
 Перезагрузить ноут по запросу. 
 
-Dolphin 
+''Dolphin'' 
 ''> правой кнопкой по каталогу «для расшары»''
 ''> Свойства''
 ''> Публикация''

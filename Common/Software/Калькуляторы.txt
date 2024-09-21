@@ -4,7 +4,7 @@ Creation-Date: 2024-09-09T18:01:08+03:00
 
 ====== Калькуляторы ======
 
-< @calc > 
+< @console @qalculate @speed_crunch @kcalc @bc @casio >
 
 ===== Qalculate! =====
 
@@ -55,6 +55,36 @@ https://github.com/sanchahar/speedcrunch
 ''kcalc''
 
 Хорош в своей простоте, но не отображает последовательность вводимых чисел, отрабатывает одну операцию за раз. И иногда откровенно глючит — напрягает непредсказуемостью.
+
+===== bc =====
+
+Консольный «калькулятор». Точнее, программа для ускорения расчетов в консольном окружении, которую можно использовать в своих программах.
+
+	'bc' is an arbitrary precision calculator language that supports arbitrary precision numbers with interactive execution of statements. 
+
+	There are some similarities in the syntax to the C programming language. 
+
+	A standard math library is available by command line option. If requested, the math library is defined before processing any files. 
+
+	bc starts by processing code from all the files listed on the command line in the order listed. After all files have been processed, bc reads from the standard input. All code is executed as it is read. (If a file contains a command to halt the processor, bc will never read from the standard input.)
+
+Запуск: 
+
+''bc''
+
+Выход: 
+
+''quit''
+
+Позволяет выполнять расчеты на манер древних компьютеров с Basic, вроде 
+
+''2+2*2'' 
+
+= «6», а также 
+
+''sqrt (25)''
+
+= «5»
 
 ===== На столе =====
 

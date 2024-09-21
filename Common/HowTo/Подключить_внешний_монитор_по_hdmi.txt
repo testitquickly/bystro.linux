@@ -92,6 +92,7 @@ deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-fir
 ''sudo aptitude install nvidia-settings''
 
 **Подключить внешний монитор в ноут через дырку hdmi.** 
+
 И включить его в розетку…
 
 В некоторых случаях этого достаточно, монитор «оживает». Если нет — продолжить с настройками утилиты xrandr.

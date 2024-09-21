@@ -6,6 +6,8 @@ Creation-Date: 2023-03-26T14:10:28+03:00
 
 < @gpg  @kgpg >
 
+	#todo PGP passphrase — перевод
+
 https://medium.com/@fro_g/oh-no-i-forgot-my-pgp-private-keys-passphrase-6ec1d0228b48
 
 One step of this process meant setting up again my GPG keys to be used while signing my emails. Thus, I retrieve my private key from an offline medium I keep safe and check whether the corresponding generated public key matches the one I have broadcasted publicly. (like here in https://estebansastre.com/about)
@@ -14,7 +16,6 @@ One step of this process meant setting up again my GPG keys to be used while sig
 .ssh λ ssh-keygen -y -e -f secret-key.asc
 Enter passphrase:
 '''
-
 
 I try every single password combination I can think of and nothing. F*ck. So, what do I do now?
 
@@ -31,7 +32,6 @@ gpg: searching for "esteban.s.f0@gmail.com" from hkp server keys.gnupg.net
 		  4096 bit RSA key 1E117998, created: 2018-05-07, expires: 2023-05-06
 '''
 
-
 Taking a look at the first page of google of available keyservers, I see my key has been replicated into pretty much all of them.
 
 	https://pgp.key-server.io
@@ -47,7 +47,6 @@ Since I forgot my private key’s passphrase, it is safe to assume it is equival
 user: "Esteban <esteban.s.f0@gmail.com>"
 4096-bit RSA key, ID 1E117998, created 2018-05-07Enter passphrase:
 '''
-
 
 F*ck, again. So, I need to know my passphrase in order to create the revocation certificate in order to revoke the private key I had initially forgotten the passphrase to. What are the options I have left?
 
@@ -87,6 +86,5 @@ PGP is a very valuable tool to encrypt your communications, but it comes with th
 	1. Every time you generate a new key pair, automatically generate the revocation certificate with it just in case.
 	2. Always keep your private key & revocation certificate in a safe place.
 	3. Don’t forget your passphrase…
-	4. Use a password manager once and for all — 
-[[KeePassXC]]
+	4. Use a password manager once and for all — [[KeePassXC]]
 

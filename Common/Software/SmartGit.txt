@@ -74,14 +74,14 @@ Edit
 
 ==== Формат даты ====
 
-Edit 
+''Edit'' 
 ''> Preference''
 ''> User Interface''
 ''> Date Format = dd.MM.yyyy''
 
 ==== Размер шрифта в описании коммита ====
 
-Edit 
+''Edit'' 
 ''> Preference''
 ''> User Interface''
 ''> Built-in Text Editors''
@@ -126,7 +126,7 @@ Restart required.
 
 ==== Задать мастер-пароль ====
 
-Edit 
+''Edit'' 
 ''> Preference''
 ''> Commands''
 ''> Authentication''
@@ -145,9 +145,9 @@ Edit
 
 Но если эта проблема проявится, надо переключить его настройки на использование системного ssh-клиента:
 
-Edit
-> Preferences
-> Authentication
+''Edit''
+''> Preferences''
+''> Authentication''
 
 Поставить галочку на «Use system SSH client»
 

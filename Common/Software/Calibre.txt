@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-08-03T08:47:18+03:00
 
-====== calibre ======
+====== Calibre ======
 
 < @calibre @font >
 
@@ -32,7 +32,7 @@ https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created
 
 ''# Настройка отображения дат''
 
-''gui_pubdate_display_format = '''**''yyyy''**'''''
+''gui_pubdate_display_format ='' '**''yyyy''**'''''
 
 ''gui_timestamp_display_format = 'dd MMM yyyy'''
 
@@ -41,6 +41,8 @@ https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created
 Применить > Да, перезапустить Calibre
 
 ===== Creating User Defined Columns =====
+
+	#todo Calibre — завершить перевод
 
 To create a column, CTRL/CMD + P (This opens Preferences).  From the first row of icons, click on the button: Add your own columns.
 
@@ -134,7 +136,6 @@ SAVE  your plugboard.  You can test out what the plugboard will look like by cre
 
 custom column created from other columns
 
- 
 
 You’ll have to restart every time you add a new column, however, you can edit the formula (and tweak it to get it just right) without restarting Calibre by simply clicking in the new column you created.  When you restart, the column will be filled in (or populated) from the other metadata that is already in the database.
 

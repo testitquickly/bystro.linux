@@ -56,6 +56,7 @@ symlink — сокращение от „symbolic link”.
 ''ls -l debup''
 
 Ожидаем ответ такого вида:
+
 ''lrwxrwxrwx 1 [UserName] [UserGroup] 62 дек 15 03:21 debup -> /home/mySettings/myScripts/debian/debian_update_and_upgrade.sh''
 
 Читается так: 

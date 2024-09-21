@@ -133,8 +133,7 @@ sudo touch /usr/share/applications/firefox.desktop
 2. Проверить, что “automatic updates are enabled”.
 3. Закрыть браузер и проверить, что он запускается через ярлык из меню приложений (он должен появиться в раздел Интернет).
 
-Установить spellchecker для румынского (или любого другого нужного) языка:
-	https://addons.mozilla.org/ru/firefox/addon/romanian-spellchecking-diction/
+Установить spellchecker для румынского (или любого другого нужного) языка — https://addons.mozilla.org/ru/firefox/addon/romanian-spellchecking-diction/
 
 ===== Установить новую версию браузера =====
 
@@ -158,4 +157,4 @@ sudo touch /usr/share/applications/firefox.desktop
 
 Рекомендуется регулярно бэкапить содержимое ''/~/.mozilla/firefox/''
 
-[[Common:Software:Firefox]]
+См. настройки [[Common:Software:Firefox]]
