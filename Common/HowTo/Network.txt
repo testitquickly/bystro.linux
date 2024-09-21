@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2024-03-21T11:02:21+02:00
-
-====== Network ======
-
-[[+Узнать свой IP]]
