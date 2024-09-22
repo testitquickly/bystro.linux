@@ -29,6 +29,7 @@ sudo ./xampp-linux-x64-8.0.15-0-installer.run
 ===== Запустить =====
 
 Есть два файла: 
+
 	* /opt/lampp/xampp
 	* /opt/lampp/@lampp
 
