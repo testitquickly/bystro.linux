@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-04-20T10:46:24+03:00
 
-====== Пример поднятия сервиса (Moodle) ======
+====== Как поднять веб-сервис на localhost ======
 
 < @moodle @xampp @apache @maria_db @php_my_admin >
 
@@ -237,7 +237,7 @@ Unpack the 'phpMyAdmin' tar.gz files to the newly created directory:
 
 Locate the following line:
 
-''$cfg['blowfish_secret'] = '';''
+''$cfg['blowfish_secret'] ='' ;''
 
 Придумать себе YOUR_SECRET_PASSPHRASE (записать этот пароль в блокнот) и прописать её в предложенную строку:
 
@@ -562,11 +562,11 @@ http://localhost/moodle
 
 Найти строку:
 
-''$CFG->wwwroot = '''[[http://localhost/moodle|''http://localhost/moodle'']]'''''
+''$CFG->wwwroot ='' '[[http://localhost/moodle|''http://localhost/moodle'']]'''''
 	
 Переписать её так:
 
-''$CFG->wwwroot = '''[[http://moodle.yuh|''http://moodle.yuh'']]'''''
+''$CFG->wwwroot ='' '[[http://moodle.yuh|''http://moodle.yuh'']]'''''
 
 	Это очень неочевидная и поэтому подлая настройка.
 
@@ -640,7 +640,7 @@ https://tproger.ru/articles/set-up-and-configure-an-apache-server/
 
 ===== Перевод сайта на https =====
 
-''$CFG->wwwroot   = '''[[https://localhost|''https://localhost'']]''';''
+''$CFG->wwwroot   ='' '[[https://localhost|''https://localhost'']]''';''
 
 ===== Настройка SSL =====
 

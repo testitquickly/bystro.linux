@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-21T17:44:30+03:00
+
+====== Wordpress ======
+
+< @wordpress >
+
+[[+Как добавить JS-скрипт]]
