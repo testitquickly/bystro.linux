@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-22T23:45:05+03:00
+
+====== Плагины WordPress ======
+
+< @wordpress >
+
+1. Akismet Anit-spam
+2. Classic Editor
+3. Content Views
+4. Friends
+5. Jetpack
+6. NodeInfo
+7. [[+Noptin]]
+8. Seriously Simple Podcasting
+9. Seriously Simple Speakers
+10. Seriously Simple Stats
+11. Seriously Simple Transcripts
+12. Simple Custom CSS and JS
+13. Softaculous
+14. [[+Subscribe to Comments Reloaded (StCR)]]
+15. WordPress Popular Posts
+16. WP Fastest Cache
+17. [[+WP Mail SMTP]]
+18. WPForms Lite
+19. АктивнаяПубличность (ActivityPub)
+
+===== Неактивны =====
+
+1. Backuply
+2. Content Views (нужен?)
+3. GoSMTP (нужен?)
+4. Hum (Personal URL shortener for WordPress)
+5. Jetpack CRM
+6. WooCommerce
+

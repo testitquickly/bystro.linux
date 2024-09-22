@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-23T01:16:13+03:00
+
+====== Noptin ======
+
+< @wp @wp_plugins @mail >
+
+Почтовая рассылка при публикации новых записей. Нуждается в [[WP Mail SMTP]].
+
+''Settings'' 
+''> Emails'' 
+''> EMAILS PER HOUR = 399''
+
+''Settings'' 
+''> Integrations''
+
+Включить:
+* Comment Form
+* Registration Form
+
