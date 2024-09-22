@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-22T04:40:43+03:00
+
+====== Minder ======
+
+< @debian @install @minder >
+
+===== Flatpak =====
+
+https://flathub.org/apps/com.github.phase1geo.minder
+
+Рекомендуется. Там сейчас версия 1.16 — без багов из 1.14.
+
+===== Стандартная установка =====
+
+''sudo apt install minder''
+
+Не рекомендуется. Там сейчас версия 1.14.0, в ней баги (изображения в узлах не сохраняются; если у узла есть текстовое примечание — два клика по узлу и примечание удаляется). 
+
+См. [[Common:Software:Mind map:Minder]]
