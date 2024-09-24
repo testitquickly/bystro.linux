@@ -12,6 +12,8 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 В основе своей «Sublime Text» разочаровывающе примитивный и требуется время на его освоение и настройку, но — это и хорошо. Можно подключать к простой основе только те расширения (пакеты), которые действительно понадобятся. Unix way же.
 
+Sublime хорош тем, что может спокойно обрабатывать файлы неограниченной длины (и диаметра). Тот же Kate при открытии крупных текстовых файлов стопорится, предлагает открыть только небольшую часть файла…
+
 Самые удобные удобства в Sublime по-умолчанию:
 * переход в полноэкранный режим > F11
 * переход в режим distracted free > Shift+F11
@@ -68,12 +70,12 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 	2. [[https://packagecontrol.io/packages/AdvancedNewFile|AdvancedNewFile]]
 	3. [[https://packagecontrol.io/packages/AutoFileName|AutoFileName]]
 	4. [[https://packagecontrol.io/packages/SideBarEnhancements|SideBarEnhancements]] — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
-	5. [[https://packagecontrol.io/packages/All Autocomplete|All Autocomplete]] — autocomplete вообще
+	5. [[https://packagecontrol.io/packages/All%20Autocomplete|All Autocomplete]] — autocomplete вообще
 	6. [[https://packagecontrol.io/packages/BracketHighlighter|BracketHighlighter]]
 	7. [[https://packagecontrol.io/packages/DocBlockr|DocBlockr]]
 	8. [[https://packagecontrol.io/packages/Git|Git]] (некоторым заходит [[https://packagecontrol.io/packages/GitAutoCommit|GitAutoCommit]], мне он кажется излишним)
 	9. [[https://packagecontrol.io/packages/GitGutter|GitGutter]]
-	10. [[https://packagecontrol.io/packages/Markdown Extended|Markdown Extended]]
+	10. [[https://packagecontrol.io/packages/Markdown%20Extended|Markdown Extended]]
 	11. [[https://packagecontrol.io/packages/Anaconda|Anaconda]] — autocomplete для программистов
 	12. [[https://packagecontrol.io/packages/SublimeLinter|SublimeLinter]] — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
 	13. [[https://packagecontrol.io/packages/Emmet|Emmet]] — шаблоны для верстальщиков (front end)
@@ -272,5 +274,4 @@ Preferences
 
 ===== Python =====
 
-[[+Как сделать Python-проект в Sublime]]
-
+[[Python:Как сделать Python-проект в Sublime]]
