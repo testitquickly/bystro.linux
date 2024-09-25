@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-23T01:21:37+03:00
+
+====== Subscribe to Comments Reloaded (StCR) ======
+
+< @wp @wp_plugins @mail @comments >
+
+«Subscribe to Comments Reloaded». Подписка на комментарии и их рассылка.
+
