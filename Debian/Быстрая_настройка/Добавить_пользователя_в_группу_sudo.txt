@@ -52,4 +52,4 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 sudo chown astenix:sudo -R /home/
 '''
 
-//Next step//: [[Common:HowTo:Files and Folders:Настроить подтверждение удаления файла в консоли]]
+//Next step//: [[Common:HowTo:Файлы и Каталоги:Настроить подтверждение удаления файла в консоли]]
