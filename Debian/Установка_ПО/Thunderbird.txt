@@ -83,6 +83,8 @@ Categories=Network;WebBrowser;
 
 ''chmod u+x ~/.local/share/applications/thunderbird.desktop''
 
+Через какое-то время иконка Thunderbird появится в общем меню запуска программ > Интернет.
+
 ==== Запустить браузер из консоли ====
 
 Так можно сразу распознать вероятные проблемы. 
@@ -91,11 +93,7 @@ Categories=Network;WebBrowser;
 
 ''/opt/thunderbird/thunderbird -p''
 
-Добавить профили, запустить.
-
-===== Сделать ярлык для запуска =====
-
-''/opt/thunderbird/thunderbird %u''
+Добавить новый профиль, запустить, убедиться в том, что всё норм.
 
 ===== Настройки Thunderbird =====
 
