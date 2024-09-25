@@ -4,7 +4,7 @@ Creation-Date: 2024-09-21T00:50:25+03:00
 
 ====== Поменять местами Ctrl и левый Alt ======
 
-< @keyboard >
+< @keyboard @shortcuts >
 
 Это нужно для того, чтобы вместо Ctrl+S нажимать Alt+S. 
 
