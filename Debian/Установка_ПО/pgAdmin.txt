@@ -26,16 +26,16 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 ''sudo mcedit /etc/apt/sources.list.d/pgdg.list''
 
-Вставить в файл эту строку:
+Вставить в файл эту строку (внимание к названию дистрибутива!):
 
 ''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp]'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
 
 Сохранить и выйти.
 
-==== Установить postgreSQL service и phppgadmin ====
+==== Установить postgreSQL service ====
 
 '''
-sudo apt-get update && sudo apt-get install -y postgresql phppgadmin
+sudo apt-get update && sudo apt-get install -y postgresql
 '''
 
 		Параметр „-y” означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
@@ -89,7 +89,7 @@ sudo apt-get update && sudo apt-get install -y postgresql phppgadmin
 
 А надо, чтобы обслуживался порт ''5432'', иначе подключения к БД не будет. Есть разные ([[https://askubuntu.com/questions/50621/can-not-connect-to-postgresql-listening-on-port-5432|1]], [[https://stackoverflow.com/a/65212948|2]]) идеи о том, как это исправить.
 
-===== Установить апп pgAdmin =====
+===== Установить приложение pgAdmin =====
 
 ''sudo curl'' [[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''https://www.pgadmin.org/static/packages_pgadmin_org.pub'']] ''| gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/''[[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''pgadmin4'']].gpg
 
