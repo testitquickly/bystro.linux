@@ -4,10 +4,10 @@ Creation-Date: 2024-04-18T20:33:46+03:00
 
 ====== zim ======
 
-< @manjaro @install @zim >
+[ @manjaro @install @zim ]
 
 ''sudo pacman -S zim''
 
 Можно поставить и через [[Common:Software:flatpak]] или [[Common:Software:snap]], но в нативной установке проще настроить внешнее оформление Zim (я подсел на тёмную тему).
 
-Детальные настройки см. в [[Common:Software:Zim]]
+См. [[Common:Software:Zim]]

@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:32:44+02:00
 
 ====== Как добавить фото в Instagram из браузера ======
 
-< @firefox @instagram >
+[ @firefox @instagram ]
 
 https://www.howtogeek.com/113439/how-to-change-your-browsers-user-agent-without-installing-any-extensions/
 

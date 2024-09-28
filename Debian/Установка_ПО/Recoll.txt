@@ -4,7 +4,7 @@ Creation-Date: 2024-09-14T19:52:49+03:00
 
 ====== Recoll ======
 
-< @debian @install @recoll @gpg >
+[ @debian @install @recoll @gpg ]
 
 Импортировать gpg-ключ:
 

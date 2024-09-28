@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:05:09+02:00
 
 ====== Mount AND umount iso files ======
 
-< @console @iso >
+[ @console @iso ]
 
 Обычно образы монтируют в подкаталогах ''/mnt/''. Права в тех краях только у root или у пользователей из группы sudo.
 

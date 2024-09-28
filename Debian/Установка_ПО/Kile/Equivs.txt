@@ -4,7 +4,7 @@ Creation-Date: 2023-12-12T09:28:00+02:00
 
 ====== Equivs ======
 
-< @archive @equivs @deprecated >
+[ @debian @archive @equivs @deprecated ]
 
 ==== Список пакетов, которые устанавливаются с Kile ====
 
@@ -48,7 +48,7 @@ Creation-Date: 2023-12-12T09:28:00+02:00
 	2. скачать из сети уже готовый файл с перечнем пакетов, установку которых надо проэмулировать (название файла меняется в зависимости от версии LaTeX)
 	3. создать в equivs новый проект с названием 'texlive-local' (просто файл)
 
-''mkdir /tmp/installKileWithEquivs/ && cd /tmp/installKileWithEquivs/ && wget'' [[http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt|''http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt'']] ''-nd --directory-prefix=/tmp/installKileWithEquivs/ && equivs-control texlive-local && echo 'Done!'''
+''mkdir /tmp/installKileWithEquivs/ && cd /tmp/installKileWithEquivs/ && wget'' [[http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt|''http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt'']> ''-nd --directory-prefix=/tmp/installKileWithEquivs/ && equivs-control texlive-local && echo 'Done!'''
 
 ==== Отредактировать файл «debian-equivs-2019-ex.txt» ====
 

@@ -4,7 +4,7 @@ Creation-Date: 2024-05-29T11:32:51+03:00
 
 ====== Google Chrome ======
 
-< @debian @settings @google_chrome >
+[ @debian @settings @google_chrome ]
 
 Установка браузера — [[Debian:Установка ПО:Google Chrome]]
 

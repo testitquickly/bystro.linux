@@ -4,7 +4,7 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 
 ====== flatpak ======
 
-< @flatpak @console @viber >
+[ @flatpak @console @viber ]
 
 В Debian можно устанавливать приложения из общего репозитория (центра). Иногда надо/чешется установить софт, которого в репозиториях по ряду ОБОСНОВАННЫХ причин нет. Такой софт раздают/ставят в виде отдельных файлов DEB (или RPM).
 
@@ -44,7 +44,7 @@ sudo apt install flatpak
 
 Чтобы ставить ПО через flatpak из консоли
 
-''flatpak remote-add --if-not-exists flathub'' [[https://flathub.org/repo/flathub.flatpakrepo|''https://flathub.org/repo/flathub.flatpakrepo'']]
+''flatpak remote-add --if-not-exists flathub'' ''https://flathub.org/repo/flathub.flatpakrepo''
 
 ==== Обновление Flatpak ====
 
@@ -72,21 +72,21 @@ sudo apt install flatpak
 
 Пример с установкой сразу со стороны спотифая
 
-''flatpak install --from'' [[https://flathub.org/repo/appstream/com.spotify.Client.flatpakref|''https://flathub.org/repo/appstream/com.spotify.Client.flatpakref'']]
+''flatpak install --from'' ''https://flathub.org/repo/appstream/com.spotify.Client.flatpakref''
 
 Если идём по пути скачать .flatpakref на хдд, тогда все проще:
 
-''flatpak install <ApplicationID>.flatpakref''
+''flatpak install [ApplicationID].flatpakref''
 
 ==== Через другой репозиторий Flatpak ====
 
 Почти всегда всё ставят из flathub, но разработчик каждого софта волен поднять собственный репозиторий.
 
-''flatpak install <remoteServer> <ApplicationID>''
+''flatpak install [remoteServer> [ApplicationID]''
 
 ===== Запуск ПО из Flatpak =====
 
-''flatpak run <ApplicationID>''
+''flatpak run [ApplicationID]''
 
 Пример с клиентом для спотифая:
 
@@ -110,7 +110,7 @@ sudo apt install flatpak
 
 ===== Удаление Flatpak app =====
 
-''flatpak uninstall <ApplicationID>''
+''flatpak uninstall [ApplicationID]''
 
 ==== Удаление неиспользуемых флэтпэк-приложений ====
 
@@ -122,7 +122,7 @@ sudo apt install flatpak
 
 В меню программ правый клик по нужному ПО, глянуть путь вызова к файлу .desktop
 
-Обычно флатпаки находятся в ''~/.var/app'' и запускаются из [[/var/lib/flatpak/exports/share/applications|''/var/lib/flatpak/exports/share/applications'']]
+Обычно флатпаки находятся в ''~/.var/app'' и запускаются из ''/var/lib/flatpak/exports/share/applications''
 
 === Редактирование файла запуска ===
 

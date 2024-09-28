@@ -4,7 +4,7 @@ Creation-Date: 2022-02-24T02:44:14+02:00
 
 ====== trim SSD ======
 
-< @sdd @hdd @trim >
+[ @sdd @hdd @trim ]
 
 Наверняка система установлена на быстром SSD. 
 
@@ -91,7 +91,7 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 ==== Нужен ли TRIM для /tmp ====
 
-Да, если [[/tmp]] монтируется на отдельном разделе.
+Да, если [[/tmp]> монтируется на отдельном разделе.
 
 ==== Нужен ли TRIM для зашифрованных разделов ====
 
@@ -184,7 +184,7 @@ sdb           0        0B       0B         0
 # device; this may be used with UUID= as a more robust way to name devices
 # that works even if disks are added and removed. See fstab(5).
 #
-# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+# [file system> [mount point>   [type>  [options>       [dump>  [pass]
 # / was on /dev/sda5 during installation
 UUID=5cdc213b-a7c0-41c4-a66c-69f265db52a5 /               ext4    discard,noatime,errors=remount-ro 0       1
 # /home was on /dev/sdb7 during installation
@@ -196,7 +196,7 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 /dev/sr0        /media/cdrom0   udf,iso9660 user,noauto     0       0
 '''
 
-В частности, / у меня на ssd, а [[/home,]] [[/tmp]] и [[/swap]] – на hdd. Видно, что trim (через опцию "discard") уже включен и для корня, и для всех остальных разделов.
+В частности, / у меня на ssd, а /home, /tmp и /swap – на hdd. Видно, что trim (через опцию "discard") уже включен и для корня, и для всех остальных разделов.
 
 ===== Как включить trim в уже работающей системе =====
 
@@ -232,7 +232,7 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 
 ==== Что делать в случае сбоя при загрузке ====
 
-Хорошо, если система будет загружена в экспертный режим – там можно залогиниться только под root, открыть на редактирование [[/etc/fstab]] и вручную вернуть настройки для каждого раздела к исходному виду.
+Хорошо, если система будет загружена в экспертный режим – там можно залогиниться только под root, открыть на редактирование [[/etc/fstab]> и вручную вернуть настройки для каждого раздела к исходному виду.
 
 Ну или сразу заменить обновленный файл исходником
 

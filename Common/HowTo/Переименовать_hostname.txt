@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:15:25+02:00
 
 ====== Переименовать hostname ======
 
-< @console @hostname >
+[ @console @hostname ]
 
 Выйти в отдельную сессию (Ctrl+Alt+F2) и там под root:
 

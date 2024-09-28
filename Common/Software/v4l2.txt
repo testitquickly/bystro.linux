@@ -4,7 +4,7 @@ Creation-Date: 2024-01-08T10:06:14+02:00
 
 ====== v4l2 ======
 
-< @debian @video @webcam >
+[ @video @webcam ]
 
 ПО для управления вебкамерами.
 

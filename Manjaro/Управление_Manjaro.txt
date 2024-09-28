@@ -4,7 +4,7 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 
 ====== Управление Manjaro ======
 
-< @manjaro @management >
+[ @manjaro @management ]
 
 [[+Выбор ветки]]
 [[HowTo:Узнать версию Manjaro]]

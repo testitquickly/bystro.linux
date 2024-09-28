@@ -4,13 +4,13 @@ Creation-Date: 2024-01-03T11:06:13+02:00
 
 ====== Dropbox ======
 
-< @manjaro @install @dropbox >
+[ @manjaro @install @dropbox ]
 
 https://www.dropbox.com/install
 
 Установка Dropbox через командную строку
 
-''cd ~ && wget -O - "''[[https://www.dropbox.com/download?plat=lnx.x86_64|''https://www.dropbox.com/download?plat=lnx.x86_64'']]''" | tar xzf -''
+''cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -''
 
 После этого запустите демон Dropbox из вновь созданной папки .dropbox-dist.
 

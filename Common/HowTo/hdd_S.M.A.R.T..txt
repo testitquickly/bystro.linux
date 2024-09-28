@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T20:57:12+02:00
 
 ====== hdd S.M.A.R.T. ======
 
-< @hdd @smart >
+[ @hdd @smart ]
 
 ===== Узнать данные S.M.A.R.T. =====
 

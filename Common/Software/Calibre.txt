@@ -4,7 +4,7 @@ Creation-Date: 2022-08-03T08:47:18+03:00
 
 ====== Calibre ======
 
-< @calibre @font >
+[ @calibre @font ]
 
 ===== Основные настройки =====
 
@@ -14,7 +14,9 @@ https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created
 
 Надо будет перезапустить Calibre.
 
-Параметры > Расширенные > Твики (Preferences >Tweaks)
+''Параметры'' 
+''> Расширенные'' 
+''> Твики (Preferences ]Tweaks)''
 
 Найти «Настройка отображения дат»
 
@@ -42,7 +44,7 @@ https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created
 
 ===== Creating User Defined Columns =====
 
-	#todo Calibre — завершить перевод
+	#todo Calibre — перевод
 
 To create a column, CTRL/CMD + P (This opens Preferences).  From the first row of icons, click on the button: Add your own columns.
 
@@ -106,18 +108,18 @@ https://dearauthor.com/ebooks/dear-jane-ebooks/dear-jane-can-i-use-calibre-to-ma
 
 Plugboards are difficult for me to understand but one great feature is the ability to use a plugboard to insert the series name into a file when it is sent to your device.  That way your books can be sorted on your device, in order of their series appearance.  This is to get around the lame way that ebook readers allow you to sort your content.  Basically you are using the calibre template language to combine already existing fields into new fields.
 
-	{series}{series_index:0>2s| – | – }{title}:  Turner Brothers – 01 – Unveiled
+	{series}{series_index:0]2s| – | – }{title}:  Turner Brothers – 01 – Unveiled
 
 Let’s unpack this.  The field name inside the brackets {} correspond to the field lookup name.  In the above example, we have the following metadata:
 
 metadata example of author title series
 
-By using a plugboard, we are asking Calibre to change the title when it it sent to the device from “Unveiled” to  “Turner Brothers – 01 – Unveiled” which is the {series} + {series_index:0>2s| – | – } + {title}.
+By using a plugboard, we are asking Calibre to change the title when it it sent to the device from “Unveiled” to  “Turner Brothers – 01 – Unveiled” which is the {series} + {series_index:0]2s| – | – } + {title}.
 
 	series=Turner Brothers
-	series_index:0>2s| – | –
-		0>2s – two digits with leading zeros.  If you did 0>3s it would be three digits with leading zeros.  0<3s would result in a digit with three trailing zeros.
-		“| – | – ” places the dashes around the series. field:|prefix_text|suffix_text is the formula.  Here we have space pipe space as the prefix (or the text before the digit) and space pipe space as the suffix (the text after the digit).  If I changed it {series_index:0>2s|*|*} the result would be Turner Brothers*01*Unveiled.  Notice the lack of spaces.
+	series_index:0]2s| – | –
+		0]2s – two digits with leading zeros.  If you did 0]3s it would be three digits with leading zeros.  0[3s would result in a digit with three trailing zeros.
+		“| – | – ” places the dashes around the series. field:|prefix_text|suffix_text is the formula.  Here we have space pipe space as the prefix (or the text before the digit) and space pipe space as the suffix (the text after the digit).  If I changed it {series_index:0]2s|*|*} the result would be Turner Brothers*01*Unveiled.  Notice the lack of spaces.
 	title=Unveiled
 
 Putting this together, access Preferences and then select Plugboard:
@@ -127,8 +129,8 @@ plugboard preferences calibre
 Format: Here you choose which format you to apply the plugboard to.  Perhaps you have a Kindle and an iPad and want to use different plugboards for Mobi and ePub.
 
 	Device: Choose the device you want to apply the plugboard to.  I’ve selected “email” so that every time I email a file to myself, the title becomes title, series, series number.
-	Source template: This where you enter the fields:{title}{series_index:0>2s| [|] }{series}
-	Destination field: authors, author_sort, language, publisher, tags, title, title_sort.  Here I’ve chose Title. (Click on image for larger image).  I like to use a slightly different format:  {title}{series_index:0>2s| [|] }{series}
+	Source template: This where you enter the fields:{title}{series_index:0]2s| [|> }{series}
+	Destination field: authors, author_sort, language, publisher, tags, title, title_sort.  Here I’ve chose Title. (Click on image for larger image).  I like to use a slightly different format:  {title}{series_index:0]2s| [|> }{series}
 
 calibre plugboard email
 
@@ -145,7 +147,7 @@ And this is what it looks like on my iPhone:
 
 iPhone results after plugboard
 
-But, if you can only sort by Title or Author, then you want to start with the series.  Turner Brothers [01] – Unveiled.
+But, if you can only sort by Title or Author, then you want to start with the series.  Turner Brothers [01> – Unveiled.
 
 Series series number title
 
@@ -163,7 +165,7 @@ Whew.  Plugboards require a little concentration but it is a powerful harnessing
 
 Чтобы прижать текст влево:
 
-''Правой кнопкой мыши > Параметры > Стили''
+''Правой кнопкой мыши > Параметры > Стили''
 
 Вставить это:
 

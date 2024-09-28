@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T20:54:29+02:00
 
 ====== Как раскрасить терминал в цвета ======
 
-< @console >
+[ @console ]
 
 смотри http://rus-linux.net/nlib.php?name=/MyLDP/consol/color-ru.html
 

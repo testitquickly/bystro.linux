@@ -4,7 +4,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ====== Elgato “Stream Deck” ======
 
-< @manjaro @install @elgato @stream_deck @python @console >
+[ @manjaro @install @elgato @stream_deck @python @console @изображения ]
 
 Ноябрь 2023 — клавиатурка Stream Deck подключилась, ПО для неё работает, можно назначать команды на клавиши и иконки. Но нажатия на кнопки ни к чему не приводят, и при попытке настроить интенсивность свечения кнопок в консоли вываливаются ошибки записи инструкций в файлы Streamdeck. Я застрял, решение не найдено. 
 
@@ -14,7 +14,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 	#todo Elgato “Stream Deck” — поискать решение для установки в Manjaro
 
-===== [психологическая] Подготовка к установке =====
+===== [психологическая> Подготовка к установке =====
 
 Основной источник информации по установке и настройке https://timothycrosley.github.io/streamdeck-ui/
 
@@ -35,7 +35,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 		* Key Press or Write Text does not work on **Fedora** (outside of the streamdeck itself), which is not particularly useful. However, still do a lot with the Command feature.
 		* On **Ubuntu** the Key Press ctrl+alt+t doesn't work. However using the Command gnome-terminal achieves the same result.
 		* Version 1.0.2 lacks error handling when executing Command and Key Press actions. As a result, you have to be careful - an invalid command or key press makes everything else also stop working. The 1.0.3 release and above resolve this.
-		* If you're using **GNOME** shell, you might need to manually install an extension that adds [[https://extensions.gnome.org/extension/615/appindicator-support/|KStatusNotifierItem/AppIndicator]] Support to make the tray icon show up.
+		* If you're using **GNOME** shell, you might need to manually install an extension that adds [[https://extensions.gnome.org/extension/615/appindicator-support/|KStatusNotifierItem/AppIndicator]> Support to make the tray icon show up.
 
 По сравнению с приложением под виндой, приложение под линукс примитивнее:
 
@@ -53,7 +53,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Выяснить действующую графсистему:
 
-''loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'''
+''loginctl show-session $(awk '/tty/ {print $1}' [(loginctl)) -p Type | awk -F= '{print $2}'''
 
 ==== Питание железки ====
 
@@ -70,7 +70,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Проверить, что железка отключена.
 
-В системе должен быть установлен [[Common:Software:Python]] и его PIP.
+В системе должен быть установлен [[Common:Software:Python]> и его PIP.
 
 ==== Установить hidapi ====
 

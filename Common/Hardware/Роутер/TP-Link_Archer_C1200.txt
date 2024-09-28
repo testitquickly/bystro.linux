@@ -4,7 +4,7 @@ Creation-Date: 2024-09-20T21:34:00+03:00
 
 ====== TP-Link Archer C1200 ======
 
-< @hardware @wi_fi @tp_link >
+[ @hardware @wi_fi @tp_link ]
 
 ===== Настройка постоянных IP =====
 

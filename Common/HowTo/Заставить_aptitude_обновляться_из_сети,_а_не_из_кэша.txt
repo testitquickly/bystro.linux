@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:21:34+02:00
 
 ====== Заставить aptitude обновляться из сети, а не из кэша ======
 
-< @aptitude @update >
+[ @aptitude @update ]
 
 Под рутом зайти в ''/var/lib/apt/lists/'' и поудалять там ВСЕ файлы.
 

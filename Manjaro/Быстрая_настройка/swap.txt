@@ -4,11 +4,11 @@ Creation-Date: 2023-02-16T15:38:30+02:00
 
 ====== swap ======
 
-< @manjaro @swap @hibernate >
+[ @manjaro @swap @hibernate ]
 
 Несмотря на то, что нынче RAM такой огромный, что swap «уже не нужен» — swap нужен. Вопрос только в том, какого рода будет swap и на каком диске его расположить.
 
-	Тот же [[Common:Software:KRunner:Поиск файлов в KRunner]] без рабочего swap уложит систему надёжно и однозначно.
+	Тот же [[Common:Software:KRunner]] без рабочего swap уложит систему надёжно и однозначно.
 
 Прежде всего надо точно знать текущее состояние swap.
 
@@ -106,7 +106,7 @@ Hibernate нужен, если речь идёт о ноутбуке в поле
    ''sudo swap-offset /var/lib/swap/swapfile''
 ''resume offset = 317440''
 
-Записываем полученные данные в файл /etc/default/grub. Находим параметр GRUB_CMDLINE_LINUX_DEFAULT и добавляем к нему запись вида ’''resume=UUID=<UUID> resume_offset=<offset>''’. У меня это выглядит так:
+Записываем полученные данные в файл /etc/default/grub. Находим параметр GRUB_CMDLINE_LINUX_DEFAULT и добавляем к нему запись вида ’''resume=UUID=[UUID> resume_offset=[offset]''’. У меня это выглядит так:
 
 '''
 GRUB_CMDLINE_LINUX_DEFAULT="splash=silent mitigations=auto quiet resume=UUID=0c82216f-96ae-46e3-8f71-7cac7876880b resume_offset=317440"

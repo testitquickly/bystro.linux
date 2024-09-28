@@ -4,7 +4,7 @@ Creation-Date: 2024-02-26T19:38:08+02:00
 
 ====== Cadence ======
 
-< @debian @install @sound @cadence >
+[ @debian @install @sound @cadence ]
 
 https://ece451web.groups.et.byu.net/cadence-help/getstarted.html (множество картинок)
 
@@ -109,9 +109,9 @@ You should have untarred the NCSU CDK tarfile in the directory in which you want
 
 /usr/local/cadence/NCSU
 
-If you use HSPICE enter the following, or < return > to skip. Where is the HSPICE root directory?:
+If you use HSPICE enter the following, or [ return > to skip. Where is the HSPICE root directory?:
 
-< return >
+[ return ]
 
 A "local" directory already exists at "/usr/local/cadence/ic/tools.lnx86/dfII/local"
 This directory probably contains your site's customizations.

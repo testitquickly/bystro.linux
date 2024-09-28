@@ -4,7 +4,7 @@ Creation-Date: 2024-09-05T11:26:23+03:00
 
 ====== OpenShot ======
 
-< @debian @openshot @install > 
+[ @debian @openshot @install > 
 
 ''sudo aptitude install openshot-qt''
 
@@ -14,7 +14,7 @@ Creation-Date: 2024-09-05T11:26:23+03:00
 
 * Скачать файл c https://www.openshot.org/download/
 * правой кнопкой мыши по нему > Properties > Права > чекнуть „Является выполняемым”,
-* даблклик по файлу > или же правкой кнопкой мыши > Execute (or Run).
+* даблклик по файлу > или же правкой кнопкой мыши > Execute (or Run).
 
 Возможно ещё понадобится 
 

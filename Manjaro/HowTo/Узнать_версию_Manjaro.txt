@@ -4,7 +4,7 @@ Creation-Date: 2023-10-09T22:49:50+03:00
 
 ====== Узнать версию Manjaro ======
 
-< @manjaro @version >
+[ @manjaro @version ]
 
 ''cat /etc/lsb-release''
 

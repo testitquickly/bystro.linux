@@ -4,9 +4,9 @@ Creation-Date: 2023-03-26T14:10:28+03:00
 
 ====== Если забыл passphrase ======
 
-< @gpg  @kgpg >
+[ @gpg  @kgpg ]
 
-	#todo PGP passphrase — перевод
+	#todo PGP passphrase — перевод и символ ''λ''
 
 https://medium.com/@fro_g/oh-no-i-forgot-my-pgp-private-keys-passphrase-6ec1d0228b48
 
@@ -28,7 +28,7 @@ By default, the GPG application uploads them to keys.gnupg.net. This doesn't mea
 '''
 .ssh λ gpg --search-keys esteban.s.f0@gmail.com
 gpg: searching for "esteban.s.f0@gmail.com" from hkp server keys.gnupg.net
-(1)     Esteban <esteban.s.f0@gmail.com>
+(1)     Esteban [esteban.s.f0@gmail.com]
 		  4096 bit RSA key 1E117998, created: 2018-05-07, expires: 2023-05-06
 '''
 
@@ -43,8 +43,8 @@ Taking a look at the first page of google of available keyservers, I see my key 
 Since I forgot my private key’s passphrase, it is safe to assume it is equivalent to it being compromised and must no longer be taken into account for sending messages with the public key or verify any signature. The next step to take is generating a revocation certificate and upload it to the keyserver, then until it synchronizes and invalidates the other ones:
 
 '''
-.ssh λ gpg --output revocation-certificate.asc --gen-revoke 1E117998sec  4096R/1E117998 2018-05-07 Esteban <esteban.s.f0@gmail.com>(..etc..)You need a passphrase to unlock the secret key for
-user: "Esteban <esteban.s.f0@gmail.com>"
+.ssh λ gpg --output revocation-certificate.asc --gen-revoke 1E117998sec  4096R/1E117998 2018-05-07 Esteban [esteban.s.f0@gmail.com](..etc..)You need a passphrase to unlock the secret key for
+user: "Esteban [esteban.s.f0@gmail.com]"
 4096-bit RSA key, ID 1E117998, created 2018-05-07Enter passphrase:
 '''
 

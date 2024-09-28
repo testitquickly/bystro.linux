@@ -4,7 +4,7 @@ Creation-Date: 2023-12-25T22:27:32+02:00
 
 ====== Кодировка и размер шрифта в консоли ======
 
-< @manjaro @console @grub @fonts >
+[ @manjaro @console @grub @fonts ]
 
 Выйти в отдельную сессию (Ctrl+Alt+F1) и залогиниться под своим юзером.
 
@@ -55,6 +55,7 @@ Font size =
 в моем Acer 1920x1080 60.02 59,93 код vga надо поискать.
 
 VGA Resolution and Color Depth reference Chart:
+
 '''
 Depth 	800×600	 1024×768  1152×864	 1280×1024	 1600×1200
 8 bit	vga=771	 vga=773   vga=353	 vga=775	 vga=796

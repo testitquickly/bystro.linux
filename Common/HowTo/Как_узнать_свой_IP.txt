@@ -4,7 +4,7 @@ Creation-Date: 2022-10-09T21:48:25+03:00
 
 ====== Как узнать свой IP ======
 
-< @console @ip >
+[ @console @ip ]
 
 ===== Internal IP =====
 

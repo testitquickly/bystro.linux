@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T14:57:09+02:00
 
 ====== kate ======
 
-< @kate @fonts >
+[ @kate @fonts ]
 
 Лучший шрифт 
 * IBM Plex Mono Text

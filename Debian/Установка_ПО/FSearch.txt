@@ -4,7 +4,7 @@ Creation-Date: 2024-09-14T19:44:22+03:00
 
 ====== FSearch ======
 
-< @debian @install @search >
+[ @debian @install @search ]
 
 ''flatpak --version''    
 ''flatpak install flathub io.github.cboxdoerfer.FSearch''

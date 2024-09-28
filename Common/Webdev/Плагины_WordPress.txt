@@ -4,7 +4,7 @@ Creation-Date: 2024-09-22T23:45:05+03:00
 
 ====== Плагины WordPress ======
 
-< @wordpress >
+[ @wordpress ]
 
 1. Akismet Anit-spam
 2. Classic Editor
@@ -17,7 +17,7 @@ Creation-Date: 2024-09-22T23:45:05+03:00
 9. Seriously Simple Speakers
 10. Seriously Simple Stats
 11. Seriously Simple Transcripts
-12. Simple Custom CSS and JS
+12. [[+Simple Custom CSS and JS]]
 13. Softaculous
 14. [[+Subscribe to Comments Reloaded (StCR)]]
 15. WordPress Popular Posts

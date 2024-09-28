@@ -4,7 +4,7 @@ Creation-Date: 2022-10-31T22:15:43+02:00
 
 ====== vmware ======
 
-< @manjaro @install @vmware @console >
+[ @manjaro @install @vmware @console ]
 
 ===== Подготовка =====
 
@@ -17,10 +17,10 @@ Creation-Date: 2022-10-31T22:15:43+02:00
 
 	Возможно, будет необходимо сделать downgrade — [[Управление Manjaro:Обновить Manjaro:linux headers]]
 
-3. [[https://customerconnect.vmware.com/account-registration|завести]] аккаунт на сайте vmware
+3. https://customerconnect.vmware.com/account-registration — завести аккаунт на сайте vmware
 4. в аккаунте указать запрашиваемые данные о персонализации (без этого скачивания не будет)
 5. обзавестись действующим license key для соответствующей версии vmware
-6. [[https://customerconnect.vmware.com/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/16_0|скачать]] установочные файлы для Linux последней версии — файл типа ''*.bundle''
+6. https://customerconnect.vmware.com/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/16_0 — скачать установочные файлы для Linux последней версии — файл типа ''*.bundle''
 
 ===== Установка =====
 
@@ -43,8 +43,10 @@ Creation-Date: 2022-10-31T22:15:43+02:00
 
 ==== Запуск ====
 
-1. Из меню приложений Система > VMware Workstation
-2. из консоли: ''vmware''
+1. Из меню приложений Система > VMware Workstation
+2. из консоли: 
+
+''vmware''
 
 При первом запуске будут проверены linux headers и много чего доустановлено. Если на этом шаге не заработает — придётся самостоятельно траблшутить всё, что возможно. У меня не запустился vmware v.16, тогда как v.17 (the last one) поднялся без никаких замечаний.
 

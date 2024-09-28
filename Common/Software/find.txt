@@ -4,7 +4,7 @@ Creation-Date: 2024-09-14T00:00:59+03:00
 
 ====== find ======
 
-< @search >
+[ @search ]
 
 Основная утилита для поиска файлов в консоли.
 
@@ -32,7 +32,7 @@ Creation-Date: 2024-09-14T00:00:59+03:00
 
 ===== Поиск файлов по их типу =====
 
-''find folder -type <тип файла>''
+''find folder -type [тип файла]''
 
 	* b block (buffered) special
 	* c character (unbuffered) special
@@ -73,4 +73,4 @@ Creation-Date: 2024-09-14T00:00:59+03:00
 
 ===== Поиск файлов по их владельцу =====
 
-''find folder -user <username>''
+''find folder -user [username]''

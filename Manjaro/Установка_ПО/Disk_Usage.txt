@@ -4,7 +4,7 @@ Creation-Date: 2023-03-19T01:33:22+02:00
 
 ====== Disk Usage ======
 
-< @manjaro @install @disk >
+[ @manjaro @install @disk ]
 
 ''sudo pacman -S ncdu''
 

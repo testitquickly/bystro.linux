@@ -4,7 +4,7 @@ Creation-Date: 2022-12-17T03:47:56+02:00
 
 ====== UEFI ======
 
-< @debian @uefi >
+[ @debian @uefi ]
 
 	#todo Debian Uefi
 
@@ -118,8 +118,8 @@ Security
 
 '''
 Security
-> Secure Boot 
-> Secure Boot = Disabled
+> Secure Boot 
+> Secure Boot = Disabled
 '''
 
 ==== Перейти в User Mode ====
@@ -142,7 +142,7 @@ Security
 
 '''
 Security
-> Device Guard = Disabled
+> Device Guard = Disabled
 '''
 
 ==== Настроить Boot Order ====
@@ -151,7 +151,7 @@ Security
 
 '''
 Startup 
-> Boot Priority Order
+> Boot Priority Order
 '''
 
 Если там есть USB CDROM (или флэшка, не суть важно) и другие источники загрузки — по-умолчанию там есть „Network [UEFI: PXE IPv4 Realtek…“, которые уже были отключены — понажимать клавишу [+], чтобы эта строка поднялась на первое место. Иначе тут все ОК.
@@ -175,7 +175,7 @@ F10 > Yes, ждём загрузку рабочего меню Debian с DVD.
 
 ===== Разметить диск для установки системы =====
 
-В “Debian Installer” на шаге «Разметка дисков» выбрать «Выполнить установку в UEFI = <Да>».
+В “Debian Installer” на шаге «Разметка дисков» выбрать «Выполнить установку в UEFI = [Да]».
 
 Саму разметку дисков сделать вручную, особенно если их два. Сперва рекомендуется удалить с диска ВСЕ разделы, если таковые есть, особенно отдельный раздел на 1мб для BMR, и разметить всё с нуля.
 

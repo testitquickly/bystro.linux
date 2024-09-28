@@ -4,7 +4,7 @@ Creation-Date: 2024-03-21T10:08:38+02:00
 
 ====== NodeJS ======
 
-< @debian @install @nodejs >
+[ @debian @install @nodejs ]
 
 ===== Установить NodeJS =====
 

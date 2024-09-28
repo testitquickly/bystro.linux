@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T20:46:18+02:00
 
 ====== Как поменять MAC address для WiFi ======
 
-< @console @wi_fi >
+[ @console @wi_fi ]
 
 Будет установлен random адрес.
 

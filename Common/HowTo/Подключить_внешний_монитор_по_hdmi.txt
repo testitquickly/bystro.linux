@@ -4,7 +4,7 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 
 ====== Подключить внешний монитор по hdmi ======
 
-< @hdmi @monitor @xrandr @debian >
+[ @hdmi @monitor @xrandr @debian ]
 
 В моём ноутбуке занятная и когда-то дорогая игровая Nvidia «GeForce GTX 1050 Ti (Mobile)». С другими видеокартами надо искать другие решения.
 
@@ -44,8 +44,8 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 
 Добавить в строку для снятия main апдейтов добавить открытие бэкпорта. В норме обращаемся к „''deb.debian.org/debian/”, но адрес сервера может быть любым из наиболее подходящих'':
 
-	# main (plus backports for nvidia drivers)
-deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-firmware
+	''# main (plus backports for nvidia drivers)''
+''deb'' [[http://ftp.md.debian.org/debian/|''http://ftp.md.debian.org/debian/'']] ''bookworm main contrib non-free non-free-firmware''
 
 Сохранить изменения.
 
@@ -123,7 +123,7 @@ deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-fir
 Ожидаемый ответ:
 
 * 00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)
-* 01:00.0 VGA compatible controller: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile] (rev a1)
+* 01:00.0 VGA compatible controller: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile> (rev a1)
 
 Хорошо, система видит оба источника.
 
@@ -132,12 +132,12 @@ deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-fir
 	''lspci -k | grep -iEA5 'vga|3d|display'''
 
 	00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)
-	Subsystem: Acer Incorporated [ALI] HD Graphics 630
+	Subsystem: Acer Incorporated [ALI> HD Graphics 630
 	Kernel driver in use: i915
 	Kernel modules: i915
 	--
-	01:00.0 VGA compatible controller: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile] (rev a1)
-	Subsystem: Acer Incorporated [ALI] GP107M [GeForce GTX 1050 Ti Mobile]
+	01:00.0 VGA compatible controller: NVIDIA Corporation GP107M [GeForce GTX 1050 Ti Mobile> (rev a1)
+	Subsystem: Acer Incorporated [ALI> GP107M [GeForce GTX 1050 Ti Mobile]
 	Kernel driver in use: nvidia
 	Kernel modules: nvidia
 
@@ -225,8 +225,8 @@ deb http://ftp.md.debian.org/debian/ bookworm main contrib non-free non-free-fir
 Параметры системы 
 '''
 > Рабочая среда 
-> Запуск и завершение 
+> Запуск и завершение 
 > Автозапуск 
-> Add… 
+> Add… 
 > Add login script
 '''

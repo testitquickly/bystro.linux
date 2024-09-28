@@ -4,7 +4,7 @@ Creation-Date: 2024-09-05T15:21:05+03:00
 
 ====== Playwright ======
 
-< @debian @install @playwright >
+[ @debian @install @playwright ]
 
 ===== Установить Playwright =====
 
@@ -44,16 +44,21 @@ https://www.jetbrains.com/aqua/download/#section=linux — там файл tar.g
 ==== Другие возможности ====
 
 Starts the interactive UI mode
+
 ''npx playwright test --ui''
 
 Runs the tests only on Desktop Chrome
+
 ''npx playwright test --project=chromium''
 
 Runs the tests in a specific file
+
 ''npx playwright test example''
 
 Runs the tests in debug mode
+
 ''npx playwright test --debug''
 
 Auto generate tests with Codegen
+
 ''npx playwright codegen''

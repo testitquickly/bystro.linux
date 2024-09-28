@@ -4,13 +4,11 @@ Creation-Date: 2022-02-22T15:10:25+02:00
 
 ====== Добавить русский язык в систему ======
 
-< @keyboard @language @systemSettings >
+[ @keyboard @language @systemSettings ]
 
-Preferences 
-'''
-> Regional Settings 
-> Add languages
-'''
+''Preferences'' 
+''> Regional Settings'' 
+''> Add languages''
 
 Move 'russian' to the top.
 

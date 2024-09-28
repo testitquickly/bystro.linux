@@ -4,7 +4,7 @@ Creation-Date: 2023-01-07T01:19:45+02:00
 
 ====== Обновить Manjaro ======
 
-< @manjaro @update @pacman @yay >
+[ @manjaro @update @pacman @yay ]
 
 Будем обновлять по-серьезному, с обновлением внутренней базы данных всего ПО (в обычном режиме это излишне):
 
@@ -29,6 +29,7 @@ Creation-Date: 2023-01-07T01:19:45+02:00
 ==== Новый запрос gpg-ключей ====
 
 ''sudo pacman -S archlinux-keyring manjaro-keyring''
+
 ''sudo pacman-key --populate archlinux manjaro''
 
 ==== Не удалось удовлетворить зависимости ====
@@ -53,12 +54,14 @@ Creation-Date: 2023-01-07T01:19:45+02:00
 
 Пример ошибки
 
-''spdlog: signature from "Brett Cornwall <''[[brett@i--b.com|''brett@i--b.com'']]''>" is unknown trust''
+''spdlog: signature from "Brett Cornwall [''[[brett@i--b.com|''brett@i--b.com'']]'']" is unknown trust''
 
 Решение 1:
 
 ''sudo pacman-key --populate archlinux''
+
 ''sudo pacman -S archlinux-keyring''
+
 ''sudo pacman -Syyu && yay -Syu''
 
 Решение 2 (не применял):

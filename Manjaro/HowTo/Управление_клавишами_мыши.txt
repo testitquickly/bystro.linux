@@ -4,7 +4,7 @@ Creation-Date: 2023-05-31T16:21:08+03:00
 
 ====== Управление клавишами мыши ======
 
-< @manjaro @mouse @xbindkeys @xev @xdotool >
+[ @manjaro @mouse @xbindkeys @xev @xdotool ]
 
 У меня мышь с дополнительными клавишами. Хочу одну из них назначить на дабл-клик.
 

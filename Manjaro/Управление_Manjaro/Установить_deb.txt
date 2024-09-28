@@ -4,7 +4,7 @@ Creation-Date: 2023-02-17T22:56:04+02:00
 
 ====== Установить deb ======
 
-< @manjaro @debian @install @yay >
+[ @manjaro @debian @install @yay ]
 
 DEB — это формат установочных конфигураций пакетов для Debian. Но в отдельных случаях можно поставить deb-packagе в Arch, особенно если они называются идентично. 
 

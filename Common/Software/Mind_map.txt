@@ -4,6 +4,8 @@ Creation-Date: 2024-09-22T05:14:37+03:00
 
 ====== Mind map ======
 
+[ @mind_map ]
+
 [[+Minder]]
 
 GitMind

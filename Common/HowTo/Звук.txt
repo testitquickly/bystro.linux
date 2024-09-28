@@ -4,7 +4,7 @@ Creation-Date: 2024-03-13T10:33:23+02:00
 
 ====== Звук ======
 
-< @index @sound >
+[ @index @sound @chapter ]
 
 [[+Restart PulseAudio]]
 [[+Вывести звук на несколько устройств]]

@@ -4,7 +4,7 @@ Creation-Date: 2024-09-23T01:40:27+03:00
 
 ====== Simple Custom CSS and JS ======
 
-< @wordpress @js >
+[ @wp @js ]
 
 На сервер с WP можно закинуть js-файл по ftp, но его выполнение будет заблокировано. JS-скрипты надо «регистрировать» внутри WP. Это делается через плагины вроде «Simple Custom CSS and JS».
 
@@ -23,8 +23,8 @@ Creation-Date: 2024-09-23T01:40:27+03:00
 
 Скопировать «Permalink», в html-файл, в котором должен работать новый js-скрипт, вставить инструкцию по подключению js-файла через «Permalink». 
 
-Обычное место — между </style> и </head>:
+Обычное место — между [/style> и [/head]:
 
-''</style>''
-''<script type="text/javascript" src="Мой-Permalink-Полностью"> </script>''
-''</head>''
+''[/style]''
+''[script type="text/javascript" src="Мой-Permalink-Полностью"> [/script]''
+''[/head]''

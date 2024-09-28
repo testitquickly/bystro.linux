@@ -4,17 +4,17 @@ Creation-Date: 2023-02-05T06:31:12+02:00
 
 ====== Подключение к блокноту Zim по ssh ======
 
-< @console @zim @ssh @sshfs >
+[ @console @zim @ssh @sshfs ]
 
 Сгенерировать ssh-ключ для подключения к удалённому компьютеру — см. [[ssh]] — создать новый ssh-ключ — с базовыми настройками и пустым 'passphrase'.
 
 Установить его на удалённый ресурс:
 
-	ssh-copy-id USER@REMOTE
+	''ssh-copy-id USER@REMOTE''
 
 ===== Zim полностью работает удалённо =====
 
-	ssh -XC USER@REMOTE zim --no-daemon
+	''ssh -XC USER@REMOTE zim --no-daemon''
 
 ===== Zim работает локально, файлы на remote =====
 

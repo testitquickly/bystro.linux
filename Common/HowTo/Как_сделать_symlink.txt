@@ -4,7 +4,7 @@ Creation-Date: 2023-12-15T02:06:59+02:00
 
 ====== Как сделать symlink ======
 
-< @debian @symlink >
+[ @debian @symlink ]
 
 symlink — сокращение от „symbolic link”. 
 
@@ -42,7 +42,7 @@ symlink — сокращение от „symbolic link”.
 
 У симлинка может быть любое имя, отличное от оригинального файла, и иногда это приносит дополнительное удобство. Например, оригинал будет называться „debian_update_and_upgrade.sh”, а симлинк можно называть очень сокращенно, например, „''debup''” — расширение для файла в этом случае вообще не имеет значения.
 
-	Или „up''deb''”.
+	Или „''updeb''”.
 	Или „''dp''”.
 	Или „''updatemazafaka''”.
 	Или все сразу.
@@ -57,7 +57,7 @@ symlink — сокращение от „symbolic link”.
 
 Ожидаем ответ такого вида:
 
-''lrwxrwxrwx 1 [UserName] [UserGroup] 62 дек 15 03:21 debup -> /home/mySettings/myScripts/debian/debian_update_and_upgrade.sh''
+''lrwxrwxrwx 1 [UserName> [UserGroup> 62 дек 15 03:21 debup -> /home/mySettings/myScripts/debian/debian_update_and_upgrade.sh''
 
 Читается так: 
 	* права доступа

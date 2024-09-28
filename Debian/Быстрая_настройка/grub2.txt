@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T14:03:36+02:00
 
 ====== grub2 ======
 
-< @debian @grub @console >
+[ @debian @grub @console ]
 
 Сделать копию основного файла:
 

@@ -4,7 +4,7 @@ Creation-Date: 2024-06-14T18:36:57+03:00
 
 ====== ntfs-3g ======
 
-< @debian @install @ntfs @windows >
+[ @debian @install @ntfs @windows ]
 
 Утилита для доступа к файловой системе NTFS (стандарт для Windows). Как правило, поставляется вместе с Debian.
 

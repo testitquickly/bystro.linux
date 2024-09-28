@@ -4,9 +4,9 @@ Creation-Date: 2022-02-23T21:01:25+02:00
 
 ====== Как настроить сеть из консоли ======
 
-< @console @wi_fi >
+[ @console @wi_fi ]
 
-''ifconfig'' больше нет (входит в пакет net-tools), бо считается устаревшим. Его место занял пакет ''iproute2'' а 
+''ifconfig'' больше нет (входит в пакет net-tools), бо считается устаревшим. Его место занял пакет ''iproute2''.
 
 Вместо “''ifconfig''” нужно использовать команду “''ip''”. 
 
@@ -24,7 +24,7 @@ Creation-Date: 2022-02-23T21:01:25+02:00
 
 должно быть написано "DOWN"
 
-''wlan0: <BROADCAST,MULTICAST> mtu 1500 qdisc mq state DOWN group default qlen 1000''
+''wlan0: [BROADCAST,MULTICAST> mtu 1500 qdisc mq state DOWN group default qlen 1000''
 
 ===== Включить wi-fi =====
 

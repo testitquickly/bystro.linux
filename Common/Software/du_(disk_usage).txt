@@ -4,7 +4,7 @@ Creation-Date: 2024-01-17T08:45:21+02:00
 
 ====== du (disk usage) ======
 
-< @debian @folder > 
+[ @debian @folder > 
 
 du = Disk Usage.
 

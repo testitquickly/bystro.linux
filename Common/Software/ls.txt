@@ -4,7 +4,7 @@ Creation-Date: 2022-02-24T04:12:39+02:00
 
 ====== ls ======
 
-< @main @ls @bashrc >
+[ @main @ls @bashrc ]
 
 Идеальный алиас для .bashrc:
 

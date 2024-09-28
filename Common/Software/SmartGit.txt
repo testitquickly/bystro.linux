@@ -4,7 +4,7 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 ====== SmartGit ======
 
-< @console @smartgit @git @github >
+[ @console @smartgit @git @github ]
 
 Это очень хороший сам-по-себе GUI-клиент, потому что git в консоли поначалу интересно, а потом нет. Можно всё настроить в IDE, но если речь идет не о разработке, то какой тут IDE?!
 
@@ -16,20 +16,18 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 Следуем инструкции https://docs.syntevo.com/SmartGit/Latest/GitHub-integration.html
 
-Edit 
-'''
-> Preferences 
-> Hosting Providers 
-> [Add]
-> Add Hosting Provider
-> GitHub
-> Generate Token
-> Откроется браузер с GitHub.com
-	> страница ’Confirm your account recovery settings’
-> Confirm
-> "SmartGit is requesting additional permissions"
-> Authorize syntevo
-'''
+''Edit'' 
+''> Preferences'' 
+''> Hosting Providers'' 
+''> [Add]''
+''> Add Hosting Provider''
+''> GitHub''
+''> Generate Token''
+''> Откроется браузер с GitHub.com''
+	''> страница ’Confirm your account recovery settings’''
+''> Confirm''
+''> "SmartGit is requesting additional permissions"''
+''> Authorize syntevo''
 		> Авторизация зависит от настроек, например, github mobile может быть разумным решением
 		> В браузере же прозойдет перенаправление на страницу GitHub Authorization
 '''
@@ -38,13 +36,13 @@ Edit
 > Вставить код
 > [Authenticate]
 '''
-		> Убедиться в том, что стоит галочка для «Use OAuth token for repository authentication (instead of password)»
+		> Убедиться в том, что стоит галочка для «Use OAuth token for repository authentication (instead of password)»
 '''
-> Add
+> Add
 > [OK]
 '''
 
-В профиле GitHub Settings в разделе Integrations > Applications > Authorized OAuth Apps будет отображаться SmartGit (Owned by syntevo)
+В профиле GitHub Settings в разделе Integrations > Applications > Authorized OAuth Apps будет отображаться SmartGit (Owned by syntevo)
 	
 	If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
 
@@ -52,19 +50,17 @@ Edit
 
 Следуем инструкции https://docs.syntevo.com/SmartGit/Latest/Bitbucket-integration.html
  
-Edit 
-'''
-> Preferences 
-> Hosting Providers 
-> [Add]
-> Add Hosting Provider = BitBucket
-	> галочка Use SSH instead of HTTPS to access repositories
-> [Generate Token]
-> Откроется браузер, страница ’Confirm acces to your account’
-	> [Grant access]
-> Откроется страница с токеном. Скопировать его, вернуться в SmartGit и вставить в поле в диалоге добавления провайдера BitBucket
-> [OK]
-'''
+''Edit'' 
+''> Preferences'' 
+''> Hosting Providers'' 
+''> [Add]''
+''> Add Hosting Provider = BitBucket''
+	''> галочка Use SSH instead of HTTPS to access repositories''
+''> [Generate Token]''
+''> Откроется браузер, страница ’Confirm acces to your account’''
+	''> [Grant access]''
+''> Откроется страница с токеном. Скопировать его, вернуться в SmartGit и вставить в поле в диалоге добавления провайдера BitBucket''
+''> [OK]''
 
 Убедится в том, что в окне настроек Hosting Providers появился новый пункт с именем BitBucket, а имя добавленного аккаунта автоматически подхватилось.
 
@@ -135,7 +131,7 @@ Restart required.
 
 ==== Тёмная тема в SmartGit ====
 
-Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]] можно отключить тёмную тему этой строкой:
+Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]> можно отключить тёмную тему этой строкой:
 
 ''org.eclipse.swt.internal.gtk.noThemingFixes=true''
 

@@ -4,7 +4,7 @@ Creation-Date: 2024-01-02T20:49:37+02:00
 
 ====== Google Chrome ======
 
-< @manjaro @install @google_chrome >
+[ @manjaro @install @google_chrome ]
 
 ''pamac build google-chrome''
 

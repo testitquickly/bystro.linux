@@ -4,7 +4,7 @@ Creation-Date: 2024-02-26T19:39:42+02:00
 
 ====== JACK ======
 
-< @debian @install @sound @jack >
+[ @debian @install @sound @jack ]
 
 ''sudo aptitude install jackd2''
 

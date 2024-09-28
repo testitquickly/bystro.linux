@@ -4,7 +4,7 @@ Creation-Date: 2024-09-22T23:45:18+03:00
 
 ====== WP Mail SMTP ======
 
-< @wp @wp_plugins @mail >
+[ @wp @wp_plugins @mail ]
 
 Обслуживает [[Noptin]].
 

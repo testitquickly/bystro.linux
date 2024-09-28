@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:13:58+02:00
 
 ====== Установить пакет из unstable (sid) на Debian testing ======
 
-< @console @update >
+[ @console @update ]
 
 например https://packages.debian.org/sid/qmmp
 

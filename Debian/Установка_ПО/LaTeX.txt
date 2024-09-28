@@ -4,7 +4,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ====== LaTeX ======
 
-< @debian @install @LaTeX >
+[ @debian @install @LaTeX ]
 
 Это пошаговая инструкция для нестандартной, но исключительно однозначной, точной и грамотной ручной установки всего набора LaTeX из его официального iso-файла в Debian.
 
@@ -34,7 +34,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ==== Добавить в PATH путь к будущим файлам LaTeX ====
 
-Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' [создать его, если отсутствует] 
+Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' [создать его, если отсутствует> 
 
 ''mcedit ~/.bashrc''
 
@@ -332,19 +332,19 @@ exit
 
 Появляется файл /etc/fonts/conf.d/09-texlive.conf с текстом:
 
-''<?xml version="1.0"?>''
-''<!DOCTYPE fontconfig SYSTEM "fonts.dtd">''
-''<fontconfig>''
-	''<dir>/home/LaTeX/texmf-dist/fonts/opentype</dir>''
-	''<dir>/home/LaTeX/texmf-dist/fonts/truetype</dir>''
-	''<dir>/home/LaTeX/texmf-dist/fonts/type1</dir>''
-''</fontconfig>''
+''[?xml version="1.0"?]''
+''[!DOCTYPE fontconfig SYSTEM "fonts.dtd"]''
+''[fontconfig]''
+	''[dir]/home/LaTeX/texmf-dist/fonts/opentype[/dir]''
+	''[dir]/home/LaTeX/texmf-dist/fonts/truetype[/dir]''
+	''[dir]/home/LaTeX/texmf-dist/fonts/type1[/dir]''
+''[/fontconfig]''
 
 ==== Отредактировать файл 09-texlive.conf ====
 
 ''sudo mcedit /etc/fonts/conf.d/09-texlive.conf''
 
-Удалить строку '''<dir>/home/LaTeX/texmf-dist/fonts/type1</dir>''' (предпоследняя). Cохранить.
+Удалить строку '''[dir]/home/LaTeX/texmf-dist/fonts/type1[/dir]''' (предпоследняя). Cохранить.
 
 ==== Обновить кэш шрифтов ====
 

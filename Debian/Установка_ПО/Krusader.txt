@@ -4,7 +4,7 @@ Creation-Date: 2024-09-14T00:00:32+03:00
 
 ====== Krusader ======
 
-< @debian @install @krusader >
+[ @debian @install @krusader ]
 
 Сперва поставить всякие утилиты; среди них и KGet, затем уже сам krusader:
 

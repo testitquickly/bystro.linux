@@ -4,7 +4,7 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 ====== Обновить sources.list ======
 
-< @debian @update @repository >
+[ @debian @update @repository ]
 
 ===== Выбрать самый быстрый ресурс =====
 

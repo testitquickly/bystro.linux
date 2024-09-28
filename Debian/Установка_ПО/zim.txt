@@ -4,7 +4,7 @@ Creation-Date: 2024-04-18T20:32:41+03:00
 
 ====== zim ======
 
-< @debian @install @zim >
+[ @debian @install @zim ]
 
 ''sudo apt-get install zim''
 

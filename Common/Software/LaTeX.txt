@@ -4,7 +4,7 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 ====== LaTeX ======
 
-< @Debian @LaTeX @install >
+[ @Debian @LaTeX @install ]
 
 	#todo ! LaTeX — установка под Debian
 	

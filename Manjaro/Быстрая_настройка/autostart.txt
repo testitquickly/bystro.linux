@@ -4,7 +4,7 @@ Creation-Date: 2023-01-17T02:32:09+02:00
 
 ====== autostart ======
 
-< @manjaro @autostart >
+[ @manjaro @autostart ]
 
 В папке профиля юзера
 

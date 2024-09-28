@@ -4,7 +4,7 @@ Creation-Date: 2023-10-22T23:04:31+03:00
 
 ====== ab ======
 
-< @manjaro @install @apache @ab >
+[ @manjaro @install @apache @ab ]
 
 Это Apache Benchmark Tool для нагрузочного тестирования сайтов.
 

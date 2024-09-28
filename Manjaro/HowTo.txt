@@ -4,7 +4,7 @@ Creation-Date: 2023-05-31T16:20:52+03:00
 
 ====== HowTo ======
 
-< @manjaro @howto >
+[ @manjaro @howto ]
 
 [[+linux headers]]
 [[+Добавить пользователя в группу sudo]]

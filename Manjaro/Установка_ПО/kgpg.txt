@@ -4,7 +4,7 @@ Creation-Date: 2023-10-03T06:46:53+03:00
 
 ====== kgpg ======
 
-< @manjaro @install @kgpg >
+[ @manjaro @install @kgpg ]
 
 ''sudo pacman -S kgpg''
 

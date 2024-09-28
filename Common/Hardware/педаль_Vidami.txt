@@ -4,7 +4,7 @@ Creation-Date: 2024-04-29T16:52:14+03:00
 
 ====== педаль Vidami ======
 
-< @hardware @vidami @youtube >
+[ @hardware @vidami @youtube ]
 
 Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Online Videos for Faster Learning) — напольная педаль для музыкантов.
 

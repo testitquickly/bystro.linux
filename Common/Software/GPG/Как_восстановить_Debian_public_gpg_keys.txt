@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:22:10+02:00
 
 ====== Как восстановить Debian public gpg keys ======
 
-< @debian @gpg  @kgpg >
+[ @debian @gpg  @kgpg ]
 
 Если при aptitude update выводятся сообщения вроде 
 	Ошибка  http://security.debian.org stretch/updates InRelease
@@ -27,7 +27,7 @@ gpg -a --export #KEY_NUMBER# | apt-key add -
 
 Если сообщения вроде
 
-	W: Ошибка GPG: http://download.opensuse.org/repositories/home:/selmf/Debian_9.0  Release: Следующие подписи неверны: EXPKEYSIG 3F3411BE43F8BC1F home:selmf OBS Project <home:selmf@build.opensuse.org>
+	W: Ошибка GPG: http://download.opensuse.org/repositories/home:/selmf/Debian_9.0  Release: Следующие подписи неверны: EXPKEYSIG 3F3411BE43F8BC1F home:selmf OBS Project [home:selmf@build.opensuse.org]
 	E: Репозиторий «http://download.opensuse.org/repositories/home:/selmf/Debian_9.0  Release» не подписан.
 	E: Не удалось загрузить некоторые файлы
 

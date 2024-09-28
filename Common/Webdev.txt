@@ -4,7 +4,7 @@ Creation-Date: 2024-09-21T17:40:01+03:00
 
 ====== Webdev ======
 
-< @webdev >
+[ @webdev ]
 
-+Wordpress
 [[+Как поднять веб-сервис на localhost]]
+[[+Плагины WordPress]]

@@ -4,7 +4,7 @@ Creation-Date: 2023-09-11T20:20:02+03:00
 
 ====== Thunderbird ======
 
-< @debian @install @thunderbird >
+[ @debian @install @thunderbird ]
 
 В репозиториях Stable новый Thunderbird появится после второго пришествия, поэтому возьмём его на сайте разработчиков.
 
@@ -77,7 +77,7 @@ StartupNotify=true
 Categories=Network;WebBrowser;
 '''
 
-[F2] [Esc] [Esc]
+[F2> [Esc> [Esc]
 
 === Сделать файл исполняемым ===
 

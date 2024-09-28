@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:31:18+02:00
 
 ====== Удалить пакет deb из dpkg ======
 
-< @console @dpkg >
+[ @console @dpkg ]
 
 Например, был установлен 
 

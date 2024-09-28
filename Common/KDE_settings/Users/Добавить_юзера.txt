@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T19:45:38+02:00
 
 ====== Добавить юзера ======
 
-< @console @user >
+[ @console @user ]
 
 ''adduser USERNAME''
 

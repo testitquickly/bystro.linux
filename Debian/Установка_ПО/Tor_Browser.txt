@@ -4,7 +4,7 @@ Creation-Date: 2024-03-20T19:47:16+02:00
 
 ====== Tor Browser ======
 
-< @debian @tor @firefox @install >
+[ @debian @install @tor @firefox ]
 
 ===== Скачать =====
 
@@ -59,7 +59,7 @@ sudo chown -R astenix:sudo /opt/tor-browser && sudo chmod 750 /opt/tor-browser
 ''StartupNotify=true''
 ''Categories=Network;WebBrowser;''
 
-[F2] [Esc] [Esc]
+[F2> [Esc> [Esc]
 
 === Сделать файл исполняемым ===
 

@@ -4,7 +4,7 @@ Creation-Date: 2023-10-16T18:07:33+03:00
 
 ====== hplip ======
 
-< @manjaro @printer @scaner @drivers @xsane @hp @install >
+[ @manjaro @printer @scaner @drivers @xsane @hp @install ]
 
 Это общий набор драйверов и система управления для принтеров/сканеров HP.
 
@@ -15,7 +15,7 @@ Creation-Date: 2023-10-16T18:07:33+03:00
 1. В Pamac найти и установить „''hplip''” (HP Device Manager).
 
 Оно же https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
-> выбрать «свой linux» из выпадающего списка,
+> выбрать «свой linux» из выпадающего списка,
 > получить файл вроде „hplip-3.23.8.run”,
 > сделать его выполняемым, ''chmod u+x hplip-3.23.8.run''
 > выполнить его согласно официальной [[https://developers.hp.com/hp-linux-imaging-and-printing/install/install/index|инструкции]].

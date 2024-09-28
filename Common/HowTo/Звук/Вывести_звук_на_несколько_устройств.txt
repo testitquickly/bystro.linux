@@ -4,7 +4,7 @@ Creation-Date: 2024-03-13T10:34:17+02:00
 
 ====== Вывести звук на несколько устройств ======
 
-< @debian @sound @pulse >
+[ @debian @sound @pulse ]
 
 ===== paprefs =====
 

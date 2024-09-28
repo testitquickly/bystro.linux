@@ -4,7 +4,7 @@ Creation-Date: 2024-01-08T10:30:33+02:00
 
 ====== v4l2 ======
 
-< @debian @install @video @webcam >
+[ @debian @install @video @webcam ]
 
 Софт для работы с вебкамерами.
 

@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T00:50:15+02:00
 
 ====== Обновить Debian ======
 
-< @debian @update >
+[ @debian @update ]
 
 ===== Проверить версию и релиз Debian =====
 
@@ -32,13 +32,13 @@ Creation-Date: 2022-02-23T00:50:15+02:00
 
 Можно выдернуть данные по отдельному параметру'':''
 
-''grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"'''
+''grep -oP '(?[=^VERSION_ID=).+' /etc/os-release | tr -d '"'''
 
 и использовать их в скриптах на bash. Например:
 
 '''
-myDebianVersion=$(grep -oP '(?<=^VERSION_ID=).+' /etc/os-release | tr -d '"')
-myDebianName=$(grep -oP '(?<=^VERSION_CODENAME=).+' /etc/os-release | tr -d '"')
+myDebianVersion=$(grep -oP '(?[=^VERSION_ID=).+' /etc/os-release | tr -d '"')
+myDebianName=$(grep -oP '(?[=^VERSION_CODENAME=).+' /etc/os-release | tr -d '"')
 echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
 '''
 
@@ -48,7 +48,7 @@ echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
 
 ===== Обновление до определённого ядра =====
 
-Сперва [[../../../Фишки_Linux/Как_узнать_какие_ядра_есть_в_системе.txt|надо знать точный номер ядра]], к которому нужно обновиться, и причина для обновления должна быть обоснована. 
+Сперва надо знать точный номер ядра, к которому нужно обновиться — [[Common:HowTo:Узнать какие ядра есть в системе]] — и причина для обновления должна быть обоснована. 
 
 	Всегда есть вероятность нафакапиться, поэтому продвигаться надо осторожно, всегда проверяя, можно ли откатиться к предыдущему состоянию. 
 	
@@ -71,7 +71,7 @@ echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
 
 ==== Обновить sources.list ====
 
-[[Обновить sources.list]] по имени нового релиза.
+[[Обновить sources.list]> по имени нового релиза.
 
 Очень внимательно посмотреть, если в сети никто не ругается на обновления.
 

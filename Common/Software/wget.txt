@@ -4,11 +4,11 @@ Creation-Date: 2022-02-23T21:11:45+02:00
 
 ====== wget ======
 
-< @wget @console >
+[ @wget @console ]
 
 Скачиваем все файлы через "файл-лист" с помощью Wget
 
-''wget -i'' [[http://www.example.ua/filelist/your_list_here.urls|''http://www.example.ua/filelist/your_list_here.urls'']] ''--trust-server-names=on --restrict-file-names=nocontrol''
+''wget -i'' http://www.example.site/filelist/your_list_here.urls ''--trust-server-names=on --restrict-file-names=nocontrol''
 
 2
 Вероятны траблы, если файлы именованы на русском языке. Тогда надо настроить Wget в обход --trust-server-names=on — в файле "~/.wgetrc" сделать так:

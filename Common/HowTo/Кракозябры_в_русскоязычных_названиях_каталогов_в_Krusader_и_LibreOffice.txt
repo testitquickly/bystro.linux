@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:16:06+02:00
 
 ====== Кракозябры в русскоязычных названиях каталогов в Krusader и LibreOffice ======
 
-< @fonts @LibreOffice @Krusader >
+[ @fonts @LibreOffice @Krusader ]
 
 	#todo Про кракозябры в русскоязычных названиях каталогов
 

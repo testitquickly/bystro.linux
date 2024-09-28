@@ -4,7 +4,7 @@ Creation-Date: 2023-12-10T16:48:34+02:00
 
 ====== LibreOffice ======
 
-< @debian @install @libreoffice >
+[ @debian @install @libreoffice ]
 
 В Debian можно самостоятельно установить LibreOffice, выбирая версии. 
 

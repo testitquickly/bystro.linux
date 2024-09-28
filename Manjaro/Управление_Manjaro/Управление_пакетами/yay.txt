@@ -4,7 +4,7 @@ Creation-Date: 2023-11-08T00:36:08+02:00
 
 ====== yay ======
 
-< @manjaro @console @yay >
+[ @manjaro @console @yay ]
 
 Это 'pacman wrapper and AUR helper, written in go'. Его можно установить из Pamac, но это не наш путь. 
 
@@ -16,7 +16,7 @@ Creation-Date: 2023-11-08T00:36:08+02:00
 
 ''sudo pacman -S --needed --noconfirm base-devel git''
 
-''git clone'' [[https://aur.archlinux.org/yay-git.git|''https://aur.archlinux.org/yay-git.git'']] ''/~/yay/''
+''git clone https://aur.archlinux.org/yay-git.git /~/yay/''
 
 ==== Собрать yay ====
 
@@ -30,9 +30,9 @@ Creation-Date: 2023-11-08T00:36:08+02:00
 
 Если всё будет ок, то Package management helper 'yay' установлен. 
 
-Переместить yay в /opt
+Переместить 'yay' в /opt
 
-''sudo mv'' [[/~/yay/|''/~/yay/'']] ''/opt''
+''sudo mv'' ''/~/yay /opt''
 
 И укажем права каталогу
 

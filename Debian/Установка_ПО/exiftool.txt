@@ -4,7 +4,7 @@ Creation-Date: 2024-07-03T00:08:25+03:00
 
 ====== exiftool ======
 
-< @debian @install @exiftool >
+[ @debian @install @exiftool ]
 
 ''sudo aptitude install exiftool''
 

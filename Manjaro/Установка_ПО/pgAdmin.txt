@@ -4,6 +4,8 @@ Creation-Date: 2023-11-07T15:57:20+02:00
 
 ====== pgAdmin ======
 
+[ @manjaro @install @postgres @sql @pgadmin ]
+
 ===== Установить postgres =====
 
 Должен быть установлен [[Управление Manjaro:Управление пакетами:yay]]
@@ -188,7 +190,7 @@ postgres=# \dt                      # see list of tables
 
 и так далее до
 
-''Starting pgAdmin 4. Please navigate to'' [[http://127.0.0.1:5050|''http://127.0.0.1:5050'']] ''in your browser.''
+''Starting pgAdmin 4. Please navigate to http://127.0.0.1:5050 in your browser.''
 
 Если есть этот ответ — ок. Это окно с консолью закрывать нельзя — сервис схлопнется.
 
@@ -249,7 +251,7 @@ Host: localhost
 Port: 5432
 Maintenance database: postgres
 Username: postgres
-Password: <your password>
+Password: [your password]
 '''
 
 ===== Закрыть окружение Python =====
@@ -321,7 +323,9 @@ Password: <your password>
 
 ==== Выполнить обновление из сети ====
 
-''pip install'' [[https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v8.0/pip/pgadmin4-8.0-py3-none-any.whl|''https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v8.0/pip/pgadmin4-8.0-py3-none-any.whl'']] --break-system-packages
+''pip install https://ftp.postgresql.org/pub/pgadmin/pgadmin4/v8.0/pip/pgadmin4-8.0-py3-none-any.whl --break-system-packages''
+
+	Вообще это грубо и неправильно насильно впихивать пакеты в систему. Надо грамотно, через ''venv'' в [[Common:Software:Python]]
 
 Если всё было правильно погашено, то начнётся загрузка файла и новая установка. 
 Если нет, то ответом будет перечень сообщений «//Requirement already satisfied//».
@@ -352,6 +356,6 @@ Password: <your password>
 
 Дождаться сообщения 
 
-''Starting pgAdmin 4. Please navigate to'' [[http://127.0.0.1:5050|''http://127.0.0.1:5050'']] ''in your browser.''
+''Starting pgAdmin 4. Please navigate to http://127.0.0.1:5050 your browser.''
 
 //Next step//: [[Common:Software:pgAdmin]]

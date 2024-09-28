@@ -4,7 +4,7 @@ Creation-Date: 2023-10-22T23:44:21+03:00
 
 ====== Postman ======
 
-< @debian @install @postman >
+[ @debian @install @postman ]
 
 https://www.postman.com/downloads/ > снять файл „Linux (x64)”
 
@@ -38,7 +38,7 @@ sudo chown -R astenix:sudo /opt/Postman && sudo chmod 750 /opt/Postman
 
 Скачать из сети картинку логотипа файл условно "Postman.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
 
-Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог [[/opt/Postman/]] для этого лучшее решение.
+Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог [[/opt/Postman/]> для этого лучшее решение.
 
 ''sudo mv Postman.png /opt/Postman/''
 
@@ -63,7 +63,7 @@ StartupNotify=true
 Categories=Network;WebBrowser;
 '''
 
-[F2] [Esc] [Esc]
+[F2> [Esc> [Esc]
 
 === Сделать файл исполняемым ===
 

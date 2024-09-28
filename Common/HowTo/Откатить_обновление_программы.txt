@@ -4,14 +4,14 @@ Creation-Date: 2022-02-23T00:40:12+02:00
 
 ====== Откатить обновление программы ======
 
-< @debian @console @update >
+[ @debian @console @update ]
 
 Отката нет, можно попробовать найти предыдущую версию пакета
 
-''$ sudo aptitude version package_name''
+''sudo aptitude version'' //''package_name''//
 
 и установить её
 
-''$ sudo aptitude install package_name=version''
+''sudo aptitude install'' //''package_name''//''=version''
 
 

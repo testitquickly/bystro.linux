@@ -4,7 +4,7 @@ Creation-Date: 2022-02-24T07:44:57+02:00
 
 ====== Настроить маршрутизацию звука через JACK ======
 
-< @sound @jack >
+[ @sound @jack ]
 
 https://jackaudio.org/faq/device_naming.html
 
@@ -63,13 +63,15 @@ https://jackaudio.org/faq/device_naming.html
 		alsa_out will deliver data to it (for playback).
 
 Эта команда укажет драйверу звука, что слушать надо сигнал с устройства hw:1
-		''alsa_in -d hw:1''
-	
-	Эта команда укажет драйверу звука, что надо передать сигнал на устройство hw:0
-		''alsa_out -d hw:0''
-	
-	Опции настраивают параметры звука — см. man "alsa_in"
-	
-	jackaudio.org
 
+	''alsa_in -d hw:1''
+	
+Эта команда укажет драйверу звука, что надо передать сигнал на устройство hw:0
 
+	''alsa_out -d hw:0''
+	
+Опции настраивают параметры звука — см. 
+
+''man "alsa_in"''
+	
+Также см. [[https://jackaudio.org|jackaudio.org]]

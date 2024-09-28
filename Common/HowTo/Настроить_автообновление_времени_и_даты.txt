@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 ====== Настроить автообновление времени и даты ======
 
-< @console @time >
+[ @console @time ]
 
 С настройкой времени может быть неявная проблема:
 
@@ -136,10 +136,10 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 Ожидаемый ответ:
 
-	Local time: Вт 2019-12-10 20:59:53 EET
-	Universal time: Вт 2019-12-10 18:59:53 UTC
-	RTC time: Вт 2019-12-10 18:59:53
-	Time zone: Europe/Chisinau (EET, +0200)
-	System clock synchronized: yes
-	NTP service: active
-	RTC in local TZ: no
+	''Local time: Вт 2019-12-10 20:59:53 EET''
+	''Universal time: Вт 2019-12-10 18:59:53 UTC''
+	''RTC time: Вт 2019-12-10 18:59:53''
+	''Time zone: Europe/Chisinau (EET, +0200)''
+	''System clock synchronized: yes''
+	''NTP service: active''
+	''RTC in local TZ: no''

@@ -4,11 +4,11 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ====== Elgato “Stream Deck” ======
 
-< @debian @install @elgato @stream_deck @python @console >
+[ @debian @install @elgato @stream_deck @python @console ]
 
 	#todo Elgato “Stream Deck” — пересмотреть запуск скриптов Python внутри venv
 
-===== [психологическая] Подготовка к установке =====
+===== [психологическая> Подготовка к установке =====
 
 Основной источник информации по установке и настройке https://timothycrosley.github.io/streamdeck-ui/
 
@@ -29,7 +29,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 		* Key Press or Write Text does not work on **Fedora** (outside of the streamdeck itself), which is not particularly useful. However, still do a lot with the Command feature.
 		* On **Ubuntu** the Key Press ctrl+alt+t doesn't work. However using the Command gnome-terminal achieves the same result.
 		* Version 1.0.2 lacks error handling when executing Command and Key Press actions. As a result, you have to be careful - an invalid command or key press makes everything else also stop working. The 1.0.3 release and above resolve this.
-		* If you're using **GNOME** shell, you might need to manually install an extension that adds [[https://extensions.gnome.org/extension/615/appindicator-support/|KStatusNotifierItem/AppIndicator]] Support to make the tray icon show up.
+		* If you're using **GNOME** shell, you might need to manually install an extension that adds [[https://extensions.gnome.org/extension/615/appindicator-support/|KStatusNotifierItem/AppIndicator]> Support to make the tray icon show up.
 
 По сравнению с приложением под виндой, приложение под линукс примитивнее:
 
@@ -49,7 +49,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ''loginctl show-session "$XDG_SESSION_ID" -p Type''
 или
-''loginctl show-session $(awk '/tty/ {print $1}' <(loginctl)) -p Type | awk -F= '{print $2}'''
+''loginctl show-session $(awk '/tty/ {print $1}' [(loginctl)) -p Type | awk -F= '{print $2}'''
 
 ==== Питание железки ====
 
@@ -66,7 +66,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 Проверить, что железка отключена.
 
-Убедиться в том, что в системе установлен [[Common:Software:Python]] и его PIP. 
+Убедиться в том, что в системе установлен [[Common:Software:Python]> и его PIP. 
 
 ''sudo apt install -y python3-pip python3-setuptools''
 

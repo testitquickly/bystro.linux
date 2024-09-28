@@ -4,7 +4,7 @@ Creation-Date: 2023-12-25T23:03:16+02:00
 
 ====== hdparm ======
 
-< @manjaro @install @hdparm >
+[ @manjaro @install @hdparm ]
 
 Утилита для управления дисками.
 

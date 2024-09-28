@@ -4,7 +4,7 @@ Creation-Date: 2023-03-26T14:14:05+03:00
 
 ====== Бэкап и восстановление ключа PGP ======
 
-< @gpg  @kgpg >
+[ @gpg  @kgpg ]
 
 	#todo PGP — перевод
 
@@ -20,7 +20,7 @@ Backup
 	-------------------------------
 	sec   rsa4096/C8DE632E9A8A0BDD 2020-11-13 [SC]
 		  F38915B041F5F1024AF95C30C8DE632E9A8A0BDD
-	uid                 [ultimate] Ponder Stibbons <ponder.stibbons@unseen.edu>
+	uid                 [ultimate> Ponder Stibbons [ponder.stibbons@unseen.edu]
 	ssb   rsa4096/DBCD8B98F2F9188C 2020-11-13 [E]
 
 	Here there is only one private key for a Ponder Stibbons.
@@ -31,7 +31,7 @@ Backup
 
 	This invocation places the key in the file private.gpg in the current directory. The export option backup exports all necessary data for GnuPG to restore the key.
 
-	Enter the private key’s passphrase in the [Export Passphrase Prompt] to export the key.
+	Enter the private key’s passphrase in the [Export Passphrase Prompt> to export the key.
 	Passphrase Prompt to Export GPG Key
 	Export Passphrase Prompt
 
@@ -42,7 +42,7 @@ Backup
 	Import the private key.
 
 	➜ gpg --import-options restore --import private.gpg
-	gpg: key C8DE632E9A8A0BDD: public key "Ponder Stibbons <ponder.stibbons@unseen.edu>" imported
+	gpg: key C8DE632E9A8A0BDD: public key "Ponder Stibbons [ponder.stibbons@unseen.edu]" imported
 	gpg: key C8DE632E9A8A0BDD: secret key imported
 	gpg: Total number processed: 1
 	gpg:               imported: 1
@@ -51,7 +51,7 @@ Backup
 
 	This invocation imports the key from the file private.gpg in the current directory. The import option restore imports all necessary data for GnuPG to fully restore the key. The import option keep-ownertrust keeps the owner trust of the key instead of clearing it’s trust value. This saves having to manually set the trust value for the key later.
 
-	Enter the private key’s passphrase in the [Import Passphrase Prompt] to import the key.
+	Enter the private key’s passphrase in the [Import Passphrase Prompt> to import the key.
 	Passphrase Prompt to Import GPG Key
 	Import Passphrase Prompt
 
@@ -69,7 +69,7 @@ Backup
 		 trust: unknown       validity: unknown
 	ssb  rsa4096/DBCD8B98F2F9188C
 		 created: 2020-11-13  expires: never       usage: E
-	[ unknown] (1). Ponder Stibbons <ponder.stibbons@unseen.edu>
+	[ unknown> (1). Ponder Stibbons [ponder.stibbons@unseen.edu]
 
 ===== Enter trust =====
 	
@@ -81,7 +81,7 @@ Backup
 		 trust: unknown       validity: unknown
 	ssb  rsa4096/DBCD8B98F2F9188C
 		 created: 2020-11-13  expires: never       usage: E
-	[ unknown] (1). Ponder Stibbons <ponder.stibbons@unseen.edu>
+	[ unknown> (1). Ponder Stibbons [ponder.stibbons@unseen.edu]
 
 	Type 5 to trust your keys completely.
 
@@ -106,7 +106,7 @@ Backup
 		 trust: ultimate      validity: unknown
 	ssb  rsa4096/DBCD8B98F2F9188C
 		 created: 2020-11-13  expires: never       usage: E
-	[ unknown] (1). Ponder Stibbons <ponder.stibbons@unseen.edu>
+	[ unknown> (1). Ponder Stibbons [ponder.stibbons@unseen.edu]
 	Please note that the shown key validity is not necessarily correct
 	unless you restart the program.
 

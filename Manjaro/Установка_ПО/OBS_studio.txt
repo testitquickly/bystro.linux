@@ -4,7 +4,7 @@ Creation-Date: 2024-01-08T10:19:38+02:00
 
 ====== OBS studio ======
 
-< @manjaro @install @obs >
+[ @manjaro @install @obs ]
 
 ''sudo pacman -S obs-studio''
 

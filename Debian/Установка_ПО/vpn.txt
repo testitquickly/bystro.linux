@@ -4,7 +4,7 @@ Creation-Date: 2023-09-16T23:07:24+03:00
 
 ====== vpn ======
 
-< @debian @install @vpn >
+[ @debian @install @vpn ]
 
 ''sudo aptitude install openvpn openconnect network-manager-openvpn''
 

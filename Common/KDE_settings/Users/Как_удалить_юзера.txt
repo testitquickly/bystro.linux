@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T00:24:01+02:00
 
 ====== Как удалить юзера ======
 
-< @console @user >
+[ @console @user ]
 
 Из-под root
 

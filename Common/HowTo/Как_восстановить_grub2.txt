@@ -4,7 +4,7 @@ Creation-Date: 2022-02-24T02:25:16+02:00
 
 ====== Как восстановить grub2 ======
 
-< @console @update @grub >
+[ @console @update @grub ]
 
 	#todo grub2 — переписать внятно
 

@@ -4,7 +4,7 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 ====== hplip ======
 
-< @debian @printer @scaner @drivers @xsane @hp @install >
+[ @debian @printer @scaner @drivers @xsane @hp @install ]
 
 „''hplip''” (HP Device Manager) — это общий набор драйверов и система управления для принтеров/сканеров HP.
 
@@ -27,7 +27,6 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 но сперва лучше посмотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/other
 
 https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/ubuntu
-
 
 Тут нужен пароль root, а не sudo:
 

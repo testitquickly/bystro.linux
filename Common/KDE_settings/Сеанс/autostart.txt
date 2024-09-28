@@ -4,7 +4,7 @@ Creation-Date: 2023-01-17T02:34:43+02:00
 
 ====== autostart ======
 
-< @autostart >
+[ @autostart ]
 
 '''
 Параметры системы 

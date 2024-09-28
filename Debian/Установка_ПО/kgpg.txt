@@ -4,6 +4,8 @@ Creation-Date: 2023-10-03T06:46:10+03:00
 
 ====== kgpg ======
 
-< @debian @install @kgpg >
+[ @debian @install @kgpg ]
 
 ''sudo aptitude install gpg kgpg''
+
+См. [[Common:Software:GPG]]

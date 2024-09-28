@@ -4,14 +4,14 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ====== vsftpd ======
 
-< @debian @settings @ftp @vsftpd >
+[ @settings @console @ftp @vsftpd ]
 
 В линуксах есть много ftp-серверов ([[https://en.wikipedia.org/wiki/Comparison_of_FTP_server_software_packages|википедия]]), но простейшим остаётся «Very Secure FTP Daemon» — vsftpd.
 
 ===== Установить vsftpd =====
 
-[[Debian:Установка ПО:vsfptd]]
-[[Manjaro:Установка ПО:vsftpd]]
+* [[Debian:Установка ПО:vsfptd]]
+* [[Manjaro:Установка ПО:vsftpd]]
 
 ===== Основные управляющие команды =====
 
@@ -42,7 +42,7 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ''sudo mcedit /etc/vsftpd.conf''
 
-Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный [[https://security.appspot.com/vsftpd/vsftpd_conf.html|перечень параметров]] с комментариями. Затем грамотный гайд [[https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10|здесь]]. Это всё можно будет глянуть позже.
+Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный [[https://security.appspot.com/vsftpd/vsftpd_conf.html|перечень параметров]> с комментариями. Затем грамотный гайд [[https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10|здесь]]. Это всё можно будет глянуть позже.
 
 По-умолчанию настройки читаются из файла /etc/vsftpd.conf
 
@@ -176,7 +176,7 @@ user_sub_token=$USER
 
 ===== Сделать симлинк для запуска vsftpd =====
 
-HowTo:Как сделать symlink
+[[HowTo:Как сделать symlink]]
 
 ===== Как запускать/останавливать vsftpd =====
 
@@ -192,7 +192,7 @@ HowTo:Как сделать symlink
 	* Total Commander с плагином для соединений по ftp. 
 	* Cx Проводник
 	* DMS Explorer (впрочем, это dlna player)
-2. Узнать IP ноутбука. В трее тыкнуть по иконке связи левой кнопкой мыши, в списке подключений тыкнуть по рабочему подключению и перейти на вкладку «Сведения» > Адрес IPv4.
+2. Узнать IP ноутбука. В трее тыкнуть по иконке связи левой кнопкой мыши, в списке подключений тыкнуть по рабочему подключению и перейти на вкладку «Сведения» > Адрес IPv4.
 3. На смартфоне в Total Commander выйти в корень — там будет список установленных плагинов. 
 4. FTP > Создать соединение > 
 	* Имя сервера = IP ноутбука

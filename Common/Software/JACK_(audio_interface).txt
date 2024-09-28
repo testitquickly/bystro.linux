@@ -4,7 +4,7 @@ Creation-Date: 2023-05-17T01:11:42+03:00
 
 ====== JACK (audio interface) ======
 
-< @jack @sound @изображения >
+[ @jack @sound @изображения ]
 
 Видео про настройку подключений Motu M2 через JACK
 https://www.youtube.com/watch?v=XcSRd4X_xPo&list=WL&index=4&t=238s
@@ -47,27 +47,33 @@ Bus 001 Device 007: ID 1acc:1a31 Midiplus Co, Ltd. X2mini
 
 Запустить Cadence.
 
-System > JACK Status
+''System'' 
+''> JACK Status''
 по-умолчанию Stopped
 
-[Configure]
-Engine > Properties > Realtime = yes
+''[Configure]''
+''Engine'' 
+''> Properties'' 
+Realtime = yes
 
 	остальное игноровать
 
+'''
 Driver > ALSA
 Device/Interface = будет интерфейс вывода звука по-умолчанию. Выбрать другой, если нужен другой, но пока что этим не заморачиваться.
 Properties 
 > Sample Rate = 44100 (cd quality)
 > Buffer Size = 1024
 > Periods/Buffer = 2
+'''
 Остальное проигнорировать, если нет явной нужды.
 [OK]
 
-JACK Status > [Start]
+''JACK Status'' 
+''> [Start]''
 
-Вкладка Tools
-> JACK Patchbay
+''Вкладка Tools''
+''> JACK Patchbay''
 
 	Once you have these settings set up, you can then use any JACK aware programs and they will run with those settings. Some programs will allow you to change your buffer size, so that you can adjust audio latency without having to restart JACK.
 	
@@ -143,29 +149,29 @@ Hydrogen
 
 Автоматическое определение подтянуло event CC по каждой из шести кнопок, но с разными event parameter: #1
 
-1. CC [57] = #1
-2. CC [64] = #2
-3. CC [65] = #3
-4. CC [66] = #4
-5. CC [67] = #5
-6. CC [68] = #6
+1. CC [57> = #1
+2. CC [64> = #2
+3. CC [65> = #3
+4. CC [66> = #4
+5. CC [67> = #5
+6. CC [68> = #6
 
 ==== Крутилки ====
 
 Автоопределение:
-1. CC [7] = #1
-2. CC [10] = #2
-3. CC [11] = #3
-4. CC [91] = #4
+1. CC [7> = #1
+2. CC [10> = #2
+3. CC [11> = #3
+4. CC [91> = #4
 
 на крутилке T1
-CC [7] = 
+CC [7> = 
 на крутилке T2
-CC [10] = 
+CC [10> = 
 на крутилке T3
-CC [11] = 
+CC [11> = 
 Микшер > уровень звука МЕТРОНОМА — на крутилке T4
-CC [91] = MASTER_VOLUME_ABSOLUTE
+CC [91> = MASTER_VOLUME_ABSOLUTE
 
 ==== Без кнопок ====
 

@@ -4,7 +4,7 @@ Creation-Date: 2022-10-31T15:32:06+02:00
 
 ====== Посмотреть ошибки при загрузке системы ======
 
-< @systemd >
+[ @systemd ]
 
 ''sudo journalctl -b -p err''
 

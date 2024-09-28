@@ -4,7 +4,7 @@ Creation-Date: 2023-12-10T14:53:48+02:00
 
 ====== KeePassXC ======
 
-< @debian @install @keepassxc >
+[ @debian @install @keepassxc ]
 
 Для Debian: 
 

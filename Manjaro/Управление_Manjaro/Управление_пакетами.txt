@@ -4,7 +4,7 @@ Creation-Date: 2023-10-09T22:52:01+03:00
 
 ====== Управление пакетами ======
 
-< @manjaro @console @pacman @pamac @yay >
+[ @manjaro @console @pacman @pamac @yay ]
 
 1. [[+pacman]]
 2. [[+pamac]]

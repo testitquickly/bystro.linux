@@ -4,7 +4,7 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 ====== pgAdmin ======
 
-< @debian @install @data_base @postgre_sql @pg_admin >
+[ @debian @install @data_base @postgre_sql @pg_admin ]
 
 Инструмент для работы с PostgresSQL. 
 
@@ -28,7 +28,7 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 Вставить в файл эту строку (внимание к названию дистрибутива!):
 
-''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp]'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']] ''bookworm-pgdg main''
+''deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp]'' [[https://apt.postgresql.org/pub/repos/apt|''https://apt.postgresql.org/pub/repos/apt'']> ''bookworm-pgdg main''
 
 Сохранить и выйти.
 
@@ -85,13 +85,13 @@ sudo apt-get update && sudo apt-get install -y postgresql
 
 ''tcp        0      0 127.0.0.1:5433          0.0.0.0:*               LISTEN      4005/postgres''
 ''tcp6       0      0 ::1:5433                :::*                    LISTEN      4005/postgres''
-''unix  2      [ ACC ]     STREAM     LISTENING     43601    4005/postgres        /var/run/postgresql/.s.PGSQL.5433''
+''unix  2      [ ACC >     STREAM     LISTENING     43601    4005/postgres        /var/run/postgresql/.s.PGSQL.5433''
 
 А надо, чтобы обслуживался порт ''5432'', иначе подключения к БД не будет. Есть разные ([[https://askubuntu.com/questions/50621/can-not-connect-to-postgresql-listening-on-port-5432|1]], [[https://stackoverflow.com/a/65212948|2]]) идеи о том, как это исправить.
 
 ===== Установить приложение pgAdmin =====
 
-''sudo curl'' [[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''https://www.pgadmin.org/static/packages_pgadmin_org.pub'']] ''| gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/''[[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''pgadmin4'']].gpg
+''sudo curl'' [[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''https://www.pgadmin.org/static/packages_pgadmin_org.pub'']> ''| gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/''[[https://www.pgadmin.org/static/packages_pgadmin_org.pub|''pgadmin4'']].gpg
 
 Создать конфигурационный файл и сразу проверить его содержимое:
 
@@ -101,7 +101,7 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 Внутри должно быть 
 
-''deb'' [[https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm|''https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm'']] ''pgadmin4 main''
+''deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/bookworm pgadmin4 main''
 
 Установить десткоп-апп pgAdmin4:
 
@@ -109,7 +109,7 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 Будут установлены и pgadmin4-desktop, и pgadmin4-web. В списке программ в разделе «Разработка» появится ярлык для запуска настольного приложения ”pgAdmin 4”. Можно запустить, первый раз будет шуршать долго, это нормально. По-сути происходит запуск сервера, и открывается браузер в виде приложения (то же, что и у Postman).
 
-Дальше по существу — [[Common:Software:pgAdmin]] — добавить новый удаленный сервер, подключиться, все дела.
+Дальше по существу — [[Common:Software:pgAdmin]> — добавить новый удаленный сервер, подключиться, все дела.
 
 ===== Настроить веб-сервер pgAdmin4 =====
 

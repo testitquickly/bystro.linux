@@ -4,7 +4,7 @@ Creation-Date: 2023-04-19T11:21:17+03:00
 
 ====== xampp ======
 
-< @xampp @lamp @maria_db @apache >
+[ @xampp @lamp @maria_db @apache ]
 
 ===== Установить =====
 

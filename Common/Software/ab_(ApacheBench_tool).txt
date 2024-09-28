@@ -4,12 +4,12 @@ Creation-Date: 2023-10-10T22:40:03+03:00
 
 ====== ab (ApacheBench tool) ======
 
-< @install @apache @ab >
+[ @install @apache @ab ]
 
 ===== Установка =====
 
-[[Debian:Установка ПО:ab]]
-[[Manjaro:Установка ПО:ab]]
+* [[Debian:Установка ПО:ab]]
+* [[Manjaro:Установка ПО:ab]]
 
 Говорят, что на маках оно предустановлено, для Windows её надо скачать с https://www.apachelounge.com/download/
  
@@ -46,13 +46,13 @@ Creation-Date: 2023-10-10T22:40:03+03:00
 ''(Connect: 0, Receive: 0, Length: 19, Exceptions: 0)'' 
 ''Total transferred:     1877540 bytes'' 
 ''HTML transferred:      1860018 bytes'' 
-''Requests per second:   1.23 [#/sec] (mean)'' 
-''Time per request:      3256.847 [ms] (mean)'' 
-''Time per request:      814.212 [ms] (mean, across all concurrent requests)'' 
-''Transfer rate:         112.60 [Kbytes/sec] received'' 
+''Requests per second:   1.23 [#/sec> (mean)'' 
+''Time per request:      3256.847 [ms> (mean)'' 
+''Time per request:      814.212 [ms> (mean, across all concurrent requests)'' 
+''Transfer rate:         112.60 [Kbytes/sec> received'' 
  
 ''Connection Times (ms)'' 
-''min mean[+/-sd] median  max'' 
+''min mean[+/-sd> median  max'' 
 ''Connect:      83  88  6.2    86    109'' 
 ''Processing: 1294 2491 661.8  2704   3673'' 
 ''Waiting:    1017 2085 643.5  2043   3397'' 

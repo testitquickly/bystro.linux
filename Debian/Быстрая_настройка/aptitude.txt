@@ -4,7 +4,7 @@ Creation-Date: 2022-02-21T23:47:48+02:00
 
 ====== aptitude ======
 
-< @debian @console @aptitude >
+[ @debian @console @aptitude ]
 
 Это аналог apt с расширенным функционалом поиска пакетов.
 

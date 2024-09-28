@@ -4,7 +4,7 @@ Creation-Date: 2024-09-09T18:01:08+03:00
 
 ====== Калькуляторы ======
 
-< @console @qalculate @speed_crunch @kcalc @bc @casio >
+[ @console @qalculate @speed_crunch @kcalc @bc @casio ]
 
 ===== Qalculate! =====
 

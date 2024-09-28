@@ -4,7 +4,7 @@ Creation-Date: 2024-07-15T12:14:04+03:00
 
 ====== paprefs ======
 
-< @debian @install @paprefs @sound @pulseaudio >
+[ @debian @install @paprefs @sound @pulseaudio ]
 
 Утилита «Pulse Audio Preferences». 
 

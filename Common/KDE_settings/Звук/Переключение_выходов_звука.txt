@@ -4,7 +4,7 @@ Creation-Date: 2022-04-09T22:58:27+03:00
 
 ====== Переключение выходов звука ======
 
-< @keyboard @sound @elgato >
+[ @keyboard @sound @elgato ]
 
 В Debian, конечно, можно поменять вывод звука на разные источники прямо в консоли. Удобно же.
 
@@ -51,13 +51,13 @@ Creation-Date: 2022-04-09T22:58:27+03:00
 Пример ответа:
 
  ''index: 0''
-		''name: <alsa_output.usb-MOTU_M2_M20000023287-00.analog-stereo>''
+		''name: [alsa_output.usb-MOTU_M2_M20000023287-00.analog-stereo]''
 ''index: 1''
-		''name: <alsa_output.pci-0000_00_1f.3.analog-stereo>''
+		''name: [alsa_output.pci-0000_00_1f.3.analog-stereo]''
 	* ''index: 3''
-		''name: <alsa_output.pci-0000_01_00.1.hdmi-stereo>''
+		''name: [alsa_output.pci-0000_01_00.1.hdmi-stereo]''
 ''index: 4''
-		''name: <alsa_output.usb-0b0e_Jabra_SPEAK_410_USB_30507557996Ex011200-00.analog-stereo>''
+		''name: [alsa_output.usb-0b0e_Jabra_SPEAK_410_USB_30507557996Ex011200-00.analog-stereo]''
 
 Символом * отмечено действующее устройство вывода звука.
 
@@ -79,7 +79,7 @@ Creation-Date: 2022-04-09T22:58:27+03:00
 
 Это несколько последовательных команд, котоыре можно записать в один исполняемый sh-файл и запускать одним движением.
 
-Для примера переключим выход звука на встроенные бумкалки монитора, который получает звук через hdmi. Он у нас называется ''<''//''alsa_output.pci-0000_01_00.1.hdmi-stereo''//''>.''
+Для примера переключим выход звука на встроенные бумкалки монитора, который получает звук через hdmi. Он у нас называется ''[''//''alsa_output.pci-0000_01_00.1.hdmi-stereo''//''].''
 
 1. Сделать новый файл вроде '//setAudioToNotebook.sh//':
 
@@ -134,25 +134,31 @@ done
 И то и другое выглядит одинаково безалаберно, но это разные списки с разными названиями, и воспринимать их нужно соответственно. В линуксе вообще можно одной командой направить звук из одного источника в разные выходы.
 
 Пример (одной строкой):
+
 ''pactl load-module module-loopback source=УСТРОЙСТВО_ВХОДА sink=УСТРОЙСТВО_ВЫХОДА''
 
 Это полезно, когда подключено много устройств и надо ими всеми как-то дъявольски круто управляться.
 
 to set the default **output** sink
+
 ''pacmd set-default-sink "SINKNAME" | index''
 
 to set the default **input** sink
+
 ''pacmd set-default-source "SOURCENAME" | index''
 
 Управление уровнем звука из консоли тоже возможно через pacmd, но интереснее через amixer. Общий шаблон:
-''amixer -c [card-number] set [control] [value]''
+
+''amixer -c [card-number> set [control> [value]''
 
 Знать номер звукового устройства (уже узнали через cat /proc/asound/cards), знать свойство, которое надо изменить (узнать доступные через amixer scontrols, ну и указать в процентах или в децибелах конечный результат.
 
 Пример1: 
+
 ''amixer -c 0 set Master 80%''
 
 Пример2: 
+
 ''amixer -c 0 set Headphone 130%''
 
 Ещё можно запустить в консоли alsamixer — и выглядит интересно, и реально управляет звуком.

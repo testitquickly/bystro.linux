@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T23:48:10+02:00
 
 ====== Перекодировка нескольких файлов ======
 
-< @console @utf8 >
+[ @console @utf8 ]
 
 Например из KOI8-R в UTF8.
 
@@ -45,7 +45,7 @@ Creation-Date: 2022-02-22T23:48:10+02:00
 
 Или так: 
 
-''find /home/koder/ -name "*.txt" | enconv''
+''find /home/astenix/ -name "*.txt" | enconv''
 
 Или так:
 

@@ -4,7 +4,7 @@ Creation-Date: 2023-11-08T00:35:52+02:00
 
 ====== pacman ======
 
-< @manjaro @console @pacman >
+[ @manjaro @console @pacman ]
 
 ===== pacman =====
 

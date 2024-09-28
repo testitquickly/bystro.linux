@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:16:08+02:00
 
 ====== Настроить Display Manager ======
 
-< @debian @sddm @lightdm @display_manager  @wayland @x11 >
+[ @debian @sddm @lightdm @display_manager  @wayland @x11 ]
 
 При первом логине в систему на экране аутентификации где-то в левом нижнем углу экрана может быть опция выбора оконного менеджера – новый Wayland или устаревающий X11. 
 
