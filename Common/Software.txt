@@ -8,25 +8,54 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 Перечень общего ПО без привязки к дистрибутиву.
 
+===== A =====
+
 [[+ab (ApacheBench tool)]]
 [[+Audacious]]
 [[+Audacity]]
+
+===== B =====
+
+[[+Baloo]] (поиск)
 [[+blame]]
 [[+Brave]]
+
+===== C =====
+
 [[+Cadence]]
 [[+calibre]]
+
+===== D =====
+
 [[+Dropbox]]
 [[+du (disk usage)]]
+
+===== E =====
+
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
+
+===== F =====
+
+[[+find]]  (поиск)
 [[+Firefox]]
 [[+Firewall]]
 [[+flatpak]]
+[[+FSearch]]  (поиск)
 [[+ftp]]
+
+===== G =====
+
 [[+git]]
 [[+Google Chrome]]
 [[+GPG]]
+
+===== J =====
+
 [[+JACK (audio interface)]]
+
+===== K =====
+
 [[+k3b (прожиг дисков)]]
 [[+kate]]
 [[+KDE Connect]]
@@ -37,22 +66,48 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Konsole]]
 [[+KRunner]]
 [[+Krusader]]
+
+===== L =====
+
 [[+LaTeX]]
 [[+LibreOffice]]
+[[+locate]]  (поиск)
 [[+ls]]
+
+===== M =====
+
 [[+microcode]]
 [[+Midnight Commander]]
+
+===== N =====
+
 [[+neofetch]]
 [[+ntfs-3g]]
+
+===== O =====
+
 [[+OBS studio]]
 [[+Okular]]
 [[+OpenShot]]
+
+===== P =====
+
 [[+paprefs]]
 [[+PDF]]
 [[+pgAdmin]]
 [[+Python]]
+
+===== Q =====
+
 [[+QBittorrent]]
 [[+qmmp]]
+
+===== R =====
+
+[[+Recoll]]  (поиск)
+
+===== S =====
+
 [[+Samba]]
 [[+sed]]
 [[+Slack]]
@@ -62,29 +117,51 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Spectacle]]
 [[+ssh]]
 [[+Sublime]]
+
+===== T =====
+
 [[+tar]]
 [[+Thunderbird]]
 [[+Tor Browser]]
+
+===== U =====
+
 [[+UEFI]]
+
+===== V =====
+
 [[+v4l2]]
 [[+VLC]]
 [[+vpn]]
 [[+vsftpd]]
+
+===== W =====
+
 [[+wget]]
 [[+whereis]]
 [[+wine]]
+
+===== X =====
+
 [[+xampp]]
+
+===== Y =====
+
 [[+yt-dlp]]
+
+===== Z =====
+
 [[+Zim]]
 [[+Zoom]]
+
+===== К =====
+
 [[+Калькуляторы]]
+
+===== П =====
+
 [[Debian:Установка ПО:Принтеры и Сканеры]]
+
+===== С =====
+
 [[+Скриншотеры]]
-
-===== Поиск =====
-
-[[+Baloo]]
-[[+find]]
-[[+FSearch]]
-[[+locate]]
-[[+Recoll]]

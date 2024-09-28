@@ -6,46 +6,115 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [ @debian @install ]
 
-[[+ab]> (Apache Benchmark tool)
+===== A =====
+
+[[+ab]] (Apache Benchmark tool)
+
+===== B =====
+
 [[+Brave]]
+
+===== C =====
+
 [[+Cadence]]
+
+===== D =====
+
 [[+Dropbox]]
+
+===== E =====
+
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
+
+
+===== F =====
+
 [[+Firefox]]
 [[+FSearch]]
 [[+ftp]]
+
+===== G =====
+
 [[+Google Chrome]]
+
+===== H =====
+
 [[+hdparm]]
 [[+hplip]] (принтеры HP)
+
+===== I =====
+
 [[+iputils]]
+
+===== J =====
+
 [[+JACK]]
+
+===== K =====
+
 [[+KeePassXC]]
 [[+kgpg]]
 [[+Kile]]
 [[+Krusader]]
+
+===== L =====
+
 [[+LaTeX]]
 [[+LibreOffice]]
+
+===== M =====
+
 [[+Midnight Commander]]
+
+===== N =====
+
 [[+NodeJS]]
 [[+ntfs-3g]]
+
+===== O =====
+
 [[+OBS studio]]
 [[+OnBoard]]
 [[+OpenShot]]
+
+===== P =====
+
 [[+paprefs]]
 [[+pgAdmin]]
 [[+Playwright]]
 [[+Postman]]
+
+===== Q =====
+
 [[+QBittorrent]]
+
+===== R =====
+
 [[+Recoll]]
+
+===== S =====
+
 [[+Slack]]
 [[+SmartGit]]
 [[+ssh]]
+
+===== T =====
+
 [[+Telegram]]
 [[+Thunderbird]]
 [[+Tor Browser]]
+
+===== V =====
+
 [[+v4l2]]
 [[+vpn]]
 [[+vsfptd]]
+
+===== X =====
+
 [[+xsensors]]
+
+===== Z =====
+
 [[+zim]]
