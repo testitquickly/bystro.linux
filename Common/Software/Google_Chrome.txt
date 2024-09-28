@@ -19,7 +19,9 @@ Creation-Date: 2024-05-29T11:32:51+03:00
 ===== Запуск с определенным профилем =====
 
 ''/usr/bin/google-chrome-stable --profile-directory=Default''
+
 ну или 
+
 ''/opt/google/chrome/google-chrome --profile-directory=Default''
 
 ==== Прописать свойства ярлыка запуска ====
