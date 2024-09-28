@@ -8,4 +8,4 @@ Creation-Date: 2023-09-16T23:07:24+03:00
 
 ''sudo aptitude install openvpn openconnect network-manager-openvpn''
 
-См. настройки vpn [[Common:Software:vpn]]
+См. настройки vpn [[Software:vpn]]

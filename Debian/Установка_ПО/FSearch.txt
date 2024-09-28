@@ -9,4 +9,4 @@ Creation-Date: 2024-09-14T19:44:22+03:00
 ''flatpak --version''    
 ''flatpak install flathub io.github.cboxdoerfer.FSearch''
 
-См. [[Common:Software:FSearch]]
+См. [[Software:FSearch]]

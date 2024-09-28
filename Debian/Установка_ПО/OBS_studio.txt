@@ -10,4 +10,4 @@ Creation-Date: 2024-01-08T10:16:51+02:00
 
 ''sudo apt install ffmpeg && sudo apt install obs-studio -y''
 
-См. [[Common:Software:OBS studio]]
+См. [[Software:OBS studio]]

@@ -13,4 +13,4 @@ pacman -Sy
 pacman -S apache
 '''
 
-[[Common:Software:ab (ApacheBench tool)]]
+[[Software:ab (ApacheBench tool)]]

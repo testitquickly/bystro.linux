@@ -44,4 +44,4 @@ which kile
 
 ===== Настройки Kile =====
 
-См. [[Common:Software:Kile]]
+См. [[Software:Kile]]

@@ -43,4 +43,4 @@ Creation-Date: 2023-12-04T22:19:50+02:00
 		А можно сделать „''rmdir [directory]/''” при подключении к ftp-серверу через утилиту ''ncftp.''
 	„exit” или „bye” — разорвать соединение 
 
-См. далее [[Common:Software:ftp]]
+См. далее [[Software:ftp]]

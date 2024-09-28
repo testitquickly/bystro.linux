@@ -74,7 +74,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ''pip3 install wheel pillow''
 
-Если здесь возникнет ошибка «''error: externally-managed-environment''», см. [[Common:Software:Python:pip3]]
+Если здесь возникнет ошибка «''error: externally-managed-environment''», см. [[Software:Python:pip3]]
 
 ==== Создать файл с правилами ====
 
@@ -154,4 +154,4 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ===== Настройки =====
 
-[[Common:Software:Elgato “Stream Deck”]]
+[[Software:Elgato “Stream Deck”]]

@@ -16,4 +16,4 @@ Creation-Date: 2023-12-06T08:39:26+02:00
 
 ''sudo apt update && sudo apt install brave-browser -y''
 
-См. [[Common:Software:Brave]]
+См. [[Software:Brave]]

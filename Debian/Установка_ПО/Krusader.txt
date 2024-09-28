@@ -10,4 +10,4 @@ Creation-Date: 2024-09-14T00:00:32+03:00
 
 ''sudo aptitude install krename kdiff3 jlha-utils arj unace rar unrar kget locate krusader''
 
-См. [[Common:Software:Krusader]]
+См. [[Software:Krusader]]

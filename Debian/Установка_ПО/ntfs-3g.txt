@@ -10,4 +10,4 @@ Creation-Date: 2024-06-14T18:36:57+03:00
 
 ''sudo aptitude install ntfs-3g''
 
-См. [[Common:Software:ntfs-3g]]
+См. [[Software:ntfs-3g]]

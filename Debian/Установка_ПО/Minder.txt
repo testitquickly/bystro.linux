@@ -18,4 +18,4 @@ https://flathub.org/apps/com.github.phase1geo.minder
 
 ''sudo apt install minder''
 
-См. [[Common:Software:Mind map:Minder]]
+См. [[Software:Mind map:Minder]]

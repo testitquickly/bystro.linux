@@ -99,4 +99,4 @@ sudo chown -R astenix:sudo /opt/tor-browser && sudo chmod 750 /opt/tor-browser
 
 ===== Настройка =====
 
-[[Common:Software:Tor Browser]]
+[[Software:Tor Browser]]

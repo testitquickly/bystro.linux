@@ -16,4 +16,4 @@ Creation-Date: 2024-09-20T02:35:41+03:00
 
 Как правило, в контейнерах версия ПО выше, чем в репозиториях Debian.
 
-См. [[Common:Software:QBittorrent]]
+См. [[Software:QBittorrent]]

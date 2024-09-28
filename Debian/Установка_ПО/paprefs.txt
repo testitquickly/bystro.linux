@@ -10,4 +10,4 @@ Creation-Date: 2024-07-15T12:14:04+03:00
 
 ''sudo apt install paprefs''
 
-См. настройки [[Common:Software:paprefs]]
+См. настройки [[Software:paprefs]]

@@ -10,4 +10,4 @@ Creation-Date: 2023-12-25T22:35:10+02:00
 
 ''sudo apt install mc''
 
-См. [[Common:Software:Midnight Commander]]
+См. [[Software:Midnight Commander]]

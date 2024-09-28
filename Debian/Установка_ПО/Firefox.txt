@@ -157,4 +157,4 @@ sudo touch /usr/share/applications/firefox.desktop
 
 Рекомендуется регулярно бэкапить содержимое ''/~/.mozilla/firefox/''
 
-См. настройки [[Common:Software:Firefox]]
+См. настройки [[Software:Firefox]]

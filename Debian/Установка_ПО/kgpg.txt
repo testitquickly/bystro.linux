@@ -8,4 +8,4 @@ Creation-Date: 2023-10-03T06:46:10+03:00
 
 ''sudo aptitude install gpg kgpg''
 
-См. [[Common:Software:GPG]]
+См. [[Software:GPG]]

@@ -10,4 +10,4 @@ Creation-Date: 2024-07-15T12:15:00+03:00
 
 ''sudo pacman -S paprefs''
 
-См. настройки [[Common:Software:paprefs]]
+См. настройки [[Software:paprefs]]

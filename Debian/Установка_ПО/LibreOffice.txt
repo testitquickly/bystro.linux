@@ -60,4 +60,4 @@ sudo rm -R /opt/libreoffice*
 ''> Офис'' 
 ''> «LibreOffice 7.3»''
 
-См. дальше [[Common:Software:LibreOffice]]
+См. дальше [[Software:LibreOffice]]

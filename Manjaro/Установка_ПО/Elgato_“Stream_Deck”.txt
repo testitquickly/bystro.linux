@@ -14,7 +14,7 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 	#todo Elgato “Stream Deck” — поискать решение для установки в Manjaro
 
-===== [психологическая> Подготовка к установке =====
+===== (психологическая) Подготовка к установке =====
 
 Основной источник информации по установке и настройке https://timothycrosley.github.io/streamdeck-ui/
 
@@ -137,4 +137,4 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 ===== Настройки =====
 
-[[Common:Software:Elgato “Stream Deck”]]
+[[Software:Elgato “Stream Deck”]]
