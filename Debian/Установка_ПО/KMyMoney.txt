@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-29T02:41:46+03:00
+
+====== KMyMoney ======
+
+[ @debian @install ]
+
+''sudo aptitude install kmymoney''
+
+Один из первых вопросов при настройке — какой формат хранения данных выбрать. Ответ: XML
+
+См. [[Software:KMyMoney]]
