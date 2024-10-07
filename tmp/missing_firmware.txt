@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-07T11:33:46+03:00
+
+====== missing firmware ======
+Создан Понедельник 07 октября 2024
+
