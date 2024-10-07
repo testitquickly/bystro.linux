@@ -25,34 +25,7 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 
 ===== Установка flatpak =====
 
-''sudo apt install flatpak''
-
-А можно подключиться к official PPA Flatpak, чтобы автоматически подтягивались его обновления.
-
-1. Убедиться в том, что в системе должен быть установлен софт для [[GPG]] (оба gpg и kgpg)
-2. Установить flatpak
-
-''sudo add-apt-repository ppa:alexlarsson/flatpak''
-'''
-sudo apt update
-sudo apt install flatpak
-'''
-
-С этого момента в систему можно скачивать установочные файлы *.flatpakref с https://flathub.org/home
-
-==== Добавить репозиторий для Flatpak ====
-
-Чтобы ставить ПО через flatpak из консоли
-
-''flatpak remote-add --if-not-exists flathub'' ''https://flathub.org/repo/flathub.flatpakrepo''
-
-==== Обновление Flatpak ====
-
-''flatpak update''
-
-После этого можно искать софт в терминале, как через aptitude. Обратить внимание, что софт можно искать довольно безалаберно, без жесткой точности в названии, но устанавливать можно только с повышенной точностью к именам, точнее, к 'ApplicationID'.
-
-''flatpak search APPLICATION_NAME''
+* [[Debian:Установка ПО:flatpak]]
 
 ===== Установка софта =====
 

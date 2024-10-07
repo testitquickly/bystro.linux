@@ -3,5 +3,48 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-10-07T12:56:38+03:00
 
 ====== flatpak ======
-Создан Понедельник 07 октября 2024
 
+[ @debian @install @flatpak ]
+
+===== Установить flatpak =====
+
+''sudo aptitude install flatpak''
+
+==== Добавить каталоги flatpak в переменную окружения XDG_DATA_DIRS ====
+
+'/var/lib/flatpak/exports/share'
+'/home/astenix/.local/share/flatpak/exports/share'
+
+не находятся по пути поиска, заданном переменной окружения XDG_DATA_DIRS, поэтому приложения, установленные Flatpak, могут не отображаться на рабочем столе, пока сеанс не будет перезапущен.
+
+''mcedit ~/.profile''
+
+Добавить в последнюю строку этот текст
+
+''XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"''
+
+Save.
+
+Принудительно перечитать содержимое этого файла:
+
+ ''source ~/.profile''
+
+==== Добавить репозиторий для Flatpak ====
+
+Чтобы получить возможность ставить ПО через flatpak из консоли
+
+''flatpak remote-add --if-not-exists flathub'' ''https://flathub.org/repo/flathub.flatpakrepo''
+
+==== Установка ПО через flatpak ====
+
+После этого можно искать софт в терминале, как через aptitude. Обратить внимание, что софт можно искать довольно безалаберно, без жесткой точности в названии, но устанавливать можно только с повышенной точностью к именам, точнее, к 'ApplicationID'.
+
+''flatpak search'' __''APPLICATION_NAME''__
+
+Теперь можно скачивать установочные файлы *.flatpakref с https://flathub.org/home
+
+===== Обновление самого Flatpak =====
+
+''flatpak update''
+
+См. [[Software:flatpak]]
