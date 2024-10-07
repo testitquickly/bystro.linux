@@ -3,5 +3,19 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-10-07T12:53:37+03:00
 
 ====== Obsidian ======
-Создан Понедельник 07 октября 2024
 
+[ @debian @install @Obsidian ]
+
+Есть [[https://help.obsidian.md/Getting+started/Download+and+install+Obsidian|несколько способов]], для Linux все они выстроены над использованием образов Snap, AppImage и Flatpak. Поэтому:
+
+''flatpak install flathub md.obsidian.Obsidian''
+
+Открыть:
+
+''flatpak run md.obsidian.Obsidian''
+
+===== Сделать ссылку для запуска =====
+
+
+
+См. [[Software:Obsidian]]
