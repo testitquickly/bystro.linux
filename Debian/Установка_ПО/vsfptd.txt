@@ -6,19 +6,18 @@ Creation-Date: 2023-12-04T22:25:57+02:00
 
 [ @debian @install @console @ftp @vsftpd ]
 
-Обновить систему
+===== Обновить систему =====
 
 ''sudo aptitude update && sudo aptitude upgrade''
 
-Установить vsftpd
+===== Установить vsftpd =====
 
 ''sudo aptitude install vsftpd''
 
-Основные управляющие команды:
+==== Добавить юзера в группу ’adm’ ====
 
-* ''systemctl status vsftpd''
-* ''systemctl start vsftpd''
-* ''systemctl stop vsftpd''
-* ''systemctl restart vsftpd''
+''sudo usermod -a -G adm'' __''astenix''__
+
+Это нужно, чтобы получить доступ ко всем конфигурационным файлам.
 
 Дальше [[Software:vsftpd]]
