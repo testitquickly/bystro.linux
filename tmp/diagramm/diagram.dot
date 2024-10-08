@@ -1,0 +1,11 @@
+node [fontname = "Handlee"];
+edge [fontname = "Handlee"];
+
+draw [
+label = "Text";
+shape = rect;];
+win [
+label = "Win";
+shape = oval;];
+
+draw -> win;
