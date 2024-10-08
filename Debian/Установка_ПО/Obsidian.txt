@@ -16,6 +16,22 @@ Creation-Date: 2024-10-07T12:53:37+03:00
 
 ===== Сделать ссылку для запуска =====
 
+В принципе в меню приложений она появится — в разделе «Офис» с отсылкой к файлу ''/var/lib/flatpak/app/md.obsidian.Obsidian/current/active/export/share/applications/md.obsidian.Obsidian.desktop''
 
+Но можно сделать и свой:
+
+''mcedit ~/.local/share/applications/Obsidian.desktop''
+
+Вставить этот текст:
+
+''[Desktop Entry]''
+''Encoding=UTF-8''
+''Name= Obsidian''
+''Comment= text notes''
+''Type=Application''
+''Terminal=true''
+''Exec=flatpak run md.obsidian.Obsidian''
+''StartupNotify=true''
+''Categories=Office;''
 
 См. [[Software:Obsidian]]
