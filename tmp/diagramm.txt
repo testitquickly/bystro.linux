@@ -3,5 +3,14 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-10-07T17:51:56+03:00
 
 ====== diagramm ======
-Создан Понедельник 07 октября 2024
 
+	#todo Разобраться с диаграммами (и в блог добавить)
+
+https://graphviz.org/gallery/
+
+Клик правой кнопой мыши по картинке — редактировать исходный текст
+
+
+{{./diagram001.png?type=diagram}}
+
+{{./diagram002.png?type=diagram}}
