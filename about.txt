@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-04-18T19:23:47+03:00
 
-===== about =====
+====== about ======
 
 [ @main @about @zim @nas @изображения ]
 
