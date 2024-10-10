@@ -83,11 +83,11 @@ Properties
 
 Тут можно запустить Hydrogen:
 
-	{{../../../images/jack_settings_01.jpg}}
+	{{../../images/jack_settings_01.jpg}}
 
 Соединить PulseAudio JACK Source с PulseAudio JACK Sink (аудиоканалы раздельные, поэтому front-left подключить к front-left и далее соответственно):
 
-	{{../../../images/jack_settings_02.jpg}}
+	{{../../images/jack_settings_02.jpg}}
 
 ===== Hydrogen — Настроить драйвер =====
 

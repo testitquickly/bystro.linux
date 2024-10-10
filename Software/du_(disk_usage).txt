@@ -4,7 +4,7 @@ Creation-Date: 2024-01-17T08:45:21+02:00
 
 ====== du (disk usage) ======
 
-[ @debian @folder > 
+[ @debian @folder @du @baobab ] 
 
 du = Disk Usage.
 
@@ -19,3 +19,9 @@ du = Disk Usage.
 Иногда есть разница между размером файла\каталога и количеством занятого места на диске. Узнать „Total disk usage”:
 
 ''du -hc /home/user/folder''
+
+Иногда надо просто узнать размер каталога, без перечисления всех его подкаталогов
+
+''du -d 0 -h /home/user/folder''
+
+В KDE есть гуи-аналог с названием „Disk Usage Analyzer”, он же ''baobab''. Зрительно поражает, на деле проще смотреть в консоль с ''du''.
