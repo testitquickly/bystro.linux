@@ -32,9 +32,9 @@ https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created
 
 Заменить его этим текстом:
 
-''# Настройка отображения дат''
+''# Настройка отображения дат — показывать только год''
 
-''gui_pubdate_display_format ='' '**''yyyy''**'''''
+''gui_pubdate_display_format ='' '**''yyyy''**'
 
 ''gui_timestamp_display_format = 'dd MMM yyyy'''
 
