@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-13T17:47:42+03:00
+
+====== DBX 286s ======
+
+[ @audio @dbx ]
+
+/mnt/v3/v3.Фильмы/Как подключить DBX286s к аудио интерфейсу.mp4
+
