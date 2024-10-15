@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-15T13:58:41+03:00
+
+====== Postman ======
+
+[ @postman ]
+
+===== Установка =====
+
+* [[Debian:Установка ПО:Postman]]
+

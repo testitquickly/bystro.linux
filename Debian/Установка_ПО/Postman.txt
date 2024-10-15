@@ -38,7 +38,7 @@ sudo chown -R astenix:sudo /opt/Postman && sudo chmod 750 /opt/Postman
 
 Скачать из сети картинку логотипа файл условно "Postman.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
 
-Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог [[/opt/Postman/]> для этого лучшее решение.
+Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог ''/opt/Postman/'' для этого лучшее решение.
 
 ''sudo mv Postman.png /opt/Postman/''
 
@@ -50,18 +50,16 @@ sudo chown -R astenix:sudo /opt/Postman && sudo chmod 750 /opt/Postman
 
 Вставить в него такой набор букв:
 
-**[Desktop Entry]**
-'''
-Encoding=UTF-8
-Name=Postman
-Comment=from /otp
-Type=Application
-Terminal=false
-Exec=/opt/Postman/Postman %U
-Icon=/opt/Postman/Postman.png
-StartupNotify=true
-Categories=Network;WebBrowser;
-'''
+**''[Desktop Entry]''**
+''Encoding=UTF-8''
+''Name=Postman''
+''Comment=from /opt''
+''Type=Application''
+''Terminal=false''
+''Exec=/opt/Postman/Postman %U''
+''Icon=/opt/Postman/Postman.png''
+''StartupNotify=true''
+''Categories=Network;WebBrowser;''
 
 [F2> [Esc> [Esc]
 
