@@ -42,6 +42,8 @@ GRUB_CMDLINE_LINUX="quiet splash"
 GRUB_DISABLE_OS_PROBER=false
 '''
 
+Посмотреть множество других настроек — https://www.gnu.org/software/grub/manual/grub/html_node/Simple-configuration.html Тут чем меньше изменений, тем лучше. Особенно бессмысленно заморачиваться бэкграундом и фоновыми изображения.
+
 Отредактировать файл:
 
 ''sudo mcedit /etc/default/grub''
