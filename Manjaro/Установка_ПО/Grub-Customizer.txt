@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-17T12:58:40+03:00
+
+====== Grub-Customizer ======
+
+[ @manjaro @install @grub ]
+
+''sudo pacman -S grub-customizer''
+
+См. [[Software:grub2:Grub-Customizer]]

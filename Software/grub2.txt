@@ -10,41 +10,45 @@ Creation-Date: 2022-02-22T14:03:36+02:00
 
 ''sudo cp /etc/default/grub /etc/default/grub.default''
 
-Отредактировать файл:
-
-''sudo mcedit /etc/default/grub''
-
-Заменить содержимое файла следующим текстом (прочитать внимательно и понять настройки):
+Прочитать внимательно и понять настройки:
 
 '''
-# Set the highlight bar to the default loading system. 
-# If 0 = Debian. If 3, then will be loaded Win
+	# Set the highlight bar to the default loading system. 
+	# If 0 = Debian. If 2, then will be loaded Win (or whatever you have installed)
 GRUB_DEFAULT=0
 
-# No boot menu will appear, directly loading first line (Debian)
+	# No boot menu will appear, directly loading first line (Debian)
 GRUB_TIMEOUT=0
 
-# But you have one second to press SHIFT for open boot menu
+	# But you have one second to press SHIFT for open boot menu
 GRUB_HIDDEN_TIMEOUT=1
 
-# Uncomment to disable graphical terminal (grub-pc only)
+	# Uncomment to disable graphical terminal (grub-pc only)
 GRUB_TERMINAL=console
 
-# Display the name of booted System, or echo Debian.
+	# Display the name of booted System, or echo Debian.
 GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian` 
 
-# Do not load system messages
+	# Do not load system messages
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash" 
 
-# Extra kernel options here
+	# Extra kernel options here
 GRUB_CMDLINE_LINUX="quiet splash"
 '''
 
 '''
-# Без этой настройки вторая операционная система может «исчезнуть»,
-# бо ее никто и не искал.
+	# Без этой настройки вторая операционная система может «исчезнуть»,
+	# бо ее никто и не искал.
 GRUB_DISABLE_OS_PROBER=false
 '''
+
+Отредактировать файл:
+
+''sudo mcedit /etc/default/grub''
+
+Заменить содержимое файла предлагаемым текстом.
+
+Ещё в Gnome есть утилита [[+Grub-Customizer]] — то же самое, но GUI и ставить галочки.
 
 ===== Сохранить изменения =====
 

@@ -4,7 +4,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ====== Software ======
 
-[ @install @settings @chapter ]
+[ @main @settings ]
 
 Перечень общего ПО без привязки к дистрибутиву.
 
@@ -49,6 +49,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+git]]
 [[+Google Chrome]]
 [[+GPG]]
+[[+grub2]]
 
 ===== J =====
 

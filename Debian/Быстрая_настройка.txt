@@ -20,7 +20,7 @@ C установочного диска Debian одной командой:
 2. [[+Добавить пользователя в группу sudo]]
 3. [[+Обновить sources.list]]
 4. [[+Обновить Debian]]
-5. [[+grub2]]
+5. [[Software:grub2]]
 6. [[Common:KDE settings:Сеанс:Поменять пароль в кошельке kdewallet]]
 7. [[Common:KDE settings:Сеанс:Автоматический login]]
 8. [[Common:HowTo:Посмотреть ошибки при загрузке системы]]
