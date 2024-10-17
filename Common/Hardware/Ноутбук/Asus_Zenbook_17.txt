@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-17T13:23:46+03:00
+
+====== Asus Zenbook 17 ======
+Создан Четверг 17 октября 2024
+

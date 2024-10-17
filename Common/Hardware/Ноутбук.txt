@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-17T13:21:15+03:00
+
+====== Ноутбуки ======
+Создан Четверг 17 октября 2024
+
