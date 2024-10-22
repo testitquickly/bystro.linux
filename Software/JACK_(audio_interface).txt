@@ -9,7 +9,7 @@ Creation-Date: 2023-05-17T01:11:42+03:00
 Видео про настройку подключений Motu M2 через JACK
 https://www.youtube.com/watch?v=XcSRd4X_xPo&list=WL&index=4&t=238s
 
-	#todo JACK — добавить разделы
+	*todo JACK — добавить разделы
 
 * [[Cadence]]
 * Catia

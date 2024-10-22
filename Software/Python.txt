@@ -238,6 +238,6 @@ __Не надо__ использовать стандартный ''make install
 
 ===== TMP =====
 
-	#todo Python глянуть линк
+	*todo Python глянуть линк
 	
 https://realpython.com/python-main-function/

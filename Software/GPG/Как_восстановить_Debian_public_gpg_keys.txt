@@ -11,7 +11,7 @@ Creation-Date: 2022-02-23T21:22:10+02:00
 	Следующие подписи не могут быть проверены, так как недоступен открытый ключ: NO_PUBKEY 9D6D8F6BC857C906  NO_PUBKEY 8B48AD6246925553
 значит утеряны публичные ключи шифрования Debian из /etc/apt/дальше какие-то каталоги. Надо их заново скачать с надежного сервера и установить ИЗ-ПОД ROOT по следующей схеме [номера ключей всюду смотри в сообщениях об ошибках]:
 
-	#todo debian PGP — перевод
+	*todo debian PGP — перевод
 
 1. delete theses links from repo file (/etc/apt/sources.list)
 2. and in any file with the suffix .list under the directory [[/etc/apt/sources.list.d/]]

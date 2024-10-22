@@ -8,7 +8,7 @@ Creation-Date: 2024-02-26T19:38:08+02:00
 
 https://ece451web.groups.et.byu.net/cadence-help/getstarted.html (множество картинок)
 
-	#todo Cadence — перевод
+	*todo Cadence — перевод
 
 ===== Setting up Cadence for the Linux Machines =====
 

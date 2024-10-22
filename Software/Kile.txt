@@ -209,7 +209,7 @@ Kile
 
 ==== Настроить build через внешний sh-скрипт ====
 
-	#todo Kile Настроить build через внешний sh-скрипт
+	*todo Kile Настроить build через внешний sh-скрипт
 
 Продолжение установки [[Manjaro:Установка ПО:LaTeX]]. 
 
@@ -346,11 +346,11 @@ Configuration: Current Default (Default) > Add > OK
 
 ==== Как добавить новые команды в меню ====
 
-	#todo ! Kile - новые команды
+	*todo ! Kile - новые команды
 
 ==== Настроить build через внешний sh-скрипт ====
 
-	#todo ! Kile - компиляция файлов через внешний скрипт
+	*todo ! Kile - компиляция файлов через внешний скрипт
 
 ==== Шорткаты ====
 
@@ -365,7 +365,7 @@ QuickBuild = Alt+1
 
 --------------------
 
-	#todo Kile — перевод
+	*todo Kile — перевод
 
 For now I could solve the issue where Kile can find the Tex Live 2020 binaries (manually installed) when it is run from graphical menu or launcher icon. I am listing the two solutions I found (links are provided below):
 

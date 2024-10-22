@@ -6,7 +6,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 [ @debian @install @elgato @stream_deck @python @console ]
 
-	#todo Elgato “Stream Deck” — пересмотреть запуск скриптов Python внутри venv
+	*todo Elgato “Stream Deck” — пересмотреть запуск скриптов Python внутри venv
 
 ===== [психологическая> Подготовка к установке =====
 

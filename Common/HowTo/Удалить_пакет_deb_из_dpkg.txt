@@ -22,7 +22,7 @@ Creation-Date: 2022-02-22T15:31:18+02:00
 
 Параметр "ii" означает, что пакет установлен.
 
-	#todo dpkg — завершить перевод
+	*todo dpkg — завершить перевод
 
 If you'd like to remove the package itself (without the configuration files), you'll have to run:
 

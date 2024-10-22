@@ -235,7 +235,7 @@ Unpack the 'phpMyAdmin' tar.gz files to the newly created directory:
 
 Locate the following line:
 
-''$cfg['blowfish_secret'> = '';''
+''$cfg['blowfish_secret'> ='' ;''
 
 Придумать себе YOUR_SECRET_PASSPHRASE (записать этот пароль в блокнот) и прописать её в предложенную строку:
 
@@ -643,7 +643,7 @@ https://tproger.ru/articles/set-up-and-configure-an-apache-server/
 
 ===== Настройка SSL =====
 
-	#todo Настройка SSL — завершить
+	*todo Настройка SSL — завершить
 
 SSL (Secure Sockets Layer) — это технология, которая позволяет нам шифровать данные, связанные с соединением между клиентом и сервером. При использовании SSL-сертификатов HTTPS (Hyper Text Transfer Protocol Secure) заменяет HTTP в URL-адресе.
 
@@ -671,27 +671,28 @@ sudo openssl req -x509 \
 
 Скопируйте сгенерированный ключ и сертификат в каталоги /etc/ssl/private и /etc/ssl/ssl-certs соответственно:
 
-$ sudo cp example-cert.pem /etc/ssl/certs
+''sudo cp example-cert.pem /etc/ssl/certs''
 
 Сертификат является общедоступным, поэтому не требует специального разрешения.
 
 Теперь ключ:
 
-$ sudo cp example.key /etc/ssl/private
+''sudo cp example.key /etc/ssl/private''
 
 Важно настроить права доступа к файлу ключа. Папка /etc/ssl/private принадлежит root-пользователю и группе ssl-cert, и у неё есть права доступа 710. Это означает, что владелец имеет на неё полные права, а владелец группы может только получить к ней доступ и перечислить её содержимое, но не может дать разрешение другим:
 
-$ ls -ld /etc/ssl/private
+''ls -ld /etc/ssl/private''
+
 drwx--x--- 2 root ssl-cert 4096 Mar 16 11:57 /etc/ssl/private
 
 Изменим права доступа к файлу ключа, предоставив владельцу права на чтение и запись, а группе — только для чтения:
 
-$ sudo chown root:ssl-cert /etc/ssl/private/example.key
-$ sudo chmod 640 /etc/ssl/private/example.key
+''sudo chown root:ssl-cert /etc/ssl/private/example.key''
+''sudo chmod 640 /etc/ssl/private/example.key''
 
 Теперь, чтобы использовать сертификат, нужно включить модуль SSL с помощью команды a2enmod:
 
-$ sudo a2enmod ssl
+''sudo a2enmod ssl''
 
 Почти всё готово. Теперь пришло время изменить наш виртуальный хост и настроить его следующим образом:
 
@@ -714,11 +715,11 @@ $ sudo a2enmod ssl
 
 Теперь следуйте инструкциям по открытию порты брандмауэра из начале статьи, но на этот раз чтобы разрешить HTTPS-службу:
 
-$ sudo ufw allow https
+''sudo ufw allow https''
 
 Наконец, перезагрузите конфигурацию Apache:
 
-$ sudo systemctl reload apache2
+''sudo systemctl reload apache2''
 
 Готово. Теперь, если мы перейдём по адресу https://www.example.local, мы должны увидеть веб-сервер, предупреждающий нас о том, что используемый сертификат небезопасен. Это, однако, признак того, что наш сертификат работает, и трафик между клиентом и сервером будет зашифрован (вам необходимо добавить исключение для сертификата, чтобы использовать его).
 Настройка Let’s encrypt
@@ -733,14 +734,13 @@ $ sudo systemctl reload apache2
 
 Для установки Certbot на Ubuntu 18.04 достаточно запустить:
 
-$ sudo apt-get update && apt-get install certbot python-certbot-apache
+''sudo apt-get update && apt-get install certbot python-certbot-apache''
 
 Пакет Certbot поставляется с модулем systemd timer, который будет запускать Certbot два раза в день, чтобы поддерживать сертификат в актуальном состоянии. Получить сертификат довольно просто:
 
-$ sudo certbot --apache -m  -d 
+''sudo certbot --apache -m  -d'' 
 
 Очевидно, чтобы это работало, домен должен правильно указывать на ваш общедоступный IP-адрес. Certbot предложит вам несколько вопросов для настройки конфигурации, и, если всё пойдёт хорошо, сертификат и ключ будут сохранены в каталоге /etc/letsencrypt/live/. Просто настройте файл виртуального хоста, чтобы указать на них, и всё готово.
-
 
 ===== Траблшутинг =====
 

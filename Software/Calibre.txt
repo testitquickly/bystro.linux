@@ -44,7 +44,7 @@ https://dearauthor.com/ebooks/setting-up-a-new-library-with-calibre-user-created
 
 ===== Creating User Defined Columns =====
 
-	#todo Calibre — перевод
+	*todo Calibre — перевод
 
 To create a column, CTRL/CMD + P (This opens Preferences).  From the first row of icons, click on the button: Add your own columns.
 

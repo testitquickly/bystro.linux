@@ -94,7 +94,7 @@ source ~/.profile && source ~/.bashrc
 
 ==== Теория ====
 
-#todo MC — перевод
+	*todo MC — перевод
 
 	Учесть, что .bashrc should be used only for Bash-specific settings (e.g., shell options, aliases, etc.) while .profile should be used for setting environment variables like EDITOR (which is used by programs such as sudoedit, git, etc.).
 	

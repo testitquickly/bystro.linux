@@ -6,7 +6,7 @@ Creation-Date: 2023-03-26T14:10:28+03:00
 
 [ @gpg  @kgpg ]
 
-	#todo PGP passphrase — перевод и символ ''λ''
+	*todo PGP passphrase — перевод и символ ''λ''
 
 https://medium.com/@fro_g/oh-no-i-forgot-my-pgp-private-keys-passphrase-6ec1d0228b48
 

@@ -129,7 +129,7 @@ PS: работать в libreoffice в этот момент не получит
 
 ===== Добавить библиографию =====
 
-	#todo LibreOffice как добавить библиографию
+	*todo LibreOffice как добавить библиографию
 
 Хорошо, если список книг заранее подготовлен (для того же Bibtex), но рассмотрим всё с нуля.
 
@@ -151,7 +151,7 @@ CreateBibliographyDatabase-SaveAndProceed*
 
 Выбрать место на жестком диске, где будет сохранен новый *.odb файл.
 
-	#todo LibreOffice — перевод
+	*todo LibreOffice — перевод
 
 CreateBibliographyDatabase-ChooseWhereToSave
 

@@ -6,7 +6,7 @@ Creation-Date: 2022-02-23T21:08:26+02:00
 
 [ @main @update ]
 
-	#todo ПО из backport — переписать внятно
+	*todo ПО из backport — переписать внятно
 
 Сперва убедись, что нужный тебе пакет есть в https://packages.debian.org/stretch-backports/
 

@@ -53,7 +53,7 @@ python-qt4-dbus
 python-notify
 python-reportlab
 
-	#todo hplip — перевод
+	*todo hplip — перевод
 
 Step 3: Download HPLIP
 

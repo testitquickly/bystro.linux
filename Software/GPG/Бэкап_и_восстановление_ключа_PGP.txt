@@ -6,7 +6,7 @@ Creation-Date: 2023-03-26T14:14:05+03:00
 
 [ @gpg  @kgpg ]
 
-	#todo PGP — перевод
+	*todo PGP — перевод
 
 https://www.jwillikers.com/backup-and-restore-a-gpg-key
 
