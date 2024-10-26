@@ -41,6 +41,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Firefox]]
 [[+Firewall]]
 [[+flatpak]]
+[[+fsck]]
 [[+FSearch]]  (поиск)
 [[+ftp]]
 
@@ -115,6 +116,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+sed]]
 [[+Slack]]
 [[+SmartGit]]
+[[+SmartMonTools]]
 [[+SMPlayer]]
 [[+snap]]
 [[+Spectacle]]
@@ -164,7 +166,8 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== П =====
 
-[[Debian:Установка ПО:Принтеры и Сканеры]]
+[[+Принтеры и Сканеры]]
+[[+Про симлинки и хардлинки]]
 
 ===== С =====
 

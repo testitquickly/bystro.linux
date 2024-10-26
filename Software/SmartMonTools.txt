@@ -1,0 +1,345 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-25T21:54:10+03:00
+
+====== SmartMonTools ======
+
+[ @hdd @smart @smartmontools ]
+
+Это утилита для диагностики состояния HDD. 
+
+Для условного «лечения» дисков см. [[fsck]]
+
+Теория: [[Common:HowTo:Проверить:S.M.A.R.T.]]
+
+===== Установка =====
+
+* [[Debian:Установка ПО:SmartMonTools]]
+
+===== Узнать «имя» проверяемого диска =====
+
+Это делается через две отдельные утилиты:
+
+* ''lsblk'' (вкратце)
+* ''sudo fdisk -l'' (детально)
+
+Диски HDD принято именовать ''/dev/sda'', а партиции на нём номерами:
+
+''/dev/sda''
+''├─/dev/sda1''
+''├─/dev/sda2''
+''…''
+
+Следующий диск будет называться ''/dev/sdb'':
+
+''/dev/sdb''
+''├─/dev/sdb1''
+''├─/dev/sdb2''
+''…''
+
+Диски NVMe принято именовать по другому стандарту — ''/dev/nvme0n1'', но партиции тоже называются соответственно номерам:
+
+''/dev/nvme0n1''
+''├─/dev/nvme0n1p1''
+''├─/dev/nvme0n1p2''
+''…''
+
+Также название диска (и партиций на нём) можно узнать через «Диспетчер разделов от KDE» (''partitionmanager''), и там же можно получить краткий отчет по SMART: Устройство > Состояние SMART.
+
+===== Проверить SMART для HDD =====
+
+Допустим, hdd-устройство называется ''/dev/sda''. Получить отчёт:
+
+''sudo smartctl -i /dev/sda''
+
+Пример ответа:
+
+'''
+Model Family:     Western Digital Red
+Device Model:     WDC WD10EFRX-68FYTN0
+LU WWN Device Id: 5 0014ee 20c672def
+Firmware Version: 82.00A82
+User Capacity:    1,000,204,886,016 bytes [1.00 TB]
+Sector Sizes:     512 bytes logical, 4096 bytes physical
+Rotation Rate:    5400 rpm
+Device is:        In smartctl database [for details use: -P show]
+ATA Version is:   ACS-2 (minor revision not indicated)
+SATA Version is:  SATA 3.0, 6.0 Gb/s (current: 3.0 Gb/s)
+Local Time is:    Thu Sep 24 18:13:19 2020 CEST
+SMART support is: Available - device has SMART capability.
+SMART support is: Disabled
+'''
+
+Смотрим последние строки. Диск поддерживает SMART, и он отключен. Включить:
+
+''sudo smartctl -s on /dev/sda''
+
+У SSD нет SMART, там другие технологии (ничего не крутится). Как устройства они и называются по-другому, вроде:
+
+''sudo smartctl -i /dev/nvme0n1p2''
+
+==== Получить полный отчет ====
+
+Через параметр ''-a'' (--all):
+
+''sudo smartctl -a /dev/sda''
+
+Пример ответа:
+
+''SMART Attributes Data Structure revision number: 16''
+''Vendor Specific SMART Attributes with Thresholds:''
+''ID# ATTRIBUTE_NAME          FLAG     VALUE WORST THRESH TYPE      UPDATED  WHEN_FAILED RAW_VALUE''
+  ''1 Raw_Read_Error_Rate     0x002f   200   200   051    Pre-fail  Always       -       0''
+  ''3 Spin_Up_Time            0x0027   135   125   021    Pre-fail  Always       -       4216''
+  ''4 Start_Stop_Count        0x0032   100   100   000    Old_age   Always       -       941''
+  ''5 Reallocated_Sector_Ct   0x0033   200   200   140    Pre-fail  Always       -       0''
+  ''7 Seek_Error_Rate         0x002e   200   200   000    Old_age   Always       -       0''
+  ''9 Power_On_Hours          0x0032   085   085   000    Old_age   Always       -       11285''
+ ''10 Spin_Retry_Count        0x0032   100   100   000    Old_age   Always       -       0''
+ ''11 Calibration_Retry_Count 0x0032   100   100   000    Old_age   Always       -       0''
+ ''12 Power_Cycle_Count       0x0032   100   100   000    Old_age   Always       -       446''
+''192 Power-Off_Retract_Count 0x0032   200   200   000    Old_age   Always       -       108''
+''193 Load_Cycle_Count        0x0032   199   199   000    Old_age   Always       -       4258''
+''194 Temperature_Celsius     0x0022   111   099   000    Old_age   Always       -       32''
+''196 Reallocated_Event_Count 0x0032   200   200   000    Old_age   Always       -       0''
+''197 Current_Pending_Sector  0x0032   200   200   000    Old_age   Always       -       0''
+''198 Offline_Uncorrectable   0x0030   100   253   000    Old_age   Offline      -       0''
+''199 UDMA_CRC_Error_Count    0x0032   200   200   000    Old_age   Always       -       0''
+''200 Multi_Zone_Error_Rate   0x0008   200   200   000    Old_age   Offline      -       0''
+
+Самые важные параметры — “Reallocated_Sector_Ct” и “Current_Pending_Sector”. 
+
+Если “Reallocated_Sector_Ct” RAW_VALUE что угодно, кроме ''0'', значит на hdd есть сектора, которые сдохли. Диск лучше заменить.
+
+“Current_Pending_Sector” показывает количество плохих секторов, которые еще не были перераспределены. 
+
+===== Тесты SMART =====
+
+Утилита smartctl выполняет разные тесты:
+
+* short — быстрый, минут на 10
+* long — детальный; иногда десяток минут, иногда не меньше часа
+* conveyance — помогает узнать, если hdd перетрясли при транспортировке; ATA devices only
+* select — как и conveyance, но тут проверяют определенный диапазона LBA (адресов логических блоков), который указывается при запуске теста; тоже ATA devices only
+
+
+
+$ sudo smartctl -t select,10-20
+
+It is possible to specify a maximum of 5 different ranges of LBAs to check by repeating the -t option:
+
+$ sudo smartctl -t select,0-5 -t select,5-10
+
+The -t option is the short for --test and is used to execute a test immediately.
+Running a test
+
+We saw what are the possible tests we can run with the smartctl utility. Now let’s see how to actually launch a test. As we saw in the end of the previous section, the -t option is used to run a test immediately; we must provide the type of test we want to run as argument of the option. To execute a short test on the /dev/sda device we would run:
+
+$ sudo smartctl -t short /dev/sda
+smartctl 6.6 2017-11-05 r4594 [armv6l-linux-5.4.51+] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION
+Sending command: "Execute SMART Short self-test routine immediately in off-line mode".
+Drive command "Execute SMART Short self-test routine immediately in off-line mode" successful.
+Testing has begun.
+Please wait 2 minutes for test to complete.
+Test will complete after Thu Sep 24 14:39:05 2020
+
+Use smartctl -X to abort test.
+
+The output of the command reports the time we should wait for the test to finish and the date and time when it should be complete. After the specified time interval, to check the results of the test we can run:
+
+$ sudo smartctl -a /dev/sda
+
+As you can notice the test (The first in the list – #1) and its results have been added to the log list. It was completed without errors:
+
+SMART Self-test log structure revision number 1
+Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
+# 1  Short offline       Completed without error       00%     11286         -
+# 2  Short offline       Completed without error       00%      9590         -
+# 3  Short offline       Completed without error       00%      2941         -
+# 4  Extended offline    Completed without error       00%        21         -
+# 5  Short offline       Completed without error       00%        18         -
+# 6  Short offline       Completed without error       00%         0         -
+# 7  Short offline       Completed without error       00%         0         -
+
+It is possible to know the estimated time a test would take to finish. Such information should be included in the output of the smartctl -a /dev/sdx command, but can be requested explicitly by launching smartctl with the -c option (short for --capabilities). The following are the interesting lines in the output:
+
+$ sudo smartctl -c /dev/sda
+[...]
+Short self-test routine
+recommended polling time:    (   2) minutes.
+Extended self-test routine
+recommended polling time:    ( 157) minutes.
+Conveyance self-test routine
+recommended polling time:    (   5) minutes.
+[...]
+
+Let’s run a conveyance test, now:
+
+$ sudo smartctl -t conveyance /dev/sda
+
+We wait 5 minutes, and then check the results. As expected the test now appears in the list, and luckily no errors were found:
+
+SMART Self-test log structure revision number 1
+Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
+# 1  Conveyance offline  Completed without error       00%     11286         -
+# 2  Short offline       Completed without error       00%     11286         -
+# 3  Short offline       Completed without error       00%      9590         -
+# 4  Short offline       Completed without error       00%      2941         -
+# 5  Extended offline    Completed without error       00%        21         -
+# 6  Short offline       Completed without error       00%        18         -
+# 7  Short offline       Completed without error       00%         0         -
+# 8  Short offline       Completed without error       00%         0         -
+
+Now, for a simple select test:
+
+$ sudo smartctl -t select,100-150 /dev/sda
+smartctl 6.6 2017-11-05 r4594 [armv6l-linux-5.4.51+] (local build)
+Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+
+=== START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION ===
+Sending command: "Execute SMART Selective self-test routine immediately in off-line mode".
+SPAN         STARTING_LBA           ENDING_LBA
+   0                  100                  150
+Drive command "Execute SMART Selective self-test routine immediately in off-line mode" successful.
+Testing has begun.
+
+This test is successfully completed:
+
+SMART Self-test log structure revision number 1
+Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
+# 1  Selective offline   Completed without error       00%     11287         -
+# 2  Conveyance offline  Completed without error       00%     11286         -
+# 3  Short offline       Completed without error       00%     11286         -
+# 4  Short offline       Completed without error       00%      9590         -
+# 5  Short offline       Completed without error       00%      2941         -
+# 6  Extended offline    Completed without error       00%        21         -
+# 7  Short offline       Completed without error       00%        18         -
+# 8  Short offline       Completed without error       00%         0         -
+# 9  Short offline       Completed without error       00%         0         -
+
+Again, the results of the tests are included in the output generated when smartctl is launched with the -a option; if one wants to focus only on logs, instead, he/she can use the -l option (--log) and specify what kind of logs should be displayed. To display only error logs, one would run:
+
+$ sudo smartctl -l error /dev/sda
+
+To include also selftests logs, instead:
+
+$ sudo smartctl -l error -l selftest /dev/sda
+
+When smartctl is launched with the -a option the error, selftests and selective logs are included in the output for ATA devices.
+Conclusions
+
+In this tutorial we saw how to install the smartmontools package on some of the most used Linux distributions and how to use the smartctl utility to check the status of S.M.A.R.T parameters on a storage device. We also saw what are the possible tests we can run, and what are the differences between them. We also saw how to launch a test and how to the results. In the next article we will see how to schedule tests using the smartd daemon, and how to be notified with an email when an error is encountered. Stay tuned!
+
+==== Проверить SMART в OMV ====
+
+''Storage'' 
+''> S.M.A.R.T.''
+''> Devices''
+''тыкнуть по нужному диску,'' 
+''тыкнуть по иконке треугольника „Show Details”''
+''> Attributes''
+
+Threshold — заданный порог.
+Value — нынешнее значение.
+
+
+===== Проверить SMART для SSD/NVMe =====
+
+Тут физиологически другие технологии, поэтому иногда можно выяснить всё через ''smartctl'':
+
+''sudo smartctl -A /dev/nvme0n1''
+
+Пример ответа ''smartctl'':
+'''
+
+SMART/Health Information (NVMe Log 0x02)
+Critical Warning:                   0x00
+Temperature:                        30 Celsius
+Available Spare:                    100%
+Available Spare Threshold:          5%
+Percentage Used:                    0%
+Data Units Read:                    4 871 296 [2,49 TB]
+Data Units Written:                 1 976 631 [1,01 TB]
+Host Read Commands:                 44 172 956
+Host Write Commands:                18 955 901
+Controller Busy Time:               37
+Power Cycles:                       66
+Power On Hours:                     39
+Unsafe Shutdowns:                   25
+Media and Data Integrity Errors:    0
+Error Information Log Entries:      59
+Warning  Comp. Temperature Time:    0
+Critical Comp. Temperature Time:    0
+Temperature Sensor 1:               30 Celsius
+'''
+
+
+…а иногда через ''nvme-cli'': 
+
+''sudo nvme smart-log /dev/nvme0n1''
+
+Пример ответа ''nvme-cli'':
+
+''Smart Log for NVME device:nvme0n1 namespace-id:ffffffff''
+''critical_warning                        : 0''
+''temperature                             : 27°C (300 Kelvin)''
+''available_spare                         : 100%''
+''available_spare_threshold               : 5%''
+''percentage_used                         : 0%''
+''endurance group critical warning summary: 0''
+''Data Units Read                         : 48���71296 (2,49 TB)''
+''Data Units Written                      : 19���76696 (1,01 TB)''
+''host_read_commands                      : 441���72956''
+''host_write_commands                     : 189���58638''
+''controller_busy_time                    : 37''
+''power_cycles                            : 66''
+''power_on_hours                          : 39''
+''unsafe_shutdowns                        : 25''
+''media_errors                            : 0''
+''num_err_log_entries                     : 59''
+''Warning Temperature Time                : 0''
+''Critical Composite Temperature Time     : 0''
+''Temperature Sensor 1           : 27°C (300 Kelvin)''
+''Thermal Management T1 Trans Count       : 0''
+''Thermal Management T2 Trans Count       : 0''
+''Thermal Management T1 Total Time        : 0''
+''Thermal Management T2 Total Time        : 0''
+
+Самое важное значение см. в поле “//critical_warning//”. Если там ''0'' — SSD в норме. Если что-то другое — алярм.
+
+=== Total Bytes Written (TBW) ===
+
+Второй по-важности параметр, помогает «предсказать», сколько у диска осталось жизненных сил. Его же иногда называют или Terabytes Written, или Endurance.
+
+Производитель «закладывает» какое-то количество рабочих циклов для каждого диска — Total Bytes Written (TBW). Обычно его максимальное значение указано в названии, например «M.2 NVMe SSD 1.0TB Kingston NV3 [PCIe 4.0 x4, R/W:6000/4000MB/s, __320TBW__, 3D-NAND]»
+
+Чем больше заявленный показатель TBW в спецификациях диска, тем лучше.
+
+Чем меньше значение TBW в отчетах о состоянии диска, тем лучше.
+
+На современных nvme-дисках этот параметр можно увидеть явно — см “//Data Units Written//”. В моём случае там указано ''[1,01 TB]''.
+
+== Условность №1 ==
+
+Старые модели выдают значения в байтах, тогда как воспринимать tbw надо уже в терабайтах.  Поэтому раньше было удобно сразу в консоли пересчитывать значение TBW в терабайты:
+	
+''sudo smartctl -A /dev/nvme0n1 | grep "Data Units Written" | awk '{print $5$6}' | tr -d []''
+	
+Пример ответа:
+	
+''1,01TB''
+
+== Условность №2 ==
+
+Почему в отчёте от ''nvme-cli'' отображаются нечитаемые символы ''19���76696 (1,01 TB)'' — данные хранятся в шестнадцатеричном формате, а выводятся в отчете в зависимости от возможностей каждого диска по-отдельности. Контроллер моего NVMe-диска не поддерживает более новый формат логов, который вызывается через команду ''smart-log-add'':
+
+''sudo nvme smart-log-add /dev/nvme0n1''
+
+Поэтому какие-то данные конвертируются правильно, но воспринимаются не совсем адекватно. Ну и ладно.
+
+===== Лечение HDD =====
+
+См. [[fsck]]
