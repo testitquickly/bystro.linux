@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:00:12+02:00
 
-====== Настроить языки локализации ======
+====== языки локализации ======
 
 [ @console @locale ]
 

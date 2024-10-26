@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-16T19:11:44+02:00
 
-====== Удалить ненужные локали ======
+====== ненужные локали ======
 
 [ @console @locales ]
 

@@ -15,7 +15,7 @@ Creation-Date: 2022-02-21T23:09:07+02:00
 
 	Также можно выполнить „''usermod -a -G sudo astenix''”, ''но обычно usermod'' по-умолчанию не установлена.
 
-Заработает после релогина ([[Common:HowTo:Console:logout user]]):
+Заработает после релогина ([[Common:HowTo:Сделать:logout user]]):
 
 ''loginctl terminate-user astenix''
 

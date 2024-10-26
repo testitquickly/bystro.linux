@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-08-12T05:37:28+03:00
 
-====== Автозамена ======
+====== автозамену ======
 
 [ @console @автозамена ]
 
@@ -25,3 +25,6 @@ Creation-Date: 2023-08-12T05:37:28+03:00
 ''# sed -i -r 's/колыбелька/Устройство\ для\ качания\ младенцев/g' * ;''
 
 См. и другие [[https://linux-notes.org/poisk-i-zamena-slov-v-fajlah-linux/|примеры]].
+
+Please notice that 25 dec is a holiday in Moldova. 
+Please notice that 1, 7 and 8 jan are holidays in Moldova. 

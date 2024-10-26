@@ -3,5 +3,76 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-10-23T12:12:43+03:00
 
 ====== Добавить новый сервис ======
-Создан Среда 23 октября 2024
 
+[ @systemd @service ]
+
+Есть условный исполняемый sh-файл, который надо выполнить ДО загрузки userspace.
+
+===== Создать sh-файл для сервиса =====
+
+В скрипте: В начале вашего скрипта добавьте строку для установки значения переменной TERM:
+
+''#!/bin/bash''
+''export TERM=linux''
+
+В сервисе systemd: Добавьте в секцию [Service] файла сервиса строку, задающую переменные окружения:
+
+''[Service]''
+''Environment="TERM=linux"''
+
+Избегайте использования mcedit или других интерактивных программ: В скриптах, которые выполняются до userspace, нельзя использовать программы, требующие интерактивного терминала (например, текстовые редакторы). Если mcedit использовался для редактирования или проверки файлов, его нужно заменить на другую команду, которая не требует терминала. Например, для работы с файлами используйте команды вроде cat, echo, sed, или awk.
+
+Если нужен вывод чего-то в консоль:
+
+''echo "Some text"''
+
+Если нужен вывод чего-то в файл:
+
+''echo "Some text" > /path/to/file.txt''
+
+Если ваш скрипт действительно требует выполнения интерактивных программ, то лучше отложить его запуск до загрузки userspace. Вы можете изменить зависимости сервиса systemd, чтобы он запускался после полной загрузки системы:
+
+В вашем сервисе измените секцию [Unit], добавив зависимость от multi-user.target:
+
+''[Unit]''
+''Description=Update EventCalendar widget''
+''After=multi-user.target''
+
+===== Создать сервис =====
+
+''sudo mcedit nano /etc/systemd/system/my-update-eventCalendar-widget.service'' 
+
+Внутри файла опишите ваш сервис:
+
+''[Unit]''
+''Description=Run custom script before userspace''
+''DefaultDependencies=no''
+''Before=basic.target''
+
+''[Service]''
+''Type=oneshot''
+''ExecStart=/path/to/your/script.sh''
+''RemainAfterExit=true''
+
+''[Install]''
+''WantedBy=sysinit.target''
+
+===== Активировать сервис =====
+
+''sudo systemctl enable my-update-eventCalendar-widget.service'' 
+
+===== Запустить сервис =====
+
+''sudo systemctl start my-update-eventCalendar-widget.service'' 
+
+===== Проверить сервис =====
+
+''sudo systemctl status my-update-eventCalendar-widget.service'' 
+
+Ожидаемый ответ:
+
+● my-update-eventCalendar-widget.service - "Update EventCalendar widget before userspace is loaded"
+	 Loaded: __loaded__ (/etc/systemd/system/my-update-eventCalendar-widget.service; __enabled__; preset: __enabled__)
+	 Active: __active__ (exited) since Wed 2024-10-23 12:03:52 EEST; 4min 53s ago
+   Main PID: 44876 (code=exited, status=0/SUCCESS)
+		CPU: 6ms

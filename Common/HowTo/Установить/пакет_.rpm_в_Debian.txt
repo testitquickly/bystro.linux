@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T04:18:48+02:00
 
-====== Установка пакетов .rpm в Debian ======
+====== пакет .rpm в Debian ======
 
 [ @debian @update @rpm ]
 

@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-10-13T04:06:33+03:00
 
-====== Как передать сообщение ======
+====== Передать сообщение другому юзеру через консоль ======
 
 [ @console @write @message ]
 

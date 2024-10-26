@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:08:26+02:00
 
-====== Установить софт из backport ======
+====== софт из backport ======
 
 [ @main @update ]
 

@@ -20,6 +20,63 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 На январь 2024 в HP Linux Imaging and Printing System (ver. 3.23.12) и HPLIP Installer ver. 5.1 наш «Debian 12» не поддерживается, к установке предлагается версия пакета для «Debian 11».
 
+===== Автоматическая установка =====
+
+1. https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
+2. выбрать «свой linux» из выпадающего списка,
+3. получить файл вроде „hplip-3.23.8.run”,
+4. сделать его выполняемым
+	a. ''chmod u+x hplip-3.23.8.run''
+5. выполнить его согласно официальной [[https://developers.hp.com/hp-linux-imaging-and-printing/install/install/index|инструкции]].
+
+''./hplip-3.23.8.run''
+или
+''sh /hplip-3.23.8.run''
+
+Возможно понадобится установить „python3-pyqt4” — PyQt 4- Qt interface for Python (for Qt version 4.x). Вероятно, этот пакет будет называться „python-pyqt4”.
+
+* ''sudo apt install python-pyqt4''
+* ''sudo pacman -S python-pyqt4''
+
+Для сборки системе понадобится собрать множество других пакетов, поэтому это всё __НАДОЛГО__ и с риском поломаться в любой момент. Надо присматривать за процессом и не отходить далеко, потому что в какой-то момент будет запрошен пароль или выбор юзера.
+
+Во всех источниках после этого рекомендуется перезагрузить компьютер.
+
+
+
+
+./configure
+make
+make install
+ 
+Using 'hp-setup' to configure your printer
+This guide will walk you through configuring your printer using 'hp-setup'.
+
+Step 11: Select How Your Printer will be Connected to Your Computer
+The first step is to select the printer connection type:
+
+ 
+screenshots_sm_hp_setup_step1
+
+Step 12: Select the Printer to be Configured
+Next the setup tool will display printers detected (depending on the connection type selected):
+
+ 
+screenshots_sm_hp_setup_step2
+
+Step 13: Select the PPD file (or driver) to be Used for Your Printer
+The PPD files (drivers) which are most similar to your printer are displayed. Select the appropriate PPD file for your printer.
+
+Note:
+
+Usually you will want to select the recommended PPD file.
+
+ 
+screenshots_sm_hp_setup_step3
+
+Step 14: Confirm the Printer Settings and Finish the Configuration Process
+Click "AddPrinter" to complete the printer setup process:
+
 ===== Ручная установка =====
 
 Согласно https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/debian — но там может быть старый текст.
@@ -147,67 +204,6 @@ Step 8: Configuring your printer using hp-setup
 Continue to hp-setup https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
 
 
-
-
-
-===== Автоматическая установка =====
-
-1. https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
-2. выбрать «свой linux» из выпадающего списка,
-3. получить файл вроде „hplip-3.23.8.run”,
-4. сделать его выполняемым
-	a. ''chmod u+x hplip-3.23.8.run''
-5. выполнить его согласно официальной [[https://developers.hp.com/hp-linux-imaging-and-printing/install/install/index|инструкции]].
-
-''./hplip-3.23.8.run''
-или
-''sh /hplip-3.23.8.run''
-
-Возможно понадобится установить „python3-pyqt4” — PyQt 4- Qt interface for Python (for Qt version 4.x). Вероятно, этот пакет будет называться „python-pyqt4”.
-
-''sudo pacman -S python-pyqt4''
-
-Для сборки системе понадобится собрать множество других пакетов, поэтому это всё НАДОЛГО и с риском поломаться в любой момент. Надо присматривать за процессом и не отходить далеко, потому что в какой-то момент будет запрошен пароль или выбор юзера.
-
-Во всех источниках после этого рекомендуется перезагрузить компьютер.
-
-./configure
-make
-make install
-
-
- 
-
-
-Using 'hp-setup' to configure your printer
-This guide will walk you through configuring your printer using 'hp-setup'.
-
-Step 11: Select How Your Printer will be Connected to Your Computer
-The first step is to select the printer connection type:
-
- 
-screenshots_sm_hp_setup_step1
-
-Step 12: Select the Printer to be Configured
-Next the setup tool will display printers detected (depending on the connection type selected):
-
- 
-screenshots_sm_hp_setup_step2
-
-Step 13: Select the PPD file (or driver) to be Used for Your Printer
-The PPD files (drivers) which are most similar to your printer are displayed. Select the appropriate PPD file for your printer.
-
-Note:
-
-Usually you will want to select the recommended PPD file.
-
- 
-screenshots_sm_hp_setup_step3
-
-Step 14: Confirm the Printer Settings and Finish the Configuration Process
-Click "AddPrinter" to complete the printer setup process:
-
-
 ===== Подключить принтер к компьютеру =====
 
 * и включить его,
@@ -215,9 +211,15 @@ Click "AddPrinter" to complete the printer setup process:
 
 ''hp-setup''
 
+В принципе в системе должен быть установлен сервер печати CUPS.
+
+Если это первая установка, то надо включить сервис через 
+
+''sudo systemctl enable --now cups''
+
 В идеале новое устройство будет сконфигурировано — правильное название устройства и автоматически прописан путь к файлу ppd (там настройки).
 
 * и выполнить тестовую печать.
 * и если речь идет про МФУ — вызвать ''xsane'' и выполнить тестовое сканирование.
 
-См. дальше [[Принтеры и Сканеры:HP (Hewlett-Packard)]]
+См. дальше [[Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]

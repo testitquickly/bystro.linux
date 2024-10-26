@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:17:45+02:00
 
-====== Искать дубликаты изображений ======
+====== дубликаты изображений ======
 
 [ @console @findimages ]
 
