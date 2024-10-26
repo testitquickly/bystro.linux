@@ -1,0 +1,244 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-15T02:06:59+02:00
+
+====== symlink ======
+
+[ @debian @symlink ]
+
+symlink — сокращение от „symbolic link” — ссылка на хардлинк. 
+
+При редактировании симлинка происходит редактирование оригинального файла, на который ссылается симлинк. 
+
+Но при удалении симлинка оригинальный файл остаётся на диске. См. теорию [[Software:Про симлинки и хардлинки]]
+
+И см. [[hardlink]]
+
+Симлинки можно делать на определенные файлы, которые воспринимаются и открываются как файлы (pdf или txt). А ещё можно делать симлинки на файлы, которые работают как команды в консоли. Если нет нужды делать симлинки, которые нужны множеству пользователей, то лучше использовать алиасы в файле ''.bashrc'' — они будут работать по тому же принципу, но всегда проще прочитать файл ''~/.bashrc'' и увидеть/отредактировать список алиасов и местонахождение файлов, на которые они ссылаются. Также это упрощает жизнь при переустановке системы. См. [[Сделать:alias]]
+
+===== Создать симлинк на файл =====
+
+''ln -s /home/mySettings/myScripts/debian/debian_update_and_upgrade.sh ~/.local/bin/debup''
+
+В каталоге ''~/.local/bin/'' появится новый файл с названием “''~debup''”.
+
+Почему “''debup''”? Как захотел, так и назвал. Если бы не прописал ему название, то появился бы файл ''~debian_update_and_upgrade.sh''
+
+Почему он отображается с тильдой? Потому что это не сам файл, а симлинк на файл.
+
+===== Создать симлинк на каталог =====
+
+''ln -s /home/mySettings/myScripts/ ~/test/''
+
+В каталоге ''~/test/'' появится “каталог” ''~myScripts''.
+
+''ln -s /home/mySettings/myScripts/ ~/test/ВсякоФайло''
+
+В каталоге ''~/test/'' появится “каталог” ''~ВсякоФайло''.
+
+Если не указывать место, где должен появиться симлинк, то он появится в текущем каталоге.
+
+===== Проверить симлинк =====
+
+==== через ls ====
+
+''ls -l debup''
+
+Ожидаем ответ такого вида:
+
+''lrwxrwxrwx 1 [UserName> [UserGroup> 62 дек 15 03:21 debup -> /home/mySettings/myScripts/debian/debian_update_and_upgrade.sh''
+
+Читается так: 
+	* права доступа
+	* количество симлинков на исходный файл
+	* автор
+	* группа автора
+	* размер файла
+	* время создания
+	* имя (симлинка)
+	* путь к файлу, на который этот симлинк указывает
+
+Using the test Command
+
+In general, we can use the test command with the -h flag to determine whether a file is a symbolic link. If the file is a soft link, the test returns true; otherwise, it returns false.
+
+Notably, the test command is represented with [ ]. It allows us to check various file attributes. Let’s see the -h option of test in use:
+
+$ if [ -h /path/to/file ]; then
+  echo "File is a symbolic link."
+else
+  echo "File is not a symbolic link."
+fi
+
+To illustrate, we can check if the file named my_file is a symbolic link:
+
+$ if [ -h my_file ]; then
+  echo "It is a symbolic link."
+else
+  echo "It is not a symbolic link."
+fi
+
+It is a symbolic link.
+
+Significantly, the file is verified to be a soft link when the outcome of our script is It is a symbolic link. Next, let’s see how to integrate the stat and the test commands to check if a file is a hard link.
+3. Using the stat Command
+
+Conversely, the test command doesn’t have a direct flag to check if a file is a hard link. However, we can indirectly determine if a file is a hard link using the stat command.
+
+Here, we’ll employ command substitution to compare the inode numbers of two files. If two files have the same inode number, they are hard links to the same data, since inodes are unique identifiers for files in a filesystem.
+
+For example, let’s compare the files, file_A, and file_B to check whether they are hard links:
+
+$ if [ "$(stat -c '%i' file_A)" -eq "$(stat -c '%i' file_B)" ]; then
+  echo "file_A and file_B are hard links to the same data."
+else
+  echo "file_A and file_B are not hard links to the same data."
+fi
+
+file_A and file_B are hard links to the same data.
+
+To understand the flags in the command, let’s break it down:
+
+	-c ‘%i’ tells stat to extract the inode number of the file
+	-eq tells the test command ([) to check if the inode number of file_A is equal to that of file_B
+
+Further, the stat command, where available, can show how many names an inode has. For instance, we can create a basic script to check whether a file is the only hard link to a given inode:
+
+$ if [ "$(stat -c '%h' -- "file")" -gt 1 ]; then
+  echo "File has more than one name."
+fi
+
+File has more than one name.
+
+Let’s dissect this command:
+
+	-c ‘%h’ tells stat to output the number of hard links to the given file inode (i.e., the number of names the file has)
+	-gt 1 checks if the number is more than 1
+
+Notably, we can have several hard links that point to one symlink.
+
+Let’s check for hard and soft links using another common command.
+4. Using the ls Command
+
+The ls command shows information about the content of a directory or the directory itself. To determine whether a file is a soft or hard link, we can use the ls command with the -l and -i flags.
+4.1. ls -l
+
+By using ls with its -l (long format) flag, we can get information about a file, including its type and permissions.
+
+For symbolic links, the command shows the file type as l in the first character of the file permission string:
+
+$ ls -l /path/to/file
+lrwxrwxrwx 1 user user 15 May 11 10:00 file -> target_file
+
+For example, let’s check the permission string of the file tyre :
+
+$ ls -l tyre
+lrwxrwxrwx 1 user user 15 May 23 10:00 tyre -> tubor
+
+In this example, tyre is a symbolic link (l is the first character).
+
+As with stat, when we use the ls -l command to list files in a directory, the output displays file details, including the link count. If the link count is greater than one, it indicates that the file has more hard links.
+
+For instance, let’s check the link count of the file green:
+
+$ ls -l green
+-rw-rw-r-- 2 user group 1024 May 15 10:30 green
+
+In this example, we can see from the second column of the output that the link count is 2. This number indicates that the file has two hard links.
+4.2. ls -i
+
+Further, the ls -i command displays the inode number of files. As already mentioned, when two files have the same inode number, they are hard links to the same underlying data.
+
+To illustrate, let’s check the information about the files glee and resin using the ls command with its -li flags:
+
+$ ls -li glee resin
+3699862 -rw-rw-r-- 2 baeldung baeldung_group 0 Jul 15 10:30 glee
+3699862 -rw-rw-r-- 2 baeldung baeldung_group 0 Jul 15 10:30 resin
+
+In the output of the command above, both rows start with the same inode numbers. Thus, they’re hard links.
+
+Still, there are other commands that can provide the same information, albeit in a different form.
+5. Using the file Command
+
+Alternatively, we can use the file command to identify symbolic links in Linux. Significantly, when we run the file command on a symbolic link, it displays sym_link: symbolic link to main_file in the output. Notably, sym_link and main_file are placeholders for the actual file names of the symbolic link and target file respectively.
+
+For example, let’s use file to check whether the file tyre is a symbolic link:
+
+$ file tyre
+tyre: symbolic link to tubor
+
+Indeed, tyre is a symlink. However, if a file isn’t a symbolic link, file prints information about the file type and its contents.
+
+To illustrate, let’s see the output when we run the file command on a file that’s not a symbolic link:
+
+$ file thesis1
+thesis1: ASCII text
+
+In this case, we get the type ASCII text instead.
+
+Now, let’s turn to a common command that works with links.
+6. Using the readlink Command
+
+Let’s say we want to determine the target of a symbolic link. To do so, we can use the readlink command. The readlink command displays the target file that a soft link points to.
+
+In general, to use the readlink command, we type in the command followed by the file name as argument:
+
+$ readlink symbolic_link_name
+some_file
+
+For example, let’s check the target file for the symlink, tyre:
+
+$ readlink tyre
+tubor
+
+In this case, the readlink command shows the target file or directory that the soft link points to.
+
+However, the command returns nothing if the file doesn’t exist or isn’t a symlink. In this case, we can employ the -v flag to see the exact error message:
+
+$ readlink nonexistent
+$ readlink hardlink
+$ readlink -v nonexistent
+readlink: nonexistent: No such file or directory
+$ readlink -v hardlink
+readlink: hardlink: Invalid argument
+
+This way, we see the exact reason for a failure with readlink.
+
+===== Превратить симлинк в команду в консоли =====
+
+Можно пройти далее и положить этот симлинк в файл с бинарниками, которые учитывает система.
+
+	* Если нужно, чтобы симлинк был доступен для всех пользователей в системе, его надо положить в „''/usr/local/bin/''” (или даже в „''/usr/bin''”, но туда лучше не лезть).
+	* Если нужно, чтобы симлинк был доступен только для действующего пользователя, его надо положить в „''~/.local/bin/''”.
+
+После этого в консоли (находясь в любом каталоге) можно набрать эту уникальную команду „''updeb''” и нажать Enter — так, словно в консоли была вызвана обычная линуксовая команда.
+
+	Собственно, я только что сделал новую команду в Linux, и за это мне полагается большая круглая медаль «За передовую технологическую магию».
+
+Перед тем как создавать «новую крутую короткую команду», рекомендуется проверить, нет ли аналогичной команды в системе:
+
+''man debup''
+
+Если появится справочная страница — перепродумать название своего нового симлинка. Выход из справки по клавише „q”,
+
+===== Положить линк на скрипт в «Меню приложений» =====
+
+Не надо все скрипты пихать в приложения, ведь их место в консоли. Но если очень хочется, то можно.
+
+''mcedit ~/.local/share/applications/ИмяФайла.desktop''
+
+Отредактировать „ИмяФайла.desktop”:
+
+''[Desktop Entry]''
+''Encoding=UTF-8''
+''Name= Название новой программы''
+''Comment= Если нужно''
+''Type=Application''
+''Terminal=true''
+''Exec=~/.local/bin/МойСимЛинк''
+''StartupNotify=true''
+''Categories=System;''
+
+Новая иконка появится в Меню приложений > Система.
+
+Если надо сделать «новое приложение» доступным для всех пользователей в системе, файл „ИмяФайла.desktop” надо через „''sudo''” положить в  каталог „''/usr/share/applications/''”.
