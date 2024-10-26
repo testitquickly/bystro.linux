@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T18:24:44+02:00
 
-====== Как создать новый файл в консоли ======
+====== Сделать новый файл в консоли ======
 
 [ @console ]
 

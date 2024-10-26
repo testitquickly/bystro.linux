@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T02:25:16+02:00
 
-====== Как восстановить grub2 ======
+====== Восстановить grub2 ======
 
 [ @console @update @grub ]
 
