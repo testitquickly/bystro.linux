@@ -6,7 +6,9 @@ Creation-Date: 2022-02-23T21:21:34+02:00
 
 [ @aptitude @update ]
 
-Под рутом зайти в ''/var/lib/apt/lists/'' и поудалять там ВСЕ файлы.
+Под рутом поудалять ВСЕ файлы (и каталоги, если есть) из ''/var/lib/apt/lists/'':
+
+''rm -rf /var/lib/apt/lists/*''
 
 Затем 
 

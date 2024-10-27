@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T00:46:26+02:00
 
-====== какие ядра есть в системе ======
+====== Какие ядра есть в системе ======
 
 [ @console @kernel ]
 

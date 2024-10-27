@@ -8,4 +8,4 @@ Creation-Date: 2024-10-17T12:58:40+03:00
 
 ''sudo pacman -S grub-customizer''
 
-См. [[Software:grub2:Grub-Customizer]]
+См. [[Common:HowTo:Настроить:grub2:Grub-Customizer]]

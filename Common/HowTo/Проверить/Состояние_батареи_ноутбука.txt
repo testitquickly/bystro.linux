@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-15T21:10:56+02:00
 
-====== состояние батареи ноутбука ======
+====== Состояние батареи ноутбука ======
 
 [ @debian @battery ]
 

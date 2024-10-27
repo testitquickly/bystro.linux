@@ -10,7 +10,7 @@ Creation-Date: 2022-02-22T14:03:36+02:00
 
 ''sudo cp /etc/default/grub /etc/default/grub.default''
 
-Прочитать внимательно и понять настройки:
+Прочитать внимательно и понять эти настройки:
 
 '''
 	# Set the highlight bar to the default loading system. 
