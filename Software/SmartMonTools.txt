@@ -74,7 +74,9 @@ SMART support is: Disabled
 
 ''sudo smartctl -s on /dev/sda''
 
-У SSD нет SMART, там другие технологии (ничего не крутится). Как устройства они и называются по-другому, вроде:
+У SSD другие технологии (ничего не крутится). 
+
+NVMe ещё и называются по-другому, вроде:
 
 ''sudo smartctl -i /dev/nvme0n1p2''
 
@@ -122,116 +124,35 @@ SMART support is: Disabled
 * conveyance — помогает узнать, если hdd перетрясли при транспортировке; ATA devices only
 * select — как и conveyance, но тут проверяют определенный диапазона LBA (адресов логических блоков), который указывается при запуске теста; тоже ATA devices only
 
+Параметр ''-t'' это сокращение для ''--test''
 
+''sudo smartctl -t select,10-20''
 
-$ sudo smartctl -t select,10-20
+''sudo smartctl -t select,0-5 -t select,5-10''
 
-It is possible to specify a maximum of 5 different ranges of LBAs to check by repeating the -t option:
+''sudo smartctl -t short /dev/sda''
 
-$ sudo smartctl -t select,0-5 -t select,5-10
+Остановить тест 
 
-The -t option is the short for --test and is used to execute a test immediately.
-Running a test
+''smartctl -X''
 
-We saw what are the possible tests we can run with the smartctl utility. Now let’s see how to actually launch a test. As we saw in the end of the previous section, the -t option is used to run a test immediately; we must provide the type of test we want to run as argument of the option. To execute a short test on the /dev/sda device we would run:
+В ответ узнаем, сколько нужно времени, чтобы тестирование прекратилось.
 
-$ sudo smartctl -t short /dev/sda
-smartctl 6.6 2017-11-05 r4594 [armv6l-linux-5.4.51+] (local build)
-Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
+Проверить результаты:
 
-START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION
-Sending command: "Execute SMART Short self-test routine immediately in off-line mode".
-Drive command "Execute SMART Short self-test routine immediately in off-line mode" successful.
-Testing has begun.
-Please wait 2 minutes for test to complete.
-Test will complete after Thu Sep 24 14:39:05 2020
+''sudo smartctl -a /dev/sda''
 
-Use smartctl -X to abort test.
+Выполнить conveyance test:
 
-The output of the command reports the time we should wait for the test to finish and the date and time when it should be complete. After the specified time interval, to check the results of the test we can run:
+''sudo smartctl -t conveyance /dev/sda''
 
-$ sudo smartctl -a /dev/sda
+Выполнить select test:
 
-As you can notice the test (The first in the list – #1) and its results have been added to the log list. It was completed without errors:
+''sudo smartctl -t select,100-150 /dev/sda''
 
-SMART Self-test log structure revision number 1
-Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
-# 1  Short offline       Completed without error       00%     11286         -
-# 2  Short offline       Completed without error       00%      9590         -
-# 3  Short offline       Completed without error       00%      2941         -
-# 4  Extended offline    Completed without error       00%        21         -
-# 5  Short offline       Completed without error       00%        18         -
-# 6  Short offline       Completed without error       00%         0         -
-# 7  Short offline       Completed without error       00%         0         -
+Посмотреть только лог ошибок:
 
-It is possible to know the estimated time a test would take to finish. Such information should be included in the output of the smartctl -a /dev/sdx command, but can be requested explicitly by launching smartctl with the -c option (short for --capabilities). The following are the interesting lines in the output:
-
-$ sudo smartctl -c /dev/sda
-[...]
-Short self-test routine
-recommended polling time:    (   2) minutes.
-Extended self-test routine
-recommended polling time:    ( 157) minutes.
-Conveyance self-test routine
-recommended polling time:    (   5) minutes.
-[...]
-
-Let’s run a conveyance test, now:
-
-$ sudo smartctl -t conveyance /dev/sda
-
-We wait 5 minutes, and then check the results. As expected the test now appears in the list, and luckily no errors were found:
-
-SMART Self-test log structure revision number 1
-Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
-# 1  Conveyance offline  Completed without error       00%     11286         -
-# 2  Short offline       Completed without error       00%     11286         -
-# 3  Short offline       Completed without error       00%      9590         -
-# 4  Short offline       Completed without error       00%      2941         -
-# 5  Extended offline    Completed without error       00%        21         -
-# 6  Short offline       Completed without error       00%        18         -
-# 7  Short offline       Completed without error       00%         0         -
-# 8  Short offline       Completed without error       00%         0         -
-
-Now, for a simple select test:
-
-$ sudo smartctl -t select,100-150 /dev/sda
-smartctl 6.6 2017-11-05 r4594 [armv6l-linux-5.4.51+] (local build)
-Copyright (C) 2002-17, Bruce Allen, Christian Franke, www.smartmontools.org
-
-=== START OF OFFLINE IMMEDIATE AND SELF-TEST SECTION ===
-Sending command: "Execute SMART Selective self-test routine immediately in off-line mode".
-SPAN         STARTING_LBA           ENDING_LBA
-   0                  100                  150
-Drive command "Execute SMART Selective self-test routine immediately in off-line mode" successful.
-Testing has begun.
-
-This test is successfully completed:
-
-SMART Self-test log structure revision number 1
-Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
-# 1  Selective offline   Completed without error       00%     11287         -
-# 2  Conveyance offline  Completed without error       00%     11286         -
-# 3  Short offline       Completed without error       00%     11286         -
-# 4  Short offline       Completed without error       00%      9590         -
-# 5  Short offline       Completed without error       00%      2941         -
-# 6  Extended offline    Completed without error       00%        21         -
-# 7  Short offline       Completed without error       00%        18         -
-# 8  Short offline       Completed without error       00%         0         -
-# 9  Short offline       Completed without error       00%         0         -
-
-Again, the results of the tests are included in the output generated when smartctl is launched with the -a option; if one wants to focus only on logs, instead, he/she can use the -l option (--log) and specify what kind of logs should be displayed. To display only error logs, one would run:
-
-$ sudo smartctl -l error /dev/sda
-
-To include also selftests logs, instead:
-
-$ sudo smartctl -l error -l selftest /dev/sda
-
-When smartctl is launched with the -a option the error, selftests and selective logs are included in the output for ATA devices.
-Conclusions
-
-In this tutorial we saw how to install the smartmontools package on some of the most used Linux distributions and how to use the smartctl utility to check the status of S.M.A.R.T parameters on a storage device. We also saw what are the possible tests we can run, and what are the differences between them. We also saw how to launch a test and how to the results. In the next article we will see how to schedule tests using the smartd daemon, and how to be notified with an email when an error is encountered. Stay tuned!
+''sudo smartctl -l error /dev/sda''
 
 ==== Проверить SMART в OMV ====
 
@@ -244,7 +165,6 @@ In this tutorial we saw how to install the smartmontools package on some of the 
 
 Threshold — заданный порог.
 Value — нынешнее значение.
-
 
 ===== Проверить SMART для SSD/NVMe =====
 
@@ -275,7 +195,6 @@ Warning  Comp. Temperature Time:    0
 Critical Comp. Temperature Time:    0
 Temperature Sensor 1:               30 Celsius
 '''
-
 
 …а иногда через ''nvme-cli'': 
 
