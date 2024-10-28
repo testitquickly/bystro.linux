@@ -91,7 +91,7 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 ==== Нужен ли TRIM для /tmp ====
 
-Да, если [[/tmp]> монтируется на отдельном разделе.
+Да, если /tmp монтируется на отдельном разделе.
 
 ==== Нужен ли TRIM для зашифрованных разделов ====
 

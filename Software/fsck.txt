@@ -6,7 +6,7 @@ Creation-Date: 2024-10-26T09:13:57+03:00
 
 [ @hdd @ssd @nvme @smart @checkdisk ] 
 
-Это утилита для условного «лечения» устаревающих HDD.
+Это “File System Consistency Check“, утилита для условного «лечения» файловой системы на HDD.
 
 * Теория: [[Common:HowTo:Проверить:S.M.A.R.T.]]
 * Диагностика: [[SmartMonTools]]
@@ -17,14 +17,10 @@ Creation-Date: 2024-10-26T09:13:57+03:00
 
 https://phoenixnap.com/kb/fsck-command-linux
 
+Для устранения проблем fs не должна быть смонтирована на запись, то есть проверить на штатно загруженном linux корневые разделы на рабочем диске не выйдет. Надо загрузится не в эту ОС (с CD/DVD, флешки) и уже с неё смонтировать и проверить. 
 
-Introduction
+Есть программа badblocks - она проверяет именно диск на наличие сбойных блоков.
 
-The fsck (File System Consistency Check) Linux utility checks filesystems for errors or outstanding issues. The tool is used to fix potential errors and generate reports.
-
-This utility comes by default with Linux distributions. No specific steps or an installation procedure is required to use fsck. Once you load the terminal, you are ready to exploit the functionalities of the tool.
-
-Follow this guide to learn how to use fsck to check and repair filesystem on a Linux machine. The tutorial will list examples of how to use the tool and for which use cases.
 How to use fsck command to check and repair filesystem in Linux
 
 Prerequisites
@@ -33,21 +29,15 @@ Prerequisites
 	Access to a terminal or command line
 	A user with root permissions to run the tool
 
-When to Use fsck in Linux
+===== When to Use fsck in Linux =====
 
-The fsck tool can be used in various situations:
-
-	Use fsck to run a filesystem check as preventive maintenance or when there is an issue with your system.
-	One common problem fsck can diagnose is when the system fails to boot.
-	Another one is when you get an input/output error when the files on your system become corrupt.
-	You can also use the fsck utility to check the health of external drives, such as SD cards or USB flash drives.
 
 Note: Another useful tool for addressing a boot failure is GRUB rescue. Learn more in our post How to Use Grub Rescue to Fix Linux Boot Failure.
 Basic fsck Syntax
 
 The basic syntax for the fsck utility follows this pattern:
 
-fsck <options> <filesystem>
+''fsck <options> <filesystem>''
 
 In the above example, filesystem can be a device, a partition, a mount point, etc. You can also use filesystem-specific options at the end of the command.
 How to Check and Repair Filesystem
@@ -59,7 +49,7 @@ To view all mounted devices on your system and check disk location, use one of t
 
 One method to locate the disk you want to scan is to list the filesystem disks with the df command:
 
-df -h
+''df -h''
 
 Terminal output when running a df -h command
 
@@ -67,7 +57,7 @@ The tool prints the data usage on your system and filesystems. Take note of the 
 
 To view partitions for your first disk, for example, use the following command:
 
-sudo parted /dev/sda 'print'
+''sudo parted /dev/sda 'print'''
 
 sda is how Linux refers to your first SCSI disk. If you have two, the second would be sdb, and so on.
 
@@ -78,11 +68,13 @@ The disk name here is /dev/sda and then the number of partitions is shown in the
 Unmount the Disk
 A warning when you try to unmount a mounted disk or partition.
 
-Before you can run a disk check with fsck, you need to unmount a disk or partition. If you try to run fsck on a mounted disk or partition, you will get a warning:
+===== Before you can run a disk check with fsck =====
+
+you need to unmount a disk or partition. If you try to run fsck on a mounted disk or partition, you will get a warning:
 
 Make sure to run the unmount command:
 
-sudo umount /dev/sdb
+''sudo umount /dev/sdb''
 
 Replace /dev/sdb with the device you want to unmount.
 
@@ -91,7 +83,7 @@ Run fsck to Check for Errors
 
 Now that you unmounted the disk, you can run fsck. To check the second disk, enter:
 
-sudo fsck /dev/sdb
+''sudo fsck /dev/sdb''
 
 The output after running a fsck command to check the second disk.
 
@@ -105,45 +97,93 @@ When you finish checking and repairing a device, mount the disk so you can use i
 
 In our case, we will remount the sdb disk:
 
-mount /dev/sdb
+''mount /dev/sdb''
 
-Do a Dry Run with fsck
+===== Do a Dry Run with fsck =====
 
 Before you perform a live check, you can do a test run with fsck. Pass the -N option to the fsck command to perform a test:
 
-sudo fsck -N /dev/sdb
+''sudo fsck -N /dev/sdb''
 
 The output prints what would happen but does not perform any actions.
-Fix Detected Errors Automatically with fsck
+
+===== Fix Detected Errors Automatically with fsck =====
 
 To try to fix potential problems without getting any prompts, pass the -y option to fsck.
 
-sudo fsck -y /dev/sdb
+''sudo fsck -y /dev/sdb''
 
 This way, you say “yes, try to fix all detected errors” without being prompted every time.
 
 If no errors are found, the output looks the same as without the -y option.
+
 Skip Repair but Print fsck Errors in the Output
 
 Use the -n option if you want to check potential error on a file system without repairing them.
 
 We have a second drive sdb with some journaling errors. The -n flag prints the error without fixing it:
 
-sudo fsck -n /dev/sdb
+''sudo fsck -n /dev/sdb''
 
 Use -n fsck option to print errors without fixing them.
-Force fsck to Do a Filesystem Check
+
+==== Force fsck to Do a Filesystem Check ====
 
 When you perform a fsck on a clean device, the tool skips the filesystem check. If you want to force the filesystem check, use the -f option.
 
-For example:
-
-sudo fsck -f /dev/sdb
+''sudo fsck -f /dev/sdc''
 
 Force the fsck tool to do a filesystem check
 
 The scan will perform all five checks to search for corruptions even when it thinks there are no issues.
-Run fsck on All Filesystems at Once
+
+
+
+
+===== Bad magic number in super-block =====
+
+Найдите резервные копии суперблока
+
+Сначала определите, где находятся резервные копии суперблока. Это можно сделать с помощью команды mke2fs в режиме отображения резервных суперблоков (не создавая файловую систему):
+
+''sudo dumpe2fs /dev/sdc1 | grep -i superblock''
+
+Эта команда отобразит список резервных суперблоков, например:
+
+  ''Primary superblock at 0, Group descriptors at 1-699''
+  ''Backup superblock at 32768, Group descriptors at 32769-33467''
+  ''Backup superblock at 98304, Group descriptors at 98305-99003''
+  ''Backup superblock at 163840, Group descriptors at 163841-164539''
+  ''Backup superblock at 229376, Group descriptors at 229377-230075''
+  ''Backup superblock at 294912, Group descriptors at 294913-295611''
+  ''Backup superblock at 819200, Group descriptors at 819201-819899''
+  ''Backup superblock at 884736, Group descriptors at 884737-885435''
+  ''Backup superblock at 1605632, Group descriptors at 1605633-1606331''
+  ''Backup superblock at 2654208, Group descriptors at 2654209-2654907''
+  ''Backup superblock at 4096000, Group descriptors at 4096001-4096699''
+  ''Backup superblock at 7962624, Group descriptors at 7962625-7963323''
+  ''Backup superblock at 11239424, Group descriptors at 11239425-11240123''
+  ''Backup superblock at 20480000, Group descriptors at 20480001-20480699''
+  ''Backup superblock at 23887872, Group descriptors at 23887873-23888571''
+  ''Backup superblock at 71663616, Group descriptors at 71663617-71664315''
+  ''Backup superblock at 78675968, Group descriptors at 78675969-78676667''
+  ''Backup superblock at 102400000, Group descriptors at 102400001-102400699''
+  ''Backup superblock at 214990848, Group descriptors at 214990849-214991547''
+  ''Backup superblock at 512000000, Group descriptors at 512000001-512000699''
+  ''Backup superblock at 550731776, Group descriptors at 550731777-550732475''
+  ''Backup superblock at 644972544, Group descriptors at 644972545-644973243''
+
+==== Запустите e2fsck с резервным суперблоком ====
+
+Попробуйте восстановить файловую систему, указав первый резервный суперблок (например, 32768):
+
+''sudo e2fsck -b 32768 /dev/sdc1''
+
+Вероятне всего, по данному адресу будет найдено какое-то отклонение от нормы, которое может быть исправлено. Дальше можно нажимать клавишу ''y'' для каждого раза. Проще нажать клавишу ''a'', чтобы автоматически соглашаться с каждой следующей проверкой. 
+
+Терпеливо подождать, пока всё отработает, на современных дисках это длится долго.
+
+==== Run fsck on All Filesystems at Once ====
 
 If you want to perform a check on all filesystems with fsck in one go, pass the -A flag. This option will go through the etc/fstab file in one run.
 
@@ -152,7 +192,8 @@ Since root filesystems can’t be unmounted on a running machine, add the -R opt
 fsck -AR
 
 To avoid the prompts, add the -y option we talked about.
-Skip fsck on a Specific Filesystem
+
+===== Skip fsck on a Specific Filesystem =====
 
 If you want fsck to skip checking a filesystem, you need to add -t and “no” before a filesystem.
 
@@ -161,7 +202,8 @@ For example, to skip ext3 filesystem, run this command:
 sudo fsck -AR -t noext3 -y
 
 We added -y to skip the prompts.
-Skip Fsck on Mounted Filesystems
+
+===== Skip Fsck on Mounted Filesystems =====
 
 To make sure you do not try to run fsck on a mounted filesystem, add the -M option. This flag tells the fsck tool to skip any mounted filesystems.
 
@@ -223,3 +265,6 @@ Option	Description
 
 Note: Learn about the error code SIGSEGV (signal segmentation violation) and how to troubleshoot it.
 
+
+
+[[Common:HowTo:Сделать:Отформатировать HDD]]

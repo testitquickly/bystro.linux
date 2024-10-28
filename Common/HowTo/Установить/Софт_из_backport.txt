@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-23T21:08:26+02:00
+
+====== Софт из backport ======
+
+[ @main @update ]
+
+	*todo ПО из backport — переписать внятно
+
+Сперва убедись, что нужный тебе пакет есть в https://packages.debian.org/stretch-backports/
+
+	Backports are recompiled packages from testing (mostly) and unstable (in a few cases only, e.g. security updates) in a stable environment so that they will run without new libraries (whenever it is possible) on a Debian stable distribution
+
+	Backports cannot be tested as extensively as Debian stable, and backports are provided on an as-is basis, with risk of incompatibilities with other components in Debian stable. Use with care!
+
+	!!! It is therefore recommended to select single backported packages that fit your needs, and not use all available backports!!!
+
+Add backports to your sources.list
+
+deb http://ftp.debian.org/debian stretch-backports main
+
+or add a new file with the ".list" extension to /etc/apt/sources.list.d/ 
+
+You can also find a list of other mirrors at https://www.debian.org/mirror/list
+
+Run apt update
+
+Install a package from backports
+
+All backports are deactivated by default (i.e. the packages are pinned to 100 by using ButAutomaticUpgrades: yes in the Release files. If you want to install something from backports run:
+
+aptitude -t jessie-backports install "Your_package"
+
+sloppy distributions
+
+To guarantee a clean upgrade path from a previously stable distribution to the next stable it is not allowed to upload packages from the current testing to that backport distribution. To allow some newer packages for those systems we create so called sloppy distributions. For oldstable (wheezy) packages from the current testing (stretch) are allowed to be uploaded to wheezy-backports-sloppy.
+
+You can use it exactly as the current backports distribution, just add another line to your sources.list and install new packages via apt -t wheezy-backports-sloppy install or apt -t jessie-backports install 
+
+Если не работает apt update…

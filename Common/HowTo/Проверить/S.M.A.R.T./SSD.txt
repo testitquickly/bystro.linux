@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-28T11:37:29+02:00
+
+====== SSD ======
+
+[ @smart @ssd ]
+
+	*todo SSD SMART

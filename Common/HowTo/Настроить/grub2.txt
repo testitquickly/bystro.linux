@@ -72,3 +72,7 @@ Its output will be used to detect bootable binaries on them and create new boot 
 Found Windows 10 on /dev/sda1
 done
 '''
+
+См. также 
+[[+Grub-Customizer]]
+[[+Восстановить grub2]]

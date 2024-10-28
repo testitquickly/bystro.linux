@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-23T21:18:35+02:00
+
+====== Потерянные файлы на диске ======
+
+[ @console @file ]
+
+	*todo Потерянные файлы на диске
+
+https://unix.stackexchange.com/questions/273971/how-to-get-hard-disk-information-on-linux-terminal
+
+https://unix.stackexchange.com/questions/330742/cannot-remove-file-structure-needs-cleaning

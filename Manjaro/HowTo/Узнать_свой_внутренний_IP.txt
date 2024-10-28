@@ -14,4 +14,4 @@ Creation-Date: 2023-10-01T03:23:01+03:00
 
 ''curl ifconfig.co''
 
-См. отдельно для Debian — [[Common:HowTo:Узнать:Свой IP]]
+См. отдельно для Debian — [[Common:HowTo:Проверить:Свой IP]]
