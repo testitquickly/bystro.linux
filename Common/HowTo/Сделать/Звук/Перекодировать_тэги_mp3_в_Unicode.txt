@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:19:33+02:00
 
-====== Перекодировка тэгов mp3 в Unicode ======
+====== Перекодировать тэги mp3 в Unicode ======
 
 [ @mp3 @sound ]
 
