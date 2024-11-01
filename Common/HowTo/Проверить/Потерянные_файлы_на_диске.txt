@@ -6,7 +6,7 @@ Creation-Date: 2022-02-23T21:18:35+02:00
 
 [ @console @file ]
 
-	*todo Потерянные файлы на диске
+	*todo переписать внятно — Потерянные файлы на диске
 
 https://unix.stackexchange.com/questions/273971/how-to-get-hard-disk-information-on-linux-terminal
 

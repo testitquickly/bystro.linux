@@ -6,7 +6,7 @@ Creation-Date: 2022-02-24T02:25:16+02:00
 
 [ @console @update @grub ]
 
-	*todo grub2 — переписать внятно
+	*todo переписать внятно — grub2
 
 Mount the partition your Ubuntu Installation is on. If you are not sure which it is, launch GParted (included in the Live CD) and find out. It is usually a EXT4 Partition. Replace the XY with the drive letter, and partition number, for example: 
 	sudo mount /dev/sda1 /mnt.
