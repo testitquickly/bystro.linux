@@ -6,30 +6,39 @@ Creation-Date: 2022-02-23T21:16:06+02:00
 
 [ @fonts @LibreOffice @Krusader ]
 
-	*todo Про кракозябры в русскоязычных названиях каталогов
+Если в русскоязычных названиях каталогов отображаются кракозябры…
 
 1
-If you hava a file ~/.config/plasma-locale-settings.sh, try deleting it and restarting the session
+Если есть файл ''~/.config/plasma-locale-settings.sh'' — удалить его и перелогиниться.
 
 2
-Глобально для всех юзеров, то через sudo заглянуть в /etc/default/locale и выставить там вот так:
-export LANG=ru_RU.UTF-8
-export LANGUAGE=ru:en
+Глобально для всех юзеров
 
-Если локально, то заглянуть в ~/.kde/env/setlocale.sh (вероятно, файл надо будет создать) и написать то же самое.
+''sudo mcedit /etc/default/locale''
+
+и выставить там:
+
+''export LANG=ru_RU.UTF-8''
+''export LANGUAGE=ru:en''
+
+Если локально, то заглянуть в ''~/.kde/env/setlocale.sh'' (вероятно, файл надо будет создать) и написать то же самое.
 
 3
-/etc/default/locale.alias
+
+''sudo mcedit /etc/default/locale.alias''
 
 и установить там в строчке для русского языка
-russian  ru-RU.UTF-8
+
+''russian  ru-RU.UTF-8''
 
 4
-/etc/default/locale.gen
 
-раскомментировать строчку 'ru-RU.UTF-8 UTF-8' и закомментировать другие локали, связанные с русским языком (вроде 'ru-UA.UTF-8 UTF-8')
+''sudo mcedit'' ''/etc/default/locale.gen''
 
-Затем в консоли выполнить команду 'locale-gen'.
+раскомментировать строчку '''ru-RU.UTF-8 UTF-8''' и закомментировать другие локали, связанные с русским языком (вроде '''ru-UA.UTF-8 UTF-8''')
+
+Затем в консоли выполнить 
+
+''locale-gen''
 
 Полностью разлогиниться и снова залогиниться в системе.
-
