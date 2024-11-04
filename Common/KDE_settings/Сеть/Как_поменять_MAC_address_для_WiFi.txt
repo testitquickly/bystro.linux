@@ -4,19 +4,24 @@ Creation-Date: 2022-02-23T20:46:18+02:00
 
 ====== Как поменять MAC address для WiFi ======
 
-[ @console @wi_fi ]
-
-Будет установлен random адрес.
+[ @console @wi_fi @mac_address ]
 
 Узнать текущий mac address
 
-''sudo ip a'' 
+''sudo ip a''
+
+Посмотреть зачение для ''link/ether'', например „''b4:99:ba:bf:48:44''“.
 
 Выключить wi-fi.
 
-Применить изменение мак-адреса:
+Вызвать утилиту для смены мак-адреса:
 
 ''sudo macchanger -r wlan0''
 
+Будет установлен random адрес.
+
 Включить wi-fi.
 
+Проверить новый mac address
+
+''sudo ip a''
