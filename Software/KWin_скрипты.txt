@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-03T22:01:37+02:00
+
+====== KWin скрипты ======
+
+[ @window @kwin ]
+
+	*todo Рассмотреть KWin скрипты
+
+Sticky Window Snapping https://store.kde.org/p/1112552
+
+Krohnkite https://store.kde.org/p/2144146
+
+Center New Windows https://store.kde.org/p/2162132
+
+Walk Through Desktops with OSD https://store.kde.org/p/2150135
+
+Tiler https://store.kde.org/p/2144210
+
+Quick Tile 2 https://store.kde.org/p/1259484
+
+[KDE plasma] KWin tiling is my new favorite thing! https://www.reddit.com/r/unixporn/comments/ewdv77/kde_plasma_kwin_tiling_is_my_new_favorite_thing/
+
+
