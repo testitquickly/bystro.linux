@@ -71,7 +71,7 @@ symlink — сокращение от „symbolic link” — ссылка на
 И если в ответе видно, что оба файла указывают на один и тот же inode, то перед нами хардлинки.
 
 ==== через file ====
-
+	*todo Symlink — нужен перевод
 
 $ file tyre
 tyre: symbolic link to tubor
