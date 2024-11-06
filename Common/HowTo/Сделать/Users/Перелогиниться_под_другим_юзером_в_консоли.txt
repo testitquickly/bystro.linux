@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T19:44:26+02:00
 
-====== Поменять юзера в консоли ======
+====== Перелогиниться под другим юзером в консоли ======
 
 [ @console @user ]
 
