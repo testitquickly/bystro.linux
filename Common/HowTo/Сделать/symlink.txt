@@ -68,50 +68,31 @@ symlink — сокращение от „symbolic link” — ссылка на
 
 ''ls -li debup dupbup''
 
-И если в ответе видно, что оба файла указывают на один и тот же inode, то перед нами хардлинки.
+И если в ответе видно, что оба файла указывают на один и тот же inode, то перед нами — хардлинки.
 
 ==== через file ====
-	*todo Symlink — нужен перевод
 
-$ file tyre
-tyre: symbolic link to tubor
+''file test.txt''
 
-Indeed, tyre is a symlink. However, if a file isn’t a symbolic link, file prints information about the file type and its contents.
+Ответ:
 
-To illustrate, let’s see the output when we run the file command on a file that’s not a symbolic link:
+''test.txt: symbolic link to /home/AppImages/test.txt''
 
-$ file thesis1
-thesis1: ASCII text
+Если бы файл был хардлинком, ответ был бы такой:
 
-In this case, we get the type ASCII text instead.
+''test.txt: Unicode text, UTF-8 text''
 
-Now, let’s turn to a common command that works with links.
-6. Using the readlink Command
+==== через readlink ====
 
-Let’s say we want to determine the target of a symbolic link. To do so, we can use the readlink command. The readlink command displays the target file that a soft link points to.
+''readlink test.txt''
 
-In general, to use the readlink command, we type in the command followed by the file name as argument:
+Если это симлинк, в ответ должен вернуться путь на оригинал:
 
-$ readlink symbolic_link_name
-some_file
+''/home/AppImages/test.txt''
 
-For example, let’s check the target file for the symlink, tyre:
+Если это хардлинк, в ответ будет полная тишина (словно ничего не произошло).
 
-$ readlink tyre
-tubor
-
-In this case, the readlink command shows the target file or directory that the soft link points to.
-
-However, the command returns nothing if the file doesn’t exist or isn’t a symlink. In this case, we can employ the -v flag to see the exact error message:
-
-$ readlink nonexistent
-$ readlink hardlink
-$ readlink -v nonexistent
-readlink: nonexistent: No such file or directory
-$ readlink -v hardlink
-readlink: hardlink: Invalid argument
-
-This way, we see the exact reason for a failure with readlink.
+И если проверяемый файл не существует, в ответ тоже вернется тишина, поэтому данный способ проверки мало кто использует. Есть возможность вызывать команду с параметром ''-v'', но проще забить.
 
 ===== Превратить симлинк в команду в консоли =====
 
