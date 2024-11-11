@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-10T23:12:04+02:00
+
+====== Docker ======
+
+[ @docker ]
+
+===== Установить =====
+
+[[Debian:Установка ПО:Docker]]
+
+===== Настроить =====
+
+===== Поднять контейнер =====

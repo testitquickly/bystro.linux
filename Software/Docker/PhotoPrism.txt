@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-10T23:26:56+02:00
+
+====== PhotoPrism ======
+
+[ @docker @photoprism ]
+
+===== Установить Docker и Docker Compose =====
+
+[[Debian:Установка ПО:Docker]]
+
+===== Сделать каталог для PhotoPrism =====
+
+''mkdir -p ~/photoprism''
+''cd ~/photoprism''
+
+===== Сделать файл docker-compose.yml =====
+
+В каталоге ''~/photoprism'' создать файл ''docker-compose.yml'' с содержимым:
+
+	''version: "3.9"''
+	''services:''
+	  ''photoprism:''
+		''image: photoprism/photoprism:latest''
+		''container_name: photoprism''
+		''restart: unless-stopped''
+		''environment:''
+		  ''- PHOTOPRISM_ADMIN_PASSWORD=yourpassword  # Задайте пароль администратора''
+		  ''- PHOTOPRISM_HTTP_PORT=2342  # Порт для доступа к PhotoPrism''
+		''volumes:''
+		  ''- ~/photoprism/storage:/photoprism/storage  # Хранение данных''
+		  ''- ~/photoprism/import:/photoprism/import  # Каталог для импорта фото''
+		  ''- ~/photoprism/photos:/photoprism/photos  # Ваши фотографии''
+		''ports:''
+		  ''- "2342:2342"  # Порт для доступа через браузер''
+		''networks:''
+		  ''- photoprism_network''
+	''networks:''
+	  ''photoprism_network:''
+		''driver: bridge''
+
+	В этом файле:
+		PHOTOPRISM_ADMIN_PASSWORD — задает пароль администратора для входа в PhotoPrism.
+		~/photoprism/storage, ~/photoprism/import и ~/photoprism/photos — это каталоги на вашем сервере, которые будут использоваться для хранения данных, импорта и хранения фотографий. Вы можете указать свои каталоги, если нужно.
+
+===== Запустить Docker Compose =====
+
+''sudo docker-compose up -d''
+
+Ожидаемый ответ
+
+''Network photoprism_photoprism_network  Created                                                                                                                                                                        0.2s'' 
+''Container photoprism                   Started''  
+
+===== Открыть сайт =====
+
+http://localhost:2342
+
