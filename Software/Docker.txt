@@ -13,3 +13,21 @@ Creation-Date: 2024-11-10T23:12:04+02:00
 ===== Настроить =====
 
 ===== Поднять контейнер =====
+
+===== Погасить контейнер =====
+
+Посмотреть, какие подняты
+
+''sudo docker ps''
+
+Остановить определенный, например, «my_container»
+
+''sudo docker stop my_container''
+
+Остановить все
+
+''sudo docker stop $(docker ps -q)''
+
+Остановить все, которые были запущены через docker compose
+
+''sudo docker-compose down''

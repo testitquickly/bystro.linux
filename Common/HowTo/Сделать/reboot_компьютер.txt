@@ -7,8 +7,10 @@ Creation-Date: 2022-02-22T15:29:55+02:00
 [ @console ]
 
 Или 
+
 ''shutdown -r now''
 
 или
+
 ''systemctl reboot''
 

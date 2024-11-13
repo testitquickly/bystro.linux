@@ -112,10 +112,8 @@ Creation-Date: 2022-02-23T20:57:12+02:00
 
 Если всё хорошо:
 
-'''
-= START OF READ SMART DATA SECTION =
-SMART overall-health self-assessment test result: PASSED
-'''
+''= START OF READ SMART DATA SECTION =''
+''SMART overall-health self-assessment test result: PASSED''
 
 Если всё плохо: забэкапиться и заменить диск.
 

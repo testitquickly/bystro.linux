@@ -109,19 +109,19 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 Вариант ответа:
 
-'''
-NAME   DISC-ALN DISC-GRAN DISC-MAX DISC-ZERO
-sda           0      512B       2G         0
-├─sda1        0      512B       2G         0
-├─sda2        0      512B       2G         0
-├─sda3        0      512B       2G         0
-└─sda5        0      512B       2G         0
-sdb           0        0B       0B         0
-├─sdb1        0        0B       0B         0
-├─sdb5        0        0B       0B         0
-├─sdb6        0        0B       0B         0
-└─sdb7        0        0B       0B         0
-'''
+	'''
+	NAME   DISC-ALN DISC-GRAN DISC-MAX DISC-ZERO
+	sda           0      512B       2G         0
+	├─sda1        0      512B       2G         0
+	├─sda2        0      512B       2G         0
+	├─sda3        0      512B       2G         0
+	└─sda5        0      512B       2G         0
+	sdb           0        0B       0B         0
+	├─sdb1        0        0B       0B         0
+	├─sdb5        0        0B       0B         0
+	├─sdb6        0        0B       0B         0
+	└─sdb7        0        0B       0B         0
+	'''
 
 Здесь
 * sda мой SSD.

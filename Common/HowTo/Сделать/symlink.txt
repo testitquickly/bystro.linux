@@ -119,15 +119,15 @@ symlink — сокращение от „symbolic link” — ссылка на
 
 Отредактировать „ИмяФайла.desktop”:
 
-''[Desktop Entry]''
-''Encoding=UTF-8''
-''Name= Название новой программы''
-''Comment= Если нужно''
-''Type=Application''
-''Terminal=true''
-''Exec=~/.local/bin/МойСимЛинк''
-''StartupNotify=true''
-''Categories=System;''
+	''[Desktop Entry]''
+	''Encoding=UTF-8''
+	''Name= Название новой программы''
+	''Comment= Если нужно''
+	''Type=Application''
+	''Terminal=true''
+	''Exec=~/.local/bin/МойСимЛинк''
+	''StartupNotify=true''
+	''Categories=System;''
 
 Новая иконка появится в Меню приложений > Система.
 

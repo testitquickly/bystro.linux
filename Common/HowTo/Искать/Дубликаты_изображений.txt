@@ -9,3 +9,4 @@ Creation-Date: 2022-02-23T21:17:45+02:00
 http://manpages.ubuntu.com/manpages/trusty/man1/findimagedupes.1p.html
 
 ''findimagedups -R -c duplicates.txt''
+

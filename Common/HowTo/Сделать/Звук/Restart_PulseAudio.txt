@@ -7,3 +7,4 @@ Creation-Date: 2024-03-12T08:58:54+02:00
 [ @debian @sound @pulseaudio ]
 
 ''systemctl --user restart pulseaudio.service && systemctl --user status pulseaudio.service''
+

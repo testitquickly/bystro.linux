@@ -10,18 +10,15 @@ Creation-Date: 2022-02-23T00:37:26+02:00
 
 После search не обязательно писать полное имя искомого пакета – это поисковый шаблон, можно написать часть имени
 
-'''
-$ aptitude search {package-name}
-$ aptitude search apache
-$ aptitude search webserver
-'''
+''aptitude search {package-name}''
+''aptitude search apache''
+''aptitude search webserver''
 
 или через apt (это не то же, что aptitude)
-'''
-$ apt-cache search {package-name}
-$ apt-cache search apache
-$ apt-cache search 'web server'
-'''
+
+''apt-cache search {package-name}''
+''apt-cache search apache''
+''apt-cache search 'web server'''
 
 Чтобы показать подробности про отдельный пакет
 

@@ -21,9 +21,12 @@ To re-enable the account at a later date you can run:
 ''sudo usermod --unlock --expiredate''  [username]''
 
 	Другие варианты
-	''sudo chage -E0 [UserName]''
+
+''sudo chage -E0 [UserName]''
+
 	OR
-	''sudo usermod -s /sbin/nologin [UserName]''
+
+''sudo usermod -s /sbin/nologin [UserName]''
 
 	Check if the user account is locked.
 	the flag *LK* in the below command output indicates that the account is locked.

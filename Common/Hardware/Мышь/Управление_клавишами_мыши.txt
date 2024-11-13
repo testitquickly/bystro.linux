@@ -4,7 +4,7 @@ Creation-Date: 2023-12-20T08:57:22+02:00
 
 ====== Управление клавишами мыши ======
 
-[ @debian @hardware @mouse @xbindkeys @xev @xdotool @изображения ]
+[ @manjaro @hardware @mouse @xbindkeys @xev @xdotool @изображения ]
 
 У меня мышь с дополнительными клавишами. Хочу одну из них назначить на дабл-клик.
 
@@ -41,13 +41,13 @@ Creation-Date: 2023-12-20T08:57:22+02:00
 	
 	Можно запустить “''xev''” целиком, но полный лог каждого движения мыши больше путает, нежели помогает. Будет вот такое:
 			
-		''ButtonPress event, serial 40, synthetic NO, window 0x4e00001,''
-		''root 0x6a8, subw 0x4e00002, time 9051645, (64,24), root:(923,501),''
-		''state 0x10, button 1, same_screen YES''
+	''ButtonPress event, serial 40, synthetic NO, window 0x4e00001,''
+	''root 0x6a8, subw 0x4e00002, time 9051645, (64,24), root:(923,501),''
+	''state 0x10, button 1, same_screen YES''
 			
 		вместо простого 
 			
-		''state 0x10, button 1, same_screen YES''
+	''state 0x10, button 1, same_screen YES''
 
 --------------------
 
@@ -131,35 +131,35 @@ killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindk
 
 1. Кнопка нажата
 
-''KeyPress event, serial 40, synthetic NO, window 0x4c00001,''
-''root 0x6a8, subw 0x4c00002, time 9767181, (56,41), root:(915,518),''
-''state 0x10,'' ''keycode 133 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,''
-''XKeysymToKeycode returns keycode: 92''
-''XLookupString gives 0 bytes:''
-''XmbLookupString gives 0 bytes:''
-''XFilterEvent returns: False''
-
-''KeyPress event, serial 40, synthetic NO, window 0x4c00001,''
-''root 0x6a8, subw 0x4c00002, time 9767181, (56,41), root:(915,518),''
-''state 0x90,'' ''keycode 40 (keysym 0xb0, degree), same_screen YES,''
-''XLookupString gives 2 bytes: (c2 b0) "°"''
-''XmbLookupString gives 2 bytes: (c2 b0) "°"''
-''XFilterEvent returns: False''
+	''KeyPress event, serial 40, synthetic NO, window 0x4c00001,''
+	''root 0x6a8, subw 0x4c00002, time 9767181, (56,41), root:(915,518),''
+	''state 0x10,'' ''keycode 133 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,''
+	''XKeysymToKeycode returns keycode: 92''
+	''XLookupString gives 0 bytes:''
+	''XmbLookupString gives 0 bytes:''
+	''XFilterEvent returns: False''
+	
+	''KeyPress event, serial 40, synthetic NO, window 0x4c00001,''
+	''root 0x6a8, subw 0x4c00002, time 9767181, (56,41), root:(915,518),''
+	''state 0x90,'' ''keycode 40 (keysym 0xb0, degree), same_screen YES,''
+	''XLookupString gives 2 bytes: (c2 b0) "°"''
+	''XmbLookupString gives 2 bytes: (c2 b0) "°"''
+	''XFilterEvent returns: False''
 
 2. Кнопка отжата
 
-''KeyRelease event, serial 41, synthetic NO, window 0x4c00001,''
-''root 0x6a8, subw 0x4c00002, time 9767413, (56,41), root:(915,518),''
-''state 0x90, keycode 133 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,''
-''XKeysymToKeycode returns keycode: 92''
-''XLookupString gives 0 bytes:''
-''XFilterEvent returns: False''
-
-''KeyRelease event, serial 41, synthetic NO, window 0x4c00001,''
-''root 0x6a8, subw 0x4c00002, time 9767413, (56,41), root:(915,518),''
-''state 0x10, keycode 40 (keysym 0x64, d), same_screen YES,''
-''XLookupString gives 1 bytes: (64) "d"''
-''XFilterEvent returns: False''
+	''KeyRelease event, serial 41, synthetic NO, window 0x4c00001,''
+	''root 0x6a8, subw 0x4c00002, time 9767413, (56,41), root:(915,518),''
+	''state 0x90, keycode 133 (keysym 0xfe03, ISO_Level3_Shift), same_screen YES,''
+	''XKeysymToKeycode returns keycode: 92''
+	''XLookupString gives 0 bytes:''
+	''XFilterEvent returns: False''
+	
+	''KeyRelease event, serial 41, synthetic NO, window 0x4c00001,''
+	''root 0x6a8, subw 0x4c00002, time 9767413, (56,41), root:(915,518),''
+	''state 0x10, keycode 40 (keysym 0x64, d), same_screen YES,''
+	''XLookupString gives 1 bytes: (64) "d"''
+	''XFilterEvent returns: False''
 
 Можно и так
 
@@ -167,13 +167,13 @@ killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindk
 
 Дополнительная кнопка на моей мыши отображается так:
 
-''"(Scheme function)"''
-''m:0x90 + c:133''
-''Mod2+Mod5 + ISO_Level3_Shift''
-
-''"(Scheme function)"''
-''m:0x10 + c:40''
-''Mod2 + d''
+	''"(Scheme function)"''
+	''m:0x90 + c:133''
+	''Mod2+Mod5 + ISO_Level3_Shift''
+	
+	''"(Scheme function)"''
+	''m:0x10 + c:40''
+	''Mod2 + d''
 
 * The first line represents a command.
 * The second line contains the state (0x8) and keycode (32) as reported by the tool xev.
@@ -205,9 +205,7 @@ killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindk
 
 Для отлова клика кнопки можно задействовать gui-приложение: 
 
-'''
-sudo pacman -Syu xbindkeys_config-gtk2
-'''
+''sudo pacman -Syu xbindkeys_config-gtk2''
 
 Запускается по ”''xbindkeys_config''”. Содержимое окна взято из уже знакомого нам файла “''~/.xbindkeysrc''”, а любые изменения будут записаны в него же.
 
@@ -218,6 +216,7 @@ sudo pacman -Syu xbindkeys_config-gtk2
 ''xbindkeys --key''
 
 Инструкция:
+
 '''
 Press combination of keys or/and click under the window.
 You can use one of the two lines after "NoCommand"
@@ -233,4 +232,3 @@ in $HOME/.xbindkeysrc to bind a key.
 '''
 
 Ок, будем считать, что нажатие нужной мне кнопки определяется как “''Mod2+Mod5 + ISO_Level3_Shift''”.
-

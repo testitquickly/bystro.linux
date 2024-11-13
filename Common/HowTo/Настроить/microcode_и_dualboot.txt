@@ -25,7 +25,8 @@ Debian отказался загружаться.
 Также заметны сообщения о том, что не запущен network. Апдейты и установка чего-либо невозможна.
 
 Самое явное сообщение о проблеме: 
-''[Firmware bug> TSC_DEADLINE disabled due to Errata; please update microcode to version: 0x25 or later'' (цифра версии может отличаться).
+
+	''[Firmware bug> TSC_DEADLINE disabled due to Errata; please update microcode to version: 0x25 or later'' (цифра версии может отличаться).
 
 ===== Объяснение проблемы =====
 

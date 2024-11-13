@@ -17,4 +17,3 @@ PATH=${PATH//:$directory_to_remove:/:}
 PATH=${PATH#:}; PATH=${PATH%:}
 echo $PATH
 '''
-

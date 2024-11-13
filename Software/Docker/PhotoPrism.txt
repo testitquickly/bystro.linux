@@ -6,6 +6,8 @@ Creation-Date: 2024-11-10T23:26:56+02:00
 
 [ @docker @photoprism ]
 
+Пример установки и настройки проекта.
+
 ===== Установить Docker и Docker Compose =====
 
 [[Debian:Установка ПО:Docker]]

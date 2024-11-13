@@ -7,3 +7,4 @@ Creation-Date: 2022-02-23T00:28:55+02:00
 [ @console ]
 
 ''umount /media/cdrom0/''
+

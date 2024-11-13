@@ -20,19 +20,19 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 Пример ответа:
 
-''Local time: Пт 2024-11-01 18:16:09 EET''
-''Universal time: Пт 2024-11-01 16:16:09 UTC''
-''TC time: Пт 2024-11-01 16:16:09''
-''Time zone: Europe/Chisinau (EET, +0200)''
-''System clock synchronized: yes''
-''NTP service: active''
-''RTC in local TZ: no''
+	''Local time: Пт 2024-11-01 18:16:09 EET''
+	''Universal time: Пт 2024-11-01 16:16:09 UTC''
+	''TC time: Пт 2024-11-01 16:16:09''
+	''Time zone: Europe/Chisinau (EET, +0200)''
+	''System clock synchronized: yes''
+	''NTP service: active''
+	''RTC in local TZ: no''
 
 Последние строки:
 
-''NTP service: active'' — да, это сервис из systemd.
+	''NTP service: active'' — да, это сервис из systemd.
 
-''RTC in local TZ: no'' — да, так и надо, бо у нас real-time clock (RTC) установлен НЕ в локальной TZ (TimeZone). 
+	''RTC in local TZ: no'' — да, так и надо, бо у нас real-time clock (RTC) установлен НЕ в локальной TZ (TimeZone). 
 
 	См. отдельно [[Синхронизация времени между Linux и Windows]] про настройку времени по RTC.
 
@@ -58,20 +58,20 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 Пример ответа:
 
-'''
-LinkNTPServers=
-SystemNTPServers=
-RuntimeNTPServers=
-FallbackNTPServers=0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org 3.debian.pool.ntp.org
-ServerName=2.debian.pool.ntp.org
-ServerAddress=178.17.160.12
-RootDistanceMaxUSec=5s
-PollIntervalMinUSec=32s
-PollIntervalMaxUSec=34min 8s
-PollIntervalUSec=34min 8s
-NTPMessage={ Leap=0, Version=4, Mode=4, Stratum=2, Precision=-23, RootDelay=47.180ms, RootDispersion=153.976ms, Reference=C3B01ACD, OriginateTimestamp=Fri 2024-11-01 17:50:23 EET, ReceiveTimestamp=Fri 2024-11-01 17:50:23 EET, TransmitTimestamp=Fri 2024-11-01 17:50:23 EET, DestinationTimestamp=Fri 2024-11-01 17:50:23 EET, Ignored=no, PacketCount=8, Jitter=12.118ms }
-Frequency=-397869
-'''
+	'''
+	LinkNTPServers=
+	SystemNTPServers=
+	RuntimeNTPServers=
+	FallbackNTPServers=0.debian.pool.ntp.org 1.debian.pool.ntp.org 2.debian.pool.ntp.org 3.debian.pool.ntp.org
+	ServerName=2.debian.pool.ntp.org
+	ServerAddress=178.17.160.12
+	RootDistanceMaxUSec=5s
+	PollIntervalMinUSec=32s
+	PollIntervalMaxUSec=34min 8s
+	PollIntervalUSec=34min 8s
+	NTPMessage={ Leap=0, Version=4, Mode=4, Stratum=2, Precision=-23, RootDelay=47.180ms, RootDispersion=153.976ms, Reference=C3B01ACD, OriginateTimestamp=Fri 2024-11-01 17:50:23 EET, ReceiveTimestamp=Fri 2024-11-01 17:50:23 EET, TransmitTimestamp=Fri 2024-11-01 17:50:23 EET, DestinationTimestamp=Fri 2024-11-01 17:50:23 EET, Ignored=no, PacketCount=8, Jitter=12.118ms }
+	Frequency=-397869
+	'''
 
 Время синхронизируется с сервером ''2.debian.pool.ntp.org'', который отзывается по ''178.17.160.12'' (можно только пинговать, в браузере не откроется).
 
@@ -131,16 +131,16 @@ systemd-timesyncd.service - Network Time Synchronization
 
 Заменить содержимое на
 
-'''
-[Time]
-NTP=0.ro.pool.ntp.org 1.ro.pool.ntp.org 2.ro.pool.ntp.org 3.ro.pool.ntp.org
-FallbackNTP=0.europe.pool.ntp.org
-RootDistanceMaxSec=5
-PollIntervalMinSec=32
-PollIntervalMaxSec=2048
-ConnectionRetrySec=30
-SaveIntervalSec=60
-'''
+	'''
+	[Time]
+	NTP=0.ro.pool.ntp.org 1.ro.pool.ntp.org 2.ro.pool.ntp.org 3.ro.pool.ntp.org
+	FallbackNTP=0.europe.pool.ntp.org
+	RootDistanceMaxSec=5
+	PollIntervalMinSec=32
+	PollIntervalMaxSec=2048
+	ConnectionRetrySec=30
+	SaveIntervalSec=60
+	'''
 
 ==== Проверить связь с сервером синхронизации ====
 
@@ -148,9 +148,9 @@ SaveIntervalSec=60
 
 Пример ответа:
 
-''Server: n/a (0.ro.pool.ntp.org)''
-''Poll interval: 0 (min: 32s; max 34min 8s)''
-''Packet count: 0''
+	''Server: n/a (0.ro.pool.ntp.org)''
+	''Poll interval: 0 (min: 32s; max 34min 8s)''
+	''Packet count: 0''
 
 Читаем так: сервер установлен, но не отвечает. Да, потому что на нашей стороне отключен сервис ''timesyncd''.
 
@@ -166,19 +166,19 @@ SaveIntervalSec=60
 
 Пример ответа:
 
-''Server: 92.86.106.228 (0.ro.pool.ntp.org)''
-''Poll interval: 2min 8s (min: 32s; max 34min 8s)''
-''Leap: normal''
-''Version: 4''
-''Stratum: 2''
-''Reference: 59D409B4''
-''Precision: 1us (-24)''
-''Root distance: 23.550ms (max: 5s)''
-''Offset: -7.654ms''
-''Delay: 57ms''
-''Jitter: 2.892ms''
-''Packet count: 2''
-''Frequency: +69,564ppm''
+	''Server: 92.86.106.228 (0.ro.pool.ntp.org)''
+	''Poll interval: 2min 8s (min: 32s; max 34min 8s)''
+	''Leap: normal''
+	''Version: 4''
+	''Stratum: 2''
+	''Reference: 59D409B4''
+	''Precision: 1us (-24)''
+	''Root distance: 23.550ms (max: 5s)''
+	''Offset: -7.654ms''
+	''Delay: 57ms''
+	''Jitter: 2.892ms''
+	''Packet count: 2''
+	''Frequency: +69,564ppm''
 
 Всё работает.
 
