@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T21:01:25+02:00
 
-====== Как настроить сеть из консоли ======
+====== Настроить сеть из консоли ======
 
 [ @console @wi_fi ]
 

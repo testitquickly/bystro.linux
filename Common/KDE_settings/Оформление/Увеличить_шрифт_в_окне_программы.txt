@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-05T06:42:32+02:00
 
-====== Как увеличить шрифт в окне программы ======
+====== Увеличить шрифт в окне программы ======
 
 [ @font @viber @flatpak ]
 

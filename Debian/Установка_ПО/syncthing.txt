@@ -6,6 +6,8 @@ Creation-Date: 2024-10-14T02:17:44+03:00
 
 [ @debian @syncthing @install ]
 
+См. https://www.howtoforge.com/how-to-install-syncthing-on-debian-12/
+
 ===== Добавить release PGP keys =====
 
 ''sudo mkdir -p /etc/apt/keyrings && cd /etc/apt/keyrings && sudo curl -L -o /etc/apt/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg''
@@ -17,5 +19,9 @@ Creation-Date: 2024-10-14T02:17:44+03:00
 ===== Установить syncthing =====
 
 ''sudo apt-get update && sudo apt-get install syncthing''
+
+===== Удалить syncthing =====
+
+''sudo apt-get purge syncthing''
 
 См. [[Software:syncthing]]
