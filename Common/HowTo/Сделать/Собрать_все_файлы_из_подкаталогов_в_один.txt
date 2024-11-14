@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-14T06:31:42+02:00
+
+====== Собрать все файлы из подкаталогов в один ======
+
+[ @bash @book @LaTeX ]
+
+Есть книга https://github.com/97-things/97-things-every-programmer-should-know
+
+Каждый раздел положен в отдельный каталог. В каждом каталоге файл README.md
+
+'''
+/thing_01
+	README.md
+/thing_02
+	README.md
+…
+'''
+
+Хочу собрать все тексты на eng в один файл ''*.tex''. 
+
+===== Скрипт на Bash =====
+
+Сделать файл для скрипта, сделать его исполняемым и открыть
+
+''> concatenate.sh && chmod +x concatenate.sh && mcedit concatenate.sh''
+
+Вставить в файл
+
+''#!/bin/bash''
+   
+	''# найти все файлы README.md во всех подкаталогах'' 
+	''# и прочитать содержимое каждого файла''
+	''# и дописать его в общий файл text_en.tex''
+
+	''# Каталог с подкаталогами''
+''main_folder="/home/astenix/97-things-every-programmer-should-know-master/en/"''
+''output_file="text_en.tex"''
+
+	''# Создать (или очистить) выходной файл''
+''> "$output_file"''
+
+	''# Искать все файлы с расширением „md” из подкаталогов''
+''find "$main_folder" -type f -iname "*.md" | while read -r file; do''
+		''# В цикле передавать содержимое каждого найденного файла в общий файл tex''
+	''cat "$file" >> "$output_file"''
+		''# добавить строку END после каждого нового файла для зрительного разделения содержимого (закомментирована по канонам LaTeX)''
+	''echo -e "\n % === END ===\n" >> "$output_file"''
+''done''
+
+Выполнить
+
+''bash concatenate.sh''
