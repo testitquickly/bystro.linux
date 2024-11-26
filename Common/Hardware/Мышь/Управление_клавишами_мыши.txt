@@ -81,28 +81,22 @@ Creation-Date: 2023-12-20T08:57:22+02:00
 
 Вместо “''xdtool''” можно написать название утилиты вроде kcalc или путь к исполняемому sh-файлу.
 
-'''
-# Mouse Button Forward -- #8 
-# Show main menu
-"xdotool key super"
-	b:8
+''# Mouse Button Forward -- #8'' 
+''# Show main menu''
+''"xdotool key super"''
+	''b:8''
 
-# Mouse Button Back -- #9
-# Show all applications
-"xdotool key super+a"
-	b:9
-'''
+''# Mouse Button Back -- #9''
+''# Show all applications''
+''"xdotool key super+a"''
+	''b:9''
 
-'''
-# запустить новое окно Konsole по “Ctrl + правая кнопка мыши”
-"konsole"
-'''
+''# запустить новое окно Konsole по “Ctrl + правая кнопка мыши”''
+''"konsole"''
 		''control + b:3''
-'''
 
-# запустить новое окно Firefox по “Ctrl + Alt + f”
-"firefox"
-'''
+''# запустить новое окно Firefox по “Ctrl + Alt + f”''
+''"firefox"''
 		''control+alt + f''
 
 Некоторые действия лучше назначать на момент, когда клавиши «отпускают» — “''release+control+alt + f''”.
@@ -121,9 +115,7 @@ Creation-Date: 2023-12-20T08:57:22+02:00
 
 Тут можно застрять надолго, поэтому удобно будет сразу открывать файл с настройками:
 
-'''
-killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindkeysrc
-'''
+''killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindkeysrc''
 
 ===== Сложный сценарий =====
 
@@ -187,10 +179,8 @@ killall xbindkeys && xbindkeys -f ~/.xbindkeysrc && mcedit /home/astenix/.xbindk
 
 В файле “''~/.xbindkeysrc''” её можно указать как “''c:133”.''
 
-'''
-# запустить новое окно Konsole по “Ctrl + правая кнопка мыши”
-"konsole"
-'''
+''# запустить новое окно Konsole по “Ctrl + правая кнопка мыши”''
+''"konsole"''
 		''control + c:133''
 
 Есть проблема. После прописывания настроек полезно вызвать окно со списком забинденных клавиш (Ctrl+Shift+q) или это можно сделать в консоли  “''xbindkeys -s''”.

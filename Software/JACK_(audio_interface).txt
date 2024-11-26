@@ -29,15 +29,11 @@ https://www.youtube.com/watch?v=XcSRd4X_xPo&list=WL&index=4&t=238s
 
 будет показан список всех устройств. Можно его сократить:
 
-'''
-lsusb | grep idi
-'''
+''lsusb | grep idi''
 
 Результат:
 
-'''
-Bus 001 Device 007: ID 1acc:1a31 Midiplus Co, Ltd. X2mini
-'''
+''Bus 001 Device 007: ID 1acc:1a31 Midiplus Co, Ltd. X2mini''
 
 Далее он будет отображаться как 
 
@@ -49,23 +45,25 @@ Bus 001 Device 007: ID 1acc:1a31 Midiplus Co, Ltd. X2mini
 
 ''System'' 
 ''> JACK Status''
+
 по-умолчанию Stopped
 
 ''[Configure]''
 ''Engine'' 
 ''> Properties'' 
+
 Realtime = yes
 
 	остальное игноровать
 
-'''
-Driver > ALSA
-Device/Interface = будет интерфейс вывода звука по-умолчанию. Выбрать другой, если нужен другой, но пока что этим не заморачиваться.
-Properties 
-> Sample Rate = 44100 (cd quality)
-> Buffer Size = 1024
-> Periods/Buffer = 2
-'''
+''Driver > ALSA''
+''Device/Interface = будет интерфейс вывода звука по-умолчанию.'' 
+	''Выбрать другой, если нужен другой, но пока что этим не заморачиваться.''
+''Properties'' 
+''> Sample Rate = 44100 (cd quality)''
+''> Buffer Size = 1024''
+''> Periods/Buffer = 2''
+
 Остальное проигнорировать, если нет явной нужды.
 [OK]
 
@@ -101,9 +99,12 @@ Properties
 	''[Apply and restart output]''
 
 С такой схемой подключения звук из Hydrogen можно будет выводить куда угодно, например, в Audacity. Там нужно будет указать 
-метод вывода звука = JACK Audio Connection KIT
-устройство записи = hydrogen
+
+	метод вывода звука = JACK Audio Connection KIT
+	устройство записи = hydrogen
+
 запустить запись
+
 в hydrogen запустить воспроизведение
 
 Но в целом это оверкилл, бо нет нужды записывать щелчки из Hydrogen в Audacity в режиме live, можно всё экспортировать в wav и занести файл в Audacity. Поэтому рассматриваем более простое подключение:
@@ -119,7 +120,7 @@ Properties
 
 ===== Назначение кнопок с миди-клавиатуры Akai =====
 
-Hydrogen 
+''Hydrogen'' 
 ''> Параметры'' 
 ''> MIDI System''
 	''MIDI driver = ALSA''
@@ -149,29 +150,29 @@ Hydrogen
 
 Автоматическое определение подтянуло event CC по каждой из шести кнопок, но с разными event parameter: #1
 
-1. CC [57> = #1
-2. CC [64> = #2
-3. CC [65> = #3
-4. CC [66> = #4
-5. CC [67> = #5
-6. CC [68> = #6
+1. CC [57] = #1
+2. CC [64] = #2
+3. CC [65] = #3
+4. CC [66] = #4
+5. CC [67] = #5
+6. CC [68] = #6
 
 ==== Крутилки ====
 
 Автоопределение:
-1. CC [7> = #1
-2. CC [10> = #2
-3. CC [11> = #3
-4. CC [91> = #4
+1. CC [7] = #1
+2. CC [10] = #2
+3. CC [11] = #3
+4. CC [91] = #4
 
 на крутилке T1
-CC [7> = 
+CC [7] = 
 на крутилке T2
-CC [10> = 
+CC [10] = 
 на крутилке T3
-CC [11> = 
+CC [11] = 
 Микшер > уровень звука МЕТРОНОМА — на крутилке T4
-CC [91> = MASTER_VOLUME_ABSOLUTE
+CC [91] = MASTER_VOLUME_ABSOLUTE
 
 ==== Без кнопок ====
 
