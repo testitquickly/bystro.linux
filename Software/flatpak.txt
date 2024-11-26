@@ -45,7 +45,7 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 
 Пример с установкой сразу со стороны спотифая
 
-''flatpak install --from'' ''https://flathub.org/repo/appstream/com.spotify.Client.flatpakref''
+''flatpak install --from https://flathub.org/repo/appstream/com.spotify.Client.flatpakref''
 
 Если идём по пути скачать .flatpakref на хдд, тогда все проще:
 
@@ -63,7 +63,7 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 
 Пример с клиентом для спотифая:
 
-	''flatpak run com.spotify.Client''
+''flatpak run com.spotify.Client''
 
 ===== Починить вероятные проблемы при установке ПО =====
 
@@ -79,7 +79,7 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 
 Пример ответа
 
-	''flatpak uninstall com.spotify.Client''
+''flatpak uninstall com.spotify.Client''
 
 ===== Удаление Flatpak app =====
 
