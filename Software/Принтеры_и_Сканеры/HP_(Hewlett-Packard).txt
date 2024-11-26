@@ -15,4 +15,27 @@ Creation-Date: 2023-10-09T22:39:06+03:00
 
 ===== HP LaserJet Tank MFP 2602dn =====
 
-	*todo принтер HP - общие настройки
+===== Пробуждение через Wake-on-LAN =====
+
+''sudo apt install wakeonlan''
+
+Используйте команду wakeonlan, чтобы разбудить принтер:
+
+''wakeonlan <MAC-адрес_принтера>''
+
+Где <MAC-адрес_принтера> — это физический адрес сетевой карты принтера. Его можно узнать через веб-интерфейс принтера или в настройках роутера.
+
+===== Отключение =====
+
+На стороне принтера работает целый сервер для управления. Надо знать прямой IP-адрес принтера
+
+http://192.168.50.13/
+
+Настройки доступны только после входа в зону администрирования, где будет запрошен PIN устройства.
+
+1. Find the printer PIN. This PIN is located on a label on the output tray of the printer.
+2. Be sure to select "Advanced" or "Show details" and accept all certificates/connections in the next screen.
+3. Enter the PIN when prompted for a password in the following screen.
+
+Note: To ensure greater security, the Settings page is password protected.
+
