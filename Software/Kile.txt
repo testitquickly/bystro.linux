@@ -45,13 +45,11 @@ Kile — один из текстовых редакторов для [[LaTeX]]
 ''sudo ln -s /home/LaTeX/bin/x86_64-linux/dvipdfmx''
 ''sudo ln -s /home/LaTeX/bin/x86_64-linux/bibtex''
 ''sudo ln -s /home/LaTeX/bin/x86_64-linux/xelatex''
-'''
-sudo ln -s /home/LaTeX/bin/x86_64-linux/biber
-sudo ln -s /home/LaTeX/bin/x86_64-linux/kpsepath
-sudo ln -s /home/LaTeX/bin/x86_64-linux/kpsewhich
-sudo ln -s /home/LaTeX/bin/x86_64-linux/makeglossaries
-sudo ln -s /home/LaTeX/bin/x86_64-linux/updmap
-'''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/biber''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/kpsepath''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/kpsewhich''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/makeglossaries''
+''sudo ln -s /home/LaTeX/bin/x86_64-linux/updmap''
 ''sudo ln -s /home/LaTeX/bin/x86_64-linux/xetex''
 
 В ’/home/LaTeX/bin/x86_64-linux/’ 479 утилит и не все они нужны. Важно сделать симлинки на основные, от которых зависит  работа Kile и xelatex. 
@@ -132,15 +130,13 @@ Kile
 	''Класс = Compile''
 	''Выходное расширение = pdf''
 
-По-умолчанию в инструменте ’XeLaTeX’ класс = ’LaTeX’. 
+По-умолчанию в инструменте ’XeLaTeX’ класс = ’LaTeX’. Но из-за моей схемы с компилированием через внешний файл Kile будет обязан выбрасывать сообщение об ошибке 
 
-	Но из-за моей схемы с компилированием через внешний файл Kile будет обязан выбрасывать сообщение об ошибке 
+''«Открыть файл журнала не удалось; вы запускали LaTeX?»''
 
-	''«Открыть файл журнала не удалось; вы запускали LaTeX?»''
+И да, с точки зрения Kile никто LaTeX не запускалю и Kile будет «зависать» в ожидании моего ответа на свой вопрос. И если я сделаю изменения в файлах и снова запущу компиляцию, он ничего не сделает, бо на предыдущий вопрос не было ответа — а там надо было нажать Esc.
 
-	И да, с точки зрения Kile не запускал. А дальше Kile будет «зависать» в ожидании моего ответа на свой вопрос. И если я сделаю изменения в файлах и снова запущу компиляцию, он ничего не сделает, бо на предыдущий вопрос не было ответа — а там надо было нажать Esc.
-
-	А если класс = Compile, то Kile выбросить сообщение об ошибке, и после этого сразу объявит о том, что выполнение [XeLaTeX> прервано. И дальше всё работает безупречно.
+А если класс = Compile, то Kile выбросить сообщение об ошибке, и после этого сразу объявит о том, что выполнение [XeLaTeX] прервано. И дальше всё работает безупречно.
 
 Всё остальное не трогать.
 

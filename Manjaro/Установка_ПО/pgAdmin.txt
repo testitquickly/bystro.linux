@@ -29,21 +29,13 @@ Creation-Date: 2023-11-07T15:57:20+02:00
 
 (Непонятно почему, но…) Этот шаг рекомендуется выполнить в отдельном окне с консолью.
 
-'''
-sudo -u postgres -i
-'''
+''sudo -u postgres -i''
 
-'''
-initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'
-'''
+''initdb --locale $LANG -E UTF8 -D '/var/lib/postgres/data/'''
 
-'''
-exit
-'''
+''exit''
 
-'''
-exit
-'''
+''exit''
 
 Окно консоли будет закрыто. Открыть новое. 
 
@@ -63,15 +55,13 @@ psql -U postgres
 
 Строка ввода теперь должна начинаться так:
 
-'''
-postgres=#
-'''
+''postgres=#''
 
 Придумать пароль для этого юзера, записать в блокнот, запомнить, блокнот прожевать и проглотить. 
 '''
 
-\password
 '''
+''\password''
 
 Указать пароль, подтвердить.
 
@@ -89,16 +79,12 @@ postgres=#
 
 Логин как root и перейти в каталог с настройками
 
-'''
-su
-cd /var/lib/postgres/data
-'''
+''su''
+''cd /var/lib/postgres/data''
 
 Сделать копию файла с настройками (он называется „PostgreSQL Client Authentication Configuration File”) и отредактировать его
 
-'''
-cp pg_hba.conf pg_hba.conf.backup && mcedit pg_hba.conf
-'''
+''cp pg_hba.conf pg_hba.conf.backup && mcedit pg_hba.conf''
 
 По-умолчанию в файле pg_hba.conf будет это:
 
@@ -214,26 +200,24 @@ postgres=# \dt                      # see list of tables
 
 Разумно закатать эту последовательность команд для запуска сервиса в один исполняемый sh-файл и запускать страницу управления СУБД в Firefox (с рабочим профилем „profileNameWork”):
 
-'''
-#!/bin/bash
+''#!/bin/bash''
 
-    # запуск окружения для работы pgadmin в Manjaro
+	''# запуск окружения для работы pgadmin в Manjaro''
 
-source ~/pgadmin4/bin/activate
+''source ~/pgadmin4/bin/activate''
 
-echo "Окружение Python поднято."
+''echo "Окружение Python поднято."''
 
-cd ~/pgadmin4 & sleep 1 & pgadmin4 &
+''cd ~/pgadmin4 & sleep 1 & pgadmin4 &''
 
-echo "Пауза 20 секунд."
-echo "Подождать служебную информацию о запуске сервиса pgAdmin. Затем откроется Fifefox со страницей локалхоста."
+''echo "Пауза 20 секунд."''
+''echo "Подождать служебную информацию о запуске сервиса pgAdmin. Затем откроется Fifefox со страницей локалхоста."''
 
-sleep 20
+''sleep 20''
 
-firefox -p MyPROFILE --new-tab http://127.0.0.1:5050 &
+''firefox -p MyPROFILE --new-tab http://127.0.0.1:5050 &''
 
-echo "Done!"
-'''
+''echo "Done!"''
 
 ===== Открыть СУДБ =====
 
