@@ -6,7 +6,33 @@ Creation-Date: 2022-02-23T21:17:45+02:00
 
 [ @console @find @images ]
 
-http://manpages.ubuntu.com/manpages/trusty/man1/findimagedupes.1p.html
+===== Geeqie =====
+
+Файл > Найти повторяющиеся (File > Find duplicate). Откроется окно поиска.
+
+Выставить 
+* галочку «Миниатюры»
+* //Сравнить по: Similarity (med. - 90)//
+
+Закинуть/эатащить файлы (или целый каталог) в окно поиска. Подождать результат.
+
+Аккуратно смотреть в результаты, потому что последовательно снятые фотографии тоже попадают в фильтр «похожести».
+
+===== digiKam =====
+
+Добавить все фотографии в коллекцию, Tools > Find duplicates.
+
+Учесть, что digiKam собирает все файлы в базу данных и ей нужны mysql (MariaDB) и всякое такое.
+
+===== fslint =====
+
+Из Gnome.
+
+===== findimagedups =====
+
+Раньше была полезной консольной утилитой. Для установки были нужны Perl, GraphicsMagick и какие-то модули CPAN. Сейчас не нахожу её в репозиториях, можно установить из github.
 
 ''findimagedups -R -c duplicates.txt''
+
+http://manpages.ubuntu.com/manpages/trusty/man1/findimagedupes.1p.html
 
