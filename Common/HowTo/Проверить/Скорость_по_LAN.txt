@@ -1,0 +1,63 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-15T06:01:58+02:00
+
+====== Скорость по LAN ======
+
+[ @network @nas @lan @iperf ]
+
+Ноутбук и NAS подключены к одному роутеру, без внешней сети. Как проверить скорость в LAN (Local Area Network)?
+
+===== Узнать теоретическую скорость подключения =====
+
+Установить на NAS „ethtool” и запросить данные:
+
+''sudo apt-get install ethtool && sudo ethtool enp2s0''
+
+В ответе можно узнать „''Speed: 1000Mb/s''”. Это условный 1 гигабит/сек = 125 мегабайт/сек. Реальная максимальная скорость будет вдвое меньше, вроде 55 Миб/сек = 6.5 мегабайт/сек.
+
+===== iPerf =====
+
+И на ноутбуке, и на NAS надо установить iPerf, кроссплатформенный консольный генератор TCP, UDP и SCTP трафика для тестирования пропускной способности сети:
+
+''sudo apt-get install iperf3''
+
+Есть и просто ''iperf'', но ''iperf3'' архитектурно очень отличается от оригинальной версии, поэтому они представлены отдельно. В отличие от оригинального ''iperf'', сервер ''iperf3'' слушает только tcp-порт. 
+
+На NAS запустить iPerf в режиме сервера:
+
+''iperf3 -s''
+
+На ноутбуке запустить iPerf в режиме клиента, который обращается к NAS:
+
+''iperf3 -c 192.168.50.10''
+
+Пример ответа (см. //Bitrate//):
+
+'''
+Connecting to host 192.168.50.10, port 5201
+[  5] local 192.168.50.248 port 53314 connected to 192.168.50.10 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec   114 MBytes   952 Mbits/sec    0    335 KBytes       
+[  5]   1.00-2.00   sec   113 MBytes   945 Mbits/sec    0    352 KBytes       
+[  5]   2.00-3.00   sec   112 MBytes   938 Mbits/sec    0    352 KBytes       
+[  5]   3.00-4.00   sec   112 MBytes   943 Mbits/sec    0    352 KBytes       
+[  5]   4.00-5.00   sec   112 MBytes   939 Mbits/sec    0    352 KBytes       
+[  5]   5.00-6.00   sec   113 MBytes   945 Mbits/sec    0    352 KBytes       
+[  5]   6.00-7.00   sec   112 MBytes   942 Mbits/sec    0    387 KBytes       
+[  5]   7.00-8.00   sec   112 MBytes   942 Mbits/sec    0    387 KBytes       
+[  5]   8.00-9.00   sec   112 MBytes   942 Mbits/sec    0    387 KBytes       
+[  5]   9.00-10.00  sec   112 MBytes   940 Mbits/sec    0    387 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  1.10 GBytes   943 Mbits/sec    0             sender
+[  5]   0.00-10.00  sec  1.10 GBytes   941 Mbits/sec                  receiver
+
+iperf Done.
+
+'''
+«Мегабиты в секунду» можно перевести в более привычные «мегабайты в секунду»
+
+''941 Мбит/с ÷ 8 = 117 МБ/с''
+
+На стороне NAS прервать работу ''iperf3'' через Ctrl+C.
