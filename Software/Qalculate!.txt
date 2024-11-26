@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-11-26T05:58:09+02:00
+
+====== Qalculate! ======
+
+[ @console @qalculate ]
+
+Важно настроить его правильно, чтобы в будущем не страдать от ерундовых отклонений в цифрах.
+

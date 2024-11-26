@@ -32,6 +32,8 @@ https://qalculate.github.io/
 
 ''sudo aptitude install qalculate-gtk''
 
+См. настройки: [[Qalculate!]]
+
 ===== SpeedChrunch =====
 
 https://github.com/sanchahar/speedcrunch
