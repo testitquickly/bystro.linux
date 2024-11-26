@@ -8,17 +8,17 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 „''hplip''” (HP Device Manager) — это общий набор драйверов и система управления для принтеров/сканеров HP.
 
-Понадобится перезагрузить компьютер.
+Возможно понадобится перезагрузить компьютер.
 
 ===== Установка =====
 
 До начала установки надо: 
 * отключить принтер от компьютера,
-* убедиться в том, что в /apt/sources.list нет установки ПО с установочного диска — нужны только сетевые ресурсы,
+* убедиться в том, что в ''/apt/sources.list'' нет установки ПО с установочного диска — нужны только сетевые ресурсы,
 * убедиться в том, что любые package management systems (YaST, Adept, Synaptic, Up2date, etc) не задействованы,
 * согласиться с тем, что в ходе установки будет установлен AppArmor.
 
-На январь 2024 в HP Linux Imaging and Printing System (ver. 3.23.12) и HPLIP Installer ver. 5.1 наш «Debian 12» не поддерживается, к установке предлагается версия пакета для «Debian 11».
+На январь 2024 в HP Linux Imaging and Printing System (ver. 3.23.12) и HPLIP Installer ver. 5.1 наш «Debian 12» не поддерживается, к установке предлагается версия пакета для «Debian 11». Но это не проблема.
 
 ===== Автоматическая установка =====
 
@@ -33,57 +33,15 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 или
 ''sh /hplip-3.23.8.run''
 
-Возможно понадобится установить „python3-pyqt4” — PyQt 4- Qt interface for Python (for Qt version 4.x). Вероятно, этот пакет будет называться „python-pyqt4”.
+Для сборки системе понадобится собрать множество других пакетов, поэтому это всё __НАДОЛГО__ (но если уже прошёл час, то можно всё отменять и искать более старый скрипт установки) и с риском поломаться в любой момент. Надо присматривать за процессом и не отходить далеко, потому что в какой-то момент будет запрошен пароль или выбор юзера.
 
-* ''sudo apt install python-pyqt4''
-* ''sudo pacman -S python-pyqt4''
-
-Для сборки системе понадобится собрать множество других пакетов, поэтому это всё __НАДОЛГО__ и с риском поломаться в любой момент. Надо присматривать за процессом и не отходить далеко, потому что в какой-то момент будет запрошен пароль или выбор юзера.
-
-Во всех источниках после этого рекомендуется перезагрузить компьютер.
-
-
-
-
-./configure
-make
-make install
- 
-Using 'hp-setup' to configure your printer
-This guide will walk you through configuring your printer using 'hp-setup'.
-
-Step 11: Select How Your Printer will be Connected to Your Computer
-The first step is to select the printer connection type:
-
- 
-screenshots_sm_hp_setup_step1
-
-Step 12: Select the Printer to be Configured
-Next the setup tool will display printers detected (depending on the connection type selected):
-
- 
-screenshots_sm_hp_setup_step2
-
-Step 13: Select the PPD file (or driver) to be Used for Your Printer
-The PPD files (drivers) which are most similar to your printer are displayed. Select the appropriate PPD file for your printer.
-
-Note:
-
-Usually you will want to select the recommended PPD file.
-
- 
-screenshots_sm_hp_setup_step3
-
-Step 14: Confirm the Printer Settings and Finish the Configuration Process
-Click "AddPrinter" to complete the printer setup process:
+Во всех источниках после этого рекомендуется перезагрузить компьютер, но не факт, что это понадобится.
 
 ===== Ручная установка =====
 
 Согласно https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/debian — но там может быть старый текст.
 
 но сперва лучше посмотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/other
-
-https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/ubuntu
 
 Тут нужен пароль root, а не sudo:
 
@@ -93,116 +51,64 @@ https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/u
 
 Вероятно, какие-то из перечисленных пакетов отсутствуют. Прочитать ответ и принять решение по каждому.
 
-libjpeg62-dev 
-libusb-1.0-0-dev
-libjpeg62-turbo-dev
-python-dev-is-python3
-gs-esp
-libjpeg62-dev
-python
-python-imaging
-python-dbus
-python-dev
-python-gobject
-python-is-python3 2to3
-python-qt4
-python-qt4-dbus
-python-notify
-python-reportlab
+Возможно сперва надо установить
 
-	*todo hplip — перевод
+''sudo apt install build-essential libavahi-core-dev libavahi-client-dev libcups2-dev libsane-dev libsnmp-dev libusb-1.0-0-dev python3-dev python3-pyqt5''
 
-Step 3: Download HPLIP
+Также рассмотреть:
 
-Note
+* libjpeg62-dev 
+* libusb-1.0-0-dev
+* libjpeg62-turbo-dev
+* python-dev-is-python3
+* gs-esp
+* libjpeg62-dev
+* python
+* python-imaging
+* python-dbus
+* python-dev
+* python-gobject
+* python-is-python3 2to3
+* python-qt4
+* python-qt4-dbus
+* python-notify
+* python-reportlab
 
-We recommend that you download the HPLIP tarball to your home or desktop directory.
+Download the Regular Tarball http://prdownloads.sourceforge.net/hplip/hplip-3.12.6.tar.gz
 
-A. Download the Regular Tarball http://prdownloads.sourceforge.net/hplip/hplip-3.12.6.tar.gz
+Go to the directory where you downloaded the HPLIP tarball.
 
-B. Go to the directory where you downloaded the HPLIP tarball.
-
-C. Uncompress the tarball.
+Uncompress the tarball.
 
 ''tar xvfz hplip-3.12.6.tar.gz''
 
 This will create a directory with the same name as the tarball file.
 
-D. Change your working directory to the hplip-3.12.6 directory.
+Change your working directory to the hplip-3.12.6 directory.
 
-cd hplip-3.12.6
+''cd hplip-3.12.6''
 
-Step 4: Configure HPLIP for installation
-
-A. This step configures the development environment and checks that your system is ready to install HPLIP.
 For specific information on using ./configure and the different options please go https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/distros/debian#
 
-Also reference your distro documentation and configuration for additional information on which tags are relevant.
+При ручной установке для 64 bit distro users в каталоге с драйверами надо выполнить
 
-Enter this command (select the appropriate command depending on your system configuration):
+''./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/usr --enable-qt4 --disable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build''
 
-Note
+Important! You want to run make as a regular user, NOT as root.
 
-For Debian 5.0x use one of the commands:
+''make''
 
-32 bit distro users (most users will use this command):
+А вот установку уже надо делать из-под root:
 
-./configure --with-hpppddir=/usr/share/ppd/HP --prefix=/usr --enable-qt4 --enable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
+''su -c "make install"''
 
-64 bit distro users:
+For normal users other than root add user name to "lp" group:
 
-./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/usr --enable-qt4 --enable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
+''su -c "/usr/sbin/usermod -a -G lp astenix"''
 
-Note
-
-For Debian 6.0x use one of the commands:
-
-32 bit distro users (most users will use this command):
-
-./configure --with-hpppddir=/usr/share/ppd/HP --prefix=/usr --enable-qt4 --disable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
-
-64 bit distro users:
-
-./configure --with-hpppddir=/usr/share/ppd/HP --libdir=/usr/lib64 --prefix=/usr --enable-qt4 --disable-libusb01_build --enable-doc-build --disable-cups-ppd-install --disable-foomatic-drv-install --disable-foomatic-ppd-install --disable-hpijs-install --disable-udev_sysfs_rules --disable-policykit --enable-cups-drv-install --enable-hpcups-install --enable-network-build --enable-dbus-build --enable-scan-build --enable-fax-build
-
-Step 5: Run Make
-
-A. This step will compile the HPLIP source.
-
-Important
-
-You want to run make as a regular user, NOT as root.
-
-Enter this command:
-
-make
-
-Step 6: Run Make Install
-
-A. This step will install HPLIP.
-
-Enter this command:
-
-su -c "make install"
-
-Step 7: Post Installation Step(s)
-
-A. For normal users other than root add user name to "lp" group:
-
-su -c "usermod -a -G lp username"
-
-Restart your PC (or) logout and login.
-
-B. If you are going to be setting up a printer with USB and the printer is already plugged in, you will need to do one of the following:
-
-	Unlpug and re-plug in the USB printer, or
-	Restart your PC.
-
-Failure to do this will cause your USB printer to not be detected by HPLIP.
-Step 8: Configuring your printer using hp-setup
+Restart your PC (or) logout and login. Не факт, что надо,
 
 Continue to hp-setup https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
-
 
 ===== Подключить принтер к компьютеру =====
 
@@ -220,6 +126,44 @@ Continue to hp-setup https://developers.hp.com/hp-linux-imaging-and-printing/ins
 В идеале новое устройство будет сконфигурировано — правильное название устройства и автоматически прописан путь к файлу ppd (там настройки).
 
 * и выполнить тестовую печать.
-* и если речь идет про МФУ — вызвать ''xsane'' и выполнить тестовое сканирование.
+
+===== Сканирование =====
+
+Посмотреть доступные сканеры.
+
+''scanimage -L''
+
+Установить базовое ПО для сканирования:
+
+''sudo apt update && sudo apt install sane-utils libsane sane xsane''
+
+Вызвать ''xsane'', найти устройство (подразумевается что сетевой МФУ будет работать через ''airscan'') и выполнить тестовое сканирование.
+
+Если не нравится xsane:
+“Skanlite” is an Image Scanning Application - for single pages it's fine.
+“Skanpage” is a Multi-Page document scanning application.
+“Simple-scan” for Gnome is also fine (работает и в KDE)
+
+''sudo apt-get install skanlite skanpage simple-scan''
+
+===== Удаленное управление =====
+
+''sudo apt install hplip hplip-gui''
+
+При установке спросят, чьи настройки применять — того ''hplip'', который уже установлен, или нового.
+
+==== Добавление устройства через CUPS ====
+
+CUPS (Common Unix Printing System) используется для управления печатью на Linux. Убедитесь в том, что CUPS установлен и запущен:
+
+''sudo apt install cups''
+''sudo systemctl enable cups''
+''sudo systemctl start cups''
+
+Откройте веб-интерфейс CUPS в браузере:
+
+http://localhost:631
+
+Перейдите в Administration → Add Printer, выберите ваше устройство HP и настройте его.
 
 См. дальше [[Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]
