@@ -27,28 +27,22 @@ Creation-Date: 2022-03-21T18:56:36+02:00
 
 ==== Простым списком ====
 
-'''
-systemd-analyze blame
-'''
+''systemd-analyze blame''
 
 Пример ответа:
 
-'''
-8.362s NetworkManager-wait-online.service
-4.061s apt-daily.service
-2.198s ifupdown-pre.service
- 886ms nvidia-persistenced.service
- 764ms udisks2.service
- 743ms smartmontools.service
- 586ms lightdm.service
- 583ms plymouth-quit-wait.service
-'''
+''8.362s NetworkManager-wait-online.service''
+''4.061s apt-daily.service''
+''2.198s ifupdown-pre.service''
+ ''886ms nvidia-persistenced.service''
+ ''764ms udisks2.service''
+ ''743ms smartmontools.service''
+ ''586ms lightdm.service''
+ ''583ms plymouth-quit-wait.service''
 
 ==== Наглядной цепочкой ====
 
-'''
-systemd-analyze critical-chain graphical.target
-'''
+''systemd-analyze critical-chain graphical.target''
 
 Пример ответа:
 
