@@ -8,7 +8,7 @@ Creation-Date: 2024-10-26T09:13:57+03:00
 
 Это “File System Consistency Check“, утилита для условного «лечения» файловой системы на HDD.
 
-* Теория: [[Common:HowTo:Проверить:S.M.A.R.T.]]
+* Теория: [[HowTo:Проверить:S.M.A.R.T.]]
 * Диагностика: [[SmartMonTools]]
 
 Для однозначности: fsck может условно «вылечить» постаревший HDD, но всегда разумнее просто заменить устаревший HDD на новый.
@@ -30,7 +30,6 @@ Prerequisites
 	A user with root permissions to run the tool
 
 ===== When to Use fsck in Linux =====
-
 
 Note: Another useful tool for addressing a boot failure is GRUB rescue. Learn more in our post How to Use Grub Rescue to Fix Linux Boot Failure.
 Basic fsck Syntax
@@ -142,7 +141,7 @@ The scan will perform all five checks to search for corruptions even when it thi
 
 ===== Bad magic number in super-block =====
 
-Найдите резервные копии суперблока
+
 
 Сначала определите, где находятся резервные копии суперблока. Это можно сделать с помощью команды mke2fs в режиме отображения резервных суперблоков (не создавая файловую систему):
 
@@ -267,4 +266,4 @@ Note: Learn about the error code SIGSEGV (signal segmentation violation) and how
 
 
 
-[[Common:HowTo:Сделать:Отформатировать HDD]]
+[[HowTo:Сделать:Отформатировать HDD]]

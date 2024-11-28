@@ -12,4 +12,4 @@ Creation-Date: 2023-12-25T23:02:34+02:00
 
 ''sudo aptitude install hdparm''
 
-См. далее [[Common:HowTo:Настроить:trim SSD]]
+См. далее [[HowTo:Настроить:trim SSD]]
