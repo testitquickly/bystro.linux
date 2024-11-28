@@ -22,7 +22,7 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 
 * [[Software]]
 * [[HowTo]]
-* [[Common:KDE settings]]
+* [[KDE settings]]
 * [[Debian]]
 * [[Manjaro]]
 
