@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-01T00:30:56+02:00
+
+====== Whisper ======
+
+[ @debian @install @sound @openai @whisper ]
+
+Нужен Python и его virtual environment
+
+''sudo apt install python3.11-venv''
+
+и ещё
+
+''sudo apt install ffmpeg''
+
+Сделать каталог для всего этого дела
+
+''mkdir whisper && cd whisper/''
+
+Создать virtual environment для проекта
+
+''python3 -m venv whisper_env''
+
+Активировать его
+
+''source whisper_env/bin/activate''
+
+Для выхода из виртуального окружения выполнить ''deactivate''
+
+Снять файлы из git и установить Whisper и все зависимости
+
+''pip install git+https://github.com/openai/whisper.git''
+
+См. [[Software:Whisper]]
