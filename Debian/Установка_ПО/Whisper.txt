@@ -26,10 +26,14 @@ Creation-Date: 2024-12-01T00:30:56+02:00
 
 ''source whisper_env/bin/activate''
 
-Для выхода из виртуального окружения выполнить ''deactivate''
+Для выхода из виртуального окружения надо выполнить в том же каталоге команду ''deactivate''
 
 Снять файлы из git и установить Whisper и все зависимости
 
 ''pip install git+https://github.com/openai/whisper.git''
+
+Если есть видеокарта GPU с CUDA, Whisper использует её автоматически и скорость работы повысится, надо только установить драйверы CUDA и библиотеку PyTorch:
+
+''pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118''
 
 См. [[Software:Whisper]]
