@@ -12,4 +12,8 @@ Creation-Date: 2023-12-10T14:53:48+02:00
 
 Другие варианты (flatpak, appimage и др): https://keepassxc.org/download/#linux
 
+===== flatpak =====
+
+''flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak install --user flathub org.keepassxc.KeePassXC''
+
 См. дальше [[Software:KeePassXC]]
