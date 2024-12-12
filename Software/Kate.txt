@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T14:57:09+02:00
+
+====== Kate ======
+
+[ @kate @fonts ]
+
+Лучший шрифт 
+* IBM Plex Mono Text
+	
+Другие адекватные шрифты
+* Hack 
+* Nimbus Sans L 
+* Noto Mono 
+* Source Code Pro 
+

@@ -8,5 +8,5 @@ Creation-Date: 2024-10-15T13:58:41+03:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:Postman]]
+* [[Debian:Install:Postman]]
 

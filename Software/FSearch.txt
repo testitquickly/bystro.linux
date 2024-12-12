@@ -8,8 +8,8 @@ Creation-Date: 2024-09-14T19:42:36+03:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:FSearch]]
-* [[Manjaro:Установка ПО:FSearch]]
+* [[Debian:Install:FSearch]]
+* [[Manjaro:Install:FSearch]]
 
 ===== Синтаксис =====
 

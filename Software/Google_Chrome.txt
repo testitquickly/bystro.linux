@@ -6,7 +6,7 @@ Creation-Date: 2024-05-29T11:32:51+03:00
 
 [ @debian @settings @google_chrome ]
 
-Установка браузера — [[Debian:Установка ПО:Google Chrome]]
+Установка браузера — [[Debian:Install:Google Chrome]]
 
 Все профили хранятся в ~/.config/google-chrome, но механизм их именования имеет особенности. Каталог основного профиля называется Default, каталог второго профиля называется Profile 1, каталог третьего профиля называется Profile 2…
 

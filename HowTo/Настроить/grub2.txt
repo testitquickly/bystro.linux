@@ -46,7 +46,7 @@ GRUB_DISABLE_OS_PROBER=false
 
 Отредактировать файл:
 
-	''sudo mcedit /etc/default/grub''
+''sudo mcedit /etc/default/grub''
 
 Заменить содержимое файла предлагаемым текстом.
 

@@ -1,0 +1,66 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2022-02-22T23:43:53+02:00
+
+====== PATH — Список переменных ======
+
+[ @console ]
+
+Системные переменные.
+
+Команда «''printenv''» выведет список всех системных переменных и их содержимого.
+
+Если надо посмотреть что-то конкретное, например, содержимое переменной 'USER', тогда
+
+''printenv USER''
+
+	или
+
+''echo $USER''
+
+А можно грепнуть, тогда будет выведено и название переменной, и её содержимое:
+
+''printenv | grep 'USER'''
+
+Список системных переменных:
+
+	* SHELL: This describes the shell that will be interpreting any commands you type in. In most cases, this will be bash by default, but other values can be set if you prefer other options.
+	* TERM: This specifies the type of terminal to emulate when running the shell. Different hardware terminals can be emulated for different operating requirements. You usually won’t need to worry about this though.
+	* USER: The current logged in user.
+	* PWD: The current working directory.
+	* OLDPWD: The previous working directory. This is kept by the shell in order to switch back to your previous directory by running cd -.
+	* LS_COLORS: This defines color codes that are used to optionally add colored output to the ls command. This is used to distinguish different file types and provide more info to the user at a glance.
+	* MAIL: The path to the current user’s mailbox.
+	* PATH: A list of directories that the system will check when looking for commands. When a user types in a command, the system will check directories in this order for the executable.
+	* LANG: The current language and localization settings, including character encoding.
+	* HOME: The current user’s home directory.
+	* _: The most recent previously executed command.
+
+In addition to these environmental variables, some shell variables that you’ll often see are:
+
+	* BASHOPTS: The list of options that were used when bash was executed. This can be useful for finding out if the shell environment will operate in the way you want it to.
+	* BASH_VERSION: The version of bash being executed, in human-readable form.
+	* BASH_VERSINFO: The version of bash, in machine-readable output.
+	* COLUMNS: The number of columns wide that are being used to draw output on the screen.
+	* DIRSTACK: The stack of directories that are available with the pushd and popd commands.
+	* HISTFILESIZE: Number of lines of command history stored to a file.
+	* HISTSIZE: Number of lines of command history allowed in memory.
+	* HOSTNAME: The hostname of the computer at this time.
+	* IFS: The internal field separator to separate input on the command line. By default, this is a space.
+	* PS1: The primary command prompt definition. This is used to define what your prompt looks like when you start a shell session. The PS2 is used to declare secondary prompts for when a command spans multiple lines.
+	* SHELLOPTS: Shell options that can be set with the set option.
+	* UID: The UID of the current user.
+
+==== Где находятся переменные ====
+
+При логине система ищет их в следующих файлах в указанном порядке:
+* /etc/profile
+* ~/.bash_profile
+* ~/.bash_login
+* ~/.profile
+
+[[PATH — Добавить новый путь в PATH]]
+[[PATH — Посмотреть содержимое PATH]]
+[[PATH — Посмотреть содержимое ВСЕХ системных переменных]]
+[[PATH — Удалить что-то из PATH]]
+

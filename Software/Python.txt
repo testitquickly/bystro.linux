@@ -51,7 +51,7 @@ Creation-Date: 2022-04-06T02:18:53+03:00
 
 ==== Где что находится ====
 
-Файл-симлинк [[/usr/bin/python3]> ссылается на файл [[/usr/bin/python3.11]], который ссылается на каталог [[/usr/share/python3/]]. Всегда можно поставить что-то куда-то отдельно, но плясать макарену с ручной установкой нет смысла, всё делается автоматически.
+Файл-симлинк ''/usr/bin/python3'' ссылается на файл ''/usr/bin/python3.11'', который ссылается на каталог ''/usr/share/python3/''. Всегда можно поставить что-то куда-то отдельно, но плясать макарену с ручной установкой нет смысла, всё делается автоматически.
 
 ===== Установить idle3 =====
 
@@ -156,7 +156,7 @@ Creation-Date: 2022-04-06T02:18:53+03:00
 
 Это можно из консоли в любом месте:
 
-''wget'' [[https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz|''https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz'']> ''-P'' [[~/PythonSource|''~/PythonSource'']> ''&& cd'' [[~/PythonSource|''~/PythonSource'']]
+''wget https://www.python.org/ftp/python/3.8.9/Python-3.8.9.tar.xz -P ~/PythonSource && cd ~/PythonSource''
 
 ==== Распаковать снятый архив ====
 

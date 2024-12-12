@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-03-13T10:34:17+02:00
+
+====== Вывести звук на несколько устройств ======
+
+[ @debian @sound @pulse ]
+
+===== paprefs =====
+
+GUI-подход.
+
+Работаем с virtual output device, который выводит звук во все существующие выходные устройства:
+
+''sudo apt install paprefs''
+
+Запустить PulseAudio Preferences:
+
+''paprefs &''
+
+на вкладке „Simultaneous Output“ поставить галочку для „Add virtual output device for simultaneous output on all local sound cards“. Окно можно закрыть.
+
+В трее правой кнопкой по иконке звука — выбрать «Показывать виртуальные устройства».
+
+Убедиться в том, что правильно включены все аудиоустройства, через которые надо одновременно выводить звук.
+
+Запустить управление звуком:
+
+''pavucontrol &''
+
+его же можно найти в главном меню программ KDE. Откроется окно с названием «Громкость».
+
+Перейти на вкладку «Устройства вывода» и настроить устройства, через которые надо выводить звук. В теории там можно выбрать перечень устройств, которые будут задействованы. У меня оказались задействованы сразу все. 
+
+Настраивать можно\нужно заглушивание ненужных выводов, а также можно не связывать громкости каналов (иконка с замком), чтобы можно было настраивать уровни по-отдельности, но ко всему этому можно вернуться позже.
+
+В общем меню звука (в трее) выбрать устройство «Simultaneous output to…» — в названии перечислены доступные источники вывода звука.
+
+В финале звук должен раздаваться во всех включенных устройствах.
+
+===== pacmd =====
+
+Консольный подход. Норм если paprefs недоступен, или не работает как надо, или хочется управлять переключением вывода звука через терминал или по нажатию кнопки на StreamDeck. 
+
+''pactl load-module module-combine-sink''
+
+To unload the module from the command line and reset PulseAudio to defaults, just restart PulseAudio with:
+
+''pulseaudio -k''
+
+or issue:
+
+''pactl unload-module module-combine-sink''
+
+Рассмотрим решение задачи более приземленно: a single program or group of programs A (game) should output sound both to OBS and the headphone, while another single program or group of programs B (voice chat) should only output sound to the headphone, all on the Pulseaudio level. 
+
+Сreate a "null sink" on the Pulseaudio level:
+
+''pacmd load-module module-null-sink sink_name=game_sink sink_properties=device.description=Game-Sink''
+
+Use pavucontrol or, if it can do that, the sound configuration to switch all group A sound outputs to that sink. Each sink in Pulseaudio comes with a corresponding "monitor" source (you can see those in the OBS menu you included), so setup OBS to record from "Monitor of Game Sink".
+
+That takes care of recording from group A only, but doesn't output it to the headphones. For that, you need a loopback from the mentioned monitor source to the headphone sink:
+
+''pacmd load-module module-loopback source="game_sink.monitor" sink="your-headphone-sink"''
+
+You can find out the names of all sinks, including the headphone sink, with
+
+''pacmd list-sinks | grep name:''
+
+Leave out the angular brackets when using the names as arguments.
+
+The loopback source should of course be the associated monitor. If it still doesn't work, list all sources, and check if the name is correct: 
+
+''pacmd list-sources | grep name:''

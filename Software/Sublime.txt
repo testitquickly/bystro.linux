@@ -20,8 +20,8 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:Sublime]]
-* [[Manjaro:Установка ПО:Sublime]]
+* [[Debian:Install:Sublime]]
+* [[Manjaro:Install:Sublime]]
 
 ===== Управление пакетами =====
 
@@ -45,19 +45,19 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 Есть смысл последовательно установить некоторые пакеты (плагины). Одни из них после установки выводят подтверждающее/благодарственное окно, другие нет. Проверить, какие плагины установлены «''Preferences > Package Settings''»
 
-	1. [[https://packagecontrol.io/packages/SublimeLinter|Terminus]> — более продвинутая консолька
-	2. [[https://packagecontrol.io/packages/AdvancedNewFile|AdvancedNewFile]]
-	3. [[https://packagecontrol.io/packages/AutoFileName|AutoFileName]]
-	4. [[https://packagecontrol.io/packages/SideBarEnhancements|SideBarEnhancements]> — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
-	5. [[https://packagecontrol.io/packages/All%20Autocomplete|All Autocomplete]> — autocomplete вообще
-	6. [[https://packagecontrol.io/packages/BracketHighlighter|BracketHighlighter]]
-	7. [[https://packagecontrol.io/packages/DocBlockr|DocBlockr]]
-	8. [[https://packagecontrol.io/packages/Git|Git]> (некоторым заходит [[https://packagecontrol.io/packages/GitAutoCommit|GitAutoCommit]], мне он кажется излишним)
-	9. [[https://packagecontrol.io/packages/GitGutter|GitGutter]]
-	10. [[https://packagecontrol.io/packages/Markdown%20Extended|Markdown Extended]]
-	11. [[https://packagecontrol.io/packages/Anaconda|Anaconda]> — autocomplete для программистов
-	12. [[https://packagecontrol.io/packages/SublimeLinter|SublimeLinter]> — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
-	13. [[https://packagecontrol.io/packages/Emmet|Emmet]> — шаблоны для верстальщиков (front end)
+	1. https://packagecontrol.io/packages/Terminus — более продвинутая консолька
+	2. https://packagecontrol.io/packages/AdvancedNewFile
+	3. https://packagecontrol.io/packages/AutoFileName
+	4. https://packagecontrol.io/packages/SideBarEnhancements — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
+	5. [[https://packagecontrol.io/packages/All Autocomplete]] — autocomplete вообще
+	6. https://packagecontrol.io/packages/BracketHighlighter
+	7. https://packagecontrol.io/packages/DocBlockr
+	8. https://packagecontrol.io/packages/Git (некоторым заходит [[https://packagecontrol.io/packages/Git|https://packagecontrol.io/packages/GitAutoCommit]], мне он кажется излишним)
+	9. https://packagecontrol.io/packages/GitGutter
+	10. [[https://packagecontrol.io/packages/Markdown Extended]]
+	11. https://packagecontrol.io/packages/Anaconda — autocomplete для программистов
+	12. https://packagecontrol.io/packages/SublimeLinter — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
+	13. https://packagecontrol.io/packages/Emmet — шаблоны html для верстальщиков (front end)
 	14. Выбрать оформление Sublime
 	15. Выбрать стиль подсветки кода
 

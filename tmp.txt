@@ -4,6 +4,8 @@ Creation-Date: 2024-02-05T03:33:59+02:00
 
 ====== tmp ======
 
+ Rurouni Kenshin Kyoto Inferno
+
 find /home/astenix/Notebooks/bystro.linux/ -type f -name "*.txt" -exec sed -i 's/[/[/g; s/]/]/g' {} + 
 
 1,"TODO Kile - новые команды",,,Debian:Установка ПО:Kile

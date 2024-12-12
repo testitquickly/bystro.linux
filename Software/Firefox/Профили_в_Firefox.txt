@@ -6,7 +6,7 @@ Creation-Date: 2023-09-11T08:56:31+03:00
 
 [ @firefox @user @profile ]
 
-Есть официальная [[https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles|справка]> по всему этому делу.
+Есть официальная по всему этому делу — https://support.mozilla.org/en-US/kb/profile-manager-create-remove-switch-firefox-profiles
 
 ===== Создать новый профиль =====
 

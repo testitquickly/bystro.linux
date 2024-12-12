@@ -10,7 +10,7 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 ===== Установка =====
 
-[[Debian:Установка ПО:SmartGit]]
+[[Debian:Install:SmartGit]]
 
 ===== Связать SmartGit с GitHub =====
 
@@ -28,23 +28,27 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 ''> Confirm''
 ''> "SmartGit is requesting additional permissions"''
 ''> Authorize syntevo''
-		> Авторизация зависит от настроек, например, github mobile может быть разумным решением
-		> В браузере же прозойдет перенаправление на страницу GitHub Authorization
+		Авторизация зависит от настроек, например, github mobile может быть разумным решением
+		В браузере же прозойдет перенаправление на страницу GitHub Authorization
 '''
 > Скопировать предлагаемый код
 > Вернуться в настройки SmartGit
 > Вставить код
 > [Authenticate]
 '''
-		> Убедиться в том, что стоит галочка для «Use OAuth token for repository authentication (instead of password)»
+		Убедиться в том, что стоит галочка для «Use OAuth token for repository authentication (instead of password)»
 '''
 > Add
 > [OK]
 '''
 
-В профиле GitHub Settings в разделе Integrations > Applications > Authorized OAuth Apps будет отображаться SmartGit (Owned by syntevo)
+В профиле GitHub Settings в разделе 
+''Integrations'' 
+''> Applications'' 
+''> Authorized OAuth Apps'' 
+будет отображаться SmartGit (Owned by syntevo)
 	
-	If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
+If you need to rerun through the Authorization process outlined above, you have to Revoke access there first and start over.
 
 ===== Связать SmartGit с BitBucket =====
 
@@ -131,15 +135,15 @@ Restart required.
 
 ==== Тёмная тема в SmartGit ====
 
-Если вдруг тёмная тема больше мешает, нежели помогает, то в [[~/.config/smartgit/21.2/smartgit.properties]> можно отключить тёмную тему этой строкой:
+Если вдруг тёмная тема больше мешает, нежели помогает, то в файле ''~/.config/smartgit/21.2/smartgit.properties'' можно отключить тёмную тему этой строкой:
 
 ''org.eclipse.swt.internal.gtk.noThemingFixes=true''
 
 ==== ssh-ключи ====
 
-При попытке аутентификации на разных провайдерах git-репозиториев через ssh-ключи скорее всего SmartGit откажется их принять с сообщением «Exhausted Available Authentication Methods». Проблема в том, что SmartGit по-умолчанию работает с криптой через встроенный ssh-клиент. В этом есть преимущества, всё хранится внутри SmartGit.
+При попытке аутентификации на разных провайдерах git-репозиториев через ssh-ключи скорее всего SmartGit откажется их принять с сообщением «Exhausted Available Authentication Methods». 
 
-Но если эта проблема проявится, надо переключить его настройки на использование системного ssh-клиента:
+Проблема в том, что SmartGit по-умолчанию работает со всей криптографией через встроенный ssh-клиент. В этом есть преимущества, всё хранится внутри SmartGit. Но если эта проблема проявится, надо переключить его настройки на использование системного ssh-клиента:
 
 ''Edit''
 ''> Preferences''

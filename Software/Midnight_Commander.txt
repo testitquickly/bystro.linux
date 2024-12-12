@@ -8,8 +8,8 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:Midnight Commander]]
-* [[Manjaro:Установка ПО:Midnight Commander]]
+* [[Debian:Install:Midnight Commander]]
+* [[Manjaro:Install:Midnight Commander]]
 
 ===== Основные шорткаты =====
 
@@ -78,7 +78,7 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 
 Add to your ~/.profile and ~/.bashrc files line
 
-''export EDITOR=mcedit''
+''echo "export EDITOR=mcedit" >> ~/.profile && echo "export EDITOR=mcedit" >> ~/.bashrc''
 
 Do not put quotes around 'mcedit' word. 
 

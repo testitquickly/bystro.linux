@@ -8,8 +8,8 @@ Creation-Date: 2023-10-10T22:40:03+03:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:ab]]
-* [[Manjaro:Установка ПО:ab]]
+* [[Debian:Install:ab]]
+* [[Manjaro:Install:ab]]
 
 Говорят, что на маках оно предустановлено, для Windows её надо скачать с https://www.apachelounge.com/download/
  

@@ -10,8 +10,8 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ===== Установить vsftpd =====
 
-* [[Debian:Установка ПО:vsfptd]]
-* [[Manjaro:Установка ПО:vsftpd]]
+* [[Debian:Install:vsfptd]]
+* [[Manjaro:Install:vsftpd]]
 
 ===== Основные управляющие команды =====
 
@@ -29,6 +29,8 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 ''su''
 
 ''chown root:root /etc/vsftpd.conf && echo -e "\nDone!"''
+
+''exit''
 
 ===== Сделать бэкап дефолтного конфиг-файла =====
 
@@ -52,7 +54,7 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ''sudo mcedit /etc/vsftpd.conf''
 
-Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный [[https://security.appspot.com/vsftpd/vsftpd_conf.html|перечень параметров]> с комментариями. Затем грамотный гайд [[https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10|здесь]]. Это всё можно будет глянуть позже.
+Настроек у vsftpd множество, что-то чем-то легко и незаметно может перекрыться. Сперва глянуть полный перечень параметров с комментариями — https://security.appspot.com/vsftpd/vsftpd_conf.html Затем грамотный гайд https://www.digitalocean.com/community/tutorials/how-to-set-up-vsftpd-for-a-user-s-directory-on-debian-10 Это всё можно будет глянуть позже.
 
 По-умолчанию настройки читаются из файла /etc/vsftpd.conf
 
@@ -132,7 +134,7 @@ utf8_filesystem=YES
 write_enable=YES
 '''
 
-Можно, но не нужно добавить дополнительные ОЧЕНЬ ГЛОБАЛЬНЫЕ разрешения:
+Можно (но не нужно) добавить дополнительные ОЧЕНЬ ГЛОБАЛЬНЫЕ разрешения:
 '''
 
 # разрешаем юзерам ПОЛНОСТЬЮ записывать/удалять файлы через ftp, но при этом ограничиваем их их же домашними директориями

@@ -10,7 +10,7 @@ Creation-Date: 2022-04-04T18:59:21+03:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:KMyMoney]]
+* [[Debian:Install:KMyMoney]]
 
 ===== Зашифровать файл ключом GPG =====
 

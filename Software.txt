@@ -16,7 +16,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== B =====
 
-[[+Baloo]] (поиск)
+[[+Baloo]] /поиск
 [[+blame]]
 [[+Brave]]
 
@@ -29,21 +29,21 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+Docker]]
 [[+Dropbox]]
-[[+du (disk usage)]]
+[[+du]] /disk usage
 
 ===== E =====
 
-[[+Elgato “Stream Deck”]]
-[[+exiftool]]
+[[+Elgato “Stream Deck”]] /клавиатурки с кнопками-экранами
+[[+exiftool]] /метаданные файлов
 
 ===== F =====
 
-[[+find]]  (поиск)
+[[+find]] /поиск файлов IRL
 [[+Firefox]]
-[[+Firewall]]
+[[+firewall]]
 [[+flatpak]]
-[[+fsck]]
-[[+FSearch]]  (поиск)
+[[+fsck]] /File System Consistency Check
+[[+FSearch]] /поиск файлов, графический
 [[+ftp]]
 
 ===== G =====
@@ -58,8 +58,8 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== K =====
 
-[[+k3b (прожиг дисков)]]
-[[+kate]]
+[[+k3b]] /прожиг дисков
+[[+Kate]]
 [[+KDE Connect]]
 [[+KeePassXC]]
 [[+Kile]]
@@ -68,18 +68,20 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Konsole]]
 [[+KRunner]]
 [[+Krusader]]
+[[+KWin скрипты]]
 
 ===== L =====
 
 [[+LaTeX]]
 [[+LibreOffice]]
-[[+locate]]  (поиск)
+[[+locate]] /поиск файлов по базе данных
 [[+ls]]
 
 ===== M =====
 
 [[+microcode]]
 [[+Midnight Commander]]
+[[+Mind map]]
 
 ===== N =====
 
@@ -103,12 +105,13 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== Q =====
 
+[[+Qalculate!]]
 [[+QBittorrent]]
 [[+qmmp]]
 
 ===== R =====
 
-[[+Recoll]]  (поиск)
+[[+Recoll]] /поиск внутри файлов
 
 ===== S =====
 
@@ -122,7 +125,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Spectacle]]
 [[+ssh]]
 [[+Sublime]]
-[[+syncthing]]
+[[+SyncThing]]
 
 ===== T =====
 

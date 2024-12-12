@@ -10,7 +10,7 @@ Creation-Date: 2024-11-30T21:46:21+02:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:Whisper]]
+* [[Debian:Install:Whisper]]
 
 ===== Использование Whisper =====
 

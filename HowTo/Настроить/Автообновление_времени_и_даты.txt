@@ -146,16 +146,16 @@ systemd-timesyncd.service - Network Time Synchronization
 
 Заменить содержимое на
 
-	'''
-	[Time]
-	NTP=0.ro.pool.ntp.org 1.ro.pool.ntp.org 2.ro.pool.ntp.org 3.ro.pool.ntp.org
-	FallbackNTP=0.europe.pool.ntp.org
-	RootDistanceMaxSec=5
-	PollIntervalMinSec=32
-	PollIntervalMaxSec=2048
-	ConnectionRetrySec=30
-	SaveIntervalSec=60
-	'''
+'''
+[Time]
+NTP=0.ro.pool.ntp.org 1.ro.pool.ntp.org 2.ro.pool.ntp.org 3.ro.pool.ntp.org
+FallbackNTP=0.europe.pool.ntp.org
+RootDistanceMaxSec=5
+PollIntervalMinSec=32
+PollIntervalMaxSec=2048
+ConnectionRetrySec=30
+SaveIntervalSec=60
+'''
 
 ==== Проверить связь с сервером синхронизации ====
 
@@ -175,7 +175,7 @@ systemd-timesyncd.service - Network Time Synchronization
 
 Ожидаемый ответ:
 
-Active: active (running) since Tue 2019-12-10 19:47:09 EET; 21s ago
+''Active: active (running) since Tue 2019-12-10 19:47:09 EET; 21s ago''
 
 ==== Снова проверить связь с сервером синхронизации ====
 

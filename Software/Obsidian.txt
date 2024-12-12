@@ -8,7 +8,7 @@ Creation-Date: 2024-10-07T12:53:17+03:00
 
 ===== Установка =====
 
-* [[Debian:Установка ПО:Obsidian]]
+* [[Debian:Install:Obsidian]]
 
 На всякий случай — сделано на Electron, фреймворке от GitHub, внутри Node.js и браузер Chromium. На быстром компьютере это будет незаметно.
 

@@ -10,8 +10,8 @@ Creation-Date: 2022-02-22T15:28:34+02:00
 
 Дистрибутивы Linux поставляются с установленным LibreOffice, и разумно обновлять его из официального репозитория вашего дистрибутива.
 
-* [[Debian:Установка ПО:LibreOffice]]
-* [[Manjaro:Установка ПО:LibreOffice]]
+* [[Debian:Install:LibreOffice]]
+* [[Manjaro:Install:LibreOffice]]
 
 ===== Включить хоткеи в OpenOffice при русской раскладке =====
 

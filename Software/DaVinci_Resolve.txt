@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-03T22:55:01+02:00
+
+====== DaVinci Resolve ======
+
+[ @davinciresolve @video ]
+
+===== Установка =====
+
+* [[Debian:Install:DaVinci Resolve]]
+* [[Manjaro:Install:DaVinci Resolve]]
+
+===== Настройка =====
+
+	*todo Как стартовать
