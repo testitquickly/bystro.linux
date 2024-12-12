@@ -6,6 +6,8 @@ Creation-Date: 2022-02-24T04:12:39+02:00
 
 [ @main @ls @bashrc ]
 
+Сокращение для «list directory contents».
+
 Идеальный алиас для .bashrc:
 
 ''alias ls='ls --group-directories-first -p -1'''

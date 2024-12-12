@@ -27,6 +27,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== D =====
 
+[[+DaVinci Resolve]]
 [[+Docker]]
 [[+Dropbox]]
 [[+du]] /disk usage
@@ -75,7 +76,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+LaTeX]]
 [[+LibreOffice]]
 [[+locate]] /поиск файлов по базе данных
-[[+ls]]
+[[+ls]] /list directory contents
 
 ===== M =====
 
@@ -107,7 +108,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+Qalculate!]]
 [[+QBittorrent]]
-[[+qmmp]]
+[[+qmmp]] /аудиоплеер
 
 ===== R =====
 
@@ -116,7 +117,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 ===== S =====
 
 [[+Samba]]
-[[+sed]]
+[[+sed]] /редактор содержимого файлов в консоли
 [[+Slack]]
 [[+SmartGit]]
 [[+SmartMonTools]]
@@ -129,9 +130,9 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== T =====
 
-[[+tar]]
+[[+tar]] /архивы
 [[+Thunderbird]]
-[[+Tor Browser]]
+[[+Tor Browser]] /firefox
 
 ===== U =====
 
@@ -148,21 +149,21 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+wget]]
 [[+whereis]]
-[[+Whisper]]
+[[+Whisper]] /нейронная сеть для распознавания речи
 [[+wine]]
 
 ===== X =====
 
-[[+xampp]]
+[[+xampp]] /локальный веб-сервер
 
 ===== Y =====
 
-[[+yt-dlp]]
+[[+yt-dlp]] /скачивание видео с Youtube
 
 ===== Z =====
 
 [[+Zim]]
-[[+zip]]
+[[+zip]] /архивы
 [[+Zoom]]
 
 ===== К =====

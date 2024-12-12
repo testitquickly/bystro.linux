@@ -6,7 +6,7 @@ Creation-Date: 2024-09-16T22:13:51+03:00
 
 [ @sed @console ]
 
-sed — Stream Editor. 
+sed — stream editor for filtering and transforming text. Редактор содержимого файлов в консоли.
 
 https://ru.linux-console.net/?p=16738
 
