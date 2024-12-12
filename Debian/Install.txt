@@ -1,0 +1,137 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-09-11T20:19:42+03:00
+
+====== Установка ПО ======
+
+[ @debian @install ]
+
+===== A =====
+
+[[+ab]] (Apache Benchmark tool)
+[[+aptitude]]
+
+===== B =====
+
+[[+Brave]]
+[[+Bruno]]
+
+===== C =====
+
+[[+Cadence]]
+
+===== D =====
+
+[[+DaVinci Resolve]]
+[[+Docker]]
+[[+Dropbox]]
+
+===== E =====
+
+[[+Elgato “Stream Deck”]]
+[[+exiftool]]
+
+
+===== F =====
+
+[[+Firefox]]
+[[+flatpak]]
+[[+FSearch]]
+[[+ftp]]
+
+===== G =====
+
+[[+Google Chrome]]
+[[+Grub-Customizer]]
+
+===== H =====
+
+[[+hdparm]]
+[[+hplip]] (принтеры HP)
+
+===== I =====
+
+[[+iputils]]
+
+===== J =====
+
+[[+JACK]]
+
+===== K =====
+
+[[+KeePassXC]]
+[[+kgpg]]
+[[+Kile]]
+[[+KMyMoney]]
+[[+Krusader]]
+
+===== L =====
+
+[[+LaTeX]]
+[[+LibreOffice]]
+
+===== M =====
+
+[[+Midnight Commander]]
+[[+Minder]]
+
+===== N =====
+
+[[+NodeJS]]
+[[+ntfs-3g]]
+
+===== O =====
+
+[[+Obsidian]]
+[[+OBS studio]]
+[[+OnBoard]]
+[[+OpenShot]]
+
+===== P =====
+
+[[+Paper Clip]]
+[[+paprefs]]
+[[+pgAdmin]]
+[[+Playwright]]
+[[+Postman]]
+
+===== Q =====
+
+[[+QBittorrent]]
+
+===== R =====
+
+[[+Recoll]]
+
+===== S =====
+
+[[+Slack]]
+[[+SmartGit]]
+[[+SmartMonTools]]
+[[+ssh]]
+[[+Sublime]]
+[[+SyncThing]]
+
+===== T =====
+
+[[+Telegram]]
+[[+Thunderbird]]
+[[+Tor Browser]]
+
+===== V =====
+
+[[+v4l2]]
+[[+vpn]]
+[[+vsfptd]]
+
+===== W =====
+
+[[+Whisper]]
+
+===== X =====
+
+[[+xsensors]]
+
+===== Z =====
+
+[[+zim]]

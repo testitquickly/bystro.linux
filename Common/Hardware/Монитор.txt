@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-08T02:45:05+02:00
+
+====== Монитор ======
+Создан Воскресенье 08 декабря 2024
+

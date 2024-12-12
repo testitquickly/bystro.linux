@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-03T22:27:27+02:00
+
+====== DaVinci Resolve ======
+
+[ @debian @install @davinciresolve @video ]
+
+Нужна отдельная видеокарта (да побольше) от NVidia, конечно же.
+
+===== Установить драйвер NVIDIA =====
+
+DaVinci Resolve нужны проприетарные драйверы NVIDIA для работы с GPU. Стандартный драйвер Nouveau не поддерживается.
+
+Прочитать внимательно https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_12_.22Bookworm.22
+
+''sudo apt update; sudo apt install nvidia-driver nvidia-settings firmware-misc-nonfree''
+
+Перезагрузить систему:
+
+''sudo reboot''
+
+Проверить установку драйвера:
+
+''nvidia-smi''
+
+Ожидаемый ответ: таблица с информацией о видеокарте и драйвере.
+
+===== Установить OpenCL =====
+
+Нужно для CUDA.
+
+''sudo apt install nvidia-opencl-dev clinfo''
+
+Проверить установку:
+
+''clinfo''
+
+Ожидаемый ответ: информация о поддерживаемых устройствах вроде 
+
+Platform Name                                   NVIDIA CUDA
+Platform Vendor                                 NVIDIA Corporation
+Platform Version                                OpenCL 3.0 CUDA 12.2.148
+
+и так далее.
+
+===== Установить DaVinci =====
+
+Бесплатный вариант называется DaVinci Resolve. Платный — DaVinci Resolve Studio.
+
+https://www.blackmagicdesign.com/products/davinciresolve (несколько гигабайт)
+
+Распаковать zip.
+
+Сделать установочный файл выполняемым
+
+''sudo chmod +x DaVinci_Resolve_19.1.1_Linux.run''
+
+Установить 
+
+''sudo ./DaVinci_Resolve_19.1.1_Linux.run''
+
+Вероятнее всего, в меню приложений появится новый раздел "Прочее".
+
+Первый запуск — настройки. 
+
+В разделе Системные > Память и GPU > Конфигурация GPU есть список доступных видеокарт, среди которых должна быть та, что установлена в компьютере. Если там пусто — алярм.
+
+Если при запуске программы выводится только варнинг о том, что "Для обработки изображения DaVinci Resolve использует OpenCL, поскольку установленный драйвер NVIDIA не поддерживает CUDA 12.3. Чтобы оптимизировать производительность, обновите драйвер NVIDIA. В данной конфигурации режим OpenCL можно также выбирать вручную" — снять галочку автовыбора и выбрать OpenCL напрямую (даже если там только OpenCL и указан).
+
+Если шрифт очень мелкий: Пользовательские > Настройки интерфейса > Параметры рабочей области > UI Display Scale = 200%
+
+Reboot не помешает.
+
+См. настройки [[Software:DaVinci Resolve]]

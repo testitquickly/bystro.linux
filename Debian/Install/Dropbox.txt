@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-03T11:12:18+02:00
+
+====== Dropbox ======
+
+[ @debian @install @dropbox ]
+
+https://www.dropbox.com/install — скачивание архива с установщиком.
+
+Ещё когда-то предлагалось скачать deb-файл с клиентом Dropbox, но через консоль проще.
+
+===== Установка Dropbox через командную строку =====
+
+''cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -''
+
+Запустить демон Dropbox из вновь созданной папки .dropbox-dist:
+
+''~/.dropbox-dist/dropboxd''
+
+и настроить подключение к аккаунту Dropbox. Например, сделать вход, настроить количество [[https://www.dropbox.com/account/security?_tk=account_menu|подключенных устройств]].
+
+===== Автозапуск Dropbox при старте системы =====
+
+==== Способ 1) ====
+
+'''
+Параметры системы 
+> Запуск и завершение 
+> Автозапуск 
+> [+Добавить]
+> [Добавить сценарий входа в систему]
+'''
+
+вписать в поле «Имя» команду
+
+''~/.dropbox-dist/dropboxd''
+
+==== Способ 2) ====
+
+''mcedit ~/.profile''
+
+Добавить в файл это:
+
+	''# start Dropbox''
+''if [ -x "$HOME/.dropbox-dist/dropboxd" ]; then''
+	''$HOME/.dropbox-dist/dropboxd &''
+''fi''
+
+Содержимое ''~/.profile'' выполняется при логине в систему ДО загрузки GUI KDE.

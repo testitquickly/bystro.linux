@@ -1,0 +1,75 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-10-22T23:44:21+03:00
+
+====== Postman ======
+
+[ @debian @install @postman ]
+
+См. также [[Bruno]]
+
+https://www.postman.com/downloads/ > снять файл „Linux (x64)”
+
+===== Разархивировать =====
+
+'''
+tar -xvf postman-linux*
+'''
+
+Появится каталог ''Postman''.
+
+===== Переместить каталог Postman в /opt =====
+
+Переместить каталог в /opt
+
+''sudo mv Postman /opt''
+
+===== Дать права своему пользователю на изменения в каталоге /opt/Postman =====
+
+'''
+sudo chown -R astenix:sudo /opt/Postman && sudo chmod 750 /opt/Postman
+'''
+
+Режим 750 в разрешениях файлов предоставляет 
+* владельцу разрешения на чтение, запись и выполнение, 
+* группе разрешения на чтение и выполнение 
+* и запрещает любые разрешения всем другим. 
+
+==== Сделать symbolic link на Postman ====
+
+Это инструкция для установки Postman только для своего пользователя на ноутбуке.
+
+''cd ~/.local/bin/ && ln -s /opt/Postman/Postman''
+
+==== Сделать ярлык для запуска ====
+
+Скачать из сети картинку логотипа файл условно "Postman.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
+
+Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог ''/opt/Postman/'' для этого лучшее решение.
+
+''sudo mv Postman.png /opt/Postman/''
+
+=== Создать файл „Postman.desktop” ===
+
+Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
+
+''mcedit ~/.local/share/applications/Postman.desktop''
+
+Вставить в него такой набор букв:
+
+**''[Desktop Entry]''**
+''Encoding=UTF-8''
+''Name=Postman''
+''Comment=from /opt''
+''Type=Application''
+''Terminal=false''
+''Exec=/opt/Postman/Postman %U''
+''Icon=/opt/Postman/Postman.png''
+''StartupNotify=true''
+''Categories=Network;WebBrowser;''
+
+[F2> [Esc> [Esc]
+
+=== Сделать файл исполняемым ===
+
+''chmod u+x ~/.local/share/applications/Postman.desktop''

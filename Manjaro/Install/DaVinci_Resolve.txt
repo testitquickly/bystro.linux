@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-06-16T10:51:32+03:00
+
+====== DaVinci Resolve ======
+
+[ @manjaro @install @davinciresolve ]
+
+Сперва установить дополнительную библиотеку, иначе запуск будет невозможен из-за ошибки «/opt/resolve/bin/resolve: error while loading shared libraries: libcrypt.so.1: cannot open shared object file: No such file or directory»
+
+''sudo -S libxcrypt-compat''
+
+Дальше установка по прилагаемой инструкции. 
+
+''sudo ./DaVinci_Resolve_18.1.4_Linux.run -i''
+
+При первом запуске будет неотключаемая Welcome Page. У меня она была нефункциональная, просто черный квадрат без возможности убрать из выключить. Убил сам процесс “DaVinci_Resolve_Welcome” через «Системный монитор» — заработало.
+
+Следующим шагом было сообщение «Неподдерживаемый режим обработки с помощью GPU» — на этом всё закончилось, мой компьютер не был оснащён отдельной видеокартой.
+
+См. настройки [[Software:DaVinci Resolve]]

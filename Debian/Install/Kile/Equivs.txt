@@ -1,0 +1,102 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-12-12T09:28:00+02:00
+
+====== Equivs ======
+
+[ @debian @archive @equivs @deprecated ]
+
+==== Список пакетов, которые устанавливаются с Kile ====
+
+* dvipng, 
+* fonts-lmodern, 
+* fonts-texgyre, 
+* lmodern, 
+* prerex, 
+* prosper, 
+* tex-common, 
+* tex-gyre, 
+* texlive, 
+* texlive-base, 
+* texlive-binaries, 
+* texlive-extra-utils, 
+* texlive-font-utils, 
+* texlive-fonts-recommended, 
+* texlive-fonts-recommended-doc, 
+* texlive-generic-recommended, 
+* texlive-latex-base, 
+* texlive-latex-base-doc, 
+* texlive-latex-recommended, 
+* texlive-latex-recommended-doc, 
+* texlive-pictures, 
+* texlive-pictures-doc, 
+* texlive-pstricks, 
+* texlive-pstricks-doc, 
+* tipa, 
+* vprerex 
+	
+Военная хитрость: создадим свой deb-файл, лживые настройки которого заставят Debian поверить в том, что TeX из репозиториев уже установлен, утибоземой, и можно установить всего лишь Kile.
+
+===== Поставить приблуду equivs =====
+
+''sudo aptitude install equivs''
+
+==== Cоздать рабочий файл для будущего проекта deb ====
+
+Далее одной командой:
+	1. создать новый временный каталог в /tmp/
+	2. скачать из сети уже готовый файл с перечнем пакетов, установку которых надо проэмулировать (название файла меняется в зависимости от версии LaTeX)
+	3. создать в equivs новый проект с названием 'texlive-local' (просто файл)
+
+''mkdir /tmp/installKileWithEquivs/ && cd /tmp/installKileWithEquivs/ && wget http://www.tug.org/texlive/files/debian-equivs-2019-ex.txt -nd --directory-prefix=/tmp/installKileWithEquivs/ && equivs-control texlive-local && echo 'Done!'''
+
+==== Отредактировать файл «debian-equivs-2019-ex.txt» ====
+
+''mcedit debian-equivs-2019-ex.txt''
+
+1. Добавить в тамошний перечень пакетов в строке 'Provides:' ещё и «texlive-doc-base», бо его там по-умолчанию не вписали.
+2. Удалить строку
+
+''Depends: freeglut3''
+
+==== Скопировать содержимое файла «debian-equivs-2019-ex.txt» в файл «texlive-local» ====
+
+''cp -f debian-equivs-2019-ex.txt texlive-local && echo 'Done!'''
+
+==== Создать файл texlive*.deb ====
+
+''equivs-build texlive-local''
+
+Получить сообщение '''The package has been created''' и что-то ещё, иначе алярм.
+
+==== Установить texlive*.deb ====
+
+После этого шага Debian искренне «поверит» в то, что у неё установлены все пакеты, которые были перечислены в файле «debian-equivs-2015-ex.txt».
+
+''sudo dpkg -i texlive-local_2019-1_all.deb''
+
+===== Установить Kile =====
+
+Не спешить
+
+Если во время установки появится сообщение о пакетах, которые будут установлены — остановиться и прочитать их. В этом списке ожидаем только
+
+		'''
+		Следующие НОВЫЕ пакеты будут установлены:
+		kile
+		'''
+
+и ничего более.
+
+		В предыдущих версиях KDE ещё предлагалось поставить ''konsole4-kpart{a}'', что было норм.
+
+Если будет предложен какой-либо пакет, в названии которого есть слово 'tex' — 
+1. остановиться, 
+2. вернуться к предыдущему шагу
+3. добавить в общий список муляжей «лишний» пакет, 
+4. повторить все последующие шаги до этого места
+и лишь затем продолжить установку Kile.
+
+''sudo aptitude install kile''
+
+Done.

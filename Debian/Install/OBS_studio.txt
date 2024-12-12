@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-01-08T10:16:51+02:00
+
+====== OBS studio ======
+
+[ @debian @install @obs ]
+
+''sudo apt update; sudo apt install ffmpeg && sudo apt install obs-studio -y''
+
+См. [[Software:OBS studio]]

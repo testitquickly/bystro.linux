@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-02T23:54:28+02:00
+
+====== Bruno ======
+
+[ @debian @install @bruno @api ]
+
+Аналог [[Postman]], во много проще и нет множества ограничений платной версии Postman.
+
+	*todo Bruno Расписать установку
+
+

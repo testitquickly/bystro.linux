@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-09-21T01:29:23+03:00
+
+====== Paper Clip ======
+
+[ @debian @manjaro @install @paperclip ]
+
+Это GUI для [[Software:exiftool]] ([[https://github.com/Diego-Ivan/Paper-Clip|github]])
+
+Доступно только так:
+
+''flatpak install flathub io.github.diegoivan.pdf_metadata_editor''
+
+Запуск:
+
+''flatpak run io.github.diegoivan.pdf_metadata_editor''

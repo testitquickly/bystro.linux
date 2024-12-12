@@ -1,0 +1,87 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-02-18T01:20:22+02:00
+
+====== Установка ПО ======
+
+[ @manjaro @install ]
+
+[[Управление Manjaro]]
+
+===== A =====
+
+[[+ab]]
+
+===== D =====
+
+[[+DaVinci Resolve]]
+[[+Disk Usage]]
+[[+Dropbox]]
+
+===== E =====
+
+[[+Elgato “Stream Deck”]]
+[[+exiftool]]
+
+===== F =====
+
+[[+FSearch]]
+[[+ftp]]
+
+===== G =====
+
+[[+Google Chrome]]
+[[+Grub-Customizer]]
+
+===== H =====
+
+[[+hdparm]]
+[[+hplip]] (принтеры HP)
+
+===== K =====
+
+[[+kgpg]]
+[[+Kile]]
+
+===== L =====
+
+[[+LaTeX]]
+[[+LibreOffice]]
+
+===== M =====
+
+[[+Midnight Commander]]
+
+===== O =====
+
+[[+OBS studio]]
+
+===== P =====
+
+[[+paprefs]]
+[[+pgAdmin]]
+[[+PulseEffect]]
+
+===== R =====
+
+[[+Recoll]]
+
+===== S =====
+
+[[+Slack]]
+[[+ssh]]
+[[+Sublime]]
+
+===== V =====
+
+[[+vmware]]
+[[+vpn]]
+[[+vsftpd]]
+
+===== X =====
+
+[[+xsensors]]
+
+===== Z =====
+
+[[+zim]]
