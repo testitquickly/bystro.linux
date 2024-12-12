@@ -3,5 +3,222 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-12-12T17:57:43+02:00
 
 ====== Подключиться к Wi-Fi из консоли ======
-Создан Четверг 12 декабря 2024
 
+[ @console @network @wi_fi ]
+
+	*todo Подключиться к Wi-Fi из консоли
+
+===== Узнать имя своего сетевого интерфейса =====
+
+''iwconfig''
+
+Обычно он называется ''wlan0'', но бывает и ''wlp4s0''.
+
+As you can see, the wireless interface isn’t associated with any access point right now. Then run the following command to bring up the wireless interface.
+
+sudo ip link set dev wlp4s0 up
+
+If you encounter the following error,
+
+RTNETLINK answers: Operation not possible due to RF-kill
+
+you need to unblock Wi-Fi with the following command.
+
+sudo rfkill unblock wifi
+
+Next, find your wireless network name by scanning nearby networks with the command below. Replace wlp4s0 with your own wireless interface name. ESSID is the network name identifier.
+
+sudo iwlist wlp4s0 scan | grep ESSID
+
+debian connect to wifi command line wpa supplicant
+Step 2: Connect to Wi-Fi Network With WPA_Supplicant
+
+Now install wpa_supplicant on Debian 11/10 from the default software repository.
+
+sudo apt install wpasupplicant
+
+We need to create a file named wpa_supplicant.conf using the wpa_passphrase utility. wpa_supplicant.conf is the configuration file describing all networks that the user wants the computer to connect to. Run the following command to create this file. Replace ESSID (network name) and Wi-Fi passphrase with your own.
+
+wpa_passphrase your-ESSID your-wifi-passphrase | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+
+debian wpa_passphrase
+
+If your ESSID contains whitespace such as (linuxbabe WiFi), you need to wrap the ESSID with double-quotes ("linuxbabe WiFi") in the above command.
+
+The output of wpa_passphrase command will be piped to tee, and then written to the /etc/wpa_supplicant/wpa_supplicant.conf file. Now use the following command to connect your wireless card to the wireless access point.
+
+sudo wpa_supplicant -c /etc/wpa_supplicant/wpa_supplicant.conf -i wlp4s0
+
+The following output indicates your wireless card is successfully connected to an access point.
+
+Successfully initialized wpa_supplicant
+wlp4s0: SME: Trying to authenticate with c5:4a:21:53:ac:eb (SSID='CMCC-11802' freq=2437 MHz)
+wlp4s0: Trying to associate with c5:4a:21:53:ac:eb (SSID='CMCC-11802' freq=2437 MHz)
+wlp4s0: Associated with c5:4a:21:53:ac:eb
+wlp4s0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+wlp4s0: WPA: Key negotiation completed with c5:4a:21:53:ac:eb [PTK=CCMP GTK=CCMP]
+wlp4s0: CTRL-EVENT-CONNECTED - Connection to c5:4a:21:53:ac:eb completed [id=0 id_str=]
+
+Note that if you are using Debian desktop edition, then you need to stop Network Manager with the following command, otherwise it will cause a connection problem when using wpa_supplicant.
+
+sudo systemctl stop NetworkManager
+
+And disable NetworkManager auto-start at boot time by executing the following command.
+
+sudo systemctl disable NetworkManager-wait-online NetworkManager-dispatcher NetworkManager
+
+By default, wpa_supplicant runs in the foreground. If the connection is completed, then open up another terminal window and run
+
+iwconfig
+
+You can see that the wireless interface is now associated with an access point.
+
+enable wifi on debian using terminal command
+
+You can press CTRL+C to stop the current wpa_supplicant process and run it in the background by adding the -B flag.
+
+sudo wpa_supplicant -B -c /etc/wpa_supplicant.conf -i wlp4s0
+
+Although we’re authenticated and connected to a wireless network, we don’t have an IP address yet. To obtain a private IP address from DHCP server, use the following command:
+
+sudo dhclient wlp4s0
+
+Now your wireless interface has a private IP address, which can be shown with:
+
+ip addr show wlp4s0
+
+debian dhclient obtain private ip address
+
+Now you can access the Internet. To release the private IP address, run
+
+sudo dhclient wlp4s0 -r
+
+Connecting to Hidden Wireless Network
+
+If your wireless router doesn’t broadcast ESSID, then you need to add the following line in /etc/wpa_supplicant/wpa_supplicant.conf file.
+
+scan_ssid=1
+
+Like below:
+
+network={
+		ssid="LinuxBabe.Com Network"
+		#psk="12345qwert"
+		psk=68add4c5fee7dc3d0dac810f89b805d6d147c01e281f07f475a3e0195
+		scan_ssid=1
+}
+
+Step 3: Auto-Connect At System Boot Time
+
+To automatically connect to wireless network at boot time, we need to edit the wpa_supplicant.service file. It’s a good idea to copy the file from /lib/systemd/system/ directory to /etc/systemd/system/ directory, then edit the file content, because we don’t want a newer version of wpa_supplicant to override our modifications.
+
+sudo cp /lib/systemd/system/wpa_supplicant.service /etc/systemd/system/wpa_supplicant.service
+
+Edit the file with a command-line text editor, such as Nano.
+
+sudo nano /etc/systemd/system/wpa_supplicant.service
+
+Find the following line.
+
+ExecStart=/sbin/wpa_supplicant -u -s -O /run/wpa_supplicant
+
+Change it to the following. Here we added the configuration file and the wireless interface name to the ExecStart command.
+
+ExecStart=/sbin/wpa_supplicant -u -s -c /etc/wpa_supplicant/wpa_supplicant.conf -i wlp4s0
+
+It’s recommended to always try to restart wpa_supplicant when failure is detected. Add the following right below the ExecStart line.
+
+Restart=always
+
+Save and close the file. (To save a file in Nano text editor, press Ctrl+O, then press Enter to confirm. To exit, press Ctrl+X.) Then reload systemd.
+
+sudo systemctl daemon-reload
+
+Enable wpa_supplicant service to start at boot time.
+
+sudo systemctl enable wpa_supplicant.service
+
+We also need to start dhclient at boot time to obtain a private IP address from DHCP server. This can be achieved by creating a systemd service unit for dhclient.
+
+sudo nano /etc/systemd/system/dhclient.service
+
+Put the following text into the file.
+
+[Unit]
+Description= DHCP Client
+Before=network.target
+After=wpa_supplicant.service
+
+[Service]
+Type=forking
+ExecStart=/sbin/dhclient wlp4s0 -v
+ExecStop=/sbin/dhclient wlp4s0 -r
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
+
+Save and close the file. Then enable this service.
+
+sudo systemctl enable dhclient.service
+
+How to Obtain a Static IP Address
+
+If you want to obtain a static IP address, then you need to disable dhclient.service.
+
+sudo systemctl disable dhclient.service
+
+Create a network config file.
+
+sudo nano /etc/systemd/network/static.network
+
+Add the following lines.
+
+[Match]
+Name=wlp4s0
+
+[Network]
+Address=192.168.1.8/24
+Gateway=192.168.1.1
+
+Save and close the file. Then create a .link file for the wireless interface.
+
+sudo nano /etc/systemd/network/10-wifi.link
+
+Add the following lines in this file. You need to use your own MAC address and wireless interface name. This is to prevent the system from changing the wireless interface name.
+
+[Match]
+MACAddress=a8:4b:05:2b:e8:54
+
+[Link]
+NamePolicy=
+Name=wlp4s0
+
+Save and close the file. Then disable the networking.service and enable systemd-networkd.service, which will take care of networking.
+
+sudo systemctl disable networking
+
+sudo systemctl enable systemd-networkd
+
+You can now restart systemd-networkd to see if your configuration works.
+
+sudo systemctl restart systemd-networkd
+
+Another way to obtain a static IP address is by logging into your router’s management interface and assigning a static IP to the MAC address of your wireless card, if your router supports this feature.
+
+Recommended Reading:
+
+	How to Use Systemd on Linux – Manage Services, Run Levels and Logs
+
+Multiple Wi-Fi Networks
+
+The /etc/wpa_supplicant.conf configuration file can include multiple Wi-Fi networks. wpa_supplicant automatically selects the best network based on the order of network blocks in the configuration file, network security level, and signal strength.
+
+To add a second Wi-Fi network, run:
+
+wpa_passphrase your-ESSID your-wifi-passphrase | sudo tee -a /etc/wpa_supplicant/wpa_supplicant.conf
+
+Note that you need to use the -a option with the tee command, which will append, instead of deleting the original content, the new Wifi-network to the file.
+Wi-Fi Security
+
+Do not use WPA2 TKIP or WPA2 TKIP+AES as the encryption method in your Wi-Fi router. TKIP is not considered secure anymore. You can use WPA2-AES as the encryption method.
