@@ -14,7 +14,7 @@ Creation-Date: 2022-11-17T22:20:43+02:00
 
 ===== Установка =====
 
-[[Debian:Install:KeePassXC]]
+[[Debian:Install Software:KeePassXC]]
 
 ===== Добавить новое поле =====
 

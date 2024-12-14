@@ -8,7 +8,7 @@ Creation-Date: 2024-09-05T11:24:21+03:00
 
 ===== Установка =====
 
-* [[Debian:Install:OpenShot]]
+* [[Debian:Install Software:OpenShot]]
 
 ===== Настройки =====
 

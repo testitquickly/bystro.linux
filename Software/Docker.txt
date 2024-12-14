@@ -8,7 +8,7 @@ Creation-Date: 2024-11-10T23:12:04+02:00
 
 ===== Установить =====
 
-[[Debian:Install:Docker]]
+[[Debian:Install Software:Docker]]
 
 ===== Настроить =====
 

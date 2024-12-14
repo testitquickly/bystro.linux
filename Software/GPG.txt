@@ -24,8 +24,8 @@ Creation-Date: 2022-03-03T04:30:32+02:00
 
 ===== Установка =====
 
-	* [[Debian:Install:kgpg]]
-	* [[Manjaro:Install:kgpg]]
+	* [[Debian:Install Software:kgpg]]
+	* [[Manjaro:Install Software:kgpg]]
 
 Обычно это входит в стандартный набор, поэтому можно даже начать с проверки версии:
 

@@ -23,8 +23,8 @@ Creation-Date: 2022-04-06T02:09:32+03:00
 
 ===== Установка =====
 
-* [[Debian:Install:Elgato “Stream Deck”]]
-* [[Manjaro:Install:Elgato “Stream Deck”]]
+* [[Debian:Install Software:Elgato “Stream Deck”]]
+* [[Manjaro:Install Software:Elgato “Stream Deck”]]
 
 ===== Нюансы приложения =====
 

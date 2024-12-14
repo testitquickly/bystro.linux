@@ -12,7 +12,7 @@ Creation-Date: 2024-10-14T02:17:13+03:00
 
 ===== Установка =====
 
-* [[Debian:Install:SyncThing]]
+* [[Debian:Install Software:SyncThing]]
 
 ===== Запуск =====
 

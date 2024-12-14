@@ -10,8 +10,8 @@ Creation-Date: 2023-10-09T22:39:06+03:00
 
 ===== Установка драйвера =====
 
-* [[Debian:Install:hplip]]
-* [[Manjaro:Install:hplip]]
+* [[Debian:Install Software:hplip]]
+* [[Manjaro:Install Software:hplip]]
 
 ===== HP LaserJet Tank MFP 2602dn =====
 

@@ -8,7 +8,7 @@ Creation-Date: 2023-12-10T16:48:34+02:00
 
 В Debian можно самостоятельно установить LibreOffice, выбирая версии. 
 
-В Manjaro такой возможности нет — [[Manjaro:Install:LibreOffice]]
+В Manjaro такой возможности нет — [[Manjaro:Install Software:LibreOffice]]
 
 ===== Скачать стабильную версию =====
  

@@ -8,8 +8,8 @@ Creation-Date: 2023-09-14T11:10:42+03:00
 
 ===== Установка =====
 
-* [[Debian:Install:vpn]]
-* [[Manjaro:Install:vpn]]
+* [[Debian:Install Software:vpn]]
+* [[Manjaro:Install Software:vpn]]
 
 ===== Настроить новое подключение =====
 

@@ -14,7 +14,7 @@ Creation-Date: 2024-10-25T21:54:10+03:00
 
 ===== Установка =====
 
-* [[Debian:Install:SmartMonTools]]
+* [[Debian:Install Software:SmartMonTools]]
 
 ===== Узнать «имя» проверяемого диска =====
 

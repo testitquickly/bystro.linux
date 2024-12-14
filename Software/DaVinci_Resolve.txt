@@ -8,8 +8,8 @@ Creation-Date: 2024-12-03T22:55:01+02:00
 
 ===== Установка =====
 
-* [[Debian:Install:DaVinci Resolve]]
-* [[Manjaro:Install:DaVinci Resolve]]
+* [[Debian:Install Software:DaVinci Resolve]]
+* [[Manjaro:Install Software:DaVinci Resolve]]
 
 ===== Настройка =====
 

@@ -10,7 +10,7 @@ Creation-Date: 2024-06-14T18:31:37+03:00
 
 ===== Установка =====
 
-* [[Debian:Install:ntfs-3g]]
+* [[Debian:Install Software:ntfs-3g]]
 
 ===== Типичный сценарий =====
 
