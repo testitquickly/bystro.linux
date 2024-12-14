@@ -8,5 +8,5 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 	*todo ! LaTeX — установка под Debian
 	
-Взять из [[Manjaro:Install:LaTeX]]
+Взять из [[Manjaro:Install Software:LaTeX]]
 
