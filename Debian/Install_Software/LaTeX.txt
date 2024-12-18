@@ -22,10 +22,11 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 там файлов (и возможностей) будет побольше.
 
-Но ничего не помешает установить LaTeX из iso в ''/opt'' просто из любопытства.
+Но ничего не мешает установить LaTeX из iso в ''/opt'' хотя бы из простого любопытства к тому, как там всё устроено.
 
-===== Предусловия установки =====
+===== Предусловие =====
 
+1. 
 В этом файле полно упоминаний переменной "''$userHomeFolder''". Разумно сразу же объявить эту переменную и её содержимое. Пример (без закрывающего слэша):
 
 ''userHomeFolder=/home/astenix''
@@ -34,7 +35,34 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ''echo $userHomeFolder''
 
+2. 
+Редактор для файлов *.tex — по вкусу. Его можно поставить и ДО LaTeX, и ПОСЛЕ. Мне нравится кдешный Kile.
+
 ===== 1. Подготовить систему =====
+
+Убедиться в том, что в системе нет ни TEX, ни Kile из репозиториев, бо при установке этого удобнейшего редактора для LaTeX принудительно устанавливается и TEX из репозитория, но это не наш метод.
+
+Если ранее был установлен LaTeX, его надо сперва грамотно снести, бо апгрейд между версиями не предусмотрен. И это правильно. С любой версией LaTeX можно работать чуть менее, чем бесконечно, если нет действительной нужды в использовании каких-то обновлённых утилит.
+
+==== Очистить систему от вероятных установок TeX из репозитория ====
+
+	1. Run the application add/remove software i.e. pamac-manager.
+	2. Check if you have any partial texlive installations.
+	3. Uninstall every texlive-(…) other than “full” previously installed (you’ll probably find texlive-bin and texlive-core.
+
+Выполнить дежурный запрос об указании месторасположения LaTeX
+
+''which tex''
+
+Ожидаем сообщение о том, что ничего не найдено, иначе крушить/удалять.
+
+==== Проверить отстутствие Kile ====
+
+Он с собой приносит основные части LaTeX из репозитория, а они не нужны.
+
+'''
+which kile
+'''
 
 ==== Установить Kile ====
 
@@ -92,14 +120,6 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ''source ~/.bashrc''
 
-==== Создать каталог для файла с образом LaTeX ====
-
-В каталоге своего профиля сделать //временный// каталог, в котором будут развернуты установочные файлы. 
-
-Содержимое переменной ''$userHomeFolder'' было задано в самом начале этой инструкции при подготовке окружения. Проверка ’''echo $userHomeFolder''’
-
-''mkdir $userHomeFolder/tmp_LaTeX_Installation/ && cd $userHomeFolder/tmp_LaTeX_Installation/ && echo 'Done!'''
-
 ===== 2. Скачать установочный iso-файл c LaTeX =====
 
 Размер файла — около шести гигабайт.
@@ -113,17 +133,17 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 Скачать выбранный файл можно и в консоли:
 
-''wget http://mirrors.mit.edu/CTAN/systems/texlive/Images/texlive2023.iso --directory-prefix=$userHomeFolder/tmp_LaTeX_Installation/ && echo 'Done!'''
+''wget http://mirrors.mit.edu/CTAN/systems/texlive/Images/texlive2023.iso --directory-prefix=~/Загрузки/ && echo 'Done!'''
 
 Можно снять и его [[https://tug.org/texlive/acquire-iso.html|торрент]].
 
-Так или иначе, надо затащить файл в каталог  ''$userHomeFolder/tmp_LaTeX_Installation/''
+Так или иначе, надо затащить файл в каталог  ''/tmp/LaTeX_iso/''
 
 ==== Монтировать iso-файл ====
 
 Переходим в каталог, в который был стянут texlive*.iso:
 
-''cd $userHomeFolder/tmp_LaTeX_Installation/''
+''cd ~/Загрузки/''
 
 1. Убедиться в том, что в каталоге только один файл .iso (мало ли было неудачных или прерванных скачиваний).
 
@@ -131,13 +151,13 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 2. В /tmp/ создать новый каталог, в который будет смонтирован образ диска:
 
-''mkdir /tmp/latex_iso/''
+''mkdir /tmp/LaTeX_iso/ && cd /tmp/LaTeX_iso/ && echo 'Done!'''
 
 3. Монтируем образ во временном каталоге в /tmp/ — там он будет жить до следующей перезагрузки системы; заодно не будем морочиться с его размонтированием.
 
-''sudo mount -o loop *.iso /tmp/latex_iso''
+''sudo mount -o loop *.iso /tmp/LaTeX_iso/''
 
-Единственный нужный ответ «//mount: /tmp/latex_iso: WARNING: device write-protected, mounted read-only.//», любой другой нужно разбирать отдельно.
+Единственный нужный ответ «//mount: /tmp/LaTeX_iso: WARNING: device write-protected, mounted read-only.//», любой другой нужно разбирать отдельно.
 
 Если всё ок, то в системе появился новый диск (новое устройство), доступный только для чтения, иначе алярм.
 
@@ -151,11 +171,11 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ''sudo mkdir -p /opt/LaTeX/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
 
-В каталоге юзера появится скрытый каталог './LaTeX_Settings' и, соответственно, три каталога в нём.
+Если что — это скрытый каталог.
 
 ==== Настроить „installation.profile” ====
 
-Создать файл профиля для установки LaTeX — в него будут вписаны инструкции:
+Создать файл ''installation.profile'' для установки LaTeX — в него будут вписаны инструкции:
 
 ''sudo mcedit /opt/LaTeX/.LaTeX_Settings/installation.profile''
 
@@ -210,15 +230,40 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ===== 4. Установить LaTeX =====
 
-Переходим к файлу ''install-tl'':
-
-''cd /tmp/latex_iso/''
-
 Запускаем файл ''install-tl'' с указанием "взять настройки из файла installation.profile" (если не сработает, то запускаем sudo ./install-tl и дальше указываем нужные каталоги вручную):
 
-''sudo ./install-tl --profile /opt/LaTeX/.LaTeX_Settings/installation.profile && echo 'Done!'''
+''sudo ./install-tl --profile /opt/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
 
 Ждать, там почти пять тысяч файлов.
+
+==== Поменять симлинки на TeXовские утилиты в /usr/bin ====
+
+Взять этот файл:
+
+[[./replace-all-tex-symlinks.sh]]
+ 
+Сделать его исполняемым:
+
+''chmod u+x sudo-replace-all-tex-symlinks.sh''
+
+Выполнить через sudo:
+
+''sudo ./replace-all-tex-symlinks.sh''
+
+В будущем, когда что-то «не захочет работать», можно будет добавить симлинк на соответствующую службу.
+
+==== Посмотреть значение каждой переменной LaTeX по-отдельности ====
+
+'''
+kpsewhich -var-value TEXMFHOME
+kpsewhich -var-value TEXMFLOCAL
+'''
+
+	и так далее при желании.
+
+Посмотрим содержимое файла всех настроек LaTeX (будет много текста, зато мало магии и непонятных мест):
+
+''texconfig conf''
 
 ==== Проверить работоспособность LaTeX ====
 
@@ -237,19 +282,6 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 ==== Создать каталоге тестовый (красивый!) документ ====
 
 ''mkdir /tmp/test_tex; pdflatex -output-directory=/tmp/test_tex sample2e.tex; echo -e "\nПроверка файлов\n"; okular /tmp/test_tex/sample2e.pdf''
-
-==== Посмотреть значение каждой переменной LaTeX по-отдельности ====
-
-'''
-kpsewhich -var-value TEXMFHOME
-kpsewhich -var-value TEXMFLOCAL
-'''
-
-	и так далее при желании.
-
-Посмотрим содержимое файла всех настроек LaTeX (будет много текста, зато мало магии и непонятных мест):
-
-''texconfig conf''
 
 Если не будет ругательств, то усё, LaTeX, в принципе, работает.
 
@@ -304,7 +336,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 Отныне и впредь, пока прогресс не нагрянет, все периодические обновления LaTeX делаем //из-под root// через 
 
-''tlmgr update --self && tlmgr update --all''
+''tlmgr update --self; tlmgr update --all''
 
 А когда выйдет следующее КРУПНОЕ обновление, tlmgr сообщит о том, что не может выполнить это запрос, и тогда уже придётся или перестать обновляться, или обновлять LaTeX с нуля.
 
@@ -337,7 +369,7 @@ exit
 
 ==== Создать файл 09-texlive.conf ====
 
-''sudo cp $(kpsewhich -var-value TEXMFSYSVAR)/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf && echo 'Done!'''
+''sudo cp $(kpsewhich -var-value TEXMFSYSVAR)/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf; echo 'Done!'''
 
 Появляется файл ''/etc/fonts/conf.d/09-texlive.conf'' с текстом:
 
@@ -359,18 +391,16 @@ Cохранить и выйти.
 
 ==== Обновить кэш шрифтов ====
 
-''sudo fc-cache -fsv && echo 'Done!'''
+''sudo fc-cache -fsv; echo 'Done!'''
 
 Шрифтов много, дело может быть не односекундным. В результате: есть латэчевские шрифты в /home/LaTeX/texmf-dist/fonts/truetype/ и в /home/LaTeX/texmf-dist/fonts/opentype/
 
-Нет нужды, но временами, особенно после обновления ядра Debian, можно просто контроля для запускать (из-под root) ''tlmgr update --all'' и обновление кэша шрифтов. 
-
-		Однажды (07.12.2020) LaTex беспричинно не смог сгенерировать pdf, и только слабая интуиция подсказала, что в тот день прилетело обновление ядра, и надо бы эти два факта связать.
+Нет нужды, но временами, особенно после обновления ядра можно просто контроля для запускать (из-под root) ''tlmgr update --all'' и обновление кэша шрифтов. Однажды LaTex беспричинно не смог сгенерировать pdf, и только слабая интуиция подсказала, что в тот день прилетело обновление ядра, и надо бы эти два факта связать.
 
 ===== 7. Удалить временные файлы =====
 
 ==== Размонтировать iso и удалить и его, и каталог /tmp_LaTeX_Installation ====
 
-''sudo umount /tmp/latex_iso && rm -R ~/tmp_LaTeX_Installation''
+''sudo umount /tmp/LaTeX_iso/ && rm -R /tmp/LaTeX_iso/''
 
-Дальше надо настраивать [[Software:Kile]]
+Дальше настраивать [[Software:LaTeX]] и [[Software:Kile]]
