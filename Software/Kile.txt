@@ -26,29 +26,6 @@ Kile — один из текстовых редакторов для [[LaTeX]]
 Настройка
 ''> Show document viewer'' = убрать
 
-==== Поменять симлинки на TeXовские утилиты в /usr/bin ====
-
-Взять этот файл:
-
-[[./replace-all-tex-symlinks.sh]]
- 
-Сделать его исполняемым:
-
-''chmod u+x sudo-replace-all-tex-symlinks.sh''
-
-Выполнить через sudo:
-
-''sudo ./replace-all-tex-symlinks.sh''
-
-В будущем, когда что-то «не захочет работать», можно будет добавить симлинк на соответствующую службу.
-
-Kile
-''> Настройка''
-''> Проверка системы (System Check)''
-''> Далее''
-
-Ни одна из проверок не должна быть подсвечена красным, иначе алярм.
-
 ==== Настроить build ====
 
 Компиляция проектов в Kile будет происходить через вызов внешнего скрипта из исполняемого sh-файла вроде ’''/home/MyScripts/LaTeX/kile_buildPdfLaTeXWithMetafilesOutside.sh''’ по нажатию Alt+1 (дефолтный шорткат).
@@ -193,8 +170,6 @@ Kile
 
 	*todo Kile Настроить build через внешний sh-скрипт
 
-Продолжение установки [[Manjaro:Install Software:LaTeX]]. 
-
 ===== Базовые настройки Kile =====
 
 ''Build'' 
@@ -242,7 +217,7 @@ Kile
 ''> Настроить Kile'' 
 ''> Kile'' 
 ''> Help'' 
-> Location of TeX documentation: [[/home/LaTeX/texmf-dist/doc/texlive/texlive-ru]]
+> Location of TeX documentation: [[/opt/LaTeX/texmf-dist/doc/texlive/texlive-ru]]
 
 ''Настройка'' 
 ''> Настроить Kile'' 

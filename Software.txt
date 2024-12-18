@@ -88,6 +88,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+neofetch]]
 [[+ntfs-3g]]
+[[+NVIDIA]]
 
 ===== O =====
 
@@ -131,6 +132,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 ===== T =====
 
 [[+tar]] /архивы
+[[+Telegram]]
 [[+Thunderbird]]
 [[+Tor Browser]] /firefox
 

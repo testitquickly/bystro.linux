@@ -16,82 +16,11 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 
 Нужна будет перезагрузка всей системы.
 
-===== Установить драйвера Nvidia =====
-
-Убедиться в том, что **монитор НЕ подключен к ноуту**.
-
-Их можно скачать с официального сайта в виде файла ***.run, но лучше сделать это стандартным путём по предписанному рецепту с https://wiki.debian.org/NvidiaGraphicsDrivers — при установке будет проще с зависимостями, а в будущем будет проще с обновлениями.
-
-==== Определить серию и драйвера видеокарты ====
-
-У меня «GeForce GTX 1050 Ti Mobile». Она из семества ’10’ — https://ru.wikipedia.org/wiki/GeForce_10
-
-У меня Debian 12 "Bookworm" (''lsb_release -d && cat /etc/debian_version''), поэтому смотрю  в https://wiki.debian.org/NvidiaGraphicsDrivers#Debian_12_.22Bookworm.22 
-
-	Перепроверить с нуля, с каждым релизом ситуация может поменяться.
-
-Надо решить, ставить ли новейшие драйвера (но тогда будет нужен бэкпорт), или те, что постарее (но не факт, что всё запустится). Чем новее, тем лучше, но... к бэкпорту всегда надо относиться с большим подозрением.
-
-=== Разрешить бэкпорт ===
-
-''sudo mcedit /etc/apt/sources.list''
-
-Дважды перепроверить название дистрибутива. 
-
-Добавить в строку для снятия main апдейтов добавить открытие бэкпорта. В норме обращаемся к „''deb.debian.org/debian/”, но адрес сервера может быть любым из наиболее подходящих'':
-
-	''# main (plus backports for nvidia drivers)''
-''deb'' [[http://ftp.md.debian.org/debian/|''http://ftp.md.debian.org/debian/'']] ''bookworm main contrib non-free non-free-firmware''
-
-Сохранить изменения.
-
-''sudo apt update && sudo apt upgrade''
-
-=== Установить новейшие драйвера ===
-
-Эта команда может поменяться, ее надо перепроверить на шаге «**Определить серию и драйвера видеокарты**»:
-
-''sudo apt install nvidia-driver firmware-misc-nonfree''
-
-Будет установлен пакет //nvidia-kernel-dkms//. 
-
-При установке драйвер Nouveau не будет удалён (это и не надо), но он автоматически заблэклистится: появится файл ///etc/modprobe.d/blacklist-nvidia-nouveau.conf// с содержимым «blacklist nouveau»
-
-	Можно (если свербит) ещё добавить файл ''sudo mcedit /etc/modprobe.d/blacklist.conf'' с перечнем всех модулей всех свободных драйверов:
-		* blacklist vga16fb
-		* blacklist nouveau
-		* blacklist rivafb
-		* blacklist nvidiafb
-		* blacklist rivatv
-	Но это уже ни на что не повлияет.
-
-''sudo reboot''
-
-==== Обновить систему ====
-
-''sudo apt-get update && sudo apt-get upgrade''
-
-Если будут устаревшие пакеты nvidia, их будет предложено автоудалить:
-
-''sudo apt autoremove''
-
-Затем ещё раз 
-
-''sudo apt-get update && sudo apt-get upgrade''
-
-===== Поставить утилиту контроля настроек nvidia =====
-
-Вероятнее всего, она уже была незаметно установлена вместе с драйверами:
-
-В списке программ > Настройка появится «NVIDIA X Server Settings». Если она успешно запускается, то уже почти всё норм. Если нет:
-
-''sudo aptitude install nvidia-settings''
+См. [[Debian:Install Software:NVIDIA]]
 
 **Подключить внешний монитор в ноут через дырку hdmi.** 
 
 И включить его в розетку…
-
-В некоторых случаях этого достаточно, монитор «оживает». Если нет — продолжить с настройками утилиты xrandr.
 
 ===== Настройки xrandr =====
 
