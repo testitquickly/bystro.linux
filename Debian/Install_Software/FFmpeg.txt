@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-18T14:32:03+02:00
+
+====== FFmpeg ======
+
+[ @debian @install @video ]
+
+„FFmpeg” — набор свободных библиотек для обработки видео и аудио. Включает в себя ''libavcodec'' (библиотеку кодирования и декодирования аудио и видео) и ''libavformat'' (библиотеку мультиплексирования и демультиплексирования в медиаконтейнер). 
+
+В принципе FFmpeg  по-умолчанию установлен в Linux, но базовая комплектация ограничена.
+
+===== Обычная установка =====
+
+Считается нормой доукомплектовать FFmpeg набором несвободных мультимедийных библиотек и кодеков.
+
+''sudo apt update; sudo apt install libavcodec-extra gstreamer1.0-libav debian-multimedia-keyring libavcodec-extra libdvdcss2''
+
+Проверить доступные кодеки:
+
+''ffmpeg -codecs > codecs.txt; kate codecs.txt''
+
+Проверить доступные фильтры:
+
+''ffmpeg -filters > filters.txt; kate filters.txt''
+
+===== Собственная сборка =====
+
+На выходе получится FFmpeg с поддержкой большинства популярных видеокодеков и аудиокодеков, включая те, которые требуют проприетарных библиотек. 
+* Видео: H.264, H.265, VP8, VP9.
+* Аудио: AAC (высокое качество через libfdk-aac), MP3, Opus.
+
+Однако после этого установленная версия FFmpeg не будет обновляться через стандартный пакетный менеджер. Для обновления придется заново клонировать репозиторий и собирать FFmpeg.
+
+==== Скачать исходники ====
+
+''git clone'' ''https://git.ffmpeg.org/ffmpeg.git'' ''ffmpeg; cd ffmpeg''
+
+==== Установить зависимости ====
+
+''sudo apt install libx264-dev libx265-dev libvpx-dev libfdk-aac-dev libmp3lame-dev libopus-dev''
+
+Эти библиотеки предоставляют кодеки, необходимые для работы с популярными аудиоформатами (например, MP3, AAC) и видеоформатами (например, H.264, H.265, VP8/VP9).
+
+==== Собрать FFmpeg с поддержкой всех кодеков ====
+
+''./configure --enable-gpl --enable-nonfree --enable-libx264 --enable-libx265 --enable-libvpx --enable-libfdk-aac --enable-libmp3lame --enable-libopus && make -j$(nproc) && sudo make install''
+
+Если что-то пойдёт криво — остановиться и разобраться.
+
+==== Проверить сборку ====
+
+''ffmpeg -version''
+
+или 
+
+''ffmpeg -codecs | grep -i aac''
+
+См. [[Software:DaVinci Resolve]]

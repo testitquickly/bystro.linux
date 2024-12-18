@@ -34,6 +34,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 ===== F =====
 
+[[+FFmpeg]]
 [[+Firefox]]
 [[+flatpak]]
 [[+FSearch]]
@@ -79,7 +80,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [[+NodeJS]]
 [[+ntfs-3g]]
-[[+NVIDIA]]
+[[+Nvidia]]
 
 ===== O =====
 
