@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-23T20:46:18+02:00
 
-====== Поменять MAC address для WiFi ======
+====== WiFi — Поменять MAC address ======
 
 [ @console @wi_fi @mac_address ]
 

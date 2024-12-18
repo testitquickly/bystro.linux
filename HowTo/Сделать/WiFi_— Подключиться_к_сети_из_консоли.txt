@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-12-12T17:57:43+02:00
 
-====== Подключиться к Wi-Fi из консоли ======
+====== WiFi — Подключиться к сети из консоли ======
 
 [ @console @network @wi_fi ]
 
