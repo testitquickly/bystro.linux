@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-18T09:23:55+02:00
+
+====== NVIDIA ======
+
+[ @video @nvidia @drivers ]
+
+===== Установка =====
+
+См. [[Debian:Install Software:NVIDIA]]
+
+===== Настройка =====
+
+Если не знаешь, на что влияет та или иная настройка — не трогай её.
