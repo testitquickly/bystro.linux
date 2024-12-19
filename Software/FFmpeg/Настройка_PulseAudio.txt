@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-12-19T09:40:37+02:00
+
+====== Настройка PulseAudio ======
+
+[ @audio ]
+
+Проверить, кем/чем занято устройство
+
+''fuser -v /dev/snd/*''
+
+Чекнуть PID (например, ''1234'') и убить этот процесс
+
+''kill -9 1234''
+
+Перезагрузить PulseAudio и снова проверить статус
+
+''systemctl --user restart pulseaudio && systemctl --user status pulseaudio''
+
+Если в ответе будет сообщение вроде «//Module "module-udev-detect" should be loaded once at most//» — надо поправить конфигурацию PulseAudio:
+
+''mcedit ~/.config/pulse/default.pa''
+
+Если файл пустой — пользовательская конфигурация PulseAudio не была создана, и PulseAudio использует глобальную конфигурацию по умолчанию. 
+
+Смотрим глобальные настройки
+
+''sudo mcedit /etc/pulse/default.pa''
+
+Строка с //load-module module-udev-detect// должна быть в одном экземпляре. Если строка дублируется — удалить лишнюю.
+
+Перезагрузить PulseAudio и снова проверить статус
+
+''systemctl --user restart pulseaudio && systemctl --user status pulseaudio''
