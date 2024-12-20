@@ -98,3 +98,46 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 В списке программ > Настройка появится «NVIDIA X Server Settings». Если она успешно запускается, то уже почти всё норм. Если нет:
 
 ''sudo aptitude install nvidia-settings''
+
+===== Установка CUDA Toolkit =====
+
+Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — выбрать Linux, архитектуру (x86_64), OS (Debian), версию (12)  и инсталлер (deb).
+
+Выполнить последовательно:
+
+''wget https://developer.download.nvidia.com/compute/cuda/12.6.3/local_installers/cuda-repo-debian12-12-6-local_12.6.3-560.35.05-1_amd64.deb'' 
+
+Файл здоровый, три гига.
+
+''sudo dpkg -i cuda-repo-debian12-12-6-local_12.6.3-560.35.05-1_amd64.deb''
+
+''sudo cp /var/cuda-repo-debian12-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/''
+
+''sudo add-apt-repository contrib''
+
+''sudo apt-get update''
+
+''sudo apt-get -y install cuda-toolkit-12-6''
+
+Будет установлено много всякого.
+
+==== Добавить CUDA в PATH ====
+
+''echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc''
+
+''echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc''
+
+''source ~/.bashrc''
+
+==== Проверить установку ====
+
+''nvcc --version''
+
+Ожидаемый ответ:
+
+''nvcc: NVIDIA (R) Cuda compiler driver''
+''Copyright (c) 2005-2024 NVIDIA Corporation''
+''Built on Tue_Oct_29_23:50:19_PDT_2024''
+''Cuda compilation tools, release 12.6, V12.6.85''
+''Build cuda_12.6.r12.6/compiler.35059454_0''
+
