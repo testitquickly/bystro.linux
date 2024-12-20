@@ -6,15 +6,7 @@ Creation-Date: 2024-12-19T09:40:37+02:00
 
 [ @audio ]
 
-Проверить, кем/чем занято устройство
-
-''fuser -v /dev/snd/*''
-
-Чекнуть PID (например, ''1234'') и убить этот процесс
-
-''kill -9 1234''
-
-Перезагрузить PulseAudio и снова проверить статус
+Перезагрузить PulseAudio и проверить статус:
 
 ''systemctl --user restart pulseaudio && systemctl --user status pulseaudio''
 
