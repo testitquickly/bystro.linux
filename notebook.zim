@@ -15,7 +15,7 @@ notebook_layout=files
 
 [TaskListPlugin]
 all_checkboxes=True
-labels=FIXME, TODO, #todo, *todo
+labels=*todo
 waiting_labels=Waiting, Planned
 nonactionable_tags=
 integrate_with_journal=due
