@@ -23,20 +23,23 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 там файлов (и возможностей) будет побольше.
 
 Но ничего не мешает установить LaTeX из iso в ''/opt'' хотя бы из простого любопытства к тому, как там всё устроено.
-
-===== Предусловие =====
-
-1. 
-В этом файле полно упоминаний переменной "''$userHomeFolder''". Разумно сразу же объявить эту переменную и её содержимое. Пример (без закрывающего слэша):
-
-''userHomeFolder=/home/astenix''
-
-Проверка:
-
-''echo $userHomeFolder''
-
-2. 
+ 
 Редактор для файлов *.tex — по вкусу. Его можно поставить и ДО LaTeX, и ПОСЛЕ. Мне нравится кдешный Kile.
+
+===== Скачать установочный iso-файл c LaTeX =====
+
+Размер файла — около шести гигабайт.
+
+Выбирать подходящюю версию на https://ctan.org/mirrors
+
+Например, зеркало в Германии: http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/ 
+Или в США: http://mirrors.mit.edu/CTAN/systems/texlive/Images/
+
+В обоих случаях в браузере откроется обычный каталог с файлами. К скачиванию могут быть предложены разные файлы. Если предлагается выбор между «''texlive2020-20200406.iso''» и «''texlive2020.iso''» — **всегда** выбираем второй. Первый наверняка посвежее, но не факт, что подмонтируется.
+
+Скачать выбранный файл можно и в консоли через ''wget''
+
+Можно снять его и через [[https://tug.org/texlive/acquire-iso.html|торрент]].
 
 ===== 1. Подготовить систему =====
 
@@ -46,7 +49,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ==== Очистить систему от вероятных установок TeX из репозитория ====
 
-	1. Run the application add/remove software i.e. pamac-manager.
+	1. Run the application add/remove software 
 	2. Check if you have any partial texlive installations.
 	3. Uninstall every texlive-(…) other than “full” previously installed (you’ll probably find texlive-bin and texlive-core.
 
@@ -66,7 +69,7 @@ which kile
 
 ==== Установить Kile ====
 
-Сперва установить редактор [[Kile]].
+Сперва установить редактор [[Kile]]
 
 ==== Установить 'Perl/Tk module' ====
 
@@ -120,26 +123,7 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ''source ~/.bashrc''
 
-===== 2. Скачать установочный iso-файл c LaTeX =====
-
-Размер файла — около шести гигабайт.
-
-Выбирать подходящюю версию на https://ctan.org/mirrors
-
-Например, зеркало в Германии: http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/ 
-Или в США: http://mirrors.mit.edu/CTAN/systems/texlive/Images/
-
-В обоих случаях в браузере откроется обычный каталог с файлами. К скачиванию могут быть предложены разные файлы. Если предлагается выбор между «texlive2020-20200406.iso» и «texlive2020.iso» — **всегда** выбираем второй. Первый наверняка посвежее, но не факт, что подмонтируется.
-
-Скачать выбранный файл можно и в консоли:
-
-''wget http://mirrors.mit.edu/CTAN/systems/texlive/Images/texlive2023.iso --directory-prefix=~/Загрузки/ && echo 'Done!'''
-
-Можно снять и его [[https://tug.org/texlive/acquire-iso.html|торрент]].
-
-Так или иначе, надо затащить файл в каталог  ''/tmp/LaTeX_iso/''
-
-==== Монтировать iso-файл ====
+===== 2. Монтировать iso-файл =====
 
 Переходим в каталог, в который был стянут texlive*.iso:
 
@@ -149,11 +133,13 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ''ls''
 
+Или перетащить его в отдельный каталог.
+
 2. В /tmp/ создать новый каталог, в который будет смонтирован образ диска:
 
-''mkdir /tmp/LaTeX_iso/ && cd /tmp/LaTeX_iso/ && echo 'Done!'''
+''mkdir /tmp/LaTeX_iso/''
 
-3. Монтируем образ во временном каталоге в /tmp/ — там он будет жить до следующей перезагрузки системы; заодно не будем морочиться с его размонтированием.
+3. Монтируем образ из файла iso во временном каталоге в /tmp/ — там он будет жить до следующей перезагрузки системы; заодно не будем морочиться с его размонтированием.
 
 ''sudo mount -o loop *.iso /tmp/LaTeX_iso/''
 
@@ -232,7 +218,7 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 Запускаем файл ''install-tl'' с указанием "взять настройки из файла installation.profile" (если не сработает, то запускаем sudo ./install-tl и дальше указываем нужные каталоги вручную):
 
-''sudo ./install-tl --profile /opt/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
+''sudo /tmp/LaTeX_iso/install-tl --profile /opt/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
 
 Ждать, там почти пять тысяч файлов.
 
@@ -399,7 +385,7 @@ Cохранить и выйти.
 
 ===== 7. Удалить временные файлы =====
 
-==== Размонтировать iso и удалить и его, и каталог /tmp_LaTeX_Installation ====
+==== Размонтировать iso и удалить каталог /tmp_LaTeX_Installation ====
 
 ''sudo umount /tmp/LaTeX_iso/ && rm -R /tmp/LaTeX_iso/''
 
