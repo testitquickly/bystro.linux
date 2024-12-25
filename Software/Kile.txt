@@ -303,7 +303,7 @@ Configuration: Current Default (Default) > Add > OK
 
 ==== Как добавить новые команды в меню ====
 
-	*todo ! Kile - новые команды
+	*todo Kile - новые команды
 
 ==== Настроить build через внешний sh-скрипт ====
 

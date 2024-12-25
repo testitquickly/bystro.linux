@@ -4,46 +4,11 @@ Creation-Date: 2024-02-05T03:33:59+02:00
 
 ====== tmp ======
 
- Rurouni Kenshin Kyoto Inferno
-
-find /home/astenix/Notebooks/bystro.linux/ -type f -name "*.txt" -exec sed -i 's/[/[/g; s/]/]/g' {} + 
-
-1,"TODO Kile - новые команды",,,Debian:Установка ПО:Kile
-1,"TODO Kile - компиляция файлов через внешний скрипт",,,Debian:Установка ПО:Kile
-1,"TODO LaTeX — установка под Debian",,,Linux:Software:LaTeX
-1,"TODO LaTeX — почему нестандартно",,,Manjaro:Установка ПО:LaTeX
-1,"TODO LaTeX — добавить внешний файл",,,Manjaro:Установка ПО:LaTeX
-0,"TODO Downgrade Debian — переписать внятно",,,Debian:Быстрая настройка:Обновить Debian:Downgrade Debian
-0,"TODO Как проверить хардлинк",,,Linux:HowTo:Сделать hardlink
-0,"TODO LibreOffice как добавить библиографию",,,Linux:Software:LibreOffice
-0,"TODO объяснить себе суть и способы работы с архивами tar",,,Linux:Software:tar
-0,"TODO apache — уточнить инструкцию отключение или переименовывания сайта",,,Linux:Software:xampp:Как установить веб-сервис на localhost
-0,"TODO принтер HP - общие настройки",,,Linux:Software:Принтеры и Сканеры:HP (Hewlett-Packard)
-0,"TODO Manjaro Настройка шрифта в консоли",,,Manjaro:Быстрая настройка:Кодировка и размер шрифта в консоли
-0,"TODO Kile Настроить build через внешний sh-скрипт",,,Manjaro:Установка ПО:Kile
-
-
-====== WiP ======
-
-LaTeX 
-* добавить пояснение про XeLaTeX
-* добавить пояснение про build file
-
-* HowTo:UEFI
-* HowTo:Как восстановить grub2
-* HowTo:Как полностью удалить программу
-* HowTo/Установить_софт_из_backport.txt
-* HowTo/Проблема_с_потерянными_файлами_на_диске.txt
-* Debian/Настройка_KDE/Common/hdd/Как_добавить_жесткий_диск_через_консоль.txt
-* Debian/Настройка_KDE/Common/hdd/Как_посмотреть_все_диски.txt
-* Debian/Настройка_KDE/Common/Устройства/Принтер-сканер_Samsung_SCX-4100.txt - удалил раздел "Device is busy" - разобраться, как это лечить
-* Debian/Настройка_KDE/Common/Users/Как_назначить_root_владельцем_каталога_(или_диска).txt
-* Debian/Настройка_KDE/Common/Терминал/Как_сделать_файл_исполняемым.txt
-* Manjaro/Быстрая_настройка/Кодировка_и_размер_шрифта_в_консоли.txt
-* Manjaro/Software/wine.txt
-* Software/Samba/Тонкие_настройки.txt
-* Software/vmware.txt
-
+[[+diagramm]]
+[[+missing firmware]]
+[[+python ftp]]
+[[+алфавит]]
+[[+поиск и замена в файлах]]
 
 https://testengineer.ru/qa-linux-interview/
 
