@@ -21,12 +21,12 @@ Creation-Date: 2024-11-30T21:46:21+02:00
 У Whisper есть несколько моделей (натренированные нейросети):
 
 * //tiny// и //base//: работают быстро, но точность распознавания очень, эээ, плохая.
-* //small:// малая точность, но работает шустро. 
+* //small//: малая точность, но работает шустро. 
 * //__medium__//: хороший баланс между точностью и скоростью.
 * //large//: высокая точность, но требует много ресурсов (сильно разгоняет даже очень мощный процессор). Использовать на большом наборе файлов не надо, после 30 минут транскрибации процессор разгонался до 80 по Цельсию, было стрёмно. Для распознавания голосовых бормоталок в офисных условиях избыточна.
-* //turbo//: потребляет меньше ресурсов, чем модель //large//, заточена под скорость, а не под точность расшифровки.
+* //turbo//: потребляет меньше ресурсов, чем модель //large//, но заточена под скорость, а не под точность расшифровки.
 
-Модель „small” на момент тестирования весит 461 МБ. Модель „large” [[https://github.com/openai/whisper/blob/main/README.md#available-models-and-languages|потребует]] скачать почти три гигабайта. 
+Модель „small” на момент тестирования весит 461 МБ. Модель „large” [[https://github.com/openai/whisper/blob/main/README.md#available-models-and-languages|потребует]] скачать почти три гигабайта. Позже будет больше.
 
 Каждая модель Whisper перед первым её применением будет автоматически загружена из сети и сохранена в кэше профиля пользователя: ''~/.cache/whisper/'' в файле с расширением ''.pt''
 
@@ -115,7 +115,7 @@ FILE="/home/astenix/Аудио/1min.wav"; whisper $FILE --language Russian --mod
 
 ''sudo apt install nvtop''
 
-После запуска Whisper вызвать в отдельной консоли ''nvtop'', а в другой ''htop'' и смотреть. 
+После запуска Whisper вызвать в отдельной консоли ''nvtop'', а в другой ''htop'' и смотреть на графики. 
 
 Также можно сделать
 
@@ -126,6 +126,3 @@ FILE="/home/astenix/Аудио/1min.wav"; whisper $FILE --language Russian --mod
 ''|    0   N/A  N/A     27061      C   ...ace/whisper/whisper_env/bin/python3     5416MiB'' 
 
 то всё ок.
-
-
-FOLDER="/home/astenix/transcribere/input"; DEVICE=$(python3 -c "import torch; print('GPU (CUDA)' if torch.cuda.is_available() else 'CPU')"); echo "Используемое устройство для вычислений: $DEVICE"; for FILE in $FOLDER/*.wav; do echo "Выполняется транскрибирование — $FILE"; whisper "$FILE" --language Russian --model medium --device cpu --output_dir "$(dirname "$FILE")" --output_format vtt > /dev/null 2>&1; done; echo -e "\n\tТранскрибирование завершено.\n"
