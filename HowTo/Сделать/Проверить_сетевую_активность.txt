@@ -3,5 +3,15 @@ Wiki-Format: zim 0.6
 Creation-Date: 2024-12-25T22:53:50+02:00
 
 ====== Проверить сетевую активность ======
-Создан Среда 25 декабря 2024
 
+[ @network ]
+
+Можно In Real Time смотреть в консоли, что происходит с сетевым подключением:
+
+''journalctl -u NetworkManager -f''
+
+Посмотреть логи за последние часы/минуты
+
+''journalctl -u NetworkManager --since "1 hour ago"''
+''journalctl -u NetworkManager --since "2 hours ago"''
+''journalctl -u NetworkManager --since "15 minutes ago"''
