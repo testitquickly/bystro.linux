@@ -16,7 +16,7 @@ Creation-Date: 2024-12-01T00:30:56+02:00
 
 Сделать каталог для всего этого дела
 
-''mkdir whisper && cd whisper/''
+''mkdir ~/workspace/whisper/ && cd ~/workspace/whisper/''
 
 Создать virtual environment для проекта
 
