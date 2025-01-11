@@ -27,7 +27,7 @@ https://linuxize.com/post/how-to-extract-unzip-tar-gz-file/
 
 Флаги должны быть указаны рядом. Нельзя: ''tar -cv -f archive.tar''
 
-''tar -cvf archive.tar "новый файл.vtt"''
+''tar -cvf archive.tar "файл.txt"''
 
 Добавить все файлы из каталога, в котором мы находимся:
 
