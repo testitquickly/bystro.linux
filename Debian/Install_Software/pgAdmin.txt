@@ -20,7 +20,7 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 ''sudo install -d /usr/share/postgresql-common/pgdg''
 
-''sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp --fail'' [[https://www.postgresql.org/media/keys/ACCC4CF8.asc|''https://www.postgresql.org/media/keys/ACCC4CF8.asc'']]
+''sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.pgp --fail'' ''https://www.postgresql.org/media/keys/ACCC4CF8.asc''
 
 ==== Создать файл с настройками ====
 
@@ -38,9 +38,9 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 sudo apt-get update && sudo apt-get install -y postgresql
 '''
 
-		Параметр „-y” означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
+Параметр „-y” означает «не спрашивать ни о чём, заранее отвечаю “да” на любой вопрос».
 	
-		Можно установить postgresql не вообще, а определенную версию postgresql: “postgresql-15”.
+Можно установить postgresql не вообще, а определенную версию postgresql: “postgresql-15”.
 
 ==== Запустить postgreSQL service ====
 
