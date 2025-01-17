@@ -1,0 +1,97 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-15T04:54:00+02:00
+
+====== Touchegg ======
+
+[ @touchpad @touchegg @gestures ]
+
+Утилита для управления жестами на тачпаде. Очевидно, что каноничный перевод может быть только один — «Потрогай яйцо»…
+
+===== Установка =====
+
+* [[Debian:Install Software:Touchegg]]
+* [[Manjaro:Install Software:Touchegg]]
+
+===== Настройка =====
+
+Придётся повозиться. 
+
+В принципе предлагается настраивать жесты через GUI-приложение Touche, но можно всё сделать и вручную —  https://github.com/JoseExposito/touchegg?tab=readme-ov-file#manual-configuration
+
+
+
+
+Файл с настройками
+
+''/~/.config/touchegg/touchegg.conf''
+
+
+The output shows that the installation is completed.
+2.2. Usage
+
+To add touchpad gestures, the first step is to open the configuration file of the Touchegg tool. Let’s open the configuration file using the nano editor:
+
+$ nano /home/ishu/.config/touchegg/touchegg.conf
+<touchégg>
+	<settings>
+		<property name="composed_gestures_time">0</property>
+	</settings>
+	<application name="All">
+		<gesture type="TAP" fingers="2" direction="">
+			<action type="MOUSE_CLICK">BUTTON=3</action>
+		</gesture>
+		<gesture type="TAP" fingers="3" direction="">
+			<action type="MOUSE_CLICK">BUTTON=2</action>
+		</gesture>
+...output truncated...
+
+Furthermore, we edit the configuration file and add our desired gestures.
+
+Let’s add the three-finger swipe gestures. Using the three-finger swipe gestures, we can swiftly navigate between multiple workspaces. First, we add the three-finger swipe left gesture in the configuration file:
+
+<gesture type="SWIPE" fingers="3" direction="LEFT">
+  <action type="RUN_COMMAND">
+	<repeat>true</repeat>
+	<command>xdotool key ctrl+alt+Left</command>
+  </action>
+</gesture>
+
+Thus, whenever we swipe left with three fingers on the touchpad, the OS executes the command we set. Moreover, the xdotool key ctrl+alt+Left command imitates pressing the Ctrl, Alt, and Left Arrow keys simultaneously on the keyboard. As a result, the OS switches to the previous workspaces. Furthermore, by setting the repeat option to true, we ensure the OS continues to recognize the gesture.
+
+Similarly, to switch to the next workspace, we can set the swipe right gesture:
+
+<gesture type="SWIPE" fingers="3" direction="RIGHT">
+  <action type="RUN_COMMAND">
+	<repeat>true</repeat>
+	<command>xdotool key ctrl+alt+Right</command>
+  </action>
+</gesture>
+
+Now, if we swipe right with three fingers on the touchpad, we can easily move to the next workspace.
+
+The next touchpad gesture we’re adding is the two-finger pinch gesture. With these gestures, we can control the zoom levels while using various applications in the system.
+
+First, let’s add the two-finger pinch-in gesture, which we can use to implement zoom-out functionality:
+
+<gesture type="PINCH" fingers="2" direction="IN">
+  <action type="RUN_COMMAND">
+	<repeat>true</repeat>
+	<command>xdotool key ctrl+minus</command>
+  </action>
+</gesture>
+
+Similarly, we add the two-finger pinch-out gesture, which we can use to implement zoom-in functionality:
+
+<gesture type="PINCH" fingers="2" direction="OUT">
+  <action type="RUN_COMMAND">
+	<repeat>true</repeat>
+	<command>xdotool key ctrl+plus</command>
+  </action>
+</gesture>
+
+Now, we save and close the configuration file. Furthermore, we terminate the Touchegg tool using the pkill command:
+
+$ pkill touchegg
+
+Finally, we open the Touchegg tool using the touchegg command, and it should recognize the touchpad gestures we’ve set.

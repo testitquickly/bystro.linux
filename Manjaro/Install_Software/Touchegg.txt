@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-15T04:57:33+02:00
+
+====== Touchegg ======
+
+[ @manjaro @install @touchpad ]
+
+Скачать пакет https://archlinux.org/packages/extra/x86_64/touchegg/
+
+Поднять сервис
+
+'''
+sudo systemctl enable touchegg.service
+'''
+
+''sudo systemctl start touchegg''
+
+Дальше ребут, чтобы убедиться в том, что touchegg будет всегда запускаться после запуска. Ну или просто выполнить в консоли
+
+''touchegg''
+
+чтобы убедиться в том, что оно вообще работает.
+
+Настройки: [[Software:Touchegg]]

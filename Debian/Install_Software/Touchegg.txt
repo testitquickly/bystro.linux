@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-15T04:55:38+02:00
+
+====== Touchegg ======
+
+[ @debian @install @touchpad @touche ]
+
+Эта утилита отсутствует в репозитории Debian, и похоже, что её убрали сознательно. Её можно поставить только через ''make install'', что нарушает одну из заповедей Debian — [[https://wiki.debian.org/DontBreakDebian#A.27make_install.27_can_conflict_with_packages|make install can conflict with packages]], поэтому дальше на свой страх и риск, бэкап и готовность к реинсталлу.
+
+1
+Скачать установочный файл из последнего релиза — https://github.com/JoseExposito/touchegg/releases — нужный мне в названии содержит //*amd64.deb// 
+
+2
+Установить Touché — приложение для управления настройками ''touchegg'' через GUI — https://flathub.org/apps/com.github.joseexposito.touche
+
+Ещё можно глянуть https://github.com/NayamAmarshe/ToucheggKDE — сторонняя управлялка настройками ''touchegg'' 
+
+Настройки: [[Software:Touchegg]]
