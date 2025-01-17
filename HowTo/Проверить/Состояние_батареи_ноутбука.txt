@@ -14,7 +14,13 @@ Creation-Date: 2023-02-15T21:10:56+02:00
 
 А ещё можно установить утилиту upower:
 
+вкратце
+
 ''upower -i /sys/class/power_supply/BAT1''
+
+детально
+
+''upower -i /org/freedesktop/UPower/devices/battery_BAT0''
 
 Она прочитает содержимое файлов в каталоге и выведет их содержимое в виде перечня параметров.
 
