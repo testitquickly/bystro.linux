@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-15T14:41:32+02:00
+
+====== Шрифты ======
+
+Проверить, какие шрифты XeLaTeX «видит» в системе 
+
+''fc-list : family > fonts.txt; sort fonts.txt -o fonts.txt; mcedit fonts.txt''
+
+Учесть, что все шрифты поддерживают латиницу, но не все — кириллицу.

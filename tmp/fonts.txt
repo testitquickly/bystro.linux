@@ -1,0 +1,1400 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-01-15T13:50:33+02:00
+
+====== fonts ======
+
+Aboensis
+Academicons
+Acathist
+Accanthis ADF Std No3
+AeBonum
+AeMMono10
+AeMRoman7
+AeMRoman8
+AeMRoman9
+AeMRoman10
+AeMRoman12
+AePagella
+AeSchola
+Alegreya
+Alegreya,Alegreya Black
+Alegreya,Alegreya ExtraBold
+Alegreya,Alegreya Medium
+Alegreya Sans
+Alegreya Sans,Alegreya Sans Black
+Alegreya Sans,Alegreya Sans ExtraBold
+Alegreya Sans,Alegreya Sans Light
+Alegreya Sans,Alegreya Sans Medium
+Alegreya Sans,Alegreya Sans Thin
+Alegreya Sans SC
+Alegreya Sans SC,Alegreya Sans SC Black
+Alegreya Sans SC,Alegreya Sans SC ExtraBold
+Alegreya Sans SC,Alegreya Sans SC Light
+Alegreya Sans SC,Alegreya Sans SC Medium
+Alegreya Sans SC,Alegreya Sans SC Thin
+Alegreya SC
+Alegreya SC,Alegreya SC Black
+Alegreya SC,Alegreya SC ExtraBold
+Alegreya SC,Alegreya SC Medium
+AlgolRevived
+Alkalami
+Alkalami Light
+Almendra
+Almendra SC
+ALM Fixed
+Alpha Slab One
+Amiri
+Amiri Quran
+Amiri Quran Colored
+Andale Mono
+Andika
+Anonymous Pro
+Antykwa Poltawskiego,AntPolt
+Antykwa Poltawskiego,AntPolt Cond
+Antykwa Poltawskiego,AntPolt Expd
+Antykwa Poltawskiego,AntPolt SemiCond
+Antykwa Poltawskiego,AntPolt SemiExpd
+Antykwa Poltawskiego Light,AntPoltLt
+Antykwa Poltawskiego Light,AntPoltLt Cond
+Antykwa Poltawskiego Light,AntPoltLt Expd
+Antykwa Poltawskiego Light,AntPoltLt SemiCond
+Antykwa Poltawskiego Light,AntPoltLt SemiExpd
+Antykwa Torunska
+Antykwa Torunska,AntykwaTorunska Light
+Antykwa Torunska,AntykwaTorunska Medium
+Antykwa Torunska Condensed,AntykwaTorunskaCond
+Antykwa Torunska Condensed,AntykwaTorunskaCond Light
+Antykwa Torunska Condensed,AntykwaTorunskaCond Medium
+Archiv0
+Archiv0 Medium
+Archiv0 SemiBold
+Arial
+Arial Black
+Arimo
+AR PL KaitiM Big5,文鼎ＰＬ中楷
+AR PL KaitiM GB,文鼎ＰＬ简中楷
+AR PL Mingti2L Big5,文鼎ＰＬ細上海宋
+AR PL SungtiL GB,文鼎ＰＬ简报宋
+Arsenal
+Arvo
+Asana Math
+Asana Math,Asana
+Asap,Asap Symbol
+Atkinson Hyperlegible
+Baekmuk Batang,백묵 바탕
+Baekmuk Dotum,백묵 돋움
+Baekmuk Gulim,백묵 굴림
+Baekmuk Headline,백묵 헤드라인
+Baloo 2
+Baloo 2,Baloo 2 ExtraBold
+Baloo 2,Baloo 2 Medium
+Baloo 2,Baloo 2 SemiBold
+Baskervaldx
+BaskervilleF
+Berenis ADF Pro
+Berenis ADF Pro SC
+Beuron
+Beuron Condensed
+Beuron Extended
+Bitstream Charter
+Bitter
+blex
+blsy
+C059
+Cabin
+Cabin,Cabin Bold
+Cabin,Cabin Medium
+Cabin,Cabin SemiBold
+Cabin Condensed,Cabin Condensed Condensed
+Cabin Condensed,Cabin Condensed Medium Cond
+Cabin Condensed,Cabin Condensed SemiBold Cond
+Caladea
+Cantarell
+Cantarell,Cantarell Extra Bold
+Cantarell,Cantarell Light
+Cantarell,Cantarell Thin
+Carlito
+Cascadia Code
+Cascadia Code,Cascadia Code ExtraLight
+Cascadia Code,Cascadia Code Light
+Cascadia Code,Cascadia Code SemiBold
+Cascadia Code,Cascadia Code SemiLight
+Cathisma Unicode
+CCIcons
+Charis SIL
+Chess Alpha Diagram
+Chivo
+Chivo,Chivo Black
+Chivo,Chivo ExtraBold
+Chivo,Chivo ExtraLight
+Chivo,Chivo Italic
+Chivo,Chivo Light
+Chivo,Chivo Medium
+Chivo,Chivo SemiBold
+Chivo,Chivo Thin
+Cinzel
+Cinzel,Cinzel Black
+Cinzel Decorative
+Cinzel Decorative,Cinzel Decorative Black
+Clara
+Clear Sans
+Clear Sans Light
+Clear Sans Medium
+Clear Sans Thin
+cmex10
+cmmi10
+cmr10
+cmsy10
+CMU Bright
+CMU Classical Serif
+CMU Concrete
+CMU Sans Serif
+CMU Sans Serif Demi Condensed
+CMU Serif
+CMU Serif Extra
+CMU Serif Upright Italic
+CMU Typewriter Text
+CMU Typewriter Text Variable Width
+Cochineal
+Coelacanth
+Comfortaa
+Comfortaa,Comfortaa Light
+Comic Neue
+Comic Neue Angular
+Comic Neue Angular,Comic Neue Angular Light
+Comic Neue Angular,Comic Neue Angular Light Italic
+Comic Neue,Comic Neue Light
+Comic Sans MS
+Concrete
+Concrete Math
+Cooper Hewitt
+Cormorant Garamond
+Cormorant Garamond,Cormorant Garamond Light
+Cormorant Garamond,Cormorant Garamond Medium
+Cormorant Garamond,Cormorant Garamond SemiBold
+Countries of Europe
+Courier
+Courier 10 Pitch
+Courier New
+Crimson
+Crimson Pro
+Crimson Pro,Crimson Pro Black
+Crimson Pro,Crimson Pro ExtraBold
+Crimson Pro,Crimson Pro ExtraLight
+Crimson Pro,Crimson Pro Light
+Crimson Pro,Crimson Pro Medium
+Crimson Pro,Crimson Pro SemiBold
+Cuprum
+Cyklop,Cyklop\-Italic
+Cyklop,Cyklop\-Regular
+Cyrillic Modern
+Cyrillic Modern,Cyrillic Modern Bold
+Cyrillic Modern,Cyrillic Modern Bold Slanted
+Cyrillic Modern,Cyrillic Modern Slanted
+Cyrillic Modern,Cyrillic Modern SmallCaps
+Cyrillic Modern Math
+Cyrillic Modern Sans Serif
+Cyrillic Modern Sans Serif,Cyrillic Modern Sans Serif DmCd
+D050000L
+DANTE
+David CLM
+DejaVu Sans
+DejaVu Sans,DejaVu Sans Condensed
+DejaVu Sans,DejaVu Sans Light
+DejaVu Sans Mono
+DejaVu Serif
+DejaVu Serif,DejaVu Serif Condensed
+Domitian
+Doulos SIL
+drm6
+drm7
+drm8
+drm9
+drm10
+drm11
+drm12
+drm14
+drm17
+drm24
+drmb6
+drmb7
+drmb8
+drmb9
+drmb10
+drmb11
+drmb12
+drmb14
+drmb17
+drmb24
+drmbx6
+drmbx7
+drmbx8
+drmbx9
+drmbx10
+drmbx11
+drmbx12
+drmbx14
+drmbx17
+drmbx24
+drmdoz6
+drmdoz7
+drmdoz8
+drmdoz9
+drmdoz10
+drmdoz11
+drmdoz12
+drmdoz14
+drmdoz17
+drmdoz24
+drmdozb6
+drmdozb7
+drmdozb8
+drmdozb9
+drmdozb10
+drmdozb11
+drmdozb12
+drmdozb14
+drmdozb17
+drmdozb24
+drmdozbx6
+drmdozbx7
+drmdozbx8
+drmdozbx9
+drmdozbx10
+drmdozbx11
+drmdozbx12
+drmdozbx14
+drmdozbx17
+drmdozbx24
+drmdozit6
+drmdozit7
+drmdozit8
+drmdozit9
+drmdozit10
+drmdozit11
+drmdozit12
+drmdozit14
+drmdozit17
+drmdozit24
+drmdozitbx6
+drmdozitbx7
+drmdozitbx8
+drmdozitbx9
+drmdozitbx10
+drmdozitbx11
+drmdozitbx12
+drmdozitbx14
+drmdozitbx17
+drmdozitbx24
+drmdozitsc6
+drmdozitsc7
+drmdozitsc8
+drmdozitsc9
+drmdozitsc10
+drmdozitsc11
+drmdozitsc12
+drmdozitsc14
+drmdozitsc17
+drmdozitsc24
+drmdozittc6
+drmdozittc7
+drmdozittc8
+drmdozittc9
+drmdozittc10
+drmdozittc11
+drmdozittc12
+drmdozittc14
+drmdozittc17
+drmdozittc24
+drmdozl6
+drmdozl7
+drmdozl8
+drmdozl9
+drmdozl10
+drmdozl11
+drmdozl12
+drmdozl14
+drmdozl17
+drmdozl24
+drmdozsc6
+drmdozsc7
+drmdozsc8
+drmdozsc9
+drmdozsc10
+drmdozsc11
+drmdozsc12
+drmdozsc14
+drmdozsc17
+drmdozsc24
+drmdozscbx6
+drmdozscbx7
+drmdozscbx8
+drmdozscbx9
+drmdozscbx10
+drmdozscbx11
+drmdozscbx12
+drmdozscbx14
+drmdozscbx17
+drmdozscbx24
+drmdozsl6
+drmdozsl7
+drmdozsl8
+drmdozsl9
+drmdozsl10
+drmdozsl11
+drmdozsl12
+drmdozsl14
+drmdozsl17
+drmdozsl24
+drmdoztc6
+drmdoztc7
+drmdoztc8
+drmdoztc9
+drmdoztc10
+drmdoztc11
+drmdoztc12
+drmdoztc14
+drmdoztc17
+drmdoztc24
+drmdoztcbx6
+drmdoztcbx7
+drmdoztcbx8
+drmdoztcbx9
+drmdoztcbx10
+drmdoztcbx11
+drmdoztcbx12
+drmdoztcbx14
+drmdoztcbx17
+drmdoztcbx24
+drmdozui6
+drmdozui7
+drmdozui8
+drmdozui9
+drmdozui10
+drmdozui11
+drmdozui12
+drmdozui14
+drmdozui17
+drmdozui24
+drmdozuibx6
+drmdozuibx7
+drmdozuibx8
+drmdozuibx9
+drmdozuibx10
+drmdozuibx11
+drmdozuibx12
+drmdozuibx14
+drmdozuibx17
+drmdozuibx24
+drmfigs6
+drmfigs7
+drmfigs8
+drmfigs9
+drmfigs10
+drmfigs11
+drmfigs12
+drmfigs14
+drmfigs17
+drmfigs24
+drmgrk10
+drminf6
+drminf7
+drminf8
+drminf9
+drminf10
+drminf11
+drminf12
+drminf14
+drminf17
+drminf24
+drmit6
+drmit7
+drmit8
+drmit9
+drmit10
+drmit11
+drmit12
+drmit14
+drmit17
+drmit24
+drmitbx6
+drmitbx7
+drmitbx8
+drmitbx9
+drmitbx10
+drmitbx11
+drmitbx12
+drmitbx14
+drmitbx17
+drmitbx24
+drmitsc6
+drmitsc7
+drmitsc8
+drmitsc9
+drmitsc10
+drmitsc11
+drmitsc12
+drmitsc14
+drmitsc17
+drmitsc24
+drmittc6
+drmittc7
+drmittc8
+drmittc9
+drmittc10
+drmittc11
+drmittc12
+drmittc14
+drmittc17
+drmittc24
+drml6
+drml7
+drml8
+drml9
+drml10
+drml11
+drml12
+drml14
+drml17
+drml24
+drmmi10
+drmsc6
+drmsc7
+drmsc8
+drmsc9
+drmsc10
+drmsc11
+drmsc12
+drmsc14
+drmsc17
+drmsc24
+drmscbx6
+drmscbx7
+drmscbx8
+drmscbx9
+drmscbx10
+drmscbx11
+drmscbx12
+drmscbx14
+drmscbx17
+drmscbx24
+drmsl6
+drmsl7
+drmsl8
+drmsl9
+drmsl10
+drmsl11
+drmsl12
+drmsl14
+drmsl17
+drmsl24
+drmsy10
+drmsym7
+drmsym8
+drmsym9
+drmsym10
+drmsym11
+drmsym12
+drmsym14
+drmsym17
+drmsym24
+drmtc6
+drmtc7
+drmtc8
+drmtc9
+drmtc10
+drmtc11
+drmtc12
+drmtc14
+drmtc17
+drmtc24
+drmtcbx6
+drmtcbx7
+drmtcbx8
+drmtcbx9
+drmtcbx10
+drmtcbx11
+drmtcbx12
+drmtcbx14
+drmtcbx17
+drmtcbx24
+drmui6
+drmui7
+drmui8
+drmui9
+drmui10
+drmui11
+drmui12
+drmui14
+drmui17
+drmui24
+drmuibx6
+drmuibx7
+drmuibx8
+drmuibx9
+drmuibx10
+drmuibx11
+drmuibx12
+drmuibx14
+drmuibx17
+drmuibx24
+Droid Sans
+Droid Sans Fallback
+Droid Sans Mono
+Droid Serif
+dsrom10
+EB Garamond
+EB Garamond,EB Garamond ExtraBold
+EB Garamond,EB Garamond Medium
+EB Garamond,EB Garamond SemiBold
+EB Garamond Initials
+Eczar,एक्ज़र
+Eczar,एक्ज़र,Eczar ExtraBold,एक्ज़र ExtraBold
+Eczar,एक्ज़र,Eczar Medium,एक्ज़र Medium
+Eczar,एक्ज़र,Eczar SemiBold,एक्ज़र SemiBold
+Emmentaler\-11
+Emmentaler\-13
+Emmentaler\-14
+Emmentaler\-16
+Emmentaler\-18
+Emmentaler\-20
+Emmentaler\-23
+Emmentaler\-26
+Emmentaler\-Brace
+Erewhon
+Erewhon Math
+esint10
+ETbb
+eufm10
+Euler Math
+Fandol Braille,Fandol Braille Display
+Fandol Braille,Fandol Braille Regular
+FandolFang,FandolFang R
+FandolHei
+FandolKai
+FandolSong
+fbb
+FdSymbol
+Fedorovsk Unicode
+Fetamont
+Fetamont Script
+Fira Math
+Fira Mono
+Fira Mono,Fira Mono Medium
+Fira Sans
+Fira Sans,Fira Sans Book
+Fira Sans,Fira Sans ExtraBold
+Fira Sans,Fira Sans ExtraLight
+Fira Sans,Fira Sans Heavy
+Fira Sans,Fira Sans Light
+Fira Sans,Fira Sans Medium
+Fira Sans,Fira Sans SemiBold
+Fira Sans,Fira Sans Thin
+Fira Sans,Fira Sans UltraLight
+Fira Slav
+FonetikaDaniaIwonae
+FonetikaDaniaPallae
+FontAwesome
+Font Awesome 5 Brands,Font Awesome 5 Brands Regular
+Font Awesome 5 Free,Font Awesome 5 Free Regular
+Font Awesome 5 Free,Font Awesome 5 Free Solid
+font\-mfizz
+Forum
+FourierOrns
+Frank Ruehl CLM
+Frederika2016
+Free Avant Garde
+Free Bookman
+Free Chancery
+Free Courier
+Free Helvetian
+Free Helvetian Condensed
+FreeMono
+Free Paladin
+FreeSans
+Free Schoolbook
+FreeSerif
+FreeSerifb
+Free Times
+Frm
+Garamond Libre
+Garamond\-Math
+Garuda
+Gelasio
+Gelasio,Gelasio Medium
+Gelasio,Gelasio SemiBold
+Gentium Book Plus
+Gentium Plus
+Georgia
+GFS Artemisia
+GFS Artemisia,GFS Didot
+GFS Baskerville
+GFS Bodoni,GFS Bodoni Rg
+GFS Complutum
+GFS Didot
+GFS DidotClassic
+GFS Didot,GFS Didot Rg
+GFS Neohellenic,GFS Neohellenic Rg
+GFS Neohellenic Math
+GFS Olga
+GFS Olga,GFSOlgaGrDidotItEn
+GFS Porson
+GFS Solomos
+Gillius ADF
+Gillius ADF Cond
+Gillius ADF No2
+Gillius ADF No2 Cond
+Go
+Go Mono
+GoSmallcaps
+Gotu
+greciliae
+greciliae\-hole
+greciliae\-hollow
+greciliae\-op
+greciliae\-op\-hole
+greciliae\-op\-hollow
+greextra
+gregall
+grelaon
+gresgmodern
+Hack
+Hadasim CLM
+HamNoSysUnicode
+Harano Aji Gothic,原ノ味角ゴシック
+Harano Aji Gothic,原ノ味角ゴシック,Harano Aji Gothic ExtraLight,原ノ味角ゴシック ExtraLight
+Harano Aji Gothic,原ノ味角ゴシック,Harano Aji Gothic Heavy,原ノ味角ゴシック Heavy
+Harano Aji Gothic,原ノ味角ゴシック,Harano Aji Gothic Light,原ノ味角ゴシック Light
+Harano Aji Gothic,原ノ味角ゴシック,Harano Aji Gothic Medium,原ノ味角ゴシック Medium
+Harano Aji Gothic,原ノ味角ゴシック,Harano Aji Gothic Normal,原ノ味角ゴシック Normal
+Harano Aji Mincho,原ノ味明朝
+Harano Aji Mincho,原ノ味明朝,Harano Aji Mincho ExtraLight,原ノ味明朝 ExtraLight
+Harano Aji Mincho,原ノ味明朝,Harano Aji Mincho Heavy,原ノ味明朝 Heavy
+Harano Aji Mincho,原ノ味明朝,Harano Aji Mincho Light,原ノ味明朝 Light
+Harano Aji Mincho,原ノ味明朝,Harano Aji Mincho Medium,原ノ味明朝 Medium
+Harano Aji Mincho,原ノ味明朝,Harano Aji Mincho SemiBold,原ノ味明朝 SemiBold
+Hind Madurai
+Hind Madurai,Hind Madurai Light
+Hind Madurai,Hind Madurai Medium
+Hind Madurai,Hind Madurai SemiBold
+Ibarra Real Nova
+Ibarra Real Nova,Ibarra Real Nova SemiBold
+IBM Plex Math
+IBM Plex Mono
+IBM Plex Mono,IBM Plex Mono ExtLt
+IBM Plex Mono,IBM Plex Mono Light
+IBM Plex Mono,IBM Plex Mono Medm
+IBM Plex Mono,IBM Plex Mono SmBld
+IBM Plex Mono,IBM Plex Mono Text
+IBM Plex Mono,IBM Plex Mono Thin
+IBM Plex Sans
+IBM Plex Sans Arabic
+IBM Plex Sans Arabic,IBM Plex Sans Arabic ExtLt
+IBM Plex Sans Arabic,IBM Plex Sans Arabic Light
+IBM Plex Sans Arabic,IBM Plex Sans Arabic Medm
+IBM Plex Sans Arabic,IBM Plex Sans Arabic SmBld
+IBM Plex Sans Arabic,IBM Plex Sans Arabic Text
+IBM Plex Sans Arabic,IBM Plex Sans Arabic Thin
+IBM Plex Sans Condensed,IBM Plex Sans Cond
+IBM Plex Sans Condensed,IBM Plex Sans Cond ExtLt
+IBM Plex Sans Condensed,IBM Plex Sans Cond Light
+IBM Plex Sans Condensed,IBM Plex Sans Cond Medm
+IBM Plex Sans Condensed,IBM Plex Sans Cond SmBld
+IBM Plex Sans Condensed,IBM Plex Sans Cond Text
+IBM Plex Sans Condensed,IBM Plex Sans Cond Thin
+IBM Plex Sans Devanagari
+IBM Plex Sans Devanagari,IBM Plex Sans Devanagari ExtLt
+IBM Plex Sans Devanagari,IBM Plex Sans Devanagari Light
+IBM Plex Sans Devanagari,IBM Plex Sans Devanagari Medm
+IBM Plex Sans Devanagari,IBM Plex Sans Devanagari SmBld
+IBM Plex Sans Devanagari,IBM Plex Sans Devanagari Text
+IBM Plex Sans Devanagari,IBM Plex Sans Devanagari Thin
+IBM Plex Sans Hebrew
+IBM Plex Sans Hebrew,IBM Plex Sans Hebrew ExtLt
+IBM Plex Sans Hebrew,IBM Plex Sans Hebrew Light
+IBM Plex Sans Hebrew,IBM Plex Sans Hebrew Medm
+IBM Plex Sans Hebrew,IBM Plex Sans Hebrew SmBld
+IBM Plex Sans Hebrew,IBM Plex Sans Hebrew Text
+IBM Plex Sans Hebrew,IBM Plex Sans Hebrew Thin
+IBM Plex Sans,IBM Plex Sans ExtLt
+IBM Plex Sans,IBM Plex Sans Light
+IBM Plex Sans,IBM Plex Sans Medm
+IBM Plex Sans,IBM Plex Sans SmBld
+IBM Plex Sans,IBM Plex Sans Text
+IBM Plex Sans,IBM Plex Sans Thin
+IBM Plex Sans Thai
+IBM Plex Sans Thai,IBM Plex Sans Thai ExtLt
+IBM Plex Sans Thai,IBM Plex Sans Thai Light
+IBM Plex Sans Thai,IBM Plex Sans Thai Medm
+IBM Plex Sans Thai,IBM Plex Sans Thai SmBld
+IBM Plex Sans Thai,IBM Plex Sans Thai Text
+IBM Plex Sans Thai,IBM Plex Sans Thai Thin
+IBM Plex Sans Thai Looped
+IBM Plex Sans Thai Looped,IBM Plex Sans Thai Looped ExtLt
+IBM Plex Sans Thai Looped,IBM Plex Sans Thai Looped Light
+IBM Plex Sans Thai Looped,IBM Plex Sans Thai Looped Medm
+IBM Plex Sans Thai Looped,IBM Plex Sans Thai Looped SmBld
+IBM Plex Sans Thai Looped,IBM Plex Sans Thai Looped Text
+IBM Plex Sans Thai Looped,IBM Plex Sans Thai Looped Thin
+IBM Plex Sans Var
+IBM Plex Serif
+IBM Plex Serif,IBM Plex Serif ExtLt
+IBM Plex Serif,IBM Plex Serif Light
+IBM Plex Serif,IBM Plex Serif Medm
+IBM Plex Serif,IBM Plex Serif SmBld
+IBM Plex Serif,IBM Plex Serif Text
+IBM Plex Serif,IBM Plex Serif Thin
+IM FELL English
+IM FELL English SC
+IM FELL FLOWERS 1
+IM FELL FLOWERS 2
+Impact
+Inconsolata LGC Nerd Font
+Inconsolata LGC Nerd Font Mono
+Inconsolata LGC Nerd Font Propo
+InconsolataN
+Inconsolatazi4
+Indiction Unicode
+Inria Sans
+Inria Sans,Inria Sans Light
+Inria Serif
+Inria Serif,Inria Serif Light
+Inter
+Inter,Inter Black
+Inter,Inter ExtraBold
+Inter,Inter ExtraLight
+Inter,Inter Light
+Inter,Inter Medium
+Inter,Inter SemiBold
+Inter,Inter Thin
+IPAexGothic,IPAexゴシック
+IPAexMincho,IPAex明朝
+IPAGothic,IPAゴシック
+IPAMincho,IPA明朝
+IPAPGothic,IPA Pゴシック
+IPAPMincho,IPA P明朝
+Iwona
+Iwona Cond
+Iwona Cond Heavy
+Iwona Cond Light
+Iwona Cond Medium
+Iwona Heavy
+Iwona Light
+Iwona Medium
+Jaini
+Jaini Purva
+JetBrains Mono
+JetBrains Mono,JetBrains Mono ExtraBold
+JetBrains Mono,JetBrains Mono ExtraLight
+JetBrains Mono,JetBrains Mono Light
+JetBrains Mono,JetBrains Mono Medium
+JetBrains Mono,JetBrains Mono SemiBold
+JetBrains Mono,JetBrains Mono Thin
+Josefin Sans
+Josefin Sans,Josefin Sans ExtraLight
+Josefin Sans,Josefin Sans Light
+Josefin Sans,Josefin Sans Medium
+Josefin Sans,Josefin Sans SemiBold
+Josefin Sans,Josefin Sans Thin
+Junicode
+Junicode,Junicode Cond
+Junicode,Junicode Cond Light
+Junicode,Junicode Cond Medium
+Junicode,Junicode Exp
+Junicode,Junicode Exp Medium
+Junicode,Junicode Exp SmBold
+Junicode,Junicode Light
+Junicode,Junicode Medium
+Junicode,Junicode SmBold
+Junicode,Junicode SmCond
+Junicode,Junicode SmCond Light
+Junicode,Junicode SmCond Medium
+Junicode,Junicode SmExp
+Junicode,Junicode SmExp Medium
+Junicode,Junicode SmExp SmBold
+Junicode VF
+Kalpurush
+Kerkis
+Kerkis\-Calligraphic
+KerkisSans
+Kerkis\-SemiBold
+Keter YG
+khatalmaqala
+Kinnari
+KpMath
+KpMono
+KpRoman
+KpSans
+Kurier
+Kurier Cond
+Kurier Cond Heavy
+Kurier Cond Light
+Kurier Cond Medium
+Kurier Heavy
+Kurier Light
+Kurier Medium
+Laksaman
+Latin Modern Math
+Latin Modern Math Companion
+Latin Modern Mono Caps,LM Mono Caps 10
+Latin Modern Mono Light Cond,LM Mono Light Cond 10
+Latin Modern Mono Light,LM Mono Light 10
+Latin Modern Mono,LM Mono 8
+Latin Modern Mono,LM Mono 9
+Latin Modern Mono,LM Mono 10
+Latin Modern Mono,LM Mono 12
+Latin Modern Mono Prop Light,LM Mono Prop Light 10
+Latin Modern Mono Prop,LM Mono Prop 10
+Latin Modern Mono Slanted,LM Mono Slanted 10
+Latin Modern Roman Caps,LM Roman Caps 10
+Latin Modern Roman Demi,LM Roman Demi 10
+Latin Modern Roman Dunhill,LM Roman Dunhill 10
+Latin Modern Roman,LM Roman 5
+Latin Modern Roman,LM Roman 6
+Latin Modern Roman,LM Roman 7
+Latin Modern Roman,LM Roman 8
+Latin Modern Roman,LM Roman 9
+Latin Modern Roman,LM Roman 10
+Latin Modern Roman,LM Roman 12
+Latin Modern Roman,LM Roman 17
+Latin Modern Roman Slanted,LM Roman Slanted 8
+Latin Modern Roman Slanted,LM Roman Slanted 9
+Latin Modern Roman Slanted,LM Roman Slanted 10
+Latin Modern Roman Slanted,LM Roman Slanted 12
+Latin Modern Roman Slanted,LM Roman Slanted 17
+Latin Modern Roman Unslanted,LM Roman Unslanted 10
+Latin Modern Sans Demi Cond,LM Sans Demi Cond 10
+Latin Modern Sans,LM Sans 8
+Latin Modern Sans,LM Sans 9
+Latin Modern Sans,LM Sans 10
+Latin Modern Sans,LM Sans 12
+Latin Modern Sans,LM Sans 17
+Latin Modern Sans Quotation,LM Sans Quot 8
+Lato
+Lato,Lato Black
+Lato,Lato Hairline
+Lato,Lato Heavy
+Lato,Lato Light
+Lato,Lato Medium
+Lato,Lato Semibold
+Lato,Lato Thin
+Lete Sans Math
+Lexend Deca
+Lexend Exa
+Lexend Giga
+Lexend Mega
+Lexend Peta
+Lexend Tera
+Lexend Zetta
+Liberation Mono
+Liberation Sans
+Liberation Sans Narrow
+Liberation Serif
+Libertinus Keyboard
+Libertinus Math
+Libertinus Mono
+Libertinus Sans
+Libertinus Serif
+Libertinus Serif Display
+Libertinus Serif Initials
+Libertinus Serif,Libertinus Serif Semibold
+Libertinus Serif,Libertinus Serif Semibold Italic
+Libre Baskerville
+Libre Bodoni
+Libre Bskvl
+Libre Caslon Text
+Libre Csln
+Libre Franklin
+Libre Franklin,Libre Franklin Black
+Libre Franklin,Libre Franklin ExtraBold
+Libre Franklin,Libre Franklin ExtraLight
+Libre Franklin,Libre Franklin Light
+Libre Franklin,Libre Franklin Medium
+Libre Franklin,Libre Franklin SemiBold
+Libre Franklin,Libre Franklin Thin
+Linguistics Pro
+Linux Biolinum Keyboard O
+Linux Biolinum O
+Linux Libertine Display O
+Linux Libertine Initials O
+Linux Libertine Mono O
+Linux Libertine O
+LobsterTwo
+Logix
+Logix Mono
+Loma
+Marcellus
+Marcellus SC
+MarVoSym
+MdSymbol
+Menaion Unicode
+Merriweather
+Merriweather,Merriweather Black
+Merriweather,Merriweather Light
+Merriweather Sans
+Merriweather Sans,Merriweather Sans ExtraBold
+Merriweather Sans,Merriweather Sans Light
+metsymb
+Mezenets Unicode
+MFB Oldstyle
+MFB Oldstyle,MFB Oldstyle MFB Oldstyle
+Miama Nueva
+Mint Spirit
+Mint Spirit No2
+Miriam CLM,מרים
+Miriam Mono CLM
+Missaali
+MnSymbol
+Modak
+Monomakh Unicode
+Montserrat
+Montserrat Alternates
+Montserrat Alternates,Montserrat Alternates Black
+Montserrat Alternates,Montserrat Alternates ExLight
+Montserrat Alternates,Montserrat Alternates ExtraBold
+Montserrat Alternates,Montserrat Alternates Light
+Montserrat Alternates,Montserrat Alternates Medium
+Montserrat Alternates,Montserrat Alternates SemiBold
+Montserrat Alternates,Montserrat Alternates Thin
+Montserrat,Montserrat Black
+Montserrat,Montserrat ExtraBold
+Montserrat,Montserrat ExtraLight
+Montserrat,Montserrat Light
+Montserrat,Montserrat Medium
+Montserrat,Montserrat SemiBold
+Montserrat,Montserrat Thin
+mpchess font
+Mukta
+Mukta,Mukta ExtraBold
+Mukta,Mukta ExtraLight
+Mukta,Mukta Light
+Mukta,Mukta Medium
+Mukta,Mukta SemiBold
+MuseJazz Text
+Nachlieli CLM
+NewCM08Devanagari
+NewCMUncial08
+NewCMUncial10
+NewComputerModern08
+NewComputerModern10
+NewComputerModern 10 Devanagari
+NewComputerModernMath
+NewComputerModernMono10
+NewComputerModernSans08
+NewComputerModernSans10
+NewComputerModernSansMath
+NewComputerModernUncial10
+Nimbus Mono PS
+Nimbus Mono,zco
+Nimbus Mono,zcoN
+Nimbus Roman
+Nimbus Sans
+Nimbus Sans L,NimbusSanL
+NKD04 Playing Card's Index
+Norasi
+Noto Color Emoji
+Noto Emoji
+Noto Mono
+Noto Music
+Noto Sans
+Noto Sans Anatolian Hieroglyphs
+Noto Sans Mono
+Noto Sans Mono,Noto Sans Mono Black
+Noto Sans Mono,Noto Sans Mono ExtraBold
+Noto Sans Mono,Noto Sans Mono ExtraLight
+Noto Sans Mono,Noto Sans Mono Light
+Noto Sans Mono,Noto Sans Mono Medium
+Noto Sans Mono,Noto Sans Mono SemiBold
+Noto Sans Mono,Noto Sans Mono Thin
+Noto Sans,Noto Sans Black
+Noto Sans,Noto Sans ExtraBold
+Noto Sans,Noto Sans ExtraLight
+Noto Sans,Noto Sans Light
+Noto Sans,Noto Sans Medium
+Noto Sans,Noto Sans SemiBold
+Noto Sans,Noto Sans Thin
+Noto Serif
+Noto Serif,Noto Serif Black
+Noto Serif,Noto Serif ExtraBold
+Noto Serif,Noto Serif ExtraLight
+Noto Serif,Noto Serif Light
+Noto Serif,Noto Serif Medium
+Noto Serif,Noto Serif SemiBold
+Noto Serif,Noto Serif Thin
+Noto Serif TC
+NovelDeco
+npxsups
+ntxsups
+Nunito
+Nunito,Nunito Black
+Nunito,Nunito ExtraBold
+Nunito,Nunito ExtraLight
+Nunito,Nunito Light
+Nunito,Nunito SemiBold
+ocrb5
+ocrb6
+ocrb7
+ocrb8
+ocrb9
+ocrb10
+Oglavie Unicode
+Old Standard
+OldStandard\-Math
+Open Sans
+Open Sans Condensed
+Open Sans Condensed Light
+Open Sans ExtraBold
+Open Sans Light
+Open Sans SemiBold
+OpenSymbol
+Overlock
+Parsi Matn
+Parsi Nevis
+Phaistos
+Philokalia
+Playfair Display
+Playfair Display,Playfair Display Black
+Pochaevsk Unicode
+Poiret One
+Pomorsky Unicode
+Ponomar Unicode
+PSTricksDotFont
+PT Mono
+PT Sans
+PT Sans Caption
+PT Sans Narrow
+PT Serif
+PT Serif Caption
+Punk Nova
+Purisa
+QTAbbie
+QTAgateType
+QTAncientOlive
+QTAntiquePost
+QTArabian
+QTArnieB
+QTArtiston
+QTAtchen
+QTAvanti
+QTBasker
+QTBeckman
+QTBengal
+QTBlackForest
+QTBlimpo
+QTBodini
+QTBodiniPoster
+QTBookmann
+QTBoulevard
+QTBrushStroke
+QTCaligulatype
+QTCanaithtype
+QTCascadetype
+QTCaslan
+QTCaslanOpen
+QTCasual
+QTChanceryType
+QTChicagoland
+QTClaytablet
+QTCloisteredMonk
+QTCoronation
+QTDeuce
+QTDingBits
+QTDoghaus
+QTDoghausHeavy
+QTDoghausLight
+QTDublinIrish
+QTEraType
+QTEurotype
+QTFloraline
+QTFlorencia
+QTFraktur
+QTFrank
+QTFrankHeavy
+QTFrizQuad
+QTFuture
+QTFuturePoster
+QTGaromand
+QTGhoulFace
+QTGraphLite
+QTGraveure
+QTGreece
+QTHandwriting
+QTHeidelbergType
+QTHelvet\-Black
+QTHelvet\-BoldOutline
+QTHelvetCnd
+QTHelvetCnd\-Black
+QTHelvetCnd\-Light
+QTHoboken
+QTHowardType
+QTHowardTypeFat
+QTImpromptu
+QTJupiter
+QTKooper
+QTKorrin
+QTKung\-Fu
+QTLautrecType
+QTLetterGoth
+QTLinoscroll
+QTLinostroke
+QTLondonScroll
+QTMagicMarker
+QTMerryScript
+QTMilitary
+QTOKCorral
+QTOKCorral\-Cnd
+QTOKCorral\-Ext
+QTOldGoudy
+QTOptimum
+QTPalatine
+QTPandora
+QTParisFrance
+QTPeignoir
+QTPeignoir\-Lite
+QTPiltdown
+QTPristine
+QTRobotic2000
+QTSanDiego
+QTSchoolCentury
+QTSlogantype
+QTSnowCaps
+QTStoryTimeCaps
+QTTechtone
+QTTheatre
+QTTimeOutline
+QTTumbleweed
+QTUSA\-Uncial
+QTVagaRound
+QTWeise
+QTWestEnd
+Quattro
+Quattrocento
+Quattrocento Sans
+Quicksand
+Quicksand Light
+Quicksand Medium
+Raleway
+Ralph Smiths Formal Script Companion
+rblmi
+Redacted
+RIT Ezhuthu,എഴുത്ത്
+RIT Karuna
+RIT Keraleeyam
+RIT Kutty
+RIT Meera New
+RIT Panmana
+RIT Rachana,ആർഐടി രചന
+RIT Rachana,രചന
+RIT Sundar
+RIT TN Joy
+RIT Uroob
+Roboto
+Roboto Condensed
+Roboto Condensed,Roboto Condensed Light
+Roboto Mono
+Roboto Mono,Roboto Mono Light
+Roboto Mono,Roboto Mono Medium
+Roboto Mono,Roboto Mono Thin
+Roboto,Roboto Black
+Roboto,Roboto Light
+Roboto,Roboto Medium
+Roboto,Roboto Thin
+Roboto Serif
+Roboto Serif Condensed
+Roboto Serif Condensed,Roboto Serif Condensed Black
+Roboto Serif Condensed,Roboto Serif Condensed ExtraBold
+Roboto Serif Condensed,Roboto Serif Condensed ExtraLight
+Roboto Serif Condensed,Roboto Serif Condensed Light
+Roboto Serif Condensed,Roboto Serif Condensed Medium
+Roboto Serif Condensed,Roboto Serif Condensed SemiBold
+Roboto Serif Condensed,Roboto Serif Condensed Thin
+Roboto Serif,Roboto Serif Black
+Roboto Serif,Roboto Serif ExtraBold
+Roboto Serif,Roboto Serif ExtraLight
+Roboto Serif,Roboto Serif Light
+Roboto Serif,Roboto Serif Medium
+Roboto Serif,Roboto Serif SemiBold
+Roboto Serif,Roboto Serif Thin
+Roboto Slab
+Rosario
+Rosario,Rosario Light
+Rosario,Rosario Light Italic
+Rosario,Rosario SemiBold
+Rosario,Rosario SemiBold Italic
+rsfs10
+Sawasdee
+Semafor
+Shafarik
+Shimanto
+Shobhika,Shobhika Bold
+Shobhika,Shobhika Regular
+Shofar
+Simple CLM
+SimpleIcons
+SkakNew\-Diagram
+SkakNew\-Diagram,SkakNew\-DiagramT
+SkakNew\-Figurine
+SkakNewFigurine,SkakNew\-Figurine
+Source Code Pro
+Source Code Pro,Source Code Pro Black
+Source Code Pro,Source Code Pro ExtraLight
+Source Code Pro,Source Code Pro Light
+Source Code Pro,Source Code Pro Medium
+Source Code Pro,Source Code Pro Semibold
+Source Sans Pro
+Source Sans Pro,Source Sans Pro Black
+Source Sans Pro,Source Sans Pro ExtraLight
+Source Sans Pro,Source Sans Pro Light
+Source Sans Pro,Source Sans Pro Semibold
+Source Serif Pro
+Source Serif Pro,Source Serif Pro Black
+Source Serif Pro,Source Serif Pro ExtraLight
+Source Serif Pro,Source Serif Pro Light
+Source Serif Pro,Source Serif Pro Semibold
+Sparks,Sparks Bar Extra\-narrow
+Sparks,Sparks Bar Extra\-wide
+Sparks,Sparks Bar Medium
+Sparks,Sparks Bar Narrow
+Sparks,Sparks Bar Wide
+Sparks,Sparks Dot Extra\-large
+Sparks,Sparks Dot Extra\-small
+Sparks,Sparks Dot Large
+Sparks,Sparks Dot\-line Extra\-thick
+Sparks,Sparks Dot\-line Extra\-thin
+Sparks,Sparks Dot\-line Medium
+Sparks,Sparks Dot\-line Thick
+Sparks,Sparks Dot\-line Thin
+Sparks,Sparks Dot Medium
+Sparks,Sparks Dot Small
+Spectral
+Spectral,Spectral ExtraBold
+Spectral,Spectral ExtraLight
+Spectral,Spectral Light
+Spectral,Spectral Medium
+Spectral,Spectral SemiBold
+Stam Ashkenaz CLM
+Stam Sefarad CLM
+Standard Symbols PS
+STEP
+STIX
+STIX Math
+STIX Two Math
+STIX Two Text
+STIX Two Text,STIX Two Text Medium
+STIX Two Text,STIX Two Text SemiBold
+stmary10
+SVRsymbols
+Symbola
+Talos
+Teams
+Tempora
+TeX Gyre Adventor
+TeX Gyre Bonum
+TeX Gyre Bonum Companion
+TeX Gyre Bonum Math
+TeX Gyre Chorus
+TeX Gyre Cursor
+TeX Gyre DejaVu Math
+TeX Gyre Heros
+TeX Gyre Heros Cn
+TeX Gyre Pagella
+TeX Gyre Pagella Math
+TeX Gyre Pagella Math Companion
+TeX Gyre PagellaX
+TeX Gyre Schola
+TeX Gyre Schola Math
+TeX Gyre ScholaX
+TeX Gyre Termes
+TeX Gyre Termes Math
+TeX Gyre Termes Math Companion
+TeX Gyre TermesX
+Theano Didot
+Theano Modern
+Theano Old Style
+Times New Roman
+Tinos
+Tlwg Mono
+Tlwg Typewriter
+Tlwg Typist
+Tlwg Typo
+Trebuchet MS
+Triodion Unicode
+Twemoji Mozilla
+Typicons
+Umpush
+UM Typewriter
+UnBatang,은 바탕
+UnDinaru,은 디나루
+UnDotum,은 돋움
+UnGraphic,은 그래픽
+UnGungseo,은 궁서
+Universalis ADF Std
+Universalis ADF Std,Universalis ADF Std cond
+UnJamoBatang,은 자모 바탕
+UnJamoDotum,은 자모 돋움
+UnJamoNovel,은 자모 노벨
+UnJamoSora,은 자모 소라
+UnPen,은 펜
+UnPenheulim,은 펜흘림
+UnPilgi,은 필기
+UnPilgia,은 필기a
+UnShinmun,은 신문
+UnTaza,은 타자
+UnVada,은 바다
+UnYetgul,은 옛글
+URW Bookman
+URW Gothic
+Utopia
+Venturis ADF
+Venturis ADF Cd
+Venturis ADF Cd Style
+Venturis ADF Goth Titling
+Venturis ADF Heavy
+Venturis ADF No2
+Venturis ADF No2 Cd
+Venturis ADF No2 Med
+Venturis ADF Style
+Venturis ADF Titling No1
+Venturis ADF Titling No2
+Venturis ADF Titling No3
+Venturis ADF Titling No4
+Venturis Old ADF
+VenturisSans ADF
+VenturisSans ADF Cd
+VenturisSans ADF Ex
+VenturisSans ADF Heavy
+VenturisSans ADF Light
+VenturisSans ADF No2
+VenturisSans ADF No2 Cd
+VenturisSans ADF No2 Ex
+Verdana
+Vertograd Unicode
+Vilnius
+Voskresensky
+Waree
+wasy10
+Webdings
+XCharter
+XCharter Math
+XCharter\-Math\-Bold
+XITS
+XITS Math
+XITS Math Companion
+yfrak
+ygoth
+Yinit
+Ysabeau
+Ysabeau,Ysabeau Black
+Ysabeau,Ysabeau ExtraBold
+Ysabeau,Ysabeau ExtraLight
+Ysabeau,Ysabeau Hairline
+Ysabeau,Ysabeau Light
+Ysabeau,Ysabeau Medium
+Ysabeau,Ysabeau SemiBold
+Ysabeau,Ysabeau Thin
+yswab
+Z003
+ztm
+Эвристика,erewhon
+Эвристика,Heuristica
