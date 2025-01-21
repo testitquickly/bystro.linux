@@ -17,3 +17,6 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 
 ''yv https://www.youtube.com/watch?v=V-J6hep_y4o''
 
+Скачать только субтитры
+
+''yt-dlp --write-auto-sub --sub-lang en --skip-download "https://youtube.com/watch?v=''__''ID''__''"''
