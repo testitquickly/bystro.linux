@@ -103,13 +103,17 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — выбрать Linux, архитектуру (x86_64), OS (Debian), версию (12)  и инсталлер (deb).
 
+Дальше пример установки версии ''12.6.3''
+
 Выполнить последовательно:
 
 ''wget https://developer.download.nvidia.com/compute/cuda/12.6.3/local_installers/cuda-repo-debian12-12-6-local_12.6.3-560.35.05-1_amd64.deb'' 
 
-Файл здоровый, три гига.
+Файл здоровый, не меньше 3 Gb.
 
 ''sudo dpkg -i cuda-repo-debian12-12-6-local_12.6.3-560.35.05-1_amd64.deb''
+
+Появится предупреждение о том, что надо отдельно установить ключ GPG:
 
 ''sudo cp /var/cuda-repo-debian12-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/''
 
