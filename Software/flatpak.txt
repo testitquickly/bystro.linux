@@ -83,7 +83,7 @@ Creation-Date: 2022-03-17T22:14:56+02:00
 
 ===== Удаление Flatpak app =====
 
-''flatpak uninstall [ApplicationID]''
+''flatpak uninstall'' __''[ApplicationID]''__
 
 ==== Удаление неиспользуемых флэтпэк-приложений ====
 
