@@ -112,7 +112,13 @@ https://habr.com/ru/articles/813829/
 
 ''sudo'' ''pacman -Rsn''
 
+или 
+
+''sudo pacman -Rsn $(pacman -Qdtq)''
+
 ==== Очистка кэша ====
+
+Полная очистка кэша: ''/var/cache/pacman/pkg/'' и ''/var/lib/pacman/''
 
 === … установленных пакетов ===
 
