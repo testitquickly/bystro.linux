@@ -600,3 +600,16 @@ I find Step 2 to work with any of TeX software (atleast for the two I have) wher
 * Cantarell
 * CMU Sans Serif
 
+====== Удобности ======
+
+Отсортировать строки по-алфавиту:
+
+выделить набор строк
+''Сервис''
+''> Сценарии''
+''> Редактирование''
+''> Sort Selected Text Alphabetically''
+
+вторая опция там же
+''> Remove Duplicates and Sort Selected Text Alphabetically'' 
+
