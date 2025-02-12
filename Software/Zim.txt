@@ -292,6 +292,31 @@ Creation-Date: 2022-11-17T02:03:30+02:00
 ''> Создать''
 ''> Ссылку на приложение''
 
+==== Создать ярлык в меню приложений ====
+
+''cd ~/.local/share/applications/''
+
+''mcedit ZimFileName.desktop''
+
+Вставить
+
+''[Desktop Entry]''
+''Exec=zim /home/astenix/Notebooks/Whisper/ main''
+''Path=/home/astenix/Notebooks/Whisper/''
+''Icon=/home/astenix/Notebooks/Whisper/icon/Whisper.ico''
+''Name[ru_RU]=Whisper''
+''Name=Whisper''
+''StartupNotify=true''
+''Terminal=false''
+''Type=Application''
+''X-KDE-SubstituteUID=false''
+''Comment[ru_RU]=''
+''Comment=''
+
+Через какое-то время появится ярлык на новое приложение в Меню приложений > Прочее
+
+Его можно «затащить» на тулбар.
+
 ==== Заполнить поля ярлыка ====
 
 вкладка: «Приложение»
