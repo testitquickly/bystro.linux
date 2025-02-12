@@ -1,0 +1,164 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-10T21:08:39+02:00
+
+====== usb-радио ======
+
+[ @usb @radio @avermedia ]
+
+В принципе есть возможность приёма радиосигналов на usb-устройства. У таких «флэшек» есть общее название SDR — „Software Defined Radio”.
+
+Рекомендуется начинать с „RTL SDR V3” или „RTL SDR V4” (большой разницы между ними нет), они есть на Amazon и Aliexpress, надо взять набор с антенной. Учесть, что может приехать неработающий экземпляр. И что при работе эти штучки греются.
+
+Что можно сделать — https://www.kalilinux.in/2021/11/begineers-guide-of-rtl-sdr.html
+
+В принципе надо заранее знать, какие драйвера уже добавлены в ядро: https://www.kernel.org/doc/html/latest/admin-guide/media/radio-cardlist.html
+
+===== Проверить драйвер для usb-радио в ядре Linux =====
+
+У меня есть древняя радио-флэшка от Avermedia, модель ''MR 800''. Вот её драйвер: https://github.com/torvalds/linux/blob/master/drivers/media/radio/radio-mr800.c Это не SDR-устройство и вообще оно очень древнее, в принципе сделано только для FM под Windows. Но драйвера для неё есть:
+
+''find /lib/modules/$(uname -r)/kernel/drivers/media/radio/ -name "radio-mr800.ko"''
+
+Ожидаемый ответ:
+
+''/lib/modules/6.1.0-31-amd64/kernel/drivers/media/radio/radio-mr800.ko''
+
+===== Загрузить модуль драйвера =====
+
+''sudo modprobe radio-mr800''
+
+Проверить, что модуль успешно загружен:
+
+1) 
+
+''lsmod | grep radio_mr800''
+
+Ожидаемый ответ:
+
+''radio_mr800            16384  0''
+''videodev              294912  4 radio_mr800,videobuf2_v4l2,uvcvideo,videobuf2_common''
+''usbcore               348160  8 xhci_hcd,radio_mr800,snd_usb_audio,usbhid,snd_usbmidi_lib,uvcvideo,btusb,xhci_pci''
+
+2) 
+
+''sudo dmesg | grep mr800''
+
+Ожидаемый ответ:
+
+''[31492.904819] usbcore: registered new interface driver radio-mr800''
+
+===== Установить radio software =====
+
+==== GQRX ====
+
+GUI. Стандарт в теме SDR-устройств, а мой  ''radio-mr800'' к таким не относится в принципе. 
+
+''sudo apt install rtl-sdr gqrx-sdr''
+
+После установки — ''reboot''. Флэшку вынуть, если вставлена.
+
+После полной загрузки системы:
+
+1. воткнуть радио-флэшку в usb-порт
+2. загрузить модуль драйвера
+
+''sudo modprobe'' __''название''__
+
+Можно сделать проверку радио-флэшки:
+
+''rtl_test -t''
+
+Но результат этой проверки не имеет значения. У меня он был отрицательный, но радио работает. 
+
+Запустить GQRX из меню приложений или из консоли через 
+
+''gqrx &''
+
+Откроется окно базовых настроек радио-устройства. Device = выбрать своё устройство. Если его там нет (мой случай), тогда:
+
+* Device = Other
+* Device string = название загруженного драйвера для SDR-устройства (мой ''radio-mr800'' к таким не относится)
+* Input rate = не заполнять
+* Decimation = или none, или 64
+* Посмотреть остальные настройки и принять по ним решение. 
+* OK.
+
+Начать сканирование эфира через кнопку "Play" (Start DSP Processing). Не факт, что сразу будет обнаружен мощный радиосигнал, но это нормально.
+
+Если всё работает норм, то GQRX начнет проматывать постоянную звуковую волну в верхней части (spectrum display) и в нижней части (waterfall display). В ушах появится типичное шипение радиоэфира. 
+
+Если нет — переключиться на другое устройство через File > I/O Devices (эта же кнопка есть на тулбаре).
+
+Справа панель „Receiver Options” — выбрать Mode = WFM Stereo
+
+Выбрать "Input controls" и увеличить "LNA gain".
+
+Потыкать мышкой по звуковой волне.
+
+==== SDRangel ====
+
+https://snapcraft.io/sdrangel
+
+Open Source Qt5 / OpenGL 3.0+ SDR and signal analyzer frontend для большого списка разных железяк.
+
+Modems are included for a variety of standards, including: ADS-B, VOR and ILS (aircraft); AIS and Navtex (marine); APT (NOAA weather satellites); AM, FM, SSB, M17, Packet / AX.25 / APRS, FT8 and RTTY (ham radio); Broadcast FM and DAB (broadcast radio); DMR, dPMR, D-Star and YSF (digital voice); NTSC, PAL, DVB-S and DVB-S2 (video); POCSAG (pager); MSF, DCF77, TDF and WWVB (radio clocks) and RS41 (radiosondes). Signals can be visualised in the frequency and time domain in 2D and 3D.
+
+SDRangel also includes an integrated satellite tracker, star tracker, maps, rotator controller and frequency scanner.
+
+CPU supporting SSE 4.2 required.
+
+USB permission needs to be granted to access USB SDRs. Either do this in Settings > Apps > SDRangel or run sudo snap connect sdrangel:raw-usb
+
+Установка через [[Software:snap]]
+
+''sudo snap install sdrangel''
+
+==== rtl_fm ====
+
+CLI. Пакет RTL-SDR.
+
+''sudo apt install rtl-sdr''
+
+Пример команды для прослушивания радиостанции:
+
+''rtl_fm -f 103.5M - | aplay -r 24000 -f S16_LE''
+
+==== Wavemon ====
+
+Для мониторинга сигнала.
+
+Если нужно контролировать уровень сигнала и параметры работы устройства:
+
+''sudo apt install wavemon''
+
+==== dump1090 ====
+
+Штука для прослушивания air band. В принципе может быть интересно, если живешь рядом с аэропортом и зачем-то нужно слушать служебные переговоры (весьма специфичные и скучные).
+
+https://roaldnefs.com/posts/2019/01/software-defined-radio-on-linux/
+
+ou can monitor air traffic using an RTL SDR and the dump1090 package. Start by downloading and compiling the dump1090 package:
+
+''git clone https://github.com/MalcolmRobb/dump1090.git''
+''cd dump1090''
+''make''
+
+To run dump1090 in interactive mode, with networking support, you will need to run the following command:
+
+''./dump1090 --interactive --net''
+
+Open your browser and open http://localhost:8080/ to see live air traffic:
+
+===== Интернет-радио =====
+
+==== radio.garden ====
+
+https://radio.garden/listen/radio-eigekai-indies/B-ro2l-v
+
+==== Shortwave ====
+
+База радиостанций вроде большая, на сайте можно добавить новые.
+
+''flatpak install flathub de.haeckerfelix.Shortwave''
+
