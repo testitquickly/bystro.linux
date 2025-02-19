@@ -56,7 +56,7 @@ sudo rm /usr/bin/firefox
 
 Создать новый симлинк:
 
-''cd /usr/bin/ && ln -s /opt/firefox/firefox''
+''cd /usr/bin/ && sudo ln -s /opt/firefox/firefox''
 
 ==== Сделать ярлык для запуска ====
 
