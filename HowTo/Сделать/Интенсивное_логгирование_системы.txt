@@ -1,0 +1,222 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-19T04:33:36+02:00
+
+====== Интенсивное логгирование системы ======
+
+[ @log @system ]
+
+Если с компьютером происходит что-то непонятное (внезапные перезагрузки), может помочь настойчивое логгирование всего, что происходит в системе.
+
+===== Куда копать =====
+
+Однако есть несколько направлений, которые стоит проверить:
+
+	Проверить логи ядра
+
+sudo journalctl -k -b -1
+
+Ищите ошибки, помеченные как kernel:, panic, OOM (Out of Memory) или watchdog.
+
+Проверить, не было ли проблем с питанием
+Вывод о состоянии батареи (Battery Level: 60% → 80%) вызывает вопросы, возможно, система определяла некорректное состояние зарядки или вдруг подключила/отключила адаптер. Проверьте:
+
+upower -i $(upower -e)
+
+и в логах
+
+sudo journalctl | grep -i "power\|battery\|supply"
+
+Возможный перегрев
+Если ноутбук внезапно выключается или перезагружается, проверьте температуру:
+
+sudo journalctl | grep -i "thermal\|temperature\|overheat"
+
+Можно также следить за температурой в реальном времени через sensors (установите lm-sensors, если нужно).
+
+Аппаратные ошибки
+Ошибки памяти или процессора могут вызывать внезапные перезагрузки:
+
+sudo dmesg | grep -i "error\|fail\|warning"
+sudo journalctl -b -1 | grep -i "hardware error"
+
+Просмотр логов аварийных выключений
+Выполните:
+
+	sudo journalctl -p 3 -b -1
+
+	Это покажет только критические ошибки (-p 3 = err, alert, emerg).
+
+Если в этих логах ничего не найдёте, возможно, проблема аппаратная — неисправность батареи, перегрев или сбой в модуле питания.
+
+===== Создать службу для мониторинга перезагрузок =====
+
+journalctl записывает все события системы, и можно настроить регулярный мониторинг с помощью systemd. Надо создать новую службу в системе с условным названием „reboot-monitor”:
+
+''sudo mcedit /etc/systemd/system/reboot-monitor.service''
+
+Вставить это:
+
+'''
+[Unit]
+Description=Monitor system reboots
+
+[Service]
+ExecStart=/usr/bin/journalctl -f -u systemd --since "today" | grep -i "reboot"
+
+[Install]
+WantedBy=multi-user.target
+'''
+
+Включить и запустить эту службу:
+
+''sudo systemctl enable reboot-monitor.service; sudo systemctl start reboot-monitor.service''
+
+Cлужба ''reboot-monitor'' будет выводить все события, связанные с перезагрузками.
+
+===== Установить logwatch =====
+
+''sudo apt install logwatch''
+
+Затащить в файл с настройками шаблонные настройки:
+
+''sudo cp /usr/share/logwatch/default.conf/logwatch.conf /etc/logwatch/conf/''
+
+А можно сразу вставить в него минимальные настройки, которые сохраняют логи в файл на диске.
+
+1. Отредактировать
+
+''sudo mcedit /etc/logwatch/conf/logwatch.conf''
+
+2. Вставить
+
+'''
+# Output/Format Options
+Output = file
+Format = text
+Encode = none
+CharEncoding = "UTF-8"
+Filename = /var/log/logwatch/logwatch.log
+Archives = No
+'''
+
+'''
+# The current choices are All, Today, Yesterday
+Range = today
+'''
+
+'''
+# The default detail level for the report.
+# Low = 0
+# Med = 5
+# High = 10
+Detail = High
+'''
+
+'''
+Service = All
+'''
+
+'''
+# Default Log Directory
+LogDir = /var/log/logwatch
+'''
+
+Проверить Logwatch
+
+''sudo logwatch --detail high --range today --output file --filename /var/log/logwatch/logwatch.log''
+
+Проверить содержимое файла с логами:
+
+''sudo cat /var/log/logwatch/logwatch.log''
+
+==== Настроить частоту сбора логов ====
+
+''sudo crontab -e''
+
+Добавить новую строку
+
+'''
+	# Сохранение отчета logwatch каждые 10 минут в отдельный файл
+	# Еще есть файл /etc/logrotate.d/logwatch — сохраняем каждые последние 5 отчетов, остальное закатываем в архив .gz
+*/10 * * * * /usr/sbin/logwatch --output file --filename /var/log/logwatch/logwatch-$(date +\%Y-\%m-\%d_\%H:\%M).log --detail high --range today
+'''
+
+Сохраниться и выйти.
+
+Посмотреть, что сохранено в кронтабе:
+
+''crontab -l''
+
+Теперь начиная с 00 минут каждого часа каждые 10 минут в отдельный файл в каталоге ''/var/log/logwatch/'' будет сохраняться новый файл с логом состояния системы.
+
+==== Добавить в систему новый сервис для архивирования файлов с логами ====
+
+''sudo mcedit /etc/logrotate.d/logwatch''
+
+Записать в него
+
+''/var/log/logwatch/logwatch.log {''
+	''daily''
+	''rotate 5''
+	''compress''
+	''delaycompress''
+	''missingok''
+	''notifempty''
+''}''
+
+Это сохранит последние 7 отчетов, старые будут сжиматься (.gz).
+
+Проверить сервис в режиме debug
+
+''sudo logrotate -d /etc/logrotate.d/logwatch''
+
+Если все ок, то можно запустить его выполнение (выполнить принудительную ротацию): 
+
+''sudo logrotate -f /etc/logrotate.d/logwatch''
+
+В каталоге ''/var/log/logwatch/'' должен появиться файл ''logwatch.log.1'' — это tar-архив
+
+Настроить выполнение ротации лог-файлов каждый час:
+
+Создать таймер 
+
+''sudo mcedit /etc/systemd/system/logrotate.timer''
+
+Записать в него:
+
+'''
+[Unit]
+Description=Run logrotate every hour
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+'''
+
+Создать сервис logrotate.service:
+
+''sudo mcedit /etc/systemd/system/logrotate.service''
+
+Записать в него:
+
+''[Unit]''
+''Description=Logrotate service''
+
+''[Service]''
+''Type=oneshot''
+''ExecStart=/usr/sbin/logrotate /etc/logrotate.conf''
+
+Активировать таймер:
+
+''sudo systemctl daemon-reload; sudo systemctl enable --now logrotate.timer''
+
+С этого момента он будет выполняться в начале каждого часа.
+
+Проверка:
+
+''systemctl list-timers --all | grep logrotate''
+
