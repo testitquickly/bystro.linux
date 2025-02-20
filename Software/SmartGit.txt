@@ -10,7 +10,7 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 ===== Установка =====
 
-[[Debian:Install Software:SmartGit]]
+[[Debian:Install:SmartGit]]
 
 ===== Связать SmartGit с GitHub =====
 

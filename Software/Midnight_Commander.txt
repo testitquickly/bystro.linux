@@ -8,8 +8,8 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:Midnight Commander]]
-* [[Manjaro:Install Software:Midnight Commander]]
+* [[Debian:Install:Midnight Commander]]
+* [[Manjaro:Install:Midnight Commander]]
 
 ===== Основные шорткаты =====
 

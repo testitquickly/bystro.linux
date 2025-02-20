@@ -76,15 +76,17 @@ which kile
 
 ==== Добавить в PATH путь к будущим файлам LaTeX ====
 
+Это всё можно установить куда угодно. Например, в ''/home/hdd/.mySoftware/LaTeX/''
+
 Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' (создать его, если отсутствует):
 
 ''mcedit ~/.bashrc''
 
 Добавить три строки:
 
-''PATH=/opt/LaTeX/bin/x86_64-linux:$PATH''
-''INFOPATH=/opt/LaTeX/texmf-dist/doc/info:$INFOPATH''
-''MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH''
+''PATH=/home/hdd/.mySoftware/LaTeX/LaTeX/bin/x86_64-linux:$PATH''
+''INFOPATH=/home/hdd/.mySoftware/LaTeX/LaTeX/texmf-dist/doc/info:$INFOPATH''
+''MANPATH=/home/hdd/.mySoftware/LaTeX/LaTeX/texmf-dist/doc/man:$MANPATH''
 
 Чтобы эти изменения применились, надо или «перелогиниться», или выполнить принудительное перечитывание конфигурационных файлов профиля:
 
@@ -108,7 +110,7 @@ which kile
 
 ''cd''
 
-3. Отредактировать рутовский файл ''.bashrc'' (мне удобно через mcedit, бо Midnight Commander), добавить туда три строки:
+3. Отредактировать рутовский файл ''.bashrc'' (мне удобно через mcedit, бо Midnight Commander), добавить туда три строки (устанавливать общее ПО лучше в ''/opt''):
 
 '''
 PATH=/opt/LaTeX/bin/x86_64-linux:$PATH
@@ -148,11 +150,11 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ==== Создать каталог для LaTeX ====
 
-''sudo mkdir /opt/LaTeX/''
+''sudo mkdir /home/hdd/.mySoftware/LaTeX/''
 
 ==== Создать каталог для персональных настроек LaTeX ====
 
-''sudo mkdir -p /opt/LaTeX/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
+''sudo mkdir -p /home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
 
 Если что — это скрытый каталог.
 
@@ -160,7 +162,7 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 Создать файл ''installation.profile'' для установки LaTeX — в него будут вписаны инструкции:
 
-''sudo mcedit /opt/LaTeX/.LaTeX_Settings/installation.profile''
+''sudo mcedit /home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/installation.profile''
 
 Закрывающие слэши нигде не нужны.
 
@@ -180,13 +182,13 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 Вставить в файл этот текст:
 
 ''selected_scheme scheme-full''
-''TEXDIR /opt/LaTeX''
-''TEXMFLOCAL /opt/LaTeX/texmf-local''
-''TEXMFSYSCONFIG /opt/LaTeX/texmf-config''
-''TEXMFSYSVAR /opt/LaTeX/texmf-var''
-''TEXMFCONFIG''  ''/opt/LaTeX/.LaTeX_Settings/texmf-config''
-''TEXMFHOME'' ''/opt/LaTeX/.LaTeX_Settings/texmf''
-''TEXMFVAR'' ''/opt/LaTeX/.LaTeX_Settings/texmf-var''
+''TEXDIR /home/hdd/.mySoftware/LaTeX''
+''TEXMFLOCAL /home/hdd/.mySoftware/LaTeX/texmf-local''
+''TEXMFSYSCONFIG /home/hdd/.mySoftware/LaTeX/texmf-config''
+''TEXMFSYSVAR /home/hdd/.mySoftware/LaTeX/texmf-var''
+''TEXMFCONFIG'' ''/home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/texmf-config''
+''TEXMFHOME'' ''/home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/texmf''
+''TEXMFVAR'' ''/home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/texmf-var''
 ''binary_x86_64-linux 1''
 ''instopt_adjustpath 0''
 ''instopt_adjustrepo 1''
@@ -215,7 +217,7 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 Запускаем файл ''install-tl'' с указанием "взять настройки из файла installation.profile" (если не сработает, то запускаем sudo ./install-tl и дальше указываем нужные каталоги вручную):
 
-''sudo /tmp/LaTeX_iso/install-tl --profile /opt/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
+''sudo /tmp/LaTeX_iso/install-tl --profile /home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
 
 Ждать, там почти пять тысяч файлов.
 
@@ -254,7 +256,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 ''which tex''
 
-Ответом нам должно быть '''/opt/LaTeX/bin/x86_64-linux/tex''', иначе алярм.
+Ответом нам должно быть '''/home/hdd/.mySoftware/LaTeX/bin/x86_64-linux/tex''', иначе алярм.
 
 Запросить информацию о версии TEX:
 
@@ -276,7 +278,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 ''which tlmgr''
 
-Ждём ответ ''/opt/LaTeX/bin/x86_64-linux/tlmgr'' — иначе алярм.
+Ждём ответ ''/home/hdd/.mySoftware/LaTeX/bin/x86_64-linux/tlmgr'' — иначе алярм.
 
 ==== Запуск tlmgr ====
 

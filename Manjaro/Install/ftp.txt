@@ -6,4 +6,4 @@ Creation-Date: 2023-02-08T02:41:52+02:00
 
 [ @manjaro @install @ftp @vsftpd ]
 
-См. общее [[Debian:Install Software:ftp]], а также [[vsftpd]] для Manjaro.
+См. общее [[Debian:Install:ftp]], а также [[vsftpd]] для Manjaro.

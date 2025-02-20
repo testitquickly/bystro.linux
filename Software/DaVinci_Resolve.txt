@@ -8,8 +8,8 @@ Creation-Date: 2024-12-03T22:55:01+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:DaVinci Resolve]]
-* [[Manjaro:Install Software:DaVinci Resolve]]
+* [[Debian:Install:DaVinci Resolve]]
+* [[Manjaro:Install:DaVinci Resolve]]
 
 ===== Теория свободных кодеков =====
 
@@ -62,7 +62,7 @@ Creation-Date: 2024-12-03T22:55:01+02:00
 
 ===== Установить FFmpeg =====
 
-См. [[Debian:Install Software:FFmpeg]]
+См. [[Debian:Install:FFmpeg]]
 
 ===== Какой выбрать битрейт =====
 

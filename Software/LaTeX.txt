@@ -8,8 +8,8 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:LaTeX]]
-* [[Manjaro:Install Software:LaTeX]]
+* [[Debian:Install:LaTeX]]
+* [[Manjaro:Install:LaTeX]]
 
 Проверить доступные  [[+Шрифты]]
 

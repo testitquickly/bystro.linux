@@ -14,7 +14,7 @@ Creation-Date: 2022-03-22T23:42:34+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:Thunderbird]]
+* [[Debian:Install:Thunderbird]]
 
 ===== Расширения =====
 

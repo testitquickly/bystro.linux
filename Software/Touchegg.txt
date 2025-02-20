@@ -10,8 +10,8 @@ Creation-Date: 2025-01-15T04:54:00+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:Touchegg]]
-* [[Manjaro:Install Software:Touchegg]]
+* [[Debian:Install:Touchegg]]
+* [[Manjaro:Install:Touchegg]]
 
 ===== Настройка =====
 

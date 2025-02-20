@@ -24,6 +24,6 @@ Creation-Date: 2022-03-03T04:36:22+02:00
 
 ===== Как редактировать метаданные в pdf =====
 
-В gui — через громадный [[Calibre]] или через мелкий [[Debian:Install Software:Paper Clip]]
+В gui — через громадный [[Calibre]] или через мелкий [[Debian:Install:Paper Clip]]
 
 В консоли — через [[exiftool]]

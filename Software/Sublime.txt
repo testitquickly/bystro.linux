@@ -20,8 +20,8 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:Sublime]]
-* [[Manjaro:Install Software:Sublime]]
+* [[Debian:Install:Sublime]]
+* [[Manjaro:Install:Sublime]]
 
 ===== Управление пакетами =====
 

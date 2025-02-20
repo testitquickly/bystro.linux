@@ -10,8 +10,8 @@ Kile — один из текстовых редакторов для [[LaTeX]]
 
 ===== Установка =====
 
-* [[Debian:Install Software:Kile]]
-* [[Manjaro:Install Software:Kile]]
+* [[Debian:Install:Kile]]
+* [[Manjaro:Install:Kile]]
 
 ===== Настройка =====
 

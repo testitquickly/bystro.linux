@@ -16,7 +16,7 @@ Creation-Date: 2022-03-05T04:39:54+02:00
 
 Нужна будет перезагрузка всей системы.
 
-См. [[Debian:Install Software:Nvidia]]
+См. [[Debian:Install:Nvidia]]
 
 **Подключить внешний монитор в ноут через дырку hdmi.** 
 

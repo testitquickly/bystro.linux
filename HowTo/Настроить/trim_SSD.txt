@@ -137,8 +137,8 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 
 === Через утилиту hdparm ===
 
-* [[Debian:Install Software:hdparm]]
-* [[Manjaro:Install Software:hdparm]]
+* [[Debian:Install:hdparm]]
+* [[Manjaro:Install:hdparm]]
 
 Узнать, в каком каталоге система "видит" ssd.
 

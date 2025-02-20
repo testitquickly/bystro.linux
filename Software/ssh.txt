@@ -12,8 +12,8 @@ Secure shell (SSH) — наш основной способ коннекта н�
 
 ===== Установить OpenSSH =====
 
-* [[Debian:Install Software:ssh]]
-* [[Manjaro:Install Software:ssh]]
+* [[Debian:Install:ssh]]
+* [[Manjaro:Install:ssh]]
 
 ===== Проверить статус сервиса SSH =====
 

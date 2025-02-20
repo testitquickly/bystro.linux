@@ -10,7 +10,7 @@ Creation-Date: 2022-02-22T15:11:56+02:00
 
 ===== Установить =====
 
-* [[Debian:Install Software:Firefox]]
+* [[Debian:Install:Firefox]]
 
 ===== Отдельные профили в Firefox =====
 

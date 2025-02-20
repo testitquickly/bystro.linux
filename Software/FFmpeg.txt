@@ -14,7 +14,7 @@ Creation-Date: 2024-12-19T08:25:09+02:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:FFmpeg]]
+* [[Debian:Install:FFmpeg]]
 
 ===== Запись с микрофона в консоли =====
 

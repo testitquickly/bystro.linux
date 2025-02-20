@@ -20,8 +20,8 @@ Creation-Date: 2024-09-14T19:07:12+03:00
 
 ===== Установка =====
 
-* [[Debian:Install Software:Recoll]]
-* [[Manjaro:Install Software:Recoll]]
+* [[Debian:Install:Recoll]]
+* [[Manjaro:Install:Recoll]]
 
 ===== Переключить на тёмную тему =====
 
