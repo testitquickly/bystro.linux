@@ -1,0 +1,95 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-20T23:26:27+02:00
+
+====== usb-bluetooth ======
+
+[ @usb @bluetooth ]
+
+В современных ноутбуках модули bluetooth встроены. Но можно подключить и через usb-адаптер.
+
+===== Встроенный bluetooth =====
+
+Если после установки системы кажется, что BT в ноутбуке нет в принципе, вероятнее всего, просто надо включить соответствующий сервис.
+
+BT-модуль управляется через „Host Controller Interface” — hci. Их может быть несколько, их названия ''hci0, hci1, hci2'' и тд. Проверим первый:
+
+'''
+sudo dmesg | grep -i hci0
+'''
+
+Пример ответа:
+
+'''
+[    6.355714] Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+'''
+
+Ок, это означает, что в ноутбуке есть встроенный модуль BT, имя ему „hci0”. Проверим его настройки:
+
+''hciconfig -a''
+
+Пример ответа:
+
+'''
+hci0:   Type: Primary  Bus: USB
+		BD Address: 3C:95:09:DC:97:4A  ACL MTU: 1024:8  SCO MTU: 50:8
+		DOWN 
+		RX bytes:662 acl:0 sco:0 events:39 errors:0
+		TX bytes:401 acl:0 sco:0 commands:39 errors:0
+		Features: 0xff 0xfe 0x8f 0xfe 0xd8 0x3f 0x5b 0x87
+		Packet type: DM1 DM3 DM5 DH1 DH3 DH5 HV1 HV2 HV3 
+		Link policy: RSWITCH HOLD SNIFF 
+		Link mode: PERIPHERAL ACCEPT 
+'''
+
+Ок, в ноутбуке есть железка для BT, у неё номер hci0, BD Address: 3C:95:09:DC:97:4A и состояние DOWN.
+
+Включить: 
+
+'''
+sudo hciconfig hci0 up
+'''
+
+Снова проверим состояние:
+
+''hciconfig -a''
+
+Ответ:
+
+'''
+hci0:   Type: Primary  Bus: USB
+		BD Address: 3C:95:09:DC:97:4A  ACL MTU: 1024:8  SCO MTU: 50:8
+		UP 
+'''
+
+Состояние UP нас полностью устраивает. 
+
+Включить сервис BT в системе:
+
+''sudo systemctl start bluetooth; sudo systemctl enable bluetooth''
+
+Дальше смотрим на значок Bluetooth в системном лотке, найти устройство (наушники), соединить.
+
+После перезагрузки ноутбука сервис BT проснётся автоматически, вместо со всеми остальными.
+
+===== Bluetooth по usb =====
+
+Если в компьютере нет встроенного модуля bluetooth, его можно подключить через usb-адаптер. Оно будет отображаться под именем „hci0”. 
+
+Ничего не мешает воткнуть usb-BT и в ноутбук, в котором BT уже есть. Новое устройство, если оно будет успешно подключено и обнаружено, получит имя „hci1”. Если нет — разобраться. Может, флэшка вовсе не bluetooth-адаптер.
+
+Проверить устройство:
+
+''hciconfig -a''
+
+Включить устройство:
+
+'''
+sudo hciconfig hci1 up
+'''
+
+Включить сервис bluetooth:
+
+''sudo systemctl start bluetooth; sudo systemctl enable bluetooth''
+
+Включить bluetooth в системном лотке, найти устройство (наушники), соединить, профит.
