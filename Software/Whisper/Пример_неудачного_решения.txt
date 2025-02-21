@@ -1,0 +1,64 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-02-21T19:42:19+02:00
+
+====== Пример неудачного решения ======
+
+В принципе… можно сделать свою сборку PyTorch под более старую версию CUDA — но это долго, сложно и не факт, что получится правильно всё сделать (без опыта).
+
+Или можно сделать новое виртуальное окружение Python с версией пониже — у меня Python 3.11, и сделаем downgrade до Python 3.10 и установить там PyTorch версии 12.1 — это ниже моей 12.2 и это должно сработать, потому что у CUDA есть обратная совместимость. 
+
+Я сделал такое решение…
+
+1)
+Установить Python 3.10 в систему:
+
+''wget https://www.python.org/ftp/python/3.10.9/Python-3.10.9.tar.xz -P /home/hdd/PythonSource && cd /home/hdd/PythonSource''
+
+дальше по схеме [[Python#установить-отдельную-версию-python]]
+
+2) 
+Создать новое виртуальное окружение с Python 3.10 и CUDA 12.2:
+
+''python3.10 -m venv Whisper_cuda_12_2_env''
+
+Активировать его
+
+''source Whisper_cuda_12_2_env/bin/activate''
+
+3)
+Выполнить в нём установку ''Whisper'' + ''torch'' версии 12.1 (которая ниже моей 12.2). Сперва надо установить несколько компонентов отдельно (последствия понижения версионности ПО), затем всё остальное:
+
+''pip install numba; pip install tiktoken; pip install more-itertools; pip install git+https://github.com/openai/whisper.git torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121''
+
+4)
+Тут же, в виртуальном окружении зайти в интерпретатор python (Note: выход из консольного интерпретатора по ''Ctrl+D'')
+
+''python3''
+
+Выполнить последовательно
+
+'''
+>>> import torch
+'''
+''>>> print(torch.cuda.is_available())''
+
+Ожидаем: True
+
+'''
+>>> print(torch.cuda.get_device_name(0))
+'''
+
+Ожидаем: NVIDIA GeForce __GTX 1050 Ti__ (модель установленной видеокарты)
+
+''>>> print(torch.version.cuda)''
+
+Ожидаем: версию 12.1. 
+
+В будущем обновлять всё это вряд ли будет возможным. 
+
+…и Whisper даже запустился, но почти сразу появилось множество сообщений о проблемах в настройках окружения. Их надо уметь понимать и принимать какие-то решения и, к сожалению, сложности только множатся.
+
+Увы.
+
+См. [[Whisper]]
