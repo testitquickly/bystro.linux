@@ -20,9 +20,9 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ''sudo apt-get install texlive-full''
 
-там файлов (и возможностей) будет побольше, и этого будет достаточно.
+там файлов (и возможностей) будет побольше. И всего этого для большинства будет достаточно.
 
-Но ничего не мешает установить LaTeX по-своему, из iso в ''/opt'' — хотя бы из простого любопытства к тому, как там всё устроено.
+Но ничего не мешает установить LaTeX по-своему, из iso в ''/opt'' или в любой другой каталог на отдельном диске — хотя бы из простого любопытства.
  
 ===== Скачать установочный iso-файл c LaTeX =====
 
@@ -76,7 +76,7 @@ which kile
 
 ==== Добавить в PATH путь к будущим файлам LaTeX ====
 
-Это всё можно установить куда угодно. Например, в ''/home/hdd/.mySoftware/LaTeX/''
+Мне хочется установить LaTeX в ''/home/hdd/LaTeX/''
 
 Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' (создать его, если отсутствует):
 
@@ -84,9 +84,9 @@ which kile
 
 Добавить три строки:
 
-''PATH=/home/hdd/.mySoftware/LaTeX/LaTeX/bin/x86_64-linux:$PATH''
-''INFOPATH=/home/hdd/.mySoftware/LaTeX/LaTeX/texmf-dist/doc/info:$INFOPATH''
-''MANPATH=/home/hdd/.mySoftware/LaTeX/LaTeX/texmf-dist/doc/man:$MANPATH''
+''PATH=/home/hdd/LaTeX/bin/x86_64-linux:$PATH''
+''INFOPATH=/home/hdd/LaTeX/texmf-dist/doc/info:$INFOPATH''
+''MANPATH=/home/hdd/LaTeX/texmf-dist/doc/man:$MANPATH''
 
 Чтобы эти изменения применились, надо или «перелогиниться», или выполнить принудительное перечитывание конфигурационных файлов профиля:
 
@@ -150,11 +150,11 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ==== Создать каталог для LaTeX ====
 
-''sudo mkdir /home/hdd/.mySoftware/LaTeX/''
+''sudo mkdir /home/hdd/LaTeX/''
 
 ==== Создать каталог для персональных настроек LaTeX ====
 
-''sudo mkdir -p /home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
+''sudo mkdir -p /home/hdd/LaTeX/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
 
 Если что — это скрытый каталог.
 
@@ -162,33 +162,20 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 Создать файл ''installation.profile'' для установки LaTeX — в него будут вписаны инструкции:
 
-''sudo mcedit /home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/installation.profile''
+''mkdir -p /home/hdd/LaTeX/.LaTeX_Settings && mcedit /home/hdd/LaTeX/.LaTeX_Settings/installation.profile''
 
 Закрывающие слэши нигде не нужны.
-
-Первая строка просто указывает «Установить сразу всё-всё-всё-всё!».
-
-Дальше указаны каталоги для хранения персональных настроек LaTeX.
-	
-	Cправка:
-		TEXDIR — каталог, в котором будет жить LaTeX.
-		TEXMFVAR — personal directory for variable and automatically generated data
-		TEXMFCONFIG — personal directory for local config
-		TEXMFHOME — directory for user-specific files.
-		binary_x86_64-linux 1 = установить для 64-битной архитектуры. Современность же.
-
-Остальное сгенерировано родным установщиком LaTeX, оставляем без изменений.
 
 Вставить в файл этот текст:
 
 ''selected_scheme scheme-full''
-''TEXDIR /home/hdd/.mySoftware/LaTeX''
-''TEXMFLOCAL /home/hdd/.mySoftware/LaTeX/texmf-local''
-''TEXMFSYSCONFIG /home/hdd/.mySoftware/LaTeX/texmf-config''
-''TEXMFSYSVAR /home/hdd/.mySoftware/LaTeX/texmf-var''
-''TEXMFCONFIG'' ''/home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/texmf-config''
-''TEXMFHOME'' ''/home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/texmf''
-''TEXMFVAR'' ''/home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/texmf-var''
+''TEXDIR /home/hdd/LaTeX''
+''TEXMFLOCAL /home/hdd/LaTeX/texmf-local''
+''TEXMFSYSCONFIG /home/hdd/LaTeX/texmf-config''
+''TEXMFSYSVAR /home/hdd/LaTeX/texmf-var''
+''TEXMFCONFIG'' ''/home/hdd/LaTeX/.LaTeX_Settings/texmf-config''
+''TEXMFHOME'' ''/home/hdd/LaTeX/.LaTeX_Settings/texmf''
+''TEXMFVAR'' ''/home/hdd/LaTeX/.LaTeX_Settings/texmf-var''
 ''binary_x86_64-linux 1''
 ''instopt_adjustpath 0''
 ''instopt_adjustrepo 1''
@@ -209,15 +196,30 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 ''tlpdbopt_sys_man /usr/local/share/man''
 ''tlpdbopt_w32_multi_user 1''
     
+Первая строка просто указывает «Установить сразу всё-всё-всё-всё!».
+
+Дальше указаны каталоги для хранения персональных настроек LaTeX.
+	
+	Cправка:
+		TEXDIR — каталог, в котором будет жить LaTeX.
+		TEXMFVAR — personal directory for variable and automatically generated data
+		TEXMFCONFIG — personal directory for local config
+		TEXMFHOME — directory for user-specific files.
+		binary_x86_64-linux 1 = установить для 64-битной архитектуры. Современность же.
+
+Остальное сгенерировано родным установщиком LaTeX, оставляем без изменений.
+
 Если надо сгенерировать такой файл: при запуске инсталлятора "install-tl" можно сразу выбрать действие "Р". На жестком диске появится файл "texlive.profile". Но это надо делать из инсталлятора, который запускается в режиме прав записи. В нашем случае всё запускается из образа, который огорожен от редактирования, поэтому при запросе "Р" инсталлятор сгенерирует такой файл, но сохранить его не сможет (как делить на ноль). 
         
 Если установка уже прошла успешно, то файл "texlive.profile" всегда будет находиться в каталоге „''МестоУстановкиLaTeX/tlpkg''”.
 
 ===== 4. Установить LaTeX =====
 
-Запускаем файл ''install-tl'' с указанием "взять настройки из файла installation.profile" (если не сработает, то запускаем sudo ./install-tl и дальше указываем нужные каталоги вручную):
+Запускаем файл ''install-tl'' с указанием "взять настройки из файла „installation.profile" (если не сработает, то запускаем sudo ./install-tl и дальше указываем нужные каталоги вручную).
 
-''sudo /tmp/LaTeX_iso/install-tl --profile /home/hdd/.mySoftware/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
+Лучше залогиниться под ''root'' и уже под ним выполнить эту установку, потому что в процессе работы должны быть созданы симлинки в ''/usr/bin'', и туда нужен неограниченный доступ. Можно и просто от ''sudo'', но лучше ''root'':
+
+''/tmp/LaTeX_iso/install-tl --profile /home/hdd/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
 
 Ждать, там почти пять тысяч файлов.
 
@@ -237,7 +239,13 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 В будущем, когда что-то «не захочет работать», можно будет добавить симлинк на соответствующую службу.
 
-==== Посмотреть значение каждой переменной LaTeX по-отдельности ====
+==== Посмотреть содержимое файла всех настроек LaTeX ====
+
+Будет много текста, зато мало магии и непонятных мест:
+
+''texconfig conf''
+
+Посмотреть значение каждой переменной LaTeX по-отдельности
 
 '''
 kpsewhich -var-value TEXMFHOME
@@ -246,29 +254,27 @@ kpsewhich -var-value TEXMFLOCAL
 
 	и так далее при желании.
 
-Посмотрим содержимое файла всех настроек LaTeX (будет много текста, зато мало магии и непонятных мест):
-
-''texconfig conf''
-
 ==== Проверить работоспособность LaTeX ====
 
 Запросить информацию о месторасположении LaTeX. Ответ зависит от переменной PATH, которая уже была настроена.
 
 ''which tex''
 
-Ответом нам должно быть '''/home/hdd/.mySoftware/LaTeX/bin/x86_64-linux/tex''', иначе алярм.
+Ожидаемый ответ:
+
+''/home/hdd/LaTeX/bin/x86_64-linux/tex''
 
 Запросить информацию о версии TEX:
 
 ''tex --version''
 
-Ответ вроде ''TeX 3.14***'' и так далее нас полностью удовлетворит. Если будет 3.15 — алярм!
+Ответ вроде ''TeX 3.14***'' и так далее нас полностью удовлетворит. Если будет 3.15 — алярм, это подделка!
 
-==== Создать каталоге тестовый (красивый!) документ ====
+==== Создать тестовый (красивый!) документ ====
 
 ''mkdir /tmp/test_tex; pdflatex -output-directory=/tmp/test_tex sample2e.tex; echo -e "\nПроверка файлов\n"; okular /tmp/test_tex/sample2e.pdf''
 
-Если не будет ругательств, то усё, LaTeX, в принципе, работает.
+Если не будет ругательств, то всё готово, LaTeX работает.
 
 ===== 5. Обновить TeX из сети =====
 
@@ -278,7 +284,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 ''which tlmgr''
 
-Ждём ответ ''/home/hdd/.mySoftware/LaTeX/bin/x86_64-linux/tlmgr'' — иначе алярм.
+Ждём ответ ''/home/hdd/LaTeX/bin/x86_64-linux/tlmgr'' — иначе алярм.
 
 ==== Запуск tlmgr ====
 
@@ -313,7 +319,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 Логично предположить, что если установлена новейшая версия, то обновлений не потребуется, но это не факт, запросто могут прилететь удаления и обновлёния для нескольких сотен файлов.
 
-Продолжаем из-под root:
+Продолжаем (из-под ''root''):
 
 ''tlmgr update --all''
 
@@ -372,13 +378,15 @@ exit
 
 Удалить строку '''[dir]/home/LaTeX/texmf-dist/fonts/type1[/dir]''' (предпоследняя). 
 
+Шрифты в формате Type 1 (PostScript Type 1) устарели. Если в системе есть как Type 1, так и OpenType/TrueType версии одного и того же шрифта, TeX может выбрать "неправильную" версию.
+
 Cохранить и выйти.
 
 ==== Обновить кэш шрифтов ====
 
 ''sudo fc-cache -fsv; echo 'Done!'''
 
-Шрифтов много, дело может быть не односекундным. В результате: есть латэчевские шрифты в /home/LaTeX/texmf-dist/fonts/truetype/ и в /home/LaTeX/texmf-dist/fonts/opentype/
+Шрифтов много, дело может быть не односекундным. В результате: есть латэчевские шрифты в /home/hdd/LaTeX/texmf-dist/fonts/truetype/ и в /home/hdd/LaTeX/texmf-dist/fonts/opentype/
 
 Нет нужды, но временами, особенно после обновления ядра можно просто контроля для запускать (из-под root) ''tlmgr update --all'' и обновление кэша шрифтов. Однажды LaTex беспричинно не смог сгенерировать pdf, и только слабая интуиция подсказала, что в тот день прилетело обновление ядра, и надо бы эти два факта связать.
 
