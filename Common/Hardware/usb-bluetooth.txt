@@ -82,7 +82,7 @@ hci0:   Type: Primary  Bus: USB
 
 ''hciconfig -a''
 
-Включить устройство:
+Если распознаётся — включить устройство:
 
 '''
 sudo hciconfig hci1 up
