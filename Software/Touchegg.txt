@@ -8,6 +8,8 @@ Creation-Date: 2025-01-15T04:54:00+02:00
 
 Утилита для управления жестами на тачпаде. Очевидно, что каноничный перевод может быть только один — «Потрогай яйцо»…
 
+	*todo Touchegg — дописать инструкцию
+
 ===== Установка =====
 
 * [[Debian:Install:Touchegg]]
@@ -19,13 +21,9 @@ Creation-Date: 2025-01-15T04:54:00+02:00
 
 В принципе предлагается настраивать жесты через GUI-приложение Touche, но можно всё сделать и вручную —  https://github.com/JoseExposito/touchegg?tab=readme-ov-file#manual-configuration
 
-
-
-
 Файл с настройками
 
 ''/~/.config/touchegg/touchegg.conf''
-
 
 The output shows that the installation is completed.
 2.2. Usage
