@@ -293,22 +293,27 @@ Creation-Date: 2022-11-17T02:03:30+02:00
 
 ''cd ~/.local/share/applications/''
 
-''mcedit ZimFileName.desktop''
+Назовём ярлык „Whisper”:
 
-Вставить
+''mcedit Whisper.desktop''
+
+Вставить это
 
 ''[Desktop Entry]''
-''Exec=zim /home/astenix/Notebooks/Whisper/ main''
-''Path=/home/astenix/Notebooks/Whisper/''
-''Icon=/home/astenix/Notebooks/Whisper/icon/Whisper.ico''
-''Name[ru_RU]=Whisper''
 ''Name=Whisper''
-''StartupNotify=true''
-''Terminal=false''
+''Comment=zim notebook''
+''Exec=zim /home/astenix/Dropbox/Notebooks/Whisper/notebook.zim index''
+''Path=/home/astenix/Dropbox/Notebooks/Whisper/''
+''Icon=/home/astenix/Dropbox/Notebooks/Whisper/icon/icona.ico''
 ''Type=Application''
-''X-KDE-SubstituteUID=false''
-''Comment[ru_RU]=''
-''Comment=''
+''Terminal=false''
+''StartupNotify=true''
+''Categories=Other;''
+
+
+Проверочный запуск из консоли:
+
+''gtk-launch bystro.linux''
 
 Через какое-то время появится ярлык на новое приложение в Меню приложений > Прочее
 
