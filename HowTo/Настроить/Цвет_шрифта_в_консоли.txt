@@ -11,7 +11,7 @@ Creation-Date: 2025-02-26T02:36:41+02:00
 '''
 #!/bin/bash
 	# вывести название сети и внутренний IP
-activeNetwork=$(nmcli device status | awk '/подключено/ && !/loopback/ {print $4}')
+activeNetwork=$(nmcli device status | awk '/подключено/ && !/loopback/ {print "[" $2 "] " $4}')
 activeIP=$(hostname -I | awk '{print $1}')
 '''
 
