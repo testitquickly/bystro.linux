@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-03-09T23:59:12+02:00
+
+====== xclip ======
+
+[ @xclip @буфер_обмена @console ]
+
+Утилита для взаимодействия с буфером обмена в X11. Для Wayland есть “wl-clipboard”.
+
+===== Пример использования =====
+
+Создать файл с условным названием ''text_format_replace_linebreaks.sh'' 
+
+Сделать его исполняемым.
+
+''#!/bin/bash''
+
+''# variables''
+''input_file="/home/hdd/text_format.txt"''
+''temp_file="/tmp/temp_output.txt"''
+
+	''# записать содержимое буфера обмена в основной файл''
+''xclip -selection clipboard -o > $input_file''
+
+	''# 1) Замена всех двойных переносов строк ”\n\n” на ”+++”''
+	''# 2) Замена всех оставшихся переносов строк ”\n” на ”пробел”''
+	''# 3) Замена всех ”+++” на перенос строки ”\n”''
+''sed ':a;N;$!ba;s/\n\n/+++/g;s/\n/ /g;s/\+\+\+/\n\n/g' "$input_file" > "$temp_file"''
+
+	''# переместить содержимое временного файла в основной''
+''mv "$temp_file" "$input_file"''
+
+	''# записать содержимое основного файла в буфер обмена''
+''cat $input_file | xclip -selection clipboard''
+
+''echo "Done!"''
