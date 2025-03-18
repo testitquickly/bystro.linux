@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-03-17T23:35:37+02:00
+
+====== Unetbootin ======
+
+[ @iso @usb @install @image ]
+
+Установить Debian можно и с usb-флэшки.
+
+Скачать iso-образ Debian, например, https://cdimage.debian.org/debian-cd/current/amd64/bt-dvd/
+
+Флэшку воткнуть в ноутбук, монтировать, через «Диспетчер разделов от KDE» сделать на ней партицию MS-DOS и раздел типа FAT32.
+
+https://unetbootin.github.io/linux_download.html — скачать подходящую версию (64-bit) Аналог — https://github.com/balena-io/etcher
+
+Сделать файл исполняемым
+
+''chmod +x ./unetbooti*''
+
+Залогиниться под root:
+
+''su''
+
+Запустить:
+
+''./unetbooti*''
+
+Выбрать раздел Diskimage и последовательно заполнить. USB-флэшка отобразится самостоятельно. Если нет — что-то пошло не так.
