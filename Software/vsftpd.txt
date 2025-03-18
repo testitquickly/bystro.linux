@@ -36,11 +36,11 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 Позже очень пригодится.
 
-''sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.bak''
+''sudo cp /etc/vsftpd.conf /etc/vsftpd.conf.default''
 
 Если случится ой, то всегда можно будет ревертнуться:
 
-''sudo cp /etc/vsftpd.conf.bak /etc/vsftpd.conf''
+''sudo cp /etc/vsftpd.conf.default /etc/vsftpd.conf''
 
 ==== Проверить работоспособность ====
 
