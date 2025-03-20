@@ -14,13 +14,15 @@ Creation-Date: 2024-12-18T14:32:03+02:00
 
 ''sudo apt update; sudo apt install libavcodec-extra gstreamer1.0-libav libdvdcss2''
 
-Проверить доступные кодеки:
+Будет установлено много всего, но это нормально.
 
-''ffmpeg -codecs > codecs.txt; kate codecs.txt''
+Если надо проверить, какие кодеки появились:
+
+''ffmpeg -codecs > codecs.txt; mcedit codecs.txt''
 
 Проверить доступные фильтры:
 
-''ffmpeg -filters > filters.txt; kate filters.txt''
+''ffmpeg -filters > filters.txt; mcedit filters.txt''
 
 ===== Собственная сборка =====
 
