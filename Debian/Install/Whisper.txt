@@ -6,15 +6,27 @@ Creation-Date: 2024-12-01T00:30:56+02:00
 
 [ @debian @install @sound @openai @whisper ]
 
-Нужен Python и virtual environment для соответствующей версии Python
+===== Установить Python =====
+
+Нужен virtual environment для соответствующей версии Python
 
 ''sudo apt install python3.11-venv''
 
-===== Сделать каталог для Whisper =====
+===== Установить ffmpeg =====
+
+Будет достаточно 
+
+''sudo apt update; sudo apt install ffmpeg''
+
+Но можно посмотреть и расширенную установку [[FFmpeg]]
+
+===== Установить Whisper =====
+
+==== Сделать каталог для Whisper ====
 
 ''mkdir ~/workspace/Whisper/ && cd ~/workspace/Whisper/''
 
-===== Сделать virtual environment для проекта =====
+==== Сделать virtual environment для проекта ====
 
 ''python3 -m venv Whisper_env''
 
@@ -22,15 +34,28 @@ Creation-Date: 2024-12-01T00:30:56+02:00
 
 ''source Whisper_env/bin/activate''
 
-Для выхода из виртуального окружения надо выполнить в том же каталоге команду ''deactivate''
+Готово.
 
-Важно и неочевидно: нельзя __перемещать__ каталог ''whisper_env'', по новому адресу не поднимется вирутальное окружение. Если очень надо его переместить, то следует пересоздать новый „virtual environment” для проекта в том же каталоге.
+Позже для выхода из виртуального окружения надо выполнить в том же каталоге команду ''deactivate''
 
-===== Установить Whisper из git =====
+Важно и неочевидно: отныне и впредь нельзя __перемещать__ каталог ''Whisper_env'', потому что по новому адресу не поднимется вирутальное окружение. Если очень надо его переместить, то следует пересоздать новый „virtual environment” для проекта в том же каталоге.
+
+==== Снять проект из git ====
+
+* Должен быть установлен консольный [[Software:git]]
+* Мы всё ещё находимся в активированном окружении „''Whisper_env''”. 
+
+Установить Whisper с github:
 
 ''pip install git+https://github.com/openai/whisper.git''
 
+Готово.
+
+''deactivate''
+
 ===== Обновить Whisper =====
+
+Это будет редко, но иногда надо.
 
 Узнать, если есть обновления — https://github.com/openai/whisper/releases/latest
 
