@@ -10,15 +10,15 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== A =====
 
-[[+ab (ApacheBench tool)]]
-[[+Audacious]]
-[[+Audacity]]
+[[+ab]] /Apache Benchmarking 
+[[+Audacious]] /аудиоплеер
+[[+Audacity]] /редактирование аудио
 
 ===== B =====
 
 [[+Baloo]] /поиск
 [[+blame]]
-[[+Brave]]
+[[+Brave]] /браузер
 
 ===== C =====
 

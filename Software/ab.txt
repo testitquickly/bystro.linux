@@ -2,9 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-10-10T22:40:03+03:00
 
-====== ab (ApacheBench tool) ======
+====== ab ======
 
 [ @install @apache @ab ]
+
+Apache HTTP server benchmarking tool, утилита для простого нагрузочного тестирования веб-проектов.
 
 ===== Установка =====
 
@@ -14,10 +16,14 @@ Creation-Date: 2023-10-10T22:40:03+03:00
 Говорят, что на маках оно предустановлено, для Windows её надо скачать с https://www.apachelounge.com/download/
  
 На Windows надо ставить двойные кавычки:
-''ab -n20 -c 4 -H "Accept-Encoding: gzip, deflate, br" "''[[https://website.net/|''https://website.net'']]''"''
+
+''ab -n 20 -c 4 -H "Accept-Encoding: gzip, deflate, br" "''[[https://website.net/|''https://website.net'']]''"''
 
 На Mac (вообще в Linux) работают ординарные кавычки:
-''ab -n20 -c 4 -H 'Accept-Encoding: gzip, deflate, br' "''[[https://website.net/|''https://website.net'']]''"''
+
+''ab -n 20 -c 4 -H 'Accept-Encoding: gzip, deflate, br' "''[[https://website.net/|''https://website.net'']]''"''
+
+Адрес сайта можно не кавычить, но если там будут сложные параметры (search?param=value), то кавычки будут нужны. Проще привыкнуть к ним по-умолчанию.
 
 ===== Использование =====
 
