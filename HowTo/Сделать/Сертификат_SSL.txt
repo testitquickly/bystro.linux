@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-04-16T14:55:04+03:00
+
+====== Сертификат SSL ======
+
+[ @ssl ]
+
+Как сгенерировать самоподписанный сертификат SSL с помощью криптографического алгоритма RSA с длиной ключа 4096 бит и сроком действия 1 год:
+
+''openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes''
