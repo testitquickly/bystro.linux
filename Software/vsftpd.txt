@@ -66,6 +66,18 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 * ''vsftpd /etc/vsftpd.conf.without.guests &''
 * ''vsftpd /etc/vsftpd.conf.myPersonalUser &''
 
+==== Настроить каталог chroot ====
+
+Надо создать отдельный каталог ''secure_chroot_dir''. Он должен быть, и быть пустым, и НЕ должен быть доступен для записи пользователю ftp (root:root и 755). Этот каталог используется как «защищенная тюрьма» chroot() в моменты, когда vsftpd не требует доступа к файловой системе. Если его не будет, весьма вероятно, что vsftpd или откажется запускаться, или будет молча отклонять всех подключающихся пользователей.
+
+'''
+sudo mkdir -p /var/run/vsftpd/empty; sudo chown root:root /var/run/vsftpd/empty; sudo chmod 755 /var/run/vsftpd/empty
+'''
+
+В итоге надо указать этот каталог в конфиге /etc/vsftpd.conf:
+
+''secure_chroot_dir=/var/run/vsftpd/empty''
+
 ==== Общее содержимое файла настроек ====
 
 В основе достаточно этого:
