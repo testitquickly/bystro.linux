@@ -98,9 +98,9 @@ To take effect run
 
 Целиком строка будет выглядеть так:
 
-''half type name | size:4 | perm''
+//''half type name | size:4 | perm''//
 
-Такой формат будет удобнее
+Вот такой формат удобнее всего:
 
 ''type | name | size:4 | perm:4''
 
