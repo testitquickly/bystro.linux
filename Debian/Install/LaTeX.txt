@@ -55,7 +55,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 === Скачать установочный iso-файл c LaTeX ===
 
-Выбирать подходящюю версию на https://ctan.org/mirrors
+Выбирать подходящюю версию на https://ctan.org/mirrors или на https://tug.org/texlive/acquire-iso.html
 
 Например, зеркало в Германии: http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/  Или в США: http://mirrors.mit.edu/CTAN/systems/texlive/Images/
 
@@ -74,6 +74,10 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 ''sudo apt-get install texlive-full''
 
 На старых ноутбуках современные «да там несколько гигабайт LaTeX» могут неазметно и полностью выжрать свободное место на системном диске, поэтому в некоторых случаях разумно ставить TeX из iso (не старше “2022”), чтобы была возможность выбрать каталог для установки.
+
+Где найти старые версии: https://tug.org/historic/
+
+Например: https://pi.kwarc.info/historic/systems/texlive/2022/
 
 ===== Подготовить систему =====
 
