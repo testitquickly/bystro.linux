@@ -83,9 +83,9 @@ sudo mkdir -p /var/run/vsftpd/empty; sudo chown root:root /var/run/vsftpd/empty;
 В основе достаточно этого:
 
 '''
+anonymous_enable=NO
 listen=NO
 listen_port=21
-anonymous_enable=NO
 local_enable=YES
 write_enable=YES
 '''
