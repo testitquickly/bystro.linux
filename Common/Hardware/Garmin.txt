@@ -32,6 +32,8 @@ https://www.garmin.com/en-US/software/express/windows/ — скачать, ус
 
 Самая полная карта Европы ~ 12 Gb. Карты отдельных регионов — менее гигабайта. 
 
+В навигаторе идентифицируются как OpenStreetMaps.
+
 https://www.openmapchest.org/maps/eastern-europe/
 
 ==== OpenTopoMap ====
@@ -102,4 +104,7 @@ https://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin/Download
 * вставить SD Card в навигатор
 * включить навигатор. При запуске в нижней части экрана с логотипом Garmin должны быть перечислены образы карт, которые найдены на флэшке. Если там будет пусто — алярм.
 
-Пример подробной инструкции: https://www.openmapchest.org/instructions/#installing-the-map-on-an-sd-card
+Подробные инструкции: 
+
+* https://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin/Download
+* https://www.openmapchest.org/instructions/#installing-the-map-on-an-sd-card
