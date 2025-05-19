@@ -4,7 +4,7 @@ Creation-Date: 2025-03-17T23:35:37+02:00
 
 ====== Unetbootin ======
 
-[ @iso @usb @install @image ]
+[ @iso @usb @install ]
 
 Установить Debian можно и с usb-флэшки.
 

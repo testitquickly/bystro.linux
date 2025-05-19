@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:11:56+02:00
 
 ====== Firefox ======
 
-[ @firefox @settings @изображения ]
+[ @firefox @settings @images ]
 
 По-умолчанию в репозиториях Debian есть только Firefox ESR (Extended support release). Можно его использовать, но он всегда будет чуть отстающим по версии. Он не мешает, но его можно удалить — ''sudo apt remove firefox-esr''
 

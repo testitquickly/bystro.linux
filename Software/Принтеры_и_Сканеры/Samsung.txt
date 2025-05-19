@@ -4,7 +4,7 @@ Creation-Date: 2022-05-15T07:13:54+03:00
 
 ====== Samsung ======
 
-[ @printer @scaner @drivers @xsane @samsung @изображения ]
+[ @printer @scaner @drivers @xsane @samsung @images ]
 
 Есть древний (2006-й) принтер/сканер Samsung „SCX-4100” (Monochrome Laser Printer). 
 
