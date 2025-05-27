@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-27T07:24:41+03:00
+
+====== RSync ======
+Создан Вторник 27 мая 2025
+
