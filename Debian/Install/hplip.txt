@@ -152,4 +152,4 @@ http://localhost:631
 
 Перейдите в Administration → Add Printer, выберите ваше устройство HP и настройте его.
 
-См. дальше [[Software:Принтеры и Сканеры:HP (Hewlett-Packard)]]
+См. дальше [[Common:Hardware:Принтеры и Сканеры:HP (Hewlett-Packard)]]
