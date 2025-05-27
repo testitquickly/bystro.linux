@@ -74,7 +74,7 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 ''> Настройки'' 
 ''> Сохранить настройки''
 
-===== mcedit как основной редактор =====
+===== Объявить mcedit основным редактором =====
 
 Add to your ~/.profile and ~/.bashrc files line
 
@@ -154,3 +154,57 @@ To take effect run
 	On modern unices, there's an added complication related to ~/.profile. If you log in in a graphical environment (that is, if the program where you type your password is running in graphics mode), you don't automatically get a login shell that reads ~/.profile. Depending on the graphical login program, on the window manager or desktop environment you run afterwards, and on how your distribution configured these programs, your ~/.profile may or may not be read. If it's not, there's usually another place where you can define environment variables and programs to launch when you log in, but there is unfortunately no standard location.
 	
 	Note that you may see here and there recommendations to either put environment variable definitions in ~/.bashrc or always launch login shells in terminals. Both are bad ideas. The most common problem with either of these ideas is that your environment variables will only be set in programs launched via the terminal, not in programs started directly with an icon or menu or keyboard shortcut.
+
+===== User Menu =====
+
+User Menu вызывается по [F2]. Его содержимое можно переписать «под себя».
+
+Например, надо часто открывать новое окно Konsole с уже открытым MC внутри. Это можно делать одной командой
+
+''nohup konsole --hold -e mc >/dev/null 2>&1 &''
+
+Можно
+1. свернуть MC (через ''Ctrl+O'')
+2. выполнить команду (или написать её полностью, или сделать для неё алиас в файле ''~/.bashrc'' и вызывать её командой-алиасом) и получить новое окно Konsole с открытым MC и сделать всё, что нужно
+3. вернуться в первое окно
+4. развернуть MC (''Ctrl+O'')
+
+Алиасы из ''~/.bashrc'' внутри MC недоступны, потому что они являются частью окружения bash. При запуске MC в консоли мы «выходим» из окружения bash, MC запускается вместо текущей оболочки (бывает не только bash, есть и другие) и «занимает» действующий терминал, полностью перехватывая ввод/вывод. Поэтому внутри Konsole и внутри MC работают разные окружения, которые пересекаются только условно, окольными путями.
+
+В MC можно 
+1. вызвать командную строку через ''Alt+Shift+!''
+2. написать в ней нужную команду. Или написать полный путь к отдельному исполняемому sh-файлу, в который записан нужный скрипт
+
+Проще записать нужную команду в User Menu в MC. Если нужна не отдельная команда, а чуть более сложная цепочка команд, то можно закатать всё в исполняемый sh-файл и прописать в User Menu обращение к нему.
+
+==== Отредактировать файл User Menu ====
+
+По-умолчанию его может не быть. Но даже если есть:
+
+''mcedit ~/.config/mc/menu''
+
+Вставить в него любые свои команды по данному шаблону:
+
+''h открыть копию MC в новой вкладке Konsole''
+''nohup konsole --hold -e mc >/dev/null 2>&1 &''
+
+	''# Create a new HTML file''
+''H New HTML file''
+	''{ echo "<html>"''
+	''echo "\t<head>\n\t</head>"''
+	''echo "\t<body>\n\t</body>"''
+	''echo "</html>"; }  > new_page.html''
+
+''NAS video''
+	''/home/myScripts/nas/nas-mount-v1.sh''
+	''/home/myScripts/nas/nas-mount-v2.sh''
+	''/home/myScripts/nas/nas-mount-v3.sh''
+	''cd /home/nas/''
+
+Первая буква в строке — шорткат для выполнения команды. Необязательна. Если будет, то учесть, что одна и та же буква в разных регистрах — разные шорткаты.
+
+Последовательность расположения команд — произвольная, в итоговом списке по [F2] они будут отображаться буквально одна за другой. 
+
+Комментарии могут быть любыми — но закрытые за символом ''#''
+
+Максимальная длина названия команды: 60 символов.
