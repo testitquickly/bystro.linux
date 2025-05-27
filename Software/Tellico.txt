@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-05-23T21:54:11+03:00
+
+====== Tellico ======
+
+[ @tellico @DB @API ]
+
+Токен юзера (маркер) для поиска записей на Discogs находится на https://www.discogs.com/ru/settings/developers
