@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-04T05:24:04+03:00
+
+====== Balena etcher ======
+
+[ @install @iso @etcher ]
+
+===== Скачать =====
+
+https://etcher.balena.io/
+
+или https://github.com/balena-io/etcher/releases/ — развернуть раздел Assets > Выбрать подходящий файл
+*amd64.deb
+или 
+*-x64.AppImage 
+
+===== Установить deb =====
+
+''sudo dpki -i ./balena-etcher_******_amd64.deb''
