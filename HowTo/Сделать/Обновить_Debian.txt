@@ -71,7 +71,7 @@ echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
 
 ==== Обновить sources.list ====
 
-[[HowTo:Сделать:Обновить sources.list]] по имени нового релиза.
+[[Обновить sources.list]] по имени нового релиза.
 
 Очень внимательно посмотреть, если в сети никто не ругается на обновления.
 
