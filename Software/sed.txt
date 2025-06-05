@@ -6,13 +6,10 @@ Creation-Date: 2024-09-16T22:13:51+03:00
 
 [ @sed @console ]
 
-sed — stream editor for filtering and transforming text. Редактор содержимого файлов в консоли.
+sed (Stream EDitor) — консольный редактор содержимого файлов. Не текстовый редактор, используется для построчного редактирования файлов или входных данных из пайплайна.
 
-https://ru.linux-console.net/?p=16738
-
-https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html
-
-Используется для построчного редактирования файлов или входных данных из пайплайна.
+* https://ru.linux-console.net/?p=16738
+* https://www.gnu.org/software/sed/manual/html_node/Regular-Expressions.html
 
 ===== Вывод первых 5 строк из файла example.txt =====
 
