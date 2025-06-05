@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-27T01:18:32+02:00
 
-====== Указать системные каталоги в профиле ======
+====== Пути к системным каталогам в профиле ======
 
 [ @language @locale @systemSettings ]
 
