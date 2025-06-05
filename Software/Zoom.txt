@@ -63,6 +63,8 @@ https://zoom.us/download?os=linux
 
 ''dpkg -b $scratch patched_zoom_amd64.deb''
 
+В исходном каталоге появится новый файл ''patched_zoom_amd64.deb''
+
 ===== Установить ещё несколько штук =====
 
 без которых Zoom не заработает.
@@ -73,4 +75,8 @@ https://zoom.us/download?os=linux
 
 ''sudo dpkg -i patched_zoom_amd64.deb''
 
-Теперь оба установочных файла zoom можно удалить.
+Запустить, убедиться в том, что все норм.
+
+Оба установочных файла zoom можно удалить.
+
+''rm patched_zoom_amd64.deb zoom_amd64.deb''
