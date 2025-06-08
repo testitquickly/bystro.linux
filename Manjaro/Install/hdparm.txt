@@ -10,4 +10,4 @@ Creation-Date: 2023-12-25T23:03:16+02:00
 
 ''sudo pacman -S hdparm''
 
-См. [[:HowTo:Настроить:trim SSD]]
+См. [[:HowTo:Настроить:SSD]]

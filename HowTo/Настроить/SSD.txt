@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-24T02:44:14+02:00
 
-====== trim SSD ======
+====== SSD ======
 
 [ @sdd @hdd @trim ]
 
@@ -127,7 +127,20 @@ The "discard" options **is not needed** if your SSD has enough overprovisioning 
 * sda мой SSD.
 * sdb мой HDD.
 
-Если видим 0 (нулевые значения) в колонках DISC-GRAN (discard granularity) и DISC-MAX (discard max bytes), значит TRIM на этих разделах не работает. В данном примере понятно, что на диске sda (это мой ssd) TRIM поддерживается, а на диске sdb (это мой hdd) TRIM не поддерживается, бо не нужен.
+Если видим ''0'' (нулевые значения) в колонках ''DISC-GRAN'' (discard granularity) и ''DISC-MAX'' (discard max bytes), значит TRIM на этих разделах не работает. В данном примере понятно, что на диске sda (это мой ssd) TRIM поддерживается, а на диске sdb (это мой hdd) TRIM не поддерживается, бо не нужен.
+
+Для ssd формата NVMe M2 идентификаторы дисков и партиций называются иначе:
+
+'''
+NAME        DISC-ALN DISC-GRAN DISC-MAX DISC-ZERO
+nvme0n1            0      512B       2T         0
+└─nvme0n1p1        0      512B       2T         0
+nvme1n1            0      512B       2T         0
+├─nvme1n1p1        0      512B       2T         0
+├─nvme1n1p2        0      512B       2T         0
+├─nvme1n1p4        0      512B       2T         0
+└─nvme1n1p5        0      512B       2T         0
+'''
 
 Также в данной таблице по цифрам в разделе DISC-GRAN видно, что размер сектора на моём SSD равен 512 bytes.
 
@@ -197,6 +210,11 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 '''
 
 В частности, / у меня на ssd, а /home, /tmp и /swap – на hdd. Видно, что trim (через опцию "discard") уже включен и для корня, и для всех остальных разделов.
+
+===== Узнать UUID дисков =====
+
+''sudo blkid''
+
 
 ===== Как включить trim в уже работающей системе =====
 
