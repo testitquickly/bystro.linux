@@ -28,6 +28,10 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 
 Добавить строку
 
+''tmpfs /tmp tmpfs defaults,mode=1777 0 0''
+
+Если хочется выделить для tmp только определенное количество RAM:
+
 ''tmpfs /tmp tmpfs defaults,size=4G,mode=1777 0 0''
 
 Сохранить, выйти. 
@@ -36,4 +40,10 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 
 ''sudo systemctl daemon-reload''
 
-Новые настройки будут подхвачены после перезагрузки.
+Новые настройки будут подхвачены после перезагрузки. Убедиться в том, что /tmp находится в RAM:
+
+''df -h /tmp''
+
+Ожидаемый ответ: 
+
+''tmpfs on /tmp type tmpfs (rw,nosuid,nodev)''
