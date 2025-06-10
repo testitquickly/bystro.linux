@@ -263,7 +263,7 @@ sed -E -i "s/clockTimeFormat1='<font size=\"1\" color=\"orange\">([0-9]+)<\/font
 
 Обновить файл настроек виджета надо после запуска Plasma, но ДО загрузки моего профиля.
 
-''mcedit ~/.profile''
+''mcedit ~/.bash_profile''
 
 Вставить этот текст:
 
