@@ -3,5 +3,55 @@ Wiki-Format: zim 0.6
 Creation-Date: 2025-06-10T16:59:57+03:00
 
 ====== Llama ======
-Создан Вторник 10 июня 2025
 
+[ @install @ai @llama]
+
+===== Установить зависимости =====
+
+''sudo apt update; sudo apt install python3 python3-pip python3-venv git''
+
+===== Сделать виртуальную среду Python =====
+
+Перейти в каталог, в котором Llama будет работать.
+
+''python3 -m venv llama_env; source llama_env/bin/activate''
+
+Если виртуальное окружение Python поднялось успешно — установить библиотеки.
+
+''pip install torch torchvision transformers''
+
+===== Скачать модель Llama =====
+
+Выбрать подходящую на https://www.llama.com/llama-downloads/ или на https://github.com/meta-llama/llama-models
+
+Так или иначе надо будет предложено зарегистрироваться — без этого дальше продвинуться не получится.
+
+__Внутри__ запущенного вирт.окр.Python установить ''Llama CLI''
+
+''pip install llama-stack''
+
+Посмотреть список доступных моделей
+
+''llama model list''
+
+Есть три типа моделей:
+
+* Pretrained weights: These are base weights that can be finetuned, domain adapted with full flexibility
+* Instruct weights: These weights are for the model that have been fine-tuned and aligned to follow instructions. They can be used as-is in chat applications or further fine tuned and aligned for specific use cases
+* Trust and safety model: Our models offer a collection of specialized models tailored to specific development needs.
+
+
+Для начала смотрим простые модели. Для примера см. //Llama3.2-1B//
+
+''llama download --source meta --model-id'' __''Llama3.2-1B''__
+
+Ожидаемый ответ: Please provide the signed URL for model Llama3.2-1B you received via email after visiting https://www.llama.com/llama-downloads/ (e.g., https://llama3-1.llamameta.net/*?Policy...):  — открыть почту, найти письмо с линком, вставить его в консоль. Не факт, что сразу всё сработает.
+
+
+
+
+python llama3.py
+
+Llama 3 успешно установлена и запущена на Linux.
+
+См. [[Software:Llama]]
