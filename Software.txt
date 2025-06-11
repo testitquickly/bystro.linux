@@ -76,6 +76,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+LaTeX]]
 [[+LibreOffice]]
+[[+Llama]]
 [[+locate]] /поиск файлов по базе данных
 [[+ls]] /list directory contents
 
@@ -134,6 +135,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 ===== T =====
 
 [[+tar]] /архивы
+[[+TeamViewer]]
 [[+Telegram]] /мессенджер
 [[+Tellico]]
 [[+Thunderbird]] /почта

@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-11T16:23:42+03:00
+
+====== TeamViewer ======
+
+[ @install @teamviewer ]
+
+Скачать файл ''*.deb'' c https://www.teamviewer.com/en-cis/download/linux/
+
+''sudo dpkg -i teamviewer*.deb''
+
+См. [[Software:TeamViewer]]

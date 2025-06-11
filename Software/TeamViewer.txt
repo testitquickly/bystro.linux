@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-11T16:23:16+03:00
+
+====== TeamViewer ======
+
+[ @teamviewer ]
+
+===== Установка =====
+
+* [[Debian:Install:TeamViewer]]
+

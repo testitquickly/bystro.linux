@@ -13,6 +13,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 ===== B =====
 
+[[+Balena etcher]]
 [[+Brave]]
 [[+Bruno]]
 
@@ -30,7 +31,6 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
-
 
 ===== F =====
 
@@ -70,6 +70,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [[+LaTeX]]
 [[+LibreOffice]]
+[[+Llama]]
 
 ===== M =====
 
@@ -116,6 +117,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 ===== T =====
 
+[[+TeamViewer]]
 [[+Telegram]]
 [[+Thunderbird]]
 [[+Tor Browser]]
