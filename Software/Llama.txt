@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-10T16:58:14+03:00
+
+====== Llama ======
+Создан Вторник 10 июня 2025
+
