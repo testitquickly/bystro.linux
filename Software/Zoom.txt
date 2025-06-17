@@ -80,3 +80,15 @@ https://zoom.us/download?os=linux
 Оба установочных файла zoom можно удалить.
 
 ''rm patched_zoom_amd64.deb zoom_amd64.deb''
+
+===== Отключить хоткеи Zoom на уровне системы =====
+
+Если после входа в митинг системные «горячие клавиши» резко меняются, надо
+
+''mcedit ~/.local/share/applications/Zoom.desktop''
+
+Вставить это
+
+''Exec=env QT_QPA_PLATFORM=xcb zoom --disable-shortcuts''
+
+Теперь Zoom можно включать, внутренние хоткеи остались на месте.
