@@ -4,7 +4,7 @@ Creation-Date: 2024-12-01T00:30:56+02:00
 
 ====== Whisper ======
 
-[ @debian @install @sound @openai @whisper ]
+[ @debian @install @machine_learning @openai @whisper ]
 
 ===== Установить Python =====
 

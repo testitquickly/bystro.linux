@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-06-19T01:12:48+03:00
+
+====== Sentence Transformer ======
+
+[ @debian @install @machine_learning @bert @SentenceTransformer ]
+
+Сделать отдельный каталог. Зайти в него.
+
+Создать виртуальное окружение для [[Software:Python]]
+
+''python3 -m venv SentenceTransformer_env''
+
+Запустить:
+
+''source SentenceTransformer_env/bin/activate''
+
+Внутри виртуального окружения Python установить:
+
+''pip install -U sentence-transformers scikit-learn nltk razdel''
+
+Создать три файла:
+
+''touch input.txt output.txt sentence-transformer.py''
+
+Файл ''output.txt'' оставить пустым, туда будет записан текст после завершения работы скрипта (каждый раз полная перезапись).
+
+В файл ''input.txt'' вставить транскрибированный текст.
+
+Файл ''sentence-transformer.py'' приложен: [[./sentence-transformer.py]]
+
+==== Надо ====
+ 
+В самом начале файла — указать 
+* путь к файлам ''input.txt'' и ''output.txt'', 
+* каталог, в который будет записан Punkt — это правило- и статистически-основанный токенайзер предложений, входящий в библиотеку NLTK (Natural Language Toolkit).
+
+==== Опционально ====
+
+В файле есть несколько строк, которые выводят на экран служебную информацию и могут быть заглушены при отсутствии необходимости:
+* Количество кластеров
+* Метки кластеров
+* Распределение по кластерам
+
+То же самое с последней командой «9. Открываем файл output.txt в текстовом редакторе».
+
+См. [[Software:Sentence Transformer]]
