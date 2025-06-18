@@ -51,3 +51,17 @@ Creation-Date: 2024-01-08T10:16:19+02:00
 ==== Неочевидное ====
 
 Иногда надо сперва выполнить ''sudo modprobe…'', и уже затем запустить OBS и включать в нём виртуальную камеру.
+
+===== Экспорт видео для DaVinci Resolve =====
+
+У бесплатного [[DaVinci Resolve]] свои заморочки с кодеками, поэтому для него лучше заранее сделать видео в подходящем формате.
+
+''Settings''
+''> Output''
+''> Recording''
+''> Type = Custom output ffmpeg''
+''> Container format = mov''
+''> Video bitrate = 10 000''
+''> Video Encoder = mpeg4''
+''> Audio bitrate = 256''
+''> Audio Encoder = pcm_s16le''
