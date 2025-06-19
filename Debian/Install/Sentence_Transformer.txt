@@ -16,6 +16,8 @@ Creation-Date: 2025-06-19T01:12:48+03:00
 
 ''source SentenceTransformer_env/bin/activate''
 
+Всё будет работать на CPU — стабильно и не особо напрягает. Если хочется запускать модель на отдельном GPU, на странице https://pytorch.org/get-started/locally/ есть интерактивная таблица. Там надо тыкнуть package PIP и версию CUDA — под таблицей появится строка для установки соответствующего стаффа.
+
 Внутри виртуального окружения Python установить:
 
 ''pip install -U sentence-transformers scikit-learn nltk razdel''
