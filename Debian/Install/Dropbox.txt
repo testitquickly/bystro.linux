@@ -39,17 +39,18 @@ https://www.dropbox.com/install — скачивание архива с уст�
 
 ==== Способ 2) ====
 
-Создать файл, который в принципе будет создан после способа №1.
+Не нужен, если работает первый.
+
+Создать файл запуска программы ''*.desktop'' и указать его в автозапуске
 
 ''mcedit ~/.config/autostart/dropboxd.desktop''
 
 Вставить:
 
 ''[Desktop Entry]''
-''Exec=/home/astenix/.dropbox-dist/dropboxd''
+''Exec=~/.dropbox-dist/dropboxd''
 ''Icon=dialog-scripts''
 ''Name=dropboxd''
-''Path=''
 ''Type=Application''
 ''X-KDE-AutostartScript=true''
 
