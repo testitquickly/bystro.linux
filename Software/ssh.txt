@@ -148,10 +148,12 @@ ssh очень требователен к настройкам доступа. 
 
 Также постоянными подключениями по ssh можно управлять через файл ''~/.ssh/config'', в котором каждое подключение надо зарегистрировать в виде 
 
-''Host server-abc'' 
-	''HostName 192.168.10.20''
-	''User astenix''
-	''IdentityFile ~/.ssh/server-abc''
+{{{code: id="ssh-config" lang="sh" linenumbers="True"
+Host server-abc 
+	HostName 192.168.10.20
+	User astenix
+	IdentityFile ~/.ssh/server-abc
+}}}
 
 Мне проще использовать алиасы в едином месте.
 
@@ -175,13 +177,15 @@ ssh очень требователен к настройкам доступа. 
 
 При каждом подключении выводится что-то вроде 
 
-''The programs included with the Debian GNU/Linux system are free software;''
-''the exact distribution terms for each program are described in the''
-''individual files in /usr/share/doc/*/copyright.''
+{{{code: lang="texinfo" linenumbers="True"
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
 
-''Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent''
-''permitted by applicable law.''
-''Last login: Thu Mar 20 06:17:52 2025 from 192.168.50.18''
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Mar 20 06:17:52 2025 from 192.168.50.18
+}}}
 
 Как это убрать
 
@@ -352,5 +356,7 @@ ssh-add -l
 
 ===== Проблема с XTERM =====
 
-export TERM=xterm-256color
+*todo Проблема с XTERM
+
+''export TERM=xterm-256color''
 
