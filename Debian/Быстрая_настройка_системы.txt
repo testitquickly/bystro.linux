@@ -12,7 +12,7 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 
 C установочного диска Debian одной командой:
 
-apt install aptitude mc ncdu zim xsensors curl wget krusader keepassxc onboard openssh-server openssh-client openvpn openconnect network-manager-openvpn vsftpd audacity calibre qbittorrent krename jlha-utils arj rar unrar unace rpm qmmp vlc smplayer kget kdiff3 locate qalculate-gtk macchanger make 
+''apt install aptitude mc ncdu zim xsensors curl wget krusader keepassxc onboard openssh-server openssh-client openvpn openconnect network-manager-openvpn vsftpd audacity calibre qbittorrent krename jlha-utils arj rar unrar unace rpm qmmp vlc smplayer kget kdiff3 locate qalculate-gtk macchanger make'' 
 
 ===== Настроить систему =====
 
@@ -30,9 +30,6 @@ apt install aptitude mc ncdu zim xsensors curl wget krusader keepassxc onboard o
 
 1. [[HowTo:Сделать:Поменять пароль в кошельке kdewallet]]
 2. [[HowTo:Настроить:Автоматический login в KDE]]
-
-Опционально: 
-* [[HowTo:Сделать:Подключить внешний монитор по hdmi]]
 
 ===== Настроить консоль =====
 
@@ -59,9 +56,6 @@ apt install aptitude mc ncdu zim xsensors curl wget krusader keepassxc onboard o
 12. [[HowTo:Настроить:Колыхание окон]]
 13. [[HowTo:Настроить:Перемещение окон по виртуальным столам]]
 
-Опционально:
-* [[HowTo:Настроить:Языки локализации]]
-
 ===== Настроить звук в KDE =====
 
 1. [[HowTo:Настроить:Звук — виджет «Громкость»]]
@@ -73,13 +67,15 @@ apt install aptitude mc ncdu zim xsensors curl wget krusader keepassxc onboard o
 
 1. [[HowTo:Настроить:Display Manager]]
 2. [[HowTo:Настроить:Wi-Fi]]
-3. [[HowTo:Проверить:Ошибки при загрузке системы]]
-4. [[HowTo:Проверить:Свой IP]]
-5. [[HowTo:Проверить:Скорость по LAN]]
-6. [[HowTo:Проверить:Состояние батареи ноутбука]]
-7. [[HowTo:Сделать:ToDo в консоли]]
-8. [[HowTo:Настроить:DPI монитора]]
+3. [[HowTo:Настроить:Языки локализации]]
+4. [[HowTo:Проверить:Ошибки при загрузке системы]]
+5. [[HowTo:Проверить:Свой IP]]
+6. [[HowTo:Проверить:Скорость по LAN]]
+7. [[HowTo:Проверить:Состояние батареи ноутбука]]
+8. [[HowTo:Сделать:ToDo в консоли]]
+9. [[HowTo:Сделать:Подключить внешний монитор по hdmi]]
+10. [[HowTo:Настроить:DPI монитора]]
 
-===== Установить =====
+===== Установить ПО =====
 
 * [[Install]]
