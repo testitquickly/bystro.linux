@@ -4,7 +4,7 @@ Creation-Date: 2023-11-08T11:58:48+02:00
 
 ====== pgAdmin ======
 
-[ @pg_admin @sql ]
+[ @pg_admin @sql @shortcuts ]
 
 ===== Установка =====
 

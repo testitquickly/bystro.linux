@@ -4,7 +4,7 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 ====== Elgato “Stream Deck” ======
 
-[ @debian @install @elgato @stream_deck @python @console ]
+[ @debian @install @elgato @stream_deck @python @console @shortcuts ]
 
 	*todo Elgato “Stream Deck” — пересмотреть запуск скриптов Python внутри venv
 

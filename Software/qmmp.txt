@@ -4,7 +4,7 @@ Creation-Date: 2022-11-24T02:19:35+02:00
 
 ====== qmmp ======
 
-[ @qmmp @sound ]
+[ @qmmp @sound @shortcuts ]
 
 Самая удобная обложка: //iAmp1-6.wsz//
 

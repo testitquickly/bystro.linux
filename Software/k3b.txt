@@ -4,7 +4,7 @@ Creation-Date: 2024-01-19T14:05:53+02:00
 
 ====== k3b ======
 
-[ @settings @k3b @blu_ray ]
+[ @settings @k3b @blu_ray @shortcuts ]
 
 ===== Размеры blu-ray дисков =====
 

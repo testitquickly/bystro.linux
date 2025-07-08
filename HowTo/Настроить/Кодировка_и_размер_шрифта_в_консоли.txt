@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T14:59:36+02:00
 
 ====== Кодировка и размер шрифта в консоли ======
 
-[ @debian @console @grub @fonts ]
+[ @debian @console @grub @fonts @shortcuts ]
 
 Выйти в отдельную сессию (Ctrl+Alt+F2) и залогиниться под своим юзером.
 

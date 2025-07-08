@@ -4,7 +4,7 @@ Creation-Date: 2024-04-23T06:35:57+03:00
 
 ====== Kile ======
 
-[ @LaTeX @kile ]
+[ @LaTeX @kile @shortcuts ]
 
 Kile — один из линуксовых текстовых редакторов для [[LaTeX]].
 

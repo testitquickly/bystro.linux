@@ -4,7 +4,7 @@ Creation-Date: 2024-11-30T21:46:21+02:00
 
 ====== Whisper ======
 
-[ @machine_learning @openai @whisper ]
+[ @machine_learning @openai @whisper @shortcuts ]
 
 «Whisper» — нейронная сеть, модель для автоматического распознавания речи — automatic speech recognition (ASR) от OpenAI (есть аналоги). Может преобразовывать аудиофайлы в текст (это называется «транскрибирование»). Работает локально. Опубликована с открытым исходным кодом. Поддерживает множество языков (русский и украинский) под «MIT License».
 

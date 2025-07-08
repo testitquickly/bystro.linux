@@ -4,7 +4,7 @@ Creation-Date: 2025-06-23T06:16:10+03:00
 
 ====== Переключение раскладок клавиатуры ======
 
-[ @toolbar @layout @language ]
+[ @toolbar @layout @language @shortcuts ]
 
 ''Параметры системы''
 ''> Оборудование''

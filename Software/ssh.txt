@@ -4,7 +4,7 @@ Creation-Date: 2022-05-13T21:24:12+03:00
 
 ====== ssh ======
 
-[ @ssh @console ]
+[ @ssh @console @shortcuts ]
 
 Secure shell (SSH) — наш основной способ коннекта на удалённый компьютер в консоли.
 

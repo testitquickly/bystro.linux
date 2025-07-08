@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 
 ====== Midnight Commander ======
 
-[ @mc ]
+[ @mc @shortcuts ]
 
 ===== Установка =====
 

@@ -4,7 +4,7 @@ Creation-Date: 2025-01-15T04:54:00+02:00
 
 ====== Touchegg ======
 
-[ @touchpad @touchegg @gestures ]
+[ @touchpad @touchegg @gestures @shortcuts ]
 
 Утилита для управления жестами на тачпаде. Очевидно, что каноничный перевод может быть только один — «Потрогай яйцо»…
 

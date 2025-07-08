@@ -4,7 +4,7 @@ Creation-Date: 2022-04-06T02:09:32+03:00
 
 ====== Elgato “Stream Deck” ======
 
-[ @elgato @stream_deck @python @console ]
+[ @elgato @stream_deck @python @console @shortcuts ]
 
 Клавиатурки с кнопками-экранами “Stream Deck” от Elgato представлены разными моделями:
 * стандартная “Stream Deck” на 15 кнопок, и этого должно хватать всем.

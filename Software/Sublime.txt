@@ -4,7 +4,7 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 
 ====== Sublime ======
 
-[ @sublime @python ]
+[ @sublime @python @shortcuts ]
 
 Текстовый редактор. Хорош тем, что может спокойно обрабатывать файлы неограниченной длины (и диаметра). Тот же Kate при открытии крупных текстовых файлов стопорится, предлагает открыть только небольшую часть файла…
 
@@ -49,12 +49,12 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 	2. https://packagecontrol.io/packages/AdvancedNewFile
 	3. https://packagecontrol.io/packages/AutoFileName
 	4. https://packagecontrol.io/packages/SideBarEnhancements — слева появляется сайдбар, там и отображаются файлы проекта (и вообще открытые), и появляются команды для управления файлами на ssd
-	5. [[https://packagecontrol.io/packages/All Autocomplete]] — autocomplete вообще
+	5. https://packagecontrol.io/packages/All%20Autocomplete — autocomplete вообще
 	6. https://packagecontrol.io/packages/BracketHighlighter
 	7. https://packagecontrol.io/packages/DocBlockr
 	8. https://packagecontrol.io/packages/Git (некоторым заходит [[https://packagecontrol.io/packages/Git|https://packagecontrol.io/packages/GitAutoCommit]], мне он кажется излишним)
 	9. https://packagecontrol.io/packages/GitGutter
-	10. [[https://packagecontrol.io/packages/Markdown Extended]]
+	10. https://packagecontrol.io/packages/Markdown%20Extended
 	11. https://packagecontrol.io/packages/Anaconda — autocomplete для программистов
 	12. https://packagecontrol.io/packages/SublimeLinter — после него можно добавлять плагины для линтеров по определённым правилам для определённых языков
 	13. https://packagecontrol.io/packages/Emmet — шаблоны html для верстальщиков (front end)

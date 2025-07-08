@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T20:59:26+02:00
 
 ====== VLC ======
 
-[ @vlc @video ]
+[ @vlc @video @shortcuts ]
 
 ===== Устранение "квадратиков" в VLC =====
 
@@ -32,7 +32,7 @@ Creation-Date: 2022-02-23T20:59:26+02:00
 
 ===== Как конвертировать файлы m2ts в mp4 =====
 
-Сперва учесть, что это простая перегонка в mp4, без возможности убрать какие-то аудиодорожки. Для таких задач подойдет HandBrake (распространяется в flatpack, есть documentation — https://handbrake.fr/docs/en/latest/ или https://github.com/teejee2008/selene%20(не факт, что установится без проблем).
+Сперва учесть, что это простая перегонка в mp4, без возможности убрать какие-то аудиодорожки. Для таких задач подойдет HandBrake (распространяется в flatpack, есть documentation — https://handbrake.fr/docs/en/latest/ или https://github.com/teejee2008/selene%20(%D0%BD%D0%B5 факт, что установится без проблем).
 
 ''Медиа''
 ''> Convert/Save (Ctrl+R)''
