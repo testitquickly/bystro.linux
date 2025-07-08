@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-08T11:07:17+03:00
+
+====== Очистить кэш ======
+
+[ @cache ]
+
+''sudo fc-cache -rv ; sudo apt clean ; sudo apt autoclean ; sudo journalctl --vacuum-time=3d''
+
+Ещё можно сделать жесткое
+
+''rm -rf ~/.cache/*''
+
+но перед этим лучше закрыть все приложения, иначе много чего начнёт сбоить.

@@ -1,0 +1,3 @@
+====== Почистить кэш ======
+
+''sudo fc-cache -rv ; sudo apt clean ; sudo apt autoclean ; sudo journalctl --vacuum-time=3d ; rm -rf ~/.cache/*''
