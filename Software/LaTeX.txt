@@ -31,6 +31,39 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 	*todo LaTeX компиляция через свой скрипт
 
+===== Экспорт в html =====
+
+==== htlatex ====
+
+''htlatex yourfile.tex''
+
+Преобразует LaTeX → HTML + CSS + MathML (или изображения формул).
+
+==== pandoc ====
+
+Если документ не слишком LaTeX-специфичный (без кастомных макросов), то:
+
+''pandoc -f latex -t html -o output.html yourfile.tex''
+
+Более чистый HTML, легко настроить.
+
+==== Экспорт в FB2 ====
+
+Сначала экспорт в DocBook или EPUB:
+
+''pandoc yourfile.tex -t docbook -o file.xml''
+
+А потом конвертер ''docbook2fb'' (если есть) или Calibre:
+
+''ebook-convert file.epub file.fb2''
+
+==== LaTeXML ====
+
+''latexml --dest=output.xml yourfile.tex''
+''latexmlpost --format=html5 --dest=output.html output.xml''
+
+Чистый HTML5. Может быть использован для конверсии в ePub и далее в FB2
+
 ===== Трюки =====
 
 [[+Получить заголовок текущего раздела]]
