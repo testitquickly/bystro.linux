@@ -14,15 +14,16 @@ Creation-Date: 2024-03-20T19:21:55+02:00
 
 ===== Настройка =====
 
-Настройки > Подключение
-
-	Быстрый старт > Всегда подключаться автоматически
-
-	Мосты > В первый раз надо «Выберите один из встроенных мостов браузера Tor» — „obfs4” по-умолчанию будет ок.
+''Настройки'' 
+''> Подключение''
+''> Быстрый старт'' = Всегда подключаться автоматически
+''> Мосты'' = В первый раз надо «Выберите один из встроенных мостов браузера Tor» — „obfs4” по-умолчанию будет ок.
 
 ===== Куда дальше =====
 
-* The Hidden Wiki — https://thehiddenwiki.org/ или http://6nhmgdpnyoljh5uzr5kwlatx2u3diou4ldeommfxjz3wkhalzgjqxzqd.onion/
+* The Hidden Wiki — https://thehiddenwiki.org/ 
+* или http://torlinksge6enmcyyuxjpjkoouw4oorgdgeo7ftnq3zodj7g2zxi3kyd.onion/
+* или http://6nhmgdpnyoljh5uzr5kwlatx2u3diou4ldeommfxjz3wkhalzgjqxzqd.onion/
 
 ==== Поиск ====
 
@@ -34,6 +35,9 @@ Creation-Date: 2024-03-20T19:21:55+02:00
 
 ==== Libraries ====
 
+Проверить действующие: http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Libraries
+
+* Z-Library http://zlibrary24tuxziyiyfr7zd46ytefdqbqd2axkmxm4o5374ptpc52fad.onion/ (daily limit Downloads = 16)
 * Just Another Library http://libraryfyuybp7oyidyya3ah5xvwgyx6weauoini7zyz555litmmumad.onion/
 * Comic Book Library http://nv3x2jozywh63fkohn5mwp2d73vasusjixn3im3ueof52fmbjsigw6ad.onion/
 * Sci-Hub https://sci-hub.se
