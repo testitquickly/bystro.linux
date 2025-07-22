@@ -8,6 +8,7 @@ Creation-Date: 2024-09-20T21:33:10+03:00
 
 [[+Garmin]]
 [[+usb-bluetooth]]
+[[+usb-midi-keyboard]]
 [[+usb-радио]]
 [[+Монитор]]
 [[+Мышь]]
