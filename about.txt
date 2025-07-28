@@ -30,4 +30,4 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 
 	{{../images/alexei_lupan.jpg?id=alexei_lupan&width=300}} 
 
-Обновлено: 
+Updated:  
