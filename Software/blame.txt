@@ -67,12 +67,12 @@ graphical.target @11.665s
 
 «systemd-timesyncd.service» точно //не надо// отключать.
 
-В принципе безопасно отключить штатный «''NetworkManager-wait-online.service''» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит восемь секунд. Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
+В принципе безопасно отключить штатный «''NetworkManager-wait-online.service''» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит от восьми до 120 секунд. Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
 
-''sudo systemctl status systemd-networkd-wait-online.service''
-''sudo systemctl stop systemd-networkd-wait-online.service''
-''sudo systemctl disable systemd-networkd-wait-online.service''
-''sudo systemctl mask systemd-networkd-wait-online.service''
+''sudo systemctl status NetworkManager-wait-online.service''
+''sudo systemctl stop NetworkManager-wait-online.service''
+''sudo systemctl disable NetworkManager-wait-online.service''
+''sudo systemctl mask NetworkManager-wait-online.service''
 
 Последняя команда делает сервису symlink в ''/dev/null'' Это нужно из-за того, что если стартап какого-то сервиса погашен, но его «попросит» другой сервис/процесс, то сервис всё равно будет загружен.
 
