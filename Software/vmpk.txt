@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-29T00:38:17+03:00
+
+====== vmpk ======
+
+[ @midi @keyboard @sound ]
+
+Простое midi-пианино, аналог [[fluidsynth]]
+
+VMPK — виртуальное пианино, умеет работать с MIDI-клавиатурами
+
+''sudo pacman -S vmpk''
+
+Запуск vmpk
+
+В Edit > MIDI Connections выбрать свою клавиатуру как Input, а fluidsynth как Output (если он запущен как отдельный синтезатор)

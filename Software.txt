@@ -22,6 +22,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+Cadence]]
 [[+Calibre]]
+[[+Carla]] /продвинутый синтезатор для midi-клавиатуры
 
 ===== D =====
 
@@ -42,6 +43,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Firefox]]
 [[+firewall]]
 [[+flatpak]]
+[[+fluidsynth]] /простой синтезатор для midi-клавиатуры
 [[+fsck]] /File System Consistency Check
 [[+FSearch]] /поиск файлов, графический
 [[+ftp]]
@@ -150,6 +152,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+v4l2]]
 [[+VLC]]
+[[+vmpk]] /пианино для midi-клавиатур
 [[+vpn]]
 [[+vsftpd]]
 
