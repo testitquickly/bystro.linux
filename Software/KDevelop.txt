@@ -6,3 +6,116 @@ Creation-Date: 2025-07-31T03:44:49+03:00
 
 [ @kde @development @ide ]
 
+Для инди-разработки это может быть избыточным, но можно подключить AI. Отдельный AI-ассистент принесёт  генерация/редактирование кода (эвристика, «умные» предложения), а связка LSP+pyright принесёт статический анализ (детерминированный, быстрый).
+
+Идеально использовать оба подхода, но сперва надо разобраться с LSP и pyright:
+
+* LSP (Language Server Protocol) — протокол между IDE и «языковым сервером». Даёт переход к определению, подсветку, рефакторинг, диагностику и т.п.
+* pyright — быстрый статический анализатор типов для Python от Microsoft, у него есть pyright-langserver (LSP-режим).
+
+==== Настройка pyright в KDevelop ====
+
+Установка через npm:
+
+''sudo apt install nodejs npm     # если нужно''
+''sudo npm i -g pyright''
+
+получишь pyright-langserver.
+
+(альтернатива) через pip:
+
+''pipx install pyright''
+
+В KDevelop включи плагин LSP Client. Settings → Configure KDevelop → Language Server → Add:
+
+		Command: pyright-langserver --stdio
+		File types: Python
+		(опционально) Root detection: по pyproject.toml, setup.cfg, requirements.txt.
+
+Перезапустить проект. Должны появиться подсказки по типам, ошибки совместимости, переходы, символы, быстрые фиксы.
+
+===== Варианты AI =====
+
+==== Терминал во вкладке + aider ====
+
+aider — CLI-ассистент, правит код.
+
+Установить:
+
+''pipx install aider-chat  # или: pip install --user aider-chat''
+
+Ключ модели (например, OpenAI/Anthropic/OpenRouter) в окружение:
+
+''export OPENAI_API_KEY=...''   # или соответствующий для провайдера
+
+В KDevelop включить встроенный терминал (Плагины → Terminal Tool View).
+
+В корне проекта запусти:
+
+'''
+aider .
+'''
+
+Дальше общаешься в терминале: “исправь X”, “добавь тест”. Aider сам делает правки и коммиты.
+
+==== «Фильтр через команду» ====
+
++ свой мини-скрипт с Ollama (локальные модели). Делает быструю проверку/подсказку по выделению кода.
+
+Поставить Ollama и какую-нибудь модель:
+
+''curl -fsSL'' [[https://ollama.com/install.sh|''https://ollama.com/install.sh'']] ''| sh''
+''ollama pull qwen2.5-coder:7b''
+
+Скрипт ~/bin/ai-review (делает код-ревью выделенного текста):
+
+{{{code: id="ai-review" lang="sh" linenumbers="True"
+#!/usr/bin/env bash
+set -euo pipefail
+MODEL="${MODEL:-qwen2.5-coder:7b}"
+input="$(cat)"
+prompt=$'Ты опытный Python-ревьюер. Дай короткие правки и причину.\n\n'"$input"
+ollama run "$MODEL" -p "$prompt"
+}}}
+
+Сделать его исполняемым
+
+''chmod +x ~/bin/ai-review''
+
+В KDevelop: Плагины → External Tools (включить) → Tools → External Tools → Configure…
+
+Добавь инструмент:
+
+Executable: ~/bin/ai-review
+Input: Selected text
+Output: Replace selected text (или Insert at cursor — как удобнее)
+Повесить горячую клавишу, например Alt+A.
+
+Выделяешь код → жмёшь хоткей → получаешь правки/советы от модели локально.
+
+==== «Однокнопочный» чат по файлу ====
+
+Сделать скрипт ~/bin/ai-ask (вопрос → ответ в отдельном документе):
+
+{{{code: id="ai-ask" lang="sh" linenumbers="True"
+#!/usr/bin/env bash
+set -euo pipefail
+MODEL="${MODEL:-qwen2.5-coder:7b}"
+question="${1:-Объясни, что делает этот код и предложи улучшения. Ответ кратко.}"
+input="$(cat)"
+prompt="$question
+
+=== Код ниже ===
+
+$input"
+ollama run "$MODEL" -p "$prompt"
+
+}}}
+
+Сделать его исполняемым
+
+''chmod +x ~/bin/ai-review''
+
+В принципе то же, что общение с chatGPT в браузере.
+
+В External Tools укажи Arguments: Объясни и предложи улучшения, Input: Selected text, Output: New document.
