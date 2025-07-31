@@ -125,23 +125,17 @@ ignore=venv,build,docs,migrations,tests,__pycache__
 
 ''pylint .''
 
-3. mypy — проверка типов (typing, pyright аналог)
+===== mypy =====
 
+Проверка типов (typing, pyright аналог)
 
-	Установка:
+Установить:
 
-pip install mypy
+''pipx install mypy''
 
-Запуск:
+Запустить в корне проекта:
 
-	mypy путь/к/файлу.py
-
-✅ Рекомендуемый стек линтинга (быстро и современно)
-
-pip install ruff mypy
-
-Проверить код:
-
+''mypy main.py''
 
 ===== anaconda =====
 
