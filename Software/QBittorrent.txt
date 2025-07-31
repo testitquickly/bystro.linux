@@ -6,7 +6,7 @@ Creation-Date: 2022-11-17T22:28:28+02:00
 
 [ @debian @qbittorrent @flatpak ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:QBittorrent]]
 

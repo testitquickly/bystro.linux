@@ -6,7 +6,7 @@ Creation-Date: 2022-02-22T13:23:46+02:00
 
 [ @mc @shortcuts ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Midnight Commander]]
 * [[Manjaro:Install:Midnight Commander]]

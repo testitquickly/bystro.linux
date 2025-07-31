@@ -18,7 +18,7 @@ Creation-Date: 2022-12-22T03:34:05+02:00
 * переход в полноэкранный режим > F11
 * переход в режим distracted free > Shift+F11
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Sublime]]
 * [[Manjaro:Install:Sublime]]

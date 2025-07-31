@@ -6,7 +6,7 @@ Creation-Date: 2024-09-14T19:42:36+03:00
 
 [ @search ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:FSearch]]
 * [[Manjaro:Install:FSearch]]

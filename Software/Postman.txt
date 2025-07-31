@@ -6,7 +6,7 @@ Creation-Date: 2024-10-15T13:58:41+03:00
 
 [ @postman ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Postman]]
 

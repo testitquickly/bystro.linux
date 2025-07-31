@@ -28,7 +28,7 @@ Creation-Date: 2025-06-19T01:28:54+03:00
 
 Официальный репозиторий: https://github.com/UKPLab/sentence-transformers
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Sentence Transformer]]
 

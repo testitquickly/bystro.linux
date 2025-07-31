@@ -6,7 +6,7 @@ Creation-Date: 2025-06-11T16:23:16+03:00
 
 [ @teamviewer ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:TeamViewer]]
 

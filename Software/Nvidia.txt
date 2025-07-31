@@ -6,7 +6,7 @@ Creation-Date: 2024-12-18T09:23:55+02:00
 
 [ @video @nvidia @drivers ]
 
-===== Установка =====
+===== Установить =====
 
 См. [[Debian:Install:Nvidia]]
 

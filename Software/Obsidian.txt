@@ -6,7 +6,7 @@ Creation-Date: 2024-10-07T12:53:17+03:00
 
 [ @obsidian @electron ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Obsidian]]
 

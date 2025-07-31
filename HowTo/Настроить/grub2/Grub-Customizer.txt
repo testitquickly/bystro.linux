@@ -8,7 +8,7 @@ Creation-Date: 2024-10-17T12:56:11+03:00
 
 Есть GUI-утилита для настройки содержимого grub. Ценность условная, но если хочется, то есть.
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Grub-Customizer]]
 * [[Manjaro:Install:Grub-Customizer]]

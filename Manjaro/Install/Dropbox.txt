@@ -8,11 +8,11 @@ Creation-Date: 2024-01-03T11:06:13+02:00
 
 https://www.dropbox.com/install
 
-Установка Dropbox через командную строку
+===== Установить =====
 
 ''cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -''
 
-После этого запустите демон Dropbox из вновь созданной папки .dropbox-dist.
+После этого запустить демон Dropbox из вновь созданной папки .dropbox-dist.
 
 ''~/.dropbox-dist/dropboxd''
 

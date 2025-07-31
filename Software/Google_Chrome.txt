@@ -6,7 +6,7 @@ Creation-Date: 2024-05-29T11:32:51+03:00
 
 [ @debian @settings @google_chrome ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Google Chrome]]
 

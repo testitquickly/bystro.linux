@@ -6,7 +6,7 @@ Creation-Date: 2024-12-03T22:55:01+02:00
 
 [ @davinciresolve @video ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:DaVinci Resolve]]
 * [[Manjaro:Install:DaVinci Resolve]]

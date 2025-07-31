@@ -10,7 +10,7 @@ Creation-Date: 2025-01-15T04:54:00+02:00
 
 	*todo Touchegg — дописать инструкцию
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Touchegg]]
 * [[Manjaro:Install:Touchegg]]

@@ -97,7 +97,7 @@ pdoc functions/ --output-dir docs; gio open docs/index.html
 
 Для крупных проектов. Прям сервер.
 
-Установка:
+Установить:
 
 ''pipx install sphinx sphinx-autodoc''
 

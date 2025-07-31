@@ -92,6 +92,7 @@ https://www.happyassassin.net/posts/2014/01/25/uefi-boot-how-does-that-actually-
 ''> Secure Roll Back Prevention = No''
 
 ==== Отключить TPM ====
+
 В компьютерах Lenovo установлен отдельный чип (иногда только его программное обеспечение), который отвечает за управление сертификатами и криптографией. Управление всем этим делом называется TPM (Trusted Platform Security), без неё Windows 11 работать не будет.
 
 Вкл/Выкл в разделе “TCG Feature Setup” (Trusted Computer Group?).
@@ -99,7 +100,6 @@ https://www.happyassassin.net/posts/2014/01/25/uefi-boot-how-does-that-actually-
 ''Security'' 
 ''> TCG Feature Setup''
 ''> Security Chip = Disabled''
-
 
 При этом отключается параметр “//Physical Presence for Clear//”.
 
@@ -145,6 +145,7 @@ https://www.happyassassin.net/posts/2014/01/25/uefi-boot-how-does-that-actually-
 ''> Fast Boot = Disabled''
 
 ==== Отключить «сон компьютера» ====
+
 Не принципиально, но можно. Если уже выключать компьютер, то полностью:
 
 ''Power'' 
@@ -154,6 +155,7 @@ https://www.happyassassin.net/posts/2014/01/25/uefi-boot-how-does-that-actually-
 F10 > Yes, ждём загрузку рабочего меню Debian с DVD.
 
 ===== Разметить диск для установки системы =====
+
 В “Debian Installer” на шаге «Разметка дисков» выбрать «Выполнить установку в UEFI = [Да]».
 
 Саму разметку дисков сделать вручную, особенно если их два. Сперва рекомендуется удалить с диска ВСЕ разделы, если таковые есть, особенно отдельный раздел на 1мб для BMR, и разметить всё с нуля.

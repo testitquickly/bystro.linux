@@ -6,7 +6,7 @@ Creation-Date: 2022-02-27T04:29:38+02:00
 
 [ @krusader @backup ]
 
-===== Установка =====
+===== Установить =====
 
 [[Debian:Install:Krusader]]
 

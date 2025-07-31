@@ -22,7 +22,7 @@ Creation-Date: 2022-10-31T22:15:43+02:00
 5. обзавестись действующим license key для соответствующей версии vmware
 6. https://customerconnect.vmware.com/downloads/info/slug/desktop_end_user_computing/vmware_workstation_pro/16_0 — скачать установочные файлы для Linux последней версии — файл типа ''*.bundle''
 
-===== Установка =====
+===== Установить =====
 
 Выдать установочному файлу права на выполнение
 

@@ -6,7 +6,7 @@ Creation-Date: 2024-09-05T11:24:21+03:00
 
 [ @openshot  ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:OpenShot]]
 

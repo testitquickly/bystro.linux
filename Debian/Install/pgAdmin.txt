@@ -8,7 +8,7 @@ Creation-Date: 2023-09-13T13:34:12+03:00
 
 Инструмент для работы с PostgresSQL. 
 
-===== Установка postgreSQL =====
+===== Установить postgreSQL =====
 
 Следовать https://wiki.postgresql.org/wiki/Apt но есть нюансы:
 	* это установка для debian bookworm

@@ -6,7 +6,7 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 [ @LaTeX ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:LaTeX]]
 * [[Manjaro:Install:LaTeX]]

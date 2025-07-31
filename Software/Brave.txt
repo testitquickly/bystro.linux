@@ -6,7 +6,7 @@ Creation-Date: 2022-02-27T03:29:14+02:00
 
 [ @brave @install ]
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Brave]]
 

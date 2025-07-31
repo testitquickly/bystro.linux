@@ -18,7 +18,7 @@ Creation-Date: 2024-09-14T19:07:12+03:00
 
 Документация — https://www.recoll.org/pages/documentation.html
 
-===== Установка =====
+===== Установить =====
 
 * [[Debian:Install:Recoll]]
 * [[Manjaro:Install:Recoll]]
