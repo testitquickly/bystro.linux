@@ -3,5 +3,26 @@ Wiki-Format: zim 0.6
 Creation-Date: 2025-07-31T06:56:12+03:00
 
 ====== aider ======
-Создан Четверг 31 июля 2025
 
+[ @ai ]
+
+Сперва установить консольную шняжку [[Ollama]]
+
+''pipx install aider-chat''
+
+Настроить ''aider'' на использование ''Ollama'':
+
+сделать ~/.aider.conf.json со следующим содержимым:
+
+''{''
+  ''"model": "ollama/llama3",''
+  ''"llm_tool": "ollama"''
+''}''
+
+Всё готово, если работает
+	
+	''aider --help'' 
+
+и ollama list показывает скачанную модель,
+
+и команда ''aider your_file.py'' запускает диалог с AI.
