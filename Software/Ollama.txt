@@ -1,0 +1,127 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-31T16:22:45+03:00
+
+====== Ollama ======
+
+[ @ai @ollama ]
+
+Ollama это утилита, которая управляет установкой и управлением множества LLM-моделей (ИИ) через управление llama.cpp — это библиотека, на которой основаны многие LLM-инструменты. Условный “LLM Docker”.
+
+Список доступных для ollama LLM — https://ollama.com/search
+
+Она проста в использовании: запускается одной командой, сама грузит модель и запускает её на локалке, и уже к её серверу нему подключаются утилиты вроде [[aider]].
+
+Учесть, что LLM резво работают на выделенных видеокартах, и медленно на CPU. Для проверки достаточно запустить старую ''llama3'', она хоть и бестолковая, но нетребовательная к ресурсам. 
+
+===== Установить =====
+
+* [[Debian:Install:Ollama]]
+
+===== Запуск LLM =====
+
+Скачать через ''Ollama'' бесплатную LLM-модель ''llama3'':
+
+''ollama run llama3''
+
+Вес модели от 4 до 8 ГБ. 
+
+Сразу после скачивания будет запущена интерактивная сессия (выход по ''Ctrl + D'' или команде ''/bye'') и поскольку это сервер, к которому мы подключается через ssh, произойдет обмен ключами доступа, которые следует сразу принять, и они будут сохранены в каталог ''~/.ollama'',
+
+В том же окно откроется сессия общения (''>>>''), в которой можно или задавать вопросы IRL, или вызывать управляющие команды:
+
+''/set            Set session variables''
+  ''/show           Show model information''
+  ''/load <model>   Load a session or model''
+  ''/save <model>   Save your current session''
+  ''/clear          Clear session context''
+  ''/bye            Exit''
+  ''/?, /help       Help for a command''
+  ''/? shortcuts    Help for keyboard shortcuts''
+
+''Use """ to begin a multi-line message.''
+
+''>>> /show''
+
+''Available Commands:''
+  ''/show info         Show details for this model''
+  ''/show license      Show model license''
+  ''/show modelfile    Show Modelfile for this model''
+  ''/show parameters   Show parameters for this model''
+  ''/show system       Show system message''
+  ''/show template     Show prompt template''
+
+Возраст бесплатной модели можно узнать через команду ''/show info''
+Пример ответа:
+
+''Model''
+	''architecture        llama''    
+	''parameters          8.0B''     (восемь миллиардов)
+	''context length      8192''     
+	''embedding length    4096''     
+	''quantization        Q4_0''     
+
+  ''Capabilities''
+	''completion''    
+
+  ''Parameters''
+	''num_keep    24''                       
+	''stop        "<|start_header_id|>"''    
+	''stop        "<|end_header_id|>"''      
+	''stop        "<|eot_id|>"''             
+
+  ''License''
+	''META LLAMA 3 COMMUNITY LICENSE AGREEMENT''             
+	''Meta Llama 3 Version Release Date: April 18, 2024''    
+	''...''    
+
+…это норм.
+
+===== Настройки =====
+
+ ''/set system''
+
+Например:
+
+//You are my Linux tutor. Today we gonna learn Linux commands. Your task is to name command and I have to guess what it used for. Prepare ten command names, ask one by one and then check answer.//
+
+Посмотреть текущий системный запрос:
+
+'''
+/show system
+'''
+
+===== Запросы по API =====
+
+По умолчанию Ollama ожидает запросов на порту 11434. 
+
+API чата совместим с OpenAI, поэтому URL для запроса будет выглядеть так:
+
+http://localhost:11434/api/v1/chat/completions
+
+Например, можно сделать запрос с помощью того же curl:
+
+''curl http://localhost:11434/v1/chat/completions -d '{''
+''"model": "gemma3:12b",''
+''"messages": [''
+''{''
+''"role": "user",''
+''"content": "Who created Linux kernel? Answer only name"''
+''}''
+''],''
+''"stream": false''
+''}' | json_pp''
+
+===== Удалить модель =====
+
+Посмотреть их список:
+
+''ollama list''
+
+Остановить службу ''Ollama'':
+
+''sudo systemctl disable ollama''
+
+Удалить определенную модель:
+
+''ollama rm llama3'' 

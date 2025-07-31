@@ -40,17 +40,13 @@ __Внутри__ запущенного вирт.окр.Python установи�
 * Instruct weights: These weights are for the model that have been fine-tuned and aligned to follow instructions. They can be used as-is in chat applications or further fine tuned and aligned for specific use cases
 * Trust and safety model: Our models offer a collection of specialized models tailored to specific development needs.
 
-
 Для начала смотрим простые модели. Для примера см. //Llama3.2-1B//
 
 ''llama download --source meta --model-id'' __''Llama3.2-1B''__
 
 Ожидаемый ответ: Please provide the signed URL for model Llama3.2-1B you received via email after visiting https://www.llama.com/llama-downloads/ (e.g., https://llama3-1.llamameta.net/*?Policy...):  — открыть почту, найти письмо с линком, вставить его в консоль. Не факт, что сразу всё сработает.
 
-
-
-
-python llama3.py
+''python3 llama3.py''
 
 Llama 3 успешно установлена и запущена на Linux.
 

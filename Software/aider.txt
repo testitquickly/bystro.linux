@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-31T06:56:12+03:00
+
+====== aider ======
+Создан Четверг 31 июля 2025
+

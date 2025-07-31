@@ -1,0 +1,93 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-31T16:28:45+03:00
+
+====== Ollama ======
+
+[ @debian @install @ai @ollama ]
+
+''curl -fsSL https://ollama.com/install.sh | sh''
+
+Вероятно, сервер Ollama будут запущен сразу же после установки. Проверить:
+
+''ps aux | grep ollama''
+
+или
+
+''sudo systemctl status ollama''
+
+Если да, то всё ок.
+
+Если нет, то запускать локальный сервер Ollama надо так:
+
+'''
+ollama serve
+'''
+
+===== Подавить сервис =====
+
+Отныне и впредь Ollama будет запускаться как сервис вместе с системой. В норме она занимает 40 Мб и вроде бы незаметна. Если надо вызывать её только по собственному запросу, сервис надо остановить и замаскировать
+
+1. ''sudo systemctl stop ollama.service''
+2. ''sudo systemctl disable ollama.service''
+3. ''sudo rm /etc/systemd/system/ollama.service''
+4. ''sudo systemctl mask ollama.service''
+
+Проверить состояние:
+
+''sudo systemctl status ollama''
+
+Отныне запускать Ollama только вручную через nohup, который отвязывает запуск команды от консоли:
+
+''nohup ollama serve > ~/.ollama/log.txt 2>&1 &''
+
+Если не нужен лог сервера:
+
+''nohup ollama serve > /dev/null 2>&1 &''
+
+Остановить:
+
+''pkill -f "ollama serve"'' 
+
+Есть смысл сделать на эти команды алиасы в ''.bashrc''
+
+===== Рабочие файлы =====
+
+Все запросы юзера сохраняются в файле ''~/.ollama/history''
+
+Проверить, какие модели уже скачаны через ''ollama'':
+
+''ollama list''
+
+Пример ответа:
+
+''NAME             ID              SIZE      MODIFIED''    
+''llama3:latest    365c0bd3c000    4.7 GB    9 hours ago''  
+
+===== Задать каталог сохранения моделей =====
+
+В принципе всё должно закачиваться в ''~/.ollama/models/blobs/'' 
+
+Там хранятся 
+* весовые файлы (.bin, .safetensors);
+* конфиги (config.json);
+* токенизаторы (tokenizer.json, merges.txt, vocab.json);
+* quant-файлы (gguf, ggml, и т.п.) — если модель используется с llama.cpp и его производными.
+
+В случае сбоя (нарочно или случайного) скачивание происходит через библиотеку Hugging Face Transformers, и файлы модели сохраняются в ''~/.cache/huggingface''
+
+Предположим, что все модели в ''Ollama'' надо хранить на другом диске.
+
+Переместить старую папку:
+
+''mv ~/.ollama/models /mnt/llms/''
+
+В профиле сделать симлинк на новое место:
+
+''ln -s /mnt/llms /.ollama''
+
+Чтобы сделать это постоянным, добавь строку в ~/.bashrc:
+
+''export OLLAMA_MODELS=/mnt/llms''
+
+См. [[Software:Ollama]]
