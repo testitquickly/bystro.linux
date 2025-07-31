@@ -13,18 +13,16 @@ Creation-Date: 2025-07-31T03:44:49+03:00
 * LSP (Language Server Protocol) — протокол между IDE и «языковым сервером». Даёт переход к определению, подсветку, рефакторинг, диагностику и т.п.
 * pyright — быстрый статический анализатор типов для Python от Microsoft, у него есть pyright-langserver (LSP-режим).
 
-==== Настройка pyright в KDevelop ====
+==== pyright ====
 
-Установка через npm:
+Установить pyright-langserver:
+
+''pipx install pyright''
+
+Или через npm:
 
 ''sudo apt install nodejs npm     # если нужно''
 ''sudo npm i -g pyright''
-
-получишь pyright-langserver.
-
-(альтернатива) через pip:
-
-''pipx install pyright''
 
 В KDevelop включи плагин LSP Client. Settings → Configure KDevelop → Language Server → Add:
 
@@ -36,27 +34,29 @@ Creation-Date: 2025-07-31T03:44:49+03:00
 
 ===== Варианты AI =====
 
-==== Терминал во вкладке + aider ====
+==== Терминал во вкладке +… ====
 
-aider — CLI-ассистент, правит код.
+Можно подключить внешнего помощника через AI консоль, например, cursor.sh, copilot-cli, ollama, aider. Что получится подключить, то и используешь. В идеале надо запустить и использовать AI локально. 
+
+aider — и ассистент, и правит код.
 
 Установить:
 
-''pipx install aider-chat  # или: pip install --user aider-chat''
+''pipx install aider-chat''
 
-Ключ модели (например, OpenAI/Anthropic/OpenRouter) в окружение:
+Добавить api-ключ модели (например, OpenAI/Anthropic/OpenRouter) в окружение:
 
 ''export OPENAI_API_KEY=...''   # или соответствующий для провайдера
 
 В KDevelop включить встроенный терминал (Плагины → Terminal Tool View).
 
-В корне проекта запусти:
+В корне проекта запустить:
 
 '''
 aider .
 '''
 
-Дальше общаешься в терминале: “исправь X”, “добавь тест”. Aider сам делает правки и коммиты.
+Дальше общаешься в терминале: “исправь это”, “добавь тест”… Aider сам делает правки и коммиты.
 
 ==== «Фильтр через команду» ====
 
