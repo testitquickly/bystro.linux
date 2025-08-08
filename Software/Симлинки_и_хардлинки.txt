@@ -227,7 +227,7 @@ Symbolic link, он же сокращённо «symlink» — это ссылк
 ''df --output=target | tail -n +2 | while read -r mountpoint; do''
 	''echo "Проверка в: $mountpoint"''
 	''result=$(find "$mountpoint" -inum 32506352 -print -quit 2>/dev/null)''
-	''if'' [[ -n "$result" | ''-n "$result"'' ]]''; then''
+	''if''  ''-n "$result"'' ''; then''
 		''stat "$result"''
 		''break''
 	''fi''
