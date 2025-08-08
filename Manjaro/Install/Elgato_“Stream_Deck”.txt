@@ -125,7 +125,11 @@ Creation-Date: 2023-11-20T15:50:50+02:00
 
 Откроется это:
 
-{{./StreamDeckUI_initial.jpg}}
+{{../../../images/StreamDeckUI_initial.jpg}}
+
+Позже, после полной настройки, все должно выглядеть как-то так:
+
+{{../../../images/StreamDeckUI_done.jpg}}
 
 Выключать это приложение не следует.
 

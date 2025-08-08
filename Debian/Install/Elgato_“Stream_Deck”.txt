@@ -140,11 +140,11 @@ Creation-Date: 2023-11-20T15:49:56+02:00
 
 Откроется это:
 
-{{./StreamDeckUI_initial.jpg}}
+{{../../../images/StreamDeckUI_initial.jpg}}
 
 Позже, после полной настройки, будет открываться нечто подобное:
 
-{{./StreamDeckUI_done.jpg}}
+{{../../../images/StreamDeckUI_done.jpg}}
 
 Выключать это приложение не следует.
 
