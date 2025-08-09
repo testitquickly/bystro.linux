@@ -188,34 +188,36 @@ PATH=/home/hdd/LaTeX/bin/i386-linux:$PATH
 
 Вставить в файл этот текст:
 
-''selected_scheme scheme-full''
-''TEXDIR /home/hdd/LaTeX''
-''TEXMFLOCAL /home/hdd/LaTeX/texmf-local''
-''TEXMFSYSCONFIG /home/hdd/LaTeX/texmf-config''
-''TEXMFSYSVAR /home/hdd/LaTeX/texmf-var''
-''TEXMFCONFIG'' ''/home/hdd/LaTeX/.LaTeX_Settings/texmf-config''
-''TEXMFHOME'' ''/home/hdd/LaTeX/.LaTeX_Settings/texmf''
-''TEXMFVAR'' ''/home/hdd/LaTeX/.LaTeX_Settings/texmf-var''
-''binary_x86_64-linux 1''
-''instopt_adjustpath 0''
-''instopt_adjustrepo 1''
-''instopt_letter 0''
-''instopt_portable 0''
-''instopt_write18_restricted 1''
-''tlpdbopt_autobackup 1''
-''tlpdbopt_backupdir tlpkg/backups''
-''tlpdbopt_create_formats 1''
-''tlpdbopt_desktop_integration 1''
-''tlpdbopt_file_assocs 1''
-''tlpdbopt_generate_updmap 0''
-''tlpdbopt_install_docfiles 1''
-''tlpdbopt_install_srcfiles 1''
-''tlpdbopt_post_code 1''
-''tlpdbopt_sys_bin /usr/local/bin''
-''tlpdbopt_sys_info /usr/local/share/info''
-''tlpdbopt_sys_man /usr/local/share/man''
-''tlpdbopt_w32_multi_user 1''
-    
+{{{code: id="installation.profile" lang="texinfo" linenumbers="True"
+selected_scheme scheme-full
+TEXDIR /home/hdd/LaTeX
+TEXMFLOCAL /home/hdd/LaTeX/texmf-local
+TEXMFSYSCONFIG /home/hdd/LaTeX/texmf-config
+TEXMFSYSVAR /home/hdd/LaTeX/texmf-var
+TEXMFCONFIG /home/hdd/LaTeX/.LaTeX_Settings/texmf-config
+TEXMFHOME /home/hdd/LaTeX/.LaTeX_Settings/texmf
+TEXMFVAR /home/hdd/LaTeX/.LaTeX_Settings/texmf-var
+binary_x86_64-linux 1
+instopt_adjustpath 0
+instopt_adjustrepo 1
+instopt_letter 0
+instopt_portable 0
+instopt_write18_restricted 1
+tlpdbopt_autobackup 1
+tlpdbopt_backupdir tlpkg/backups
+tlpdbopt_create_formats 1
+tlpdbopt_desktop_integration 1
+tlpdbopt_file_assocs 1
+tlpdbopt_generate_updmap 0
+tlpdbopt_install_docfiles 1
+tlpdbopt_install_srcfiles 1
+tlpdbopt_post_code 1
+tlpdbopt_sys_bin /usr/local/bin
+tlpdbopt_sys_info /usr/local/share/info
+tlpdbopt_sys_man /usr/local/share/man
+tlpdbopt_w32_multi_user 1
+}}}
+   
 Первая строка просто указывает «Установить сразу всё-всё-всё-всё!».
 
 Дальше указаны каталоги для хранения персональных настроек LaTeX:
