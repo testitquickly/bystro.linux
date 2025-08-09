@@ -4,13 +4,13 @@ Creation-Date: 2025-07-30T13:50:15+03:00
 
 ====== IDE ======
 
-[ @python @development @ide ]
+[ @python @development @ide @vscode @pyCharm @KDevelop @eric @eclipse @sublime @kate @vim ]
 
 Интегрированная среда разработки — IDE.
 
-* **VS Code**
+* [[VS Code]]
 
-Она же «Visual Studio Code», легковесная IDE от Microsoft, не путать со здоровенной «Visual Studio». Free and built on open source. Integrated Git, ИИ (по-умолчанию github “Copilot”, даже сам). Очень много плагинов. И оооочень много интеграции с внешними ресурсами. В базе работает незаметно-шустро, но если перевесить плагинами, то будет тяжко — работает на Electron.
+Она же «Visual Studio Code», легковесная IDE от Microsoft, не путать со здоровенной «Visual Studio». Free and built on open source. Integrated Git, ИИ (по-умолчанию github “Copilot”, даже сам). Очень много плагинов. И оооочень много интеграции с внешними ресурсами. В управлении и настройках наследует подход Sublime. В базе работает незаметно-шустро, но если перевесить плагинами, то будет тяжко — работает на Electron.
 
 * **PyCharm**
 
@@ -26,7 +26,7 @@ IDE от JetBrains. На Java. Есть PyCharm Community (бесплатное)
 
 * **Eclipse**
 
-Древняя тема, на Java, но работает. Ресурсожрателен. Сегодня смотрится странно, а когда-то был стандартом.
+Древняя тема, на Java, но работает. Настроек больше, чем параметров в обозримой вселенной. Ресурсожрателен. Сегодня смотрится странно, а когда-то был стандартом.
 
 * [[Sublime]]
 

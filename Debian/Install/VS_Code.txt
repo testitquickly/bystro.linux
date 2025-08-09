@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-08T16:24:58+03:00
+
+====== VS Code ======
+
+[ @debian @install @vscode @microsoft @electron ]
+
+https://code.visualstudio.com/Download — снять файл ''*.deb'' (у него может быть неординарное название).
+
+Установка через 
+
+''sudo dpkg -i *.deb''
+
+См. [[Software:VS Code]]

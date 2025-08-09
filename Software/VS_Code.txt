@@ -1,0 +1,147 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-08T15:52:17+03:00
+
+====== VS Code ======
+
+[ @ide @microsoft @electron @keyboard ]
+
+===== Установить =====
+
+* [[Debian:Install:VS Code]]
+
+===== Базовые настройки =====
+
+Выполняются при установке. Если нужен GitHub Copilot, то его сперва надо настроить в своем профиле на github.com
+
+Настроек ОЧЕНЬ много. Большинство управляются как в [[Sublime]] через вызов палитры команд по ''Ctrl+Shift+P'' и наборе нужной настройки словами, например:
+
+''> Preferences: Open Keyboard Shortcuts (JSON)''
+
+Из Sublime в VS Code даже можно импортировать настройки чуть менее, чем полностью.
+
+===== Плагины =====
+
+Устанавливаются в разделе Extensions — в левом меню. 
+
+Безусловно нужные
+
+* GitHistory
+* GitGraph
+* Python
+* Pylance (подсказки кода, анализ кода…)
+* Python Debugger
+* Python Environments
+* Ruff (строгий линтер с auto-fix)
+
+Прочие
+
+* Github Copilot Chat
+* Github Copilot
+* Playwright Test for VSCode
+* GitLens
+
+Github Copilot надо сперва включить и настроить на https://github.com/settings/copilot/features затем уже добавлять его в VS Code. Можно постоянно отслеживать расход ресурсов Copilot в статус-баре в нижней части окна. 
+
+GitLens расширяется до платной версии и делает много полезного в корпоративной разработке, когда в проект постоянно прилетают изменения. Для индивидуальных индивидуалов он избыточен.
+
+===== Коммиты в git =====
+
+Надо привыкнуть к тому, что в VS Code нельзя напрямую выбрать отдельный файл из списка измененных и сделать с ним коммит. Сперва надо в ''Source control > CHANGES'' добавить нужный файл (или несколько) из списка измененных в Stage changes через всплывающую кнопку [+] поверх имени файла под курсором.
+
+Затем написать комментарий и засабмитить изменения. Revert я не нашел, но в консоли можно делать вообще всё, что может понадобится. 
+
+Push находится в
+
+''Source control > CHANGES > … >''
+
+или в
+
+''Source control > GRAPH'' по кнопке [Push].
+
+Список всех коммитов см. ''Source control > GRAPH'' по всплывающей кнопке [View Git Graph].
+
+===== Начинать отладку с main.py =====
+
+В разделе Run and Debug клик по шестеренке (Open launch.json). Это файл в каталоге проекта:
+
+''/.vscode/launch.json''
+
+Указать настройки:
+
+{{{code: id="launch" lang="json" linenumbers="True"
+{
+	"configurations": [
+		{
+			"name": "main.py",
+			"type": "debugpy",
+			"request": "launch",
+			"program": "${workspaceFolder}/main.py"
+		}
+	]
+	}	
+}}}
+
+Теперь неважно, какой файл открыт и в фокусе — выполнение начнется с файла ''main.py''
+
+===== Настроить перетаскивание строки по Ctrl+Up/Down =====
+
+В VS Code по умолчанию строки кода перемещаются Alt+Up/Down. Я привык к Ctrl+Up/Down.
+
+Открыть палитру команд: Ctrl+Shift+P
+
+''> Preferences: Open Keyboard Shortcuts (JSON)''
+
+Вставить:
+
+{{{code: id="move_lines" lang="json" linenumbers="True"
+ [
+ 	{
+        "key": "ctrl+up",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "alt+up",
+        "command": "-editor.action.moveLinesUpAction"
+    },
+    {
+        "key": "alt+down",
+        "command": "-editor.action.moveLinesDownAction"
+    }
+]
+}}}
+
+Команда "''-editor.action.moveLinesUpAction''" отменяет глобальное назначение передвижения строки по alt+Up/Down.
+
+===== Назначить горячие клавиши =====
+
+* Ctrl+1 — запуск отладки
+* Esc — остановка отладки
+
+Открыть палитру команд: Ctrl+Shift+P
+
+''> Preferences: Open Keyboard Shortcuts (JSON)''
+
+Откроется файл ''~/.config/Code/User/keybindings.json''
+
+Добавить сочетания клавиш
+
+{{{code: id="hotkeys_debug" lang="json" linenumbers="True"
+[
+	{
+		"key": "ctrl+1",
+		"command": "workbench.action.debug.start"
+	},
+	{
+		"key": "escape",
+		"command": "workbench.action.debug.stop"
+	}
+]
+}}}
+
