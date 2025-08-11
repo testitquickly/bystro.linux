@@ -1,0 +1,54 @@
+digraph СистемноеМышление {
+	rankdir=TB; // направление раскладки графа: T — top (сверху), B — bottom (снизу)
+	bgcolor="#1b1e20"; // Фон всей диаграммы — тёмно-серый
+
+	// Заголовок: отдельный узел с особым рангом "source"
+	title [label="Дума сэнсэя Иванова", shape=plaintext, fontsize=22, color="#b2b2b2", fontcolor="#b2b2b2"];
+	// Невидимые узлы слева и справа для центрирования заголовка
+	left [label="", style=invis];
+	right [label="", style=invis];
+	// Чтобы все три были на одном уровне (ранге) — заголовок центрируется между ними
+	{ rank=source; left; title; right; }
+
+	// Настройки узлов
+	node [
+		fontcolor="#b2b2b2" // цвет текста и рамок (светло-серый)
+		color="#b2b2b2" // цвет рамок (границ) узлов
+		style=filled // стиль заливки узла — залить цветом из fillcolor
+		fillcolor="#1b1e20" // фон узлов — тёмно-серый
+		fontname="Ysabeau"
+		fontsize="16"
+	];
+
+	// Настройки рёбер
+	edge [
+		arrowhead=open // глобальный тип стрелок https://graphviz.org/docs/attr-types/arrowType/
+		color="#b2b2b2" // цвет линий и шрифта (светло-серый)
+		fontname="Ysabeau"
+		fontsize="16"
+	];
+
+	// нельзя сразу объявлять и соединять узлы, как в Mermaid
+	// надо сперва расписать все сущности
+	S [shape=parallelogram, label="Происходит жизнь"] // S = Start
+	id1 [label="Самурай всё понимает", comment="I am node id1"];
+	id2 [shape=box, label="Невод закинут в море"];
+	rybka [shape=egg, label="Мерзнет пингвин"];
+	E [shape=note, label="Разговор исчерпан"]; // E  End
+	biblioteka [shape=plaintext, label="Понял в тишине библиотеки"];
+	как_думать [shape=underline, label="Самурай без меча"];
+	gameOver [shape=plaintext, label="Демоны спёрли дыхание"];
+	bookIsClosed [shape=folder, label="Книга недолго открыта"];
+	listOfEvents [label="• Некуда спешить\n• Не о чём думать\n• Начинается дождь", fontsize=12, fontcolor="Pink", color="DarkOrange"];
+	
+	S -> id1;
+	id1 -> id2 [arrowhead=tee]; // чтобы задать стиль отдельной стрелке, ноды одного пути надо разнести "две отдельно"
+	id2 -> rybka -> listOfEvents -> E;
+	
+	// затем их соединять в самых причудливых сочетаниях
+	как_думать -> biblioteka [label=<<font color="yellow" point-size="13">Спросил у <i>ясеня</i></font>>];
+	biblioteka -> listOfEvents;
+	
+	listOfEvents -> gameOver -> bookIsClosed;
+	
+}
