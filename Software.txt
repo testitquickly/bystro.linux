@@ -26,8 +26,8 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== D =====
 
-[[+DaVinci Resolve]]
-[[+Docker]]
+[[+DaVinci Resolve]] /видеоредактор
+[[+Docker]] /контейнеровоз
 [[+Dropbox]]
 [[+du]] /disk usage
 
@@ -53,11 +53,11 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+git]]
 [[+Google Chrome]]
 [[+GPG]]
-[[+GraphViz]]
+[[+GraphViz]] /диаграммы из markdown
 
 ===== J =====
 
-[[+JACK (audio interface)]]
+[[+JACK]] /аудиоинтерфейс
 
 ===== K =====
 
