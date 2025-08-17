@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-17T18:29:21+03:00
+
+====== Taskwarrior ======
+
+[ @debian @install @taskwarrior ]
+
+''sudo apt install taskwarrior''
+
+Для ориентировки, в репозитории Debian сейчас tw ver. ''2.6.2''. В релизах на GitHub tw ver. ''3.4.1'' — https://github.com/GothenburgBitFactory/taskwarrior/releases
+
+Можно забрать всё через git и собрать самостоятельно:
+
+{{{code: id="build_taskwarrior" lang="sh" linenumbers="True"
+$ ls
+task-3.4.1.tar.gz
+$ tar xzvf task-3.4.1.tar.gz
+$ cd task-3.4.1
+$ cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+$ cmake --build build
+...
+...
+$ sudo cmake --install build
+}}}
+
+Не факт, что запустится в Debian Stable без открытия бэкпортов.
+
+При переходе на новую версию (от ''2'' к ''3'') надо сперва экспортировать свою базу задач, удалить софт, поставить новую версию и импортировать базу обратно.
+
+Вся работа будет проходить в каталоге ''~/.task'', который надо удалить руками после удаления tw. 
+
+См. [[Software:Списки задач:Taskwarrior]]

@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-17T17:47:41+03:00
+
+====== Списки задач ======
+
+[ @console @todolist @task @tracker @taskwarrior  ]
+
+Есть много таск-трекеров, которые работают в браузере. Это всё можно делать и в консоли. 
+
+[[+ToDo в консоли]]
+[[+Taskwarrior]]

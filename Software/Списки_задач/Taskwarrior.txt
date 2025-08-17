@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-17T17:50:08+03:00
+
+====== Taskwarrior ======
+
+[ @console @todolist @taskwarrior ]
+
+Открытый софт для управления списком дел в консоли. Умеет очень много всякого, но основан на простых принципах. Unicode.
+
+Рекомендуется дополнить его [[https://github.com/kdheepak/taskwarrior-tui|Terminal User Interface]] (TUI), который приносит удобности: зрительную навигацию по списку задач, фильтры, выбор отдельных задач и цветную раскраску.
+
+Есть синхронизация с Trello и Google Tasks & Calendar, iOS Reminders, Obsidian, Docker и др — https://taskwarrior.org/tools/ 
+
+===== Установить =====
+
+* [[Debian:Install:Taskwarrior]]
+
+===== Основные команды =====
+
+* ''task'' — вывод списка (таблицы) задач
+* ''task add Pay the bills''
+* ''task add project:Home Pay the bills'' 
+* ''task add project:Home Pay the bills +money''
+* ''task add project:Home Pay the bills +money due:2016-11-08''
+* ''task add project:Home Pay the bills +money due:2016-11-08 scheduled:2016-11-04''
+* ''task 1 modify due:Friday''
+* ''task 1 done''
+* ''task 1 delete''
+* ''task help''
+
+Все команды https://taskwarrior.org/docs/commands/ 
+
+===== Сложные символы =====
+
+Все эти символы 
+
+''$ ! ‘ “ ( ) ; \ ` * ? { } [ ] < > | & % # ~''
+
+надо экранировать обратным слэшем:
+
+''task add John\’s birthday''
