@@ -31,13 +31,13 @@ digraph СистемноеМышление {
 	// нельзя сразу объявлять и соединять узлы, как в Mermaid
 	// надо сперва расписать все сущности
 	
-	// форму каждого узла можно задать отдельно: id2 [shape=box, label="Невод закинут в море"];
+	// можно задать отдельно форму каждому узлу: id2 [shape=box, label="Невод закинут в море"];
 	// а можно их группировать 
 	node [shape=octagon];
 	S [label="Происходит жизнь"] // S = Start
 	E [label="Разговор исчерпан"]; // E  End
 		
-	node [shape=none];
+	node [shape=proteasesite];
 	сила_воли [label=<<s>Сила Воли</s>>]
 	принуждение [label=<<s>Принуждение</s>>];
 	проверка_боем [label="проверка боем", shape=box];
@@ -47,19 +47,19 @@ digraph СистемноеМышление {
 	id2 [label="Невод закинут в море"];
 	rybka [label="Мерзнет пингвин"];
 	biblioteka [shape=plaintext, label="Понял в тишине библиотеки"];
+	bookIsClosed [label="Книга недолго открыта"];
 	
 	node [shape=underline];
 	как_думать [label="Самурай без меча"];
 	gameOver [label="Демоны спёрли дыхание"];
-	bookIsClosed [label="Книга недолго открыта"];
 	listOfEvents [label="• Некуда спешить\n• Не о чём думать\n• Начинается дождь", fontsize=12, fontcolor="Coral", color="DarkOrange"];
 	
 	// затем узлы можно соединять в самых причудливых сочетаниях
-
+	
 	сила_воли -> S;
 	принуждение -> S;
 	проверка_боем -> S;
-
+	
 	как_думать -> biblioteka [label=<<font color="yellow" point-size="13">Спросил у <i>ясеня</i></font>>];
 	biblioteka -> listOfEvents;
 

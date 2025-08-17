@@ -1,0 +1,26 @@
+digraph ImpactGraph {
+	// Настройки узлов
+	node [shape=box, style=filled, color=lightblue, fontname="Arial"];
+	edge [fontname="Arial", fontsize=10, color=gray];
+
+	// Пример узлов и зависимостей
+	Invoice -> Payment [label="depends"];
+	Invoice -> DB [label="updates"];
+	Payment -> DB [label="reads/writes"];
+	Invoice -> Customer [label="notifies"];
+	Customer -> NotificationService [label="triggers"];
+
+	// Можно добавить группировки
+	subgraph cluster_db {
+		label="Database";
+		DB;
+		Payment;
+	}
+
+	subgraph cluster_services {
+		label="Services";
+		Invoice;
+		NotificationService;
+		Customer;
+	}
+}

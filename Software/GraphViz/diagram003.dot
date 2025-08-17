@@ -1,0 +1,5 @@
+// graphviz -Kneato
+graph G {
+	A -- B;
+	B -- C;
+}

@@ -1,0 +1,37 @@
+digraph G {
+	rankdir=TB; // направление раскладки графа: T — top (сверху), B — bottom (снизу)
+	bgcolor="#1b1e20"; // Фон всей диаграммы — тёмно-серый
+
+	// Настройки всех узлов
+	node [
+		fontcolor="#b2b2b2" // цвет текста и рамок (светло-серый) https://graphviz.org/doc/info/colors.html
+		color="#b2b2b2" // цвет рамок (границ) узлов
+		fillcolor="#1b1e20" // фон узлов — тёмно-серый
+		style=filled // стиль заливки узла — залить цветом из fillcolor
+		fontname="Ysabeau"
+		fontsize="16"
+	];
+
+	// Настройки всех рёбер
+	edge [
+		arrowhead=open // глобальный тип стрелок https://graphviz.org/docs/attr-types/arrowType/
+		color="#b2b2b2" // цвет линий и шрифта (светло-серый)
+		fontname="Ysabeau"
+		fontsize="16"
+	];
+	
+    subgraph cluster_Rassuzhdenie {
+        label = <<font point-size="16" color="Gold">Рассуждение</font>>;
+        color = "lightgrey";
+        style = "rounded";
+
+	// фиктивный узел для связей
+        invisible [shape=point, label="", style=invis, width=0];
+        Обзор -> Повторяемость;
+        Повторяемость -> Обзор;
+        Повторяемость -> Содрать_пластырь;
+        Содрать_пластырь -> Повторяемость;
+    }
+
+    Дискомфорт -> invisible [lhead=cluster_Rassuzhdenie, minlen=3];
+}
