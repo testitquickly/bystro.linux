@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-18T01:02:48+03:00
+
+====== Todoman ======
+
+[ @debian @install @todoman ]
+
+''sudo apt install todoman''
+
+И сразу надо сконфигурировать
+
+''mkdir -p ~/.todoman; mkdir -p ~/.config/todoman; mcedit ~/.config/todoman/config.py''
+
+Вставить это:
+
+{{{code: id="mantodo_config" lang="sh" linenumbers="True"
+path = "~/.todoman/*"
+# path = "~/my_calendars/*"
+date_format = "%Y-%m-%d"
+time_format = "%H:%M"
+default_list = "Personal"
+default_due = 24
+}}}
+
+path указывает на папку с подкаталогами-списками, где каждый подкаталог = отдельный список задач, поэтому:
+
+''mkdir -p ~/.todoman/Personal''
+
+В консоли добавить новую задачу
+
+''todoman new 'qwe'''
+
+Ожидаемый ответ:
+
+''[] 1  2025-08-20 01:23 Забрать котэ @Personal''
+
+В каталоге ''~/.todoman/Personal'' появится новый файл ''*.ics''
+
+См. [[Software:Списки задач:Todoman]]
