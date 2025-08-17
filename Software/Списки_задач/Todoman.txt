@@ -8,7 +8,9 @@ Creation-Date: 2025-08-18T00:52:12+03:00
 
 Младший брат [[Taskwarrior]], написан на [[Python]]
 
-Все задачи сохраняются в отдельных файлах iCalendar, что позволяет синхронизировать их с другими компьютерами по протоколу CalDAV, например, через ''vdirsyncer''. Каждый список задач представлено отдельным каталогом.
+Все задачи сохраняются в отдельных файлах iCalendar, что позволяет синхронизировать их с другими компьютерами по протоколу CalDAV, например, через ''vdirsyncer''. 
+
+Каждый список задач представлен отдельным каталогом внутри основного каталога (см. конфиг при установке). Нужен новый список — сперва вручную сделать новый подкаталог с соответствующим названием.
 
 ===== Установить =====
 
@@ -16,18 +18,17 @@ Creation-Date: 2025-08-18T00:52:12+03:00
 
 ===== Основные команды =====
 
-todoman list [OPTIONS] [LISTS]...
-todoman new [OPTIONS] [SUMMARY]...
-todoman cancel [OPTIONS] TODOS...
-todoman copy [OPTIONS] IDS...
-todoman delete [OPTIONS] IDS...
-todoman done [OPTIONS] TODOS...
-todoman edit [OPTIONS] ID
-todoman flush [OPTIONS] - Delete done tasks. This will also clear the cache to reset task IDs.
-todoman move [OPTIONS] IDS...
-todoman show [OPTIONS] ID
+todoman или todoman list — вывод списка задач
+todoman new 
+todoman cancel
+todoman copy
+todoman delete
+todoman done
+todoman edit
+todoman flush — удаляет выполненные задачи, чистит кэш и сбрасывает task IDs.
+todoman move
 todo list --sort due,-priority
-The tasks can be sorted with the --sort argument. Sorting may be done according to the following fields:
+Опции сортировки задач:
 	description
 	location
 	status
