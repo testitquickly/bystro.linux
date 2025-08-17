@@ -307,7 +307,14 @@ subgraph cluster_Рассуждение {
 ''node [shape=box, style=filled, fontname="Arial", fontsize=12, color=lightblue];''
 ''edge [fontname="Arial", fontsize=10, color=gray];''
 
-Тогда их «заход» в область кластера будет восприниматься лучше.
+Или для тёмной темы:
+
+'''
+node [color="#b2b2b2"];
+edge [color="#535353"];
+'''
+	
+Тогда «заход» стрелки в область кластера не воспринимается как «наезд».
 
 == «Невидимый» узел ==
 
