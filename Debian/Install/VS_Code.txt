@@ -6,6 +6,76 @@ Creation-Date: 2025-08-08T16:24:58+03:00
 
 [ @debian @install @vscode @microsoft @electron ]
 
+===== VSCodium =====
+
+Следуем https://vscodium.com/#install-on-debian-ubuntu-deb-package
+
+==== Добавить GPG key репозитория ====
+
+''wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg''
+
+==== Добавить репозиторий ====
+
+Debian 12:
+
+''echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list''
+
+Debian 13:
+
+''echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources && sudo apt update && sudo apt install codium''
+
+==== Переезд профиля ====
+
+См. https://github.com/VSCodium/vscodium/blob/master/docs/migration.md#manual-migration
+
+=== Расширения ===
+
+Скопировать все файлы из 
+
+''~/.vscode/extensions'' 
+
+в
+
+''~/.vscode-oss/extensions''
+
+Файлы подхватятся, но не факт, что будут полностью работоспособны, некоторые (например, Pylance и Python Environments) могут объявить себя «This extension is no longer available on the Extension Marketplace». Можно:
+
+* взять опен-соурсные аналоги нужных расширений не из VSCodium > EXTENSIONS: MARKETPLACE, а с https://open-vsx.org — там они в формате vsix
+* вместо проприетарного ''ms-python'' и вместо него поставить [[https://open-vsx.org/extension/ms-python/python|ms-python]] published by Open-VSX, 
+	* внизу справа найти кнопку [Download]
+	* скачать файл ''*.vsix''
+	* установить его через VSCodium > Extensions > кнопку с тремя точками (...) > Install from VSIX... > выбрать ''*.vsix'' файл.
+* вместо ''Pylance'' можно взять [[https://open-vsx.org/extension/ms-pyright/pyright|Pyright]] в формате vsix — это тот же движок, на котором построен Pylance, и тоже выпущен Microsoft, но в open-source виде. Без него не будет перехода в модули по клику по имени и ряд других возможностей.
+* линтер и форматтер [[https://open-vsx.org/extension/charliermarsh/ruff|Ruff]]
+* и еще VSCodium нужен [[https://open-vsx.org/extension/teticio/python-envy|Python Envy]] для автоматизации запуска виртуального окружения Python
+
+Рекомендуется перезапустить VSCodium после установки всех нужных расширений.
+
+Возможно, будут полезны:
+
+* Black Formatter (если не устроит Ruff)
+* Dependi
+* Markdown Table Formatter
+* Mermaid Chart
+* Ollama Autocoder
+* Comment Box
+* Better Comments Next
+* Commit Message Formatter
+
+=== Настройки ===
+
+Перетащить файлы из 
+
+''~/.config/Code/User''
+
+в 
+
+''~/.config/VSCodium/User''
+
+Через GUI: в Visual Studio Code открыть Settings (Meta+,) клик по ... и выбрать 'Open settings.json'. Скопировать содержимое settings.json в аналогичный файл в VSCodium.
+
+===== VS Code =====
+
 https://code.visualstudio.com/Download — снять файл ''*.deb'' (у него может быть неординарное название).
 
 Установка через 

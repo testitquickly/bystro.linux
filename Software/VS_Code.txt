@@ -8,7 +8,7 @@ Creation-Date: 2025-08-08T15:52:17+03:00
 
 Это IDE от Microsoft, полностью называется Visual Studio Code. Задумана как облегченная версия Visual Studio. Бесплатная, платными могут быть расширения. Кроссплатформенная, потому что внутри Electron.
 
-Есть её форк VSCodium — https://vscodium.com/ — полностью открытый исходный код, убрана встроенная телеметрия и сбор данных, интерфейс и функционал почти идентичны VS Code (IntelliSense, отладка, git, терминал), есть поддержка всех расширений из “VS Code Marketplace”. [[https://github.com/VSCodium/vscodium/blob/master/docs/migration.md#manual-migration|Миграция]] профиля на VSCodium выполняется вручную.
+Есть её форк VSCodium — https://vscodium.com/ — полностью открытый исходный код, [[https://github.com/VSCodium/vscodium/blob/master/docs/telemetry.md|частично]] убрана встроенная телеметрия и сбор данных (за расширениями надо следить самостоятельно; github тоже обвешан телеметрией), интерфейс и функционал почти идентичны VS Code (IntelliSense, отладка, git, терминал), есть поддержка всех расширений из “VS Code Marketplace”. [[https://github.com/VSCodium/vscodium/blob/master/docs/migration.md#manual-migration|Миграция]] профиля на VSCodium выполняется вручную.
 
 ===== Установить =====
 
@@ -39,6 +39,8 @@ Creation-Date: 2025-08-08T15:52:17+03:00
 * Ruff (строгий линтер)
 * GitGraph
 * GitHistory
+* Open Remote - SSH
+* Continue ([[Common:LLM:Подключить к IDE локальный LLM]])
 
 Прочие
 
@@ -324,4 +326,4 @@ done
 
 ===== Подключить локальный LLM =====
 
-См. [[HowTo:Сделать:Подключить к IDE локальный LLM]]
+См. [[Common:LLM:Подключить к IDE локальный LLM]]
