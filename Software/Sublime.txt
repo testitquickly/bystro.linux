@@ -192,4 +192,4 @@ Preferences
 
 ===== Python =====
 
-[[Python:Как сделать Python-проект в Sublime]]
+[[+Как сделать Python-проект в Sublime]]
