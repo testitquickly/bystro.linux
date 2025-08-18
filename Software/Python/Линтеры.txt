@@ -139,4 +139,4 @@ ignore=venv,build,docs,migrations,tests,__pycache__
 
 ===== anaconda =====
 
-Был популярным плагином для Sublime Text (см. [[Как сделать Python-проект в Sublime]]). Заброшен и не обновляется. 
+Был популярным плагином для Sublime Text (см. [[Sublime:Как сделать Python-проект в Sublime]]). Заброшен и не обновляется. 
