@@ -1,0 +1,148 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-13T04:06:33+03:00
+
+====== Передать сообщение другому юзеру через консоль ======
+
+[ @console @write @message ]
+
+Можно разослать сообщение сразу всем юзерам на серверве:
+
+''sudo wall "Чичас сервер будет остановлен"''
+
+Можно написать через ssh
+
+''sh usernamex@192.168.10.20 wall "Мусоровоз у подъезда, время очистить trash:/ !"''
+
+И должна быть возможность написать определённому обладателю красных глаз
+
+''write username'' 
+
+но тут всё сложно.
+
+Сперва надо зайти на машину с другим пользователем (сервер), и узнать, кто залогинен
+
+''who''
+
+Пример ответа на ноуте:
+
+	''username  tty7         2024-10-12 18:32 (:0)''
+	''username  tty2         2024-10-13 04:12''
+
+Это я, под моим юзером, по-умолчанию запущен в терминале №7, и я же под тем же юзером залогинен в терминале №2.
+
+	Переключение между терминалами через Ctrl+Alt+F2 (а также Ctrl+Alt+F3, F4…)
+
+Пишем сообщение:
+
+''write astenix tty2''
+
+В ответ
+
+''write: effective gid does not match group of /dev/pts/3''
+
+Надо сперва узнать, разрешил ли юзер принимать сообщения:
+
+''mesg''
+
+Если ответ ''is n'' — надо разрешить
+
+''mesg y''
+
+echo "Связь есть, но сделано по-дурацки" | sudo tee tty2
+
+echo "Связь есть, но сделано по-дурацки" | sudo tee /dev/pts/2
+
+
+The write Command
+
+The wall command sends a message to all the logged-in users. If we want to leave a message to a particular user, the write command is more suitable for this task. In addition, the command is installed by default on Linux machines.
+
+For instance, if the user sidrah wants to send a message to a user mary, they’d execute the write command with the username mary:
+
+$ write mary
+Hey, mary!
+Did you complete the assignment? 
+^D
+
+Here, ^D means Ctrl + D. We press the combination to stop writing the message.
+
+This initiates a chat session between the users and delivers the first messages to the user mary. Whatever user sidrah writes now appears in mary‘s terminal.
+
+If user mary wishes to respond, they’d respond back by using the write command followed by a username:
+
+$ write sidrah
+
+Then, mary also types what they want to send to user sidrah in the terminal. To terminate the session, both users can press Ctrl + C.
+
+Since the write command only delivers messages to the users currently logged in, user sidrah may want to check which user is currently logged in. For this, they can use the who command:
+
+$ who
+sidrah   tty2    2023-01-07 09:07 (tty2)
+mary tty3     2023-01-07 10:42 (tty3)
+
+The output displays the currently logged-in users.
+
+By default, the message option is enabled on Linux machines. To stop receiving unwanted messages from any local user, we’d use the mesg command with the n option:
+
+$ mesg n
+
+This blocks all incoming messages. To enable messaging again, we can use the y option:
+
+$ mesg y
+
+The y argument to mesg allows the current user to receive messages from other users.
+4. The talk Command
+
+If we want to interact with multiple local users in Linux, we can use the talk command.
+
+By default, the talk command isn’t installed in Linux. To install it in Ubuntu or Debian, we’ll use the apt package manager:
+
+$ sudo apt-get install talk
+$ sudo apt-get install talkd
+
+For CentOS or Fedora, we can use the yum package manager:
+
+$ sudo yum install talk
+$ sudo yum install talk-server
+
+The talk command opens a new double-pane window for communication. The participants type messages in the top portion of the display and view the received messages at the bottom section.
+
+Also, to respond to an incoming message, we can use the talk command followed by the username. Let’s look at an example.
+
+For instance, if we want to talk to user mary on the ubuntu system, the command would look like this:
+
+$ talk mary@ubuntu
+Message from sidrah@ubuntu
+talk: connection requested by mary@ubuntu
+talk: respond with: talk mary@ubuntu
+
+To this, the user mary would respond using the talk command along with the username:
+
+$ talk sidrah@ubuntu
+
+Let’s look at the exchange of messages:
+
+----------------------------= YTalk version 3.3.0 =--------------------------
+Are you ready for the meeting?
+-------------------------------= mary@ubuntu =---------------------------- 
+Yes, I'm ready!
+
+On the other hand, the window panes will be reversed on the other user’s screen:
+
+----------------------------= YTalk version 3.3.0 =--------------------------
+Are you ready for the meeting?
+-------------------------------= mary@ubuntu =----------------------------
+Yes, I'm ready!
+
+To terminate the chat window, the user presses Ctrl + C. This stops the chat session.
+
+
+Или на сервере
+
+	''username  pts/0        2024-10-12 18:51 (192.168.50.248)''
+	''username  pts/2        2024-10-13 02:39 (192.168.50.248)''
+
+В нулевом терминале — это мой юзер при запуске OMV, во втором — я залогинен по ssh.
+
+

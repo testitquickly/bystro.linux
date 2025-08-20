@@ -6,7 +6,7 @@ Creation-Date: 2025-07-31T06:56:12+03:00
 
 [ @ai ]
 
-Сперва установить консольную шняжку [[Ollama]]
+Сперва установить консольную шняжку [[Common:LLM:Ollama]]
 
 ''pipx install aider-chat''
 
