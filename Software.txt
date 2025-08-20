@@ -78,7 +78,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+LaTeX]]
 [[+LibreOffice]]
-Common:LLM:Llama /LLM
 [[+locate]] /поиск файлов по базе данных
 [[+ls]] /list directory contents
 
@@ -99,7 +98,6 @@ Common:LLM:Llama /LLM
 [[+Obsidian]]
 [[+OBS studio]]
 [[+Okular]]
-[[+Ollama]] /LLM 'Docker’
 [[+OpenShot]]
 
 ===== P =====
@@ -153,18 +151,18 @@ Common:LLM:Llama /LLM
 
 ===== V =====
 
-[[+v4l2]]
-[[+VLC]]
+[[+v4l2]] /управление вебкамерой
+[[+VLC]] /видеоплеер
 [[+vmpk]] /пианино для midi-клавиатур
 [[+vpn]]
-[[+VS Code]]
+[[+VSCodium]] /IDE
 [[+vsftpd]]
 
 ===== W =====
 
 [[+wget]]
 [[+whereis]]
-[[+Whisper]] /нейронная сеть для распознавания речи
+[[Common:LLM:Whisper]] /нейронная сеть для распознавания речи
 [[+wine]]
 
 ===== X =====

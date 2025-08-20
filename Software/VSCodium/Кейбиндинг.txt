@@ -1,0 +1,105 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-20T12:52:46+03:00
+
+====== Кейбиндинг ======
+
+[ @ide @electron @keyboard ]
+
+Некоторые сочетания клавиш редактируются через GUI:
+
+Вызвать палитру команд через ''Ctrl+Shift+P'' и вставить в строку поиска 
+
+''Preferences: Open Keyboard Shortcuts (JSON)''
+
+Не путать с ''Preferences: Open Default Keyboard Shortcuts (JSON)'' — туда можно заглянуть только для того, чтобы увидеть синтаксис вызова того или иного события.
+
+Выбор по [Enter], будет открыт файл ''~/.config/Code/User/keybindings.json''
+
+Комментарии в JSON в принципе отсутствуют, их можно вставить только как строку с префиксом, что означает «это проигнорировать».
+
+''"_comment": "Что угодно; перенос строк не предусмотрен",''
+
+Если какое-то сочетание клавиш уже назначено, то его сперва надо отключить — предварить соответствующую команду дефисом. 
+
+{{{code: id="common_keybinding" lang="json" linenumbers="True"
+[
+    {
+        "_comment": "Выполнить файл main.py",
+        "key": "ctrl+1",
+        "command": "workbench.action.debug.start"
+    },
+    {
+        "_comment": "Отключить режим дебаггинга по Esc",
+        "key": "escape",
+        "command": "workbench.action.debug.stop"
+    },
+    {
+        "_comment": "======================= Перемещение строк =============================================",
+        "key": "",
+    },
+    {
+        "_comment": "Отключить встроенное перемещение строк вверх по alt+up",
+        "key": "alt+up",
+        "command": "-editor.action.moveLinesUpAction"
+    },
+    {
+        "_comment": "Отключить встроенное перемещение строк вниз по alt+down",
+        "key": "alt+down",
+        "command": "-editor.action.moveLinesDownAction"
+    },
+    {
+        "_comment": "Назначить перемещение строки под курсором вверх по ctrl+up",
+        "key": "ctrl+up",
+        "command": "editor.action.moveLinesUpAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "_comment": "Назначить перемещение строки под курсором вниз по ctrl+up",
+        "key": "ctrl+down",
+        "command": "editor.action.moveLinesDownAction",
+        "when": "editorTextFocus"
+    },
+    {
+        "_comment": "======================= Комментирование строк =============================================",
+        "key": "",
+    },
+    {
+        "_comment": "Отменить встроенный кейбиндинг ctrl+d",
+            "key": "ctrl+d",
+            "command": "-editor.action.addSelectionToNextFindMatch"
+    },
+    {
+        "_comment": "Назначить кейбиндинг ctrl+d на добавить/убрать комментарий — Edit > Toggle Line Comment",
+        "key": "ctrl+d",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "_comment": "======================= Переключение фокуса в терминал и обратно ===============================",
+        "key": "",
+    },
+    {
+        "_comment": "Отключить стандартный кейбиндинг ctrl+2",
+        "key": "ctrl+2",
+        "command": "-workbench.action.focusSecondEditorGroup"
+    },
+    {
+        "_comment": "если фокус в редакторе И терминал закрыт → нажатие ctrl+2 откроет терминал и перенесет в него фокус",
+        "_comment": "если фокус в редакторе И терминал открыт → просто перенесет фокус в терминал",
+        "key": "ctrl+2",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorTextFocus"
+    },
+    {
+        "_comment": "если фокус в терминале → нажатие ctrl+2 пенересет фокус в редактор",
+        "key": "ctrl+2",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "_comment": "======================= Группа ===============================",
+        "key": "",
+    },
+]
+}}}
