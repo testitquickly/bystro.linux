@@ -15,7 +15,7 @@ Creation-Date: 2025-02-21T19:42:19+02:00
 
 ''wget https://www.python.org/ftp/python/3.10.9/Python-3.10.9.tar.xz -P /home/hdd/PythonSource && cd /home/hdd/PythonSource''
 
-дальше по схеме [[Python#установить-отдельную-версию-python]]
+дальше по схеме [[Software:Python#установить-отдельную-версию-python]]
 
 2) 
 Создать новое виртуальное окружение с Python 3.10 и CUDA 12.2:

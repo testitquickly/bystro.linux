@@ -85,4 +85,4 @@ ollama serve
 
 Важно: переменная ''OLLAMA_MODELS'' должна указывать на подкаталог ''/models'' — там Ollama будет создавать  подкаталоги для каждой LLM.
 
-См. [[Software:Ollama]]
+См. [[Common:LLM:Ollama]]
