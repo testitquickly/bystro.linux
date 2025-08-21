@@ -14,7 +14,7 @@ Creation-Date: 2024-10-23T12:30:23+03:00
 
 [[+hardlink]]
 
-[[+Live Debian]]
+[[+Live Debian на USB]]
 
 [[+Mount AND umount iso files]]
 
