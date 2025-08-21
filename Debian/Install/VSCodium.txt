@@ -6,8 +6,6 @@ Creation-Date: 2025-08-08T16:24:58+03:00
 
 [ @debian @install @vscode @microsoft @electron ]
 
-===== VSCodium =====
-
 Следуем https://vscodium.com/#install-on-debian-ubuntu-deb-package
 
 ==== Добавить GPG key репозитория ====
@@ -81,12 +79,14 @@ Debian 13:
 
 ===== VS Code =====
 
-Если нет иррациональной тяги к поддержке движения open source и опасений перед агрессивной телеметрией ценных юзерских данных…
+Если нет иррациональной тяги к поддержке движения open source и опасений перед агрессивной телеметрией своих ценных юзерских данных микрософтовцами, то поставить VS Code ничего не мешает.
 
 https://code.visualstudio.com/Download — снять файл ''*.deb'' (у него может быть неординарное название).
 
 Установка через 
 
 ''sudo dpkg -i *.deb''
+
+Настройки — точно такие же, как и у VSCodium.
 
 См. [[Software:VSCodium]]
