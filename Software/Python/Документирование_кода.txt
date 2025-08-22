@@ -158,3 +158,78 @@ firefox "$DOCS_DIR/index.html"
 Сборка:
 
 ''make html''
+
+==== Pandoc ====
+
+Универсальный конвертер и движок для полноценной документации и книг. Топ, если надо из проекта сделать, эээ, книгу. Обычно используется вместе с  ''pdoc'', который остаётся источником API-доков, а ''pandoc'' делает всю «книжную магию»: оглавления, шаблоны, типографику, ePub.
+
+=== Сгенерировать исходники документации из кода через pdoc ===
+
+Это создаст HTML и Markdown (флаг --template-dir можно использовать, чтобы Markdown был чище).
+
+''pdoc --output-dir docs src/''
+
+=== Объединить API-доки с текстовой документацией проекта ===
+
+В docs/ держать свои .md файлы: intro.md, usage.md, faq.md, appendix.md.
+
+Скриптом можно собрать список файлов в правильном порядке.
+
+Пример docs/index.txt
+
+{{{code: id="index.txt" lang="sh" linenumbers="True"
+intro.md
+usage.md
+api/pdoc_output.md
+faq.md
+appendix.md
+}}}
+
+=== Прогонать всё через Pandoc ===
+
+для pdf:
+
+{{{code: id="pandoc_to_pdf" lang="sh" linenumbers="True"
+pandoc $(cat docs/index.txt) \
+    --from markdown \
+    --to pdf \
+    --output build/project.pdf \
+    --template=templates/custom.latex \
+    --toc --toc-depth=3 \
+    --number-sections \
+    -V papersize=A4 \
+    -V mainfont="Liberation Serif" \
+    -V monofont="JetBrains Mono"
+}}}
+
+для ePub:
+
+{{{code: id="pandoc_to_epub" lang="sh" linenumbers="True"
+pandoc $(cat docs/index.txt) \
+    --from markdown \
+    --to epub3 \
+    --output build/project.epub \
+    --css=templates/epub.css \
+    --toc --toc-depth=3 \
+    --metadata title="Project Documentation"
+}}}
+
+=== Добавить автоматизацию в Makefile ===
+
+{{{code: id="pandoc_makefile" lang="sh" linenumbers="True"
+build: docs/project.pdf docs/project.epub
+
+docs/project.pdf: $(shell cat docs/index.txt)
+	pandoc $(shell cat docs/index.txt) \
+	    --from markdown \
+	    --to pdf \
+	    --output $@
+
+docs/project.epub: $(shell cat docs/index.txt)
+	pandoc $(shell cat docs/index.txt) \
+	    --from markdown \
+	    --to epub3 \
+	    --output $@
+}}}
+
+PDF и ePub по проекту готовы.
