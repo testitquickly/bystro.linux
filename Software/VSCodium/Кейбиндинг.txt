@@ -12,9 +12,11 @@ Creation-Date: 2025-08-20T12:52:46+03:00
 
 ''Preferences: Open Keyboard Shortcuts (JSON)''
 
-Не путать с ''Preferences: Open Default Keyboard Shortcuts (JSON)'' — туда можно заглянуть только для того, чтобы увидеть синтаксис вызова того или иного события.
+Если нужна подсказка о команде или о том, какая команда вызывается по дефолтному сочетанию клавиш, см. 
+''Preferences: Open Default Keyboard Shortcuts (JSON)'' 
+— не редактирования для, а чтобы через Ctrl+F найти точный синтаксис вызова того или иного события.
 
-Выбор по [Enter], будет открыт файл ''~/.config/Code/User/keybindings.json''
+Выбор по [Enter], будет открыт файл ''~/.config/VSCodium/User/keybindings.json''
 
 Комментарии в JSON в принципе отсутствуют, их можно вставить только как строку с префиксом, что означает «это проигнорировать».
 
@@ -98,8 +100,24 @@ Creation-Date: 2025-08-20T12:52:46+03:00
         "when": "terminalFocus"
     },
     {
+        "_comment": "Отключаю дефолтное Ctrl+Alt+B",
+        "key": "ctrl+alt+b",
+        "command": "-workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "_comment": "Отключаю дефолтное Ctrl+J — вкл/выкл нижнюю панель",
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+    },
+    {
+        "_comment": "Переключение нижней панели (обычно там терминал  по Ctrl+3",
+        "key": "ctrl+3",
+        "command": "workbench.action.togglePanel"
+    },
+    {
         "_comment": "======================= Группа ===============================",
         "key": "",
     },
 ]
+
 }}}
