@@ -6,59 +6,26 @@ Creation-Date: 2024-09-05T15:21:05+03:00
 
 [ @debian @install @playwright ]
 
-===== Установить Playwright =====
+В современных OS нельзя устанавливать софт для Python напрямую, но устанавливать его только в виртуальных окружениях Python тоже неразумно (надо ставить PW в каждом виртуальном окружении). Поэтому используем ''pipx'', он тоже ставит пакеты в изолированное окружение, но оно будет доступно всем в системе:
 
-Тут надо решить, как он будет использовать — или Playwright как есть, и дальше разруливаться в файлах самостоятельно (через тот же [[Software:Sublime]]), или проекты будут управляться через определенную IDE — например, „Aqua” от jetBrains.
+''pipx install playwright''
 
-https://www.jetbrains.com/aqua/download/#section=linux — там файл tar.gz
+Playwright требует headless-браузеры для работы
 
-''tar -xvf archive.tar.gz''
+* Chromium → Chrome/Edge движок (Blink)
+* Firefox → Gecko движок
+* WebKit → Safari движок
+ 
+Можно поставить только нужные:
 
-есть snap:
+''playwright install chromium firefox''
 
-''sudo snap install jetbrains aqua --classic''
+Если не перечислять нужное, то будут установлены все три.
 
-Если через IDE, тогда надо сперва установить саму IDE, а Playwright установить из её консоли.
+Всё будет сохранено в ''~/.cache/ms-playwright/*''
 
-Сперва зайти в каталог, в котором всё будет установлено — english name only, и без пробелов.
+Проверка (by default будет открыт Chrome):
 
-''npm init playwright@latest''
+''playwright codegen https://ro.wikipedia.org/wiki/Republica_Moldova''
 
-==== Проверить Playwright ====
-
-В каталоге, в котором он установлен, выполнить запуск end-to-end tests:
-
-''npx playwright test''
-
-Перед этим можно (но не обязательно) проверить содержимое трех файлов:
-- ./tests/example.spec.ts - Example end-to-end test
-- ./tests-examples/demo-todo-app.spec.ts - Demo Todo App end-to-end tests
-- ./playwright.config.ts - Playwright Test configuration
-
-В итоге проверить результат запуска тестов:
-
-''npx playwright show-report''
-
-Откроется окно бразуера по-умолчанию по адресу http://localhost:9323/
-
-==== Другие возможности ====
-
-Starts the interactive UI mode
-
-''npx playwright test --ui''
-
-Runs the tests only on Desktop Chrome
-
-''npx playwright test --project=chromium''
-
-Runs the tests in a specific file
-
-''npx playwright test example''
-
-Runs the tests in debug mode
-
-''npx playwright test --debug''
-
-Auto generate tests with Codegen
-
-''npx playwright codegen''
+Запуск см. [[Software:Playwright]]

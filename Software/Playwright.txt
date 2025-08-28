@@ -1,0 +1,113 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-28T19:09:26+03:00
+
+====== Playwright ======
+
+[ @python @playwright @vscodium ]
+
+===== Установить =====
+
+* [[Debian:Install:Playwright]]
+
+===== Запустить =====
+
+Playwright был установлен через pipx, поэтому сперва надо знать, где находятся его скрипты. Это можно сделать сразу в консоли [[VSCodium]]:
+
+''pipx list''
+
+Пример ответа:
+
+''venvs are in /home/astenix/.local/pipx/venvs''
+''apps are exposed on your $PATH at /home/astenix/.local/bin''
+   ''package flake8 7.3.0, installed using Python 3.11.2''
+	''- flake8''
+   ''package pdoc 15.0.4, installed using Python 3.11.2''
+	''- pdoc''
+   ''package playwright 1.55.0, installed using Python 3.11.2''
+	''- playwright''
+   ''package pycodestyle 2.14.0, installed using Python 3.11.2''
+	''- pycodestyle''
+   ''package ruff 0.12.7, installed using Python 3.11.2''
+	''- ruff''
+
+Ок, всё находится в ''/home/astenix/.local/pipx/venvs''
+
+==== Настроить запуск Playright в VSCodium ====
+
+Всё работает в изолированных окружениях, поэтому логично настраивать это в каждом проекте по-отдельности. 
+
+Можеть показаться правильным задать интерпретатор Python через PATH в файле ''~/.bashrc'', но это будет действовать для всего ПО в системе, которое использует Python, и где-то что-то может засбоить. Лучше сетапить свою среду разработки отдельными файлами с настройками.
+
+==== Вручную ====
+
+* открыть проект в VSCodium
+* в строке статуса кликнуть по отображению версии Python (например, ''3.11.2 64-bit''). Откроется Select Interpreter
+* выбрать путь к своему интерпретатору Python:
+	* Enter interpreter path: ''/home/astenix/.local/pipx/venvs/playwright/bin/python''
+
+В VSCodium запуск отдельных скриптов с Playwright — через треугольник «Run Python file».
+
+==== Автоматически ====
+
+Разумно весь проект засетапить так, чтобы дебаггер всегда выполнял файл ''main.py'': [[VSCodium#Назначить main.py ключевым файлом запуска проекта]]
+
+Открыть файл ''/.vscode/launch.json''
+
+Добавить туда указание своего интерпретатора Python, в котором был установлен Playwright:
+
+{{{code: id="launch" lang="json" linenumbers="True"
+{
+	"configurations": [
+		{
+			"name": "main.py",
+			"type": "debugpy",
+			"request": "launch",
+			"program": "${workspaceFolder}/main.py",
+			"console": "integratedTerminal",
+			"python": "/home/astenix/.local/pipx/venvs/playwright/bin/python"
+		}
+	]
+}
+}}}
+
+===== ToDo =====
+
+*todo playwright settings
+
+В каталоге, в котором он установлен, выполнить запуск end-to-end tests:
+
+''npx playwright test''
+
+Перед этим можно (но не обязательно) проверить содержимое трех файлов:
+- ./tests/example.spec.ts - Example end-to-end test
+- ./tests-examples/demo-todo-app.spec.ts - Demo Todo App end-to-end tests
+- ./playwright.config.ts - Playwright Test configuration
+
+В итоге проверить результат запуска тестов:
+
+''npx playwright show-report''
+
+Откроется окно бразуера по-умолчанию по адресу http://localhost:9323/
+
+==== Другие возможности ====
+
+Starts the interactive UI mode
+
+''npx playwright test --ui''
+
+Runs the tests only on Desktop Chrome
+
+''npx playwright test --project=chromium''
+
+Runs the tests in a specific file
+
+''npx playwright test example''
+
+Runs the tests in debug mode
+
+''npx playwright test --debug''
+
+Auto generate tests with Codegen
+
+''npx playwright codegen''
