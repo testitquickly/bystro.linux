@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-08-29T04:02:34+03:00
+
+====== GraphViz ======
+
+[ @debian @install @graphviz ]
+
+''sudo apt update && sudo apt install graphviz && dot -V''
+
+Ожидаемый ответ:
+
+''dot - graphviz version 2.43.0 (0)''
+
+См. [[Software:GraphViz]]

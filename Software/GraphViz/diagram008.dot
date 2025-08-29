@@ -1,0 +1,9 @@
+digraph G {
+    layout=twopi;
+    
+	A -> B; 
+	A -> C; 
+	A -> D; 
+	A -> E; 
+	A -> F;
+}
