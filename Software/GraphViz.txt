@@ -259,14 +259,14 @@ fdp -Tpng abc.dot -o abc.png
 {{{code: id="fdp" lang="dot" linenumbers="True"
 graph G {
 	layout=fdp;
-    
+	
 	A -- B;
-	B -- C;
-	C -- D;
-	D -- A;
 	A -- C;
+	A -- D;
+	A -- E;
+	A -- F;
+	A -- G;
 }
-
 }}}
 
 {{./diagram002.png?type=diagram}}
@@ -275,11 +275,14 @@ graph G {
 
 {{{code: id="fdp" lang="dot" linenumbers="True"
 graph G {
+	
 	A -- B;
-	B -- C;
-	C -- D;
-	D -- A;
 	A -- C;
+	A -- D;
+	A -- E;
+	A -- F;
+	A -- G;
+
 }
 }}}
 
@@ -301,7 +304,7 @@ twopi -Tpng abc.dot -o abc.png
 
 {{{code: id="fdp" lang="dot" linenumbers="True"
 graph G {
-	layout=circo;
+	layout=twopi;
 	
 	A -- B;
 	A -- C;
@@ -323,10 +326,11 @@ digraph G {
     layout=twopi;
     
     A -> B;
-    B -> C;
-    C -> D;
-    D -> A;
-    A -> C;
+	A -> C;
+	A -> D;
+	A -> E;
+	A -> F;
+	A -> G;
 }
 }}}
 
@@ -341,10 +345,11 @@ graph G {
 	layout=circo;
 	
 	A -- B;
-	B -- C;
-	C -- D;
-	D -- A;
 	A -- C;
+	A -- D;
+	A -- E;
+	A -- F;
+	A -- G;
 }
 }}}
 
