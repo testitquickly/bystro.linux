@@ -1,6 +1,0 @@
-digraph ImpactGraph {
-    node [shape=ellipse, style=filled, color=lightgreen];
-    Invoice -> Payment [label="depends"];
-    Invoice -> DB [label="updates"];
-    Payment -> DB;
-}
