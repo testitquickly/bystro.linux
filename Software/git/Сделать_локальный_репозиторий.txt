@@ -58,12 +58,12 @@ Creation-Date: 2025-07-29T19:15:29+03:00
 
 Дальше можно сделать так:
 
-* ''cd ~/workspace/Python/projects/''
-* ''git clone ~/.git_repo/my_project_name .''
+* ''cd ~/workspace/Python/projects/my_project_name/''
+* ''git clone ~/.git_repo/my_project_name/ .''
 
 Точка означает «клонировать прямо сюда».
 
-…и в каталоге с ''~/workspace/Python/projects/'' появится подкаталог ''/my_project_name'', а в нём появится подкаталог ''.git/''
+…и в каталоге ''~/workspace/Python/projects/my_project_name/'' появится содержимое репозитория из ''~/.git_repo/my_project_name/'' с подкаталогом ''.git/''
 
 А можно так:
 
