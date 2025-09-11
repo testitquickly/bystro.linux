@@ -1,0 +1,150 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-09T13:46:22+03:00
+
+====== usb смарт-карта ======
+
+'''
+lsusb && dmesg | tail -n 30 
+'''
+
+записать ответы
+
+воткнуть карту-флэшку в ноут
+
+'''
+lsusb && dmesg | tail -n 30 
+'''
+
+например, появилось это:
+
+'''
+Bus 003 Device 006: ID 25dd:3111 Bit4id Srl miniLector EVO
+'''
+
+===== Драйвера =====
+
+''sudo apt update && sudo apt install pcscd pcsc-tools opensc libpcsclite1 libccid''
+
+Убедиться в том, что демон pcscd запущен:
+
+'''
+sudo systemctl enable --now pcscd
+'''
+
+
+===== Проверить карту =====
+
+''pcsc_scan''
+
+Если в ответ
+
+''PC/SC device scanner''
+''V 1.6.2 (c) 2001-2022, Ludovic Rousseau <''[[ludovic.rousseau@free.fr|''ludovic.rousseau@free.fr'']]''>''
+''Using reader plug'n play mechanism''
+''Scanning present readers...''
+''0: bit4id miniLector-EVO 00 00''
+ 
+''Tue Sep  9 13:49:42 2025''
+ ''Reader 0: bit4id miniLector-EVO 00 00''
+  ''Event number: 0''
+  ''Card state: Card removed,'' 
+
+
+Если нет — нужен драйвер для флэшки
+
+если это ''bit4id miniLector-EVO —'' https://support.bit4id.com/#!/it/drivers/product/miniLector_POCKET
+
+После установки файла deb из zip через ''sudo dpkg -i ***'' надо перезапустить демон ''pcscd'':
+
+'''
+sudo systemctl restart pcscd
+'''
+
+и проверить снова
+
+'''
+pcsc_scan
+'''
+
+ЕСЛИ НЕ ПОМОЖЕТ — поставить виртуалку с виндой
+
+===== Виртуалка с виндой =====
+
+'''
+sudo apt install virtualbox virtualbox-ext-pack
+'''
+
+Ext Pack нужен для USB 2.0/3.0 проброса.
+
+Убедиться в том, что VirtualBox видит расширение:
+
+'''
+VBoxManage list extpacks
+'''
+
+Создание виртуальной машины Windows
+
+Запусти VirtualBox → Создать → выбери Windows 10/11.
+Выдели RAM ~4–8 ГБ и место на диске ~50 ГБ.
+В настройках VM:
+Система → Процессор: минимум 2 ядра.
+USB → Контроллер USB 2.0 или 3.0.
+Сеть → NAT (или мост, если нужен прямой доступ).
+
+Настройка USB-проброса токена
+
+В настройках VM → USB → Добавить фильтр USB.
+Выбрать твой ридер (Bit4id miniLector EVO, 25dd:3111).
+Сохранить настройки.
+После этого при запуске VM токен будет автоматически проброшен в Windows.
+
+Установка Windows и драйверов
+
+Установить Windows 10/11 в виртуалку.
+В Windows скачать и установи драйвер Bit4id для своей модели (miniLector EVO).
+Подключить токен — Windows должна его увидеть как смарт-карту.
+Панель управления → Система и безопасность → Администрирование → Службы → «Смарт-карты». Токен должен быть распознан.
+
+===== Использование токена в браузере =====
+* Firefox/Edge/Chrome в Windows:
+	* Должен автоматически видеть сертификат на токене через PKCS#11 или встроенные драйверы.
+	* Можно зайти на сайт, где нужен электронный ключ.
+
+===== Полезные советы =====
+
+* **Не вытаскивать токен из ридера на ходу в VM**, иначе проброс прервётся.
+* **Сохранять виртуалку** с установленными драйверами и настройками — в будущем можно просто запускать её.
+* Если VM “не видит” токен — проверить, чтобы он **был полностью вставлен** и фильтр USB включён в настройках VM.
+
+===== Запуск Windows-браузера с токеном из Debian одним кликом =====
+
+Предположим, VM называется WinToken.
+В ней уже установлены Windows, драйверы Bit4id и браузер.
+USB-фильтр настроен для токена.
+
+Создать файл, например ''~/run_win_token.sh'':
+
+'''
+#!/bin/bash
+
+# Путь к VirtualBox VM
+VM_NAME="WinToken"
+
+# Запуск VM в отдельном окне
+VBoxManage startvm "$VM_NAME" --type gui
+'''
+
+Сделать его исполняемым:
+
+'''
+chmod +x ~/run_win_token.sh
+'''
+
+===== Мини-лайфхак для KDE =====
+
+* Создать **свою кнопку/ярлык в панели KDE**:
+	* Тип: «Приложение»
+	* Команда: ''/home/username/run_win_token.sh''
+* Иконка: любая, например Firefox.
+* Клик — VM запускается, токен готов к работе.

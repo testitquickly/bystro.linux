@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-07-22T19:09:46+03:00
 
-====== usb-midi-keyboard ======
+====== usb midi-keyboard ======
 
 [ @usb @midi @keyboard ]
 

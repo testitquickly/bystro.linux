@@ -7,9 +7,10 @@ Creation-Date: 2024-09-20T21:33:10+03:00
 [ @chapter ]
 
 [[+Garmin]]
-[[+usb-bluetooth]]
-[[+usb-midi-keyboard]]
-[[+usb-радио]]
+[[+usb bluetooth]]
+[[+usb midi-keyboard]]
+[[+usb радио]]
+[[+usb смарт-карта]]
 [[+Монитор]]
 [[+Мышь]]
 [[+Ноутбук]]
