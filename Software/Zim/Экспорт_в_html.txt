@@ -6,8 +6,8 @@ Creation-Date: 2024-09-25T22:23:39+03:00
 
 [ @zim @export  @html ]
 
-	*todo ZIM — Экспорт в html !!!
+	*todo ZIM — Экспорт в html 
 
-Шаблон в 
+Шаблон файлов смотри
 
 ''~/.local/share/zim/templates/html/''
