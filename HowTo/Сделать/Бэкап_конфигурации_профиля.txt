@@ -1,0 +1,247 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-11T10:30:55+03:00
+
+====== Бэкап конфигурации профиля ======
+
+[ @backup @kde @config ]
+
+Условно, конфиги делятся на:
+
+1. Общие для всех приложений:
+
+~/.bashrc, ~/.profile, ~/.vimrc (если есть), алиасы, скрипты.
+
+2. KDE/Plasma:
+
+~/.config/ (основной каталог, в нём kdeglobals, plasma*, dolphinrc, konsole/ и т.д.).
+
+~/.local/share/ (шаблоны, ярлыки приложений, темы, иконки).
+
+~/.kde/ (если он вообще есть в Debian 12, сейчас почти всё в .config и .local).
+
+3. Системные:
+
+/etc/apt/sources.list, /etc/apt/sources.list.d/.
+
+/etc/hostname, /etc/hosts, /etc/fstab, /etc/network/ — НО! лучше не синхронизировать, иначе сломаешь сеть/hostname.
+
+==== Минимальный набор KDE + Debian-конфигов для синка ====
+
+~/.bashrc
+~/.profile
+~/.config/
+~/.local/share/
+~/.fonts/        (если ставил шрифты локально)
+~/.ssh/          (если надо ключи, но лучше хранить отдельно и аккуратно)
+
+===== Не синхронизировать =====
+
+==== Сетевые настройки ====
+
+~/.local/share/networkmanagement/
+(содержит Wi-Fi профили, пароли, UUID адаптеров — уникальны для каждой машины).
+
+==== Аппаратно-зависимые конфиги ====
+
+~/.config/monitors.xml (KDE хранит раскладку мониторов, разрешения — ломается, если экраны разные).
+
+~/.config/plasma-org.kde.plasma.desktop-appletsrc (можно синхать, но часто ломается при разных разрешениях/панелях).
+
+~/.config/pulse/ или ~/.config/pulseaudio/ (аудио устройства разные).
+
+==== SSH и ключи (если у каждого ноута свой доступ) ====
+
+~/.ssh/
+(лучше синхронизировать отдельно, если реально нужно).
+
+==== GPG ключи ====
+
+~/.gnupg/
+(лучше хранить и переносить вручную).
+
+==== Системные каталоги из /etc/ ====
+
+/etc/hostname, /etc/hosts — будут конфликтовать.
+
+/etc/fstab — UUID дисков разные.
+
+/etc/network/, /etc/NetworkManager/ — разные интерфейсы и MAC-адреса.
+
+/etc/X11/ — завязано на видеодрайверы.
+
+==== Кэш и мусор ====
+
+~/.cache/
+
+~/.local/share/Trash/
+
+~/.thumbnails/
+
+===== Что синхронизировать безопасно =====
+
+~/.bashrc, ~/.profile (настройки оболочки).
+
+~/.config/ (выборочно — редакторы, консоль, dolphin, kate и т.п.).
+
+~/.local/share/ (ярлыки приложений, шаблоны, темы — но без networkmanagement).
+
+~/.fonts/ (свои шрифты).
+
+Настройки приложений (~/.config/vlc/, ~/.config/kdeconnect/ и т.д.)
+
+===== Сборка и упаковка =====
+
+''#!/bin/bash''
+''BACKUP_DIR="$HOME/.backup_kde"''
+''DATE=$(date +%Y-%m-%d_%H-%M)''
+
+''mkdir -p "$BACKUP_DIR"''
+
+''tar -czf "$BACKUP_DIR/kde_config_$DATE.tar.gz" \''
+  ''~/.bashrc \''
+  ''~/.profile \''
+  ''~/.config \''
+  ''~/.local/share \''
+  ''~/.fonts''
+
+Условный скрипт
+
+{{{code: lang="sh" linenumbers="True"
+#!/bin/bash
+set -euo pipefail
+
+# --- Настройки ---
+BACKUP_DIR="$HOME/.backup_kde"
+DATE=$(date +%Y-%m-%d_%H-%M)
+ARCHIVE="kde_config_$DATE.tar.gz"
+ENCRYPTED="$ARCHIVE.gpg"
+
+REMOTE_USER="user"
+REMOTE_HOST="server"
+REMOTE_PATH="/path/to/backups"
+
+# --- Сборка ---
+mkdir -p "$BACKUP_DIR"
+
+tar -czf "$BACKUP_DIR/$ARCHIVE" \
+  --exclude="$HOME/.cache" \
+  --exclude="$HOME/.local/share/Trash" \
+  --exclude="$HOME/.local/share/networkmanagement" \
+  --exclude="$HOME/.config/pulse" \
+  --exclude="$HOME/.config/pulseaudio" \
+  --exclude="$HOME/.config/monitors.xml" \
+  --exclude="$HOME/.gnupg" \
+  --exclude="$HOME/.ssh" \
+  ~/.bashrc \
+  ~/.profile \
+  ~/.config \
+  ~/.local/share \
+  ~/.fonts
+
+# --- Шифрование ---
+gpg -c "$BACKUP_DIR/$ARCHIVE"
+rm "$BACKUP_DIR/$ARCHIVE"
+
+# --- Отправка ---
+rsync -avz "$BACKUP_DIR/$ENCRYPTED" \
+  "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH/"
+
+echo "✅ Backup отправлен: $ENCRYPTED"
+
+}}}
+
+===== Шифрование =====
+
+'''
+gpg -c "$BACKUP_DIR/kde_config_$DATE.tar.gz"
+'''
+
+Ввести пароль.
+Появится файл kde_config_2025-08-16.tar.gz.gpg.
+
+'''
+rm "$BACKUP_DIR/kde_config_$DATE.tar.gz"
+'''
+
+===== Отправить файл на сервер =====
+
+'''
+rsync -avz "$BACKUP_DIR/kde_config_$DATE.tar.gz.gpg" user@server:/path/to/backups/
+'''
+
+На сервере всегда будут зашифрованные архивы с настройками.
+
+На другом ноуте делаем обратный шаг: 
+
+''rsync → gpg -d → tar -xzf''
+
+Условный restore.sh. Качает последнюю версию, расшифровывает и разворачивает, жёстко затирая «местные конфиги». Это «жёсткий» restore.sh, но с умным удалением: чистим только те каталоги/файлы, которые реально синкаем, чтобы гарантированно получилось как на эталоне, и ничего лишнего не потерять.
+
+{{{code: lang="sh" linenumbers="True"
+#!/bin/bash
+set -euo pipefail
+
+# --- Настройки ---
+BACKUP_DIR="$HOME/.backup_kde"
+REMOTE_USER="user"
+REMOTE_HOST="server"
+REMOTE_PATH="/path/to/backups"
+
+mkdir -p "$BACKUP_DIR"
+cd "$BACKUP_DIR"
+
+# --- Скачивание последних архивов ---
+rsync -avz "$REMOTE_USER@$REMOTE_HOST:$REMOTE_PATH/" ./
+
+LATEST=$(ls -t kde_config_*.tar.gz.gpg | head -n1)
+[ -z "$LATEST" ] && { echo "❌ Нет архивов для восстановления"; exit 1; }
+
+echo "➡️ Восстанавливаем из $LATEST"
+
+# --- Расшифровка ---
+gpg -d "$LATEST" > tmp_restore.tar.gz
+
+# --- Очистка только синкаемых каталогов ---
+echo "➡️ Чистим старые конфиги"
+rm -rf \
+  ~/.bashrc \
+  ~/.profile \
+  ~/.config \
+  ~/.local/share \
+  ~/.fonts
+
+# --- Распаковка поверх HOME ---
+echo "➡️ Распаковываем архив"
+tar -xzf tmp_restore.tar.gz -C "$HOME" --overwrite
+rm tmp_restore.tar.gz
+
+echo "✅ Восстановление завершено. Перезайди в X-сессию (sddm)."
+
+}}}
+
+==== Замечания ====
+
+''gpg -c'' спросит пароль при каждом шифровании/расшифровке. Можно завести GPG-ключ и использовать ''--encrypt/--decrypt''
+
+Системные файлы (/etc/...) игнорируем, потому что легко что-то сломать. Их можно отдельно включить по списку.
+
+При восстановлении поверх существующих конфигов возможны конфликты. На практике лучше разворачивать в отдельный каталог, проверять, потом копировать вручную.
+
+KDE и большинство программ читают настройки при старте. Если ты поверх залил новые конфиги — они лягут на диск, но:
+
+* Текущая сессия Plasma будет работать по старым данным, пока не перезапустишь.
+* Часть приложений (например, konsole, dolphin) может подхватить новые настройки при следующем запуске, но не все. Для гарантии — надо выйти из сессии KDE и войти снова (или перезапустить plasmashell, но это не всегда надёжно). Системные вещи (.bashrc, .profile) применяются только для новых шеллов.
+
+То есть:
+
+Выходишь из Plasma
+Переключаешься в Ctrl+Alt+F3 (tty-консоль).
+Останавливаешь X/Plasma:
+''systemctl isolate multi-user.target''
+В терминале запускаешь restore.sh.
+Запускаешь заново
+''systemctl start sddm''
+Ctrl+Alt+F7
+Логинишься в Plasma.
+Получаешь всё «как на эталонном ноуте».
