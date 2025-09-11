@@ -4,191 +4,232 @@ Creation-Date: 2025-09-04T02:32:51+03:00
 
 ====== Подключить LLM к IDE ======
 
-====== Подключить LLM к IDE ======
-
 [ @ide @llm ]
 
-Это легко сделать, но сперва надо основательно кое-что понять.
+Это легко, но сперва надо основательно кое-что понять:
 
-“VS Codе” (оригинальный аналог [[VSCodium]]) изначально настроен на работу с GitHub Copilot, который приносит в код мощные автоподсказки и быстрый auto fix. Подписался на сервис (сперва бесплатно, затем $100 на год вперед) и все ок. Но не Copilot’ом единым жива разработка. Нужно подключать сразу несколько LLM и переключаться между ними — одна сильнее в кодогенеративных предсказаниях (code completition), другая — в анализе кода (rationament), третья тупит чуть меньше, чем четвертая. 
+* IDE может быть любое, хоть “VS Codе”, хоть его оригинальный аналог [[VSCodium]] — принцип подключения LLM для всех один.
 
-А ещё есть (уже) много моделей, которые можно запускать как локальные серверы или на своём ноуте, или на отдельном компьютере в локальной сети. С одной стороны это ДА! — локальные LLM это приватность, бесплатность, доступность, повышенный контекст и гибкость настроек. 
+* к IDE подключают конкретные LLM (large language model), а не Искуственный Интеллект.
 
-Но… 
+* для повышения эффективности к IDE надо подключить сразу несколько LLM и переключаться между ними — одна модель сильнее в кодогенеративных предсказаниях (code completition), другая — в анализе кода (rationament), третья тупит чуть меньше, чем четвертая. 
 
-1) …они тупее.
+* уже есть много моделей, которые можно запускать через локальный сервер на своём ноуте или на отдельном компьютере в локальной сети, что приносит приватность, бесплатность, постоянную доступность, сохранение широкого контекста и гибкость настроек.
 
-Модели в открытом доступе это всегда экспериментальные проекты, а не «бесплатная копия действующего ИИ», поэтому качество работы локальных LLM //всегда// будет ниже действующих «облачных сервисов».
+* локальные LLM проигрывают «облачным сервисам» по качеству работы — и потому, что в открытом доступе всегда находятся устаревающие экспериментальные проекты, а не «бесплатная копия действующего ИИ», и потому, что «локальные» LLM работают раздражающе медленно — даже если LLM корректно подключена к IDE и оба работают на том же ноутбуке, всё так медленно, что кажется, что подключения нет — просто невозможно дождаться ответа.
 
-2) …они работают раздражающе медленно.
+* LLM — это БОЛЬШИЕ файлы, для работы с которыми нужно МНОГО вычислительных ресурсов. Условно нормальный «офисный» ноутбук с этим не справится, завоет и условно игровой ноутбук с мощной видеокартой. На компьютере с сильной GPU нейросеть заработает пошустрее, но и только — «быстрее» не означает «быстро». Логично запускать их на отдельном компьютере, а лучше — на кластере мощных компьютеров. Нейросетям, которые «посильнее в рассуждениях» и больше подходят для работы, нужны ресурсы большого сервера, который кому-то надо постоянно обслуживать. 
 
-Локальные LLM всегда работают медленнее облачных. Они БОЛЬШИЕ, им нужно МНОГО вычислительных ресурсов, нужен не «мощный компьютер», а «самый мощный компьютер на районе», способный «выбивать предохранители» на местной энергоподстанции. Условно нормальный «офисный» ноутбук для локальных LLM в принципе не подходит, условно игровые ноутбуки с мощными видеокартами — вроде бы  да, но и они перегреваются (иногда окончательно).
-
-Можно слегка ускориться, если работать с «лёгкой» моделью, но более «лёгкие» модели, кхм, слабоваты в возможностях, а ускорение — незначительное, и на этом всё. Тем, которые «в рассуждениях» посильнее, нужны ресурсы большого сервера, который потребляет много электроэнергии, очень шумный и нуждается в постоянном мощном охлаждении. И много GPU на борту.
+* для ускорения можно работать с более «лёгкой» моделью, но более «лёгкие» модели, кхм, слабоваты в возможностях, а общее ускорение получается незначительным. 
  
-На GPU нейросети работают пошустрее, но даже на «мощном компьютере» работа любого «локального ИИ» ощущается как раздражающе МЕДЛЕННАЯ — медленно думает, медленно печатает текст в консоль, что никак не «ускоряет разработку». А ИИ из внешних сервисов обслуживаются даже не мощными компьютерами, а кластерами мощных компьютеров. 
+Понятно, почему ИИ с трудом внедряется в больших компаниях , где локальные LLM нужны для того, чтобы защитить «секреты фирмы» — он же работает раздражающе медленно. Интересы корпорации — это очень важно, но зарплата каждого работника зависит от его личной эффективности, поэтому все начинают предпочитать локальным моделям «chatGTP в браузере» или ИИ через API из внешних сервисов за деньги (даже свои).
 
-Начинаешь быстро понимать, почему так тяжело внедряется ИИ в больших компаниях — он работает раздражающе медленно. Надо учиться аккуратно выбирать модель нейросети по количеству параметров и степени [[LLM#квантование|квантования]] весов, и тонко настраивать их возможности и ограничения, чтобы нагрузка соответствовала необходимому запросу. Но эти усилия имеют значение только для того, кто углубится в науку о создании нейросетей, для остальных это мучительный оверкилл.
-
-Даже там, где нужны локальные LLM, чтобы защитить «секреты фирмы», все работники предпочтут «chatGTP в браузере» или ИИ через API из внешних сервисов за деньги (даже свои), потому что скорость «думания» локальной модели всегда ограничена ресурсами локального компьютера. Интересы корпорации — это очень важно, но собственная эффективность важнее — от нее зависит зарплата.
-
-В IDE локальная LLM всегда работает медленнее, чем в консоли. Причин несколько:
-
-* слой посредников. В консоли: ollama → модель → вывод. В Continue: VS Code → расширение → JSON-RPC → Continue сервер → запрос в Ollama → обратно в IDE. Каждый слой добавляет задержку, и когда CPU ноутбука занят LLM, эти задержки мучительны.
-* режим вывода. В консоли ollama стримит токены сразу (символы бегут по экрану). В Continue есть debounce (например, debounceDelay: 200) и иногда оно «ждёт кусок текста», прежде чем показать его в редакторе.
-* форматирование и анализ. Continue иногда прогоняет ответ через обработчики (например, проверяет JSON, добавляет подсказки, вставляет в правильное место).
-
-3) …“чат” и “code autocompletition” это разные епархии с отдельными настройками. 
-
-Если подключил LLM к IDE и она заработала в чате — это значит, что LLM всего лишь работает как чат-модель, а кодогенерацию надо настраивать отдельно. Это несложно, но есть неочевидные моменты.
+А ещё локальная LLM //всегда// работает в IDE медленнее, потому что есть **слой посредников**: в консоли всё работает через сервер ollama → выбранную модель → вывод в консоль. В плагине Continue: VS Code → расширение → JSON-RPC → Continue сервер → запрос в Ollama → обратно в IDE. Каждый слой добавляет задержку, и когда CPU ноутбука занят LLM, эти задержки становятся мучительными. А ещё Continue иногда прогоняет ответ через обработчики, например, проверяет JSON, добавляет подсказки, вставляет в правильное место. 
 
 Итого: 
 
-* для работы нужны облачные LLM, даже за деньги,
-* подключить локальную LLM, конечно же, надо, хотя бы для того, чтобы посмотреть, как это работает,
-* когда-нибудь структура LLM изменится (или появится кардинально новый подход), и наши компьютеры будут способны обрабатывать их комфортно-быстро.
+* для работы нужны облачные — или платные, или бесплатные, но «слабые» — LLM,
+* подключить локальную LLM к IDE надо хотя бы для того, чтобы посмотреть, как это работает и помечтать о том, как это когда-то будет работать (когда наступит StarTrek), и подумать о том, как построить адекватную инфраструктуру для локальной LLM.
 
-==== Модели для кода ====
+===== Погасить встроенные подсказки IDE =====
 
-=== Лёгкие и быстрые ===
+В IDE работают встроенные подсказки названий сущностей по ходу набора (классы, методы, etc). Они все нужны просто потому, что подсказки от IDE «дешевле», чем постоянные обращения к LLM. 
 
-* DeepSeek Coder 6.7B — временно топ среди компактных для кода (Китай)
-* Qwen2.5-Coder 7B — сильнее в объяснениях (Китай)
-* Code LLaMA 7B — стабильный, староват (США)
+Их можно временно отключить, чтобы убедиться в том, что подсказки приходят только от LLM. 
 
-=== Средние ===
+''Ctrl+Shift+P'' 
+''> Preferences: Open Settings (JSON)''
 
-* DeepSeek Coder 14B — близок к Copilot, понимает большие файлы (Китай)
-* Qwen2.5-Coder 14B (Китай)
-
-=== Тяжёлые ===
-
-Нужно GPU с 24+ Gb VRAM (или CPU с 64+ Gb RAM, но медленно).
-
-* DeepSeek Coder 33B (Китай)
-* Mixtral 8x7B Instruct (Франция, США)
-
-==== На своем ноуте ====
-
-Это называется «поднять локальный сервер».
-
-1. Установить локальную LLM через [[Ollama]] 
-2. Стянуть и запустить через Ollama модель для подсказок в коде (на выбор, Code LLaMA, Qwen-Coder, …)
-3. Если надо, стянуть и запустить через Ollama отдельную модель для анализа и объяснений (на выбор)
-4. Установить в [[VSCodium]] open-source AI code assistant плагин “Continue”
-5. Настроить “Continue” так, чтобы VS Code отправлял запросы на локальный сервер
-
-В каталоге проекта сделать файл с настройкой Continue:
+или напрямую редактировать 
 
 '''
-mkdir -p ./.continue && mcedit ./.continue/config.json
+~/.config/VSCodium/User/settings.json
 '''
 
-прописать настройку с точным названием используемой через ollama модели (например “''qwen2.5-coder:7b''”) и url действующего на localhost сервера ollama на стандартном порту:
+Отключить все встроенные в IDE подсказки языка:
 
-{{{code: id="continue_config" lang="json" linenumbers="True"
-{
-  "models": [
-    {
-      "title": "qwen (coder)",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:7b",
-      "apiBase": "http://127.0.0.1:11434"
-    }
-  ]
-}
-}}}
+* "editor.parameterHints.enabled": false
+* "editor.suggestOnTriggerCharacters": false,
+* "editor.suggest.showClasses": false,
+* "editor.suggest.showFunctions": false,
+* "editor.suggest.showMethods": false,
+* "editor.suggest.showProperties": false,
+* "editor.suggest.showSnippets": false,
+* "editor.suggest.showVariables": false,
+* "editor.suggest.showWords": false,
+* "editor.quickSuggestions": {
+	"comments": false,
+	"strings": false,
+	"other": true },
 
-Запустить VSCodium (или перезапустить, если был открыт), открыть Continue. Настройки должны подхватиться автоматически: в разделе чатов появляется новая модель.
+"other": true — оставить, это нужно LLM.
 
-=== Где хранятся настройки Continue ===
+Включить всё то, что позволяет LLM из Continue показывать свои подсказки прямо в редакторе:
 
-Сразу в двух местах:
+* "editor.inlineSuggest.enabled": true,
+* "continue.showInlineTip": true,
+* "continue.enableQuickActions": true,
 
-Глобально:
-
-''~/.continue/config.yaml''
-
-Минимальное содержимое:
-
-{{{code: lang="yaml" linenumbers="True"
-name: Local Agent
-version: 1.0.0
-schema: v1
-models:
-  - name: local-qwen
-    displayName: local Qwen Coder
-    provider: ollama
-    model: AUTODETECT
-}}}
-
-Сюда же добавляются ВСЕ агенты, которые были «добавлены через GUI». Даже если одна и та же модель была добавлена несколько раз.
-
-В проекте:
-
-''/.continue/config.json''
-
-Настройки файла из проекта перекрывают глобальные настройки, но местами даже не пересекаются (надо смотреть). 
-
-=== Ручное добавление чата ===
-
-Если добавленный конфиг для Continue не подхватился, или в принципе надо добавить новый LLM вручную, то в разделе чата можно сконфигурировать нового агента через 
-
-> Select model
-> Add Chat model
-
-Provider = Ollama
-Install Provider = не трогать, модель уже установлена
-Model = Autodetect. Можно явно поискать и указать уже задействованную в Ollama модель, но учесть, что это будет выбором модели «для внутреннего пользования», которую Continue предложит скачать.
-[Connect]
-
-Откроется панель чата. В ней выбрать
-Mode = Chat (все другие не трогать, модель их не потянет)
-Models = ''qwen2.5-coder:7b''
-
-=== Настройки чата ===
-
-Над чатом за “…” скрываются настройки инструментов чата — можно указать разные модели для чата, для code autocompletion; настроить постоянные правила чата; записать в конфиги промпты, которые потом можно будет выбирать одним кликом; и настроить Tools, которые не нужны в чатах, но очень помогают в режиме Agent.
-
-По-настоящему в разработке нужен Agent, который будет заниматься Code Completition. Начинать лучше с очень легких моделей, и переходить на более «тяжелые» только при необходимости и возможности (их не каждый комп вытянет).
-
-=== Скорость работы ===
-
-
-=== Указать модель для code autocompletition ===
-
-Добавить это указание в проекте:
-
-''/.continue/config.json''
+Пример файла:
 
 {{{code: lang="json" linenumbers="True"
 {
-  "models": [
-    {
-      "title": "Qwen Coder (local Ollama)",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:7b",
-      "apiBase": "http://127.0.0.1:11434"
-    }
-  ],
-  	"autocomplete": {
-		"defaultModel": "qwen2.5-coder:7b",
-		"maxTokens": 128,
-		"temperature": 0.2,
-		"debounceDelay": 50
-	}
+	"_comment1": "====================================== Editor",
+	"editor.autoClosingBrackets": "beforeWhitespace",
+	"editor.autoClosingComments": "beforeWhitespace",
+	"editor.autoClosingQuotes": "beforeWhitespace",
+	"editor.autoIndentOnPaste": true,
+	"editor.detectIndentation": true,
+	"editor.fontFamily": "'Ysabeau'",
+	"editor.fontSize": 15,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.inlineSuggest.enabled": true,
+	"editor.insertSpaces": false,
+	"editor.minimap.renderCharacters": false,
+	"editor.minimap.showSlider": "always",
+	"editor.mouseWheelZoom": true,
+	"editor.tabSize": 4,
+	"files.autoSave": "onFocusChange",
+	"git.confirmSync": false,
+	"terminal.external.linuxExec": "konsole",
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"terminal.integrated.fontFamily": "Cascadia Code",
+	"terminal.integrated.fontSize": 13,
+	"terminal.integrated.fontWeight": "normal",
+	"terminal.integrated.lineHeight": 1.1,
+	"terminal.external.linuxArgs": [
+		"--profile astenix"
+	],
+	"workbench.editor.enablePreview": false,
+	"_comment2": "====================================== IDE code completition",
+	"editor.parameterHints.enabled": false,
+	"editor.suggestOnTriggerCharacters": false,
+	"editor.suggest.showClasses": false,
+	"editor.suggest.showFunctions": false,
+	"editor.suggest.showMethods": false,
+	"editor.suggest.showProperties": false,
+	"editor.suggest.showSnippets": false,
+	"editor.suggest.showVariables": false,
+	"editor.suggest.showWords": false,
+	"editor.quickSuggestions": {
+		"comments": false,
+		"strings": false,
+		"other": true
+	},
+	"_comment3": "====================================== Continue (LLM)",
+	"continue.enableConsole": true,
+	"continue.enableNextEdit": true,
+	"continue.enableQuickActions": true,
+	"continue.enableTabAutocomplete": true,
+	"continue.showInlineTip": true,
+	"_comment4": "====================================== Telemetry",
+	"continue.telemetryEnabled": false,
+	"telemetry.feedback.enabled": false,
+	"_comment5": "====================================== Updates",
+	"update.enableWindowsBackgroundUpdates": false,
+	"update.mode": "manual",
+	"workbench.enableExperiments": false,
+	"workbench.settings.enableNaturalLanguageSearch": true,
 }
 }}}
 
-Что важно:
+===== Установить плагин Continue =====
 
-* debounceDelay: 50 → модель будет отвечать быстрее, почти как в консоли.
-* maxTokens можно держать небольшим (иначе IDE ждёт, пока модель сгенерит много текста), например, 64.
+Взять файл в формате ''*.vsix'' на https://open-vsx.org/extension/Continue/continue (кнопка Download справа внизу).
 
-Перезапуск IDE.
+''Extensions'' 
+''> …'' 
+''> Install from VSIX…'' 
+''>'' указать файл
 
-==== Удаленный сервер (CPU) ====
+Неочевидно, но при его работе/настройке нас будут настырно приглашать завести аккаунт на https://hub.continue.dev, в котором будут храниться все настройки, а в IDE их можно будет автоматически подключать. Это можно не делать, но временами плагин таки будет хотеть туда залогиниться, и таки да, единое место хранения многое упрощает, все модели в IDE будут управляться через настройки одного плагина…
 
-Не каждый выделенный сервер оснащён выделенной видеокартой, поэтому модели будут работать на CPU. Это сразу означает «медленнее», но не так, чтобы критично. Главное то, что всё это можно настраивать — приоритет скорости ответов или их точности.
+При установке плагина будет автоматически создан каталог с файлами:
 
-У меня сервером будет отдельно стоящий слабый офисный Beelink Mini S12 Pro (Intel 12th Gen N100 (4C/4T, up to 3.4GHz), 16GB DDR4, 500GB SSD) с Debian без GUI. В нём нет выделенной GPU, поэтому надо тонко настроить llm-окружение под его производительность.
+''~/.continue/''
+
+Для чистоты эксперимента можно удалить его содержимое (позже все файлы самостоятельно вернутся).
+
+Отдельно убедиться в том, что в каталоге проекта нет скрытого каталога “''.continue''”. Если есть — удалить.
+
+===== Подключить внешнюю LLM =====
+
+	*todo Включить отдельно codestal и qwen для ризонинг и посмотреть, как оно работает.
+
+[[+cloud LLM]]
+
+	*todo Засетапить codestral через LAN - ollama. 
+	*todo Рассмотреть то, что предлагал chatGPT про балансировку нагрузки llm на beelink.
+
+[[+self-hosted LLM]]
+
+===== Подключить локальную LLM =====
+
+	*todo Засетапить codestral с localhost через ollama.
+
+[[+localhost LLM]]
+
+===== Включить обратно встроенные подсказки IDE =====
+
+{{{code: lang="json" linenumbers="True"
+{
+	"_comment1": "====================================== Editor",
+	"editor.autoClosingBrackets": "beforeWhitespace",
+	"editor.autoClosingComments": "beforeWhitespace",
+	"editor.autoClosingQuotes": "beforeWhitespace",
+	"editor.autoIndentOnPaste": true,
+	"editor.detectIndentation": true,
+	"editor.fontFamily": "'Ysabeau'",
+	"editor.fontSize": 15,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.inlineSuggest.enabled": true,
+	"editor.insertSpaces": false,
+	"editor.minimap.renderCharacters": false,
+	"editor.minimap.showSlider": "always",
+	"editor.mouseWheelZoom": true,
+	"editor.tabSize": 4,
+	"files.autoSave": "onFocusChange",
+	"git.confirmSync": false,
+	"terminal.external.linuxExec": "konsole",
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"terminal.integrated.fontFamily": "Cascadia Code",
+	"terminal.integrated.fontSize": 13,
+	"terminal.integrated.fontWeight": "normal",
+	"terminal.integrated.lineHeight": 1.1,
+	"terminal.external.linuxArgs": [
+		"--profile astenix"
+	],
+	"workbench.editor.enablePreview": false,
+	"_comment2": "====================================== IDE code completition",
+	"editor.parameterHints.enabled": true,
+	"editor.suggestOnTriggerCharacters": true,
+	"editor.suggest.showClasses": true,
+	"editor.suggest.showFunctions": true,
+	"editor.suggest.showMethods": true,
+	"editor.suggest.showProperties": true,
+	"editor.suggest.showSnippets": true,
+	"editor.suggest.showVariables": true,
+	"editor.suggest.showWords": true,
+	"editor.quickSuggestions": {
+		"comments": true,
+		"strings": true,
+		"other": true
+	},
+	"_comment3": "====================================== Continue (LLM)",
+	"continue.enableConsole": true,
+	"continue.enableNextEdit": true,
+	"continue.enableQuickActions": true,
+	"continue.enableTabAutocomplete": true,
+	"continue.showInlineTip": true,
+	"_comment4": "====================================== Telemetry",
+	"continue.telemetryEnabled": false,
+	"telemetry.feedback.enabled": false,
+	"_comment5": "====================================== Updates",
+	"update.enableWindowsBackgroundUpdates": false,
+	"update.mode": "manual",
+	"workbench.enableExperiments": false,
+	"workbench.settings.enableNaturalLanguageSearch": true,
+}
+}}}

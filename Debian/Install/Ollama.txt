@@ -8,17 +8,30 @@ Creation-Date: 2025-07-31T16:28:45+03:00
 
 ''curl -fsSL https://ollama.com/install.sh | sh''
 
+Файлы будут автоматически скачаны и уложены в ''/usr/local/lib/ollama''
+
+Также будет создан systemd сервис, который будет автоматически запускать сервер ollama при загрузке системы. Если это не нужно — остановить сервис и удалить два его файла:
+
+''sudo systemctl stop ollama.service''
+''sudo systemctl disable ollama.service''
+''sudo rm /etc/systemd/system/default.target.wants/ollama.service && sudo rm /etc/systemd/system/ollama.service''
+''sudo systemctl daemon-reload''
+
+Проверить:
+
+'''
+sudo systemctl status ollama
+'''
+
+Ожидаемый ответ: ''Unit ollama.service could not be found.''
+
 ===== Запустить =====
 
-Вероятно, сервер Ollama будут запущен сразу же после установки. Проверить:
+Сервер Ollama будут запущен сразу же после установки. Проверить:
 
 ''ps aux | grep ollama''
 
-или
-
-''sudo systemctl status ollama''
-
-Если да, то всё ок.
+Если сервис запущен (работает как сервер в фоне), то всё ок.
 
 Если нет, то запускать локальный сервер Ollama надо так:
 
@@ -26,22 +39,9 @@ Creation-Date: 2025-07-31T16:28:45+03:00
 ollama serve
 '''
 
-Тут именно ''serve'', а не ''server''.
+Тут именно “''serve''”, а не “''server''”.
 
-===== Подавить сервис =====
-
-Отныне и впредь Ollama будет запускаться как сервис вместе с системой. В норме она занимает 40 Мб и вроде бы незаметна. Если надо вызывать её только по собственному запросу, сервис надо остановить и замаскировать:
-
-1. ''sudo systemctl stop ollama.service''
-2. ''sudo systemctl disable ollama.service''
-3. ''sudo rm /etc/systemd/system/ollama.service''
-4. ''sudo systemctl mask ollama.service''
-
-Проверить состояние:
-
-''sudo systemctl status ollama''
-
-Отныне запускать Ollama только вручную через nohup, который отвязывает запуск команды от консоли:
+Разумно запускать Ollama из консоли только вручную, через nohup, который отвязывает запуск команды от консоли:
 
 ''nohup ollama serve > ~/.ollama/log.txt 2>&1 &''
 
@@ -54,6 +54,27 @@ ollama serve
 ''pkill -f "ollama serve"'' 
 
 Есть смысл сделать алиасы в ''.bashrc'' для этих команд.
+
+{{{code: id="ollama_aliases" lang="sh" linenumbers="True"
+    # ==== LLM ollama ===
+
+ollama_stop() {
+    # находим действующий PID процесса ollama serve и убиваем его
+    PIDS=$(pgrep -f "ollama serve")
+    if [ -z "$PIDS" ]; then
+        echo "ollama is not running"
+    else
+        kill $PIDS
+        echo "ollama is stopped"
+    fi
+}
+
+    # Запуск Ollama
+alias ollama+='(ollama serve &>/dev/null &) && echo "ollama is started"'
+
+    # Остановка Ollama
+alias ollama-='ollama_stop'
+}}}
 
 ===== Рабочие файлы =====
 
@@ -85,4 +106,4 @@ ollama serve
 
 Важно: переменная ''OLLAMA_MODELS'' должна указывать на подкаталог ''/models'' — там Ollama будет создавать  подкаталоги для каждой LLM.
 
-См. [[Common:LLM:Ollama]]
+См. [[Software:LLM:Ollama]]

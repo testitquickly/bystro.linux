@@ -26,45 +26,6 @@ Debian 13:
 
 См. https://github.com/VSCodium/vscodium/blob/master/docs/migration.md#manual-migration
 
-=== Расширения ===
-
-Можно прямо скопировать все файлы из 
-
-''~/.vscode/extensions'' 
-
-в
-
-''~/.vscode-oss/extensions''
-
-и большинство из них подхватится, но не факт, что все заработают, некоторые (например, важные Pylance и Python Environments) могут объявить «This extension is no longer available on the Extension Marketplace». 
-
-Поэтому для VSCodium надо:
-
-* брать опен-соурсные аналоги нужных расширений не из VSCodium > EXTENSIONS: MARKETPLACE, а с https://open-vsx.org — файлы в формате ''*.vsix''
-	* зайти на страницу расширения
-	* внизу справа найти кнопку [Download]
-	* скачать файл ''*.vsix''
-	* установить его через VSCodium > Extensions > кнопку с тремя точками (...) > Install from VSIX... > выбрать ''*.vsix'' файл.
-* некоторые файлы vsix — это те же опенсоурс-проприетарные от MS, но переписанные, их можно идентифицировать по приписке «published by Open-VSX». Пример — [[https://open-vsx.org/extension/ms-python/python|ms-python]] 
-
-Вместо оригинального ''Pylance'' надо взять [[https://open-vsx.org/extension/ms-pyright/pyright|Pyright]] в формате vsix — это тот же движок, на котором построен Pylance, и тоже выпущен Microsoft, но в open-source виде. Без него не будет перехода в модули по клику по имени и ряд других возможностей.
-
-Линтер и форматтер — [[https://open-vsx.org/extension/charliermarsh/ruff|Ruff]] или Black Formatter.
-
-И еще VSCodium нужен [[https://open-vsx.org/extension/teticio/python-envy|Python Envy]] для автоматизации запуска виртуального окружения Python.
-
-Рекомендуется перезапустить VSCodium после установки всех нужных расширений.
-
-Возможно, будут полезны:
-
-* Dependi
-* Markdown Table Formatter
-* Ollama Autocoder
-* Mermaid Chart
-* Commit Message Formatter
-* Comment Box
-* Better Comments Next
-
 === Настройки ===
 
 Перетащить все файлы из 

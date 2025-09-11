@@ -1,0 +1,183 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-04T02:33:18+03:00
+
+====== cloud LLM ======
+
+[ @llm @ide @cloud @images ]
+
+==== Получить ключ для API к LLM ====
+
+Сперва должен быть API-ключ для обращения к нейросети — обычно это платная штука. Бесплатно можно получить API-ключ для LLM “Codestral” — языковая модель для подсказок кода от французской компании Mistral AI, доступна через
+
+* https://huggingface.co/settings/tokens — (США) плафторма открытых LLM, среди которых есть и Mistral, открыта через Non-Production License (только для исследований и тестов, коммерческое использование запрещено),
+* https://console.mistral.ai/ — можно бесплатно сгенерировать личный API-ключ, но у него есть ограничение по количеству запросов к модели.
+
+https://console.mistral.ai/codestral — здесь запросить свободный доступ к модели. 
+
+Completion Endpoint — https://codestral.mistral.ai/v1/fim/completions
+Chat Endpoint — https://codestral.mistral.ai/v1/chat/completions
+
+==== Сделать файл с настройками Continue ====
+
+Полностью погасить VSCodium.
+
+Раньше был config.json, отныне будет config.yaml — https://docs.continue.dev/reference/yaml-migration
+
+Создать конфиг:
+
+'''
+> ~/.continue/config.yaml && chmod 600 ~/.continue/config.yaml && chown $(whoami) ~/.continue/config.yaml
+'''
+
+Когда в Continue через GUI добавляются новые агенты, всё записывается в этот файл, и записывается туда буквально каждое движение, даже если одна и та же модель была добавлена несколько раз.
+
+Вставить в файл это — базовая настройка подключения Continue к LLM mistral через API:
+
+{{{code: lang="yaml" linenumbers="True"
+name: my-configuration
+version: 0.0.1
+schema: v1
+models:
+  - name: Codestral
+    provider: mistral
+    model: codestral-latest
+    apiBase: https://codestral.mistral.ai/v1/fim/completions
+    apiKey: ЗДЕСЬ_НУЖЕН_ПЕРСОНАЛЬНЫЙ_КЛЮЧ_API
+    roles:
+      - chat
+      - completion
+      - fix
+	completionOptions:
+		contextLength: 5000
+context:
+	- provider: code
+	- provider: currentFile
+	- provider: http
+	- provider: problems
+  
+}}}
+
+Раздел “context” определяет, откуда модель берёт данные для своих подсказок и решений. Детально про provider — https://docs.continue.dev/customize/deep-dives/custom-providers
+
+В принципе хорошо, чтобы нейросеть имела доступ ко всему проекту, но это изрядно расходует ресурсы. Можно начать с ограничения общего количества токенов, которые расходуются на понимание контекста и генерирование подсказок — LLM будет работать быстрее и дешевле:
+
+''contextLength: 5000''
+
+Чтобы LLM «читала» сразу все файлы в проекте (не надо):
+
+''- provider: file''
+
+Чтобы подсказки LLM строились только на основе файла в фокусе (надо):
+
+''- provider: currentFile''
+
+В паре с “''currentFile''” надо включать контекст структурированного представления программного кода — определения классов, функций, импортов, вызовы и тд. Это сильно экономит токены и даёт LLM более релевантный контекст, чем «весь проект целиком»:
+
+''- provider: code''
+
+LLM может собирать в свой контекст информацию из локальных markdown-файлов или встроенной API-справки и добавлять этот текст в свои подсказки. Это удобно, но повышает расход ресурсов. Но если продуманной документации по проекту нет, то это лишнее:
+
+''- provider: docs''
+
+В контекст можно добавлять все ошибки и предупреждения из панели Problems (результаты линтеров, компиляции, статического анализа). Это помогает LLM разбираться с ошибками в коде:
+
+''- provider: problems''
+
+Бывает полезным подгружать вывод из терминала IDE (логи сборки, тестов, ошибок). Но этот параметр может ускорить расход токенов, если логи в терминале будут «разляпистыми»:
+
+''- provider: terminal''
+
+Можно добавить в контекст состояние отладчика — стек вызовов, значения переменных и т. д. Полезно для подсказок при отладке багов:
+
+'''
+- provider: debugger
+'''
+
+Чтобы не перегружать модель, часто ограничивают глубину. stackDepth указывает, сколько уровней стека вызовов добавлять в контекст, например, 3 = текущая функция + 2 родителя выше. Если поставить слишком большое значение — можно улететь в лишние токены:
+
+'''
+- provider: debugger
+'''
+	''params:'' 
+		''stackDepth: 3''
+
+==== Вызвать code completition ====
+
+Запустить VSCodium.
+
+{{../../../../images/LLM_Codestral_activated.png?width=1000}}
+
+Справа внизу есть кнопка [Continue]. Тыкнуть по ней — на 12 часов разворачивается список опций. Там должная быть галочка у модели Codestral — она сейчас одна, и Switch mode отображает только её.
+
+Открыть консоль “CONTINUE CONSOLE”. 
+
+Набрать в файле с кодом:
+
+'''
+def fibonacci(n): 
+'''
+
+Enter и смотрим в консоль. Если там побежали данные и в коде появилась автоподсказка — Чуи, мы дома. 
+
+==== Подключить несколько LLM ====
+
+{{{code: lang="yaml" linenumbers="True"
+name: my-configuration
+version: 0.0.1
+schema: v1
+
+models:
+  - name: Codestral
+    provider: mistral
+    model: codestral-latest
+    apiKey: ЗДЕСЬ_НУЖЕН_ПЕРСОНАЛЬНЫЙ_КЛЮЧ_API
+    roles:
+      - completion
+      - fix
+    completionOptions:
+      contextLength: 5000
+
+  - name: GPT-4o
+    provider: openai
+    model: gpt-4o
+    apiBase: https://api.openai.com/v1
+    apiKey: ДРУГОЙ_API_KEY
+    roles:
+      - chat
+
+context:
+  - provider: code
+  - provider: currentFile
+  - provider: http
+  - provider: problems
+
+}}}
+
+Важно: "name" должен быть уникальным, чтобы потом выбирать модель по имени.
+
+Можно назначить каждой модели свою роль: одна для подсказок, другая для анализа и чата.
+
+==== Создать Rules для нейросети ====
+
+Полезно, когда начинаешь оформлять проект по-умному, с файлами, в которых растолковывается суть проекта для LLM (человекопонятные, конечно).
+
+Rules guide your agent’s behavior and understanding. Place markdown files in ''.continue/rules'' in your project to provide context — https://docs.continue.dev/guides/codebase-documentation-awareness
+
+Пример:
+
+'''
+# Project Architecture
+
+This is a React application with:
+- Components in `/src/components`
+- API routes in `/src/api`
+- State management using Redux in `/src/store`
+
+## Coding Standards
+- Use TypeScript for all new files
+- Follow the existing naming conventions
+- Write tests for all new features
+'''
+
+См. далее [[Подключить LLM к IDE]]

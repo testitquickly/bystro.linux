@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2025-09-04T02:33:09+03:00
-
-====== Локальная LLM ======
-Создан Четверг 04 сентября 2025
-

@@ -6,11 +6,15 @@ Creation-Date: 2025-07-31T16:22:45+03:00
 
 [ @ai @ollama ]
 
-Ollama это утилита, которая управляет установкой и управлением множества LLM-моделей (ИИ, см. [[Common:LLM]]) через управление llama.cpp — это библиотека, на которой основаны многие LLM-инструменты. Условный “LLM Docker”.
+Ollama это утилита, которая управляет установкой и управлением множества LLM-моделей (ИИ, см. [[LLM]]) через управление llama.cpp — это библиотека, на которой основаны многие LLM-инструменты. Условный “LLM Docker”.
 
-Список доступных для ollama LLM — https://ollama.com/search
+Она проста в использовании: запускается одной командой, сама грузит модель и запускает её на локалке, и уже к её серверу нему подключаются утилиты вроде Software:aider
 
-Она проста в использовании: запускается одной командой, сама грузит модель и запускает её на локалке, и уже к её серверу нему подключаются утилиты вроде [[Software:aider]].
+Есть и другие «контейнеры для LLM»:
+
+a. [[https://github.com/oobabooga/text-generation-webui|text-generation-webui]] — много возможностей, ручная настройка 
+b. [[https://github.com/vllm-project/vllm|vLLM]] — от ученых из Беркли, для продвинутых, сложнее в настройке, но быстрая подача токенов
+c. [[https://lmstudio.ai/|lmstudio.ai]] — GUI, free for home use 
 
 ===== Установить =====
 
@@ -24,7 +28,11 @@ Ollama это утилита, которая управляет установк
 
 Для проверки Ollama достаточно запустить старую ''llama3'', она хоть и бестолковая во многих смыслах, но нетребовательна к ресурсам. 
 
-==== Модели «для CPU» ====
+==== Посмотреть все доступные модели ====
+
+https://ollama.com/search
+
+Модели для CPU:
 
 * phi-3:mini
 * gemma:2b	///Google//
@@ -33,72 +41,42 @@ Ollama это утилита, которая управляет установк
 * mistral
 * llama3:8b
 
-=== Модели «для GPU» ===
+Модели для GPU:
 
 * mixtral
 * deepseek-coder:33B
 * wizardcoder:15b
 * llama3:70b
 
-===== Запустить LLM через Ollama =====
+==== Модели для кода ====
 
-Скачать и запустить через ''Ollama'' бесплатную LLM-модель «''llama3''»:
+=== Лёгкие и быстрые ===
+
+* DeepSeek Coder 6.7B — временно топ среди компактных для кода (Китай)
+* Qwen2.5-Coder 7B — сильнее в объяснениях (Китай)
+* Code LLaMA 7B — стабильный, староват (США)
+
+=== Средние ===
+
+* DeepSeek Coder 14B — близок к Copilot, понимает большие файлы (Китай)
+* Qwen2.5-Coder 14B (Китай)
+
+=== Тяжёлые ===
+
+Нужно GPU с 24+ Gb VRAM (или CPU с 64+ Gb RAM, но медленно).
+
+* DeepSeek Coder 33B (Китай)
+* Mixtral 8x7B Instruct (Франция, США)
+
+==== Скачать определенную модель ====
+
+Команда ''run'' подразумевает «Скачать и запустить»:
 
 ''ollama run llama3''
 
-Вес модели от 4 до 8 ГБ. 
+Вес модели: от 4 до 8 ГБ.
 
-Сразу после скачивания будет запущена интерактивная сессия (выход по ''Ctrl+D'' или команде ''/bye'') и поскольку это сервер, к которому мы подключается через ssh, произойдет обмен ключами доступа, которые следует сразу принять, и они будут сохранены в каталог ''~/.ollama'',
-
-В том же окно откроется сессия общения (''>>>''), в которой можно или задавать вопросы IRL, или вызывать управляющие команды:
-
-''/set            Set session variables''
-  ''/show           Show model information''
-  ''/load <model>   Load a session or model''
-  ''/save <model>   Save your current session''
-  ''/clear          Clear session context''
-  ''/bye            Exit''
-  ''/?, /help       Help for a command''
-  ''/? shortcuts    Help for keyboard shortcuts''
-
-''Use """ to begin a multi-line message.''
-
-''>>> /show''
-
-''Available Commands:''
-  ''/show info         Show details for this model''
-  ''/show license      Show model license''
-  ''/show modelfile    Show Modelfile for this model''
-  ''/show parameters   Show parameters for this model''
-  ''/show system       Show system message''
-  ''/show template     Show prompt template''
-
-Возраст модели, количество её параметров и тд можно узнать через команду ''/show info'' Пример ответа:
-
-''Model''
-	''architecture        llama''    
-	''parameters          8.0B''     (восемь миллиардов)
-	''context length      8192''     
-	''embedding length    4096''     
-	''quantization        Q4_0''     
-
-  ''Capabilities''
-	''completion''    
-
-  ''Parameters''
-	''num_keep    24''                       
-	''stop        "<|start_header_id|>"''    
-	''stop        "<|end_header_id|>"''      
-	''stop        "<|eot_id|>"''             
-
-  ''License''
-	''META LLAMA 3 COMMUNITY LICENSE AGREEMENT''             
-	''Meta Llama 3 Version Release Date: April 18, 2024''    
-	''...''    
-
-…это норм.
-
-Проверить, какие модели уже скачаны через ''ollama'':
+==== Проверить, какие модели уже скачаны ====
 
 ''ollama list''
 
@@ -106,6 +84,80 @@ Ollama это утилита, которая управляет установк
 
 ''NAME             ID              SIZE      MODIFIED''    
 ''llama3:latest    365c0bd3c000    4.7 GB    9 hours ago''  
+
+===== Запустить определенную LLM =====
+
+Та же команда ''run'' (Скачать и запустить):
+
+''ollama run llama3''
+
+Сразу после скачивания будет запущена интерактивная сессия (выход по ''Ctrl+D'' или команде ''/bye'') и поскольку это сервер, к которому мы подключается через ssh, произойдет обмен ключами доступа, которые следует сразу принять, и они будут сохранены в каталог ''~/.ollama'',
+
+В том же окно откроется сессия общения (''>>>''), в которой можно или задавать вопросы IRL, или вызывать управляющие команды:
+
+/set            Set session variables
+/show           Show model information
+/load <model>   Load a session or model
+/save <model>   Save your current session
+/clear          Clear session context
+/bye            Exit
+/?, /help       Help for a command
+/? shortcuts    Help for keyboard shortcuts
+
+Use """ to begin a multi-line message.
+
+''>>> /show''
+
+Available Commands:
+  /show info         Show details for this model
+  /show license      Show model license
+  /show modelfile    Show Modelfile for this model
+  /show parameters   Show parameters for this model
+  /show system       Show system message
+  /show template     Show prompt template
+
+Возраст модели, количество её параметров и тд можно узнать через команду ''/show info'' Пример ответа:
+
+{{{code: id="show_ollama" lang="sh" linenumbers="True"
+Model
+	architecture        llama    
+	parameters          8.0B     (восемь миллиардов)
+	context length      8192     
+	embedding length    4096     
+	quantization        Q4_0     
+
+  Capabilities
+	completion    
+
+  Parameters
+	num_keep    24                       
+	stop        "<|start_header_id|>"    
+	stop        "<|end_header_id|>"      
+	stop        "<|eot_id|>"             
+
+  License
+	META LLAMA 3 COMMUNITY LICENSE AGREEMENT             
+	Meta Llama 3 Version Release Date: April 18, 2024    
+	...    
+}}}
+
+…это норм.
+
+==== Проверить доступность модели в системе через API ====
+
+''curl http://127.0.0.1:11434/v1/models''
+
+В ответ ожидаем json со списком действующих моделей:
+
+'''
+{"object":"list","data":[{"id":"qwen2.5-coder:7b","object":"model","created":1756890889,"owned_by":"library"}]
+'''
+
+Также можно открыть в браузере http://127.0.0.1:11434 
+
+В ответе должно быть ''Ollama is running''. 
+
+Если в обоих случаях ответа нет или он «странный» — подключить модель к IDE не получится.
 
 ===== Настройки модели =====
 
@@ -147,10 +199,6 @@ http://localhost:11434/api/v1/chat/completions
 Посмотреть список установленных:
 
 ''ollama list''
-
-Сперва надо погасить службу Ollama:
-
-''sudo systemctl disable ollama''
 
 Удалить определенную модель:
 
