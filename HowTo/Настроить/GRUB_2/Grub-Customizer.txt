@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2024-10-17T12:56:11+03:00
+
+====== Grub-Customizer ======
+
+[ @grub ]
+
+Есть GUI-утилита для настройки содержимого grub. Ценность условная, но если хочется, то есть.
+
+===== Установить =====
+
+* [[Debian:Install:Grub-Customizer]]
+* [[Manjaro:Install:Grub-Customizer]]
+
+Запустить, ставить галочки.

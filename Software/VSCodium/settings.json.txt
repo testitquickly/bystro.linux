@@ -1,0 +1,71 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-18T13:30:47+03:00
+
+====== Settings ======
+
+[ @json ]
+
+{{{code: lang="json" linenumbers="True"
+{
+	"_comment1": "====================================== Editor",
+	"editor.autoClosingBrackets": "beforeWhitespace",
+	"editor.autoClosingComments": "beforeWhitespace",
+	"editor.autoClosingQuotes": "beforeWhitespace",
+	"editor.autoIndentOnPaste": true,
+	"editor.detectIndentation": true,
+	"editor.fontFamily": "Ysabeau",
+	"editor.fontWeight": "600",
+	"editor.fontSize": 17,
+	"editor.lineHeight": 1.25,
+	"editor.formatOnPaste": true,
+	"editor.formatOnSave": true,
+	"editor.inlineSuggest.enabled": true,
+	"editor.insertSpaces": false,
+	"editor.minimap.renderCharacters": false,
+	"editor.minimap.showSlider": "always",
+	"editor.mouseWheelZoom": true,
+	"editor.tabSize": 4,
+	"files.autoSave": "onFocusChange",
+	"git.confirmSync": false,
+	"terminal.external.linuxExec": "konsole",
+	"terminal.integrated.defaultProfile.linux": "bash",
+	"terminal.integrated.fontFamily": "Cascadia Code",
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.fontWeight": "normal",
+	"terminal.integrated.lineHeight": 1.1,
+	"terminal.external.linuxArgs": [
+		"--profile astenix"
+	],
+	"workbench.editor.enablePreview": false,
+	"_comment2": "====================================== IDE code completition",
+	"editor.parameterHints.enabled": false,
+	"editor.suggestOnTriggerCharacters": false,
+	"editor.suggest.showClasses": false,
+	"editor.suggest.showFunctions": false,
+	"editor.suggest.showMethods": false,
+	"editor.suggest.showProperties": false,
+	"editor.suggest.showSnippets": false,
+	"editor.suggest.showVariables": false,
+	"editor.suggest.showWords": false,
+	"editor.quickSuggestions": {
+		"comments": false,
+		"strings": false,
+		"other": true
+	},
+	"_comment3": "====================================== Continue (LLM)",
+	"continue.enableConsole": true,
+	"continue.enableNextEdit": true,
+	"continue.enableQuickActions": true,
+	"continue.enableTabAutocomplete": true,
+	"continue.showInlineTip": true,
+	"_comment4": "====================================== Telemetry",
+	"continue.telemetryEnabled": false,
+	"telemetry.feedback.enabled": false,
+	"_comment5": "====================================== Updates",
+	"update.enableWindowsBackgroundUpdates": false,
+	"update.mode": "manual",
+	"workbench.enableExperiments": false,
+	"workbench.settings.enableNaturalLanguageSearch": true,
+}
+}}}
