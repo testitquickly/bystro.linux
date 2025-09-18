@@ -2,8 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-09-18T02:57:30+03:00
 
-====== Сервис ======
-Создан Четверг 18 сентября 2025
+====== Сервис NetworkManager-wait-online ======
+
+[ @delete @systemd @blame ]
+
+Эта инструкция относится к утилите [[Software:blame]]
 
 Очень осторожно! В погоне за секундой можно запороть систему.
 
@@ -17,13 +20,3 @@ Creation-Date: 2025-09-18T02:57:30+03:00
 ''sudo systemctl mask NetworkManager-wait-online.service''
 
 Последняя команда делает сервису symlink в ''/dev/null'' Это нужно из-за того, что если стартап какого-то сервиса погашен, но его «попросит» другой сервис/процесс, то сервис всё равно будет загружен.
-
-Ещё можно по аналогичной схеме «прибить» сервис bluetooth.service — если он, конечно же, не нужен и //не будет// нужен позже. Возможно, будет разумнее отключить его в 
-Параметры системы 
-> Запуск и завершение
-> Управление службами
-
-''sudo systemctl status bluetooth.service''
-''sudo systemctl stop bluetooth.service''
-''sudo systemctl disable bluetooth.service''
-''sudo systemctl mask bluetooth.service''

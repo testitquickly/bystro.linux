@@ -4,9 +4,8 @@ Creation-Date: 2022-02-23T20:41:15+02:00
 
 ====== xsensors ======
 
-[ @debian @console @xsensors @hddtemp ]
+[ @debian @console @xsensors ]
 
 Это счетчики температуры hdd и ssd
 
 ''sudo aptitude install xsensors''
-

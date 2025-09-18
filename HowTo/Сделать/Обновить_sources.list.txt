@@ -10,16 +10,15 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 Или просто указываем основной региональный сервер (http://ftp.md.debian.org/debian/ в моём случае), или же
 
-* ''sudo aptitude install netselect-apt''
-* ''sudo netselect-apt''
+''sudo aptitude install netselect-apt && sudo netselect-apt''
+
+Произойдет пинг трех сотен адресов и будет предложен список из десяти «самых быстрых».
 
 Дождаться строки "The fastest 10 servers seem to be" и выбрать наиболее подходящий ресурс для # MAIN и # UPDATES.
  
 Сервер для # SECURITY updates никогда не бывает локальным, его не трогаем.
 
-==== Обновить sources.list ====
-
-Удалить файл "sources.list", который автоматически создала утилита netselect-apt и внести изменения в //свой// sources.list.
+Утилита netselect-apt сразу создаст в текущем каталоге новый файл "sources.list". Его можно удалить.
 
 ===== Изменить /etc/apt/sources.list под релиз =====
 
@@ -41,6 +40,8 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 	# SECURITY
 	deb http://security.debian.org/debian-security bullseye-security main contrib non-free
 	'''
+
+Лучше явно указывать название релиза, чем глобальное stable — после обновления stable произойдет автоматический апгрейд до нового релиза в статусе stable и это может быть очень неприятным сюрпризом.
 
 Когда всё норм — обновить систему одной командой:
 

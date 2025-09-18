@@ -77,7 +77,7 @@ sudo rm -R /opt/libreoffice*
 Запуск софта происходит из 
 /opt/libreoffice24.8/share/xdg
 
-~/.local/bin
+''~/.local/bin''
 
 ===== Настроить открытие файлов =====
 

@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:56:38+02:00
 
-====== Автообновление времени и даты ======
+====== Обновление времени и даты ======
 
 [ @console @time ]
 
@@ -157,6 +157,8 @@ ConnectionRetrySec=30
 SaveIntervalSec=60
 '''
 
+Сохранить, выйти.
+
 ==== Проверить связь с сервером синхронизации ====
 
 ''timedatectl timesync-status''
@@ -197,7 +199,7 @@ SaveIntervalSec=60
 	''Packet count: 2''
 	''Frequency: +69,564ppm''
 
-Всё.
+Всё ок.
 
 То же самое детально:
 

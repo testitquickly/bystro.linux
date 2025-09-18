@@ -4,8 +4,199 @@ Creation-Date: 2025-09-11T21:16:40+03:00
 
 ====== self-hosted LLM ======
 
-локально развёрнутая языковая модель (LLM), доступная только внутри корпоративной сети (intranet).
+Технически говоря, это называется «поднять локальный сервер на удаленном компьютере». Это тот же LLM на localhost через [[Ollama]] ,  но на отдельном компьютере в частной сети (LAN, intranet).
 
-Не каждый выделенный сервер оснащён выделенной видеокартой, поэтому модели будут работать на CPU. Это сразу означает «медленнее», но не так, чтобы критично. Главное то, что всё это можно настраивать — приоритет скорости ответов или их точности.
+Для примера LLM будет работать на отдельном слабом офисном Beelink Mini S12 Pro (Intel 12th Gen N100 (4C/4T, up to 3.4GHz), 16GB DDR4, 500GB SSD) с Debian без GUI. Там нет выделенной GPU, производительность низкая, поэтому надо тонко настроить LLM-окружение.
 
-У меня сервером будет отдельно стоящий слабый офисный Beelink Mini S12 Pro (Intel 12th Gen N100 (4C/4T, up to 3.4GHz), 16GB DDR4, 500GB SSD) с Debian без GUI. В нём нет выделенной GPU, поэтому надо тонко настроить llm-окружение под его производительность.
+По-настоящему надо рассматривать возможность запуска LLM на удаленном компьютере на стороне хостера.
+
+===== На удаленном компьютере =====
+
+Подключиться к удаленному компьютеру по [[ssh]] и
+
+Установить [[Ollama]] . Важно: будем управлять запуском Ollama через Systemd, чтобы избежать сложностей с особенностями запуска процессов через ssh.
+
+Стянуть и запустить через Ollama модель для подсказок в коде. Для примера взять маленькую ''qwen2.5-coder:3b''
+
+''ollama run qwen2.5-coder:3b''
+
+Установить 
+
+''sudo apt install socat -y'' 
+
+Настроить запуска Ollama через два systemd‑сервиса: 
+
+* один для Ollama, 
+* другой для socat‑LAN‑прокси, привязанный к Ollama.
+
+Проверить, куда установлен Ollama:
+
+''which ollama''
+
+Записать ответ.
+
+Настроить ollama.service
+
+''sudo mcedit /etc/systemd/system/ollama.service''
+
+Заменить содержимое этого файла следующим:
+
+{{{code: lang="sh" linenumbers="True"
+[Unit]
+Description=Ollama server
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/ollama serve
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+}}}
+
+Restart=on-failure — перезапуск при сбое.
+User=root нужен, так как Ollama и socat используют привилегированные операции.
+
+''sudo mcedit /etc/systemd/system/ollama-proxy.service''
+
+Вставить это:
+
+{{{code: lang="sh" linenumbers="True"
+[Unit]
+Description=Ollama LAN proxy
+After=ollama.service
+Requires=ollama.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/socat TCP-LISTEN:11435,fork,bind=0.0.0.0 TCP:127.0.0.1:11434
+Restart=on-failure
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
+}}}
+
+Запускаем прокси на порту 11435, через который обращаемся к олламовскому 11434.
+After=ollama.service и Requires=ollama.service — прокси запускается только после Ollama и останавливается вместе с ним.
+Type=simple — socat процесс виден systemd.
+
+Запустить сервис
+
+''# Перезагрузить демоны после добавления юнитов''
+''sudo systemctl daemon-reload''
+
+''# Отключить автозапуск сервисов при старте системы''
+''sudo systemctl disable ollama.service''
+''sudo systemctl disable ollama-proxy.service''
+
+''# Запустить сервисы''
+''sudo systemctl start ollama.service''
+''sudo systemctl start ollama-proxy.service''
+
+''# Проверить статус''
+''sudo systemctl status ollama.service''
+''sudo systemctl status ollama-proxy.service''
+
+Прописать в .bashrc (см. [[Debian:Install:Ollama]]) запуск и остановку сервисов для Ollama:
+
+{{{code: lang="sh" linenumbers="True"
+  # Запуск Ollama
+alias ollama+='sudo systemctl start ollama-proxy.service'
+
+    # Остановка Ollama
+alias ollama-='sudo systemctl stop ollama-proxy.service'
+}}}
+
+===== На ноутбуке =====
+
+Проверить соединение с удаленной машиной:
+
+'''
+curl http://192.168.50.26:11435/v1/models
+'''
+
+Ожидаемый ответ (если моделей еще нет):
+
+''{"object":"list","data":null}''
+
+или, если есть:
+
+'''
+{"object":"list","data":[{"id":"qwen2.5-coder:3b","object":"model","created":1757712332,"owned_by":"library"}]}
+'''
+
+Отредактировать файл с настройками Continue на своем ноутбуке:
+
+'''
+mcedit ~/.continue/config.yaml
+'''
+
+Прописать настройку с точным названием используемой через ollama модели (например “''qwen2.5-coder:7b''”) и url действующего на localhost сервера ollama на стандартном порту ollama (11434). Аккуратно следить за отступами от левого края — в yaml отступы строго по два пробела, без табов.
+
+{{{code: lang="yaml" linenumbers="True"
+name: my-configuration
+version: 0.0.1
+schema: v1
+
+models:
+  - name: lan-qwen
+    provider: ollama
+    model: qwen2.5-coder:3b
+    apiBase: http://192.168.50.26:11435
+    roles:
+      - chat
+      - autocomplete
+    defaultCompletionOptions:
+      contextLength: 20000
+
+autocomplete:
+  model: lan-qwen
+  mode: nextEdit
+  maxTokens: 64
+
+context:
+  - provider: currentFile
+  - provider: code
+  - provider: diff
+  - provider: http
+  - provider: docs
+  - provider: terminal
+  - provider: problems
+  - provider: debugger
+    params:
+      stackDepth: 3
+
+}}}
+
+Запустить VSCodium (или перезапустить, если был открыт), открыть Continue Console. 
+
+Настройки из yaml должны подхватиться автоматически: в разделе чатов появляется новая модель.
+
+Проверка: в открытом файле вставить
+
+'''
+def fibonacci(n): 
+'''
+
+должно быть предложено продолжение функции. 
+
+Ответ должен приходить максимум за 1-2 секунды. Если ollama на удаленном компьютере работает только на CPU, то ответ может быть очень долгим, а все, что больше 30 секунд, объявляется отменённым. Может помочь 
+
+* переход на более лёгкую модель — для autocomplete это не критично.
+* работа в режиме NextEdit (некоторые модели не были обучены на FIM)
+* уменьшить объем работы LLM — уменьшить цифру для maxTokens
+* очень тонко настроить работу ollama на удалённом компьютере — балансировать нагрузку между ядрами CPU и прочее колдовство
+* поменять удаленный компьютер на более мощный — и в CPU, и с GPU
+
+См. далее [[Подключить LLM к IDE]]

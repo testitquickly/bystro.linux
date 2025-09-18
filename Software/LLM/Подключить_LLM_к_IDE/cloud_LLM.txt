@@ -55,7 +55,6 @@ context:
 	- provider: currentFile
 	- provider: http
 	- provider: problems
-  
 }}}
 
 Раздел “context” определяет, откуда модель берёт данные для своих подсказок и решений. Детально про provider — https://docs.continue.dev/customize/deep-dives/custom-providers
@@ -142,7 +141,7 @@ models:
     provider: openai
     model: gpt-4o
     apiBase: https://api.openai.com/v1
-    apiKey: ДРУГОЙ_API_KEY
+    apiKey: ЗДЕСЬ_НУЖЕН_ПЕРСОНАЛЬНЫЙ_КЛЮЧ_API
     roles:
       - chat
 
@@ -157,6 +156,8 @@ context:
 Важно: "name" должен быть уникальным, чтобы потом выбирать модель по имени.
 
 Можно назначить каждой модели свою роль: одна для подсказок, другая для анализа и чата.
+
+Можно выделить код, нажать ''Ctrl+L'' — выделенное будет скопировано в окно чата.
 
 ==== Создать Rules для нейросети ====
 

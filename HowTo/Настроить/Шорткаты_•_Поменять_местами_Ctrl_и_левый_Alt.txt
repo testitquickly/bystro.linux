@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2024-09-21T00:50:25+03:00
 
-====== шорткаты • Поменять местами Ctrl и левый Alt ======
+====== Шорткаты • Поменять местами Ctrl и левый Alt ======
 
 [ @keyboard @shortcuts ]
 

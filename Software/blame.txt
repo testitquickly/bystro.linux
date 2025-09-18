@@ -63,33 +63,4 @@ graphical.target @11.665s
 
 ===== Отключить что-то =====
 
-Очень осторожно! В погоне за секундой можно запороть систему.
-
-«systemd-timesyncd.service» точно //не надо// отключать.
-
-В принципе безопасно отключить штатный «''NetworkManager-wait-online.service''» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит от восьми до 120 секунд. Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
-
-''sudo systemctl status NetworkManager-wait-online.service''
-''sudo systemctl stop NetworkManager-wait-online.service''
-''sudo systemctl disable NetworkManager-wait-online.service''
-''sudo systemctl mask NetworkManager-wait-online.service''
-
-Последняя команда делает сервису symlink в ''/dev/null'' Это нужно из-за того, что если стартап какого-то сервиса погашен, но его «попросит» другой сервис/процесс, то сервис всё равно будет загружен.
-
-Ещё можно по аналогичной схеме «прибить» сервис bluetooth.service — если он, конечно же, не нужен и //не будет// нужен позже. Возможно, будет разумнее отключить его в 
-Параметры системы 
-> Запуск и завершение
-> Управление службами
-
-''sudo systemctl status bluetooth.service''
-''sudo systemctl stop bluetooth.service''
-''sudo systemctl disable bluetooth.service''
-''sudo systemctl mask bluetooth.service''
-
-==== Забить snap ====
-
-Это будет посложнее. Вместо «sudo systemctl disable snapd.service» надо проверить, есть ли у него родственники: «systemd-analyze blame | grep snap» (если проверяем snap). Если таки да, то лучше сервис дополнительно ещё и замаскировать:
-
-''sudo systemctl stop snapd.service''
-''sudo systemctl disable snapd.service''
-''sudo systemctl mask snapd.service''
+[[HowTo:Удалить:Сервис NetworkManager-wait-online]]

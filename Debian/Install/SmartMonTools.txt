@@ -6,7 +6,7 @@ Creation-Date: 2024-10-25T21:55:44+03:00
 
 [ @debian @install @smartmontools @hdd @ssd @nvme ]
 
-''sudo apt-get update && sudo apt-get install smartmontools nvme-cli hddtemp''
+''sudo apt-get update && sudo apt-get install smartmontools nvme-cli''
 
 Утилита ''nvme-cli'' это аналог ''smartmontools'' для проверки дисков формата NVMe.
 

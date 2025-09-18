@@ -8,31 +8,33 @@ Creation-Date: 2025-08-08T16:24:58+03:00
 
 Следуем https://vscodium.com/#install-on-debian-ubuntu-deb-package
 
-==== Добавить GPG key репозитория ====
+Добавить GPG key репозитория:
 
 ''wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg''
 
-==== Добавить репозиторий ====
+Добавить репозиторий
 
-Debian 12:
+* Debian 12:
 
 ''echo 'deb [arch=amd64,arm64 signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main' | sudo tee /etc/apt/sources.list.d/vscodium.list''
 
-Debian 13:
+* Debian 13:
 
 ''echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources && sudo apt update && sudo apt install codium''
+
+Обновить репозитории:
+
+''sudo apt update && sudo apt upgrade''
+
+Установить:
+
+''sudo apt install codium''
 
 ==== Перенести профиль из VS Code ====
 
 См. https://github.com/VSCodium/vscodium/blob/master/docs/migration.md#manual-migration
 
 === Настройки ===
-
-Перетащить все файлы из 
-
-''~/.config/Code/User''
-
-в 
 
 ''~/.config/VSCodium/User''
 

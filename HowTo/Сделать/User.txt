@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-08-20T13:01:59+03:00
 
-====== user ======
+====== User ======
 
 [[+logout юзера]]
 [[+Добавить юзера]]

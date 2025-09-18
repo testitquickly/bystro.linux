@@ -15,4 +15,7 @@ Creation-Date: 2024-10-23T12:26:47+03:00
 
 [[+Программу]]
 
+[[+Сервис Bluetooth]]
+[[+Сервис NetworkManager-wait-online]]
+
 [[+Файлы]]

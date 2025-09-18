@@ -8,9 +8,9 @@ Creation-Date: 2022-02-23T00:50:15+02:00
 
 ===== Проверить версию и релиз Debian =====
 
-Ранее для этого использовали  составную команду «''lsb_release -d && cat /etc/debian_version''», но ''lsb'' ([[https://wiki.linuxfoundation.org/lsb/start|Linux Standard Base]]) отменена.
+Ранее для этого использовали ''lsb'' ([[https://wiki.linuxfoundation.org/lsb/start|Linux Standard Base]]) через составную команду «''lsb_release -d && cat /etc/debian_version''», но LSB отменили.
 
-Можно получить весьма подробную информацию:
+Через systemd:
 
 ''hostnamectl''
 
@@ -44,7 +44,9 @@ echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
 
 ===== Дежурное обновление системы =====
 
-''sudo apt-get update && sudo apt-get upgrade''
+''sudo apt update && sudo apt upgrade''
+
+Раньше использовали команду ''apt-get'', которая ныне считается устаревшей.
 
 ===== Обновление до определённого ядра =====
 
@@ -85,7 +87,7 @@ echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
 
 После обновления нужно „''sudo reboot''” чтобы посмотреть, что получилось. 
 
-	Обычно надо заново настроить [[Настроить:Поменять местами символы на клавише точки и запятой в русской раскладке]], иногда меняется конфиг для [[HowTo:Настроить:grub2]]
+	Обычно надо заново настроить [[Настроить:Поменять местами символы на клавише точки и запятой в русской раскладке]], иногда меняется конфиг для [[Настроить:GRUB2]]
 
 === Простое и бесконтрольное обновление ===
 

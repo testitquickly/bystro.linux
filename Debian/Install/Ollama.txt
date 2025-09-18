@@ -10,11 +10,14 @@ Creation-Date: 2025-07-31T16:28:45+03:00
 
 Файлы будут автоматически скачаны и уложены в ''/usr/local/lib/ollama''
 
+===== Остановить systemd-сервис =====
+
 Также будет создан systemd сервис, который будет автоматически запускать сервер ollama при загрузке системы. Если это не нужно — остановить сервис и удалить два его файла:
 
 ''sudo systemctl stop ollama.service''
 ''sudo systemctl disable ollama.service''
-''sudo rm /etc/systemd/system/default.target.wants/ollama.service && sudo rm /etc/systemd/system/ollama.service''
+''sudo rm /etc/systemd/system/default.target.wants/ollama.service''
+''sudo rm /etc/systemd/system/ollama.service''
 ''sudo systemctl daemon-reload''
 
 Проверить:
@@ -25,15 +28,13 @@ sudo systemctl status ollama
 
 Ожидаемый ответ: ''Unit ollama.service could not be found.''
 
-===== Запустить =====
+===== Запустить Ollama =====
 
-Сервер Ollama будут запущен сразу же после установки. Проверить:
+В принципе сервер Ollama будут запущен сразу же после установки. Проверить:
 
 ''ps aux | grep ollama''
 
-Если сервис запущен (работает как сервер в фоне), то всё ок.
-
-Если нет, то запускать локальный сервер Ollama надо так:
+Включить локальный сервер Ollama:
 
 '''
 ollama serve
@@ -49,14 +50,25 @@ ollama serve
 
 ''nohup ollama serve > /dev/null 2>&1 &''
 
-Остановить сервер Ollama:
+Если сервис запущен (работает как сервер в фоне), то всё ок.
+
+===== Остановить сервер Ollama =====
 
 ''pkill -f "ollama serve"'' 
 
-Есть смысл сделать алиасы в ''.bashrc'' для этих команд.
+===== Алиасы в ''.bashrc'' =====
 
 {{{code: id="ollama_aliases" lang="sh" linenumbers="True"
     # ==== LLM ollama ===
+
+ollama_start() {
+    if pgrep -x ollama >/dev/null; then
+        echo "ollama уже запущен"
+    else
+        nohup ollama serve >/dev/null 2>&1 &
+        echo "ollama is started"
+    fi
+}
 
 ollama_stop() {
     # находим действующий PID процесса ollama serve и убиваем его
@@ -70,7 +82,7 @@ ollama_stop() {
 }
 
     # Запуск Ollama
-alias ollama+='(ollama serve &>/dev/null &) && echo "ollama is started"'
+alias ollama+='ollama_start'
 
     # Остановка Ollama
 alias ollama-='ollama_stop'

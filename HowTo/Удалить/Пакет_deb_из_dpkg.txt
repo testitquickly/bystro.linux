@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:31:18+02:00
 
 ====== Пакет deb из dpkg ======
 
-[ @console @dpkg ]
+[ @delete @console @dpkg ]
 
 Например, был установлен 
 

@@ -2,93 +2,66 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-09-04T02:33:09+03:00
 
-====== localhost ======
+====== localhost LLM ======
 
 [ @ide @llm @localhost @ollama ]
 
-	*todo !!! Переписать LLM на localhost
+Технически говоря, это называется «поднять локальный сервер».
 
-Это называется «поднять локальный сервер».
+1. Установить [[Ollama]] 
+2. Стянуть и запустить через Ollama модель для подсказок в коде. Для примера взять маленькую ''qwen2.5-coder:3b''
 
-1. Установить локальную LLM через [[Ollama]] 
-2. Стянуть и запустить через Ollama модель для подсказок в коде (на выбор, Code LLaMA, Qwen-Coder, …)
-3. Если надо, стянуть и запустить через Ollama отдельную модель для анализа и объяснений (на выбор)
-4. Установить в [[VSCodium]] open-source AI code assistant плагин “Continue”
-5. Настроить “Continue” так, чтобы VS Code отправлял запросы на локальный сервер
+''ollama run qwen2.5-coder:3b''
 
-В каталоге проекта сделать файл с настройкой Continue:
+Отредактировать файл с настройками Continue:
 
 '''
-mkdir -p ./.continue && mcedit ./.continue/config.json
+mcedit ~/.continue/config.yaml
 '''
 
 прописать настройку с точным названием используемой через ollama модели (например “''qwen2.5-coder:7b''”) и url действующего на localhost сервера ollama на стандартном порту:
 
-{{{code: id="continue_config" lang="json" linenumbers="True"
-{
-  "models": [
-    {
-      "title": "qwen (coder)",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:7b",
-      "apiBase": "http://127.0.0.1:11434"
-    }
-  ]
-}
+{{{code: lang="yaml" linenumbers="True"
+name: my-configuration
+version: 0.0.1
+schema: v1
+
+models:
+  - name: localhost-qwen
+    provider: ollama
+    model: qwen2.5-coder:3b
+    apiBase: http://localhost:11434
+    completionOptions:
+      contextLength: 20000
+      temperature: 0
+
+chat:
+  model: localhost-qwen
+
+autocomplete:
+  model: localhost-qwen
+  mode: nextEdit   # можно заменить на fim, если модель поддерживает
+  maxTokens: 64
+
+edit:
+  model: localhost-qwen
+
+fix:
+  model: localhost-qwen
+
+context:
+  - provider: code
+  - provider: currentFile
+  - provider: diff
+  - provider: http
+  - provider: problems
+  - provider: terminal
+  - provider: debugger
+
 }}}
 
-Запустить VSCodium (или перезапустить, если был открыт), открыть Continue. Настройки должны подхватиться автоматически: в разделе чатов появляется новая модель.
+Запустить VSCodium (или перезапустить, если был открыт), открыть Continue Console. 
 
-=== Ручное добавление чата ===
+Настройки должны подхватиться автоматически: в разделе чатов появляется новая модель, в коде должны появиться подсказки.
 
-Если добавленный конфиг для Continue не подхватился, или в принципе надо добавить новый LLM вручную, то в разделе чата можно сконфигурировать нового агента через 
-
-> Select model
-> Add Chat model
-
-Provider = Ollama
-Install Provider = не трогать, модель уже установлена
-Model = Autodetect. Можно явно поискать и указать уже задействованную в Ollama модель, но учесть, что это будет выбором модели «для внутреннего пользования», которую Continue предложит скачать.
-[Connect]
-
-Откроется панель чата. В ней выбрать
-Mode = Chat (все другие не трогать, модель их не потянет)
-Models = ''qwen2.5-coder:7b''
-
-=== Настройки чата ===
-
-Над чатом за “…” скрываются настройки инструментов чата — можно указать разные модели для чата, для code autocompletion; настроить постоянные правила чата; записать в конфиги промпты, которые потом можно будет выбирать одним кликом; и настроить Tools, которые не нужны в чатах, но очень помогают в режиме Agent.
-
-По-настоящему в разработке нужен Agent, который будет заниматься Code Completition. Начинать лучше с очень легких моделей, и переходить на более «тяжелые» только при необходимости и возможности (их не каждый комп вытянет).
-
-=== Указать модель для code autocompletition ===
-
-Добавить это указание в проекте:
-
-''/.continue/config.json''
-
-{{{code: lang="json" linenumbers="True"
-{
-  "models": [
-    {
-      "title": "Qwen Coder (local Ollama)",
-      "provider": "ollama",
-      "model": "qwen2.5-coder:7b",
-      "apiBase": "http://127.0.0.1:11434"
-    }
-  ],
-  	"autocomplete": {
-		"defaultModel": "qwen2.5-coder:7b",
-		"maxTokens": 128,
-		"temperature": 0.2,
-		"debounceDelay": 50
-	}
-}
-}}}
-
-Что важно:
-
-* debounceDelay: 50 → модель будет отвечать быстрее, почти как в консоли.
-* maxTokens можно держать небольшим (иначе IDE ждёт, пока модель сгенерит много текста), например, 64.
-
-Перезапуск IDE.
+См. далее [[Подключить LLM к IDE]]

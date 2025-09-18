@@ -10,8 +10,45 @@ Creation-Date: 2022-10-31T15:32:06+02:00
 
 Смотреть их последовательно, разбираться (сам, через chatGTP, через линуксоидов), чинить.
 
-Поиск записей с критическими ошибками:
+===== Поиск записей с критическими ошибками =====
 
-''journalctl -p 3 -xb''
+''journalctl -q -p 3 -xb''
 
-Это покажет все ошибки уровня Error и выше для последней сессии.
+===== Примеры =====
+
+[[Common:Hardware:Ноутбук:Asus Zenbook 17]]
+
+==== BlueTooth ====
+
+При загрузке системы bluetooth кидает ошибки
+
+'''
+bluetoothd[816]: src/plugin.c:plugin_init() Failed to init vcp plugin
+bluetoothd[816]: src/plugin.c:plugin_init() Failed to init mcp plugin
+bluetoothd[816]: src/plugin.c:plugin_init() Failed to init bap plugin
+bluetoothd[816]: profiles/sap/server.c:sap_server_register() Sap driver initialization failed
+bluetoothd[816]: sap-server: Operation not permitted (1)
+'''
+
+но при этом bluetooth работает без проблем.
+
+Это сбой плагинов для новых Bluetooth Audio Profile (Volume Control, Media Control, Basic Audio Profile). На многих системах они пока не поддерживаются ядром или прошивкой адаптера.
+
+* sap_server_register() Sap driver initialization failed — это SIM Access Profile (SAP), нужен в основном для телефонов/модемов, чтобы компьютер мог получать доступ к SIM-карте устройства. Для обычных наушников/мышек/клавиатур он не нужен.
+* sap-server: Operation not permitted (1) — просто фиксация того, что профиль SAP не активирован.
+
+Убрать эти сообщения:
+
+''sudo mcedit /etc/systemd/system/bluetooth.target.wants/bluetooth.service''
+
+в строку запуска добавить параметры
+
+'''
+[Service]
+ExecStart=/usr/libexec/bluetooth/bluetoothd --noplugin=sap,mcp,vcp,bap
+'''
+
+затем
+
+''sudo systemctl daemon-reexec && sudo systemctl restart bluetooth''
+

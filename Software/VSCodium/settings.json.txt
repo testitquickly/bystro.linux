@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-09-18T13:30:47+03:00
 
-====== Settings ======
+====== settings.json ======
 
 [ @json ]
 
@@ -17,7 +17,7 @@ Creation-Date: 2025-09-18T13:30:47+03:00
 	"editor.fontFamily": "Ysabeau",
 	"editor.fontWeight": "600",
 	"editor.fontSize": 17,
-	"editor.lineHeight": 1.25,
+	"editor.lineHeight": 1.2,
 	"editor.formatOnPaste": true,
 	"editor.formatOnSave": true,
 	"editor.inlineSuggest.enabled": true,
@@ -33,7 +33,7 @@ Creation-Date: 2025-09-18T13:30:47+03:00
 	"terminal.integrated.fontFamily": "Cascadia Code",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.fontWeight": "normal",
-	"terminal.integrated.lineHeight": 1.1,
+	"terminal.integrated.lineHeight": 1.2,
 	"terminal.external.linuxArgs": [
 		"--profile astenix"
 	],

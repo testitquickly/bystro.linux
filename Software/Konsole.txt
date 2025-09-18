@@ -32,8 +32,11 @@ Creation-Date: 2022-02-22T14:57:53+02:00
 ''> Настроить профиль (astenix)'' 
 ''> Внешний вид'' 
 
+* Cascadia Code
 * Andale Mono
 * IBM Plex Mono
+
+См. [[Debian:Install:Шрифты]]
 
 + сглаживать шрифты
 

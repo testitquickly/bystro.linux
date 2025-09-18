@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T14:03:36+02:00
 
-====== GRUB 2 ======
+====== GRUB2 ======
 
 [ @debian @grub @console ]
 
@@ -48,7 +48,7 @@ GRUB_DISABLE_OS_PROBER=false
 
 ''sudo mcedit /etc/default/grub''
 
-Заменить содержимое файла предлагаемым текстом.
+Отредактировать содержимое файла по своему разумению.
 
 Ещё в Gnome есть утилита [[+Grub-Customizer]] — то же самое, но GUI и ставить галочки.
 
