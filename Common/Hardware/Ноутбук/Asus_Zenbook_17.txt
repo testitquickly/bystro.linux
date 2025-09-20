@@ -52,7 +52,7 @@ OS: Debian 12
 
 ''ls ~/.config/xdg-desktop-portal/client.conf''
 
-Если файла — его надо создать.
+Если файла нет — его надо создать.
 
 ''mcedit ~/.config/xdg-desktop-portal/client.conf''
 

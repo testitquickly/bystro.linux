@@ -13,7 +13,7 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 * zram (сжатый swap в RAM) будет использоваться используется первым, это экономит RAM и снижает износ SSD,
 * раздел swap на SSD будет жить как «резерв» на случай полной загрузки памяти.
 
-''sudo apt install zram-tools swapon''
+''sudo apt install zram-tools''
 
 ''sudo mcedit /etc/default/zramswap''
 
@@ -59,7 +59,7 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 
 Итоговая проверка:
 
-''/sbin/swapon --show &&'' free -h
+''/sbin/swapon --show && free -h''
 
 ===== Перенести /tmp в RAM =====
 

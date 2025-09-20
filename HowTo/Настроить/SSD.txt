@@ -215,7 +215,6 @@ UUID=2ccc49fb-e364-4532-ab47-d3c9923f2cd1 none            swap    sw            
 
 ''sudo blkid''
 
-
 ===== Как включить trim в уже работающей системе =====
 
 Надо указать параметр ''discard'' у разделов в ''/etc/fstab''. 

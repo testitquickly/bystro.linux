@@ -38,7 +38,7 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 Системе можно/нужно указать, что для RTC (real-time clock) надо использовать время по UTC:
 
-''timedatectl set-local-rtc 0''
+''sudo timedatectl set-local-rtc 0''
 
 Указать таймзону:
 
@@ -140,7 +140,9 @@ systemd-timesyncd.service - Network Time Synchronization
 
 Ожидаемый ответ: Active: inactive (dead)
 
-==== Указать сервер для синхронизации времени ====
+Выход по [Q].
+
+==== Определить сервер для синхронизации времени ====
 
 ''sudo mcedit /etc/systemd/timesyncd.conf''
 

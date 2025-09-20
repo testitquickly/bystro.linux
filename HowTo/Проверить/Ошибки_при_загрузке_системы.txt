@@ -48,7 +48,9 @@ bluetoothd[816]: sap-server: Operation not permitted (1)
 ExecStart=/usr/libexec/bluetooth/bluetoothd --noplugin=sap,mcp,vcp,bap
 '''
 
-затем
+Сохранить, выйти.
+
+Затем
 
 ''sudo systemctl daemon-reexec && sudo systemctl restart bluetooth''
 

@@ -8,9 +8,13 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 См. https://wiki.debian.org/Fonts#Packages
 
-===== Установить шрифты =====
+Предварительно важно, чтобы для репозиториев были прописаны параметры ''contrib non-free'', потому что эти шрифты не относятся к свободному ПО. Это можно сделать одной строкой:
+ 
+''sudo apt install software-properties-common -y; sudo apt-add-repository contrib non-free -y''
 
-Можно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex. Они не относятся к свободному ПО, поэтому надо сперва добавить в sources.list к репозтиториям параметры  ''contrib non-free''
+===== Установить шрифты Microsoft и IBM =====
+
+Можно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex. 
 
 От MS придут
 
@@ -26,10 +30,6 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 	* Verdana (Bold, Italic, Bold Italic)
 	* Webdings
 
-Последняя команда нужна для того, чтобы система увидела новые шрифты.
-
-''sudo apt install software-properties-common -y; sudo apt-add-repository contrib non-free -y''
-
 Хотелось бы сразу, но эти шрифты надо установить по-отдельности:
 
 ''sudo apt install ttf-mscorefonts-installer''
@@ -38,9 +38,11 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 Обновить кэш шрифтов:
 
-''sudo fc-cache -fv && fc-list | grep IBM''
+''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
 
-''sudo apt-get update; sudo apt-get upgrade''
+Проверить, что шрифт IBM установлен:
+
+''fc-list | grep IBM''
 
 ==== Установить Ysabeau ====
 
@@ -50,15 +52,15 @@ Ysabeau combines the familiar timeless letterforms of the Garamond legacy with t
 
 Сделать для них каталог, чтобы сохранить:
 
-''mkdir -p ~/ysabeau && cd ~/ysabeau'' 
+''mkdir -p ~/Ysabeau && cd ~/Ysabeau'' 
 
 Скачивать эти файлы через wget не получится, надо зайти через браузер на https://github.com/google/fonts/tree/main/ofl/ysabeau и скачать все (минимум два) файлы с расширением ''ttf''. Положить их в ''~/ysabeau''
 
-''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/ && fc-cache -fv && echo -e "\n\tПроверить появление Ysabeau в системе \n" && fc-list | grep Ysabeau''
+''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/Ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/ && fc-cache -fv && echo -e "\n\tПроверить появление Ysabeau в системе \n" && fc-list | grep Ysabeau''
 
 ==== Установить Cascadia Code ====
 
-В консоли идеален, почти как IBM Plex Sans.
+Идеален для терминала.
 
 https://github.com/microsoft/cascadia-code/releases — выбрать Release, развернуть в нем область Assets, скачать zip.
 
@@ -70,8 +72,8 @@ https://github.com/microsoft/cascadia-code/releases — выбрать Release, 
 
 * удалить каталог ''otf''
 * удалить каталог ''woff2''
-* оставить каталог ''ttf'' — TrueType, в Linux подавляющее терминалы, редакторы, IDE, браузеры оптимизированы под TrueType.
 * удалить ''ttf/static''
+* оставить только содержимое каталога ''ttf'' — это шрифты TrueType, а в Linux под них оптимизировано почти всё
 
 Скопировать шрифты в общий доступ:
 
@@ -79,9 +81,7 @@ https://github.com/microsoft/cascadia-code/releases — выбрать Release, 
 
 ==== Установить все шрифты из Windows ====
 
-Если винда была параллельно установлена, можно взять от неё шрифты. Учесть, что будет очень много лишних шрифтов.
-
-Скопировать шрифты из винды ''C:\WINDOWS\Fonts'' в ''/usr/share/fonts/truetype/msttcorefonts''
+Это не так, чтобы было нужно, но если винда была параллельно установлена, то можно взять от неё все шрифты — скопировать их из ''C:\WINDOWS\Fonts'' в ''/usr/share/fonts/truetype/msttcorefonts''
 
 Их там несколько сотен во всяких нюансах, есть смысл выбрать нужные. К тому же, в винде файлы шрифтов называются строчными буквами, а в unix они названы с прописными, и если их скопировать втупую, то в системе окажутся сразу несколько шрифтов Arial...
 
