@@ -45,24 +45,6 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 Постоянно см. инструкцию https://tug.org/texlive/acquire-netinstall.html
 
-==== …из образа iso ====
-
-Когда-то был явный резон ставить LaTeX //только// из образа iso, потому что
-* скорость сети была низкой, накачать пакетов на один гигабайт было unreal
-* было разумно держать образ iso на отдельном DVD (современный образ на DVD уже не помещается)
-
-Поэтому далее рассматриваем установку из //iso// на ноутбук с 64-хбитным процессором.
-
-=== Скачать установочный iso-файл c LaTeX ===
-
-Выбирать подходящюю версию на https://ctan.org/mirrors или на https://tug.org/texlive/acquire-iso.html
-
-Например, зеркало в Германии: http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/  Или в США: http://mirrors.mit.edu/CTAN/systems/texlive/Images/
-
-В обоих случаях в браузере откроется обычный каталог с файлами. К скачиванию могут быть предложены разные файлы. Если предлагается выбор между «''texlive2020-20200406.iso''» и «''texlive2020.iso''» — **всегда** выбираем второй. Первый наверняка посвежее, но не факт, что подмонтируется.
-
-Скачать выбранный файл можно и в консоли через ''wget'', можно снять его и через [[https://tug.org/texlive/acquire-iso.html|торрент]]. Размер файла — около шести гигабайт. 
-
 ==== …на старый ноутбук ====
 
 Установка стандартная:
@@ -78,7 +60,25 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 	Где найти старые версии: https://tug.org/historic/
 	Например: https://pi.kwarc.info/historic/systems/texlive/2022/
 
-Однако в новых версиях (например, “2025”) вполне может быть совместимость с 32-хбитными процессорами. Когда-то она прекратится, но есть смысл проверить, если она ещё есть: https://tug.org/texlive/doc.html — см. раздел “Supported systems”. Список обновляется с каждым релизом. Если там есть строка “''i386-linux 	Intel x86 with GNU/Linux''”, то 32-хбитная архитектура поддерживается, и можно ставить на старый ноутбук современный LaTeX. Если нет, нет.
+Однако в новых версиях (например, “2025”) вполне может быть совместимость с 32-хбитными процессорами. Когда-то она прекратится, но есть смысл проверить, если она ещё есть: https://tug.org/texlive/doc.html — см. раздел “Supported systems”. Список обновляется с каждым релизом. Если там есть строка “''i386-linux Intel x86 with GNU/Linux''”, то 32-хбитная архитектура поддерживается, и можно ставить на старый ноутбук современный LaTeX. Если нет, нет.
+
+==== …из образа iso ====
+
+Когда-то был явный резон ставить LaTeX //только// из образа iso, потому что
+* скорость сети была низкой, накачать пакетов на один гигабайт было unreal
+* было разумно держать образ iso на отдельном DVD (современный образ на DVD уже не помещается)
+
+Я предпочитаю этот подход, поэтому далее рассматриваем установку из //iso// на ноутбук с 64-хбитным процессором.
+
+=== Скачать установочный iso-файл c LaTeX ===
+
+Выбирать подходящюю версию на https://ctan.org/mirrors или на https://tug.org/texlive/acquire-iso.html
+
+Например, зеркало в Германии: http://ctan.ebinger.cc/tex-archive/systems/texlive/Images/  Или в США: http://mirrors.mit.edu/CTAN/systems/texlive/Images/
+
+В обоих случаях в браузере откроется обычный каталог с файлами. Если предлагается выбор между «''texlive2020-20200406.iso''» и «''texlive2020.iso''» — **всегда** выбираем второй. Первый наверняка посвежее, но не факт, что подмонтируется.
+
+Скачать выбранный файл можно и в консоли через ''wget'', можно снять его и через [[https://tug.org/texlive/acquire-iso.html|торрент]]. Размер файла — около шести гигабайт. 
 
 ===== Подготовить систему =====
 
@@ -92,7 +92,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ==== Добавить в PATH путь к будущим файлам LaTeX ====
 
-Мне хочется установить LaTeX в ''/home/hdd/LaTeX/''
+Сперва надо решить, куда устанавливать LaTeX. Его файлы можно положить куда угодно, например, в ''/home/hdd/LaTeX/'' или в любой скрытый каталог.
 
 Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' (создать его, если отсутствует):
 
@@ -116,7 +116,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 === Объявить переменные в PATH для всех пользователей в системе ===
 
-Если же этот LaTeX будет нужен нескольким пользователям, то следует повторить процедуру из-под root:
+Если этот LaTeX будет нужен нескольким пользователям на компьютере, то следует объявить пути PATH из-под root:
 
 1. Залогиниться под root:
 
@@ -170,33 +170,49 @@ PATH=/home/hdd/LaTeX/bin/i386-linux:$PATH
 
 ===== Подготовить установку LaTeX =====
 
+Подразумеваем, что у нашего юзера есть полный доступ к каталогу ''/home/hdd/'', иначе дальше команды надо выполнять под ''sudo''.
+
 ==== Создать каталог для LaTeX ====
 
-''sudo mkdir /home/hdd/LaTeX/''
+''mkdir /home/hdd/LaTeX''
 
 ==== Создать каталог для персональных настроек LaTeX ====
 
-''sudo mkdir -p /home/hdd/LaTeX/LaTeX_Settings/{texmf,texmf-config,texmf-var}''
+''mkdir -p /home/hdd/LaTeX/LaTeX_Settings/{texmf,texmf-config,texmf-var}''
 
-Позже этот каталог можно удалить.
+Если будет несколько пользователей, это всё надо положить в каталог своего профиля:
 
-==== Настроить „installation.profile” ====
+''mkdir -p ~/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
+
+==== Сгенерировать „texlive.profile” ====
+
+Можно установить LaTeX в интерактивном режиме: при вызове ''/tmp/LaTeX_iso/install-tl'' в консоли будут отображены редактируемые опции для установки. В принципе логично, но всегда можно сделать досадную ошибку. Лучше сделать отдельный файл „installation.profile”, в котором будут заранее прописаны все параметры, и вызвать install-tl с указанием подготовленного файла — его содержимое приведено далее.
+
+На всякий случай, для перепроверки, можно сгенерировать такой файл с нуля:
+
+1. вызвать ''/tmp/LaTeX_iso/install-tl''
+2. нажать клавишу ''P'' — в корне профиля юзера появится файл ''texlive.profile''
+3. посмотреть его содержимое
+
+''cat ~/texlive.profile''
+
+==== Настроить свой „texlive.profile” ====
 
 Создать файл ''installation.profile'' для установки LaTeX — в него будут вписаны инструкции:
 
-''mcedit /home/hdd/LaTeX/LaTeX_Settings/installation.profile''
+''mcedit /home/hdd/LaTeX/LaTeX_Settings/texlive.profile''
 
 Вставить в файл этот текст:
 
 {{{code: id="installation.profile" lang="texinfo" linenumbers="True"
 selected_scheme scheme-full
 TEXDIR /home/hdd/LaTeX
+TEXMFHOME /home/hdd/LaTeX/LaTeX_Settings/texmf
+TEXMFCONFIG /home/hdd/LaTeX/LaTeX_Settings/texmf-config
+TEXMFVAR /home/hdd/LaTeX/LaTeX_Settings/texmf-var
 TEXMFLOCAL /home/hdd/LaTeX/texmf-local
 TEXMFSYSCONFIG /home/hdd/LaTeX/texmf-config
 TEXMFSYSVAR /home/hdd/LaTeX/texmf-var
-TEXMFCONFIG /home/hdd/LaTeX/.LaTeX_Settings/texmf-config
-TEXMFHOME /home/hdd/LaTeX/.LaTeX_Settings/texmf
-TEXMFVAR /home/hdd/LaTeX/.LaTeX_Settings/texmf-var
 binary_x86_64-linux 1
 instopt_adjustpath 0
 instopt_adjustrepo 1
@@ -216,6 +232,7 @@ tlpdbopt_sys_bin /usr/local/bin
 tlpdbopt_sys_info /usr/local/share/info
 tlpdbopt_sys_man /usr/local/share/man
 tlpdbopt_w32_multi_user 1
+
 }}}
    
 Первая строка просто указывает «Установить сразу всё-всё-всё-всё!».
@@ -229,10 +246,8 @@ tlpdbopt_w32_multi_user 1
 * ''TEXMFHOME'' — directory for user-specific files.
 
 Остальное сгенерировано родным установщиком LaTeX, оставляем без изменений.
-
-Если надо сгенерировать такой файл с нуля: при запуске инсталлятора "install-tl" можно сразу выбрать действие "Р". На жестком диске появится файл "texlive.profile". Но это надо делать из инсталлятора, который запускается в режиме прав записи. В нашем случае всё запускается из образа, который огорожен от редактирования, поэтому при запросе "Р" инсталлятор сгенерирует такой файл, но сохранить его не сможет. 
         
-Если установка уже прошла успешно, то файл "texlive.profile" всегда будет находиться в каталоге „''МестоУстановкиLaTeX/tlpkg''”.
+Если установка пройдет успешно, файл "texlive.profile" всегда будет находиться в каталоге „''$TEXDIR/tlpkg''”.
 
 ===== Установить LaTeX =====
 
@@ -242,9 +257,9 @@ tlpdbopt_w32_multi_user 1
 
 ''su''
 
-''/tmp/LaTeX_iso/install-tl --profile /home/hdd/LaTeX/.LaTeX_Settings/installation.profile; echo 'Done!'''
+''/tmp/LaTeX_iso/install-tl --profile=/home/renegade/LaTeX/LaTeX_Settings/texlive.profile; echo -e "\n\tDone\n"''
 
-Ждать, там пять тысяч файлов.
+Если какой-то параметр будет ошибочным, скрипт откроет интерактивную сессию в консоли. Если всё будет ок, сразу начнется установка пакетов. Установка будет долгой, там около пяти тысяч файлов.
 
 Внимательно посмотреть последние строки установки. Там не должно быть даже мелких ошибок вроде “//Can't open perl script "/usr/share/texlive/tlpkg/tlpostcode/ptex-fontmaps-tlpost.pl": Нет такого файла или каталога//”.
 
@@ -354,7 +369,7 @@ kpsewhich -var-value TEXMFLOCAL
 exit
 '''
 
-Когда выйдет следующее КРУПНОЕ обновление LaTeX, tlmgr сообщит о том, что не может выполнить это запрос. Надо обновлять LaTeX с нуля.
+Когда выйдет следующее КРУПНОЕ обновление LaTeX, tlmgr сообщит о том, что не может выполнить это запрос, придётся обновлять LaTeX с нуля.
 
 === Неочевидности ===
 
@@ -407,7 +422,7 @@ Cохранить и выйти.
 
 ''sudo fc-cache -fsv; echo 'Done!'''
 
-Шрифтов много, дело может быть не односекундным. В результате: есть латэчевские шрифты в /home/hdd/LaTeX/texmf-dist/fonts/truetype/ и в /home/hdd/LaTeX/texmf-dist/fonts/opentype/
+LaTeX принесёт много шрифтов, дело может быть не односекундным. Но в результате появятся латэчевские шрифты в /home/hdd/LaTeX/texmf-dist/fonts/truetype/ и в /home/hdd/LaTeX/texmf-dist/fonts/opentype/
 
 Нет нужды, но временами, особенно после обновления ядра можно просто контроля для запускать (из-под root) ''tlmgr update --all'' и обновление кэша шрифтов. Однажды LaTex беспричинно не смог сгенерировать pdf, и только слабая интуиция подсказала, что в тот день прилетело обновление ядра, и надо бы эти два факта связать.
 
