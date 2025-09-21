@@ -22,23 +22,21 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar unrar iputils-ping smartmontools nvme-cli -y && apt update && apt upgrade
 '''
 
-3)
-[[Install:Шрифты]]
-
 ===== Настроить систему =====
 
-1. [[Software:Midnight Commander]]
-2. [[HowTo:Сделать:User:Добавить юзера в группу sudo]]
-3. [[HowTo:Настроить:Таймаут для sudo]]
-4. [[HowTo:Сделать:Обновить sources.list]]
-5. [[HowTo:Сделать:Обновить Debian]]
-6. [[HowTo:Проверить:Ошибки при загрузке системы]]
-7. [[HowTo:Настроить:GRUB2]]
-8. [[HowTo:Удалить:Сервис NetworkManager-wait-online]]
-9. [[HowTo:Настроить:Обновление времени и даты]]
-10. [[HowTo:Настроить:Поменять местами символы на клавише точки и запятой в русской раскладке]]
-11. [[HowTo:Настроить:SSD]]
-12. [[HowTo:Сделать:Оптимизировать RAM]]
+[[Software:Midnight Commander]]
+[[HowTo:Сделать:User:Добавить юзера в группу sudo]]
+[[HowTo:Настроить:Таймаут для sudo]]
+[[HowTo:Сделать:User:Установить права доступа на каталоги и файлы]]
+[[HowTo:Настроить:GRUB2]]
+[[HowTo:Удалить:Сервис NetworkManager-wait-online]]
+[[HowTo:Сделать:Обновить sources.list]]
+[[HowTo:Сделать:Обновить Debian]]
+[[HowTo:Проверить:Ошибки при загрузке системы]]
+[[HowTo:Настроить:Обновление времени и даты]]
+[[HowTo:Настроить:SSD]]
+[[HowTo:Сделать:Оптимизировать RAM]]
+[[Install:Шрифты]]
 
 ===== Настроить консоль =====
 
@@ -55,6 +53,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 [[HowTo:Настроить:Экран:Display Manager]]
 [[HowTo:Настроить:Экран:Блокировка экрана]]
 [[HowTo:Настроить:Автоматический login в KDE]]
+[[HowTo:Настроить:Поменять местами символы на клавише точки и запятой в русской раскладке]]
 [[HowTo:Настроить:Ввод дополнительных символов с клавиатуры]]
 [[HowTo:Настроить:Шорткаты • Поменять местами Ctrl и левый Alt]]
 [[HowTo:Настроить:Внешний вид KDE]]
