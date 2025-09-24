@@ -1,0 +1,150 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-23T05:10:11+03:00
+
+====== Диаграммы Mermaid JS ======
+
+[ @python @mermaid @diagram ]
+
+Иногда проще что показать.
+
+Диаграммы мы умеем генерировать по текстовому описанию через TikZ в [[LaTeX]] (pdf) или [[GraphViz]] (png). 
+
+Для проектов, в которых документация представлена в html, удобнее/проще генерировать диаграммы через Mermaid JS — упрощенный аналог GraphViz на JavaScript, изначально предназначенный для рендеринга в html. Mermaid представлен в виде встроенной функции в Notion и Wordpress. Примеры использования: https://testitquickly.com/2024/08/12/mermaid-uml-uzor-tsaranesc/
+
+===== Диаграммы в докстрингах =====
+
+Логично рисовать диаграмму там, где она нужна — в докстринге функции или класса. Текст генерируемой диаграммы надо обрамить тэгами:
+
+''```mermaid''
+и
+''```''
+
+Пример:
+
+{{{code: lang="python" linenumbers="True"
+"""
+Пример докстринга для условной функции с объясняющей диаграммой. 
+
+```mermaid
+
+flowchart TD 
+
+S[\Сказка о рыбаке без удочки/]
+ --> id1[Самурай всё видит]
+ --> id2[Невод закинут в море]
+id1 -.-> id3(Дед, ну ты дурак? ©) 
+-.-> id1
+id2 --> E[/Разговор исчерпан\]
+```
+
+Или такой вариант:
+
+```mermaid
+
+classDiagram
+	class Dog~Pet~{
+		-__init__(str name) None
+		+bark(bool loud) None
+	}
+	Dog <|-- Pet
+	Pet : +str name
+	Pet : +List[Pet] friends
+```
+"""
+}}}
+
+При генерировании документации по API проекта в описании соответствующей функции появится диаграмма.
+
+===== Отсылка к файлу с диаграммой =====
+
+Если диаграмма будет нужна где-то ещё (и в докстринге, и в статье про эту функциональность), то разумнее уже держать тексты всех диаграмм в файлах ''*.mmd'' в отдельном каталоге:
+
+''diagrams/''
+	''|- pet_dog.mmd''
+	''|- simple_diagrams.mmd''
+
+и вставлять содержимое этих файлов в докстринги или статьи через:
+
+''{diagram:pet_dog.mmd}''
+
+==== Реализация ====
+
+Сделать файл ''diagrams/__init.py__'' с текстом:
+
+{{{code: lang="python" linenumbers="True"
+""" Диаграммы MermaidJS"""
+from .embed_diagrams import embed_mermaid_diagrams
+}}}
+
+Создать декоратор. Сделать файл ''diagrams/embed_diagrams.py'' с текстом:
+
+{{{code: lang="python" linenumbers="True"
+from pathlib import Path
+import re
+
+# каталог с диаграммами
+DIAGRAMS_DIR = Path("diagrams")
+# кеш содержимого файлов
+_diagram_cache = {}
+
+def _get_diagram_content(filename: str) -> str:
+    """Читает файл диаграммы с кешированием"""
+    if filename not in _diagram_cache:
+        path = DIAGRAMS_DIR / filename
+        if path.exists():
+            _diagram_cache[filename] = path.read_text(encoding="utf-8")
+        else:
+            _diagram_cache[filename] = f"<em>Файл диаграммы {filename} не найден</em>"
+    return _diagram_cache[filename]
+
+def embed_mermaid_diagrams(obj):
+    """
+    Декоратор для функции или класса.
+    - Подставляет диаграммы в докстринг там, где есть {diagram:filename.mmd}
+    - Для класса автоматически обрабатывает все методы.
+    """
+    pattern = re.compile(r"\{diagram:([^\}]+\.mmd)\}")
+
+    def _process_doc(doc: str) -> str:
+        if not doc:
+            return doc
+        def replacer(match):
+            filename = match.group(1)
+            content = _get_diagram_content(filename)
+            # оборачиваем в div для динамической отрисовки через mermaid.js
+            return f'<div class="mermaid">\n{content}\n</div>'
+        return pattern.sub(replacer, doc)
+
+    if isinstance(obj, type):  # если это класс
+        obj.__doc__ = _process_doc(obj.__doc__)
+        for attr_name in dir(obj):
+            attr = getattr(obj, attr_name)
+            if callable(attr) and attr.__doc__:
+                attr.__doc__ = _process_doc(attr.__doc__)
+        return obj
+    else:  # функция
+        obj.__doc__ = _process_doc(obj.__doc__)
+        return obj
+
+}}}
+
+Теперь в файле с функцией, в докстринге которой должна быть нарисована диаграмма, добавить импорт 
+
+''from diagrams import embed_mermaid_diagrams''
+
+и предварить функцию тэгом 
+
+{{{code: lang="python" linenumbers="True"
+@embed_mermaid_diagrams
+def my_function():
+    """
+    {diagram:small.mmd}
+    """
+    pass
+}}}
+
+
+при любом import diagrams декоратор уже будет доступен:
+
+

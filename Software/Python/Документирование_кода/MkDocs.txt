@@ -1,0 +1,169 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-24T02:16:12+03:00
+
+====== MkDocs ======
+
+[ @python @doc @mkdocs ]
+
+=== Сделать файлы документации ===
+
+Для маленького проекта это оверкилл, но любой проект может начать укрупняться, поэтому лучше подумать о структуре документов заранее. Так или иначе, надо сперва надо подготовить файлы для сборки.
+
+Есть четыре типа документов:
+
+* Tutorials: Learning-oriented
+* How-To Guides: Problem-oriented
+* Reference: Information-oriented
+* Explanation: Understanding-oriented
+
+Документы кучкуются или по отношению к какой-то теме, или по отношению к своему типу (отдельно инструкции, отдельно теория). Есть смысл сразу разделить их по логике типа документов.
+
+''docs/index.md''
+''docs/tutorial/''
+''docs/how-to/''
+''docs/reference/''
+''docs/explanation/''
+
+Файл ''docs/index.md'' это главная точка сборки. 
+
+Плагин __awesome-nav__ упрощает построение меню: с ним каждый каталог в /docs превращается в пункт в главном навигационно меню. Имя каталога, в котором есть хотя бы один файл *.md — это родительский раздел сайта. Пустой каталог — не отображается. Все вложенные каталоги (с файлами) представлены как вложенные разделы. В меню появится каждый файл .md, который будет находиться в каталоге ''docs''/ — и рекурсивно далее вглубь.
+
+mkdocs-awesome-nav - плагин, который отменяет необходимость расписывать раздел nav.  
+Если надо изменить содержимое меню, то или отказаться от awesome-nav, или начать его тюнить: сделать в каталоге docs/ файл ''.nav.yml'' и см. https://github.com/lukasgeiter/mkdocs-awesome-nav/blob/main/docs/features/nav.md
+
+
+В каждом отдельном «файле раздела» можно перечислить документы, которые должны относиться к данной теме. Например:
+
+''docs/tutorial/tutorial.md''
+''docs/tutorials/preconditions.md''
+''docs/tutorials/install_approach.md''
+и так далее.
+
+И уже в самом файле ''docs/tutorial/tutorial.md'' можно прописать отсылки к 
+
+''docs/tutorials/install_approach.md''
+''docs/tutorials/preconditions.md''
+и так далее.
+
+В названиях каталогов и файлов могут быть пробелы, и MkDocs их подхватит, но лучше избегать пробелов. Все нижние подчеркивания и тире в названиях файлов и каталогах будут представлены в итоге как пробелы.
+
+== Ссылки на файлы ==
+
+Пример содержимого файла ''tutorial.md''
+
+{{{code: lang="markdown" linenumbers="True"
+# Installation
+
+[Main approach](install_approach.md)
+}}}
+
+Важно помнить, что пути к файлам в среде MkDocs относительные, поэтому если дочерние файлы находятся в том же каталоге, что и «головной», то путь надо указывать относительный.
+
+И если нужна ссылка к файлу ''reference.md'', то ее надо указывать с учетом того, что корневым каталогов для доков является каталог ''docs/'', поэтому ссылка будет такой:
+
+{{{code: lang="markdown" linenumbers="True"
+# Installation
+
+[Main approach](install_approach.md)
+[A reference](reference/reference.md)
+}}}
+
+== Документация по API из докстрингов ==
+
+В каждом md-файле можно прописать 
+
+* или вызов информации из докстрингов для определенной функции, 
+* или вызов всех докстрингов из всех функций определенного файла — если он оформлен как пакет через ''__init__.py''
+
+Пример содержимого файла ''install_approach.md'', в котором появится информация о модулях из файла ''functions/files.py'':
+
+{{{code: lang="markdown" linenumbers="True"
+# Where to install
+
+This part of the project documentation focuses on a
+**learning-oriented** approach. You'll learn where to
+install software.
+
+> **Note:** Expand this section by considering the
+> following points:
+
+- Help newcomers with getting started
+- Teach readers about your library by making them
+    write code
+
+# Описание отдельной функции
+
+Подтянуть описание отдельной функции (модуля) из пакета functions:
+
+::: functions.files.add_current_date_to_file_about
+
+# Описание всех функций
+
+Подтянуть описание о всех функциях (модулях) из пакета functions:
+
+::: functions.files
+}}}
+
+=== Установить MkDocs ===
+
+Его можно установить на уровне системы для всех проектов. 
+
+Создаём изолированное окружение для mkdocs-tools:
+
+''pipx install --python /usr/bin/python3 mkdocs''
+
+Всё будет установлено в каталог ''~/.local/pipx/venvs/mkdocs/'' 
+
+В это окружение "установить" mkdocstrings с extras:
+
+''pipx inject mkdocs mkdocstrings[python] mkdocs-material mkdocs-awesome-nav''
+
+Проверить:
+
+''mkdocs --version''
+
+Уже можно запустить сервер. 
+
+''mkdocs serve''
+
+Локальный сайт будет поднят по адресу http://127.0.0.1:8000/ 
+
+По-хорошему надо запускать сервер MkDocs, выполнять сборку документации и гасить его. Если надо запустить вручную, то лучше делать это в отдельном окне терминала, потому что сервер будет IRL сообщать о всех состояниях и вероятных ошибках:
+
+== Плагин ''material'' ==
+
+MkDocs генерирует статичные html файлы, и сайт выглядит и работает весьма просто. Заметно, что там не работают вложенные страницы из подменю, но можно приноровиться указывать ссылки на них уже на странице index. 
+
+С плагином ''material'' он генерирует сайт, который работает только на сервере. Там динамические меню, поиск, ToC, табы на странице и много другое.
+
+=== Настроить mkdocs.yml ===
+
+В корне проекта создать файл ''mkdocs.yml'' с таким содержимым:
+
+{{{code: lang="yaml" linenumbers="True"
+site_name: Export bystro.linux from Zim
+
+theme:
+  name: "material"
+
+plugins:
+  - mkdocstrings
+        handlers:
+        python:
+          options:
+            show_root_heading: true   # Показывать заголовок функции/класса при его автовызове
+            heading_level: 3          # Уровень заголовка (h3)
+  - awesome-nav
+
+nav:
+  - Home: index.md
+ 
+}}}
+
+//nav// — это общее меню сайта. Туда можно добавить отсылку к любому файлу .md из проекта.
+
+Тут же можно задать любому файлу отдельный заголовок:
+
+	  ''- Install Approach: tutorials/install_approach.md''
+
