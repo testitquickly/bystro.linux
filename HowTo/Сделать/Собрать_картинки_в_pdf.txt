@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-25T02:42:02+03:00
+
+====== Собрать картинки в pdf ======
+
+[ @images @pdf ]
+
+''sudo apt install img2pdf''
+
+Простейший случай:
+
+''img2pdf *.jpg -o fileName.pdf''
+
+Если файлы названы по алфавиту (1, 2, 3…) их надо предварительно отсортировать:
+
+''img2pdf $(ls -v *.jpg) -o fileName.pdf''
+
+Можно отключить генерацию метаданных в pdf. Условно файл pdf будет открываться быстрее и будет «меньше»:
+
+''img2pdf *.jpg --viewer-preferences= --without-pdfa --output fileName.pdf''
