@@ -63,15 +63,16 @@ https://vscodium.com — это опенсоурсный форк VS Code, оп�
 * GitHistory
 * Pyright (анализ кода)
 * Ruff (строгий линтер)
+* [[https://open-vsx.org/extension/redhat/vscode-yaml|YAML]]
 * Continue (см. [[LLM:Подключить LLM к IDE]])
 * Playwright Test for VSCode + TestDriver (см. [[Playwright]])
 
 ==== Возможно, будут полезны ====
 
+* [[https://open-vsx.org/extension/MermaidChart/vscode-mermaid-chart|Mermaid Chart]]
 * Dependi
 * Markdown Table Formatter
 * Ollama Autocoder
-* Mermaid Chart
 * Commit Message Formatter
 * Comment Box
 * Better Comments Next
