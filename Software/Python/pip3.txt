@@ -4,7 +4,7 @@ Creation-Date: 2023-12-08T02:15:54+02:00
 
 ====== pip3 ======
 
-[ @python @pip3 ]
+[ @python @pip @pipx ]
 
 	*todo Python pip — пересмотреть полностью
 

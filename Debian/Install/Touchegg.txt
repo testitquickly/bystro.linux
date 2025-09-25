@@ -4,7 +4,7 @@ Creation-Date: 2025-01-15T04:55:38+02:00
 
 ====== Touchegg ======
 
-[ @debian @install @touchpad @touche ]
+[ @debian @install @touchpad @touchegg ]
 
 Утилита для управления жестами на тачпаде.
 

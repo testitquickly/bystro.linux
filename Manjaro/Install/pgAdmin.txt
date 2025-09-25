@@ -4,7 +4,7 @@ Creation-Date: 2023-11-07T15:57:20+02:00
 
 ====== pgAdmin ======
 
-[ @manjaro @install @postgres @sql @pgadmin ]
+[ @manjaro @install @postgres @sql @pg_admin ]
 
 ===== Установить postgres =====
 

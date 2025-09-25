@@ -58,27 +58,6 @@ sudo rm -R /opt/libreoffice*
 
 В каталоге /opt/ появится подкаталог с названием распакованной версии LibreOffice ("/opt/libreoffice7.3", например)
 
-===== Сделать симлинк на новую версию =====
-
-	*todo !! LibreOffice — сделать общий ярлык 
-
-Это поможет ярлыкам не обращать внимание на смену версий.
-
-Допустим, что установлен libreoffice24.8 в /opt/.
-
-Надо создать в /usr/local/bin 
-
-''cd /usr/local/bin && sudo ln -s /opt/libreoffice24.8/share/xdg/startcenter.desktop && mv startcenter.desktop libreoffice''
-
-===== Проверить симлинк =====
-
-''ls -l debup''
-
-Запуск софта происходит из 
-/opt/libreoffice24.8/share/xdg
-
-''~/.local/bin''
-
 ===== Настроить открытие файлов =====
 
 По любому файлу LibreOffice на диске правой кнопкой мыши
