@@ -16,9 +16,20 @@ sudo apt update && sudo apt install apt-transport-https ca-certificates curl sof
 
 ''sudo systemctl start docker && sudo systemctl enable docker && sudo docker --version''
 
-===== Установить Docker Compose =====
+==== Добавить своего пользователя в группу docker ====
 
-Docker Compose — это отдельный инструмент, который упрощает работу с Docker. Может управлять многоконтейнерными приложениями с помощью одного конфигурационного файла. Вместо того чтобы запускать каждый контейнер по отдельности с командой docker run, Docker Compose описывает в одной файле типа ''docker-compose.yml'' сразу все сервисы, их настройки и зависимости. Через команду ''docker-compose up'' можно запустить сразу все контейнеры, которые упомянуты в управляющем файле. И остановка всех контейнеров выполняется одной командой ''docker-compose down''.
+…чтобы запускать команды Docker без sudo:
+
+''sudo usermod -aG docker $USER''
+
+$USER — это переменная окружения, содержить текущего пользователя.
+
+Применить изменения без перезагрузки:
+
+''newgrp docker''
+
+===== Установить Docker Compose =====
 
 ''sudo curl -L "https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose && docker-compose --version''
 
+См. [[Software:Docker]]

@@ -1,0 +1,92 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-26T01:14:41+03:00
+
+====== Snipe-It ======
+
+[ @debian @install @web @snipeit ]
+
+Управление через Docker Compose.
+
+Сделать отдельный каталог:
+
+''mkdir ~/snipeit; cd ~/snipeit''
+
+Сгенерировать api-ключ:
+
+'''
+docker run --rm snipe/snipe-it php artisan key:generate --show
+'''
+
+Пример ответа:
+
+''base64:AXS793LpP53CYMNozTXzpCe9E6SI8ZUxAYCBedxmJLE=''
+
+Сделать конфиг:
+
+''mcedit docker-compose.yml''
+
+Вписать все параметры:
+
+* с учетом полученного ключа API
+* для простоты все пароли «''123456''» (так не должно быть)
+* все данные будут храниться в каталоге ''/home/astenix/snipeit'', а через двоеточие мы скажем Docker условный каталог, в котором якобы будут находиться данные томов, потому что ''/var/lib/mysql'' — обязательный путь внутри контейнера MySQL.
+
+{{{code: lang="yaml" linenumbers="True"
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: snipeit-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: snipeit
+      MYSQL_USER: snipeit
+      MYSQL_PASSWORD: 123456
+    volumes:
+      - /home/astenix/snipeit/mysql:/var/lib/mysql
+
+  snipeit:
+    image: snipe/snipe-it:latest
+    container_name: snipeit-app
+    depends_on:
+      - mysql
+    ports:
+      - "8090:80"
+    restart: always
+    environment:
+      APP_KEY: base64:AXS793LpP53CYMNozTXzpCe9E6SI8ZUxAYCBedxmJLE=
+      APP_URL: http://inventory.local:8090
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_DATABASE: snipeit
+      DB_USERNAME: snipeit
+      DB_PASSWORD: 123456
+      MAIL_DRIVER: smtp
+      MAIL_HOST: smtp.mailtrap.io
+      MAIL_PORT: 2525
+      MAIL_USERNAME: null
+      MAIL_PASSWORD: null
+      MAIL_FROM: "noreply@snipeit.local"
+    volumes:
+      - /home/astenix/snipeit:/var/lib/snipeit
+
+volumes:
+  mysql-data:
+  snipeit-data:
+
+}}}
+
+Запуск в каталоге, в котором находится ''docker-compose.yml'':
+
+''docker-compose up -d''
+
+Если надо остановить
+
+''docker-compose down -d''
+
+Если проект поднялся без ошибок — открыть его в браузере 
+
+http://localhost:8090
+
+См. далее [[Software:Snipe-It]]

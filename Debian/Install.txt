@@ -114,6 +114,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Slack]]
 [[+SmartGit]]
 [[+SmartMonTools]]
+[[+Snipe-It]]
 [[+ssh]]
 [[+Sublime]]
 [[+SyncThing]]
