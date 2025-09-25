@@ -10,7 +10,7 @@ Creation-Date: 2023-06-22T17:15:24+03:00
 
 Удобнее всего так:
 
-	{{../../images/audacity.jpg}}
+	{{../../images/audacity.jpg?href=..%2F..%2Fimages%2Faudacity.jpg&width=800}}
 
 ===== Настройки шорткатов =====
 
