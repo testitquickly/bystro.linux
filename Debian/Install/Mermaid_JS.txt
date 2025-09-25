@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-25T03:09:04+03:00
+
+====== Mermaid JS ======
+
+[ @debian @install @diagram @mermaid @images ]
+
+	*todo установка Mermaid !!!
+	
+См. [[Software:Mermaid JS]]

@@ -4,7 +4,7 @@ Creation-Date: 2025-07-30T14:16:31+03:00
 
 ====== Документирование кода ======
 
-[ @python @doc @pydoc @pdoc @mkdoc @sphinx @pandoc ]
+[ @python @doc @pydoc @pdoc @mkdocs @sphinx @pandoc ]
 
 ===== Докстринги =====
 

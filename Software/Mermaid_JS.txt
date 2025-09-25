@@ -1,0 +1,391 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-09-25T03:04:39+03:00
+
+====== Mermaid JS ======
+
+[ @diagram @mermaid @images ]
+
+	*todo Mermaid статью переписать !!!
+
+Иногда сложные идеи проще объяснять картинками:
+
+{{../../images/mermaid/mermaid001.jpg}}
+
+Ученые придумали (для себя) генерировать картинки с диаграммами по текстовому описанию из файла *.dot в консоли и назвали это [[GraphViz]].
+
+Программисты придумали генерировать диаграммы в браузере на JavaScript и назвали это //Mermaid// (русалка).
+
+===== Установить =====
+
+* [[Debian:Install:Mermaid JS]]
+
+===== Использовать =====
+
+
+===== Общая идея =====
+
+Они помогают что-то объяснять и окружающим, и самому себе — это отличная лопата для анализа требований, от которых начинается тест-дизайн, где надо всё учесть, ничего не упустить, из ничего выявить неправильное или неоднозначное. Анализ рулит!
+Рисовать их можно и на обоях, и в не очень удобном LibreOffice Draw, в MS Visio (не щупал уже сто лет), и в опенсорсном [[https://www.modelio.org/index.htm|Modelio]], и в браузерном [[https://app.diagrams.net/|draw.io]]. Там надо тыкать курсором по иконкам и стрелочкам, перетаскивать их по экрану и соединять в логичном порядке, после чего сохранить в виде картинки, которую надо вставить в свою документацию. И хорошо, если это надо сделать только один раз и картинка маленькая. Как правило, что-то надо поменять, или полотно диаграммы становится очень большим, на несколько экранов во все стороны — и там всегда надо что-то менять. Снова надо сгенерировать картинку, снова надо её прикрепить к странице и вставить в нужное место.
+
+Есть другое решение — диаграммы можно не рисовать, а прямо в режиме редактирования документа в Notion (или в Confluence, или в IDE умного разработчика) в plain text с разметкой Markdown расписывать узлы диаграммы и связи между ними, а обновленная диаграмма автоматически перерисовывается. LaTeX way!
+
+Проект называется [[https://mermaid.js.org/intro/|Mermaid]] (русалка), работает на JavaScript, подключается как [[https://www.mermaidchart.com/plugins|плагин]] в Confluence или Notion, в средах разработки, и даже в Jupyter notebook. Потыкать в свободном режиме — https://mermaid.live
+
+Диаграмм в Mermaid множество: Class Diagram, Entity Relationship Diagram, User Journey, Gantt, Pie Chart, Quadrant Chart, Requirement Diagram, Gitgraph (Git) Diagram, C4 Diagram, Mindmaps, Timeline, Zenuml, Sankey, XYChart, Block Diagram. Cамые ходовые три:
+1. Блок-схема (Flowcharts)
+2. Диаграмма состояний (State diagram)
+3. Диаграмма последовательности (Sequence diagram)
+
+===== Mermaid в Notion =====
+
+В Notion (не наш выбор, но и там есть жизнь) блок с мермайдом вызывается командой, которую можно даже не дописывать:
+
+{{../../images/mermaid/mermaid002.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid002.jpg}}]]
+
+Получаем поле с представлением «Split» — сверху код, а внизу результат его правильной работы:
+
+{{../../images/mermaid/mermaid003.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid003.jpg&width=800}}
+
+Когда дело сделано, разумно переключить отображение содержимого блока на «Preview», чтобы не пугать прожект-манагера непонятными буковками.
+
+===== Блок-схема =====
+
+Она же Flowchart. [[https://mermaid.js.org/syntax/flowchart.html|Документация]] по ней подробна и адекватна.
+
+Блок-схема состоит из узлов (геометрических фигур) и ребер (стрелок/линий), и объявляется непременно с направлением развёртывания — сверху вниз (TD) или слева направо (LR):
+
+Пример:
+
+'''
+flowchart TD
+S(Простая последовательность шагов)
+--> id1(Самурай всё понимает)
+--> E(Разговор исчерпан)
+'''
+S — Start.
+E — End.
+Между ними можно расположить сколько угодно узлов. Называть их можно буквами любого алфавита, который есть в кодировке UTF-8, от «id1, id2, id3» до «самурайУмничает».
+Сплошные управляющие стрелки (рёбра) указываются так:
+''-->'' Стрелка с прерывистой линией:
+''-.->'' Стрелку можно ставить перед узлом, а можно после. Мне удобнее воспринимать их в начале строки.
+Стрелками можно связывать не только на каждый следующий узел, но и непоследовательно прыгать к любым другим узлам. Например, можно связать id3 с id1:
+
+'''
+flowchart TD 
+  S(Простая последовательность шагов) 
+  --> id1(Самурай всё понимает) 
+  --> id2(Невод закинут в море) 
+  -.-> id3(Дед, ну ты дурак? ©) 
+  --> id1 
+  --> E(Разговор исчерпан)
+
+'''
+{{../../images/mermaid/mermaid004.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid004.jpg&width=800}}
+
+Ещё есть комментарии — через «два символа процента»:
+''%%{init: {"flowchart": {"htmlLabels": true}} }%%'' ==== Форматирование узлов на блок-схеме ====
+Их форма задаётся скобками.
+
+'''
+flowchart TD 
+
+S[\Простая последовательность шагов/]
+ --> id1{Самурай всё понимает}
+ --> id2[Невод закинут в море]
+ -.-> id3(Дед, ну ты дурак? ©) 
+-.-> id2 
+--> E[/Разговор исчерпан\]
+
+'''
+{{../../images/mermaid/mermaid005.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid005.jpg&width=800}}
+
+==== Комментарии на стрелках ====
+
+'''
+flowchart TD 
+
+S[\Простая последовательность шагов/] 
+--> id1(Самурай всё понимает)
+-.-> |размахнувшись| id2(Невод закинут в море)
+--> E[/Разговор исчерпан\]
+'''
+
+{{../../images/mermaid/mermaid010.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid010.jpg&width=800}}
+
+==== Пометить узлы разными цветами ====
+Для этого надо объявить классы сущностей через ’classDef’, а там чистый CSS, поэтому названия или коды цветов надо взять из [[https://htmlcolorcodes.com/color-names/|htmlcolorcodes.com]]
+
+'''
+flowchart TD
+
+classDef decisionPoint color:black,stroke:DarkOrange,fill:Snow,stroke-width:1px,text-align:left;
+classDef startPoint color:black,stroke:White,fill:#93e4e6,stroke-width:1px,text-align:left;
+classDef endPoint color:gold,stroke:White,fill:black,stroke-width:1px,text-align:left;
+
+S[\Простая последовательность шагов/]:::startPoint
+--> id1(Самурай всё понимает)
+--> id2[Невод закинут в море]:::decisionPoint
+-.-> id3(Дед, ну ты дурак? ©)
+--> id2
+--> E[/Разговор исчерпан\]:::endPoint
+'''
+Затем применить классы к узлам через три двоеточия.
+
+{{../../images/mermaid/mermaid006.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid006.jpg&width=800}}
+
+Не надо излишне увлекаться раскрасками. Стартовый и эндовый узлы лучше пометить не цветом, а формой узла через наклоны обрамляющих слэшей:
+''[\ старт /] и [/ финиш \]'' Цвета, если действительно надо применять, следует подобрать неяркие. Учесть, что кто-то будет смотреть это всё в darkMode.
+
+==== Поменять размер шрифта одного из узлов ====
+
+Через управляющие команды CSS:
+''classDef decisionPoint font-size:0.9em,color:black,stroke:DarkOrange,fill:Snow,stroke-width:1px,text-align:left;'' ==== Вписать в один узел несколько строк ====
+Просто переносим буквы/слова внутри узла на новую строку. В моем примере каждая новая (перенесенная) строка начинается с булита — это необязательно, просто выглядит как список на слайде. Кавычки вроде нужны, а на деле не обязательны.
+
+'''
+flowchart TD 
+
+classDef leftAlign font-size:0.9em,color:black,stroke:DarkOrange,fill:Snow,stroke-width:1px,text-align:left; 
+
+S[\Простая последовательность шагов/]
+ --> id1(Самурай всё понимает)
+ --> listOfEvents("•  Некуда спешить
+• Не о чём думать
+• Начинается дождь"):::leftAlign
+ --> id2[Невод закинут в море]
+E[/Разговор исчерпан\]
+'''
+
+{{../../images/mermaid/mermaid007.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid007.jpg&width=800}}
+
+Тут под произвольным именем ’newLines’ было задано соединение нескольких узлов в один общий узел. А это значит, что можно заранее соединять узлы в отдельные ветки… тааакое можно наворотить!
+
+==== Разместить на одной диаграмме несколько самостоятельных ветвей ====
+
+…между которыми связующих звеньев вообще может не быть — это глупо, но возможно. Или можно задать связи между ними в нелинейном сочетании:
+
+'''
+flowchart TD
+
+classDef leftAlign font-size:0.9em,color:black,stroke:DarkOrange,fill:Snow,stroke-width:1px,text-align:left;
+
+biblioteka["Понял в тишине библиотеки"]
+apple["Яблоки на снегу"]
+gameOver["Демоны спёрли дыхание"]
+bookIsClosed["Книга недолго открыта"]
+listOfEvents("• Некуда спешить
+• Не о чём думать
+• Начинается дождь"):::leftAlign
+
+apple 
+--> biblioteka 
+--> listOfEvents
+
+S[\Происходит жизнь/]
+--> id1(Самурай всё понимает)
+--> id2[Невод закинут в море]
+--> listOfEvents
+--> E[/Разговор исчерпан\]
+
+id1
+--> gameOver
+--> bookIsClosed
+'''
+
+{{../../images/mermaid/mermaid008.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid008.jpg&width=800}}
+
+Вполне можно свести узел «Книга недолго открыта» к финишу, прописав последней командой „—> E”, но это необязательно, некоторые процессы вполне самостоятельно могут закончиться «ничем».
+
+===== Диаграмма последовательности =====
+
+Она же [[https://mermaid.js.org/syntax/sequenceDiagram.html|Sequence diagram]].
+Это предпочитают программисты — удобно показать, как процессы взаимодействуют друг с другом и в каком порядке.
+
+'''
+sequenceDiagram
+
+Jules->>+Brett: What does Marsellus Wallace look like?
+Brett-->>+Jules: …What?
+Jules->>+Brett: ENGLISH, MOTHERFUCKER! DO YOU SPEAK IT!?
+Brett-->>+Jules: Yes!!
+Jules->>+Brett: DESCRIBE WHAT MARSELLUS WALLACE “LOOKS” LIKE!
+Brett-->>+Jules: Wha-what I—?
+Jules->>+Brett: SAY "WHAT" AGAIN! I DOUBLE-DARE YOU, MOTHERFUCKER!! SAY "WHAT" ONE MORE GODDAMN TIME!
+Brett-->>+Jules: H-H-He's black...
+Jules->>+Brett: Go on!
+Brett-->>+Jules: ...He's bald...!
+Jules->>+Brett: Does he look like a bitch?!
+Brett-->>+Jules: What? 
+Note over Jules,Brett: shoots Brett in the shoulder
+Jules->>+Brett: DOES! HE! LOOK! LIKE! A BITCH?!?!
+Brett-->>+Jules: NO!
+Jules->>+Brett: Then why'd you try to fuck him like a bitch, Brett?
+Brett-->>+Jules: I didn't...!
+Jules->>+Brett: Yes, you did! YES, you DID, Brett! You tried to fuck him!
+'''
+
+{{../../images/mermaid/mermaid009.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid009.jpg&width=800}}
+
+//Pulp Fiction in action//
+
+Акторов может быть множество, переходы между ними тоже доступны в разных сочетаниях.
+Разумно рисовать от одного актора только сплошные стрелки, а от другого только прерывистые.
+Неразумно рисовать в таком стиле длинные диаграммы.
+Также программисты используют рисование диаграмм через LiveScript с аналогичными возможностями:
+
+'''
+sequenceDiagram
+  actor Customer
+  participant Checkout
+  participant DB
+
+  Customer->>+Checkout: Request checkout page
+  Checkout->>+DB: /api/settings
+
+и так далее по той же схеме.
+'''
+
+===== Диаграмма состояний =====
+
+Она же [[https://mermaid.js.org/syntax/stateDiagram.html|State diagram]] — диаграмма, которая описывает поведение систем. Ты видел её в книге Коупленда про тест-дизайн.
+
+{{../../images/mermaid/mermaid_copeland.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid_copeland.jpg&width=800}}
+
+Эта диаграмма — учебная, кривая, неправильная:
+
+Note that the diagram is still incomplete. No arrows and bulls-eyes emerge from the Cancelled states. Perhaps we could reinstate a reservation from the Cancelled NonPay state. We could continue expanding the diagram to include seat selection, flight cancellation, and other significant events affecting the reservation but this is sufficient to illustrate the technique.
+© Lee Copeland
+
+А она неправильная. Просто для экономии бумаги три перехода сведены к одному и тому же (Cancelled ByCust), а в норме это надо выводить в отдельные (тупиковые) ветви. Иногда даже из тупичка может произойти обратное действие, и если через всё пространство протягивать стрелки в одно и то же место, то через какое-то время диаграмма покрывается паутиной метаний от одного узла к другому… ох.
+Её надо пересоставить в более адекватном порядке, но для разгона попробуем воссоздать как есть, сведём выход из нескольких узлов в один Cancelled ByCust:
+
+'''
+stateDiagram-v2
+
+[*] --> Made : giveInfo/startPayTimer
+Made --> Cancelled_NonPay : PayTimer_expired
+Made --> CancelledByCust : cancel
+Made --> Paid : payMoney 
+Paid --> CancelledByCust : cancel/Refund
+Ticketed --> CancelledByCust : cancel/ReturnTicket/Refund
+Paid --> Ticketed : print/Ticket
+Ticketed --> Used : giveTicket
+Used --> [*]
+'''
+
+{{../../images/mermaid/mermaid011.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid011.jpg&width=800}}
+
+Важно: названия узлов должны быть представлены одним словом. Пробел между ними принудительно создает новый узел. Решение — отдельно создать ~~переменную~~ узел с условным названием и содержимым в виде слов с пробелом. Например:
+
+'''
+stateDiagram-v2
+
+CancelledByCust: Cancelled by Customer
+Cancelled_NonPay: Cancelled when payTimer expired
+
+[*] --> Made : giveInfo/startPayTimer 
+Made --> Cancelled_NonPay : PayTimer_expired 
+Made --> CancelledByCust : cancel 
+Made --> Paid : payMoney 
+Paid --> CancelledByCust : cancel/Refund 
+Ticketed --> CancelledByCust : cancel/ReturnTicket/Refund 
+Paid --> Ticketed : print/Ticket 
+Ticketed --> Used : giveTicket Used --> [*]
+'''
+
+
+{{../../images/mermaid/mermaid014.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid014.jpg&width=800}}
+
+
+Раз уж название каждого узла — это его уникальный идентификатор, придется все эти ответвления в «CancelledByCustomer» сделать уникальными через нумерацию. Заодно пометим цветом happyPath и отхождения от него:
+
+'''
+stateDiagram-v2
+
+classDef happyPath font-size:1em,color:black,stroke:DarkOrange,fill:palegreen,stroke-width:1px,text-align:left;
+classDef negativeScenario font-size:1em,color:black,stroke:DarkOrange,fill:IndianRed,stroke-width:1px,text-align:left;
+
+[*] --> Made:::happyPath : giveInfo/startPayTimer
+Made --> Cancelled_NonPay:::negativeScenario : PayTimer_expired
+Made --> CancelledByCustomer_1:::negativeScenario : cancel
+Made --> Paid:::happyPath : payMoney 
+Paid --> CancelledByCustomer_2:::negativeScenario : cancel/Refund
+Ticketed --> CancelledByCustomer_3:::negativeScenario : cancel/ReturnTicket/Refund
+Paid --> Ticketed:::happyPath : print/Ticket
+Ticketed --> Used:::happyPath : giveTicket
+Used --> [*]
+'''
+
+{{../../images/mermaid/mermaid012.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid012.jpg&width=800}}
+
+Можно задать направление этой диаграммы по-горизонтали, но это воспринимается неудобно:
+''direction LR''
+
+{{../../images/mermaid/mermaid013.jpg?href=..%2F..%2Fimages%2Fmermaid%2Fmermaid013.jpg&width=800}}
+
+==== Намутить тест-кейсы по этим путепроводам ====
+
+Дёрнем chatGPT с задачей перемножить все эти блямбы между собой.
+Для stateDiagram псевдоинтеллект выдал такое:
+1. **TC1: Complete Payment and Print Ticket** 
+	* **Initial State:** [*]
+	* **Action:** giveInfo/startPayTimer
+	* **Result:** Made
+	* **Action:** payMoney
+	* **Result:** Paid
+	* **Action:** print/Ticket
+	* **Result:** Ticketed
+	* **Action:** giveTicket
+	* **Result:** Used
+	* **Final State:** [*]
+2. **TC2: Complete Payment and Use Ticket** 
+	* **Initial State:** [*]
+	* **Action:** giveInfo/startPayTimer
+	* **Result:** Made
+	* **Action:** payMoney
+	* **Result:** Paid
+	* **Action:** print/Ticket
+	* **Result:** Ticketed
+	* **Action:** giveTicket
+	* **Result:** Used
+	* **Final State:** [*]
+И так далее.
+Уберем детали:
+**Happy Path Test Cases**
+1. TC1: Complete Payment and Print Ticket
+2. TC2: Complete Payment and Use Ticket
+**Negative Scenario Test Cases**
+1. TC3: Payment Timer Expired
+2. TC4: Cancelled by Customer Before Payment
+3. TC5: Cancelled by Customer After Payment
+4. TC6: Cancelled by Customer After Ticket Printed
+Кхм… Позитивные тесты — отдельно напечатать билет и отдельно его использовать — ну-ну. Тебе же говорили, что диаграмма неадекватная и требует пересмотра?
+А отклонения от happyPath ПИ считало норм.
+Хорошо бы ещё навостриться прописывать основу для диаграмм, из которой chatGPT мог бы генерировать код для самих диаграмм, и тогда можно ускориться ещё сильнее.
+
+===== Туториалы по Mermaid =====
+
+Их [[https://mermaid.js.org/ecosystem/tutorials.html|таки есть]], вот два самых наглядных:
+[[Debian:Install:Mermaid JS|https://www.youtube.com/embed/SQ9QmuTHuSI?start=481&feature=oembed]]
+и
+[[Debian:Install:Mermaid JS|https://www.youtube.com/embed/qGsQolMh9zE?start=204&feature=oembed]]
+Файл с примерами из второго видео — [[https://github.com/PetterTech/DemoStuff/blob/main/Mermaid/mermaid.md|mermaid.md]]
+
+===== ZIM =====
+
+Любопытно, что в вики-редакторе Zim тоже есть модуль «Вставка диаграмм» (ему нужен GraphViz), который работает по тому же принципу — пишем словами, видим диаграмму. Редактирование диаграммы включается даблкликом по ней.
+
+===== Вольное последумие =====
+
+Диаграммы как сапёрные лопатки, отлично помогают только там, где они уместны. Нельзя сводить представление всех сложных абстракций //только// к диаграммам. Надо уметь всё объяснять и рисунками, и текстом, и видео.
+
+© Джеральд Вайнберг, книга « //Exploring Requirements — quality before design//» (1989), подглава «1.4 Making Sure That Everyone Can Read the Map»:
+
+Proponents of each notation claim that their maps are “intuitive” and ”easy to read”. These statements are true in the same sense that Chinese is intuitive — in Beijing. Virtually any notational system becomes intuitive after someone has spent a lot of time working with it.
+
+Как только диаграмма объяснила одну идею, её надо немедленно оставить в покое и не усложнять — рисуй новые.
+
+Лучше нагенерировать множество маленьких диаграмм, чем одну большую, в которой нарисовано вообще ВСЁ.
+
+Генеративные сервисы надо держать под пристальным, недоверчивым присмотром, бо оно тебе нагенерирует, лишь бы ты был хоть немного счастлив. Если в череде шагов не будет чего-то очевидного, то GPT ничем не поможет, оно будет работать только с тем, что ему передал нерадивый тестировщик.
