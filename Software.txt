@@ -100,6 +100,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Obsidian]]
 [[+OBS studio]]
 [[+Okular]]
+[[+LLM:Ollama]]
 [[+OpenShot]]
 
 ===== P =====
@@ -125,13 +126,14 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+Samba]]
 [[+sed]] /редактор содержимого файлов в консоли
-[[+Sentence Transformer]]
+[[+LLM:Sentence Transformer]]
 [[+Slack]]
 [[+SmartGit]]
 [[+SmartMonTools]]
 [[+SMPlayer]]
 [[+snap]]
-[[+Spectacle]]
+[[+Snipe-It]] /Inventory portal
+[[+ssh:Spectacle]]
 [[+ssh]]
 [[+Sublime]]
 [[+SyncThing]]

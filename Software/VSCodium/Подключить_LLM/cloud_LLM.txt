@@ -181,4 +181,4 @@ This is a React application with:
 - Write tests for all new features
 '''
 
-См. далее [[Подключить LLM к IDE]]
+См. далее [[Подключить LLM]]

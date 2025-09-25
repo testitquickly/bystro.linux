@@ -47,4 +47,4 @@ Creation-Date: 2025-06-19T01:12:48+03:00
 
 То же самое с последней командой «9. Открываем файл output.txt в текстовом редакторе».
 
-См. [[Software:Sentence Transformer]]
+См. [[Software:LLM:Sentence Transformer]]
