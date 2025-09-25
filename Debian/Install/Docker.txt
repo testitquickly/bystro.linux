@@ -6,6 +6,8 @@ Creation-Date: 2024-11-10T23:12:24+02:00
 
 [ @debian @install @docker ]
 
+Придётся перезагрузить если не компьютер, то сессию своего юзера.
+
 ===== Установить Docker =====
 
 '''
@@ -24,9 +26,11 @@ sudo apt update && sudo apt install apt-transport-https ca-certificates curl sof
 
 $USER — это переменная окружения, содержить текущего пользователя.
 
-Применить изменения без перезагрузки:
+Перезагрузить компьютер.
 
-''newgrp docker''
+После проверить:
+
+''groups''
 
 ===== Установить Docker Compose =====
 

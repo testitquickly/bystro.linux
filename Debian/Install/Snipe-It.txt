@@ -6,7 +6,7 @@ Creation-Date: 2025-09-26T01:14:41+03:00
 
 [ @debian @install @web @snipeit ]
 
-Управление через Docker Compose.
+Управление через Docker Compose (см. [[Docker]]).
 
 Сделать отдельный каталог:
 
@@ -29,7 +29,8 @@ docker run --rm snipe/snipe-it php artisan key:generate --show
 Вписать все параметры:
 
 * с учетом полученного ключа API
-* для простоты все пароли «''123456''» (так не должно быть)
+* для простоты все пароли «''inventory123''» (так не должно быть)
+* порт по-умолчанию ''8080'', я задал ''8090''
 * все данные будут храниться в каталоге ''/home/astenix/snipeit'', а через двоеточие мы скажем Docker условный каталог, в котором якобы будут находиться данные томов, потому что ''/var/lib/mysql'' — обязательный путь внутри контейнера MySQL.
 
 {{{code: lang="yaml" linenumbers="True"
@@ -39,10 +40,10 @@ services:
     container_name: snipeit-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: inventory123
       MYSQL_DATABASE: snipeit
       MYSQL_USER: snipeit
-      MYSQL_PASSWORD: 123456
+      MYSQL_PASSWORD: inventory123
     volumes:
       - /home/astenix/snipeit/mysql:/var/lib/mysql
 
@@ -61,7 +62,7 @@ services:
       DB_HOST: mysql
       DB_DATABASE: snipeit
       DB_USERNAME: snipeit
-      DB_PASSWORD: 123456
+      DB_PASSWORD: inventory123
       MAIL_DRIVER: smtp
       MAIL_HOST: smtp.mailtrap.io
       MAIL_PORT: 2525
@@ -71,22 +72,26 @@ services:
     volumes:
       - /home/astenix/snipeit:/var/lib/snipeit
 
-volumes:
-  mysql-data:
-  snipeit-data:
-
 }}}
 
 Запуск в каталоге, в котором находится ''docker-compose.yml'':
 
 ''docker-compose up -d''
 
-Если надо остановить
+Вероятно, случится отказ 
+
+''permission denied while trying to connect to the Docker daemon socket…''
+
+тогда аспирин:
+
+''sudo usermod -aG docker $USER && exec su -l $USER''
+
+и повторить запуск.
+
+Если проект поднялся без ошибок, открыть его в браузере — http://localhost:8090
+
+Остановить:
 
 ''docker-compose down -d''
-
-Если проект поднялся без ошибок — открыть его в браузере 
-
-http://localhost:8090
 
 См. далее [[Software:Snipe-It]]

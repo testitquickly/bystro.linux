@@ -54,10 +54,12 @@ Inventory portal — веб-приложение для учета компью�
 
 	''# включить докер с Snipe-It''
 '''
-alias inventory+="cd ~/workspace/docker/snipeit && docker compose up -d && echo -e '\nhttp://inventory.local:8090\n'"
+alias inventory+="cd ~/snipeit && docker compose up -d && echo -e '\nhttp://inventory.local:8090\n'"
 '''
 	''# отключить докер с Snipe-It''
-''alias inventory-="cd ~/workspace/docker/snipeit && docker compose down && echo -e '\nДокер погашен\n'"''
+''alias inventory-="cd ~/snipeit && docker compose down && echo -e '\nДокер погашен\n'"''
+
+Помним, что текущий юзер должен входить в группу ''docker''
 
 ===== Настроить сущности в проекте =====
 
