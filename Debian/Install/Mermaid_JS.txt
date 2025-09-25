@@ -7,5 +7,7 @@ Creation-Date: 2025-09-25T03:09:04+03:00
 [ @debian @install @diagram @mermaid @images ]
 
 	*todo установка Mermaid !!!
+
+В Zim можно включить Mermaid через плагин https://github.com/zim-plugins/insert_mermaid
 	
 См. [[Software:Mermaid JS]]
