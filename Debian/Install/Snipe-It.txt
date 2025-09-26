@@ -44,6 +44,12 @@ services:
       MYSQL_DATABASE: snipeit
       MYSQL_USER: snipeit
       MYSQL_PASSWORD: inventory123
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 7s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
     volumes:
       - /home/astenix/snipeit/mysql:/var/lib/mysql
 
@@ -68,30 +74,51 @@ services:
       MAIL_PORT: 2525
       MAIL_USERNAME: null
       MAIL_PASSWORD: null
-      MAIL_FROM: "noreply@snipeit.local"
+      MAIL_FROM: "bertram.gilfoyle@inventory.local"
     volumes:
       - /home/astenix/snipeit:/var/lib/snipeit
 
 }}}
 
-Запуск в каталоге, в котором находится ''docker-compose.yml'':
+==== URL ====
 
-''docker-compose up -d''
+Можно заморочиться с url, чтобы проект открывался не по http://localhost:8090, а по http://inventory.local:8090
 
-Вероятно, случится отказ 
+Сперва локально — добавить запись об этом в
 
-''permission denied while trying to connect to the Docker daemon socket…''
+''sudo mcedit /etc/hosts''
 
-тогда аспирин:
+На новой строке:
 
-''sudo usermod -aG docker $USER && exec su -l $USER''
+''127.0.0.1       inventory.local''
 
-и повторить запуск.
+Сохранить, выйти.
 
-Если проект поднялся без ошибок, открыть его в браузере — http://localhost:8090
+Если надо, чтобы все устройства в сети заходили на ''inventory.local'' — привязать этот адрес к IP сервера в настройках роутера.
 
-Остановить:
+Важно помнить, что приложение по-умолчанию поднято на http, и для доступа снаружи надо отдельно поставить сертификат SSL, или в принципе пользоваться всем этим только внутри сети.
 
-''docker-compose down -d''
+==== Запуск ====
+
+В файл ~/.bashrc добавить команды
+
+{{{code: lang="sh" linenumbers="True"
+	# включить докер с Snipe-It
+alias sklad+="cd /home/astenix/snipeit \
+	&& docker compose up -d \
+	&& timeout 60 bash -c 'until curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8090 | grep -qE \"2|3\"; do sleep 1; done' \
+	&& if [ $? -eq 0 ]; then 
+		 firefox -p astenix --new-window http://inventory.local:8090;
+	   else 
+		 echo 'Отключение по таймауту (Snipe‑IT не запустился за 60 секунд)';
+	   fi \
+	&& echo -e \"\n   http://inventory.local:8090 \n\""
+
+	# отключить докер с Snipe-It
+alias sklad-="cd /home/astenix/snipeit && docker compose down && echo -e '\n   Докер погашен\n'"
+
+}}}
+
+Помнить о том, что текущий юзер должен входить в группу ''docker''.
 
 См. далее [[Software:Snipe-It]]
