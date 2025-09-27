@@ -192,11 +192,11 @@ DBFILES=("$DBPREFIX/v1.db" "$DBPREFIX/v2.db" "$DBPREFIX/v3.db")
 
 for DB in "${DBFILES[@]}"; do
   if [ ! -f "$DB" ]; then
-    echo "❌ База не найдена: $DB"
+    echo "База не найдена: $DB"
     continue
   fi
 
-  echo "📦 Статистика базы: $DB"
+  echo "Статистика базы: $DB"
   TOTAL=$(locate -d "$DB" '' | wc -l)
   echo "  Всего путей: $TOTAL"
   echo "  Первые 10 путей:"

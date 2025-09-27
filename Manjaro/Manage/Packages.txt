@@ -2,11 +2,11 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-10-09T22:52:01+03:00
 
-====== Управление пакетами ======
+====== Packages ======
 
 [ @manjaro @console @pacman @pamac @yay ]
 
-1. [[+pacman]]
-2. [[+pamac]]
-3. [[+yay]]
+[[+pacman]]
+[[+pamac]]
+[[+yay]]
 

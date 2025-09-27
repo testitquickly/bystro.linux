@@ -18,7 +18,7 @@ sudo pacman -S имя_пакета
 sudo pamac -S имя_пакета
 '''
 
-Или через yay (см. [[Управление Manjaro]])
+Или через yay (см. [[Manage:Packages:yay]])
 
 ''sudo -S yay''
 

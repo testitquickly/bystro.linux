@@ -6,16 +6,41 @@ Creation-Date: 2025-09-24T14:59:53+03:00
 
 [ @python @doc @sphinx ]
 
-Установить:
+Установить глобально:
 
-''pipx install sphinx sphinx-autodoc''
+''pipx install sphinx''
 
-Инициализация:
+Перейти в каталог с файлами RST. 
+
+Убедиться в том, что в корне этого каталога НЕТ файла ''index.rst''. Если есть — удалить или переименовать, потому что Sphinx создаст новый.
+
+''.. toctree::''
+   '':maxdepth: 2''
+   '':caption: Contents:''
+
+   ''bystro.linux/index''
+
+Начать работу:
 
 ''sphinx-quickstart''
 
-В ''conf.py'' добавить 'sphinx.ext.autodoc', указать sys.path.
+Начнется процесс инициализации фреймворка. На первый вопрос «Разделить каталоги исходных файлов и результатов сборки?» ответить ''y'', дальше по своему усмотрению.
 
-Сборка:
+Появятся новые файлы:
+
+source/
+├── conf.py
+├── index.rst
+└── _build/
+
+Перейти в катаог ''source/'' и выполнить:
+
+''sphinx-build -b html . _build/html''
+
+или
 
 ''make html''
+
+Появится ''source/_build/html/index.html''
+
+Открыть его в браузере.

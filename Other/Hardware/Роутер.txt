@@ -6,4 +6,4 @@ Creation-Date: 2024-09-20T21:33:28+03:00
 
 [ @chapter ]
 
-[[+TP-Link Archer C1200]]
+* [[+TP-Link Archer C1200]]

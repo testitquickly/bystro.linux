@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2023-01-17T02:32:09+02:00
+
+====== autostart ======
+
+[ @manjaro @autostart ]
+
+В папке профиля юзера
+
+''cd ~/.config/autostart''
+
+В системе
+
+''cd /etc/xdg/autostart/''
+
+Разумно не удалять сразу всё, а гасить запуск сервисов через systemd: [[:Debian:HowTo:Настроить:systemd:Подавить сервис]]
+
+Автостарт вообще в KDE:  [[:Debian:HowTo:Настроить:autostart]]
+
+

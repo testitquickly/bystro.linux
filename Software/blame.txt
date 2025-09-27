@@ -63,4 +63,4 @@ graphical.target @11.665s
 
 ===== Отключить что-то =====
 
-[[HowTo:Удалить:Сервис NetworkManager-wait-online]]
+[[Debian:HowTo:Удалить:Сервис NetworkManager-wait-online]]

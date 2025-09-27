@@ -4,6 +4,8 @@ Creation-Date: 2025-09-09T13:46:22+03:00
 
 ====== usb смарт-карта ======
 
+[ @usb ]
+
 '''
 lsusb && dmesg | tail -n 30 
 '''
@@ -32,7 +34,6 @@ Bus 003 Device 006: ID 25dd:3111 Bit4id Srl miniLector EVO
 sudo systemctl enable --now pcscd
 '''
 
-
 ===== Проверить карту =====
 
 ''pcsc_scan''
@@ -48,8 +49,7 @@ sudo systemctl enable --now pcscd
 ''Tue Sep  9 13:49:42 2025''
  ''Reader 0: bit4id miniLector-EVO 00 00''
   ''Event number: 0''
-  ''Card state: Card removed,'' 
-
+  ''Card state: Card removed''
 
 Если нет — нужен драйвер для флэшки
 
@@ -107,6 +107,7 @@ USB → Контроллер USB 2.0 или 3.0.
 Панель управления → Система и безопасность → Администрирование → Службы → «Смарт-карты». Токен должен быть распознан.
 
 ===== Использование токена в браузере =====
+
 * Firefox/Edge/Chrome в Windows:
 	* Должен автоматически видеть сертификат на токене через PKCS#11 или встроенные драйверы.
 	* Можно зайти на сайт, где нужен электронный ключ.

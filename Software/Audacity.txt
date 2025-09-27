@@ -34,7 +34,7 @@ Creation-Date: 2023-06-22T17:15:24+03:00
 
 ===== Педаль Vidami =====
 
-См. [[Common:Hardware:педаль Vidami]]
+См. [[Other:Hardware:педаль Vidami]]
 
 ===== Метки =====
 
