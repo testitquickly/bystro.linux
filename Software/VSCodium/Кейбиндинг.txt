@@ -13,7 +13,9 @@ Creation-Date: 2025-08-20T12:52:46+03:00
 ''Preferences: Open Keyboard Shortcuts (JSON)''
 
 Если нужна подсказка о команде или о том, какая команда вызывается по дефолтному сочетанию клавиш, см. 
+
 ''Preferences: Open Default Keyboard Shortcuts (JSON)'' 
+
 — не редактирования для, а чтобы через Ctrl+F найти точный синтаксис вызова того или иного события.
 
 Выбор по [Enter], будет открыт файл ''~/.config/VSCodium/User/keybindings.json''
