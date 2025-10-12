@@ -1,12 +1,26 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2024-12-25T22:53:50+02:00
+Creation-Date: 2025-10-11T09:38:41+03:00
 
-====== Проверить сетевую активность ======
+====== Сетевая активность ======
 
-[ @network ]
+===== nethogs =====
 
-Можно In Real Time смотреть в консоли, что происходит с сетевым подключением:
+Если ещё не установлено: 
+
+'''
+sudo apt install nethogs
+'''
+
+Запуск:
+
+''sudo nethogs''
+
+Выход по ''q''.
+
+Или так:
+
+===== NetworkManager =====
 
 ''journalctl -u NetworkManager -f''
 

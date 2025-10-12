@@ -13,7 +13,8 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 * надо только (быстро) настроить систему
 * напоминалка: https://wiki.debian.org/DontBreakDebian
 
-[[+Setup]]
-[[+HowTo]]
+Быстро настроить систему: [[+Setup]]
+
+См. также:
 [[Software]]
-[[+Install]]
+[[+HowTo]]

@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-10-02T12:09:35+03:00
 
-====== Адрес каталога ======
+====== Реальный путь к каталогу ======
 
 [ @search @folder @pwd ]
 

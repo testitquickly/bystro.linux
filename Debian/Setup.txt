@@ -77,8 +77,8 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[Software:Списки задач:ToDo в консоли]]
 * [[HowTo:Настроить:Wi-Fi]]
 * [[HowTo:Настроить:Языки локализации]]
-* [[HowTo:Проверить:Свой IP]]
-* [[HowTo:Проверить:Скорость по LAN]]
+* [[HowTo:Проверить:Network:Свой IP]]
+* [[HowTo:Проверить:Network:Скорость по LAN]]
 * [[HowTo:Проверить:Состояние батареи ноутбука]]
 * [[HowTo:Сделать:Подключить внешний монитор по hdmi]]
 
