@@ -6,12 +6,6 @@ Creation-Date: 2024-04-06T01:18:49+03:00
 
 [ @debian @install @smartgit ]
 
-ПО будет установлено в режиме trial. 
-
-	Получить лицензию ’Non-commercial use’ можно отдельным обращением в компанию, при этом надо будет предоставить доказательство своего вклада в опен-соурс (на github). Инструкция: https://www.syntevo.com/register-non-commercial/ 
-
-	Я обратился, репозиторий показал, ключ получил.
-
 ===== Скачать =====
 
 https://www.syntevo.com/smartgit/download/ —  [Download for Linux], там архив tar.gz Переместить его куда-нибудь в отдельный каталог. Добраться до этого tar.gz в консоли.
