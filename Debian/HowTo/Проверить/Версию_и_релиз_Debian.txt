@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-10-15T00:44:05+03:00
+
+====== Версию и релиз Debian ======
+
+[ @debian @release ]
+
+Ранее для этого использовали ''lsb'' ([[https://wiki.linuxfoundation.org/lsb/start|Linux Standard Base]]) через составную команду «''lsb_release -d && cat /etc/debian_version''», но LSB отменили.
+
+Через systemd:
+
+''hostnamectl''
+
+или попроще:
+
+''cat /etc/os-release''
+
+Пример ответа:
+
+''PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"''
+''NAME="Debian GNU/Linux"''
+''VERSION_ID="12"''
+''VERSION="12 (bookworm)"''
+''VERSION_CODENAME=bookworm''
+''ID=debian''
+''HOME_URL="''[[https://www.debian.org/|''https://www.debian.org/'']]''"''
+''SUPPORT_URL="''[[https://www.debian.org/support|''https://www.debian.org/support'']]''"''
+''BUG_REPORT_URL="''[[https://bugs.debian.org/|''https://bugs.debian.org/'']]''"''
+
+Можно выдернуть данные по отдельному параметру'':''
+
+''grep -oP '(?[=^VERSION_ID=).+' /etc/os-release | tr -d '"'''
+
+и использовать их в скриптах на bash. Например:
+
+'''
+myDebianVersion=$(grep -oP '(?[=^VERSION_ID=).+' /etc/os-release | tr -d '"')
+myDebianName=$(grep -oP '(?[=^VERSION_CODENAME=).+' /etc/os-release | tr -d '"')
+echo -e "This is Debian «$myDebianName» $myDebianVersion (Stable)]"
+'''

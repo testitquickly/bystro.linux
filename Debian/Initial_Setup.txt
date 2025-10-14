@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-02-18T01:28:38+02:00
 
-====== Setup ======
+====== Initial Setup ======
 
 [ @debian @quicksetup ]
 
@@ -33,7 +33,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Настроить:GRUB2]]
 * [[HowTo:Удалить:Сервис NetworkManager-wait-online]]
 * [[HowTo:Сделать:Обновить sources.list]]
-* [[HowTo:Сделать:Обновить Debian]]
+* [[HowTo:Сделать:Debian:Update]]
 * [[HowTo:Проверить:Ошибки при загрузке системы]]
 * [[HowTo:Настроить:Обновление времени и даты]]
 * [[HowTo:Настроить:SSD]]

@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-10-14T23:57:33+03:00
+
+====== Debian ======
+
+[[+Update]]
+[[+Downgrade]]
+[[+Reinstall]]
+[[+Live Debian на USB]]

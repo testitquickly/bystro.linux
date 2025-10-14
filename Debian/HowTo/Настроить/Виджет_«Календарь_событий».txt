@@ -6,7 +6,8 @@ Creation-Date: 2025-06-23T06:57:41+03:00
 
 [ @calendar @widget @shortcuts ]
 
-//temporary notice:// виджет еще не работает в “Plasma 6”
+		//TEMPORARY NOTICE// 
+Этот виджет еще не работает в “Plasma 6”
 
 ==== Заменить в трее часы на «Календарь событий» ====
 
