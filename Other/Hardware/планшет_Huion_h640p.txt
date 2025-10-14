@@ -3,5 +3,193 @@ Wiki-Format: zim 0.6
 Creation-Date: 2025-10-14T21:29:37+03:00
 
 ====== планшет Huion h640p ======
-Создан Вторник 14 октября 2025
 
+[ @digimen @huion @планшет ]
+
+Перьевой планшет рисовальный Huion H640P Inspiroy прекрасно работает под общими драйверами для планшетов Wacom из проекта digimend-kernel-drivers.
+
+По-умолчанию всем управляет libinput X.org driver (xserver-xorg-input-libinput в Debian). Неизвестно, будет ли всё это работать под Wayland.
+
+===== Важно! =====
+
+Во время экспериментов с клавишами привычные настройки (особенно нестандартные вроде [[Debian:HowTo:Настроить:Шорткаты • Поменять местами Ctrl и левый Alt]]) могут слететь, даже клики мыши могут исчезнуть. Как всё вернуть:
+
+''setxkbmap -option''
+
+''pkill xbindkeys''
+
+Потом аккуратно потыкать пальцами.
+
+===== Установить =====
+
+На странице релизов https://github.com/DIGImend/digimend-kernel-drivers/releases в последнем релизе в разделе Assets (развернуть) скачать файл *.deb
+
+''sudo dpkg -i digimend-*.deb''
+
+===== Управление =====
+
+В норме на подключенном планшете 
+
+* загорается тусклый световой индикатор
+* перо над ним работает как мышка на экране
+* клики по кнопкам на пёрышке работают как левая и правая кнопка мыши
+
+Проверить распознавание устройства:
+
+''xinput list''
+
+Вероятный ответ:
+
+''⎡ Virtual core pointer                          id=2    [master pointer  (3)]''
+''⎜   ↳ HID 256c:006e                             id=15   [slave  pointer  (2)]''
+''⎜   ↳ HID 256c:006e Pen (0)                     id=16   [slave  pointer  (2)]''
+''⎣ Virtual core keyboard                         id=3    [master keyboard (2)]''
+	''↳ HID 256c:006e                             id=14   [slave  keyboard (3)]''
+
+Можно полагать, что id=15 кнопки планшета, а id=16 кнопки на пере, поэтому выполнить
+
+''xinput test 15''
+
+и нажать последовательно на каждую кнопку на планшете (прервать процесс через ''Ctrl+C''). Вероятный ответ:
+
+''button press   1'' 
+''button release 1'' 
+''button press   2'' 
+''xinput test 15button release 2'' 
+''button press   3'' 
+''button release 3'' 
+''button press   8'' 
+''button release 8'' 
+''button press   9'' 
+''button release 9'' 
+''button press   10'' 
+''button release 10'' 
+
+Ок, шесть кнопок на планшете отзываются под номерами 1, 2, 3, 8, 9, 10.
+
+==== Назначить действия на встроенные кнопки ====
+
+Отключить планшет.
+
+Установить утилиты для назначения кнопок:
+
+''sudo apt install xbindkeys xdotool''
+
+Скопировать из xbindkeys в конфиг в своём профиле:
+
+''xbindkeys --defaults > ~/.xbindkeysrc''
+
+Продумать свою схему назначения кнопок. Мне удобно это (в скобках указан системный номер кнопки):
+
+	(1) - Home
+	(2) - Page Up
+	(3) - Page Down
+	(8) - Увеличить
+	(9) - Уменьшить
+	(10) - Отмена действия
+
+Узнать коды этих клавиш
+
+''xev''
+
+Над терминалом откроется окно для перехвата нажатий клавиш. Последовательно потыкать по клавишам и посмотреть ответ в терминале.
+
+Но тут нужна аккуратность, особенно с ноутбуками, где клавиша [Home] может быть в нескольких вариантах:
+
+* отдельной кнопкой
+* кнопкой через Fn
+* кнопкой на цифрофом секторе, но только если режим NumLock отключён
+* на внешней клавиатуре (через usb) кнопки те же кнопки могут работать по другим кодам.
+
+Например, кнопка [Home] в цифровом секторе называется [KP_Home].
+
+''KeyPress event, serial 40, synthetic NO, window 0x6a00001,''
+	''root 0x6b2, subw 0x0, time 6093010, (295,-476), root:(1152,12),''
+	''state 0x0, keycode 79 (keysym 0xff95, KP_Home), same_screen YES,''
+	''XLookupString gives 0 bytes:'' 
+	''XmbLookupString gives 0 bytes:'' 
+	''XFilterEvent returns: False''
+
+Ок, тут понятно, что нажатие клавиши [Home] = ''KP_Home'' Остановиться и записать этот код, затем последовательно прожимать остальные клавиши. 
+
+Назначить свои действия на все кнопки:
+
+''mcedit ~/.xbindkeysrc''
+
+{{{code: lang="sh" linenumbers="True"
+# ======= Huion H640P button mapping
+
+# Кнопка #1 — Home
+"xdotool key KP_Home"
+  b:1
+
+# Кнопка #2 — PgUp
+"xdotool key KP_Prior"
+  b:2
+
+# Кнопка #3 — PgDown
+"xdotool key KP_Next"
+  b:3
+
+# Кнопка #4 — zoom in
+"xdotool key Control_L+KP_Add"
+  b:8
+
+# Кнопка #5 — zoom out
+"xdotool key Control_L+KP_Subtract"
+  b:9
+
+# Кнопка #6 — Undo
+"xdotool key Control_L++z"
+  b:10
+
+}}}
+
+Подключить планшет.
+
+Запустить xbindkeys явно
+
+''xbindkeys -f ~/.xbindkeysrc -n''
+
+Остановка через Ctrl+C.
+
+Запустить xbindkeys в фоне
+
+''xbindkeys -f ~/.xbindkeysrc &''
+
+Остановка через
+
+''pkill xbindkeys''
+
+
+
+HID 256c:006e Pad pad                   id: 9   type: PAD
+HID 256c:006e Pen stylus                id: 10  type: STYLUS
+
+you can assign Ctrl-Z ("Undo") key combination to the fifth button on the tablet frame this way:
+
+'''
+xsetwacom set "HID 256c:006e Pad pad" button 9 key Ctrl Z
+'''
+
+Note that buttons are numbered 1, 2, 3, 8, 9, 10, and so on, i.e. buttons 4, 5, 6, and 7 are not used. They're reserved for vertical and horizontal scrolling events by the X server.
+
+Another example: if ''xrandr'' output has this line:
+
+HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm
+
+you can restrict the tablet input to that display like this:
+
+xsetwacom set "HID 256c:006e Pen stylus" MapToOutput HDMI-3
+
+See the xsetwacom man page for more parameters and details.
+
+===== Обновить =====
+
+Сперва надо убрать предыдущий драйвер, но можно сперва установить новую версию, затем перезагрузить компьютер. Если это по каким-то причинам невозможно, следует отключить планшет, выполнить
+
+''sudo modprobe -r hid-kye hid-uclogic hid-polostar hid-viewsonic''
+
+и подключить планшет снова.
+
+А потом перезагрузить компьютер.
