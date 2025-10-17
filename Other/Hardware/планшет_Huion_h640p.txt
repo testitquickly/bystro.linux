@@ -6,190 +6,320 @@ Creation-Date: 2025-10-14T21:29:37+03:00
 
 [ @digimen @huion @планшет ]
 
-Перьевой планшет рисовальный Huion H640P Inspiroy прекрасно работает под общими драйверами для планшетов Wacom из проекта digimend-kernel-drivers.
+Перьевой управлятельно-рисовальный планшет Huion H640P Inspiroy прекрасно работает в Linux под общими драйверами для планшетов типа Wacom из проекта digimend-kernel-drivers.
 
-По-умолчанию всем управляет libinput X.org driver (xserver-xorg-input-libinput в Debian). Неизвестно, будет ли всё это работать под Wayland.
-
-===== Важно! =====
-
-Во время экспериментов с клавишами привычные настройки (особенно нестандартные вроде [[Debian:HowTo:Настроить:Шорткаты • Поменять местами Ctrl и левый Alt]]) могут слететь, даже клики мыши могут исчезнуть. Как всё вернуть:
-
-''setxkbmap -option''
-
-''pkill xbindkeys''
-
-Потом аккуратно потыкать пальцами.
+Не факт, что всё это будет работать под Wayland, по-умолчанию всем управляет libinput X.org driver (xserver-xorg-input-libinput в Debian).
 
 ===== Установить =====
 
-На странице релизов https://github.com/DIGImend/digimend-kernel-drivers/releases в последнем релизе в разделе Assets (развернуть) скачать файл *.deb
+* [[Debian:Install:Планшет для рисования]]
 
-''sudo dpkg -i digimend-*.deb''
+===== Номера кнопок планшета =====
 
-===== Управление =====
+Проверить коды кнопок на планшете с именем “Pad pad id=16” (не забыть о том, что это временно). Выполнить в терминале:
 
-В норме на подключенном планшете 
+''xinput test 16''
 
-* загорается тусклый световой индикатор
-* перо над ним работает как мышка на экране
-* клики по кнопкам на пёрышке работают как левая и правая кнопка мыши
+и на планшете нажать последовательно на каждую кнопку. Вероятный ответ:
 
-Проверить распознавание устройства:
+''button press   1 a[3]=0 a[4]=0 a[5]=0 a[6]=0'' 
+''motion a[3]=0 a[4]=0 a[5]=0 a[6]=0'' 
+''button release 1 a[3]=0 a[4]=0 a[5]=0 a[6]=0'' 
+''motion a[3]=0 a[4]=0 a[5]=0 a[6]=0'' 
+''button press   2 a[3]=0 a[4]=0 a[5]=0 a[6]=0'' 
+''motion a[3]=0 a[4]=0 a[5]=0 a[6]=0''  
 
-''xinput list''
+и тд. 
 
-Вероятный ответ:
+Прервать процесс через ''Ctrl+C'' или ''Ctrl+Z''.
 
-''⎡ Virtual core pointer                          id=2    [master pointer  (3)]''
-''⎜   ↳ HID 256c:006e                             id=15   [slave  pointer  (2)]''
-''⎜   ↳ HID 256c:006e Pen (0)                     id=16   [slave  pointer  (2)]''
-''⎣ Virtual core keyboard                         id=3    [master keyboard (2)]''
-	''↳ HID 256c:006e                             id=14   [slave  keyboard (3)]''
+Выцепляем строки с “button press”:
 
-Можно полагать, что id=15 кнопки планшета, а id=16 кнопки на пере, поэтому выполнить
+1. button press   1 a[3]=0…
+2. button press   2 …
+3. button press   3 
+4. button press   8 
+5. button press   9 
+6. button press   10 
 
-''xinput test 15''
+Ок, шесть кнопок на планшете отзываются под номерами 
 
-и нажать последовательно на каждую кнопку на планшете (прервать процесс через ''Ctrl+C''). Вероятный ответ:
+1. ''1''
+2. ''2''
+3. ''3''
+4. ''8''
+5. ''9''
+6. ''10'' 
 
-''button press   1'' 
-''button release 1'' 
-''button press   2'' 
-''xinput test 15button release 2'' 
-''button press   3'' 
-''button release 3'' 
-''button press   8'' 
-''button release 8'' 
-''button press   9'' 
-''button release 9'' 
-''button press   10'' 
-''button release 10'' 
+Почему так — у каждого устройства-планшета может не быть, а может быть какое-то количество физических кнопок. Драйвер Wacom по-умолчанию считает, что у планшета есть 20 кнопок, и для каждой он резервирует отдельный слот. Проверить свой планшет:
 
-Ок, шесть кнопок на планшете отзываются под номерами 1, 2, 3, 8, 9, 10.
+''xinput list-props 16''
 
-==== Назначить действия на встроенные кнопки ====
+Пример ответа:
 
-Отключить планшет.
+{{{code: lang="sh" linenumbers="True"
+Device 'HID 256c:006e Pad pad':
+        Device Enabled (164):   1
+        Coordinate Transformation Matrix (166): 1.000000, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000, 0.000000, 0.000000, 1.000000
+        Device Accel Profile (296):     0
+        Device Accel Constant Deceleration (297):       1.000000
+        Device Accel Adaptive Deceleration (298):       1.000000
+        Device Accel Velocity Scaling (299):    10.000000
+        Device Node (288):      "/dev/input/event16"
+        Wacom Serial IDs (454): 110, 17, 15, 17, 15
+        Wacom Serial ID binding (602):  0
+        Wacom Pressure Threshold (603): 0
+        Wacom Sample and Suppress (604):        2, 4
+        Wacom Enable Touch (605):       0
+        Wacom Enable Touch Gesture (606):       0
+        Wacom Touch Gesture Parameters (607):   0, 0, 250
+        Wacom Tool Type (608):  "PAD" (601)
+        Wacom button action 0 (609):    1572865
+        Wacom button action 1 (610):    1572866
+        Wacom button action 2 (611):    1572867
+        Wacom button action 3 (612):    1572872
+        Wacom button action 4 (613):    1572873
+        Wacom button action 5 (614):    1572874
+        Wacom button action 6 (615):    1572875
+        Wacom button action 7 (616):    1572876
+        Wacom button action 8 (617):    1572877
+        Wacom button action 9 (618):    1572878
+        Wacom button action 10 (619):   1572879
+        Wacom button action 11 (620):   1572880
+        Wacom button action 12 (621):   1572881
+        Wacom button action 13 (622):   1572882
+        Wacom button action 14 (623):   1572883
+        Wacom button action 15 (624):   1572884
+        Wacom button action 16 (625):   1572885
+        Wacom button action 17 (626):   1572886
+        Wacom button action 18 (627):   1572887
+        Wacom button action 19 (628):   1572888
+        Wacom Button Actions (629):     "Wacom button action 0" (609)…
+}}}
 
-Установить утилиты для назначения кнопок:
+Ок, видим 20 кнопок, от id=0 до id=19. 
 
-''sudo apt install xbindkeys xdotool''
+Надо учесть два неочевидных нюанса :
 
-Скопировать из xbindkeys в конфиг в своём профиле:
+1. На моем планшете шесть кнопок, но их нумерация от 1 до 10 (1, 2, 3, 8, 9, 10) указывает на то, что драйвер Wacom считает, что на планшете 10 кнопок. При их переназначении надо будет указать драйверу неортодоксальную настройку сразу для десяти кнопок, в том числе и для отсутствующих (4, 5, 6, 7). Добро пожаловать в мир “embedded electronics”.
 
-''xbindkeys --defaults > ~/.xbindkeysrc''
+Решение: назначить новые номера сразу десяти кнопкам, просто для отсутствующих будет установлен енйтральнй код ''0''. Это делается так:
 
-Продумать свою схему назначения кнопок. Мне удобно это (в скобках указан системный номер кнопки):
+* 16 — условный id подключенного планшета устройства (Pad pad),
+* первые три числа — новые коды для первых трех кнопок, которые объявляет драйвер планшета
+* четыре нуля — пустые слоты для условных кнопок, которые подразумевает драйвер Wacom
+* оставшиеся три числа — новые коды для оставшихся трех кнопок на моем планшете:
 
-	(1) - Home
-	(2) - Page Up
-	(3) - Page Down
-	(8) - Увеличить
-	(9) - Уменьшить
-	(10) - Отмена действия
+''xinput set-button-map 16 51 52 53 0 0 0 0 54 55 56''
 
-Узнать коды этих клавиш
+Так проверять возвращаемые коды нажатия на каждую кнопку на планшете:
+
+''xinput test 16''
+
+2. Система не разделяет номера кнопок на планшетах, мышках и клавиатуре — Debian считает и клавиатуру, и мышь, и тачпад внешними устройствами, которые к ней подключены, и каждая кнопка в этой экосистеме //evdev// имеет свой отдельный номер. b:1 — это кнопка номер 1, и обычно её все/всегда определяют как левую кнопку мыши (или клик по тачпаду). Планшет — просто ещё одно внешнее устройство. И если на нём первая физическая кнопка определяется под номером 1, то она действует как клик по тачпаду. Если насильно переназначить её “для планшета” (а я хочу, чтобы первая кнопка на нём работала как [Home]), то ВНЕЗАПНО и мышь/тачпад на ноутбуке тоже перестанет “кликать” и начнет работать как кнопка [Home]. 
+
+Решение: назначить каждой кнопке планшета новый, неиспользуемый в системе номер, чтобы избежать возможного пересечения кодов. По-умолчанию в системе задействованы не меньше десятка кодов клавиш, поэтому выберем диапазон подальше от начала, например 51–56. Эта операция назыавается «назначить новую карту кнопок».
+
+===== Коды нужных кнопок для замены =====
+
+Неочевидно, что они могут быть очень разными на одном и том же устройстве. Например, клавиша [Home] может быть на ноутбуке в нескольких вариантах:
+
+* как отдельная кнопка
+* как дополнительная кнопка через ''Fn''
+* как отдельная кнопка на цифровом секторе, но только если режим NumLock отключён
+* как кнопка на внешней клавиатуре (через usb)
+
+Поэтому сперва надо узнать коды всех нужных клавиш. Например, мне надо, чтобы кнопки на планшете работали так:
+
+1. Home
+2. PageUp
+3. PageDown
+4. zoom in
+5. zoom out
+6. Undo
+
+Проверить:
 
 ''xev''
 
-Над терминалом откроется окно для перехвата нажатий клавиш. Последовательно потыкать по клавишам и посмотреть ответ в терминале.
-
-Но тут нужна аккуратность, особенно с ноутбуками, где клавиша [Home] может быть в нескольких вариантах:
-
-* отдельной кнопкой
-* кнопкой через Fn
-* кнопкой на цифрофом секторе, но только если режим NumLock отключён
-* на внешней клавиатуре (через usb) кнопки те же кнопки могут работать по другим кодам.
-
-Например, кнопка [Home] в цифровом секторе называется [KP_Home].
+Над терминалом откроется окно для перехвата нажатий клавиш. Последовательно потыкать по клавишам и смотреть ответы в терминале. Например, кнопка [Home] в цифровом секторе называется [KP_Home].
 
 ''KeyPress event, serial 40, synthetic NO, window 0x6a00001,''
 	''root 0x6b2, subw 0x0, time 6093010, (295,-476), root:(1152,12),''
-	''state 0x0, keycode 79 (keysym 0xff95, KP_Home), same_screen YES,''
+	''state 0x0, keycode 79 (keysym 0xff95,'' __''KP_Home''__''), same_screen YES,''
 	''XLookupString gives 0 bytes:'' 
 	''XmbLookupString gives 0 bytes:'' 
 	''XFilterEvent returns: False''
 
-Ок, тут понятно, что нажатие клавиши [Home] = ''KP_Home'' Остановиться и записать этот код, затем последовательно прожимать остальные клавиши. 
+Последовательно понажимать остальные нужные клавиши и посмотреть на коды. Сочетания клавиш вроде Ctrl+Z регистрируются как нажатия клавиш по-отдельности: “''Control_L+z''”.
 
-Назначить свои действия на все кнопки:
+===== Конфиги для подключения =====
 
-''mcedit ~/.xbindkeysrc''
+Надо сделать несколько конфигов для разных сценариев. Например, в браузере zoom in/out делается через “''Ctrl+/-''”, а в Gimp это делается через “''+/-''”.
+
+Конфиги будут храниться в простых plain text файлах (можно даже без расширения) в отдельном каталоге:
+
+''mkdir -p ~/huion-h640p/ && mcedit ~/huion-h640p/browser.conf''
+
+Вставить:
 
 {{{code: lang="sh" linenumbers="True"
-# ======= Huion H640P button mapping
+###########################
+# xbindkeys для браузера
+###########################
+
+# ======= Переназначение кнопок для рисовального планшета Huion H640P
 
 # Кнопка #1 — Home
-"xdotool key KP_Home"
-  b:1
+"xdotool key Home"
+  b:51
 
 # Кнопка #2 — PgUp
-"xdotool key KP_Prior"
-  b:2
+"xdotool key Prior"
+  b:52
 
 # Кнопка #3 — PgDown
-"xdotool key KP_Next"
-  b:3
+"xdotool key Next"
+  b:53
 
 # Кнопка #4 — zoom in
-"xdotool key Control_L+KP_Add"
-  b:8
+"xdotool key --clearmodifiers Control_L+KP_Add"
+  b:54
 
 # Кнопка #5 — zoom out
-"xdotool key Control_L+KP_Subtract"
-  b:9
+"xdotool key --clearmodifiers Control_L+KP_Subtract"
+  b:55
 
 # Кнопка #6 — Undo
-"xdotool key Control_L++z"
-  b:10
+"xdotool key --clearmodifiers Control_L+z"
+  b:56
 
 }}}
 
-Подключить планшет.
+Сделать конфиг для GIMP:
 
-Запустить xbindkeys явно
+''cp browser.conf gimp.conf''
 
-''xbindkeys -f ~/.xbindkeysrc -n''
+и переопределить кнопки под GIMP — там zoom in/out работает только по кнопке ''+/-'':
 
-Остановка через Ctrl+C.
+{{{code: lang="sh" linenumbers="True"
+###########################
+# xbindkeys для браузера
+###########################
 
-Запустить xbindkeys в фоне
+# ======= Переназначение кнопок для рисовального планшета Huion H640P
 
-''xbindkeys -f ~/.xbindkeysrc &''
+# Кнопка #1 — Home
+"xdotool key Home"
+  b:51
 
-Остановка через
+# Кнопка #2 — PgUp
+"xdotool key Prior"
+  b:52
 
-''pkill xbindkeys''
+# Кнопка #3 — PgDown
+"xdotool key Next"
+  b:53
 
+# Кнопка #4 — zoom in
+"xdotool key --clearmodifiers KP_Add"
+  b:54
 
+# Кнопка #5 — zoom out
+"xdotool key --clearmodifiers KP_Subtract"
+  b:55
 
-HID 256c:006e Pad pad                   id: 9   type: PAD
-HID 256c:006e Pen stylus                id: 10  type: STYLUS
+# Кнопка #6 — Undo
+"xdotool key --clearmodifiers Control_L+z"
+  b:56
 
-you can assign Ctrl-Z ("Undo") key combination to the fifth button on the tablet frame this way:
+}}}
+
+Если нужны не [Home], а быстрое переключение на инструмент (Карандаш) — подставить нужную букву, которая объявлена в GIMP.
+
+И так далее.
+
+===== Скрипт для запуска =====
+
+''mcedit ~/huion-h640p/run_huion_h640p.sh''
+
+Инсерт:
+
+{{{code: lang="sh" linenumbers="True"
+#!/bin/bash
+
+    # =============================================
+    # Настройка кнопок планшета Huion H640P (Pad pad)
+    # Параметр: имя файла конфигурации для xbindkeys 
+    # будет указано как параметр скрипта в fileConfig
+    # =============================================
+
+fileConfig="$1"
+CONFIG_FILE="/home/mySettings/myScripts/huion-h640p/$fileConfig"
+
+    # Проверить файл конфигурации
+if [[ ! -f "$CONFIG_FILE" ]]; then
+    echo -e "\n\tНе нахожу файл '$CONFIG_FILE'\n"
+    exit 1
+fi
+
+    # Найти ID устройства с именем "Pad pad" (берём первый найденный)
+deviceID=$(xinput list | grep -i "Pad pad" | head -1 | grep -o 'id=[0-9]\+' | cut -d= -f2)
+
+    # Если планшет не найден
+if [[ -z "$deviceID" ]]; then
+    echo -e "\n\tНе нахожу планшет!\n"
+    exit 1
+fi
+
+    # Назначить новую карту десяти кнопок (первые последние три кнопок — 
+    # на планшете, остальные виртуальные, их подразумевает драйвер
+xinput set-button-map "$deviceID" 51 52 53 0 0 0 0 54 55 56
+
+    # Завершить вероятные старые процессы xbindkeys, запущенные с этим конфигом
+pids=$(pgrep -f "xbindkeys -f $CONFIG_FILE")
+if [[ -n "$pids" ]]; then
+    # echo "Завершаем старые процессы xbindkeys: $pids"
+    kill $pids
+    # Ждём, пока процессы завершатся
+    for pid in $pids; do
+        while kill -0 $pid 2>/dev/null; do
+            sleep 0.1
+        done
+    done
+fi
+    
+    # Поднять конфиг кнопок планшета через xbindkeys
+xbindkeys -f "$CONFIG_FILE" -n &
+
+echo -e "id планшета: $deviceID\nПрофиль планшета: $fileConfig \n"
+
+}}}
+
+==== Алиасы для подключения ====
+
+''mcedit ~/.bashrc''
+
+Добавить алиасы:
 
 '''
-xsetwacom set "HID 256c:006e Pad pad" button 9 key Ctrl Z
+# ------------------------------
+# ПЛАНШЕТ H640P
+# ------------------------------
+
+alias huion-browser="/home/mySettings/myScripts/huion-h640p/run_huion_h640p.sh browser.conf"
+alias huion-gimp="/home/mySettings/myScripts/huion-h640p/run_huion_h640p.sh gimp.conf"
 '''
 
-Note that buttons are numbered 1, 2, 3, 8, 9, 10, and so on, i.e. buttons 4, 5, 6, and 7 are not used. They're reserved for vertical and horizontal scrolling events by the X server.
+и так далее.
 
-Another example: if ''xrandr'' output has this line:
+1. подключить планшет
+2. поднять его конфиг для браузера: 
 
-HDMI-3 connected 1440x900+0+0 (normal left inverted right x axis y axis) 408mm x 255mm
+''huion-browser''
 
-you can restrict the tablet input to that display like this:
+4. переключиться в браузер, 
+5. пролистать страницу вниз, 
+6. нажать первую кнопку на планшете.
 
-xsetwacom set "HID 256c:006e Pen stylus" MapToOutput HDMI-3
-
-See the xsetwacom man page for more parameters and details.
-
-===== Обновить =====
-
-Сперва надо убрать предыдущий драйвер, но можно сперва установить новую версию, затем перезагрузить компьютер. Если это по каким-то причинам невозможно, следует отключить планшет, выполнить
-
-''sudo modprobe -r hid-kye hid-uclogic hid-polostar hid-viewsonic''
-
-и подключить планшет снова.
-
-А потом перезагрузить компьютер.
+Expected result: страница прокручивается вверх, как это должно происходить после нажатия [Home].
