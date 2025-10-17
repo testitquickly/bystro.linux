@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-10-17T13:58:40+03:00
+
+====== habr ======
+
+[ @uBlockOrigin @rss @habr ]
+
+Там на глагне очень много всего, тизеры статей и КДПВ, надо долго прокручивать. Можно было бы открывать сайт через m.habr.con, но на десктопной версии происходит принудительное перенаправление на десктопную.
+
+Решения:
+
+* смотреть всё через RSS: https://habr.com/ru/rss/articles/top/daily/?fl=ru
+* в браузере через расширение //User-Agent Switcher// сделать профиль с “''Mozilla/5.0 (Linux; Android 10; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Mobile Safari/537.36''”
+* убрать «лишние» элементы через //uBlock Origin//: “Настройки” → вкладка “Мои фильтры”, вставить 
+
+{{{code: lang="sh" linenumbers="True"
+! Habr — только заголовки + компактная лента + скрыть "Читать далее"
+||habrastorage.org/getpro/habr/branding/fd0/52a/031/fd052a031080b9cfb20f96bc18d7e64e.png$image
+||habrastorage.org/getpro/habr/branding/$image
+habr.com##.blacklist-article-placeholder
+habr.com##.tm-articles-list__item .article-formatted-body
+habr.com##.tm-articles-list__item .tm-article-snippet__hubs
+habr.com##.tm-articles-list__item .tm-article-snippet__meta-container
+habr.com##.tm-articles-list__item .tm-article-snippet__stats
+habr.com##.tm-articles-list__item .tm-article-snippet__labels
+habr.com##.tm-articles-list__item .tm-article-snippet__datetime
+habr.com##.tm-articles-list__item .tm-article-snippet__user-info
+habr.com##.tm-articles-list__item .tm-article-snippet__cover
+habr.com##.tm-articles-list__item .tm-article-snippet__readmore
+habr.com##.tm-articles-list__item {padding: 0.4em 0 !important; border-bottom: 1px solid #ddd !important;}
+habr.com##.tm-article-snippet__title {font-size: 1rem !important; font-weight: 500 !important; line-height: 1.3 !important; margin: 0.2em 0 !important;}
+habr.com##.tm-article-snippet__title a {color: #0366d6 !important; text-decoration: none !important;}
+habr.com##.tm-article-snippet__title a:hover {text-decoration: underline !important;}
+habr.com##.tm-article-snippet > .tm-article-snippet__lead
+habr.com##.tm-article-snippet > .tm-article-snippet__lead
+}}}
