@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-04-20T10:46:24+03:00
 
-====== Как поднять веб-сервис на localhost ======
+====== Поднять веб-сервис на localhost ======
 
 [ @moodle @xampp @apache @maria_db @php_my_admin ]
 
