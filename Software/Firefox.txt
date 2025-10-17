@@ -56,7 +56,7 @@ https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html
 
 ===== Расширение для тёмной темы =====
 
-https://addons.mozilla.org/en-US/firefox/addon/dark-background-light-text/
+https://addons.mozilla.org/en-US/firefox/addon/darkreader/
 
 ===== Настройки шрифта =====
 
