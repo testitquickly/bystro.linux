@@ -16,7 +16,7 @@ Creation-Date: 2022-10-31T15:32:06+02:00
 
 ===== Примеры =====
 
-[[Other:Hardware:Ноутбук:Asus Zenbook 17]]
+[[Hardware:Ноутбук:Asus Zenbook 17]]
 
 ==== BlueTooth ====
 

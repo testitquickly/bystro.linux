@@ -8,6 +8,8 @@ Creation-Date: 2025-10-14T21:29:37+03:00
 
 Перьевой управлятельно-рисовальный планшет Huion H640P Inspiroy прекрасно работает в Linux под общими драйверами для планшетов типа Wacom из проекта digimend-kernel-drivers.
 
+Где рисовать — [[Software:MyPaint]]
+
 Не факт, что всё это будет работать под Wayland, по-умолчанию всем управляет libinput X.org driver (xserver-xorg-input-libinput в Debian).
 
 ===== Установить =====
@@ -323,3 +325,5 @@ alias huion-gimp="/home/mySettings/myScripts/huion-h640p/run_huion_h640p.sh gimp
 6. нажать первую кнопку на планшете.
 
 Expected result: страница прокручивается вверх, как это должно происходить после нажатия [Home].
+
+Можно закатать скрипт запуска в desktop-файл, чтобы запускать профили из общего меню приложений.

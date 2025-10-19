@@ -19,6 +19,7 @@ Creation-Date: 2025-10-17T13:58:40+03:00
 ||habrastorage.org/getpro/habr/branding/fd0/52a/031/fd052a031080b9cfb20f96bc18d7e64e.png$image
 ||habrastorage.org/getpro/habr/branding/$image
 habr.com##.blacklist-article-placeholder
+habr.com##section.tm-block_spacing-bottom.tm-block:nth-of-type(2)
 habr.com##.tm-articles-list__item .article-formatted-body
 habr.com##.tm-articles-list__item .tm-article-snippet__hubs
 habr.com##.tm-articles-list__item .tm-article-snippet__meta-container
@@ -33,5 +34,5 @@ habr.com##.tm-article-snippet__title {font-size: 1rem !important; font-weight: 5
 habr.com##.tm-article-snippet__title a {color: #0366d6 !important; text-decoration: none !important;}
 habr.com##.tm-article-snippet__title a:hover {text-decoration: underline !important;}
 habr.com##.tm-article-snippet > .tm-article-snippet__lead
-habr.com##.tm-article-snippet > .tm-article-snippet__lead
+
 }}}
