@@ -6,15 +6,12 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 
 [ @main @debian ]
 
-Подразумевается, что
- 
-* процесс установки Debian уже прошёл гладко
-* есть доступ к сети
-* надо только (быстро) настроить систему
-* напоминалка: https://wiki.debian.org/DontBreakDebian
+Подразумевается, что надо просто быстро настроить Debian и KDE Plasma после установки:
 
-Быстро настроить систему: [[+Initial Setup]]
+[[+Setup]]
 
 См. также:
 [[Software]]
 [[+HowTo]]
+
+Напоминалка: https://wiki.debian.org/DontBreakDebian

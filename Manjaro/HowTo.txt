@@ -6,11 +6,12 @@ Creation-Date: 2023-05-31T16:20:52+03:00
 
 [ @manjaro @howto ]
 
-[[+linux headers]]
+[[+Manage:Branches]]
+[[+Manage:Update]]
+[[+Manage:Packages]]
 
 [[+Добавить пользователя в группу sudo]]
 
 [[+Узнать версию Manjaro]]
 [[+Узнать свой внутренний IP]]
 [[+Управление клавишами мыши]]
-[[Manage:Update:linux headers]]

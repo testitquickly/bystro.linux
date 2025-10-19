@@ -7,11 +7,8 @@ Creation-Date: 2023-01-07T01:18:16+02:00
 [ @manjaro @management ]
 
 [[+Branches]]
-
-[[HowTo:Узнать версию Manjaro]]
-
 [[+Update]]
-
 [[+Packages]]
+[[HowTo:Узнать версию Manjaro]]
 [[Install:Установить deb]]
 [[Install:Установить ПО в 'opt']]
