@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T19:55:50+02:00
 
-====== Файлы ======
+====== Удалить файл ======
 
 [ @delete @console @files ]
 

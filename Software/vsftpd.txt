@@ -200,7 +200,7 @@ user_sub_token=$USER
 
 ===== Сделать симлинк для запуска vsftpd =====
 
-[[Debian:HowTo:Сделать:symlink]]
+[[Debian:HowTo:Сделать:Симлинки и хардлинки:symlink]]
 
 ===== Как запускать/останавливать vsftpd =====
 

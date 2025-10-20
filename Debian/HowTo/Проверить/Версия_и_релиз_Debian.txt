@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2025-10-15T00:44:05+03:00
 
-====== Версию и релиз Debian ======
+====== Версия и релиз Debian ======
 
 [ @debian @release ]
 

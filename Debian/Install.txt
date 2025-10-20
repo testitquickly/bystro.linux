@@ -14,16 +14,16 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 ===== B =====
 
 [[+Balena etcher]]
-[[+Brave]]
-[[+Bruno]]
+[[+Brave]] /браузер
+[[+Bruno]] /для API
 
 ===== C =====
 
-[[+Cadence]]
+[[+Cadence]] /GUI для JACK
 
 ===== D =====
 
-[[+DaVinci Resolve]]
+[[+DaVinci Resolve]] /редактор видео
 [[+Docker]]
 [[+Dropbox]]
 

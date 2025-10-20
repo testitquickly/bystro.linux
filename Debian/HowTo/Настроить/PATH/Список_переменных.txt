@@ -6,7 +6,7 @@ Creation-Date: 2022-02-22T23:43:53+02:00
 
 [ @console ]
 
-Системные переменные.
+===== Системные переменные =====
 
 Команда «''printenv''» выведет список всех системных переменных и их содержимого.
 
@@ -22,7 +22,7 @@ Creation-Date: 2022-02-22T23:43:53+02:00
 
 ''printenv | grep 'USER'''
 
-Список системных переменных:
+===== Список системных переменных =====
 
 	* SHELL: This describes the shell that will be interpreting any commands you type in. In most cases, this will be bash by default, but other values can be set if you prefer other options.
 	* TERM: This specifies the type of terminal to emulate when running the shell. Different hardware terminals can be emulated for different operating requirements. You usually won’t need to worry about this though.
@@ -59,8 +59,8 @@ In addition to these environmental variables, some shell variables that you’ll
 * ~/.bash_login
 * ~/.profile
 
-[[Добавить новый путь в PATH]]
-[[Посмотреть содержимое PATH]]
-[[Посмотреть содержимое ВСЕХ системных переменных]]
-[[Удалить что-то из PATH]]
+[[Добавить новый путь]]
+[[Содержимое переменных]]
+Содержимое ВСЕХ системных переменных
+[[Удалить что-то]]
 

@@ -6,17 +6,17 @@ Creation-Date: 2024-10-23T12:47:21+03:00
 
 [ @chapter ]
 
-[[+S.M.A.R.T.]]
-[[+S.M.A.R.T.:HDD]]
-[[+S.M.A.R.T.:NVMe]]
-[[+S.M.A.R.T.:SSD]]
-
 [[+Network:Какая программа занимает сетевой порт]]
 [[+Network:Свой IP]]
 [[+Network:Сетевая активность]]
 [[+Network:Скорость по LAN]]
 
-[[+Версию и релиз Debian]]
+[[+S.M.A.R.T.]]
+[[+S.M.A.R.T.:HDD]]
+[[+S.M.A.R.T.:NVMe]]
+[[+S.M.A.R.T.:SSD]]
+
+[[+Версия и релиз Debian]]
 
 [[+Где находится каталог]]
 

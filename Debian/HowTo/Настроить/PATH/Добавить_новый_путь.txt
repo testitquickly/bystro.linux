@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-12-08T02:39:03+02:00
 
-====== Добавить новый путь в PATH ======
+====== Добавить новый путь ======
 
 [ @path ]
 
