@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-10-21T13:20:59+03:00
+
+====== Графики ======
+
+[ @python @diagram ]
+
+Можно генерировать графики через библиотеку matplotlib.
+
+Установить в проекте
+
+''pip install numpy matplotlib''
+
+https://habr.com/ru/articles/956726/
