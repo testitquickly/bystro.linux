@@ -4,7 +4,7 @@ Creation-Date: 2025-06-14T16:31:42+03:00
 
 ====== MC и user menu ======
 
-[ @mc @user-menu @example ]
+[ @mc @usermenu @example ]
 
 shell_patterns=0
 
