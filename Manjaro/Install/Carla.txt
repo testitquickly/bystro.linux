@@ -8,4 +8,4 @@ Creation-Date: 2025-07-29T00:18:24+03:00
 
 ''sudo pacman -S fluidsynth carla carla-plugins calf-plugins zynaddsubfx helm surge sfizz''
 
-См. далее [[Software:Carla]]
+См. далее [[Hardware:usb midi-keyboard:Carla]]

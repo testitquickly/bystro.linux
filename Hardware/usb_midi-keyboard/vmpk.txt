@@ -6,7 +6,7 @@ Creation-Date: 2025-07-29T00:38:17+03:00
 
 [ @midi @keyboard @sound ]
 
-Простое midi-пианино, аналог [[fluidsynth]]
+Простое midi-пианино, аналог [[Hardware:usb midi-keyboard:fluidsynth]]
 
 VMPK — виртуальное пианино, умеет работать с MIDI-клавиатурами
 
