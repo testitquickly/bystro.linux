@@ -6,4 +6,6 @@ Creation-Date: 2025-05-23T21:54:11+03:00
 
 [ @tellico @DB @API ]
 
+	*todo Tellico — что там по настройкам?
+
 Токен юзера (маркер) для поиска записей на Discogs находится на https://www.discogs.com/ru/settings/developers

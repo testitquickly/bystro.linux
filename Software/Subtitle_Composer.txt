@@ -6,6 +6,8 @@ Creation-Date: 2025-10-27T05:45:43+02:00
 
 [ @subtitles @video ]
 
+Для создания и редактирования субтитров.
+
 ===== Установить =====
 
 ''sudo apt install subtitlecomposer''
