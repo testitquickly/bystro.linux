@@ -40,7 +40,7 @@ https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html
 
 ''network.prefetch-next ='' **''false''**
 
-===== Как открывать каталог с загруженным файлом в Firefox через Dolphin =====
+===== Открывать каталог с загруженным файлом в Firefox через Dolphin =====
 
 Если по-умолчанию каталог со скачанным файлом открывается через Konqueror — выполнить в терминале:
 	
@@ -57,6 +57,12 @@ https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html
 ===== Расширение для тёмной темы =====
 
 https://addons.mozilla.org/en-US/firefox/addon/darkreader/
+
+===== Настройки расширения Open With =====
+
+Если надо переносить страницы в Brave с определенным профилем, то в настройках открываемого браузера должна быть команда
+
+''/usr/bin/brave-browser-stable --profile-directory="Profile 2"'' 
 
 ===== Настройки шрифта =====
 

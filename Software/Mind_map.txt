@@ -6,41 +6,70 @@ Creation-Date: 2024-09-22T05:14:37+03:00
 
 [ @mind_map ]
 
+Пока что нет свободного майнд-мапа, который поднялся бы до уровня MindMap Manager хотя бы версии 8.
+
+===== Настольные =====
+
+==== EdrawMind ====
+
+https://www.edrawsoft.com/mindmaster/
+
+Хорош. Больше других похож на Mind Manager от MindJet (который был идеальным на уровне 8-й версии).
+
+Но бесплатный только до 100 узлов, что очень быстро исчерпываемо, а дальше US$ 118.
+
+==== Minder ====
+
 [[+Minder]]
 
-GitMind
-https://gitmind.com/
-AI-powered free collaborative mind mapping software for brainstorming and idea co-creation, stimulating the flow of ideas and allowing wisdom to spring forth organically
+Возможно, самый адекватный из открытых, но страдает от багов.
 
-MindMaster
-https://www.edrawsoft.com/mindmaster/
-Бесплатный до 100 узлов (очень быстро исчерпываемо).
-Больше всего похож на Mind Manager от MindJet (считаю идеальным на уровне 8-й версии).
+==== FreePlane ====
 
-lucidchart
-https://www.lucidchart.com/pages/
-коллаборативный софт
+https://docs.freeplane.org/home.html
 
-FreeMind
-Древний стандартный, очень некрасивый. Ещё в строю, но примитивный донельзя.
+Форк FreeMind. Работает на Java. Выглядит лучше прародителя, но напоминает ПО начала 2000-х, развивается медленно, умеет мало, больше сражаешься с софтом, чем работаешь.
 
-FreePlane
-https://www.freeplane.org/wiki/index.php/Home
-Похож на форк FreeMind. Выглядит так же плохо.
+==== XMind ====
 
-XMind
 https://www.xmind.net/
+
 Вроде бы мощный, но в бесплатной версии очень ограничен. Сделан на Java, когда-то испытывал неиллюзорные тормоза при хотя бы слегка расширенной майндмапе, с какого-то момента начал невероятно этим раздражать. А ещё не хотел устанавливаться на всех моих ноутбуках.
 
-TreeSheet
+==== TreeSheet ====
+
 https://strlen.com/treesheets/
-Выглядит любопытно. Это больше, чем майндмапа — "hierarchical spreadsheet" that is a great replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases. Suitable for any kind of data organization, such as to-do lists, calendars, project management, brainstorming, organizing ideas, planning, requirements gathering, presentation of information, etc.
 
-MindTree 
+Это больше, чем майндмапа — "hierarchical spreadsheet" that is a great replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases. Suitable for any kind of data organization, such as to-do lists, calendars, project management, brainstorming, organizing ideas, planning, requirements gathering, presentation of information, etc.
+
+Требует врубания в тему.
+
+==== Dia ====
+
+Не майндмапа, а просто мощное diagramming software для строителей безумно сложных систем — полотно, на котором можно собирать диаграммы из разрозненных элементов. Собрал схему, экспортировал в картинку.
+
+Очень быстро задалбывает, слишком много настроек и надо много учитывать при создании каждой новой диаграммы.
+
+==== FreeMind ====
+
+Древний стандартный, очень некрасивый. Ещё в строю, но примитивный донельзя.
+
+===== Веб =====
+
+==== GitMind ====
+
+https://gitmind.com/
+
+AI-powered free collaborative mind mapping software for brainstorming and idea co-creation, stimulating the flow of ideas and allowing wisdom to spring forth organically
+
+==== lucidchart ====
+
+https://www.lucidchart.com/pages/
+
+коллаборативный софт
+
+==== MindTree ====
+
 https://github.com/skitsanos/mindtree
+
 Похож на Mermaid — тоже в веб, описываешь узлы в тексте и получаешь их майндмапу.
-
-Dia
-Мощное diagramming software — provides a user-friendly interface and a wide variety of diagram types. It offers customizable shapes and symbols, flexible grid and alignment tools, export and import options, extensive editing capabilities, cross-platform compatibility, and benefits from being open-source and community-driven. Dia is a versatile tool for creating professional and visually appealing diagrams.
-
-

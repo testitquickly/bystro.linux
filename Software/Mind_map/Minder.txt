@@ -6,7 +6,7 @@ Creation-Date: 2024-09-22T04:40:30+03:00
 
 [ @minder @mind_map ]
 
-Выглядит как идеальное решение для майндмап в Linux, но пока что нет.
+Выглядит как идеальное решение для майндмап в Linux, но пока что нет — баги, сваливания.
 
 ===== Установить =====
 
@@ -16,26 +16,16 @@ Creation-Date: 2024-09-22T04:40:30+03:00
 
 [[https://github.com/phase1geo/Minder/wiki/Table-of-Contents|Документация]].
 
-Можно настроить направление развертывания узлов, как в Mind Manager.
-
-Невозможно настроить клавиатурные сокращения. 
-
-Настройки в принципе скромные.
-
-Тёмный фон (который задан в настройках) сработает только в новых файлах.
-
-При добавлении новых узлов можно принороваться создавать их один за других, не трогая мышь. Но если фокус соскочил с последнего используемого узла, вернуть фокус обратно без мыши невозможно.
-
-Markdown formatting support;
-It is possible to add notes, tasks, and images to nodes;
-It is possible to connect between nodes with additional text and notes;
-It is possible to change the design/style of nodes, links, and connections: change the color, add stickers, select the font and its size, and much more;
-It is possible to add stickers and node groups for visual organization of information;
-Support for zoom and focus mode;
-Unlimited undo/redo of any changes; Auto-save in the background;
-Tab Support: open multiple smart cards using tabs;
-Import from OPML, FreeMind, Freeplane, __PlainText__ (formatted), Outliner, Portable Minder, and XMind formats;
-Export to CSV, FreeMind, Freeplane, JPEG, BMP, SVG, Markdown, Mermaid, OPML, Org-Mode, Outliner, PDF, PNG, Portable Minder, PlainText, XMind, and yEd formats.
+* Markdown formatting support;
+* It is possible to add notes, tasks, and images to nodes;
+* It is possible to connect between nodes with additional text and notes;
+* It is possible to change the design/style of nodes, links, and connections: change the color, add stickers, select the font and its size, and much more;
+* It is possible to add stickers and node groups for visual organization of information;
+* Support for zoom and focus mode;
+* Unlimited undo/redo of any changes; Auto-save in the background;
+* Tab Support: open multiple smart cards using tabs;
+* Import from OPML, FreeMind, Freeplane, __PlainText__ (formatted), Outliner, Portable Minder, and XMind formats;
+* Export to CSV, FreeMind, Freeplane, JPEG, BMP, SVG, Markdown, Mermaid, OPML, Org-Mode, Outliner, PDF, PNG, Portable Minder, PlainText, XMind, and yEd formats.
 
 | Действие                              |     Клавиша      |
 |:--------------------------------------|:----------------:|
@@ -44,5 +34,13 @@ Export to CSV, FreeMind, Freeplane, JPEG, BMP, SVG, Markdown, Mermaid, OPML, Org
 | Добавить подузел                      |       Tab        |
 | Добавить узел на том же уровне снизу  |    Alt+Enter     |
 | Добавить узел на том же уровне сверху |   Shift+Enter    |
-		
 
+* Можно настроить направление развертывания узлов, как в Mind Manager.
+
+* Невозможно настроить клавиатурные сокращения. 
+
+* Настройки в принципе скромные.
+
+* Тёмный фон (который задан в настройках) сработает только в новых файлах.
+
+* При добавлении новых узлов можно принороваться создавать их один за других, не трогая мышь. Но если фокус соскочил с последнего используемого узла, вернуть фокус обратно без мыши невозможно.

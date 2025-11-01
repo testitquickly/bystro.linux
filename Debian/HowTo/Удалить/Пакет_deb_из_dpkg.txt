@@ -37,4 +37,3 @@ You may check if the package has been removed successfully - simply run again:
 ''dpkg -l | grep urserver''
 
 If the package has been removed without configuration files, you'll see the rc status near the package name, otherwise, if you have purged the package completely, the output will be empty.
-
