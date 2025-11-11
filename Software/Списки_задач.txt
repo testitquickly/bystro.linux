@@ -11,3 +11,7 @@ Creation-Date: 2025-08-17T17:47:41+03:00
 [[+ToDo в консоли]]
 [[+Taskwarrior]]
 [[+Todoman]]
+
+и как виджет на рабочем столе
+
+[[+TodoList]]
