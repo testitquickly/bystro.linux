@@ -6,7 +6,8 @@ Creation-Date: 2024-10-15T13:58:41+03:00
 
 [ @postman ]
 
+Для проектной работы предпочитать Bruno.
+
 ===== Установить =====
 
 * [[Debian:Install:Postman]]
-

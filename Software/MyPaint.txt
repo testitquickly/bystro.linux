@@ -4,4 +4,4 @@ Creation-Date: 2025-10-19T02:57:33+03:00
 
 ====== MyPaint ======
 
-TODO
+ *todo MyPaint расписать подход

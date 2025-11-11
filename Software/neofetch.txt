@@ -6,29 +6,26 @@ Creation-Date: 2024-05-04T00:08:09+03:00
 
 [ @debian @concole ]
 
-Утилита ''neofetch'' (сперва надо установить) выводит в консоль служебную информацию об установленном софте. Опций много. В целом — не нужна.
+Утилита ''neofetch'' (установить через ''apt'') в целом — нах не нужна и выводит в консоль служебную информацию об установленной системе. Опций много.
 
 По-умолчанию выдаёт такое:
 
-					''_,met$$$$$gg.          astenix@ussEnterprise''
-	 '',g$$$$$$$$$$$$$$$P.      ---------------------''
-   '',g$$P"     """Y$$.".''       **''OS''**'': Debian GNU/Linux 12 (bookworm) x86_64''
-  '',$$P'              `$$$.''    **''Host''**'': Aspire A717-71G V1.03''
- ''',$$P       ,ggs.     `$$b:''  **''Kernel''**'': 6.1.0-20-amd64''
-''`d$$'     ,$P"'   .    $$$''    **''Uptime''**'': 6 hours, 11 mins''
-''$$P      d$'     ,    $$P''     **''Packages''**'': 3130 (dpkg), 10 (flatpak)''
-''$$:      $$.   -    ,d$$'''     **''Shell''**'': bash 5.2.15''
-''$$;      Y$b._   _,d$P'''       **''Resolution''**'': 1920x1080''
-''Y$$.    `.`"Y$$$$P"'''          **''DE''**'': Plasma 5.27.5''
-''`$$b      "-.__''               **''WM''**'': KWin''
- ''`Y$$''                         **''WM Theme''**'': Ant-Dark''
-  ''`Y$$.''                       **''Theme''**'': Breeze [Plasma], Breeze [GTK2/3]''
-	''`$$b.''                     **''Icons''**'': [Plasma], breeze-dark [GTK2/3]''
-	  ''`Y$$b.''                  **''Terminal''**'': konsole''
-		 ''`"Y$b._''              **''Terminal Font''**'': IBM Plex Mono Text 18''
-			 ''`"""''             **''CPU''**'': Intel i7-7700HQ (8) @ 3.800GHz''
-				   **''GPU''**'': Intel HD Graphics 630''
-				   **''GPU''**'': NVIDIA GeForce GTX 1050 Ti Mobile''
-				   **''Memory''**'': 6539MiB / 15875MiB''
-
-
+	   ''_,met$$$$$gg.          astenix@uss-Asus-Zenbook17'' 
+	'',g$$$$$$$$$$$$$$$P.       --------------------------'' 
+  '',g$$P"     """Y$$.".        OS: Debian GNU/Linux 12 (bookworm) x86_64'' 
+ '',$$P'              `$$$.     Host: Zenbook UM6702RA_RM6702RA_BM6702RA UM6702RA_UM6702RA 1.0'' 
+''',$$P       ,ggs.     `$$b:   Kernel: 6.1.0-40-amd64'' 
+''`d$$'     ,$P"'   .    $$$    Uptime: 23 hours, 49 mins'' 
+ ''$$P      d$'     ,    $$P    Packages: 2958 (dpkg), 1 (flatpak)'' 
+ ''$$:      $$.   -    ,d$$'    Shell: bash 5.2.15'' 
+ ''$$;      Y$b._   _,d$P'      Resolution: 1920x1080'' 
+ ''Y$$.    `.`"Y$$$$P"'         DE: Plasma 5.27.5'' 
+ ''`$$b      "-.__              WM: KWin'' 
+  ''`Y$$                        WM Theme: Nordic'' 
+   ''`Y$$.                      Theme: [Plasma], Breeze [GTK2/3]'' 
+	 ''`$$b.                    Icons: breeze-dark [Plasma], breeze-dark [GTK2/3]'' 
+	   ''`Y$$b.                 Terminal: konsole'' 
+		  ''`"Y$b._             Terminal Font: Cascadia Code 10'' 
+			  ''`"""            CPU: AMD Ryzen 9 6900HX with Radeon Graphics (16) @ 3.300GHz'' 
+							  ''GPU: AMD ATI Radeon 680M'' 
+							  ''Memory: 4638MiB / 15225MiB'' 
