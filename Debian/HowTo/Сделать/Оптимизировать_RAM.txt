@@ -23,6 +23,8 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 ''PERCENT=50      # процент от объёма RAM (например, 50%)''
 ''PRIORITY=100    # приоритет (zram будет использоваться раньше, чем swapfile)''
 
+Сохранить, выйти.
+
 Сделать конфиг:
 
 ''sudo mcedit /etc/sysctl.d/99-ssd-tuning.conf''
