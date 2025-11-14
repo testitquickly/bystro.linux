@@ -10,7 +10,7 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 Драйвера можно скачать с официального сайта в виде файла ***.run, но лучше сделать это стандартным путём по предписанному рецепту с https://wiki.debian.org/NvidiaGraphicsDrivers — при установке будет проще с зависимостями, а в будущем будет проще с обновлениями.
 
-Придётся перезагружать компьютер.
+//Придётся перезагружать компьютер.//
 
 ===== Определить серию и драйвера видеокарты =====
 
@@ -26,13 +26,22 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 ''sudo apt-get install nvidia-detect; nvidia-detect''
 
+Смотреть на вывод. Внимание к сообщениям вроде
+
+''Checking card:  NVIDIA Corporation AD104 [GeForce RTX 4070 SUPER] (rev a1)''
+''Uh oh. Your card is not supported by any driver version up to 535.247.01.''
+''A newer driver may add support for your card.''
+''Newer driver releases may be available in backports, unstable or experimental.''
+
+Смотреть на нумерацию драйвера.
+
 ===== Обычная установка =====
 
 Согласно  https://wiki.debian.org/NvidiaGraphicsDrivers :
 
 ''sudo apt update; sudo apt install nvidia-driver nvidia-settings firmware-misc-nonfree''
 
-Перезагрузить систему:
+Перезагрузить систему, чтобы переключить видео с Noveau на Nvidia:
 
 ''sudo reboot''
 
@@ -44,7 +53,7 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 ===== Установка через бэкпорт =====
 
-Ещё раз — не факт, что нужно двигаться по этой ветке, если компьютер работает на Debian Stable.
+Не факт, что нужно двигаться по этой ветке, если на компьютере Debian Stable. Она только для тех, кого поглощает отчаяние.
 
 ==== Разрешить бэкпорт ====
 
@@ -113,15 +122,17 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 Если решено ставить CUDA Toolkit отдельно, то сперва надо знать, что эта установка потребует много места на диске с системой. Это решается только установкой CUDA Toolkit через ''run''-файл.
 
-Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — выбрать Linux, архитектуру (x86_64), OS (Debian), версию (12)  и инсталлер runfile (local).
+Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — выбрать Linux, архитектуру (x86_64), OS (Debian), версию (12)  и инсталлер runfile (local), скачать предлагаемой командой (взять с сайта, она изменчивая):
 
-Сделать файл исполняемым:
+''wget https://developer.download.nvidia.com/compute/cuda/13.0.2/local_installers/cuda_13.0.2_580.95.05_linux.run''
+
+Сделать скачанный файл исполняемым:
 
 ''chmod +x cuda*.run''
 
-Установить CUDA Toolkit в отдельный каталог на отдельном диске:
+Установить CUDA Toolkit в отдельный каталог (на отдельном диске):
 
-''sudo ./cuda_*.run --silent --toolkit --installpath=''__''/your_folder''__
+''sudo ./cuda_*.run --silent --toolkit --installpath=''__''/your_cuda_folder''__
 
 ''--silent'' — без дополнительных вопросов; на экран ничего не выводится, надо терпеливо ждать завершения установки
 ''--toolkit'' — установить только CUDA Toolkit, без драйверов и компонентов для разработчиков
@@ -132,8 +143,8 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 добавить:
 
-''export PATH=''__''/your_folder''__''/cuda/bin:$PATH''
-''export LD_LIBRARY_PATH=''__''/your_folder''__''/cuda/lib64:$LD_LIBRARY_PATH''
+''export PATH=''__''/your_cuda_folder''__''/bin:$PATH''
+''export LD_LIBRARY_PATH=''__''/your_cuda_folder''__''/lib64:$LD_LIBRARY_PATH''
 
 Применить изменения:
 
@@ -143,54 +154,12 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 ''nvcc --version''
 
-Если «команда не найдена» — проверить, что утилита ''nvcc'' действительно находится в __''/your_folder''__/cuda/bin/ и что PATH указан правильно.
-
-
---------------------
-
-
-
-
-
-Дальше пример установки версии ''12.6.3'' — ссылки поменяются, поэтому надо смотреть инструкцию по ссылке выше.
-
-Выполнить последовательно:
-
-''wget https://developer.download.nvidia.com/compute/cuda/12.6.3/local_installers/cuda-repo-debian12-12-6-local_12.6.3-560.35.05-1_amd64.deb'' 
-
-Файл здоровый, не меньше 3 Gb.
-
-''sudo dpkg -i cuda-repo-debian12-12-6-local_12.6.3-560.35.05-1_amd64.deb''
-
-Появится предупреждение о том, что надо отдельно установить ключ GPG:
-
-''sudo cp /var/cuda-repo-debian12-12-6-local/cuda-*-keyring.gpg /usr/share/keyrings/''
-
-Этот шаг не обязателен, но вероятен
-
-''sudo add-apt-repository contrib''
-
-Установить:
-
-''sudo apt-get update; sudo apt-get -y install cuda-toolkit-12-6''
-
-==== Добавить CUDA в PATH ====
-
-''echo 'export PATH=/usr/local/cuda/bin:$PATH' >> ~/.bashrc''
-
-''echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc''
-
-''source ~/.bashrc''
-
-==== Проверить установку ====
-
-''nvcc --version''
-
-Ожидаемый ответ:
+Пример ответа:
 
 ''nvcc: NVIDIA (R) Cuda compiler driver''
-''Copyright (c) 2005-2024 NVIDIA Corporation''
-''Built on Tue_Oct_29_23:50:19_PDT_2024''
-''Cuda compilation tools, release 12.6, V12.6.85''
-''Build cuda_12.6.r12.6/compiler.35059454_0''
+''Copyright (c) 2005-2025 NVIDIA Corporation''
+''Built on Wed_Aug_20_01:58:59_PM_PDT_2025''
+''Cuda compilation tools, release 13.0, V13.0.88''
+''Build cuda_13.0.r13.0/compiler.36424714_0''
 
+Если «команда не найдена» — проверить, что утилита ''nvcc'' действительно находится в __''/your_cuda_folder''__/cuda/bin/ и что PATH указан правильно.
