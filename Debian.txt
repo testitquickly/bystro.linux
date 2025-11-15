@@ -6,15 +6,19 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 
 [ @main @debian ]
 
-Когда надо быстро настроить Debian с KDE Plasma: [[+Setup]]
+(1)
+[[+Setup]] — быстро настроить Debian с KDE Plasma
 
-Если нужен общий [[+HowTo]] по командам в системе:
-[[+HowTo:Искать]]
-[[+HowTo:Настроить]]
-[[+HowTo:Проверить]]
-[[+HowTo:Сделать]]
-[[+HowTo:Удалить]]
+(2)
+Общий [[+HowTo]] по командам в системе:
 
-Когда нужно настроить какой-то [[Software]].
+* [[+HowTo:Искать]]
+* [[+HowTo:Настроить]]
+* [[+HowTo:Проверить]]
+* [[+HowTo:Сделать]]
+* [[+HowTo:Удалить]]
 
-Напоминалка: https://wiki.debian.org/DontBreakDebian
+(3)
+Настроить [[Software]] (большой список).
+
+Напоминалка о вреде излишней оптимизации: https://wiki.debian.org/DontBreakDebian

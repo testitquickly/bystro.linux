@@ -6,7 +6,7 @@ Creation-Date: 2024-09-29T02:41:46+03:00
 
 [ @debian @install ]
 
-''sudo aptitude install kmymoney''
+''sudo aptitude install kmymoney -y''
 
 Один из первых вопросов при настройке — какой формат хранения данных выбрать. Ответ — ''XML''
 

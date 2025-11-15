@@ -32,9 +32,9 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 Хотелось бы сразу, но эти шрифты надо установить по-отдельности:
 
-''sudo apt install ttf-mscorefonts-installer''
-''sudo apt install fonts-ibm-plex''
-''sudo apt install fonts-cantarell''
+''sudo apt install ttf-mscorefonts-installer -y''
+''sudo apt install fonts-ibm-plex -y''
+''sudo apt install fonts-cantarell -y''
 
 Обновить кэш шрифтов:
 
@@ -58,6 +58,10 @@ Ysabeau combines the familiar timeless letterforms of the Garamond legacy with t
 
 ''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/Ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/ && fc-cache -fv && echo -e "\n\tПроверить появление Ysabeau в системе \n" && fc-list | grep Ysabeau''
 
+Обновить кэш шрифтов:
+
+''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
+
 ==== Установить Cascadia Code ====
 
 Идеален для терминала.
@@ -79,6 +83,10 @@ https://github.com/microsoft/cascadia-code/releases — выбрать Release, 
 
 ''sudo mkdir -p /usr/local/share/fonts/CascadiaCode && sudo cp ~/CascadiaCode/*.ttf /usr/local/share/fonts/CascadiaCode/ && fc-cache -fv''
 
+Обновить кэш шрифтов:
+
+''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
+
 ==== Установить все шрифты из Windows ====
 
 Это не так, чтобы было нужно, но если винда была параллельно установлена, то можно взять от неё все шрифты — скопировать их из ''C:\WINDOWS\Fonts'' в ''/usr/share/fonts/truetype/msttcorefonts''
@@ -92,8 +100,10 @@ sudo mkdir /usr/share/fonts/truetype/msttcorefonts
 
 sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts
 
-sudo fc-cache -fv
 '''
+Обновить кэш шрифтов:
+
+''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
 
 ===== Удалить шрифты =====
 

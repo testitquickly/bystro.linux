@@ -18,7 +18,7 @@ apt install aptitude audacity calibre curl gdu kdiff3 keepassxc kget krename kru
 }}}
 
 2)
-после установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list:
+после установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list (тоже только из-под root):
 
 {{{code: lang="sh" linenumbers="True"
 apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar unrar iputils-ping smartmontools nvme-cli -y && apt update && apt upgrade

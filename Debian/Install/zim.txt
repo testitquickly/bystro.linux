@@ -6,7 +6,9 @@ Creation-Date: 2024-04-18T20:32:41+03:00
 
 [ @debian @install @zim ]
 
-''sudo apt-get install zim''
+Установить сразу с несколькими утилитами, которые будут нужны модулям:
+
+''sudo apt install zim gir1.2-gtksource-4 xdot''
 
 Можно поставить и через [[Software:flatpak]] или [[Software:snap]], но в нативной установке проще настроить внешнее оформление Zim (я подсел на тёмную тему).
 

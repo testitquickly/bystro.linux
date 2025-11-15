@@ -30,7 +30,9 @@ Creation-Date: 2025-06-19T01:12:48+03:00
 
 В файл ''input.txt'' вставить транскрибированный текст.
 
-Файл ''sentence-transformer.py'' приложен: [[./sentence-transformer.py]]
+Файл ''sentence-transformer.py'': 
+
+[[./sentence-transformer.py]]
 
 ==== Надо ====
  

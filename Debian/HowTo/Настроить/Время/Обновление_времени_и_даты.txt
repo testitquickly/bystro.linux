@@ -44,13 +44,13 @@ Creation-Date: 2022-02-22T14:56:38+02:00
 
 ''sudo timedatectl set-timezone Europe/Chisinau''
 
-	Можно глянуть список временных зон по своему региону:
+Можно глянуть список временных зон по своему региону:
 
-	''timedatectl list-timezones | grep Europe''
+''timedatectl list-timezones | grep Europe''
 
-	Можно глянуть список всех доступных timezоne (очень длинный список):
+Можно глянуть список всех доступных timezоne (очень длинный список):
 
-	''timedatectl list-timezones''
+''timedatectl list-timezones''
 
 Видно, что время в системе уже синхронизируется (//System clock synchronized: yes//). С каким именно источником?
 

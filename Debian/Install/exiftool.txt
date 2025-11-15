@@ -6,6 +6,6 @@ Creation-Date: 2024-07-03T00:08:25+03:00
 
 [ @debian @install @exiftool ]
 
-''sudo aptitude install exiftool''
+''sudo aptitude install exiftool -y''
 
 См. [[Software:exiftool]]
