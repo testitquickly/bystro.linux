@@ -12,7 +12,11 @@ Creation-Date: 2025-09-18T02:57:30+03:00
 
 «systemd-timesyncd.service» точно //не надо// отключать.
 
-В принципе безопасно отключить штатный «''NetworkManager-wait-online.service''» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит от восьми до 120 секунд. Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
+В принципе безопасно отключить штатный «''NetworkManager-wait-online.service''» (ещё может называться «systemd-networkd-wait-online.service»), у меня это высвободит от восьми до 120 секунд. 
+
+Не путать с ''NetworkManager.service''!
+
+Этот сервис «ждёт», когда ноут подключится к сети, и только ПОСЛЕ этого запускает остальные сервисы. Это логично, ведь зачем их запускать, если им будет нужен доступ в сеть?! Но на это можно забить.
 
 ''sudo systemctl status NetworkManager-wait-online.service''
 ''sudo systemctl stop NetworkManager-wait-online.service''
