@@ -14,14 +14,49 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install aptitude audacity calibre curl gdu kdiff3 keepassxc kget krename krusader macchanger make mc mpv network-manager-openvpn onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp tellico software-properties-common vlc vsftpd wget xsensors zim 
+apt install aptitude \
+audacity \
+curl \
+gdu \
+kdiff3 \
+keepassxc \
+kget \
+krename \
+krusader \
+macchanger
+make \
+mc \
+mpv \
+network-manager-openvpn \
+onboard \
+openconnect \
+openssh-client \
+openssh-server \
+openvpn \
+qalculate-gtk \
+qbittorrent \
+qmmp \
+tellico \
+software-properties-common \
+nfs-common \
+vlc \
+vsftpd \
+wget \
+xsensors \
+zim 
 }}}
 
 2)
 после установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list (тоже только из-под root):
 
 {{{code: lang="sh" linenumbers="True"
-apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar unrar iputils-ping smartmontools nvme-cli -y && apt update && apt upgrade
+apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar \
+unrar \
+iputils-ping \
+smartmontools \
+nvme-cli \
+gir1.2-gtksource-4 \
+xdot -y && apt update && apt upgrade
 }}}
 
 ===== Настроить систему =====
@@ -46,7 +81,6 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[Software:ls]]
 * [[HowTo:Настроить:Удаление файлов в консоли]]
 * [[HowTo:Настроить:Кодировка и размер шрифта в консоли]]
-* [[HowTo:Настроить:Цветной терминал]]
 
 ===== Настроить оформление KDE =====
 
