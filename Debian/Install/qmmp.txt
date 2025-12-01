@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-22T12:53:28+02:00
+
+====== qmmp ======
+
+[ @debian @install @sound @qmmp ]
+
+Плеер жестко привязан к окружению. См. доступные версии плеера для своей операционной системы: 
+
+''apt policy qmmp''
+
+То же самое расширенно: https://packages.debian.org/search?searchon=sourcenames&keywords=qmmp Например:
+
+* bookworm (sound): 1.6.2-1
+* trixie (sound): 2.2.4-1 
+
+То есть, qmmp 2.2.4-1 в Debian Bookworm не встанет никак, ограничивают зависимости.
+
+В принципе, 1.6.2 уже делает всё то, что от него ожидается. Засада, если нужен какой-то DSP-плагин вроде SoundTouch (изменение скорости воспроизведения), который недоступен для старых версий.
+
+===== flatpak =====
+
+Должен быть установлен сам [[flatpak]]
+
+Узнать номер версии qmmp в репозитории flatpak — https://flathub.org/en/apps/com.ylsoftware.qmmp.Qmmp Если там 2.2 — это для Debian Trixie, на Debian Bookworm его можно установить, но он не запустится.
+
+Установить
+
+'''
+flatpak install com.ylsoftware.qmmp.Qmmp
+'''
+
+Проверить номер версии из установленного ПО
+
+''flatpak run com.ylsoftware.qmmp.Qmmp --version''
+
+Запуск:
+
+''flatpak run com.ylsoftware.qmmp.Qmmp''
+
+См. [[Software:qmmp]]

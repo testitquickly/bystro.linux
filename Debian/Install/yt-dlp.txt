@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-11-21T21:53:50+02:00
+
+====== yt-dlp ======
+
+[ @debian @install @youtube ]
+
+В норме в Debian установится древний ''yt-dlp'', он уже немощный. 
+
+Проверить версию:
+
+''yt-dlp --version''
+
+Убрать ветерана:
+
+''sudo apt remove yt-dlp''
+
+===== Поставить новый =====
+
+''sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp && sudo chmod a+rx /usr/local/bin/yt-dlp''
+
+Проверить версию:
+
+''/usr/local/bin/yt-dlp --version''
+
+===== Обновить =====
+
+''sudo yt-dlp -U''
+
+См. [[Software:yt-dlp]]

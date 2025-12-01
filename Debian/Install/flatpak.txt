@@ -12,8 +12,10 @@ Creation-Date: 2024-10-07T12:56:38+03:00
 
 ==== Добавить каталоги flatpak в переменную окружения XDG_DATA_DIRS ====
 
-'/var/lib/flatpak/exports/share'
-'/home/astenix/.local/share/flatpak/exports/share'
+Это каталоги:
+
+''/var/lib/flatpak/exports/share''
+''/~/.local/share/flatpak/exports/share''
 
 Если невозможно найти контейнеры по пути поиска, заданном переменной окружения XDG_DATA_DIRS, то приложения, установленные Flatpak, могут не отображаться на рабочем столе, пока сеанс не будет перезапущен.
 

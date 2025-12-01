@@ -8,16 +8,15 @@ Creation-Date: 2022-02-22T15:16:08+02:00
 
 При первом логине в систему на экране аутентификации где-то в левом нижнем углу экрана может быть опция выбора оконного менеджера – новый Wayland или устаревающий X11. 
 
-В остальном выбор Display Manager обширен, их много: 
-	* kdm (старый KDE) — устарел;
-	* sddm (Simple Desktop Display Manager для Plasma 5) — исконно кдешный, предлагается по-умолчанию, но __заглючил__ в Debian 11 (не логинил в GUI), я ему не доверяю;
-		* “''sddm''” генерирует неадекватные и неразрешаемые сложности. Один из косвенных признаков: ошибка “Failed to start KDE Global shortcuts Server”, после которой иксы просто не запускаются, зависая на каких-то шагах вроде «Настройка CUPS» (которое тут ни при чём).
-	* lightdm (Gnome) — это мой выбор, не требует гномокомпонентов для работы, с KDE никаких проблем;
-	* gdm (Gnome Display Manager);
-	* gdm3 (Gnome Display Manager 3);
-	* MDM (Mint Display Manager) — в KDE не устанавливается;
-	* SLiM (Simple Login Manager) — заброшен;
-	* LXDM (Lubuntu).
+Выбор Display Manager обширен: 
+	* sddm (Simple Desktop Display Manager для Plasma 5) — исконно кдешный, предлагается по-умолчанию. Параметры системы > Рабочая среда > Запуск и завершение > ВХод в систему (SDDM)
+	* lightdm (Gnome) — любопытно, что спокойно работает в KDE и не требует гномокомпонентов
+	* gdm (Gnome Display Manager)
+	* gdm3 (Gnome Display Manager 3)
+	* MDM (Mint Display Manager) — в KDE не устанавливается
+	* SLiM (Simple Login Manager) — заброшен
+	* kdm (старый KDE) — устарел
+	* LXDM (Lubuntu)
 
 ===== Выяснить текущий =====
 
