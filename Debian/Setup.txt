@@ -28,6 +28,7 @@ make \
 mc \
 mpv \
 network-manager-openvpn \
+nfs-common \
 onboard \
 openconnect \
 openssh-client \
@@ -36,9 +37,8 @@ openvpn \
 qalculate-gtk \
 qbittorrent \
 qmmp \
-tellico \
 software-properties-common \
-nfs-common \
+tellico \
 vlc \
 vsftpd \
 wget \
@@ -50,13 +50,18 @@ zim
 после установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list (тоже только из-под root):
 
 {{{code: lang="sh" linenumbers="True"
-apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar \
+apt-add-repository contrib non-free -y \
+&& apt update && apt upgrade \
+&& apt install rar \
 unrar \
+ethtool \
+gir1.2-gtksource-4 \
 iputils-ping \
+iw \
 smartmontools \
 nvme-cli \
-gir1.2-gtksource-4 \
-xdot -y && apt update && apt upgrade
+xdot -y \
+&& apt update && apt upgrade
 }}}
 
 ===== Настроить систему =====
@@ -115,7 +120,7 @@ xdot -y && apt update && apt upgrade
 * [[HowTo:Проверить:Network:Скорость по LAN]]
 * [[HowTo:Проверить:Состояние батареи ноутбука]]
 * [[HowTo:Сделать:Подключить внешний монитор по hdmi]]
-* удалить [[Software:KDE Connect]]
+* [[Software:KDE Connect]]
 
 ===== Установить ПО =====
 

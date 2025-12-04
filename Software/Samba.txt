@@ -29,7 +29,7 @@ Creation-Date: 2023-01-07T18:00:27+02:00
 
 Без него можно будет монтировать удаленные каталоги только под root/root без возможности настроить что-либо.
 
-''sudo aptitude install samba samba-client''
+''sudo aptitude install samba samba-client -y''
 
 Разрешаем автостарт сервиса и сразу проверяем его статус:
 

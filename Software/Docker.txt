@@ -14,9 +14,90 @@ Creation-Date: 2024-11-10T23:12:04+02:00
 
 ===== Настроить =====
 
-Вместо того чтобы запускать каждый контейнер проекта по-отдельности, можно описать все сервисы проекта, их настройки и зависимости в одном файле вроде ''docker-compose.yml'' и запустить всё сразу одной командой через Docker Compose.
+Мне не нужно запускать Docker вместе с системой и постоянно держать его открытым. Пусть он включается только при явном вызове.
 
-===== Управлять =====
+==== Остановить сервис ====
+
+''sudo systemctl stop docker.service && sudo systemctl stop docker.socket''
+
+Проверка:
+
+'''
+sudo docker ps
+'''
+
+Ожидаемый ответ:
+
+//Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?//
+
+==== Отключить автозапуск сервиса ====
+ 
+''sudo systemctl disable docker.service && sudo systemctl disable docker.socket''
+
+==== Пример запуска ====
+
+{{{code: lang="sh" linenumbers="True"
+    # включить докер с Snipe-It
+alias sklad+="cd /home/astenix/snipeit \
+    && sudo systemctl start docker \
+    && docker compose up -d \
+    && timeout 60 bash -c 'until curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8090 | grep -qE \"2|3\"; do sleep 1; done' \
+    && if [ $? -eq 0 ]; then 
+         firefox -p astenix --new-window http://sklad.local:8090;
+       else 
+         echo 'Отключение по таймауту (Snipe‑IT не запустился за 60 секунд)';
+       fi \
+    && echo -e \"\n http://sklad.local:8090 \n\""
+
+    # отключить докер с Snipe-It
+alias sklad-="cd /home/astenix/workspace/snipeit && docker compose down \
+    && sudo systemctl stop docker.service \
+    && sudo systemctl stop docker.socket \
+    && echo -e '\n   Докер погашен\n'"
+
+}}}
+
+И чтобы сайт открывался по указанному адресу надо в ''/etc/hosts'' добавить
+
+'''
+127.0.0.1       sklad.local
+'''
+
+==== Убрать общий сетевой интерфейс докера ====
+
+Тут сперва надо понимать, зачем это нужно.
+
+По-умолчанию на ноуте запускается виртуальный сетевой интерфейс, по которому контейнеры выходят в общую сеть и общаются между собой. Если его отключить, контейнеры не смогут «общаться между собой» обычным способом, придётся вручную указывать им параметры сети при запуске.
+
+В целом это незаметно, но этот интерфейс продолжает работать и после того, как докер погашен. Зачем ему гаситься? А вдруг новый контейнер будет поднят?
+
+Если это мешает И если контейнеры на ноуте запускаются редко и метко, можно виртуальный сетевой интерфейс подавить.
+ 
+'''
+sudo mkdir -p /etc/docker
+'''
+
+'''
+sudo mcedit /etc/docker/daemon.json
+'''
+
+Вставить
+
+{{{code: lang="json" linenumbers="True"
+{
+  "bridge": "none"
+}
+}}}
+
+Если до этого докер был запущен:
+
+''sudo systemctl restart docker''
+
+Теперь он будет поднят только вместе с докером, и будет погашен после отключения докера.
+
+===== Управлять Docker Compose =====
+
+Вместо того чтобы запускать каждый контейнер проекта по-отдельности, можно описать все сервисы проекта, их настройки и зависимости в одном файле вроде ''docker-compose.yml'' и запустить всё сразу одной командой через Docker Compose.
 
 ==== С подробными логами ====
 
@@ -32,7 +113,7 @@ Creation-Date: 2024-11-10T23:12:04+02:00
 
 ''docker-compose down''
 
-==== Посмотреть, какие подняты ====
+==== Посмотреть, какие контейнеры подняты ====
 
 ''sudo docker ps''
 
@@ -47,3 +128,5 @@ Creation-Date: 2024-11-10T23:12:04+02:00
 Остановить вообще все, что было запущено через docker compose:
 
 ''sudo docker-compose down''
+
+См. [[Snipe-It]]
