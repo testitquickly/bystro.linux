@@ -2,9 +2,10 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-10-03T06:46:53+03:00
 
-====== kgpg ======
+====== gpg ======
 
 [ @manjaro @install @kgpg ]
 
-''sudo pacman -S kgpg''
+''sudo pacman -S gpg''
 
+См. [[Software:GPG]]
