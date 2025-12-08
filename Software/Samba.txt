@@ -164,7 +164,7 @@ cd /var/lib/samba/usershares
 
 Если надо просто подключиться к сетевому ресурсу, без монтирования, то можно ввести команду:
 
-''smbclient -U astenix 192.168.50.18\Images''
+''smbclient //192.168.50.18/Images -U astenix''
 
 Или открыть Dolphin или Krusader и пройти по адресу 
 
