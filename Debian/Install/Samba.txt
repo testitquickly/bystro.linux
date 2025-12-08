@@ -1,0 +1,79 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-08T16:19:06+02:00
+
+====== Samba ======
+
+[ @debian @install @smb @network ]
+
+Придётся перезагрузить ноут.
+
+''sudo apt install samba smbclient kdenetwork-filesharing libsmbclient cifs-utils -y''
+
+Разрешить автостарт сервиса при запуске системы (работает незаметно):
+
+''systemctl enable smbd && systemctl status smbd''
+
+===== Настроить сервер Samba =====
+
+Сделать резервную копию файла конфигурации:
+
+''sudo cp /etc/samba/smb.conf /etc/samba/smb.conf_bkp''
+
+Узнать название своего сетевого интерфейса — глянуть в настройки через GUI (Устройство), или в консоли:
+
+''ip -4 a''
+
+Например, он называется “enp3s0f1”.
+
+Отредактировать конфиг:
+
+''sudo mcedit /etc/samba/smb.conf''
+
+Сделать [global] вот таким:
+
+''[global]''
+''workgroup = WORKGROUP''
+''netbios name = SERVER''
+''dns proxy = no''
+''interfaces = lo'' __''ИМЯ_СЕТЕВОГО_ИНТЕРФЕЙСА''__
+''bind interfaces only = yes''
+''server min protocol = SMB2''
+''server max protocol = SMB3''
+
+Что тут важно: Samba невольно влияет на скорость запуска ОС (проверить ''nmbd.service'' через [[Software:blame]]), потому что он обязан запустить NetBIOS, это древний протокол обнаружения компьютеров по имени в локальной сети в старом Windows. NetBIOS уже нет, его имя отсутствует, поэтому при старте серивис Samba подвисает на 30-40 секунд в ожидании. Решение: дать NetBIOS условное имя “SERVER”.
+
+Перечитать конфиг:
+
+''sudo systemctl daemon-reload; sudo systemctl restart nmbd''                    
+
+Проверить, что Samba может открыть сетевое соедниение с ноутбука наружу:
+
+''sudo ss -tulpn | grep smbd''
+
+Ожидаемый ответ: кроме «прослушивания» localhost, должно работать прослушивание IP ноутбука, например, ''192.168.50.18'':
+
+''tcp   LISTEN 0   50       127.0.0.1:445     0.0.0.0:*    users:(("smbd",pid=7468,fd=30))''
+''tcp   LISTEN 0   50       127.0.0.1:139     0.0.0.0:*    users:(("smbd",pid=7468,fd=31))''
+''tcp   LISTEN 0   50   192.168.50.18:139     0.0.0.0:*    users:(("smbd",pid=7468,fd=29))''
+''tcp   LISTEN 0   50   192.168.50.18:445     0.0.0.0:*    users:(("smbd",pid=7468,fd=28))''
+
+Добавить своего юзера в группу ''sambashare'':
+
+''sudo usermod -aG sambashare astenix''
+
+Перезагрузить ноут.
+
+===== Удалить сервер Samba =====
+
+''systemctl stop smbd''
+''sudo systemctl disable smbd''
+''systemctl status smbd''
+''sudo aptitude remove samba samba-client''
+''systemctl status smbd''
+
+Ожидаемый результат: 
+
+	//Unit smbd.service could not be found.//
+
+См. [[Software:Samba]]
