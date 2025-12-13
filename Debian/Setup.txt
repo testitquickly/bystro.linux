@@ -60,7 +60,8 @@ iputils-ping \
 iw \
 smartmontools \
 nvme-cli \
-xdot -y \
+xdot \
+wakeonlan -y \
 && apt update && apt upgrade
 }}}
 
