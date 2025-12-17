@@ -1,0 +1,110 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-07-22T19:09:46+03:00
+
+====== usb-midi-keyboard ======
+
+[ @usb @midi @keyboard ]
+
+Проверить, как внешняя usb midi клавиатура определяется системой:
+
+''aconnect -i''
+
+Ожидаем название MIDI-клавиатуры, например:
+
+''client 20: 'USB Midi Keyboard' [type=kernel,card=1]''
+
+Проверить, что система "видит" устройство:
+
+''lsusb | grep -i midi''
+
+Установить JACK (соединения звука), qjackctl (удобный GUI для JACK) и Hydrogen (драм-машина):
+
+''sudo apt install hydrogen qjackctl jackd2'' 
+
+===== Настроить JACK =====
+
+Запусти qjackctl и нажать "Start".
+
+Во вкладке "Connect" → MIDI соединить
+
+* свою клавиатуру (в Input)
+* с Hydrogen (в Output)
+
+Если источники не видны, проверить, что jackd работает.
+
+===== Включить MIDI-ввод в Hydrogen =====
+
+''Preferences''
+''> MIDI System''
+
+* Mode: JACK
+* Input: выбрать свою клавиатуру
+* MIDI Channel: 10 (стандарт для ударных в General MIDI)
+
+===== Настроить маппинг клавиш =====
+
+Hydrogen использует MIDI-ноты, каждая из которых соответствует определённому удару (kick, snare и т.д.). 
+
+Убедиться, что ноты с клавиатуры совпадают с нужными ударными:
+
+* C1 (MIDI 36) → Kick
+* D1 (MIDI 38) → Snare
+* F#1 (MIDI 42) → Hi-hat closed
+
+Если не совпадает — изменить настройки в клавиатуре или маппинг в Hydrogen (через Drumkit Editor → Sample Layer → Note).
+
+===== Запись =====
+
+Hydrogen может записывать в режиме live:
+Включить "Jam Mode" (значок MIDI).
+Включить запись.
+Играть — события записываются в pattern.
+
+Полезные утилиты
+* aconnect — соединяет порты вручную.
+* aj-snapshot — сохраняет соединения JACK.
+* midisnoop — отслеживает нажатия на клавиатуре.
+
+==== Возможные проблемы ====
+
+Hydrogen не видит клавиатуру: проверить, что JACK запущен, и выбрана правильная система MIDI-ввода.
+
+Настроить задержку звука (latency): понизить buffer в qjackctl → Setup → Settings.
+
+===== .jackdrc =====
+
+Минимальный пример файла ~/.jackdrc для системы с одной звуковой картой, MIDI-клавиатурой и JACK2:
+
+''/usr/bin/jackd -dalsa -dhw:0 -r48000 -p128 -n3 -Xseq''
+
+-dalsa		драйвер ALSA
+-dhw:0		использовать карту №0
+-r48000 	sample rate 48kHz. Можно 44100, но 48000 — оптимум
+-p128		buffer size
+-n3			три фрагмента буфера
+-Xseq		включить поддержку ALSA-MIDI. Нужно для работы с aconnect и клавиатурой
+
+Как использовать
+
+''sudo usermod -a -G audio $USER''
+
+Проверь, что ~/.jackdrc существует:
+
+''cat ~/.jackdrc''
+
+Запускать JACK через:
+
+''jackd -R -P89 -dalsa -dhw:0 -r48000 -p128 -n3 -Xseq''
+
+Или просто:
+
+''qjackctl''
+
+Имя устройства может быть не hw:0, а например hw:1 или USB. Посмотреть:
+
+''aplay -l''
+
+Заменить -dhw:0 на другой:
+
+''jackd -dalsa -dhw:1 ...''

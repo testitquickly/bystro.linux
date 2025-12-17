@@ -7,6 +7,7 @@ icon=./icon/icona.ico
 document_root=
 short_links=False
 shared=True
+paste_image_template=pasted_image_%y%m%d
 endofline=unix
 disable_trash=False
 default_file_format=zim-wiki
