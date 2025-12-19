@@ -93,7 +93,7 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ==== Добавить в PATH путь к будущим файлам LaTeX ====
 
-Сперва надо решить, куда устанавливать LaTeX. Его файлы можно положить куда угодно, например, в ''/home/hdd/LaTeX/'' или в любой скрытый каталог.
+Сперва надо решить, куда устанавливать LaTeX. Его файлы можно положить куда угодно, например, в ''/home/hub/.LaTeX/'' или в любой скрытый каталог.
 
 Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' (создать его, если отсутствует):
 
@@ -101,9 +101,9 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 Добавить три строки:
 
-''PATH=/home/hdd/LaTeX/bin/x86_64-linux:$PATH''
-''INFOPATH=/home/hdd/LaTeX/texmf-dist/doc/info:$INFOPATH''
-''MANPATH=/home/hdd/LaTeX/texmf-dist/doc/man:$MANPATH''
+''PATH=/home/hub/.LaTeX/bin/x86_64-linux:$PATH''
+''INFOPATH=/home/hub/.LaTeX/texmf-dist/doc/info:$INFOPATH''
+''MANPATH=/home/hub/.LaTeX/texmf-dist/doc/man:$MANPATH''
 
 Чтобы эти изменения применились, надо или «перелогиниться», или выполнить принудительное перечитывание конфигурационных файлов профиля:
 
@@ -130,15 +130,15 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 3. Отредактировать рутовский файл ''.bashrc'' (мне удобно через mcedit, бо Midnight Commander), добавить туда три строки (устанавливать общее ПО лучше в ''/opt''):
 
 '''
-PATH=/home/hdd/LaTeX/bin/x86_64-linux:$PATH
-INFOPATH=/home/hdd/LaTeX/texmf-dist/doc/info:$INFOPATH
-MANPATH=/home/hdd/LaTeX/texmf-dist/doc/man:$MANPATH
+PATH=/home/hub/.LaTeX/bin/x86_64-linux:$PATH
+INFOPATH=/home/hub/.LaTeX/texmf-dist/doc/info:$INFOPATH
+MANPATH=/home/hub/.LaTeX/texmf-dist/doc/man:$MANPATH
 '''
 
 В случае установки на 32-хбитную платформу первая строка будет такой:
 
 '''
-PATH=/home/hdd/LaTeX/bin/i386-linux:$PATH
+PATH=/home/hub/.LaTeX/bin/i386-linux:$PATH
 '''
 
 4. Перечитать файл
@@ -175,17 +175,17 @@ PATH=/home/hdd/LaTeX/bin/i386-linux:$PATH
 
 ===== Подготовить установку LaTeX =====
 
-Подразумеваем, что у нашего юзера есть полный доступ к каталогу ''/home/hdd/'', иначе дальше команды надо выполнять под ''sudo''.
+Подразумеваем, что у нашего юзера есть полный доступ к каталогу ''/home/hub/'', иначе дальше команды надо выполнять под ''sudo''.
 
-==== Создать каталог для LaTeX ====
+==== Создать рабочий каталог LaTeX ====
 
-''mkdir /home/hdd/LaTeX''
+''mkdir /home/hub/.LaTeX''
 
 ==== Создать каталог для персональных настроек LaTeX ====
 
-''mkdir -p /home/hdd/LaTeX/LaTeX_Settings/{texmf,texmf-config,texmf-var}''
+''mkdir -p /home/hub/.LaTeX/LaTeX_Settings/{texmf,texmf-config,texmf-var}''
 
-Если будет несколько пользователей, это всё надо положить в каталог своего профиля:
+Можно это всё надо положить в каталог своего профиля:
 
 ''mkdir -p ~/.LaTeX_Settings/{texmf,texmf-config,texmf-var}''
 
@@ -205,19 +205,19 @@ PATH=/home/hdd/LaTeX/bin/i386-linux:$PATH
 
 Создать файл ''installation.profile'' для установки LaTeX — в него будут вписаны инструкции:
 
-''mcedit /home/hdd/LaTeX/LaTeX_Settings/texlive.profile''
+''mcedit /home/hub/.LaTeX/LaTeX_Settings/texlive.profile''
 
 Вставить в файл этот текст:
 
 {{{code: id="installation.profile" lang="texinfo" linenumbers="True"
 selected_scheme scheme-full
-TEXDIR /home/hdd/LaTeX
-TEXMFHOME /home/hdd/LaTeX/LaTeX_Settings/texmf
-TEXMFCONFIG /home/hdd/LaTeX/LaTeX_Settings/texmf-config
-TEXMFVAR /home/hdd/LaTeX/LaTeX_Settings/texmf-var
-TEXMFLOCAL /home/hdd/LaTeX/texmf-local
-TEXMFSYSCONFIG /home/hdd/LaTeX/texmf-config
-TEXMFSYSVAR /home/hdd/LaTeX/texmf-var
+TEXDIR /home/hub/.LaTeX
+TEXMFHOME /home/hub/.LaTeX/LaTeX_Settings/texmf
+TEXMFCONFIG /home/hub/.LaTeX/LaTeX_Settings/texmf-config
+TEXMFVAR /home/hub/.LaTeX/LaTeX_Settings/texmf-var
+TEXMFLOCAL /home/hub/.LaTeX/texmf-local
+TEXMFSYSCONFIG /home/hub/.LaTeX/texmf-config
+TEXMFSYSVAR /home/hub/.LaTeX/texmf-var
 binary_x86_64-linux 1
 instopt_adjustpath 0
 instopt_adjustrepo 1
@@ -262,7 +262,7 @@ tlpdbopt_w32_multi_user 1
 
 ''su''
 
-''/tmp/LaTeX_iso/install-tl --profile=/home/hdd/LaTeX/LaTeX_Settings/texlive.profile; echo -e "\n\tDone\n"''
+''/tmp/LaTeX_iso/install-tl --profile=/home/hub/.LaTeX/LaTeX_Settings/texlive.profile; echo -e "\n\tDone\n"''
 
 Если какой-то параметр будет ошибочным, скрипт откроет интерактивную сессию в консоли. Если всё будет ок, сразу начнется установка пакетов. Установка будет долгой, там около пяти тысяч файлов.
 
@@ -291,7 +291,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 Ожидаемый ответ:
 
-''/home/hdd/LaTeX/bin/x86_64-linux/tex''
+''/home/hub/.LaTeX/bin/x86_64-linux/tex''
 
 Запросить информацию о версии TEX:
 
@@ -330,7 +330,7 @@ kpsewhich -var-value TEXMFLOCAL
 
 ''which tlmgr''
 
-Ждём ответ ''/home/hdd/LaTeX/bin/x86_64-linux/tlmgr'' — иначе алярм.
+Ждём ответ ''/home/hub/.LaTeX/bin/x86_64-linux/tlmgr'' — иначе алярм.
 
 ==== Запуск tlmgr ====
 
@@ -414,12 +414,12 @@ exit
 ''[?xml version="1.0"?]''
 ''[!DOCTYPE fontconfig SYSTEM "fonts.dtd"]''
 ''[fontconfig]''
-	''[dir]/opt/LaTeX/texmf-dist/fonts/opentype[/dir]''
-	''[dir]/opt/LaTeX/texmf-dist/fonts/truetype[/dir]''
-	''[dir]/opt/LaTeX/texmf-dist/fonts/type1[/dir]''
+	''[dir]/home/hub/.LaTeX/texmf-dist/fonts/opentype[/dir]''
+	''[dir]/home/hub/.LaTeX/texmf-dist/fonts/truetype[/dir]''
+	''[dir]/home/hub/.LaTeX/texmf-dist/fonts/type1[/dir]''
 ''[/fontconfig]''
 
-Удалить строку '''[dir]/home/LaTeX/texmf-dist/fonts/type1[/dir]''' (предпоследняя). 
+Удалить строку '''[dir]/home/hub/.LaTeX/texmf-dist/fonts/type1[/dir]''' (предпоследняя). 
 
 Cохранить и выйти.
 
@@ -427,7 +427,7 @@ Cохранить и выйти.
 
 ''sudo fc-cache -fsv; echo 'Done!'''
 
-LaTeX принесёт много шрифтов, дело может быть не односекундным. Но в результате появятся латэчевские шрифты в /home/hdd/LaTeX/texmf-dist/fonts/truetype/ и в /home/hdd/LaTeX/texmf-dist/fonts/opentype/
+LaTeX принесёт много шрифтов, дело может быть не односекундным. Но в результате появятся латэчевские шрифты в /home/hub/.LaTeX/texmf-dist/fonts/truetype/ и в /home/hub/.LaTeX/texmf-dist/fonts/opentype/
 
 Нет нужды, но временами, особенно после обновления ядра можно просто контроля для запускать (из-под root) ''tlmgr update --all'' и обновление кэша шрифтов. Однажды LaTex беспричинно не смог сгенерировать pdf, и только слабая интуиция подсказала, что в тот день прилетело обновление ядра, и надо бы эти два факта связать.
 

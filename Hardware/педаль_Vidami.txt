@@ -6,9 +6,9 @@ Creation-Date: 2024-04-29T16:52:14+03:00
 
 [ @hardware @vidami @youtube ]
 
-Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Online Videos for Faster Learning) — напольная педаль для музыкантов.
+Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Online Videos for Faster Learning) — напольная педаль для музыкантов, которые учатся по видео в Youtube. Педаль управляет проигрыванием видео с Youtube в бразуере. 
 
-В базе должна управлять проигрыванием видео с Youtube в бразуере. Делает это через расширение, которое доступно только в Google Chrome и Safari. В Firefox тоже работает безо всякого расширения, но только одна клавиша — «play/pause».
+Она делает это через расширение, которое доступно только в Google Chrome ([[Software:Brave]]) и Safari. В [[Software:Firefox]] она работает без расширения, но там доступна только одна кнопка — «play/pause».
 
 Кнопки на педальке соответствуют определенным клавишам на клавиатуре:
  
@@ -20,6 +20,10 @@ Vidami YouTube Hands-Free Video Controller (Helps Musicians Slow Down & Loop Onl
 | play/pause | K          | Л          |
 | forward    | }          | Ъ          |
 
-В Audacity (да и в Okular) можно назначить эти символы на шорткаты для выполнения каких-то действий.
+В [[Software:Audacity]] (и даже в Okular) можно назначить эти символы на шорткаты для выполнения каких-то действий.
 
-Вернуться к [[Software:Audacity]]
+Разумно сделать отдельный профиль Audacity для педальки:
+
+Сделать профиль в отдельном каталоге, например, ''~/.config/audacity-vidami'' Это позволит сохранять не только отдельные шорткаты, но и отдельные конфиги, отдельные плагины, темы, настройки аудио.
+
+Нет возможности запускать Audacity с разными конфигами. Можно сделать их и держать под разными именами, и перед тем как использовать — сделать (скриптом) симлинк на нужный конфиг; см. [[Debian:HowTo:Сделать:Симлинки и хардлинки]] 

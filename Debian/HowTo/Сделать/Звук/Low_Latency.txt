@@ -1,0 +1,313 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-18T01:44:30+02:00
+
+====== Low Latency ======
+
+[ @debian @sound @real-time ]
+
+Есть мнение о том, что записывать звук надо в специализированные устройства, а в ноутбуке его только редактировать, но это обсуждаемо.
+
+Чтобы записывать и редактировать музыку «на компьютере» надо использовать ядро Linux с низкой задержкой — real‑time, оно же “rt”. Ядро real‑time не обязательно гарантирует максимально низкую задержку, но оно даёт реальные преимущества для работы с аудиозаписью по сравнению со стандартными настройками Debian.
+
+Надо установить мета-пакет //linux-image-rt-amd64//. 
+
+Придётся несколько раз перезагружать ноут.
+
+===== Добавить юзера в группу audio =====
+
+''sudo usermod -aG audio $USER''
+
+Проверить:
+
+''id''
+
+В ответе:
+
+''29(audio)''
+
+===== Установить ядро с real-time =====
+
+''sudo apt update && sudo apt install linux-image-rt-amd64 linux-headers-rt-amd64''
+
+Перезагрузиться. Во время загрузки в загрузчике GRUB зайти в особые параметры и выбрать ядро с «rt» в названии.
+
+'''
+uname -r
+'''
+
+Пример ответа:
+
+//6.1.0-41-rt-amd64//
+
+Теперь в системе несколько ядер:
+
+''sudo grep -E "menuentry 'Debian GNU/Linux, with Linux" /boot/grub/grub.cfg''
+
+Пример ответа:
+
+		menuentry '__Debian GNU/Linux, with Linux 6.1.0-41-rt-amd64__' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-6.1.0-41-rt-amd64-advanced-3582d2d1-7e6e-4568-bd90-ac3b5c1dadb1' {
+		menuentry 'Debian GNU/Linux, with Linux 6.1.0-41-rt-amd64 (recovery mode)' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-6.1.0-41-rt-amd64-recovery-3582d2d1-7e6e-4568-bd90-ac3b5c1dadb1' {
+		menuentry 'Debian GNU/Linux, with Linux 6.1.0-41-amd64' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-6.1.0-41-amd64-advanced-3582d2d1-7e6e-4568-bd90-ac3b5c1dadb1' {
+		menuentry 'Debian GNU/Linux, with Linux 6.1.0-41-amd64 (recovery mode)' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-6.1.0-41-amd64-recovery-3582d2d1-7e6e-4568-bd90-ac3b5c1dadb1' {
+		menuentry 'Debian GNU/Linux, with Linux 6.1.0-40-amd64' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-6.1.0-40-amd64-advanced-3582d2d1-7e6e-4568-bd90-ac3b5c1dadb1' {
+		menuentry 'Debian GNU/Linux, with Linux 6.1.0-40-amd64 (recovery mode)' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-6.1.0-40-amd64-recovery-3582d2d1-7e6e-4568-bd90-ac3b5c1dadb1' {
+
+Можно указать ядро с r-t как основное:
+
+''sudo mcedit /etc/default/grub''
+
+Строку
+
+''GRUB_DEFAULT=0''
+
+заменить на
+
+''GRUB_DEFAULT="Debian GNU/Linux, with Linux 6.1.0-41-rt-amd64"''
+
+Сохранить:
+
+''sudo update-grub''
+
+Остальные ядра можно удалить, но лучше оставить «на всякий случай». Через какое-то время ненужные будет предложено удалить.
+
+==== Заблокировать установку non-rt ядер ====
+
+=== Зафиксировать RT-пакеты ===
+
+''sudo apt-mark hold linux-image-rt-amd64 linux-headers-rt-amd64''
+
+=== Заблокировать установку обычных мета-пакетов ===
+
+''sudo apt-mark hold linux-image-amd64 linux-headers-amd64''
+
+=== Проверка апгрейда ===
+
+Это симулирование апгрейда:
+
+''sudo apt upgrade -s | grep linux-image''
+
+Если вернется пустота — всё правильно.
+
+===== Задать ограничения real-time =====
+
+Проверить:
+
+''ulimit -r''
+
+Ожидаемый ответ:
+
+''0''
+
+==== Сделать конфиг ====
+
+''sudo mcedit /etc/security/limits.d/audio.conf''
+
+Вставить это:
+
+''@audio   -  rtprio     95''
+''@audio   -  memlock    unlimited''
+
+Перезагрузка.
+
+Проверить:
+
+''ulimit -r''
+
+Ожидаемый ответ:
+
+''> 0''
+
+===== Установить аудио-стек =====
+
+''sudo apt install jackd2 qjackctl alsa-utils''
+
+При вопросе про real-time priority — ответить YES.
+
+===== Настройка JACK =====
+
+''qjackctl''
+
+Settings → Parameters:
+
+Driver: alsa
+Interface: твоя звуковая карта (hw:0 или по названию)
+Sample Rate: 48000 (или 44100)
+Frames/Period: 128
+Periods/Buffer: 2
+Нажать //Start//.
+
+Если XRUN:
+
+* сначала Frames/Period = 256
+* если надо — Periods/Buffer = 3
+
+===== Проверка latency =====
+
+''jack_iodelay''
+
+Для «домашней» музыки:
+
+~5–10 ms — отлично
+до 15 ms — нормально
+если больше → увеличить буферы в настройках qjackctl
+
+===== Настроить ПО =====
+
+Hydrogen → Audio System: JACK
+
+Audacity → хост JACK (или ALSA, если без живого мониторинга)
+
+Reaper → Audio system: JACK
+
+===== Настроить CPU =====
+
+''cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor''
+
+Обычно там powersave или schedutil — для аудио это плохо.
+
+==== Временно переключить на performance (проверка) ====
+
+''sudo apt install cpufrequtils''
+''sudo cpufreq-set -g performance''
+
+Проверить:
+
+''cpufreq-info | grep "governor"''
+
+Если xruns исчезли — значит CPU был узким местом.
+
+==== Сделать performance постоянным (рекомендую) ====
+
+''sudo mcedit /etc/default/cpufrequtils''
+
+Вставить:
+
+'''
+GOVERNOR="performance"
+'''
+
+Применить:
+
+''sudo systemctl restart cpufrequtils''
+
+==== Отключить энергосбережение Intel/AMD (важно) ====
+
+Проверить, нет ли энергосберегающих демонов:
+
+'''
+systemctl status power-profiles-daemon
+'''
+
+''systemctl status tlp''
+
+Если есть TLP — оно ломает rt-аудио, его надо отключить:
+
+''sudo systemctl stop tlp && sudo systemctl disable tlp''
+
+==== Проверить частоты под нагрузкой ====
+
+Во время работы JACK:
+
+''watch -n1 "grep MHz /proc/cpuinfo | head"''
+
+Частота должна быть стабильно высокой, без резких скачков.
+
+==== (Опционально) Изоляция ядер под JACK ====
+
+Если CPU ≥ 4 ядер — можно выделить 1–2 ядра под аудио. Это не обязательно, но даёт ещё минус 1–2 ms latency.
+
+В GRUB:
+
+''sudo mcedit /etc/default/grub''
+
+Отредактировать строку:
+
+''GRUB_CMDLINE_LINUX_DEFAULT="quiet isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3"''
+
+Применить:
+
+''sudo update-grub && sudo reboot''
+
+===== Можно настроить более точно систему под процессор =====
+
+Например, для //16 × AMD Ryzen 9 6900HX// 
+
+CPU governor для AMD лучше performance, а не schedutil.
+
+Проверить:
+
+''cpufreq-info | grep "current policy"''
+
+Если не //performance// — зафиксировать:
+
+''sudo mcedit /etc/default/cpufrequtils''
+
+Записать:
+
+''GOVERNOR="performance"''
+
+Применить:
+
+''sudo systemctl restart cpufrequtils''
+
+Проверить:
+
+''cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor''
+
+==== Отключить всё, что мешает realtime ====
+
+Для ноутбучного Ryzen это критично.
+
+''sudo systemctl disable --now tlp''
+''sudo systemctl disable --now power-profiles-daemon''
+
+Проверить:
+
+''systemctl status tlp''
+''systemctl status power-profiles-daemon''
+
+Оба должны быть inactive / disabled.
+
+JACK — оптимальные параметры именно под 6900HX
+
+Начинать со стабильных параметров, и только потом задавать минимальные:
+
+qjackctl → Settings
+Sample Rate: 48000
+Frames/Period: 128
+Periods/Buffer: 2
+Realtime: ✔
+Priority: 85
+
+Если всё стабильно → попробовать задать 64/2 и смотреть, как пойдёт.
+
+На 6900HX 64 frames обычно держится без XRUN.
+
+==== IRQ и USB (важно для MIDI) ====
+
+Проверить, где сидит USB-аудио / MIDI:
+
+''cat /proc/interrupts | grep -E "snd|usb"''
+
+RT-ядро обычно само расставляет приоритеты, ручная irqbalance не нужна.
+
+Убедиться в том, что irqbalance включён:
+
+''systemctl status irqbalance''
+
+==== Проверка реальной latency ====
+
+''jack_iodelay''
+
+Ожидаемо:
+
+64/2 → ~3–5 ms
+128/2 → ~6–9 ms
+
+Это уровень живой игры по MIDI без ощущения задержки.
+
+==== Что НЕ нужно делать ====
+
+isolcpus — не нужно при 16 потоках
+ручная настройка C-states
