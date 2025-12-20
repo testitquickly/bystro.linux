@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-20T04:50:57+02:00
+
+====== PipeWire ======
+
+[ @sound ]
+
+A low-level multimedia framework. Полностью заменяет PulseAudio.
+
+===== Установить =====
+
+[[Debian:Install:PipeWire]]
+
+	*todo Настраивать PipeWire
+Настраивать — https://www.audiosciencereview.com/forum/index.php?threads/guide-how-to-use-equalizer-apo-peq-presets-in-linux.35570/

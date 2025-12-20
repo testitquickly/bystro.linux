@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-20T04:52:51+02:00
+
+====== PipeWire ======
+
+[ @debian @install @sound @pipewire ]
+
+Надо будет перезагрузить ноут.
+
+''sudo apt install pipewire pipewire-pulse wireplumber''
+
+''systemctl --user --now enable pipewire pipewire-pulse wireplumber''
+
+''systemctl --user --now disable pulseaudio pulseaudio.socket''
+
+''sudo reboot''
+
+Проверка
+
+''ps aux | grep -E "pipewire|pulseaudio"''
+
+Пример ответа:
+
+''astenix     1930  0.9  0.3 384208 48228 ?        S<sl 04:56   0:08 /usr/bin/pipewire''
+''astenix     1933  0.9  0.2  80044 31632 ?        S<Lsl 04:56   0:08 /usr/bin/pipewire-pulse''
+''astenix     3156  0.2  1.4 2047520 226380 ?      Sl   04:57   0:01 /usr/bin/systemsettings kcm_pulseaudio''
+''astenix     4787  0.0  0.0   6364  2260 pts/0    S+   05:10   0:00 grep -E pipewire|pulseaudio''
+
+См. [[Software:PipeWire]]
