@@ -29,6 +29,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 ===== E =====
 
+[[+Easy Effects]]
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
 
@@ -97,6 +98,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Paper Clip]]
 [[+paprefs]]
 [[+pgAdmin]]
+[[+PipeWire]]
 [[+Playwright]]
 [[+Postman]]
 

@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-20T04:45:46+02:00
+
+====== Easy Effects ======
+
+[ @sound ]
+
+Раньше назывался Pulse Effect.
+
+С чистым PulseAudio не работает, нужен PipeWire. 
+
+===== Установить =====
+
+[[Debian:Install:Easy Effects]]
+
+	*todo Настраивать Easy Effects
+Настройки наушников 
+https://github.com/thewhitegoatcb/oratory1990_eqextract
+https://www.audiosciencereview.com/forum/index.php?threads/list-of-amirs-headphone-peq-filters.18590/

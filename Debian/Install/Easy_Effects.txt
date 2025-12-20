@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-20T04:47:22+02:00
+
+====== Easy Effects ======
+
+[ @debian @install @sound ]
+
+''sudo apt install easyeffects''
+
+См. [[Software:Easy Effects]]
