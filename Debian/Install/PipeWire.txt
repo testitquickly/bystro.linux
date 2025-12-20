@@ -8,7 +8,13 @@ Creation-Date: 2025-12-20T04:52:51+02:00
 
 Надо будет перезагрузить ноут.
 
-''sudo apt install pipewire pipewire-pulse wireplumber''
+Установить PipeWire и заодно включить ему BlueTooth.
+
+* pipewire-pulse — замена PulseAudio. Его установка удалит и pulseaudio, и pulseaudio-bluetooth, поэтому пакеты для BT надо будет установить отдельно.
+* pipewire-alsa — не нужен, если в системе будет pipeware-pulse, но может быть нужным старым приложениям, которые управляют звуком для PipeWire через ALSA API. Надо будет удалить pulseaudio-alsa.
+* pipewire-jack — для роутинга звука через JACK.
+
+''sudo apt install pipewire pipewire-audio pipewire-pulse pipewire-jack wireplumber libspa-0.2-bluetooth bluez bluez-tools''
 
 ''systemctl --user --now enable pipewire pipewire-pulse wireplumber''
 

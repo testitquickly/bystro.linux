@@ -6,11 +6,18 @@ Creation-Date: 2025-12-20T04:50:57+02:00
 
 [ @sound ]
 
-A low-level multimedia framework. Полностью заменяет PulseAudio.
+A low-level multimedia framework. Полностью заменяет PulseAudio, большинство приложений этой замены и не замечают.
+
+Система использует ALSA (Advanced Linux Sound Architecture) — это фундамент, базовая звуковая подсистема Linux.
+
+Поверх ALSA ставят ~~менеджер~~ сервер звука: PulseAudio или PipeWire или сам свой напиши. Он умеет микшировать звук из нескольких приложений, переключать устройства «на лету», управлять Bluetooth, профилями, задержками:
+
+''Приложение → ALSA → PipeWire → управляет железом''
 
 ===== Установить =====
 
 [[Debian:Install:PipeWire]]
 
-	*todo Настраивать PipeWire
-Настраивать — https://www.audiosciencereview.com/forum/index.php?threads/guide-how-to-use-equalizer-apo-peq-presets-in-linux.35570/
+===== Настроить =====
+
+По-умолчанию тут нечего настраивать, сервер работает, звук идёт. 
