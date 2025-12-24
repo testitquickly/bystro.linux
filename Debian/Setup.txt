@@ -14,55 +14,14 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install aptitude \
-audacity \
-curl \
-gdu \
-kdiff3 \
-keepassxc \
-kget \
-krename \
-krusader \
-macchanger
-make \
-mc \
-mpv \
-network-manager-openvpn \
-nfs-common \
-onboard \
-openconnect \
-openssh-client \
-openssh-server \
-openvpn \
-qalculate-gtk \
-qbittorrent \
-qmmp \
-software-properties-common \
-tellico \
-vlc \
-vsftpd \
-wget \
-xsensors \
-zim 
+apt install aptitude audacity curl gdu kdiff3 keepassxc kget krename krusader macchanger make mc mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico vlc vsftpd wget xsensors zim 
 }}}
 
 2)
 после установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list (тоже только из-под root):
 
 {{{code: lang="sh" linenumbers="True"
-apt-add-repository contrib non-free -y \
-&& apt update && apt upgrade \
-&& apt install rar \
-unrar \
-ethtool \
-gir1.2-gtksource-4 \
-iputils-ping \
-iw \
-smartmontools \
-nvme-cli \
-xdot \
-wakeonlan -y \
-&& apt update && apt upgrade
+apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar unrar ethtool gir1.2-gtksource-4 iputils-ping iw smartmontools nvme-cli xdot wakeonlan -y && apt update && apt upgrade
 }}}
 
 ===== Настроить систему =====
@@ -127,11 +86,9 @@ wakeonlan -y \
 
 * [[Install:ssh]]
 * [[Install:Sublime]]
-* [[Install:OnBoard]]
-* [[Install:Dropbox]]
 * [[Install:Firefox]]
 * [[Install:Brave]]
-* [[Install:Google Chrome]]
 * [[Install:Thunderbird]]
 * [[Install:LibreOffice]]
+* [[Install:Dropbox]]
 * [[Install:flatpak]]
