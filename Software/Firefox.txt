@@ -12,59 +12,13 @@ Creation-Date: 2022-02-22T15:11:56+02:00
 
 * [[Debian:Install:Firefox]]
 
-===== Отдельные профили в Firefox =====
+===== Настройки Firefox =====
 
-[[+Профили в Firefox]]
+[[+Расширения]]
+[[+Профили]]
+[[+Очистить кэш]]
 
-===== Настройки консоли =====
-
-https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html
-
-===== Импорт существующего профиля из бэкапа =====
-
-Открыть страницу ''about:support''
-
-1. Найти «Каталог профиля». 
-2. Выключить браузер.
-3. Забэкапить содержимое каталога профиля в zip.
-4. Очистить каталог профиля.
-5. Закатать в него содержимое каталога профиля из бэкапа
-6. Включить браузер и убедиться в том, что всё ок.
-7. Почистить кэш браузера полностью, там не меньше гигабайта может освободиться.
-
-===== Запретить Firefox предзагружать страницы в фоне =====
-
-В теории возникает ощущение ускорения загрузки страниц, а на практике это не нужно.
-
-Открыть //about:config//
-
-''network.prefetch-next ='' **''false''**
-
-===== Открывать каталог с загруженным файлом в Firefox через Dolphin =====
-
-Если по-умолчанию каталог со скачанным файлом открывается через Konqueror — выполнить в терминале:
-	
-''xdg-mime default kde4-dolphin.desktop inode/directory''
-
-Изменения подтянутся сразу же, но лучше сделать релогин.
-
-===== Открывать новую вкладку рядом с активной =====
-
-Открыть //about:config//
-
-''browser.tabs.insertRelatedAfterCurrent ='' **''true''**
-
-===== Расширение для тёмной темы =====
-
-https://addons.mozilla.org/en-US/firefox/addon/darkreader/
-
-===== Настройки расширения Open With =====
-
-Если надо переносить страницы в Brave с определенным профилем, то в настройках открываемого браузера должна быть команда
-
-''/usr/bin/brave-browser-stable --profile-directory="Profile 2"'' 
-
-===== Настройки шрифта =====
+==== Настройки шрифта ====
 
 about:preferences#general
 ''> Шрифты''
@@ -74,7 +28,31 @@ about:preferences#general
 
 	{{../../images/firefox_web_elements.jpg}}
 
-===== Размер элементов =====
+==== Запретить предзагружать страницы в фоне ====
+
+Firefox втихую загружает контент по ссылкам, по которым юзер МОЖЕТ кликнуть. В теории возникает ощущение ускорения загрузки страниц, а на практике это не нужно.
+
+Открыть //about:config//
+
+''network.prefetch-next ='' **''false''**
+
+Также можно установить расширение “Auto Tab Discard”. Действует кардинально, использовать аккуратно.
+
+==== Открывать новую вкладку рядом с активной ====
+
+Открыть //about:config//
+
+''browser.tabs.insertRelatedAfterCurrent ='' **''true''**
+
+==== Открывать каталог с загруженным файлом через Dolphin ====
+
+Если по-умолчанию каталог со скачанным файлом открывается через Konqueror — выполнить в терминале:
+	
+''xdg-mime default kde4-dolphin.desktop inode/directory''
+
+Изменения подтянутся сразу же, но лучше сделать релогин.
+
+==== Размер элементов ====
 
 Когда настраиваешь DPI на мониторе, размеры элементов в браузере могут показаться слишком ОГРОМНЫМИ.
 
@@ -85,29 +63,14 @@ about:preferences#general
 
 Выставить ''0.85'' и посмотреть, если будет комфортно.
 
-===== Можно (но уже не нужно) добавить flash в Firefox =====
+==== Включить тулбар окна ====
 
-0
-убедиться в том, что в системе есть /usr/lib/mozilla/plugins/
+''«Бутерброд настроек» (☰)''
+''> Другие инструменты (More tools)''
+''> Настройка панели инструментов… (Customise toolbar)''
 
-1
-Скачать с https://get.adobe.com/ru/flashplayer/ версию 'tar.gz для Linux' - flash_player_npapi_linux.x86_64.tar.gz
+В левом нижнем углу есть галочка «Заголовок». Включить её — у окна появится тулбар.
 
-2
-закрыть Firefox
+==== Настройки консоли ====
 
-3
-''tar -xzvf flash_player_npapi_linux.x86_64.tar.gz -C flashPlayer''
-// появится каталог /flashPlayer/ со всеми файлами
-
-4
-copy the flash lib to your plugin directory:
-''sudo cp libflashplayer.so /usr/lib/mozilla/plugins/''
-
-5
-copy the flash local settings configuration to your /usr directory:
-''sudo cp -r usr/* /usr''
-
-6
-Запустить Firefox
-
+https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html

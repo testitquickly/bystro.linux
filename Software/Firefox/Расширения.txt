@@ -1,0 +1,82 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-12-24T10:33:59+02:00
+
+====== Расширения ======
+
+[ @firefox @extentions ]
+
+===== Auto Tab Discard =====
+
+https://addons.mozilla.org/ru/firefox/addon/auto-tab-discard/
+
+===== Dark Reader =====
+
+https://addons.mozilla.org/en-US/firefox/addon/darkreader/
+
+Меняет оформление страниц «под тёмную тему».
+
+В Firefox есть встроенный механизм защиты содержимого (в том числе и оформления) содержимого некоторых страниц (внутренние about:-страницы, настройки, менеджер дополнений и т.п.) из соображений безопасности и приватности. Выглядит это так, словно Dark Reader «внезапно сломался». В самом расширении появляется сообщение “This page is protected by the browser”.
+
+1. 
+
+В Dark Reader > Ещё > Все настройки и включить следующие опции:
+
+General
+> Enable by default
+> Detect dark theme
+
+Advanced
+> Enable settings sync
+> Synchronize sites fixes
+> Enable on restricted pages
+
+2. 
+
+Ослабить некоторые настройки браузера — не идеальное решение, но хотя бы что-то:
+
+1. Открыть about:config.
+2. ''extensions.webextensions.restrictedDomains'' = очистить (оставить пустым)
+3. ''privacy.resistFingerprinting.block_mozAddonManager'' = true
+
+Рестарт браузера.
+
+===== Enhancer for YouTube =====
+
+https://www.mrfdev.com/enhancer-for-youtube
+
+В основном надо убрать все раздражающие/отвлекающие элементы.
+
+Внешний вид:
+> Автоматически сортировать комментарии от новых к старым
+> Скрыть чат
+> Скрыть рекомендации
+> Скрыть Shorts
+
+===== KeePassXC =====
+
+https://addons.mozilla.org/ru/firefox/addon/keepassxc-browser/reviews/
+
+===== Open With =====
+
+https://addons.mozilla.org/ru/firefox/addon/open-with/
+
+Если надо переносить страницы в Brave с определенным профилем, то в настройках открываемого браузера должна быть команда
+
+''/usr/bin/brave-browser-stable --profile-directory="Profile 2"'' 
+
+===== PrintFriendly =====
+
+https://addons.mozilla.org/ru/firefox/addon/print-friendly-pdf/reviews/
+
+===== Quick Dial =====
+
+https://addons.mozilla.org/ru/firefox/addon/quick-dial/reviews/
+
+Настройки Firefox запрещают сразу выводить подобные расширения на первой же вкладке при открытии браузера, поэтому содержимое QuickDial открывается только в новой вкладке, то есть, во второй открываемой.
+
+===== uBlock Origin =====
+
+https://addons.mozilla.org/ru/firefox/addon/ublock-origin/reviews/
+
+См. пример [[Webdev:habr]]
