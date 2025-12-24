@@ -20,14 +20,14 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 ===== C =====
 
-[[+Cadence]]
-[[+Calibre]]
+[[+Cadence]] /роутинг звука через аудиоинтерфейс JACK
+[[+Calibre]] /библиотека
 
 ===== D =====
 
 [[+DaVinci Resolve]] /видеоредактор
 [[+Docker]] /контейнеровоз
-[[+Dolphin]]
+[[+Dolphin]] /менеджер файлов
 [[+Dropbox]]
 [[+du]] /disk usage
 
