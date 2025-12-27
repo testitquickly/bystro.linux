@@ -8,6 +8,8 @@ Creation-Date: 2025-12-24T10:33:59+02:00
 
 ===== Auto Tab Discard =====
 
+Выгружает из памяти содержимое страниц, оставляя открытыми вкладки в окнах.
+
 https://addons.mozilla.org/ru/firefox/addon/auto-tab-discard/
 
 ===== Dark Reader =====
@@ -45,7 +47,7 @@ Advanced
 
 https://www.mrfdev.com/enhancer-for-youtube
 
-В основном надо убрать все раздражающие/отвлекающие элементы.
+Убирает со страницы все раздражающие/отвлекающие элементы. Открыл видео, посмотрел, закрыл.
 
 Внешний вид:
 > Автоматически сортировать комментарии от новых к старым
@@ -57,17 +59,21 @@ https://www.mrfdev.com/enhancer-for-youtube
 
 https://addons.mozilla.org/ru/firefox/addon/keepassxc-browser/reviews/
 
+Сперва в настройках KeePassXC надо включить связь с браузером.
+
 ===== Open With =====
 
 https://addons.mozilla.org/ru/firefox/addon/open-with/
 
-Если надо переносить страницы в Brave с определенным профилем, то в настройках открываемого браузера должна быть команда
+Если надо передавать страницы в Brave с открытием определенного профиля:
 
 ''/usr/bin/brave-browser-stable --profile-directory="Profile 2"'' 
 
 ===== PrintFriendly =====
 
 https://addons.mozilla.org/ru/firefox/addon/print-friendly-pdf/reviews/
+
+Экспорт содержимого страницы в pdf без лишнего оформления. Можно удалять отдельные блоки информации перед сохранением.
 
 ===== Quick Dial =====
 

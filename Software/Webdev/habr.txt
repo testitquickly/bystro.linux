@@ -15,19 +15,22 @@ Creation-Date: 2025-10-17T13:58:40+03:00
 * убрать «лишние» элементы через //uBlock Origin//: “Настройки” → вкладка “Мои фильтры”, вставить 
 
 {{{code: lang="sh" linenumbers="True"
-! Habr — только заголовки + компактная лента + скрыть "Читать далее"
+! Habr — только заголовки + компактная лента
 ||habrastorage.org/getpro/habr/branding/$image
-habr.com##.blacklist-article-placeholder
-habr.com##.tm-header__feature.header-feature
-habr.com##.tm-sexy-sidebar_stick-top.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-block
-habr.com##.tm-section-name
-habr.com##.tm-tabs_page-header.tabs
-habr.com##.tm-footer-menu__container
-habr.com##.tm-footer__container
 habr.com##.article-snippet > .lead
-habr.com##.tm-block__body_variant-equal.tm-block__body
-habr.com###promo_block_7 > .tm-block_spacing-bottom.tm-block > .tm-block__header
+habr.com##.article-snippet > .stats
+habr.com##.blacklist-article-placeholder
 habr.com###promo_block_7 > .tm-block_spacing-bottom.tm-block > .tm-block__body
+habr.com###promo_block_7 > .tm-block_spacing-bottom.tm-block > .tm-block__header
 habr.com###stories_block_4 > .tm-block__header
-
+habr.com##.tm-articles-list__item-footer > .tm-data-icons_space-big.tm-data-icons
+habr.com##.tm-blockbody_variant-equal.tm-blockbody
+habr.com##.tm-footer__container
+habr.com##.tm-footer-menu__container
+habr.com##.tm-header__feature.header-feature
+habr.com##.tm-section-name
+habr.com##.tm-sexy-sidebar_margin.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-block > .tm-block__body
+habr.com##.tm-sexy-sidebar_stick-top.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-block
+habr.com##.tm-tabs_page-header.tabs
+habr.com##.tm-company-card__top-image-placeholder
 }}}
