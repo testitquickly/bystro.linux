@@ -7,6 +7,7 @@ Creation-Date: 2025-08-14T10:31:51+03:00
 [ @llm @ai ]
 
 [[+Ollama]] /LLM 'Docker’
+[[+Sentence Transformer]]
 [[+Whisper]] /Транскрибация речи в текст
 [[VSCodium:Подключить LLM]]
 
