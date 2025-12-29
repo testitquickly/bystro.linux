@@ -17,6 +17,7 @@ Creation-Date: 2025-10-17T13:58:40+03:00
 {{{code: lang="sh" linenumbers="True"
 ! Habr — только заголовки + компактная лента
 ||habrastorage.org/getpro/habr/branding/$image
+habr.com##.article-snippet > .meta-container
 habr.com##.article-snippet > .lead
 habr.com##.article-snippet > .stats
 habr.com##.blacklist-article-placeholder
