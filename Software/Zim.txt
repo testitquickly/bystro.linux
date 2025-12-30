@@ -150,6 +150,10 @@ Creation-Date: 2022-11-17T02:03:30+02:00
 1. выделить строки, 
 2. применить ''Ctrl+Shift+3''
 
+==== Show word count ====
+
+* <Actions>/NotebookView/show_word_count = ''F3''
+
 ===== Создать новую страницу =====
 
 ''Файл''
