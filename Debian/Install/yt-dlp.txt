@@ -6,23 +6,53 @@ Creation-Date: 2025-11-21T21:53:50+02:00
 
 [ @debian @install @youtube ]
 
-В норме в Debian установится древний ''yt-dlp'', он уже немощный. 
+По-умолчанию в Debian установится древний ''yt-dlp'', а он уже немощный. 
 
-Проверить версию:
+===== Убрать ветерана =====
+
+Если он есть, можно проверить версию:
 
 ''yt-dlp --version''
 
-Убрать ветерана:
+Убрать:
 
 ''sudo apt remove yt-dlp''
 
-===== Поставить новый =====
+===== Поставить новую версию =====
 
 ''sudo curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp && sudo chmod a+rx /usr/local/bin/yt-dlp''
 
-Проверить версию:
+Проверить:
 
 ''/usr/local/bin/yt-dlp --version''
+
+Отныне и впредь запускать через 
+
+''/usr/local/bin/yt-dlp''
+
+Можно [[HowTo:Сделать:Симлинки и хардлинки:symlink]] на него у себя в ''~/.local/bin''
+
+==== Добавить node.js ====
+
+YouTube периодически изменяет механизм извлечения данных, поэтому может появиться WARNING «No supported JavaScript runtime could be found». Это ограничивает варианты для скачивания. 
+
+Решение — установить фреймворк NodeJS (полностью): 
+
+''curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt install -y nodejs''
+
+Проверить:
+
+''which node''
+
+Ожидаем ''/usr/bin/node''
+
+''which nodejs''
+
+Ожидаем ''/usr/bin/nodejs''
+
+В файл с конфигурацией для скачивания файлов через yt-dlp добавить параметр обращения к NodeJS: 
+
+''--js-runtimes node:/usr/bin/node''
 
 ===== Обновить =====
 

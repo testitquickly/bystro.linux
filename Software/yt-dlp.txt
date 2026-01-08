@@ -6,17 +6,24 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 
 [ @console @youtube ]
 
-Утилита для скачивания с Youtube видео или аудио из видео. Ранее называлась ''youtube-dl''. В Youtube её очень не любят и периодически что-то меняют в выдаче своих видео, отчего утилита перестаёт работать.
+Утилита для скачивания с Youtube видео или аудио из видео. Отпочковалась от ''youtube-dl''. 
 
-Есть множество настроек. Можно сделать алиас в файле ~/.bashrc вида
+В Youtube эти утилиты очень не любят и периодически что-то меняют в выдаче своих видео, отчего утилита временно перестаёт работать.
 
-''alias yv='yt-dlp --config-location /home/mySettings/myScripts/youtube-dl/youtube-dl_video_config'''
-''alias ya='yt-dlp --config-location /home/mySettings/myScripts/youtube-dl//youtube-dl_audio_config'''
+===== Установить =====
 
-и скачивать видео так
+[[Debian:Install:yt-dlp]]
+
+===== Настроить =====
+
+Дальновидно сделать алиас для yt-dlp в ''~/.bashrc'':
+
+	''# audio''
+''alias ya='echo -e "\n\tSTART\n" && /usr/local/bin/yt-dlp --config-location /home/mySettings/myScripts/youtube/download_audio'''
+
+	''# video''
+''alias yv='echo -e "\n\tSTART\n" && /usr/local/bin/yt-dlp --config-location /home/mySettings/myScripts/youtube/download_video'''
+
+и скачивать видео так:
 
 ''yv https://www.youtube.com/watch?v=V-J6hep_y4o''
-
-Скачать только субтитры
-
-''yt-dlp --write-auto-sub --sub-lang en --skip-download "https://youtube.com/watch?v=''__''ID''__''"''
