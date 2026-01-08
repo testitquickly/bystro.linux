@@ -14,7 +14,7 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install aptitude audacity curl gdu kdiff3 keepassxc kget krename krusader macchanger make mc mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico vlc vsftpd wget xsensors zim 
+apt install aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename krusader macchanger make mc mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico vlc vsftpd wget xsensors zim 
 }}}
 
 2)
