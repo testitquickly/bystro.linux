@@ -4,8 +4,263 @@ Creation-Date: 2025-01-15T14:41:32+02:00
 
 ====== Шрифты ======
 
-Проверить, какие шрифты XeLaTeX «видит» в системе 
+Все шрифты для XeLaTeX: https://tug.org/FontCatalogue/
 
-''fc-list : family > fonts.txt; sort fonts.txt -o fonts.txt; mcedit fonts.txt''
+Большая часть доступных шрифтов исключительно латинские — T1 (а также OT1, LY1, L7x, QX, T5, TS1). Кириллица (точнее, unicode) находится в семействе T2, где 
 
-Учесть, что все шрифты поддерживают латиницу, но не все — кириллицу.
+* T2A — для русского языка; содержит и все латинские буквы.
+* T2В (якутский) и T2C — для других славянских языков.
+* X2 — для дореволюционных букв, см. детали https://www.intuit.ru/studies/courses/1137/137/lecture/24801?page=8
+
+Логично принять правило о том, что в русскоязычном документе нельзя использовать шрифты T1, но на tug.org нет возможности получить только шрифты T2. На самом деле оно и не нужно, в любом случае мы можем использовать только те шрифты, которые установлены в системе. 
+
+Посмотреть все шрифты:
+
+''fc-list : family | sort > allFonts.txt && mcedit fonts.txt''
+
+Посмотреть все кириллические шрифты:
+
+''fc-list :lang=ru | sed 's/^[^:]*:\([^:]*\):.*$/\1/; s/,.*$//; s/^ *//' | sort -u > myFonts.txt''
+
+Здесь:
+
+* ''s/^[^:]*:\([^:]*\):.*$/\1/'' — оставляет текст между первым и вторым двоеточием.
+* ''s/,.*$//'' — обрезает всё после запятой.
+* ''s/^ *//'' — удаляет ведущие пробелы.
+* ''sort -u'' — сортирует и убирает повторения.
+
+Условно вот их список:
+
+1. Alegreya
+2. Alegreya Sans
+3. Andale Mono
+4. Andika
+5. Anonymous Pro
+6. Antykwa Torunska
+7. Arial
+8. Arimo
+9. Arsenal
+10. C059
+11. Cantarell
+12. Carlito
+13. Cascadia Code
+14. Cascadia Mono
+15. Cathisma Unicode
+16. Charis SIL
+17. Clara
+18. Clear Sans
+19. CMU Concrete
+20. CMU Sans Serif
+21. CMU Serif
+22. CMU Typewriter Text
+23. Cochineal
+24. Coelacanth
+25. Comfortaa
+26. Cormorant Garamond
+27. Courier New
+28. Crimson
+29. Cuprum
+30. Cyrillic Modern
+31. Cyrillic Modern Sans Serif
+32. DejaVu Sans
+33. DejaVu Sans Mono
+34. DejaVu Serif
+35. Domitian
+36. Doulos SIL
+37. Droid Sans
+38. Droid Sans Mono
+39. Droid Serif
+40. EB Garamond
+41. Fedorovsk Unicode
+42. Fira Math
+43. Fira Mono
+44. Fira Sans
+45. Fira Slav
+46. Forum
+47. Free Avant Garde
+48. Free Bookman
+49. Free Chancery
+50. Free Courier
+51. Free Helvetian
+52. Free Helvetian Condensed
+53. FreeMono
+54. Free Paladin
+55. FreeSans
+56. Free Schoolbook
+57. FreeSerif
+58. FreeSerifb
+59. Free Times
+60. Frm
+61. Garamond Libre
+62. Gentium
+63. Gentium Book
+64. Georgia
+65. Go
+66. Go Mono
+67. Hack
+68. IBM Plex Math
+69. IBM Plex Mono
+70. IBM Plex Sans
+71. IBM Plex Serif
+72. Impact
+73. Inconsolata LGC Nerd Font
+74. Inconsolata LGC Nerd Font Mono
+75. Indiction Unicode
+76. Inter
+77. Iwona
+78. JetBrains Mono
+79. JuliaMono
+80. Kurier
+81. Lato
+82. Liberation Mono
+83. Liberation Sans
+84. Liberation Serif
+85. Libertinus Math
+86. Libertinus Sans
+87. Libertinus Serif
+88. Libertinus Serif Display
+89. Linguistics Pro
+90. Linux Biolinum O
+91. Linux Libertine Display O
+92. Linux Libertine O
+93. Menaion Unicode
+94. Merriweather
+95. Mezenets Unicode
+96. Miama Nueva
+97. Mint Spirit
+98. Monomakh Unicode
+99. Montserrat
+100. Montserrat Alternates
+101. NewComputerModern08
+102. NewComputerModern10
+103. NewComputerModernMono10
+104. NewComputerModernSans08
+105. NewComputerModernSans10
+106. Nimbus Mono
+107. Nimbus Mono PS
+108. Nimbus Roman
+109. Nimbus Sans
+110. Nimbus Sans L
+111. Nimbus Sans Narrow
+112. Noto Mono
+113. Noto Sans
+114. Noto Sans Display
+115. Noto Sans Mono
+116. Noto Serif
+117. Noto Serif Display
+118. Nunito
+119. Oglavie Unicode
+120. Old Standard
+121. Open Sans
+122. P052
+123. Playfair Display
+124. Pochaevsk Unicode
+125. Poiret One
+126. Ponomar Unicode
+127. PT Mono
+128. PT Sans
+129. PT Serif
+130. Raleway
+131. Roboto
+132. Shafarik
+133. Shobhika
+134. Source Code Pro
+135. Source Sans Pro
+136. Source Serif Pro
+137. Spectral
+138. STEP
+139. STIX
+140. Symbola
+141. Teams
+142. Tempora
+143. Times New Roman
+144. Tinos
+145. Trebuchet MS
+146. Triodion Unicode
+147. UM Typewriter
+148. UnBatang
+149. UnDinaru
+150. UnDotum
+151. UnGraphic
+152. UnGungseo
+153. UnJamoBatang
+154. UnJamoDotum
+155. UnJamoNovel
+156. UnJamoSora
+157. UnPen
+158. UnPenheulim
+159. UnPilgi
+160. UnPilgia
+161. UnShinmun
+162. UnVada
+163. UnYetgul
+164. URW Bookman
+165. URW Gothic
+166. Cascadia Code
+167. Cascadia Mono
+168. Ysabeau
+169. Verdana
+170. Vertograd Unicode
+171. Vilnius
+172. Voskresensky
+173. XCharter
+174. Xiaolai
+175. XITS
+176. Yozai
+177. Ysabeau
+178. Z003
+179. ztm
+180. Эвристика
+
+Учесть, что у некоторых шрифтов может не быть каких-то начертаний (italic), или bold может быть, но восприниматься как неявный.
+
+===== Получить список шрифтов из pdf =====
+
+''pdffonts "Test File.pdf"''
+
+Пример ответа:
+
+''BAAAAA+Aharoni-Bold                  TrueType          WinAnsi          yes yes yes   7230  0''
+''CAAAAA+Arial-BoldMT                  TrueType          WinAnsi          yes yes yes   7200  0''
+''DAAAAA+CourierNewPSMT                TrueType          WinAnsi          yes yes yes   7205  0''
+''EAAAAA+BookmanOldStyle               TrueType          WinAnsi          yes yes yes   7240  0''
+''FAAAAA+Verdana                       TrueType          WinAnsi          yes yes yes   7210  0''
+''GAAAAA+PalatinoLinotype-Roman        TrueType          WinAnsi          yes yes yes   7260  0''
+''HAAAAA+BookAntiqua                   TrueType          WinAnsi          yes yes yes   7220  0''
+''IAAAAA+TrebuchetMS                   TrueType          WinAnsi          yes yes yes   7265  0''
+''JAAAAA+Consolas                      TrueType          WinAnsi          yes yes yes   7170  0''
+''KAAAAA+LiberationMono                TrueType          WinAnsi          yes yes yes   7235  0''
+''LAAAAA+BookAntiqua-Bold              TrueType          WinAnsi          yes yes yes   7225  0''
+''MAAAAA+Calibri                       TrueType          WinAnsi          yes yes yes   7175  0''
+''NAAAAA+OpenSymbol                    TrueType          WinAnsi          yes yes yes   7245  0''
+''OAAAAA+Calibri-Italic                TrueType          WinAnsi          yes yes yes   7180  0''
+''PAAAAA+Calibri-Bold                  TrueType          WinAnsi          yes yes yes   7185  0''
+''QAAAAA+Verdana-Bold                  TrueType          WinAnsi          yes yes yes   7215  0''
+''RAAAAA+Consolas-Bold                 TrueType          WinAnsi          yes yes yes   7195  0''
+''SAAAAA+LiberationSans                TrueType          WinAnsi          yes yes yes   7250  0''
+''TAAAAA+Consolas-Italic               TrueType          WinAnsi          yes yes yes   7190  0''
+''UAAAAA+Calibri-BoldItalic            TrueType          WinAnsi          yes yes yes   7255  0''
+
+Из некоторых документов можно получить вот такой ответ:
+
+'''
+name                                 type              encoding         emb sub uni object ID
+------------------------------------ ----------------- ---------------- --- --- --- ---------
+ABIDJD+SFSX2074                      Type 1            Custom           yes yes yes    398  0
+HKHYHN+SFSS0500                      Type 1            Custom           yes yes yes    399  0
+LQWDQM+SFSO3583                      Type 1            Custom           yes yes yes    400  0
+TRGRAQ+SFSX3583                      Type 1            Custom           yes yes yes    401  0
+UBPHBT+SFTT1440                      Type 1            Custom           yes yes yes    402  0
+CKOVXX+SFCC1200                      Type 1            Custom           yes yes yes    403  0
+JWNNCU+SFSX0800                      Type 1            Custom           yes yes yes    405  0
+'''
+
+===== Извлечь шрифты из pdf =====
+
+''mutool extract файл.pdf''
+
+Появятся файлы встроенных в документ шрифтов (''ttf'' или ''pfa''), которые можно будет установить в систему.
+
+Или (не факт)
+
+''pdfdetach -saveall файл.pdf''
