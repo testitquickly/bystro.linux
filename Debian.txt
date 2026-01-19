@@ -19,6 +19,10 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 * [[+HowTo:Удалить]]
 
 (3)
-Настроить [[Software]] (большой список).
+Настроить [[Software]].
 
+(4)
+Настроить [[Hardware]].
+
+(5)
 Напоминалка о вреде излишней оптимизации: https://wiki.debian.org/DontBreakDebian

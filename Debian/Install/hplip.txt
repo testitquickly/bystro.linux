@@ -8,26 +8,38 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 „''hplip''” (HP Device Manager) — это общий набор драйверов и система управления для принтеров/сканеров HP.
 
-Возможно понадобится перезагрузить компьютер.
+Надо будет перезагрузить компьютер.
 
 ===== Установить =====
 
-До начала установки надо: 
-* отключить принтер от компьютера,
-* убедиться в том, что в ''/apt/sources.list'' нет установки ПО с установочного диска — нужны только сетевые ресурсы,
-* убедиться в том, что любые package management systems (YaST, Adept, Synaptic, Up2date, etc) не задействованы,
-* согласиться с тем, что в ходе установки будет установлен AppArmor.
+Надо: 
+* отключить принтер от компьютера
+* убедиться в том, что в ''/apt/sources.list'' нет установки ПО с установочного диска — нужны только сетевые ресурсы
+* убедиться в том, что любые package management systems (YaST, Adept, Synaptic, Up2date, etc) не задействованы
+* согласиться с тем, что в ходе установки будет установлен AppArmor
 
-На январь 2024 в HP Linux Imaging and Printing System (ver. 3.23.12) и HPLIP Installer ver. 5.1 наш «Debian 12» не поддерживается, к установке предлагается версия пакета для «Debian 11». Но это не проблема.
+Установить CUPS (Common Unix Printing System), используется для управления печатью на Linux:
+
+''sudo apt install cups''
+
+Запустить сервис CUPS (должен всегда загружаться вместе с системой):
+
+''sudo systemctl enable --now cups''
+''sudo systemctl start cups''
+
+Установить базовое ПО для сканирования:
+
+''sudo apt update && sudo apt install -y sane-utils libsane sane xsane''
 
 ===== Автоматическая установка =====
 
 1. https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
 2. выбрать «свой linux» из выпадающего списка,
-3. получить файл вроде „hplip-3.23.8.run”,
-4. сделать его выполняемым
+3. получить файл вроде „hplip-3.23.8.run”,\
+4. положить его в каталог, полный путь к которому НЕ содержит пробелы
+5. сделать его выполняемым
 	a. ''chmod u+x hplip-3.23.8.run''
-5. выполнить его согласно официальной [[https://developers.hp.com/hp-linux-imaging-and-printing/install/install/index|инструкции]].
+6. выполнить его согласно официальной [[https://developers.hp.com/hp-linux-imaging-and-printing/install/install/index|инструкции]].
 
 ''./hplip-3.23.8.run''
 или
@@ -59,7 +71,7 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 ''apt-get install -y policykit-1 policykit-1-gnome'' 
 
-''apt-get install -y python-dbus python-imaging python3-dev python3-pyqt5 python-qt4 python-qt4-dbus python-dev python-gobject python-notify python-reportlab python-is-python3 python-dev-is-python3 2to3''
+''apt-get install -y python-dbus python-imaging python3-dev python3-pyqt5 python-qt4 python-qt4-dbus python-gobject python-notify python-reportlab python-is-python3 python-dev-is-python3 2to3''
 
 В частности, раньше надо было ставить „gs-esp” и „libjpeg62-dev”, но они уже недоступны. Наличие пакета в репозитории проверяется через 
 
@@ -93,58 +105,73 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 ''su -c "/usr/sbin/usermod -a -G lp astenix"''
 
-Включить сервер печати CUPS: 
-
-''sudo systemctl enable --now cups''
-
-Reboot. Хотя не факт, что надо,
+Reboot.
 
 ===== Подключить принтер к компьютеру =====
 
-или к роутеру, включить его и на стороне ноута 
+==== Проверить группу юзера ====
+
+''id astenix''
+
+В ответе см: 
+
+''7(lp),114(lpadmin),118(scanner)''
+
+==== Сделать ручную настройку HP ====
+
+Не факт, что всё будет установлено как задумано, установочный скрипт hplip может быть заточен под ПО, которое уже не поддерживается (вроде PyQt4). Вызвать его ручную настройку в консоли:
+
+''hp-setup -i''
+
+После выполнения всех шагов в ''/etc/cups/ppd/'' появится файл с настройками принтера: ''*.ppd''
+
+==== Подключить принтер ====
 
 ''Параметры системы''
 ''> Оборудование''
 ''> Принтеры''
 
-обнаружить «новое сетевое устройство». 
+Если принтер подключен через роутер — указать его ip.
 
-В идеале новое устройство будет сконфигурировано — правильное название устройства и автоматически прописан путь к файлу ppd (там настройки). Можно выполнить тестовую печать.
+На шаге выбора драйверов выбрать путь к файлу ppd (настройки).
 
-Если нет — алярм, смотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
+Есть вероятность, что принтер уже был подключен через другой драйвер, например, driverless. Не факт, что это будет работать, поэтому 
+Настроить
+> Изменение принтера
+> Драйвер
+> Выбрать другой драйвер
+> Указать файл ppd
+Найти его в ''/etc/cups/ppd/'' 
 
-===== Сканирование =====
+Если можно выполнить тестовую печать — все гуд. Если нет — алярм, смотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
 
-Посмотреть доступные сканеры.
+==== Посмотреть доступные сканеры ====
 
 ''scanimage -L''
 
-Установить базовое ПО для сканирования:
+Условный ответ:
 
-''sudo apt update && sudo apt install sane-utils libsane sane xsane''
+'''
+device `hpaio:/net/hp_laserjet_tank_mfp_260x?ip=192.168.50.13&queue=false' is a Hewlett-Packard hp_laserjet_tank_mfp_260x all-in-one
+device `escl:https://192.168.50.13:443' is a HP LaserJet Tank MFP 2602dn (0483F1) platen scanner
+'''
 
 Вызвать ''xsane'', найти устройство (подразумевается что сетевой МФУ будет работать через ''airscan'') и выполнить тестовое сканирование.
 
-Если не нравится базовый ''xsane'':
-* “Skanlite” is an Image Scanning Application - for single pages it's fine.
-* “Skanpage” is a Multi-Page document scanning application.
-* “Simple-scan” for Gnome is also fine (работает и в KDE)
+Если не нравится ''xsane'':
+* “Skanlite” — базовое сканирование
+* “Skanpage” — для создания многостраничных документов
+* “Simple-scan” — для Gnome, но работает и в KDE
 
-''sudo apt-get install skanlite skanpage simple-scan''
+''sudo apt install skanlite skanpage simple-scan''
 
-===== Удаленное управление =====
+==== Удаленное управление ====
 
 ''sudo apt install hplip hplip-gui''
 
 При установке спросят, чьи настройки применять — того ''hplip'', который уже установлен, или нового.
 
-==== Добавление устройства через CUPS ====
-
-CUPS (Common Unix Printing System) используется для управления печатью на Linux. Убедитесь в том, что CUPS установлен и запущен:
-
-''sudo apt install cups''
-''sudo systemctl enable cups''
-''sudo systemctl start cups''
+===== Добавление устройства через CUPS =====
 
 Откройте веб-интерфейс CUPS в браузере:
 
