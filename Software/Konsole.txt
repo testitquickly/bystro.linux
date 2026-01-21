@@ -130,7 +130,7 @@ Creation-Date: 2022-02-22T14:57:53+02:00
 
 ===== Цветной терминал =====
 
-См. http://rus-linux.net/nlib.php?name=/MyLDP/consol/color-ru.html
+См. http://rus-linux.net/nlib.php?name=/MyLDP/consol/color-ru.html и [[Debian:HowTo:Настроить:Цветной терминал]]
 
 Занести все эти команды в файл ''/~/.bashrc''.
 
