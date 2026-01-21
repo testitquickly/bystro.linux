@@ -1,0 +1,386 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-21T04:04:32+02:00
+
+====== Список алиасов из .bashrc ======
+
+[ @console @bashrc @alias ]
+
+В каталоге со скриптами сделать ''bashrc_displayVariables.sh'' с таким содержимым:
+
+{{{code: lang="sh" linenumbers="True"
+#!/bin/bash
+
+input_file="$HOME/.bashrc"
+tmp_file="/tmp/bashrc_displayVariables.tmp"
+
+# -----------------------------------------
+# Очищаем tmp_file и копируем туда исходный файл
+# -----------------------------------------
+clear_tmp_file() {
+    : > "$tmp_file"
+    tail -n +101 "$input_file" > "$tmp_file"
+}
+
+# -----------------------------------------
+# Функция: обрабатывает tmp_file, находит заголовки "# --- ТЕКСТ",
+# добавляет пустую строку перед каждым заголовком,
+# собирает строки секции, игнорирует комментарии, пустые строки и export,
+# сортирует строки секции и записывает результат обратно в tmp_file
+# -----------------------------------------
+search_sections() {
+    local tmp_edit="/tmp/bashrc_displayVariables.sections.tmp"
+    : > "$tmp_edit"
+
+    local current_header=""
+    local section_lines=()
+
+    while IFS= read -r line; do
+        # ищем заголовок вида "# --- ТЕКСТ" (не только дефисы)
+        if [[ "$line" =~ ^#\ ---[[:space:]]*(.*[^[:space:]-]) ]]; then
+            # если есть предыдущая секция — сортируем и записываем
+            if [[ -n "$current_header" && "${#section_lines[@]}" -gt 0 ]]; then
+                printf "%s\n" "${section_lines[@]}" >> "$tmp_edit"
+                section_lines=()
+            fi
+
+            current_header="${BASH_REMATCH[1]}"
+            echo "" >> "$tmp_edit"                  # пустая строка перед заголовком
+            echo "[ $current_header ]" >> "$tmp_edit"
+            continue
+        fi
+
+        # игнорируем пустые строки
+        [[ -z "$line" ]] && continue
+
+        # игнорируем строки, которые начинаются с комментария
+        [[ "$line" =~ ^[[:space:]]*# ]] && continue
+       # [[ "$line" =~ ^export[[:space:]] ]] && continue
+
+        # если текущая секция существует — добавляем строку
+        if [[ -n "$current_header" ]]; then
+            section_lines+=("$line")
+        fi
+    done < "$tmp_file"
+
+    # записываем последнюю секцию
+    if [[ -n "$current_header" && "${#section_lines[@]}" -gt 0 ]]; then
+        printf "%s\n" "${section_lines[@]}" >> "$tmp_edit"
+    fi
+
+    # заменяем tmp_file на результат
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+# -----------------------------------------
+# Функция: ищет строки source $MY_SCRIPTS/*.sh
+# Читает указанный скрипт, извлекает названия функций и комментарии над ними
+# Игнорирует source для ollama_drive и myTodo
+# Заменяет строку source на список функций с комментариями
+# -----------------------------------------
+search_sourced_functions() {
+    tmp_edit="${tmp_file}.sourced"
+    : > "$tmp_edit"
+
+    while IFS= read -r line; do
+        # игнорируем ollama_drive.sh и myTodo.sh
+        if [[ "$line" =~ \$MY_SCRIPTS/(ollama_drive|myTodo)\.sh ]]; then
+            echo "$line" >> "$tmp_edit"
+            continue
+        fi
+
+        local MY_SCRIPTS=/home/mySettings/myScripts
+
+        # ищем строки source $MY_SCRIPTS/*.sh
+        if [[ "$line" =~ source[[:space:]]+\$MY_SCRIPTS/([^[:space:]]+\.sh) ]]; then
+            script_file="$MY_SCRIPTS/${BASH_REMATCH[1]}"
+            if [[ -f "$script_file" ]]; then
+                prev_comment=""
+                while IFS= read -r sline; do
+                    # комментарий над функцией
+                    if [[ "$sline" =~ ^[[:space:]]*#(.*)$ ]]; then
+                        prev_comment="${BASH_REMATCH[1]}"
+                        prev_comment="${prev_comment#"${prev_comment%%[![:space:]]*}"}"  # убираем leading пробелы
+                        continue
+                    fi
+                    # объявление функции
+                    if [[ "$sline" =~ ^([a-zA-Z0-9_]+)[[:space:]]*\(\) ]]; then
+                        func_name="${BASH_REMATCH[1]}"
+                        if [[ -n "$prev_comment" ]]; then
+                            echo "$func_name # $prev_comment" >> "$tmp_edit"
+                        else
+                            echo "$func_name" >> "$tmp_edit"
+                        fi
+                        prev_comment=""
+                    fi
+                done < "$script_file"
+            fi
+            continue
+        fi
+
+        # оставляем остальные строки без изменений
+        echo "$line" >> "$tmp_edit"
+    done < "$tmp_file"
+
+    # заменяем tmp_file на результат
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+# -----------------------------------------
+# Извлекаем строки внутри разделов
+# Игнорируем пустые строки, комментарии, строки export
+# Оставляем только строки вида "код # комментарий"
+# -----------------------------------------
+search_lines_with_comments() {
+    tmp_edit="${tmp_file}.lines"
+    : > "$tmp_edit"
+
+    section_lines=()
+    inside_section=0
+
+    while IFS= read -r line; do
+        # если это заголовок секции, записываем предыдущую секцию и сам заголовок
+        if [[ "$line" =~ ^\[.*\]$ ]]; then
+            if [[ ${#section_lines[@]} -gt 0 ]]; then
+                # сортируем строки
+                printf "%s\n" "${section_lines[@]}"  >> "$tmp_edit"
+                section_lines=()
+            fi
+            # пустая строка перед заголовком
+            echo "" >> "$tmp_edit"
+            echo "$line" >> "$tmp_edit"
+            inside_section=1
+            continue
+        fi
+
+        # пропускаем всё до первого заголовка
+        [[ $inside_section -eq 0 ]] && continue
+
+        # удаляем пустые строки
+        [[ -z "$line" ]] && continue
+
+        # игнорируем строки, которые начинаются с # или с пробелов/табов + #
+        [[ "$line" =~ ^[[:space:]]*# ]] && continue
+
+        # игнорируем строки, которые начинаются с export + пробел
+        [[ "$line" =~ ^export[[:space:]] ]] && continue
+
+        # оставляем только строки вида "код # комментарий"
+        if [[ "$line" =~ ^[^[:space:]#].*#.* ]]; then
+            section_lines+=("$line")
+        fi
+    done < "$tmp_file"
+
+    # записываем последнюю секцию
+    if [[ ${#section_lines[@]} -gt 0 ]]; then
+        printf "%s\n" "${section_lines[@]}"  >> "$tmp_edit"
+    fi
+
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+# -----------------------------------------
+# Обработка простых алиасов вида alias name='...' # comment
+# Также отдельная обработка складских алиасов
+# -----------------------------------------
+search_simple_aliases() {
+    tmp_edit="${tmp_file}.alias"
+    : > "$tmp_edit"
+
+    while IFS= read -r line; do
+        # специальные алиасы для Docker
+        if [[ "$line" =~ ^alias[[:space:]]+sklad- ]]; then
+            [[ "$line" =~ \#(.*)$ ]] && echo "sklad- #${BASH_REMATCH[1]}" >> "$tmp_edit"
+            continue
+        elif [[ "$line" =~ ^alias[[:space:]]+sklad\+ ]]; then
+            [[ "$line" =~ \#(.*)$ ]] && echo "sklad+ #${BASH_REMATCH[1]}" >> "$tmp_edit"
+            continue
+        fi
+
+        # алиасы вида alias name="..." # comment с двойными кавычками (myvars и подобные)
+        if [[ "$line" =~ ^alias[[:space:]]+([a-zA-Z0-9_+-]+)=\"[^\"]*\"[[:space:]]*#(.*)$ ]]; then
+            alias_name="${BASH_REMATCH[1]}"
+            alias_comment="${BASH_REMATCH[2]}"
+            echo "$alias_name #${alias_comment}" >> "$tmp_edit"
+            continue
+        fi
+
+        # стандартные алиасы с одинарными кавычками
+        if [[ "$line" =~ ^alias[[:space:]]+([a-zA-Z0-9_+-]+)=\'[^\']*\'[[:space:]]*#(.*)$ ]]; then
+            echo "${BASH_REMATCH[1]} #${BASH_REMATCH[2]}" >> "$tmp_edit"
+        else
+            echo "$line" >> "$tmp_edit"
+        fi
+    done < "$tmp_file"
+
+    mv "$tmp_edit" "$tmp_file"
+}
+
+# -----------------------------------------
+# Обработка "сложных" алиасов с двойными кавычками
+# Например: huion-browser, huion-gimp и т.д.
+# -----------------------------------------
+search_sofisticated_aliases() {
+    tmp_edit="${tmp_file}.sof"
+    : > "$tmp_edit"
+
+    while IFS= read -r line; do
+        if [[ "$line" =~ ^alias[[:space:]]+([a-zA-Z0-9_+-]+)=['\"].*['\"]\s*#\s*(.*)$ ]]; then
+            echo "${BASH_REMATCH[1]} # ${BASH_REMATCH[2]}" >> "$tmp_edit"
+            continue
+        fi
+        echo "$line" >> "$tmp_edit"
+    done < "$tmp_file"
+
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+# -----------------------------------------
+# Функция: преобразует конструкции вида
+# for i in a b c; do alias $i='cmd'; done # комментарий
+# в
+# a (b, c) # комментарий
+# -----------------------------------------
+search_cloned_aliases() {
+    tmp_edit="${tmp_file}.clonedalias"
+    : > "$tmp_edit"
+
+    while IFS= read -r line; do
+        # Только строки, которые начинаются с "for i in "
+        if [[ "$line" =~ ^for[[:space:]]+i[[:space:]]+in[[:space:]]+ ]]; then
+            # Берём часть до первой ;
+            prefix="${line%%;*}"
+
+            # Убираем "for i in "
+            prefix="${prefix#for i in }"
+
+            # Разбиваем на первое слово и остальные
+            read -r first_word rest <<< "$prefix"
+
+            # Формируем остаток в скобках, если есть
+            if [[ -n "$rest" ]]; then
+                rest_formatted="/${rest// /, }/"
+            else
+                rest_formatted=""
+            fi
+
+            # Получаем комментарий после #
+            comment=""
+            if [[ "$line" =~ \#(.*)$ ]]; then
+                comment="#${BASH_REMATCH[1]}"
+            fi
+
+            # Записываем результат с четырьмя пробелами отступа
+            echo "$first_word $rest_formatted $comment" >> "$tmp_edit"
+        else
+            # Остальные строки оставляем без изменений
+            echo "$line" >> "$tmp_edit"
+        fi
+    done < "$tmp_file"
+
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+# -----------------------------------------
+# Функция: сортирует строки внутри каждой секции
+# Заголовки [ ... ] и пустые строки сохраняются на месте
+# -----------------------------------------
+sort_lines_under_each_section() {
+    tmp_edit="${tmp_file}.sorted"
+    : > "$tmp_edit"
+
+    current_header=""
+    section_lines=()
+
+    while IFS= read -r line; do
+        # если заголовок секции
+        if [[ "$line" =~ ^\[.*\] ]]; then
+            # записываем предыдущую секцию
+            if [[ "${#section_lines[@]}" -gt 0 ]]; then
+                # сортируем по первому слову (до пробела или #)
+                printf "%s\n" "${section_lines[@]}" | sort -k1,1 | while IFS= read -r sorted_line; do
+                    echo "   $sorted_line" >> "$tmp_edit"
+                done
+                section_lines=()
+            fi
+
+            echo "" >> "$tmp_edit"  # пустая строка перед заголовком
+            echo "$line" >> "$tmp_edit"
+            continue
+        fi
+
+        # пропускаем пустые строки
+        [[ -z "$line" ]] && continue
+
+        # собираем строки секции
+        section_lines+=("$line")
+    done < "$tmp_file"
+
+    # записываем последнюю секцию
+    if [[ "${#section_lines[@]}" -gt 0 ]]; then
+        printf "%s\n" "${section_lines[@]}" | sort -k1,1 | while IFS= read -r sorted_line; do
+            echo "   $sorted_line" >> "$tmp_edit"
+        done
+    fi
+
+    # заменяем tmp_file на результат
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+# -----------------------------------------
+# Функция: окрашивает комментарии после # в оранжевый цвет
+# -----------------------------------------
+highlight_comments() {
+    tmp_edit="${tmp_file}.highlighted"
+    : > "$tmp_edit"
+
+    while IFS= read -r line; do
+        # если строка содержит #
+        if [[ "$line" =~ ^([^#]*)#(.*)$ ]]; then
+            code_part="${BASH_REMATCH[1]}"   # всё до #
+            comment_part="#${BASH_REMATCH[2]}" # # и всё после него
+
+            # цвет ANSI
+#             color="\033[38;5;208m" # оранжевый
+#             color="\033[38;5;215m" # слабый оранжевый
+#             color="\033[38;5;222m" # очень слабый оранжевый, почти желтый
+            color="\033[38;5;215m" # янтарь
+            reset="\033[0m"
+
+            echo -e "${code_part}${color}${comment_part}${reset}" >> "$tmp_edit"
+        else
+            echo "$line" >> "$tmp_edit"
+        fi
+    done < "$tmp_file"
+
+    mv "$tmp_edit" "$tmp_file"
+}
+
+
+
+# -----------------------------------------
+# Запуск всех функций по порядку
+# -----------------------------------------
+clear_tmp_file
+search_sections
+search_sourced_functions
+search_lines_with_comments
+search_simple_aliases
+search_sofisticated_aliases
+search_cloned_aliases
+sort_lines_under_each_section
+highlight_comments
+
+# -----------------------------------------
+# Вывод результата на экран
+# -----------------------------------------
+cat "$tmp_file"
+
+
+}}}
