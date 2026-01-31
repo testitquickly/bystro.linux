@@ -28,7 +28,7 @@ clear_tmp_file() {
 # собирает строки секции, игнорирует комментарии, пустые строки и export,
 # сортирует строки секции и записывает результат обратно в tmp_file
 # -----------------------------------------
-search_sections() {
+search_section_titles() {
     local tmp_edit="/tmp/bashrc_displayVariables.sections.tmp"
     : > "$tmp_edit"
 
@@ -74,7 +74,7 @@ search_sections() {
 
 
 # -----------------------------------------
-# Функция: ищет строки source $MY_SCRIPTS/*.sh
+# Функция: ищет строки source $MY_SCRIPTS/*.sh или *.fn
 # Читает указанный скрипт, извлекает названия функций и комментарии над ними
 # Игнорирует source для ollama_drive и myTodo
 # Заменяет строку source на список функций с комментариями
@@ -85,7 +85,7 @@ search_sourced_functions() {
 
     while IFS= read -r line; do
         # игнорируем ollama_drive.sh и myTodo.sh
-        if [[ "$line" =~ \$MY_SCRIPTS/(ollama_drive|myTodo)\.sh ]]; then
+        if [[ "$line" =~ \$MY_SCRIPTS/(ollama_drive|myTodo)\.fn ]]; then
             echo "$line" >> "$tmp_edit"
             continue
         fi
@@ -93,7 +93,7 @@ search_sourced_functions() {
         local MY_SCRIPTS=/home/mySettings/myScripts
 
         # ищем строки source $MY_SCRIPTS/*.sh
-        if [[ "$line" =~ source[[:space:]]+\$MY_SCRIPTS/([^[:space:]]+\.sh) ]]; then
+        if [[ "$line" =~ source[[:space:]]+\$MY_SCRIPTS/([^[:space:]]+\.fn) ]]; then
             script_file="$MY_SCRIPTS/${BASH_REMATCH[1]}"
             if [[ -f "$script_file" ]]; then
                 prev_comment=""
@@ -223,7 +223,7 @@ search_simple_aliases() {
 # Обработка "сложных" алиасов с двойными кавычками
 # Например: huion-browser, huion-gimp и т.д.
 # -----------------------------------------
-search_sofisticated_aliases() {
+search_complex_aliases() {
     tmp_edit="${tmp_file}.sof"
     : > "$tmp_edit"
 
@@ -285,6 +285,34 @@ search_cloned_aliases() {
     mv "$tmp_edit" "$tmp_file"
 }
 
+
+# -----------------------------------------
+# Функция: преобразует конструкции вида
+# dvg() { dv | grep "$@"; } # заменяет “| grep”
+# в
+# dvg # комментарий
+# -----------------------------------------
+search_functioned_aliases() {
+    tmp_edit="${tmp_file}.funcedalias"
+    : > "$tmp_edit"
+
+    while IFS= read -r line; do
+            # матчим любую функцию с комментарием
+        if [[ $line =~ ^([a-zA-Z_][a-zA-Z0-9_]*)\(\).*#(.+)$ ]]; then
+            fname="${BASH_REMATCH[1]}"
+            comment="${BASH_REMATCH[2]}"
+            echo "$fname #$comment" >> "$tmp_edit"
+
+                    # Записываем результат с четырьмя пробелами отступа
+            echo "$first_word $rest_formatted $comment" >> "$tmp_edit"
+        else
+            # Остальные строки оставляем без изменений
+            echo "$line" >> "$tmp_edit"
+        fi
+    done < "$tmp_file"
+
+    mv "$tmp_edit" "$tmp_file"
+}
 
 # -----------------------------------------
 # Функция: сортирует строки внутри каждой секции
@@ -368,12 +396,13 @@ highlight_comments() {
 # Запуск всех функций по порядку
 # -----------------------------------------
 clear_tmp_file
-search_sections
+search_section_titles
 search_sourced_functions
 search_lines_with_comments
 search_simple_aliases
-search_sofisticated_aliases
+search_complex_aliases
 search_cloned_aliases
+search_functioned_aliases
 sort_lines_under_each_section
 highlight_comments
 
@@ -382,6 +411,7 @@ highlight_comments
 # -----------------------------------------
 cat "$tmp_file"
 
+echo " "
 
 }}}
 
