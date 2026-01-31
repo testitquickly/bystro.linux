@@ -61,24 +61,26 @@ Creation-Date: 2025-10-28T04:38:26+02:00
 ''mcedit ~/.config/mpv/input.conf''
 
 ''# Смена аудиодорожки''
-''Ctrl+1 cycle audio 1''
-''Ctrl+2 cycle audio -1''
+''Ctrl+1 cycle audio -1''
+''Ctrl+2 cycle audio 1''
+
+Логика в том, как двигается ползунок: Ctrl+1 как движение влево (уменьшение), а Ctrl+2 как движение вправо (увеличение).
 
 === Смена субтитров ===
 
 ''mcedit ~/.config/mpv/input.conf''
 
 ''# Смена субтитров''
-''Ctrl+3 cycle sub 1''
-''Ctrl+4 cycle sub -1''
+''Ctrl+3 cycle sub -1''
+''Ctrl+4 cycle sub 1''
 
 === Изменение размера субтитров ===
 
 ''mcedit ~/.config/mpv/input.conf''
 
 ''# Изменение размера субтитров''
-''Ctrl+5 add sub-font-size 6''
-''Ctrl+6 add sub-font-size -6''
+''Ctrl+5 add sub-font-size -6''
+''Ctrl+6 add sub-font-size 6''
 
 === Скриншоты ===
 
