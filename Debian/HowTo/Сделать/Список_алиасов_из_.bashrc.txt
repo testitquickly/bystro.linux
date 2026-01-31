@@ -4,7 +4,7 @@ Creation-Date: 2026-01-21T04:04:32+02:00
 
 ====== Список алиасов из .bashrc ======
 
-[ @console @bashrc @alias ]
+[ @console @bashrc @alias @images ]
 
 В каталоге со скриптами сделать ''bashrc_displayVariables.sh'' с таким содержимым:
 
@@ -384,3 +384,7 @@ cat "$tmp_file"
 
 
 }}}
+
+Результат:
+
+{{../../../../images/konsole_display_variables.png}}

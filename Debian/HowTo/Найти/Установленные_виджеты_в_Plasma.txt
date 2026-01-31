@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-01-31T07:45:40+02:00
+
+====== Установленные виджеты в Plasma ======
+
+[ @console @find @plasma @widget ]
+
+''grep -R "plugin=" ~/.config/plasma-org.kde.plasma.desktop-appletsrc | sort -u''
+
+Пример ответа:
+
+{{{code: lang="sh" linenumbers="True"
+plugin=com.github.zren.todolist
+plugin=org.kde.kscreen
+plugin=org.kde.panel
+plugin=org.kde.plasma.battery
+plugin=org.kde.plasma.bluetooth
+plugin=org.kde.plasma.clipboard
+plugin=org.kde.plasma.devicenotifier
+plugin=org.kde.plasma.digitalclock
+plugin=org.kde.plasma.eventcalendar
+plugin=org.kde.plasma.folder
+plugin=org.kde.plasma.icon
+plugin=org.kde.plasma.keyboardindicator
+plugin=org.kde.plasma.keyboardlayout
+plugin=org.kde.plasma.kicker
+plugin=org.kde.plasma.manage-inputmethod
+plugin=org.kde.plasma.marginsseparator
+plugin=org.kde.plasma.networkmanagement
+plugin=org.kde.plasma.nightcolorcontrol
+plugin=org.kde.plasma.notes
+plugin=org.kde.plasma.notifications
+plugin=org.kde.plasma.pager
+plugin=org.kde.plasma.printmanager
+plugin=org.kde.plasma.private.systemtray
+plugin=org.kde.plasma.systemmonitor.diskusage
+plugin=org.kde.plasma.systemtray
+plugin=org.kde.plasma.taskmanager
+plugin=org.kde.plasma.volume
+plugin=org.kde.plasma.weather
+plugin=touchpad
+wallpaperplugin=org.kde.image
+}}}
