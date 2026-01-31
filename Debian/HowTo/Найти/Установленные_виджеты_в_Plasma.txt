@@ -42,3 +42,9 @@ plugin=org.kde.plasma.weather
 plugin=touchpad
 wallpaperplugin=org.kde.image
 }}}
+
+===== Где проверять их версии =====
+
+* Метаданные виджета — файл metadata.json, поле X-Plasma-API и KPackageStructure.
+* KDE Store (store.kde.org) — страница конкретного виджета, раздел Files / Plasma 6.
+* Репозиторий виджета (GitHub/GitLab) — ветка plasma6, kf6 или теги с пометкой Plasma 6.
