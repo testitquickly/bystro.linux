@@ -63,15 +63,17 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 Можно выполнить всё в одной строке, но со временем то одно отпадает, то другое, поэтому лучше выполнять их по-отдельности. Вероятно, какие-то из перечисленных пакетов отсутствуют. Прочитать ответ и принять решение по каждому.
 
-''apt-get install build-essential''
+''apt install build-essential''
 
-''apt-get install -y libavahi-core-dev libavahi-client-dev libcups2 libcups2-dev cups-bsd cups-client libcupsimage2 libcupsimage2-dev libdbus-1-dev g++ libssl-dev libjpeg62-turbo-dev libsnmp-dev libc6 libtool libusb-1.0-0-dev''
+''apt install -y libavahi-core-dev libavahi-client-dev libcups2 libcups2-dev cups-bsd cups-client libcupsimage2 libcupsimage2-dev libdbus-1-dev g++ libssl-dev libjpeg62-turbo-dev libsnmp-dev libc6 libtool libusb-1.0-0-dev''
 
-''apt-get install -y libsane-dev sane-utils sane xsane''
+''apt install -y libsane-dev sane-utils sane xsane''
 
-''apt-get install -y policykit-1 policykit-1-gnome'' 
+''apt install -y policykit-1 policykit-1-gnome'' 
 
-''apt-get install -y python-dbus python-imaging python3-dev python3-pyqt5 python-qt4 python-qt4-dbus python-gobject python-notify python-reportlab python-is-python3 python-dev-is-python3 2to3''
+''apt install -y python-dbus python-imaging python3-dev python3-pyqt5 python-qt4 python-qt4-dbus python-gobject python-notify python-reportlab python-is-python3 python-dev-is-python3 2to3''
+
+''sudo apt install colord icc-profiles''
 
 В частности, раньше надо было ставить „gs-esp” и „libjpeg62-dev”, но они уже недоступны. Наличие пакета в репозитории проверяется через 
 
@@ -133,6 +135,8 @@ Reboot.
 
 Если принтер подключен через роутер — указать его ip.
 
+implicitclass://HP_LaserJet_Tank_MFP_2602dn_0483F1/
+
 На шаге выбора драйверов выбрать путь к файлу ppd (настройки).
 
 Есть вероятность, что принтер уже был подключен через другой драйвер, например, driverless. Не факт, что это будет работать, поэтому 
@@ -144,6 +148,49 @@ Reboot.
 Найти его в ''/etc/cups/ppd/'' 
 
 Если можно выполнить тестовую печать — все гуд. Если нет — алярм, смотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
+
+=== Переименовать текущий принтер ===
+
+Узнать полный путь к принтеру:
+
+''lpstat -v HP_LaserJet_Tank_MFP_2602dn_0483F1''
+
+Пример ответа:
+
+'''
+устройство для HP_LaserJet_Tank_MFP_2602dn_0483F1: implicitclass://HP_LaserJet_Tank_MFP_2602dn_0483F1/
+'''
+
+Задать новое имя принтера и сразу скопировать настройки от существующего:
+
+''sudo lpadmin -p HP_2602dn -v'' [[socket://192.168.1.13|''socket://192.168.1.13'']] ''-E -P /etc/cups/ppd/HP_LaserJet_Tank_MFP_2602dn_0483F1.ppd''
+
+
+''sudo lpadmin -p HP_2602dn -v $(lpstat -v HP_LaserJet_Tank_MFP_2602dn_0483F1 | awk '{print $3}') -E -P /etc/cups/ppd/HP_LaserJet_Tank_MFP_2602dn_0483F1.ppd''
+
+Удалить старое имя
+
+''sudo lpadmin -x HP_LaserJet_Tank_MFP_2602dn_0483F1''  
+
+Проверить результат:
+
+''lpstat -p | awk '{print $2}'''
+
+==== Утилита управления принтерами ====
+
+''sudo apt install hplip hplip-gui''
+
+==== Открыть управление принтерами ====
+
+http://localhost:631/
+
+Логин-пароль: от своего юзера.
+
+Выберите Printers → ваш принтер HP MFP 2602dn → Administration → Set Default Options
+
+В разделе Color Options (или Color Management) ищите Color Profile или Output Profile.
+
+Если поле пустое, укажите путь к вашему ICC-профилю или выберите профиль из списка.
 
 ==== Посмотреть доступные сканеры ====
 
@@ -164,12 +211,6 @@ device `escl:https://192.168.50.13:443' is a HP LaserJet Tank MFP 2602dn (0483F1
 * “Simple-scan” — для Gnome, но работает и в KDE
 
 ''sudo apt install skanlite skanpage simple-scan''
-
-==== Удаленное управление ====
-
-''sudo apt install hplip hplip-gui''
-
-При установке спросят, чьи настройки применять — того ''hplip'', который уже установлен, или нового.
 
 ===== Добавление устройства через CUPS =====
 
