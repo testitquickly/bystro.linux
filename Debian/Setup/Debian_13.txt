@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-03T21:25:00+02:00
+
+====== Debian 13 ======
+
+[ @debian_13 ]
+
+Это можно поставить и c установочного диска Debian. Из-под root:
+
+{{{code: lang="sh" linenumbers="True"
+apt install aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename krusader make mc mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp tellico vlc vsftpd wget xsensors zim 
+}}}
+
+В Debian 13 отключена возможность ставить пакет ''software-properties-common'', потому что он тянет за собой Python-зависимости и сторонние PPA-механизмы, которые могут нарушить стабильность системы. Вместо этого Debian рекомендует использовать apt напрямую (/etc/apt/sources.list и /etc/apt/sources.list.d/) для добавления репозиториев, без PPA и скриптов add-apt-repository.
+
+{{{code: lang="sh" linenumbers="True"
+sudo apt update && sudo apt install rar unrar ethtool gir1.2-gtksource-4 iputils-ping iw smartmontools nvme-cli xdot wakeonlan -y && sudo apt upgrade -y
+}}}

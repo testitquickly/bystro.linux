@@ -6,8 +6,12 @@ Creation-Date: 2025-09-25T03:09:04+03:00
 
 [ @debian @install @diagram @mermaid @images ]
 
-	*todo установка Mermaid !!!
+В Zim можно включить Mermaid через плагин https://github.com/zim-plugins/insert_mermaid Но сперва надо установить окружение:
 
-В Zim можно включить Mermaid через плагин https://github.com/zim-plugins/insert_mermaid
-	
+https://github.com/mermaid-js/mermaid-cli
+
+Затем через утилиту ''mmcd'' в [[Software:Zim]] станет доступным и модуль для MermaidJS.
+
+Не факт, что надо городить диаграммы Mermaid на десктопе при наличии [[GraphViz]], потому что Mermaid изначально был сделан для отображения в браузере.
+
 См. [[Software:Mermaid JS]]

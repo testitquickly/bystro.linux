@@ -10,7 +10,7 @@ Creation-Date: 2025-12-20T04:52:51+02:00
 
 Установить PipeWire и заодно включить ему BlueTooth.
 
-* pipewire-pulse — замена PulseAudio. Его установка удалит и pulseaudio, и pulseaudio-bluetooth, поэтому пакеты для BT надо будет установить отдельно.
+* pipewire-pulse — замена PulseAudio. Его установка удалит и pulseaudio, и pulseaudio-bluetooth, поэтому пакеты для BlueTooth надо будет установить отдельно.
 * pipewire-alsa — не нужен, если в системе будет pipeware-pulse, но может быть нужным старым приложениям, которые управляют звуком для PipeWire через ALSA API. Надо будет удалить pulseaudio-alsa.
 * pipewire-jack — для роутинга звука через JACK.
 
@@ -32,5 +32,7 @@ Creation-Date: 2025-12-20T04:52:51+02:00
 ''astenix     1933  0.9  0.2  80044 31632 ?        S<Lsl 04:56   0:08 /usr/bin/pipewire-pulse''
 ''astenix     3156  0.2  1.4 2047520 226380 ?      Sl   04:57   0:01 /usr/bin/systemsettings kcm_pulseaudio''
 ''astenix     4787  0.0  0.0   6364  2260 pts/0    S+   05:10   0:00 grep -E pipewire|pulseaudio''
+
+Ещё можно установить [[Software:Easy Effects]]
 
 См. [[Software:PipeWire]]

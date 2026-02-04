@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-03T22:00:21+02:00
+
+====== Debian 13 ======
+
+[ @debian_13 ]
+
+*todo Deb 13 sources !!!
+
+Тут тоже работает общий файл sources.list, но уже объявлен переезд на стандарт ''DEB822''. 
+
+ etc/apt/sources.list.d/ 
+вместо файла ''sources.list'' надо использовать файл ''debian.sources''
+
+Формат DEB822 выглядит так:
+
+Types: deb
+URIs: https://deb.debian.org/debian/
+Suites: stable
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+

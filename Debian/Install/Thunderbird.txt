@@ -25,8 +25,8 @@ https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 ===== Распаковать архив =====
 '''
 
-tar -jxvf thunderbird*
 '''
+''tar -jxvf thunderbird*''
 
 Появляется каталог „thunderbird” с файлами браузера внутри. 
 
@@ -38,9 +38,7 @@ tar -jxvf thunderbird*
 
 ===== Дать права своему пользователю на изменения в каталоге /opt =====
 
-'''
-sudo chown -R astenix:sudo /opt/thunderbird && sudo chmod 750 /opt/thunderbird
-'''
+''sudo chown -R astenix:sudo /opt/thunderbird && sudo chmod 750 /opt/thunderbird''
 
 ==== Сделать symbolic link на thunderbird ====
 

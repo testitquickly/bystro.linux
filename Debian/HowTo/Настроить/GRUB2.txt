@@ -54,9 +54,7 @@ GRUB_DISABLE_OS_PROBER=false
 
 ===== Сохранить изменения =====
 
-'''
-sudo update-grub
-'''
+''sudo update-grub''
 
 Пример ожидаемого ответа:
 

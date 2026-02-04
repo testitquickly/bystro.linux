@@ -32,9 +32,7 @@ https://www.dropbox.com/install — скачивание архива с уст�
 
 Сперва демон, затем GUI
 
-'''
-~/.dropbox-dist/dropboxd && sleep 5; ~/.dropbox-dist/dropbox.py start
-'''
+''~/.dropbox-dist/dropboxd && sleep 5; ~/.dropbox-dist/dropbox.py start''
 
 и настроить подключение к аккаунту Dropbox. Например, сделать вход, настроить количество [[https://www.dropbox.com/account/security?_tk=account_menu|подключенных устройств]].
 

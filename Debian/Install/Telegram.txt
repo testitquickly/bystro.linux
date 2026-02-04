@@ -10,9 +10,7 @@ Creation-Date: 2023-10-22T23:14:01+03:00
 
 Стоит попробовать для начала, потому что проще поставить и меньше влияния на систему. Должно работать легко и просто, на деле — не факт. Если начнёт непредсказуемо падать — удалить тоже через [[Software:flatpak]]
 
-'''
-flatpak install flathub org.telegram.desktop && flatpak run org.telegram.desktop
-'''
+''flatpak install flathub org.telegram.desktop && flatpak run org.telegram.desktop''
 
 ==== Найти файл telegram.desktop ====
 
