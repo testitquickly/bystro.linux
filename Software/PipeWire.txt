@@ -16,7 +16,7 @@ A low-level multimedia framework. Полностью заменяет PulseAudio
 
 ===== Установить =====
 
-[[Debian:Install:PipeWire]]
+* [[Debian:Install:PipeWire]]
 
 ===== Настроить =====
 
