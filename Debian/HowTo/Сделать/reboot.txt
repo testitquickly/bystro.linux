@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-02-22T15:29:55+02:00
 
-====== reboot компьютер ======
+====== reboot ======
 
 [ @console ]
 

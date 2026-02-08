@@ -31,17 +31,15 @@ Save.
 
  ''source ~/.profile''
 
-===== Где искать софт =====
-
-https://flathub.org/
-
-===== Установить ПО через flatpak в консоли =====
-
-Добавить репозиторий для Flatpak
+===== Добавить репозиторий для Flatpak =====
 
 Чтобы получить возможность ставить ПО через flatpak из консоли, выполнить
 
 ''flatpak remote-add --if-not-exists flathub'' ''https://flathub.org/repo/flathub.flatpakrepo''
+
+Дальше смотреть/искать нужное ПО на https://flathub.org/
+
+===== Установить ПО через flatpak в консоли =====
 
 После этого можно искать софт в терминале, как через aptitude. Обратить внимание, что софт можно искать довольно безалаберно, без жесткой точности в названии, но устанавливать можно только с повышенной точностью к именам, точнее, к 'ApplicationID'.
 
@@ -53,4 +51,4 @@ https://flathub.org/
 
 ''flatpak update''
 
-См. [[Software:flatpak]]
+См. [[Software:Flatpak]]

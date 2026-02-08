@@ -6,70 +6,52 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [ @main ]
 
-===== A =====
+[[+ab]] # Apache Benchmarking 
+[[+Audacious]] # аудиоплеер
+[[+Audacity]] # редактирование аудио
 
-[[+ab]] /Apache Benchmarking 
-[[+Audacious]] /аудиоплеер
-[[+Audacity]] /редактирование аудио
-
-===== B =====
-
-[[+Baloo]] /поиск
+[[+Baloo]] # поиск
 [[+blame]]
-[[+Brave]] /браузер
+[[+Brave]] # браузер
 
-===== C =====
+[[+Cadence]] # роутинг звука через аудиоинтерфейс JACK
+[[+Calibre]] # библиотека
 
-[[+Cadence]] /роутинг звука через аудиоинтерфейс JACK
-[[+Calibre]] /библиотека
-
-===== D =====
-
-[[+DaVinci Resolve]] /видеоредактор
-[[+Docker]] /контейнеровоз
-[[+Dolphin]] /менеджер файлов
+[[+DaVinci Resolve]] # видеоредактор
+[[+Docker]] # контейнеровоз
+[[+Dolphin]] # менеджер файлов
 [[+Dropbox]]
-[[+du]] /disk usage
+[[+du]] # disk usage
 
-===== E =====
-
-[[+Elgato “Stream Deck”]] /клавиатурки с кнопками-экранами
-[[+exiftool]] /метаданные файлов
-
-===== F =====
+[[+Easy Effects]]
+[[+EdrawMind]]
+[[+Elgato “Stream Deck”]] # клавиатурки с кнопками-экранами
+[[+exiftool]] # метаданные файлов
 
 [[+FFmpeg]]
-[[+find]] /поиск файлов IRL
+[[+find]] # поиск файлов IRL
 [[+Firefox]]
 [[+firewall]]
-[[+flatpak]]
-[[+fsck]] /File System Consistency Check
-[[+FSearch]] /поиск файлов, графический
+[[+Flatpak]]
+[[+fsck]] # File System Consistency Check
+[[+FSearch]] # поиск файлов, графический
 [[+ftp]]
-
-===== G =====
 
 [[+git]]
 [[+Google Chrome]]
 [[+GPG]]
-[[+GraphViz]] /диаграммы из markdown
-
-===== I =====
+[[+GraphViz]] # диаграммы из markdown
 
 [[+IDE]]
 
-===== J =====
+[[+JACK]] # аудиоинтерфейс
 
-[[+JACK]] /аудиоинтерфейс
-
-===== K =====
-
-[[+k3b]] /прожиг дисков
-[[+Kate]] /текстовый редактор
+[[+k3b]] # прожиг дисков
+[[+Kate]] # текстовый редактор
 [[+KDE Connect]]
-[[+KDevelop]] /IDE для разработки
-[[+KeePassXC]] /менеджер паролей
-[[+Kile]] /редактор LaTeX
+[[+KDevelop]] # IDE для разработки
+[[+KeePassXC]] # менеджер паролей
+[[+Kile]] # редактор LaTeX
 [[+KMail]]
 [[+KMyMoney]]
 [[+Konsole]]
@@ -77,31 +59,24 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Krusader]]
 [[+KWin скрипты]]
 
-===== L =====
-
 [[+LaTeX]]
 [[+LibreOffice]]
 [[+LLM]]
-[[+locate]] /поиск файлов по базе данных
-[[+ls]] /list directory contents
+[[+locate]] # поиск файлов по базе данных
+[[+ls]] # list directory contents
 
-===== M =====
-
-[[+Mermaid JS]] /диаграммы из markdown для браузера
+[[+Mermaid JS]] # диаграммы из markdown для браузера
 [[+Документирование кода:MkDocs]]
 [[+microcode]]
 [[+Midnight Commander]]
+[[+Minder]]
 [[+Mind map]]
 [[+mpv]]
 [[+MyPaint]]
 
-===== N =====
-
 [[+neofetch]]
 [[+ntfs-3g]]
 [[+Nvidia]]
-
-===== O =====
 
 [[+Obsidian]]
 [[+OBS studio]]
@@ -109,95 +84,68 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+LLM:Ollama]]
 [[+OpenShot]]
 
-===== P =====
-
-[[+paprefs]]
-[[+PDF]]
+[[+paprefs]] # Pulse Audio Preferences
 [[+pgAdmin]]
 [[+PipeWire]]
 [[+Playwright]]
 [[+Postman]]
 [[+Python]]
 
-===== Q =====
-
-[[+Qalculate!]]
+[[+Qalculate!]] # продвинутый калькулятор
 [[+QBittorrent]]
-[[+qmmp]] /аудиоплеер
+[[+qmmp]] # аудиоплеер
 
-===== R =====
-
-[[+Recoll]] /поиск внутри файлов
+[[+Recoll]] # поиск внутри файлов
 [[+RSync]]
 
-===== S =====
-
 [[+Samba]]
-[[+sed]] /редактор содержимого файлов в консоли
+[[+sed]] # редактор содержимого файлов в консоли
 [[+LLM:Sentence Transformer]]
 [[+Slack]]
 [[+SmartGit]]
-[[+SmartMonTools]] /проверка дисков
+[[+SmartMonTools]] # проверка дисков
 [[+SMPlayer]]
 [[+snap]]
-[[+Snipe-It]] /Inventory portal
+[[+Snipe-It]] # Inventory portal
 [[+Spectacle]]
 [[+ssh]]
 [[+Sublime]]
 [[+Subtitle Composer]]
 [[+SyncThing]]
 
-===== T =====
-
-[[+tar]] /архивы
+[[+tar]] # архивы
 [[+TeamViewer]]
-[[+Telegram]] /мессенджер
+[[+Telegram]] # мессенджер
 [[+Tellico]]
-[[+Thunderbird]] /почта
-[[+Tor Browser]] /firefox
-[[+Touchegg]] /жесты тачпад
-
-===== U =====
+[[+Thunderbird]] # почта
+[[+Tor Browser]] # firefox
+[[+Touchegg]] # жесты тачпад
 
 [[+UEFI]]
 [[+Unetbootin]]
 
-===== V =====
-
-[[+v4l2]] /управление вебкамерой
-[[+VLC]] /видеоплеер
+[[+v4l2]] # управление вебкамерой
+[[+VLC]] # видеоплеер
 [[+vpn]]
-[[+VSCodium]] /IDE
-[[+vsftpd]] /ftp
-
-===== W =====
+[[+VSCodium]] # IDE
+[[+vsftpd]] # ftp
 
 [[+Webdev]]
 [[+wget]]
 [[+whereis]]
-[[+LLM:Whisper]] /нейронная сеть для распознавания речи
+[[+LLM:Whisper]] # нейронная сеть для распознавания речи
 [[+wine]]
 
-===== X =====
+[[+xampp]] # локальный веб-сервер
+[[+xclip]] # буфер обмена
 
-[[+xampp]] /локальный веб-сервер
-[[+xclip]] /буфер обмена
+[[+yt-dlp]] # скачивание видео с Youtube
 
-===== Y =====
-
-[[+yt-dlp]] /скачивание видео с Youtube
-
-===== Z =====
-
-[[+Zim]] /desktop wiki
-[[+zip]] /архивы
+[[+Zim]] # desktop wiki
+[[+zip]] # архивы
 [[+Zoom]]
 
-===== К =====
-
 [[+Калькуляторы]]
-
-===== С =====
 
 [[Debian:HowTo:Сделать:Симлинки и хардлинки]]
 [[+Скриншотеры]]

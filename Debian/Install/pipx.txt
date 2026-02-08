@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-07T06:17:37+02:00
+
+====== pipx ======
+
+[ @debian @install @python @pipx ]
+
+Отдельный менеджер для установки Python-приложений в изолированные виртуальные окружения. Устанавливает каждую программу в отдельный venv и добавляет её бинарник в ''~/.local/bin'':
+
+* не засоряет системный Python;
+* не ломает зависимости;
+* удобно ставить CLI-утилиты (poetry, black, yt-dlp, ansible, и т.п.).
+
+''sudo apt update && sudo apt install pipx''
+
+Проверить:
+
+''pipx ensurepath''
+
+Всё должно быть в /home/astenix/.local/bin Для этого в файле ~/.bashrc в функцию add_to_var() надо записать 
+
+''add_to_var PATH "$HOME/.local/bin"''
+
+===== Установить пакет =====
+
+''pipx install poetry''
+
+===== Обновить =====
+
+''pipx upgrade package_name''
+
+===== Удалить =====
+
+''pipx uninstall package_name''
+
+===== Проверить ПО, которое установлено через pipx =====
+
+''pipx list''
+
+Если там что-то установлено, об этом будет сообщено:
+
+''venvs are in /home/astenix/.local/share/pipx/venvs''
+''apps are exposed on your $PATH at /home/astenix/.local/bin''
+''manual pages are exposed at /home/astenix/.local/share/man''
+''package mkdocs 1.6.1, installed using Python 3.13.5''
+''- mkdocs''
+
+См. далее [[Software:Python]]

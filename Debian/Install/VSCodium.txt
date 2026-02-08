@@ -20,7 +20,7 @@ Creation-Date: 2025-08-08T16:24:58+03:00
 
 * Debian 13:
 
-''echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources && sudo apt update && sudo apt install codium''
+''echo -e 'Types: deb\nURIs: https://download.vscodium.com/debs\nSuites: vscodium\nComponents: main\nArchitectures: amd64 arm64\nSigned-by: /usr/share/keyrings/vscodium-archive-keyring.gpg' | sudo tee /etc/apt/sources.list.d/vscodium.sources && sudo apt update && sudo apt install codium''
 
 Обновить репозитории:
 

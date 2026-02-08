@@ -20,7 +20,7 @@ https://www.edrawsoft.com/mindmaster/
 
 ==== Minder ====
 
-[[+Minder]]
+[[Minder]]
 
 Возможно, самый адекватный из открытых, но страдает от багов.
 

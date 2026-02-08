@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-06T20:46:38+02:00
+
+====== Debian 13 ======
+
+[ @debian_13 @fonts ]
+
+''sudo apt install ttf-mscorefonts-installer -y''
+''sudo apt install fonts-ibm-plex -y''
+''sudo apt install fonts-cantarell -y''

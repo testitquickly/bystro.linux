@@ -25,7 +25,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 ===== Настроить систему =====
 
 * [[Software:Midnight Commander]]
-* [[HowTo:Сделать:User:Добавить юзера в группу sudo]]
+* [[HowTo:Сделать:User:Добавить в группу sudo]]
 * [[HowTo:Настроить:Таймаут для sudo]]
 * [[HowTo:Сделать:User:Установить права доступа на каталоги и файлы]]
 * [[HowTo:Настроить:GRUB2]]
@@ -36,7 +36,8 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Настроить:Время:Обновление времени и даты]]
 * [[HowTo:Настроить:SSD]]
 * [[HowTo:Сделать:Оптимизировать RAM]]
-* [[Install:Шрифты]]
+* [[Install:Fonts]]
+* [[HowTo:Настроить:locale]]
 
 ===== Настроить консоль =====
 
@@ -48,6 +49,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 ===== Настроить оформление KDE =====
 
 * [[HowTo:Сделать:Поменять пароль в кошельке kdewallet]]
+* [[HowTo:Настроить:Пути к системным каталогам в профиле]]
 * [[HowTo:Настроить:Экран:DPI]]
 * [[HowTo:Настроить:Экран:Display Manager]]
 * [[HowTo:Настроить:Экран:Блокировка экрана]]
@@ -60,7 +62,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Настроить:Внешний вид KDE:Виджет «Календарь событий»]]
 * [[HowTo:Настроить:Внешний вид KDE:Перелистывание окон]]
 * [[HowTo:Настроить:Внешний вид KDE:Колыхание окон]]
-* [[HowTo:Настроить:Пути к системным каталогам в профиле]]
+* [[HowTo:Сделать:Тайлинг окон]]
 
 ===== Настроить звук в KDE =====
 
@@ -74,7 +76,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[Software:Списки задач:ToDo в консоли]]
 * [[HowTo:Настроить:Wi-Fi]]
 * [[HowTo:Настроить:Языки локализации]]
-* [[HowTo:Проверить:Network:Свой IP]]
+* [[HowTo:Проверить:Network:Мой IP]]
 * [[HowTo:Проверить:Network:Скорость по LAN]]
 * [[HowTo:Проверить:Состояние батареи ноутбука]]
 * [[HowTo:Сделать:Подключить внешний монитор по hdmi]]
@@ -89,4 +91,4 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[Install:Thunderbird]]
 * [[Install:LibreOffice]]
 * [[Install:Dropbox]]
-* [[Install:flatpak]]
+* [[Install:Flatpak]]

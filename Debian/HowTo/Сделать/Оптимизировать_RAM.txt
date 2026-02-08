@@ -19,9 +19,10 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 
 Задать настройки (раскомментировать строки):
 
-''ALGO=lz4        # алгоритм сжатия (быстрый)''
-''PERCENT=50      # процент от объёма RAM (например, 50%)''
-''PRIORITY=100    # приоритет (zram будет использоваться раньше, чем swapfile)''
+''ALGO=lz4		# алгоритм сжатия (быстрый)''
+''PERCENT=50	# процент от объёма RAM (например, 50%)''
+''SIZE=512		# amount of RAM used for ZRAM (mb)''
+''PRIORITY=100	# приоритет (zram будет использоваться раньше, чем swapfile)''
 
 Сохранить, выйти.
 
@@ -58,6 +59,10 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 для swap-раздела можно дописать ''',pri=10''':
 
 ''UUID=xxxx-xxxx  none  swap  sw,pri=10  0  0''
+
+Перечитать fstab
+
+''systemctl daemon-reload''
 
 Итоговая проверка:
 
@@ -102,15 +107,14 @@ Swap:           22Gi          0B        22Gi
 
 Добавить строку
 
+''# Move /tmp to RAM''
 ''tmpfs /tmp tmpfs defaults,mode=1777 0 0''
 
 Если хочется выделить для tmp только определенное количество RAM:
 
 ''tmpfs /tmp tmpfs defaults,size=4G,mode=1777 0 0''
 
-Сохранить, выйти. 
-
-Применить изменения:
+Сохранить, выйти. применить изменения:
 
 ''sudo systemctl daemon-reload''
 

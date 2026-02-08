@@ -6,94 +6,64 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [ @debian @install ]
 
-===== A =====
-
-[[+ab]] /Apache Benchmark tool
+[[+ab]] # Apache Benchmark tool
 [[+aptitude]]
 
-===== B =====
-
 [[+Balena etcher]]
-[[+Brave]] /браузер
-[[+Bruno]] /для API
+[[+Brave]] # браузер
+[[+Bruno]] # для API
 
-===== C =====
+[[+Cadence]] # GUI для JACK
 
-[[+Cadence]] /GUI для JACK
-
-===== D =====
-
-[[+DaVinci Resolve]] /редактор видео
+[[+DaVinci Resolve]] # редактор видео
 [[+Docker]]
 [[+Dropbox]]
 
-===== E =====
-
 [[+Easy Effects]]
+[[+EdrawMind]] # майндмапы
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
 
-===== F =====
-
 [[+FFmpeg]]
 [[+Firefox]]
-[[+flatpak]]
+[[+Flatpak]]
+[[+Fonts]]
 [[+FSearch]]
 [[+ftp]]
 
-===== G =====
-
 [[+Google Chrome]]
+[[+gpg]]
 [[+GraphViz]]
 [[+Grub-Customizer]]
 
-===== H =====
-
 [[+hdparm]]
-[[+hplip]] /принтеры HP
-
-===== I =====
+[[+hplip]] # принтеры HP
 
 [[+iputils]]
 
-===== J =====
-
 [[+JACK]]
 
-===== K =====
-
 [[+KeePassXC]]
-[[+gpg]]
 [[+Kile]]
 [[+KMyMoney]]
 [[+Krusader]]
 
-===== L =====
-
 [[+LaTeX]]
 [[+LibreOffice]]
 
-===== M =====
-
 [[+Mermaid JS]]
 [[+Midnight Commander]]
-[[+Minder]]
-
-===== N =====
+[[+Minder]] # майндмапы
 
 [[+NodeJS]]
 [[+ntfs-3g]]
 [[+Nvidia]]
-
-===== O =====
 
 [[+Obsidian]]
 [[+OBS studio]]
 [[+Ollama]]
 [[+OnBoard]]
 [[+OpenShot]]
-
-===== P =====
 
 [[+Paper Clip]]
 [[+paprefs]]
@@ -102,15 +72,11 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Playwright]]
 [[+Postman]]
 
-===== Q =====
-
 [[+QBittorrent]]
 
-===== R =====
+[[+Qmmp]]
 
 [[+Recoll]]
-
-===== S =====
 
 [[+Samba]]
 [[+Sentence Transformer]]
@@ -122,46 +88,30 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Sublime]]
 [[+SyncThing]]
 
-===== T =====
-
 [[+Taskwarrior]]
 [[+TeamViewer]]
 [[+Telegram]]
 [[+Thunderbird]]
+[[+Todoman]]
 [[+Tor Browser]]
 [[+Touchegg]]
-
-===== V =====
 
 [[+v4l2]]
 [[+vpn]]
 [[+VSCodium]]
 [[+vsfptd]]
 
-===== W =====
-
 [[+Whisper]]
-
-===== X =====
 
 [[+xsensors]]
 
-===== Z =====
+[[+yt-dlp]]
 
 [[+zim]]
-
-===== П =====
 
 [[+Пакет .rpm в Debian]]
 [[+Пакет из unstable (sid) на Debian testing]]
 [[+Пакет определенной версии]]
 [[+Планшет для рисования]]
 
-===== С =====
-
 [[+Софт из backport]]
-
-===== Ш =====
-
-[[+Шрифты]]
-

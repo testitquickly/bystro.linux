@@ -8,7 +8,7 @@ Creation-Date: 2023-10-22T23:14:01+03:00
 
 ===== flatpak =====
 
-Стоит попробовать для начала, потому что проще поставить и меньше влияния на систему. Должно работать легко и просто, на деле — не факт. Если начнёт непредсказуемо падать — удалить тоже через [[Software:flatpak]]
+Стоит попробовать для начала, потому что проще поставить и меньше влияния на систему. Должно работать легко и просто, на деле — не факт. Если начнёт непредсказуемо падать — удалить тоже через [[Software:Flatpak]]
 
 ''flatpak install flathub org.telegram.desktop && flatpak run org.telegram.desktop''
 
@@ -78,18 +78,16 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 
 Вставить в него такой набор букв:
 
-'''
-[Desktop Entry]
-Encoding=UTF-8
-Name=Telegram
-Comment=from /opt
-Type=Application
-Terminal=false
-Exec=/opt/Telegram/Telegram %U
-Icon=/opt/Telegram/telegram.png
-StartupNotify=true
-Categories=Network;
-'''
+''[Desktop Entry]''
+''Encoding=UTF-8''
+''Name=Telegram''
+''Comment=from /opt''
+''Type=Application''
+''Terminal=false''
+''Exec=/opt/Telegram/Telegram %U''
+''Icon=/opt/Telegram/telegram.png''
+''StartupNotify=true''
+''Categories=Network;''
 
 [F2> [Esc> [Esc]
 

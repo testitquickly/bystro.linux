@@ -7,7 +7,7 @@ Creation-Date: 2024-10-23T12:47:21+03:00
 [ @chapter ]
 
 [[+Network:Какая программа занимает сетевой порт]]
-[[+Network:Свой IP]]
+[[+Network:Мой IP]]
 [[+Network:Сетевая активность]]
 [[+Network:Скорость по LAN]]
 

@@ -6,9 +6,9 @@ Creation-Date: 2025-07-07T17:43:27+03:00
 
 [ @console @sudo @password ]
 
-Можно (хотя и не нужно) вообще отключить запрос пароля при выполнении команд через sudo:
+Можно (хотя и //не нужно//) отключить запрос пароля при выполнении команд через ''sudo'':
 
-	''sudo mcedit /etc/sudoers.d/nopasswd''
+''sudo mcedit /etc/sudoers.d/nopasswd''
 
 Вставить:
 

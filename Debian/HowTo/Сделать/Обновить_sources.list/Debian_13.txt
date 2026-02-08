@@ -6,7 +6,7 @@ Creation-Date: 2026-02-03T22:00:21+02:00
 
 [ @debian_13 ]
 
-*todo Deb 13 sources !!!
+	*todo Deb 13 sources !!!
 
 Тут тоже работает общий файл sources.list, но уже объявлен переезд на стандарт ''DEB822''. 
 

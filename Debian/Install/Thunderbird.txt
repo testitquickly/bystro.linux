@@ -62,18 +62,16 @@ https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 
 Вставить в него условно такой набор букв:
 
-'''
-[Desktop Entry]
-Encoding=UTF-8
-Name=thunderbird
-Comment=opt
-Type=Application
-Terminal=false
-Exec=/opt/thunderbird/thunderbird -p astenix
-Icon=/home/mySettings/icons/thunderbird.png
-StartupNotify=true
-Categories=Network;WebBrowser;
-'''
+''[Desktop Entry]''
+''Encoding=UTF-8''
+''Name=thunderbird''
+''Comment=opt''
+''Type=Application''
+''Terminal=false''
+''Exec=/opt/thunderbird/thunderbird -p astenix''
+''Icon=/home/mySettings/icons/thunderbird.png''
+''StartupNotify=true''
+''Categories=Network;WebBrowser;''
 
 [F2> [Esc> [Esc]
 

@@ -104,7 +104,7 @@ Creation-Date: 2022-02-22T14:57:53+02:00
 * Andale Mono
 * IBM Plex Mono
 
-См. [[Debian:Install:Шрифты]]
+См. [[Debian:Install:Fonts]]
 
 + Сглаживать шрифты
 + Использовать символы из шрифта для рисования линий

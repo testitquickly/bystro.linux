@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2023-09-23T16:14:57+03:00
 
-====== logout юзера ======
+====== logout ======
 
 [ @user @console @login ]
 

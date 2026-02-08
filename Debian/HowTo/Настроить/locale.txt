@@ -1,0 +1,54 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-02-06T03:24:14+02:00
+
+====== locale ======
+
+[ @debian @locale ]
+
+Если KDE начала долго загружаться, одной из причин может быть отсутствие локали «по-умолчанию» в системном окружении Debian (это отдельно от локали пользователя в его рабочем профиле). 
+
+Проверить:
+
+''locale -a''
+
+Пример ответа:
+
+''locale: Cannot set LC_CTYPE to default locale: No such file or directory'' 
+''locale: Cannot set LC_MESSAGES to default'' 
+''locale: No such file or directory'' 
+''locale: Cannot set LC_COLLATE to default'' 
+''locale: No such file or directory'' 
+''C'' 
+''C.utf8'' 
+''POSIX''
+
+Это означает, что в системе нет рабочей национальноязычной локали, есть только базовые C и C.utf8.
+
+Создать корректную UTF-8 локаль, например ru_RU.UTF-8:
+
+''sudo sed -i '/ru_MD.UTF-8/d' /etc/locale.gen'' 
+
+''echo "ru_RU.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen && sudo locale-gen'' 
+
+''sudo update-locale LANG=ru_RU.UTF-8 LANGUAGE="ru_RU:ru" LC_ALL=ru_RU.UTF-8''
+
+Reboot.
+
+''locale -a''
+
+Ожидаемый ответ:
+
+''LANG=ru_RU.UTF-8''
+''LANGUAGE=ru_RU:ru''
+''LC_ALL=ru_RU.UTF-8''
+
+===== Конфигурирование локали =====
+
+Если надо задействовать:
+
+''sudo dpkg-reconfigure locales''
+
+Отметить ''ru_RU.UTF-8''
+
+На экране «Настраивается локаль» выбрать ''ru_RU.UTF-8''

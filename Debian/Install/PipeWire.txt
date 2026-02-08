@@ -14,7 +14,7 @@ Creation-Date: 2025-12-20T04:52:51+02:00
 * pipewire-alsa — не нужен, если в системе будет pipeware-pulse, но может быть нужным старым приложениям, которые управляют звуком для PipeWire через ALSA API. Надо будет удалить pulseaudio-alsa.
 * pipewire-jack — для роутинга звука через JACK.
 
-''sudo apt install pipewire pipewire-audio pipewire-pulse pipewire-jack wireplumber libspa-0.2-bluetooth bluez bluez-tools''
+''sudo apt install pipewire pipewire-audio pipewire-pulse pipewire-jack wireplumber libspa-0.2-bluetooth bluez bluez-tools bluedevil''
 
 ''systemctl --user --now enable pipewire pipewire-pulse wireplumber''
 

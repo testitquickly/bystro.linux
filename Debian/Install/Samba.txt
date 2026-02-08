@@ -67,9 +67,13 @@ Creation-Date: 2025-12-08T16:19:06+02:00
 ===== Удалить сервер Samba =====
 
 ''systemctl stop smbd''
+
 ''sudo systemctl disable smbd''
+
 ''systemctl status smbd''
+
 ''sudo aptitude remove samba samba-client''
+
 ''systemctl status smbd''
 
 Ожидаемый результат: 

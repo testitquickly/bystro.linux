@@ -8,7 +8,7 @@ Creation-Date: 2024-09-22T04:40:43+03:00
 
 ===== Flatpak =====
 
-Рекомендуется установить через  [[Software:flatpak]] Там сейчас версия 1.16 — без багов из 1.14.
+Рекомендуется установить через  [[Software:Flatpak]] Там сейчас версия 1.16 — без багов из 1.14.
 
 https://flathub.org/apps/com.github.phase1geo.minder
 
@@ -18,4 +18,4 @@ https://flathub.org/apps/com.github.phase1geo.minder
 
 ''sudo apt install minder''
 
-См. [[Software:Mind map:Minder]]
+См. [[Software:Minder]]
