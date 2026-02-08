@@ -8,10 +8,14 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 
 ===== Установить базовое ПО =====
 
-Это можно поставить и c установочного диска Debian. Из-под root:
+Это можно поставить и c установочного диска Debian. 
+
+==== Debian 12 ====
+
+Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename krusader make mc mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico vlc vsftpd wget xsensors zim 
+apt install aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename krusader make mc most mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico trash-cli vlc vsftpd wget xsensors zim 
 }}}
 
 После установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list (тоже только из-под root):
@@ -20,7 +24,15 @@ apt install aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename kr
 apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar unrar ethtool gir1.2-gtksource-4 iputils-ping iw smartmontools nvme-cli xdot wakeonlan -y && apt update && apt upgrade
 }}}
 
-См. настройки для [[+Debian 13]]
+==== Debian 13 ====
+
+В Debian 13 отключена возможность ставить пакет ''software-properties-common'', потому что он тянет за собой Python-зависимости и сторонние PPA-механизмы, которые могут нарушить стабильность системы. Вместо этого Debian рекомендует использовать apt напрямую (/etc/apt/sources.list и /etc/apt/sources.list.d/) для добавления репозиториев, без PPA (типично для Ubuntu) и скриптов вроде ‘add-apt-repository‘.
+
+Из-под root:
+
+{{{code: lang="sh" linenumbers="True"
+apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b katomic kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaintncompress network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp rar smartmontools tar tellico timeshifttrash-cli unaceunrar unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim -y && sudo apt upgrade -y
+}}}
 
 ===== Настроить систему =====
 
@@ -33,11 +45,11 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Сделать:Обновить sources.list]]
 * [[HowTo:Сделать:Debian:Update]]
 * [[HowTo:Проверить:Ошибки при загрузке системы]]
-* [[HowTo:Настроить:Время:Обновление времени и даты]]
+* [[HowTo:Настроить:locale]]
+* [[HowTo:Настроить:Обновление времени и даты]]
 * [[HowTo:Настроить:SSD]]
 * [[HowTo:Сделать:Оптимизировать RAM]]
 * [[Install:Fonts]]
-* [[HowTo:Настроить:locale]]
 
 ===== Настроить консоль =====
 
@@ -63,9 +75,6 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Настроить:Внешний вид KDE:Перелистывание окон]]
 * [[HowTo:Настроить:Внешний вид KDE:Колыхание окон]]
 * [[HowTo:Сделать:Тайлинг окон]]
-
-===== Настроить звук в KDE =====
-
 * [[HowTo:Настроить:Звук:Виджет «Громкость»]]
 * [[HowTo:Настроить:Звук:Шорткаты • Управление громкостью]]
 * [[HowTo:Настроить:Звук:Убрать звуки Plasma]]
@@ -84,11 +93,10 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 
 ===== Установить ПО =====
 
-* [[Install:ssh]]
-* [[Install:Sublime]]
 * [[Install:Firefox]]
-* [[Install:Brave]]
 * [[Install:Thunderbird]]
 * [[Install:LibreOffice]]
-* [[Install:Dropbox]]
+* [[Install:Sublime]]
 * [[Install:Flatpak]]
+* [[Install:Dropbox]]
+* [[Install:Brave]]

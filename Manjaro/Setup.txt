@@ -19,7 +19,7 @@ Creation-Date: 2023-02-18T01:31:04+02:00
 
 * [[HowTo:Manage:Branches]]
 * [[HowTo:Manage:Update]] (ознакомиться со шпаргалкой по теме [[HowTo:Manage]])
-* [[Debian:HowTo:Настроить:Время:Обновление времени и даты]]
+* [[Debian:HowTo:Настроить:Обновление времени и даты]]
 * [[Debian:HowTo:Настроить:Языки локализации]]
 * [[Debian:HowTo:Проверить:Ошибки при загрузке системы]]
 * [[Install:xsensors]]

@@ -1,8 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.6
-Creation-Date: 2025-10-20T23:34:28+03:00
-
-====== Время ======
-
-[[+Обновление времени и даты]]
-[[+Синхронизация времени между Linux и Windows]]
