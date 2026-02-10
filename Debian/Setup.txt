@@ -68,7 +68,7 @@ apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader
 * [[HowTo:Настроить:Автоматический login в KDE]]
 * [[HowTo:Настроить:Поменять местами точку с запятой]]
 * [[HowTo:Настроить:Ввод дополнительных символов с клавиатуры]]
-* [[HowTo:Настроить:Шорткаты • Поменять местами Ctrl и левый Alt]]
+* [[HowTo:Настроить:Поменять местами Ctrl и левый Alt]]
 * [[HowTo:Настроить:Внешний вид KDE]]
 * [[HowTo:Настроить:Внешний вид KDE:Панель задач]]
 * [[HowTo:Настроить:Внешний вид KDE:Виджет «Календарь событий»]]
@@ -76,7 +76,7 @@ apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader
 * [[HowTo:Настроить:Внешний вид KDE:Колыхание окон]]
 * [[HowTo:Сделать:Тайлинг окон]]
 * [[HowTo:Настроить:Звук:Виджет «Громкость»]]
-* [[HowTo:Настроить:Звук:Шорткаты • Управление громкостью]]
+* [[HowTo:Настроить:Звук:Управление громкостью]]
 * [[HowTo:Настроить:Звук:Убрать звуки Plasma]]
 * [[HowTo:Сделать:Звук:Удалить speech-dispatcher]]
 
