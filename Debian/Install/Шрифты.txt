@@ -54,9 +54,9 @@ Ysabeau combines the familiar timeless letterforms of the Garamond legacy with t
 
 ''mkdir -p ~/Ysabeau && cd ~/Ysabeau'' 
 
-Скачивать эти файлы через wget не получится, надо зайти через браузер на https://github.com/google/fonts/tree/main/ofl/ysabeau и скачать все (минимум два) файлы с расширением ''ttf''. Положить их в ''~/Ysabeau''
+Скачивать эти файлы через wget не получится, надо зайти через браузер на https://github.com/google/fonts/tree/main/ofl/ysabeau и скачать все (минимум два) файлы с расширением ''ttf''. Положить их в ''~/fonts/Ysabeau''
 
-''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/Ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/ && fc-cache -fv && echo -e "\n\tПроверить появление Ysabeau в системе \n" && fc-list | grep Ysabeau''
+''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/fonts/Ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/ && fc-cache -fv && echo -e "\n\tПроверить появление Ysabeau в системе \n" && fc-list | grep Ysabeau''
 
 Обновить кэш шрифтов:
 
