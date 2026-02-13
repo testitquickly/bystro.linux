@@ -14,6 +14,9 @@ Creation-Date: 2026-01-21T04:04:32+02:00
 input_file="$HOME/.bashrc"
 tmp_file="/tmp/bashrc_displayVariables.tmp"
 
+# Скрипт обрабатывает только англоязычные алиасы. Если нужен русскоязычный, его надо закатать в функцию вроде
+# for i in mc ьс; do alias $i='mc'; done # старт Midnight Commander
+
 # -----------------------------------------
 # Очищаем tmp_file и копируем туда исходный файл
 # -----------------------------------------
@@ -392,7 +395,6 @@ highlight_comments() {
 }
 
 
-
 # -----------------------------------------
 # Запуск всех функций по порядку
 # -----------------------------------------
@@ -407,6 +409,7 @@ search_functioned_aliases
 sort_lines_under_each_section
 highlight_comments
 
+
 # -----------------------------------------
 # Вывод результата на экран
 # -----------------------------------------
@@ -415,6 +418,10 @@ cat "$tmp_file"
 echo " "
 
 }}}
+
+В ~/.bashrc сделать алиас для вызова:
+
+''for i in dv вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | most"; done # показать все переменные из .bashrc''
 
 Результат:
 
