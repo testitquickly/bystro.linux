@@ -31,7 +31,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b katomic kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaintncompress network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp rar smartmontools tar tellico timeshifttrash-cli unaceunrar unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim -y && sudo apt upgrade -y
+apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b katomic kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaintncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp rar smartmontools tar tellico timeshifttrash-cli unaceunrar unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim -y && sudo apt upgrade -y
 }}}
 
 ===== Настроить систему =====
