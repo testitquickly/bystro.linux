@@ -5,9 +5,7 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 ====== about ======
 
 Привет, 
-это инструкции по быстрой настройке KDE для [[Debian]] (местами и для [[Manjaro]]). Если кому-то это всё тоже будет полезно, то велком. 
-
-This content is distributed in the hope that it will be useful, but without any warranty ©
+это инструкции по быстрой настройке KDE для [[Debian]] (местами и для [[Manjaro]]). Если кому-то это всё тоже будет полезно, то велком, this content is distributed in the hope that it will be useful, but without any warranty ©
 
 Меня зовут Алексей Лупан, я головний спiвпрацювальник по підготувальні тестувальників în Moldova. Обучаю живых людей тест-дизайну и обратной стороне теории тестирования ПО, играю на баритон-укулеле лёгкий блюз, похожий на тяжелый.
 
