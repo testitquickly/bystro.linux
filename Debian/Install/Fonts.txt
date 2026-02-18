@@ -8,15 +8,20 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 См. https://wiki.debian.org/Fonts#Packages
 
+===== Debian 12 =====
+
 В Debian __''12''__ важно, чтобы был предварительно установлен пакет ''software-properties-common'' и чтобы для репозиториев были прописаны параметры ''contrib non-free'', потому что не все шрифты относятся к свободному ПО:
  
 ''sudo apt install software-properties-common -y; sudo apt-add-repository contrib non-free -y''
 
-В Debian __''13''__ этот подход запрещен (делает систему нестабильной), но установить шрифты от Microsoft и IBM можно свободно.
+===== Debian 13 =====
 
-===== Установить шрифты из репозитория =====
+В Debian __''13''__ этот подход запрещен (делает систему нестабильной), но тут можно свободно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex:
 
-Можно установить привычные многим шрифты от Microsoft  а также лучший шрифт для чтения с экрана IBM Plex. 
+''sudo apt install ttf-mscorefonts-installer -y''
+''sudo apt install fonts-ibm-plex -y''
+''sudo apt install fonts-cantarell -y''
+''sudo apt install fonts-roboto -y''
 
 От MS придут
 
@@ -32,18 +37,11 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 	* Verdana (Bold, Italic, Bold Italic)
 	* Webdings
 
-Хотелось бы сразу, но эти шрифты надо установить по-отдельности:
-
-''sudo apt install ttf-mscorefonts-installer -y''
-''sudo apt install fonts-ibm-plex -y''
-''sudo apt install fonts-cantarell -y''
-''sudo apt install fonts-roboto -y''
-
 Обновить кэш шрифтов:
 
 ''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
 
-Проверить, что шрифт IBM установлен:
+Проверить, что шрифт IBM Plex установлен:
 
 ''fc-list | grep IBM''
 
@@ -51,10 +49,13 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 Общий смысл: 
 
-1. файлы со шрифтами надо положить в ''/usr/local/share/fonts/Ysabeau'' Один шрифт может быть представлен несколькими файлами, поэтому лучше держать их в одноименных каталогах.
-2. и обновить кэш шрифтов:
+1. файлы со шрифтами надо держать в отдельных каталогах, потому что один шрифт иногда представлен одним файлом, а иногда набором файлов
+2. каталог с файлами надо положить в ''/usr/local/share/fonts/''
+3. и обновить кэш шрифтов:
 
 ''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
+
+И удобно держать шрифты в отдельном каталоге ''~/Install/Fonts/''
 
 ==== Ysabeau ====
 
@@ -62,17 +63,17 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 Ysabeau combines the familiar timeless letterforms of the Garamond legacy with the unencumbered crispness of a clean low-contrast sans serif. Unlike other humanist sans, Ysabeau retains the confident wide stride and unapologetic extenders of the world's favorite book face for unmitigated reading comfort. Pair it with EB Garamond or Cormorant for a perfect match.
 
-Сделать для них каталог, чтобы сохранить:
+Скачивать эти файлы через wget не получится, надо зайти через браузер на https://github.com/google/fonts/tree/main/ofl/ysabeau и скачать все (минимум два) файлы с расширением ''ttf''. Положить их в ''~/Install/Fonts/Ysabeau/''
 
-''mkdir -p ~/Fonts/Ysabeau && cd ~/Fonts/Ysabeau'' 
-
-Скачивать эти файлы через wget не получится, надо зайти через браузер на https://github.com/google/fonts/tree/main/ofl/ysabeau и скачать все (минимум два) файлы с расширением ''ttf''. Положить их в ''~/ysabeau''
-
-''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/Fonts/Ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/ && fc-cache -fv && echo -e "\n\tПроверить шрифт Ysabeau в системе \n" && fc-list | grep Ysabeau''
+''sudo mkdir -p /usr/local/share/fonts/Ysabeau && sudo cp ~/Install/Fonts/Ysabeau/*.ttf /usr/local/share/fonts/Ysabeau/''
 
 Обновить кэш шрифтов:
 
 ''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
+
+Проверить шрифт Ysabeau в системе:
+
+''fc-list | grep Ysabeau''
 
 ==== Cascadia Code ====
 
@@ -93,11 +94,15 @@ https://github.com/microsoft/cascadia-code/releases — выбрать Release, 
 
 Скопировать шрифты в общий доступ:
 
-''sudo mkdir -p /usr/local/share/fonts/CascadiaCode && sudo cp ~/CascadiaCode/*.ttf /usr/local/share/fonts/CascadiaCode/ && fc-cache -fv''
+''sudo mkdir -p /usr/local/share/fonts/CascadiaCode && sudo cp ~/Install/Fonts/CascadiaCode/*.ttf /usr/local/share/fonts/CascadiaCode/''
 
 Обновить кэш шрифтов:
 
 ''sudo fc-cache -fv && sudo apt-get update; sudo apt-get upgrade''
+
+Проверить шрифт ''CascadiaCode'' в системе:
+
+''fc-list | grep CascadiaCode''
 
 ===== Установить все шрифты из Windows =====
 
@@ -107,10 +112,10 @@ https://github.com/microsoft/cascadia-code/releases — выбрать Release, 
 
 Далее подразумевается, что локальный диск с операционный системой Windows примонтирован в папку /media/winda/:
 
-'''
-sudo mkdir /usr/share/fonts/truetype/msttcorefonts
+''sudo mkdir /usr/share/fonts/truetype/msttcorefonts''
 
-sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts
+''sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts''
+'''
 
 '''
 Обновить кэш шрифтов:
@@ -144,10 +149,7 @@ sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts
 
 Посмотреть все кириллические шрифты:
 
-''fc-list | while read -r font; do fc-query "$font" | grep -q "cyrl" && echo "$font"; done | sed 's/^[^:]*:\([^:]*\):.*$/\1/' | sort -u > allCyrFonts.txt && mcedit allCyrFonts.txt''
-
 ''fc-list :charset=0400-04FF | sed 's/^[^:]*:\([^:]*\):.*$/\1/' | sort -u > allCyrFonts.txt && mcedit allCyrFonts.txt''
-
 
 ==== Удалить шрифты по списку ====
 
@@ -201,4 +203,3 @@ sudo cp /media/winda/WINDOWS/Fonts/*.* /usr/share/fonts/truetype/msttcorefonts
 Другой софт может запускаться так
 
 ''QT_AUTO_SCREEN_SCALE_FACTOR=0 QT_SCREEN_SCALE_FACTORS=2 QT_SCALE_FACTOR=1  flatpak run org.jaspstats.JASP''
-
