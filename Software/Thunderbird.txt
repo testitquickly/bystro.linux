@@ -63,8 +63,10 @@ Cовременный Thunderbird наследует тему оформлени
 
 2. Закрыть Thunderbird (полностью).
 3. Создать в каталоге профиля Thunderbird plain/text файл „user.js”, записать в него общие (мои) настройки:
+
 ''user_pref("browser.display.foreground_color", "#b2b2b2");''
 ''user_pref("browser.display.background_color", "#202020");''
+
 4. Снять файлы с https://github.com/overdodactyl/ShadowBird
 5. Сделать в профиле Thunderbird новую папку «chrome», распаковать в неё файлы ShadowBird
 6. Переместить папку «chrome» в каталог настроек Thunderbird (шаг №2)
