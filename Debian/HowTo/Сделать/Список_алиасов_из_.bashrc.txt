@@ -6,6 +6,8 @@ Creation-Date: 2026-01-21T04:04:32+02:00
 
 [ @console @bashrc @alias @images ]
 
+Сперва должна быть установлена утилита ''most'' (browse or page through a text file).
+
 В каталоге со скриптами сделать ''bashrc_displayVariables.sh'' с таким содержимым:
 
 {{{code: lang="sh" linenumbers="True"
