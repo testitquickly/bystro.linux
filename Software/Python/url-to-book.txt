@@ -3,5 +3,79 @@ Wiki-Format: zim 0.6
 Creation-Date: 2026-03-02T01:58:42+02:00
 
 ====== url-to-book ======
-Создан Понедельник 02 марта 2026
 
+[ @python ]
+
+Утилита для сохранения статей по ссылкам, из html в fb2. Учитывает отсутствие документов со статусом 403 или 404 и выводит об этом дежурное сообщение.
+
+Установить:
+
+''pipx install url-to-book --index-url'' [[https://pypi.org/simple|''https://pypi.org/simple'']]
+
+Дальше на bash (мне так проще). Собрать все ссылки в файл ''links.txt''. в plain/text. Они сперва будут отсортированы, повторяющиеся будут удалены.
+
+Учесть, что
+* Python не понимает симлинков на каталоги из профиля юзера, поэтому вместо ''output_dir="~/Dropbox PocketBook"'' надо писать ''output_dir="$HOME/Dropbox PocketBook"''
+* статьи лучше экспортировать в epub, это наилучший формат для статей, которые выстроены вокруг иерархии заголовков, подзаголовков, изображений и ссылок. fb2 хорош для больших/малых литературных текстов
+* далеко не каждый текст в сети адекватно конвертируется в epub, это зависит в том числе и от того, как оформлены тэги тех же абзацев. Старый Wordpress для этого использует здравомысленный тэг ''<p>'', а бесконечно дурацкий Blogspot разделяет абзацы через ''<br>''…
+
+Сделать файл ''add_epub_from_links.sh''
+
+{{{code: lang="sh" linenumbers="True"
+#!/usr/bin/env bash
+
+output_dir="$HOME/PocketBook"
+mkdir -p "$output_dir"
+
+# отсортировать ссылки и убрать дубликаты
+sorted_links="$(mktemp)"
+sort -u input.txt > "$sorted_links"
+
+# подсчёт общего количества ссылок
+total=$(grep -c '^http' "$sorted_links")
+current=0
+
+while IFS= read -r url; do
+    if [[ "$url" =~ ^http ]]; then
+        ((current++))
+        remaining=$((total - current + 1)) # подсчитать общее количество файлов
+        echo -e "\n• [$remaining] $url"
+
+        # пройти по каждой ссылке и сохранить заголовок соответствующей страницы
+        title=$(curl -Ls -A "Mozilla/5.0" --max-time 10 "$url" \
+            | sed -n 's:.*<title>\(.*\)</title>.*:\1:p' \
+            | head -n1 \
+            | sed 's/[[:space:]]\+/ /g' \
+            | tr -d '/\\:*?"<>|')
+
+	# декодирование HTML-сущностей
+        title="${title//&quot;/\"}"
+        title="${title//&#x27;/\'}"
+        title="${title//&lt;/<}"
+        title="${title//&gt;/>}"
+        title="${title//&#x2F;/•}"
+
+        # удалить недопустимые символы в имени файла (на всякий случай)
+        title="$(printf '%s' "$title" | tr -d '/\\:*?"<>|')"
+
+        # собрать полный путь к файлу
+        epub_file="$output_dir/${title}.epub"
+
+        # проверка: если файл уже есть, пропускаем
+        if [[ -f "$epub_file" ]]; then
+            echo "Файл уже существует: $epub_file"
+            continue
+        fi
+
+        # вызывать url-to-book для создания файла epub
+        url-to-book "$url" --format epub --output "$epub_file"
+    fi
+done < "$sorted_links"
+
+rm -f "$sorted_links"
+
+echo -e "\nГотово\n"
+
+}}}
+
+В каталоге ''~/PocketBook/'' появились файлы epub.
