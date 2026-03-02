@@ -26,9 +26,7 @@ tar -xpJf tor-browser*
 
 Дать права своему пользователю на изменения в каталоге браузера:
 
-'''
-sudo chown -R astenix:sudo /opt/tor-browser && sudo chmod 750 /opt/tor-browser
-'''
+''sudo chown -R astenix:sudo /opt/tor-browser && sudo chmod 750 /opt/tor-browser''
 
 ==== Сделать ярлык для запуска ====
 
