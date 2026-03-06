@@ -56,12 +56,10 @@ Creation-Date: 2022-12-22T04:16:50+02:00
 
 В Anaconda встроен довольно строгий линтер, он считает неправильными почти все строки любого кода (и он, конечно, прав), помечая их белыми прямоугольниками. Эту функциональность лучше передать отдельному плагину, бо лучше использовать линтер под свой язык программирования и строго под выбранные юзером правила правописания, которые под тот же Python бывают очень разные. Поэтому
 
-'''
-Preferences 
-> Package Settings 
-> Anaconda 
-> Setting — User
-'''
+''Preferences'' 
+''> Package Settings'' 
+''> Anaconda'' 
+''> Setting — User''
 
 Этот файл пуст, можно прописать там и отключение линтера анаконды, и путь к рабочей версии Python:
 
@@ -76,12 +74,10 @@ Preferences
 
 Ctrl+S и перезапустить Sublime. Если изменений не будет, то можно задать ту же настройку на глобальном уровне:
 
-'''
-Preferences 
-> Package Settings 
-> Anaconda 
-> Setting — Default
-'''
+''Preferences'' 
+''> Package Settings'' 
+''> Anaconda'' 
+''> Setting — Default''
 
 Прописать параметр ’false’ для "''anaconda_linting''". 
 
@@ -91,17 +87,13 @@ Ctrl+S и (опционально) перезапустить Sublime.
 
 Быстрое решение:
 
-'''
-View 
-> Indentation 
-> Tab Width: 4 //эту настройку в будущем уже не трогаем
-'''
+''View'' 
+''> Indentation'' 
+''> Tab Width: 4 //эту настройку в будущем уже не трогаем''
 
-'''
-View 
-> Indentation 
-> Convert Indentations to Tabs
-'''
+''View'' 
+''> Indentation'' 
+''> Convert Indentations to Tabs''
 
 Или же:
 
@@ -117,19 +109,15 @@ View
 
 По-умолчанию дежурный запуск скриптов на Python делается во встроенной консольке через Ctrl+B. Годно, если надо просто что-то выполнить, и нет, если подразумевается интерактивность со стороны юзера.
 
-'''
-Ctrl+Shift+P 
-> Package Control: Install Package 
-> Terminus
-'''
+''Ctrl+Shift+P'' 
+''> Package Control: Install Package'' 
+''> Terminus''
 
 Затем сохранить в каталог с пакетами ( ''~/.config/sublime-text/Packages/User/'' ) новый файл „close_terminal.py‘ — https://gist.github.com/OdatNurd/2aeb8f753a053d9b927a8f125a8e456d — это плагин для тонкой обработки будущих окон терминала. В частности, он будет при каждом билде скрипта в разработке держать фокус на окне со скриптом и фокус только на одном окне терминала, чтобы не открывалось новое при каждом нажатии Ctrl+B.
 
-'''
-Tools 
-> Build System 
-> New Build System
-'''
+''Tools'' 
+''> Build System'' 
+''> New Build System''
  
 Откроется пустой файл настроек.
 
@@ -173,11 +161,9 @@ Tools
 
 Ctrl+S > дать новому файлу sublime-build имя вроде ’BuildPython.sublime-build’ и дважды убедиться в том, что он сохраняется в ''/~/.config/sublime-text/Packages/User/''
 
-'''
-Tools 
-> Build System 
-> выбрать ’BuildPython‘
-'''
+''Tools'' 
+''> Build System'' 
+''> выбрать ’BuildPython‘''
 
 Больше эту настройку можно не трогать. Теперь общий хоткей Ctrl+B вызовет консоль Terminus справа от окна с кодом и в ней выполнит код по заветам прописанного интерпретатора Python.
 
