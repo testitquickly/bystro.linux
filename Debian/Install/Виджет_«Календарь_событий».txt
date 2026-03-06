@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-03-06T10:53:10+02:00
+
+====== Виджет «Календарь событий» ======
+
+[ @debian @install @plasma6 @widget @time ]
+
+Этот виджет ещё не работает в “Plasma 6”, но можно установить его неофициальный порт — работает, но с мелкими недостатками, нет таймзон и другие мелочи.
+
+''git clone -b plasma-6 https://github.com/ALikesToCode/plasma-applet-eventcalendar.git ~/eventcalendar && cd ~/eventcalendar && sh ./install''
+
+Установить виджет:
+
+''ПКМ по панели'' 
+''> [Добавить или изменить виджеты]''
+''> Add Widgets''
+''> Найти виджет Календарь событий (Event Calendar) и добавить его''
+
+===== Синхронизация Google Calendar =====
+
+В Plasma 6 это всё настраивается неочевидно.
+
+''sudo apt install kaccounts-integration kaccounts-providers signond signon-kwallet-extension''
+
+Открыть 
+
+''Параметры системы''
+''> Сеть и связь''
+''> Учётные записи в Интернете''
+''> [+ Добавить учётную запись]''
+
+Подключить KDE Accounts к своему аккаунту Google. Включить GCalendar в виджете может быть неочевидным квестом, но разобраться можно.
+
+Дальше см. [[HowTo:Настроить:Внешний вид KDE:Виджет «Календарь событий»]]
