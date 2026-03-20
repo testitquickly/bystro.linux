@@ -6,16 +6,18 @@ Creation-Date: 2022-02-22T19:45:38+02:00
 
 [ @console @user ]
 
-Есть две утилиты.
+Есть две утилиты:
 
 1)
 Низкоуровневая утилита из пакета //shadow-utils//. Подходит для скриптов — просто создаёт в системе нового пользователя и каталог его профиля в ''/home/''. 
 
 ''sudo useradd -m -s /bin/bash'' __''USERNAME''__
 
-Затем надо задать ему пароль:
+Вторым шагом надо задать ему пароль:
 
 ''passwd'' __''USERNAME''__
+
+Если нужен юзер без пароля (чтобы заходил только по ssh с ключом) — второй шаг не выполняем.
 
 2)
 Высокоуровневая оболочка над ''useradd'', которую надо сперва установить, затем 
@@ -29,3 +31,32 @@ Creation-Date: 2022-02-22T19:45:38+02:00
 == ''adduser'' __''USERNAME''__ ''--disabled-password'' ==
 
 Если такой юзер захочет выполнить что-то черз sudo — система попросит пароль, пароля нет, sudo не сработает. Но всегда можно разрешить такому юзеру выполнять sudo без пароля — [[Настроить:Отключить запрос пароля для sudo]]
+
+Удалять утилиту ''adduser'' не надо, она потянет за собой весь партактив:
+
+''adduser*             ksshaskpass*                  plasma-nm*''
+''avahi-daemon*        libcanberra-pulse*            plasma-pa*''
+''bluedevil*           libksanecore6-1*              plasma-vault*''
+''bluez*               libksanewidgets6-6*           plasma-welcome*''
+''colord*              libopenconnect5*              python3-fuse*''
+''cron*                libsane1*                     rpcbind*''
+''cron-daemon-common*  libtss2-esys-3.0.2-0t64*      rtkit*''
+''cryfs*               libtss2-mu-4.0.1-0t64*        sane-utils*''
+''cups*                libtss2-sys1t64*              sddm*''
+''cups-browsed*        libtss2-tcti-cmd0t64*         sddm-theme-breeze*''
+''cups-bsd*            libtss2-tcti-device0t64*      sddm-theme-debian-breeze*''
+''cups-client*         libtss2-tcti-libtpms0t64*     sshfs*''
+''cups-core-drivers*   libtss2-tcti-mssim0t64*       ssl-cert*''
+''cups-daemon*         libtss2-tcti-spi-helper0t64*  task-kde-desktop*''
+''cups-pk-helper*      libtss2-tcti-swtpm0t64*       task-ssh-server*''
+''dhcpcd-base*         libtss2-tctildr0t64*          tellico*''
+''dirmngr*             network-manager*              timeshift*''
+''flatpak*             nfs-common*                   tpm-udev*''
+''fuse3*               ntfs-3g*                      usbmuxd*''
+''fwupd*               nvme-cli*                     uuid-runtime*''
+''geoclue-2.0*         openconnect*                  vsftpd*''
+''gnupg*               openssh-client*               wireplumber*''
+''gpg-wks-client*      openssh-server*               wpasupplicant*''
+''ifupdown*            openssh-sftp-server*          xdg-desktop-portal*''
+''ipp-usb*             pipewire*                     xdg-desktop-portal-gtk*''
+''kio-fuse*            pipewire-pulse*               xdg-desktop-portal-kde*''
