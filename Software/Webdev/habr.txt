@@ -15,7 +15,7 @@ Creation-Date: 2025-10-17T13:58:40+03:00
 * убрать «лишние» элементы через //uBlock Origin//: “Настройки” → вкладка “Мои фильтры”, вставить 
 
 {{{code: lang="sh" linenumbers="True"
-! Habr — только заголовки + компактная лента
+! Habr — оставить только заголовки + компактная лента
 ||habrastorage.org/getpro/habr/branding/$image
 habr.com##.article-snippet > .meta-container
 habr.com##.article-snippet > .lead
@@ -34,4 +34,6 @@ habr.com##.tm-sexy-sidebar_margin.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-
 habr.com##.tm-sexy-sidebar_stick-top.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-block
 habr.com##.tm-tabs_page-header.tabs
 habr.com##.tm-company-card__top-image-placeholder
+habr.com##.block > .tm-block_spacing-around.tm-block
+habr.com##.block > .tm-block_spacing-bottom.tm-block
 }}}
