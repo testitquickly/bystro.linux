@@ -29,9 +29,17 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 
 Установить базовое ПО для сканирования:
 
+==== Debian 12 ====
+
 ''sudo apt update && sudo apt install -y sane-utils libsane sane xsane''
 
+==== Debian 13 ====
+
+''sudo apt update && sudo apt install -y sane-utils libsane1 xsane''
+
 ===== Автоматическая установка =====
+
+==== Debian 12 ====
 
 1. https://developers.hp.com/hp-linux-imaging-and-printing/gethplip
 2. выбрать «свой linux» из выпадающего списка,
@@ -48,6 +56,22 @@ Creation-Date: 2023-10-22T22:59:26+03:00
 Для сборки системе понадобится собрать множество других пакетов, поэтому это всё __НАДОЛГО__ (но если уже прошёл час, то можно всё отменять и искать более старый скрипт установки) и с риском поломаться в любой момент. Надо присматривать за процессом и не отходить далеко, потому что в какой-то момент будет запрошен пароль или выбор юзера.
 
 Во всех источниках после этого рекомендуется перезагрузить компьютер, но не факт, что это понадобится.
+
+==== Debian 13 ====
+
+''sudo apt update && sudo apt install -y hplip hplip-gui printer-driver-hpcups && sudo apt install -y libsane1 sane-utils && hp-check -r''
+
+В итоге смотреть раздел SUMMARY, там будет перечислено всё, что ещё нужно установить. Некоторые из перечисленных пакетов в 13 уже называются иначе, придется их поискать.
+
+Условно нужно это:
+
+''sudo apt update && sudo apt install -y \''
+''cups cups-client cups-bsd libcups2 libcupsimage2 \''
+''libusb-1.0-0-dev libsane1 libsane-dev \''
+''libavahi-client-dev libavahi-common-dev libsnmp-dev snmp \''
+''python3-dev python3-dbus python3-pyqt5 \''
+''libtool libtool-bin \''
+''avahi-utils && sudo systemctl enable --now cups''
 
 ===== Ручная установка =====
 
@@ -117,7 +141,11 @@ Reboot.
 
 В ответе см: 
 
-''7(lp),114(lpadmin),118(scanner)''
+''lp, lpadmin, scanner''
+
+Если нет:
+
+''su -c "/usr/sbin/usermod -a -G lp astenix"''
 
 ==== Сделать ручную настройку HP ====
 
@@ -129,22 +157,37 @@ Reboot.
 
 ==== Подключить принтер ====
 
+1. драйвер установлен
+2. ноутбук перезагружен
+3. принтер включен
+4. в принтер воткнут провод LAN и мигают его огоньки
+5. принтер определяется в настройках роутера
+
+=== Через HP Device Manager ===
+
+После установки драйвера в трее может появиться иконка службы HP. Под ней находится ''HP Device Manager'' — лучше подключить принтер через неё, это избавит от выбора драйвера.
+
+Проверить статус сканирования — может быть предложено установить драйвер. Потребуется пароль root. Дальше через программу ''XSane'' (стандарт).
+
+=== Через Параметры системы ===
+
 ''Параметры системы''
 ''> Оборудование''
 ''> Принтеры''
 
 Если принтер подключен через роутер — указать его ip.
 
-implicitclass://HP_LaserJet_Tank_MFP_2602dn_0483F1/
+''implicitclass://HP_LaserJet_Tank_MFP_2602dn_0483F1/''
 
 На шаге выбора драйверов выбрать путь к файлу ppd (настройки).
 
 Есть вероятность, что принтер уже был подключен через другой драйвер, например, driverless. Не факт, что это будет работать, поэтому 
-Настроить
-> Изменение принтера
-> Драйвер
-> Выбрать другой драйвер
-> Указать файл ppd
+
+''Настроить''
+''> Изменение принтера''
+''> Драйвер''
+''> Выбрать другой драйвер''
+''> Указать файл ppd''
 Найти его в ''/etc/cups/ppd/'' 
 
 Если можно выполнить тестовую печать — все гуд. Если нет — алярм, смотреть https://developers.hp.com/hp-linux-imaging-and-printing/install/manual/hp_setup
@@ -162,9 +205,6 @@ implicitclass://HP_LaserJet_Tank_MFP_2602dn_0483F1/
 '''
 
 Задать новое имя принтера и сразу скопировать настройки от существующего:
-
-''sudo lpadmin -p HP_2602dn -v'' [[socket://192.168.1.13|''socket://192.168.1.13'']] ''-E -P /etc/cups/ppd/HP_LaserJet_Tank_MFP_2602dn_0483F1.ppd''
-
 
 ''sudo lpadmin -p HP_2602dn -v $(lpstat -v HP_LaserJet_Tank_MFP_2602dn_0483F1 | awk '{print $3}') -E -P /etc/cups/ppd/HP_LaserJet_Tank_MFP_2602dn_0483F1.ppd''
 
