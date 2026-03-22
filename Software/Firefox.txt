@@ -78,6 +78,14 @@ Firefox втихую загружает контент по ссылкам, по
 
 В левом нижнем углу есть галочка «Заголовок». Включить её — у окна появится тулбар.
 
+==== Добавить поиск по Youtube ====
+
+Перейти на ''about:preferences#search''
+> [Добавить]
+
+Имя = ''Youtube''
+URL поискового запроса = ''https://www.youtube.com/results?search_query=%s''
+
 ==== Настройки консоли ====
 
 https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html
