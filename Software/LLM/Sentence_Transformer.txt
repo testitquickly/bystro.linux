@@ -69,3 +69,55 @@ Creation-Date: 2025-06-19T01:28:54+03:00
 * Если предложения «закатаны» в большие абзацы, eps надо уменьшить, например, вместо 0,3 прописать 0,25 или 0,22
 
 С этим параметром надо экспериментировать в зависимости от размера используемой модели. Для самой маленькой модели ''eps'' в диапазоне между 0,20 к 0,40 (условно). А для самой большой модели  ''eps'' надо выставить в меньшем диапазоне между 0,15 и 0,20. 
+
+	*todo  LLM SentenceTransformer
+
+Надо решить, что делать с предупреждениями
+
+''Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.''
+''Loading weights: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 199/199 [00:00<00:00, 5573.51it/s]''
+''XLMRobertaModel LOAD REPORT from: intfloat/multilingual-e5-base''
+''Key                     | Status     |  |''
+''------------------------+------------+--+-''
+''embeddings.position_ids | UNEXPECTED |  |''
+
+''Notes:''
+''- UNEXPECTED    :can be ignored when loading from different task/architecture; not ok if you expect identical arch.''
+
+Игнорировать можно.
+
+embeddings.position_ids | UNEXPECTED означает:
+
+в загружаемых весах есть ключ, которого нет в текущей модели
+это нормальная ситуация для XLM-RoBERTa при загрузке через SentenceTransformers
+
+Причина:
+
+position_ids — не обучаемый параметр, а буфер
+разные версии/обёртки моделей его либо включают, либо нет
+
+Когда это проблема:
+
+если много MISSING или UNEXPECTED ключей
+если модель ведёт себя некорректно
+
+В данном случае (один ключ) — норма.
+
+Также можно отключить логирование уровня warning для transformers:
+
+from transformers import logging
+logging.set_verbosity_error()
+
+Или полностью убрать вывод:
+
+from transformers import logging
+logging.set_verbosity(40)  # ERROR
+
+import logging
+logging.getLogger("sentence_transformers").setLevel(logging.ERROR)
+logging.getLogger("transformers").setLevel(logging.ERROR)
+
+А также
+
+''./scripts/zim/convert-vtt-file-to-txt.sh: строка 38: e: команда не найдена''
+
