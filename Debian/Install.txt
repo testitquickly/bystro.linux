@@ -54,6 +54,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Mermaid JS]]
 [[+Midnight Commander]]
 [[+Minder]] # майндмапы
+[[+MkDocs]]
 
 [[+NodeJS]]
 [[+ntfs-3g]]
