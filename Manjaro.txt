@@ -6,8 +6,6 @@ Creation-Date: 2023-01-06T20:20:25+02:00
 
 [ @main @manjaro ]
 
-Подразумевается, что процесс установки Manjaro уже прошёл гладко и надо только настроить систему.
-
 [[+Setup]]
 
 [[+HowTo]]
@@ -16,3 +14,5 @@ Creation-Date: 2023-01-06T20:20:25+02:00
 [[+HowTo:Manage:Packages]]
 
 [[+Install]]
+
+Внутри Manjaro [[https://habr.com/ru/companies/bothub/articles/1018284/|случилась]] политическая сложность, поэтому есть резон глянуть на EndeavourOS (прямой наследник идей Manjaro), CachyOS (самый популярный Arch-дистрибутив на [[https://distrowatch.com|DistroWatch]]) и на сам Arch, который в последнее время стал нубо-дружелюбнее хотя бы в установке.
