@@ -6,27 +6,44 @@ Creation-Date: 2026-01-21T04:04:32+02:00
 
 [ @console @bashrc @alias @images ]
 
-Сперва должна быть установлена утилита ''most'' (browse or page through a text file):
-
-''sudo apt install most''
-
 В каталоге со скриптами сделать ''bashrc_displayVariables.sh'' с таким содержимым:
 
 {{{code: lang="sh" linenumbers="True"
 #!/bin/bash
 
-input_file="$HOME/.bashrc"
-tmp_file="/tmp/bashrc_displayVariables.tmp"
-
 # Скрипт обрабатывает только англоязычные алиасы. Если нужен русскоязычный, его надо закатать в функцию вроде
 # for i in mc ьс; do alias $i='mc'; done # старт Midnight Commander
 
+# Debian 12 — вывод цветного текста через 'less -R'
+# Debian 13 — вывод цветного текста через утилиту 'most' (browse or page through a text file); sudo apt install most
+
+    # глобальный файл с переменными и цветом
+. /home/mySettings/myScripts/variables.var
+
+    # локальные переменные
+input_file="/home/astenix/.bashrc"
+tmp_folder="/tmp/displayVariables"
+tmp_file="$tmp_folder/dv.txt"
+MY_SCRIPTS="/home/mySettings/myScripts"
+
+
+# -----------------------------------------
+# Проверяем и создаём каталог и файл, если их нет
+# -----------------------------------------
+create_tmp_file() {
+    mkdir -p "$tmp_folder"
+    [[ -f "$tmp_file" ]] || touch "$tmp_file"
+}
+
 # -----------------------------------------
 # Очищаем tmp_file и копируем туда исходный файл
+# Содержимое .bashrc начинаем читать со строки с текстом “# here is the line when DisplayVariables is started”
+# /…/{…} — когда встречена нужная строка, устанавливаем флаг found=1 и переходим к следующей строке.
+# found — если флаг установлен, выводим строку.
 # -----------------------------------------
-clear_tmp_file() {
+import_data_to_tmp_file() {
     : > "$tmp_file"
-    tail -n +101 "$input_file" > "$tmp_file"
+    awk '/### НЕ УДАЛЯТЬ - это строка для DisplayVariables/{found=1; next} found' "$input_file" > "$tmp_file"
 }
 
 # -----------------------------------------
@@ -36,7 +53,7 @@ clear_tmp_file() {
 # сортирует строки секции и записывает результат обратно в tmp_file
 # -----------------------------------------
 search_section_titles() {
-    local tmp_edit="/tmp/bashrc_displayVariables.sections.tmp"
+    local tmp_edit="${tmp_file}.sections"
     : > "$tmp_edit"
 
     local current_header=""
@@ -52,7 +69,7 @@ search_section_titles() {
             fi
 
             current_header="${BASH_REMATCH[1]}"
-            echo "" >> "$tmp_edit"                  # пустая строка перед заголовком
+            echo "" >> "$tmp_edit"  # пустая строка перед заголовком
             echo "[ $current_header ]" >> "$tmp_edit"
             continue
         fi
@@ -87,7 +104,7 @@ search_section_titles() {
 # Заменяет строку source на список функций с комментариями
 # -----------------------------------------
 search_sourced_functions() {
-    tmp_edit="${tmp_file}.sourced"
+    local tmp_edit="${tmp_file}.sourced"
     : > "$tmp_edit"
 
     while IFS= read -r line; do
@@ -96,8 +113,6 @@ search_sourced_functions() {
             echo "$line" >> "$tmp_edit"
             continue
         fi
-
-        local MY_SCRIPTS=/home/mySettings/myScripts
 
         # ищем строки source $MY_SCRIPTS/*.sh
         if [[ "$line" =~ source[[:space:]]+\$MY_SCRIPTS/([^[:space:]]+\.fn) ]]; then
@@ -141,7 +156,7 @@ search_sourced_functions() {
 # Оставляем только строки вида "код # комментарий"
 # -----------------------------------------
 search_lines_with_comments() {
-    tmp_edit="${tmp_file}.lines"
+    local tmp_edit="${tmp_file}.lines"
     : > "$tmp_edit"
 
     section_lines=()
@@ -194,7 +209,7 @@ search_lines_with_comments() {
 # Также отдельная обработка складских алиасов
 # -----------------------------------------
 search_simple_aliases() {
-    tmp_edit="${tmp_file}.alias"
+    local tmp_edit="${tmp_file}.simplealiases"
     : > "$tmp_edit"
 
     while IFS= read -r line; do
@@ -231,7 +246,7 @@ search_simple_aliases() {
 # Например: huion-browser, huion-gimp и т.д.
 # -----------------------------------------
 search_complex_aliases() {
-    tmp_edit="${tmp_file}.sof"
+    local tmp_edit="${tmp_file}.complexaliases"
     : > "$tmp_edit"
 
     while IFS= read -r line; do
@@ -253,7 +268,7 @@ search_complex_aliases() {
 # a (b, c) # комментарий
 # -----------------------------------------
 search_cloned_aliases() {
-    tmp_edit="${tmp_file}.clonedalias"
+    local tmp_edit="${tmp_file}.clonedalias"
     : > "$tmp_edit"
 
     while IFS= read -r line; do
@@ -300,7 +315,7 @@ search_cloned_aliases() {
 # dvg # комментарий
 # -----------------------------------------
 search_functioned_aliases() {
-    tmp_edit="${tmp_file}.funcedalias"
+    local tmp_edit="${tmp_file}.functionedaliases"
     : > "$tmp_edit"
 
     while IFS= read -r line; do
@@ -327,7 +342,7 @@ search_functioned_aliases() {
 # Заголовки [ ... ] и пустые строки сохраняются на месте
 # -----------------------------------------
 sort_lines_under_each_section() {
-    tmp_edit="${tmp_file}.sorted"
+    local tmp_edit="${tmp_file}.sortedlines"
     : > "$tmp_edit"
 
     current_header=""
@@ -372,8 +387,8 @@ sort_lines_under_each_section() {
 # -----------------------------------------
 # Функция: окрашивает комментарии после # в оранжевый цвет
 # -----------------------------------------
-highlight_comments() {
-    tmp_edit="${tmp_file}.highlighted"
+highlight_comments_with_amber_color() {
+    local tmp_edit="${tmp_file}.highlightedcomments"
     : > "$tmp_edit"
 
     while IFS= read -r line; do
@@ -382,14 +397,7 @@ highlight_comments() {
             code_part="${BASH_REMATCH[1]}"   # всё до #
             comment_part="#${BASH_REMATCH[2]}" # # и всё после него
 
-            # цвет ANSI
-#             color="\033[38;5;208m" # оранжевый
-#             color="\033[38;5;215m" # слабый оранжевый
-#             color="\033[38;5;222m" # очень слабый оранжевый, почти желтый
-            color="\033[38;5;215m" # янтарь
-            reset="\033[0m"
-
-            echo -e "${code_part}${color}${comment_part}${reset}" >> "$tmp_edit"
+            echo -e "${code_part}${clr_AMBER}${comment_part}${clr_NONE}" >> "$tmp_edit"
         else
             echo "$line" >> "$tmp_edit"
         fi
@@ -398,11 +406,11 @@ highlight_comments() {
     mv "$tmp_edit" "$tmp_file"
 }
 
-
 # -----------------------------------------
 # Запуск всех функций по порядку
 # -----------------------------------------
-clear_tmp_file
+create_tmp_file
+import_data_to_tmp_file
 search_section_titles
 search_sourced_functions
 search_lines_with_comments
@@ -411,7 +419,7 @@ search_complex_aliases
 search_cloned_aliases
 search_functioned_aliases
 sort_lines_under_each_section
-highlight_comments
+highlight_comments_with_amber_color
 
 
 # -----------------------------------------
@@ -423,9 +431,19 @@ echo " "
 
 }}}
 
-В ~/.bashrc сделать алиас для вызова:
+===== Сделать алиас для вызова =====
+
+В Debian 13 cперва должна быть установлена утилита ''most'' (browse or page through a text file). 
+
+''sudo apt install most''
+
+В ~/.bashrc 
 
 ''for i in dv вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | most"; done # показать все переменные из .bashrc''
+
+В Debian 12  most работает, но некорректно отображает коды цветов, поэтому тут надо ''less -R'':
+
+''for i in dv вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | less -R"; done # показать все переменные из .bashrc''
 
 Результат:
 
