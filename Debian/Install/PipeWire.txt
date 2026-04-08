@@ -6,9 +6,26 @@ Creation-Date: 2025-12-20T04:52:51+02:00
 
 [ @debian @install @sound @pipewire ]
 
+===== Debian 13 =====
+
+PipeWire уже установлен по-умолчанию (с совместимостью через PulseAudio). Проверить:
+
+''pactl info''
+
+Ожидаемый ответ:
+
+''Server Name: PulseAudio (on PipeWire 0.3.65)''
+
+То есть:
+
+* ''PulseAudio (on PipeWire)'' → работает PipeWire
+* ''pulseaudio'' → работает PulseAudio
+
+===== Debian 12 =====
+
 Надо будет перезагрузить ноут.
 
-Установить PipeWire и заодно включить ему BlueTooth.
+Надо и установить PipeWire, и отдельно включить ему BlueTooth.
 
 * pipewire-pulse — замена PulseAudio. Его установка удалит и pulseaudio, и pulseaudio-bluetooth, поэтому пакеты для BlueTooth надо будет установить отдельно.
 * pipewire-alsa — не нужен, если в системе будет pipeware-pulse, но может быть нужным старым приложениям, которые управляют звуком для PipeWire через ALSA API. Надо будет удалить pulseaudio-alsa.
