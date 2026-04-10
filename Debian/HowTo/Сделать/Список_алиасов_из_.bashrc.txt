@@ -437,13 +437,15 @@ echo " "
 
 ''sudo apt install most''
 
+Список занимает несколько экранов, и при стандарном выводе информации в консоль я увижу только последние строки. Удобнее видеть страницу текста на её первой строке, что ''most'' и обеспечивает.
+
 В ~/.bashrc 
 
-''for i in dv вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | most"; done # показать все переменные из .bashrc''
+''for i in tag dv''  ''ефп вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | most"; done # показать все переменные из .bashrc''
 
-В Debian 12  most работает, но некорректно отображает коды цветов, поэтому лучше использовать ''less -R'':
+В Debian 12  most работает as expected, но если он некорректно отображает расцвечивание текста, лучше использовать ''less -R'':
 
-''for i in dv вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | less -R"; done # показать все переменные из .bashrc''
+''for i in tag dv''  ''ефп вм displayVariables; do alias $i="clear; $MY_SCRIPTS/display_variables_from_bashrc.sh | less -R"; done # показать все переменные из .bashrc''
 
 Внешне разницы между ''less'' и ''most'' мало, и в обоих случаях выход по клавише [''Q''].
 
