@@ -389,7 +389,9 @@ Categories=Other;
 
 Внутренняя ссылка указывается через символ „#”. Надо заменить все пробелы в подзаголовке к которому надо перейти символом „-”. Заглавные буквы можно использовать, а можно и нет — регистр не учитывается.
 
-Аргументы: //~/путь/к/соответствующему/файлу/notebook.zim Defect_management:Six_Myths_of_Product_Development#search-for-a-solution//
+Аргументы: 
+
+''~/путь/к/соответствующему/файлу/notebook.zim Defect_management:Six_Myths_of_Product_Development#search-for-a-solution''
 
 ===== Плагины =====
 
