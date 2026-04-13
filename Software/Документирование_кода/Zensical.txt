@@ -12,3 +12,45 @@ Creation-Date: 2026-03-29T00:48:02+02:00
 
 ===== Настроить =====
 
+[project]
+site_name = "My site"
+
+Unless you're building documentation for offline usage, it's strongly recommended to specify the site_url setting as well, since it's a prerequisite for the following features:
+
+	Instant navigation
+	Instant previews
+	Custom error pages
+
+===== Собрать сайт из md =====
+
+''zensical build''
+
+===== Установить плагины =====
+
+''pipx inject zensical mkdocstrings[python] mkdocs-material mkdocs-awesome-pages-plugin mkdocs-add-number-plugin mkdocs-graphviz mkdocs-mermaid2-plugin''
+
+Тут inject, потому что плагины ВПИХИВАЮТСЯ в файлы mkdocs, и если позже надо будет посмотреть список установленного ПО в окружение pipx… 
+
+…а для этого надо сперва активировать виртуальное окружение
+
+''source ~/.local/share/pipx/venvs/mkdocs/bin/activate''
+
+и затем можно проверить установленный софт, которые касается MkDocs:
+
+''python -m pip list | grep mkdocs''
+
+Удалить отдельный плагин, например ''mkdocs-awesome-nav'', надо выполнить в том же виртуальном окружении:
+
+''pipx uninject mkdocs mkdocs-awesome-nav''
+
+Через плагин ''material'' McDocs поднимет сайт c динамическими меню, поиском, ToC, табами на странице, mobile first и много другое (разные плагины).
+
+Проверить установку:
+
+''mkdocs --version''
+
+Выход из виртуального окружения:
+
+''deactivate''
+
+
