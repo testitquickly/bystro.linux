@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-04-17T14:19:01+03:00
+
+====== Слово во всех файлах ======
+
+[ @search ]
+
+Надо найти слово RED во всех файлах в каталоге и его подкаталогах:
+
+''grep -R -l -w -- 'RED' /home/mySettings/myScripts''
