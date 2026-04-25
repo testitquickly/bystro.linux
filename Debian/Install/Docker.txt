@@ -10,7 +10,33 @@ Creation-Date: 2024-11-10T23:12:24+02:00
 
 ===== Установить Docker =====
 
-''sudo apt update && sudo apt install apt-transport-https ca-certificates curl software-properties-common ; curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null ; sudo apt update && sudo apt install docker-ce docker-ce-cli containerd.io -y''
+''sudo apt update && sudo apt upgrade -y''
+
+Debian 12:
+
+''sudo apt install -y apt-transport-https ca-certificates curl gnupg software-properties-common''
+
+Debian 13:
+
+''sudo apt install -y apt-transport-https ca-certificates curl gnupg''
+
+Добавить ключ Docker:
+
+''sudo install -m 0755 -d /etc/apt/keyrings''
+
+''curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg''
+
+''sudo chmod a+r /etc/apt/keyrings/docker.gpg''
+
+Добавить репозиторий:
+
+''echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \''
+''$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \''
+''sudo tee /etc/apt/sources.list.d/docker.list > /dev/null''
+
+Установить сам Docker:
+
+''sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin''
 
 ==== Запустить сервис ====
 
@@ -26,7 +52,9 @@ $USER — это переменная окружения, содержить т�
 
 Перезагрузить компьютер.
 
-После проверить:
+''sudo reboot''
+
+После перезагрузки убедиться в том, что действующий юзер вхож в группу ''docker'':
 
 ''groups''
 
