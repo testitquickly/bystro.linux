@@ -126,6 +126,8 @@ export NUMEXPR_NUM_THREADS=1
 
 ==== Работа на GPU ====
 
+GPU — Graphics Processing Unit. Видеокарта.
+
 Очень разумно выполнять всю работу Whisper на относительно свежей видеокарте от Nvidia.
 
 Для этого
