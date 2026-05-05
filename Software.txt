@@ -76,6 +76,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+MyPaint]]
 
 [[+neofetch]]
+[[+niri]]
 [[+ntfs-3g]]
 [[+Nvidia]]
 
@@ -111,6 +112,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Snipe-It]] # Inventory portal
 [[+Spectacle]]
 [[+ssh]]
+[[+stow]] # a symlink farm manager
 [[+Sublime]]
 [[+Subtitle Composer]]
 [[+SyncThing]]
