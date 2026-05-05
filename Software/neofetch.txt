@@ -6,13 +6,13 @@ Creation-Date: 2024-05-04T00:08:09+03:00
 
 [ @debian @concole ]
 
-Утилита ''neofetch'' (установить через ''apt'') в целом нах не нужна и выводит в консоль служебную информацию об установленной системе:
+Утилита ''neofetch'' (установить через ''apt'') в целом нах не нужна и бодро выводит в консоль служебную информацию об установленной системе:
 
 ''astenix@uss-Asus-Zenbook17'' 
 ''--------------------------'' 
 ''OS: Debian GNU/Linux 12 (bookworm) x86_64'' 
 ''Host: Zenbook UM6702RA_RM6702RA_BM6702RA UM6702RA_UM6702RA 1.0'' 
-'''Kernel: 6.1.0-40-amd64'' 
+	''Kernel: 6.1.0-40-amd64'' 
 ''Uptime: 23 hours, 49 mins'' 
 ''Packages: 2958 (dpkg), 1 (flatpak)'' 
 ''Shell: bash 5.2.15'' 
