@@ -10,7 +10,8 @@ Creation-Date: 2026-05-05T14:02:36+03:00
 
 niri — это scrollable-tiling Wayland compositor:
 * https://github.com/niri-wm/niri 
-* https://youtu.be/pcofhkTOYi0
+* https://youtu.be/pcofhkTOYi0 (ru)
+* https://youtu.be/bjalAgAVIkc (en)
 
 **Wayland** — новый протокол графической системы Linux, который должен со временем заменить древний X11. Он определяет, как приложения рисуют окна и как ими управляет комп//о//зитор (ударение на второе «о»).
 
