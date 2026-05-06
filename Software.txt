@@ -6,53 +6,53 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [ @main ]
 
-[[+ab]] # Apache Benchmarking 
-[[+Audacious]] # аудиоплеер
-[[+Audacity]] # редактирование аудио
+[[+ab]] : Apache Benchmarking 
+[[+Audacious]] : аудиоплеер
+[[+Audacity]] : редактирование аудио
 
-[[+Baloo]] # поиск
+[[+Baloo]] : поиск
 [[+blame]]
-[[+bluetoothctl]] # менеджер Bluetooth
-[[+Brave]] # браузер
+[[+bluetoothctl]] : менеджер Bluetooth
+[[+Brave]] : браузер
 
-[[+Cadence]] # роутинг звука через аудиоинтерфейс JACK
-[[+Calibre]] # библиотека
+[[+Cadence]] : роутинг звука через аудиоинтерфейс JACK
+[[+Calibre]] : библиотека
 
-[[+DaVinci Resolve]] # видеоредактор
-[[+Docker]] # контейнеровоз
-[[+Dolphin]] # менеджер файлов
+[[+DaVinci Resolve]] : видеоредактор
+[[+Docker]] : контейнеровоз
+[[+Dolphin]] : менеджер файлов
 [[+Dropbox]]
-[[+du]] # disk usage
+[[+du]] : disk usage
 
 [[+Easy Effects]]
 [[+EdrawMind]]
-[[+Elgato “Stream Deck”]] # клавиатурки с кнопками-экранами
-[[+exiftool]] # метаданные файлов
+[[+Elgato “Stream Deck”]] : клавиатурки с кнопками-экранами
+[[+exiftool]] : метаданные файлов
 
 [[+FFmpeg]]
-[[+find]] # поиск файлов IRL
+[[+find]] : поиск файлов IRL
 [[+Firefox]]
 [[+firewall]]
 [[+Flatpak]]
-[[+fsck]] # File System Consistency Check
-[[+FSearch]] # поиск файлов, графический
+[[+fsck]] : File System Consistency Check
+[[+FSearch]] : поиск файлов, графический
 [[+ftp]]
 
 [[+git]]
 [[+Google Chrome]]
 [[+GPG]]
-[[+GraphViz]] # диаграммы из markdown
+[[+GraphViz]] : диаграммы из markdown
 
 [[+IDE]]
 
-[[+JACK]] # аудиоинтерфейс
+[[+JACK]] : аудиоинтерфейс
 
-[[+k3b]] # прожиг дисков
-[[+Kate]] # текстовый редактор
+[[+k3b]] : прожиг дисков
+[[+Kate]] : текстовый редактор
 [[+KDE Connect]]
-[[+KDevelop]] # IDE для разработки
-[[+KeePassXC]] # менеджер паролей
-[[+Kile]] # редактор LaTeX
+[[+KDevelop]] : IDE для разработки
+[[+KeePassXC]] : менеджер паролей
+[[+Kile]] : редактор LaTeX
 [[+KMail]]
 [[+KMyMoney]]
 [[+Konsole]]
@@ -63,96 +63,97 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+LaTeX]]
 [[+LibreOffice]]
 [[+LLM]]
-[[+locate]] # поиск файлов по базе данных
-[[+ls]] # list directory contents
+[[+locate]] : поиск файлов по базе данных
+[[+ls]] : list directory contents
 
-[[+Mermaid JS]] # диаграммы из markdown для браузера
-[[+Документирование кода:MkDocs]]
+[[+Mermaid JS]] : диаграммы из markdown для браузера
 [[+microcode]]
 [[+Midnight Commander]]
 [[+Minder]]
 [[+Mind map]]
-[[+most]]
-[[+mpv]]
+[[+most]] : pager просмотра текстов в консоли
+[[+mpv]] : видеоплеер
 [[+MyPaint]]
 
 [[+neofetch]]
-[[+niri]]
+[[+niri]] : scrollable-tiling Wayland compositor
 [[+ntfs-3g]]
 [[+Nvidia]]
 
 [[+Obsidian]]
 [[+OBS studio]]
-[[+Okular]]
+[[+Okular]] : pdf
 [[+LLM:Ollama]]
-[[+OpenShot]]
+[[+OpenShot]] : редактор видео
 
-[[+Документирование кода:Pandoc]]
-[[+paprefs]] # Pulse Audio Preferences
-[[+pdfarranger]]
-[[+pgAdmin]]
-[[+PipeWire]]
+[[+paprefs]] : Pulse Audio Preferences
+[[+pdfarranger]] : редактор pdf
+[[+pgAdmin]] : админка для БД Postgres
+[[+PipeWire]] : сервер звука
 [[+Playwright]]
 [[+Postman]]
 [[+Python]]
 
-[[+Qalculate!]] # продвинутый калькулятор
+[[+Qalculate!]] : продвинутый калькулятор
 [[+QBittorrent]]
-[[+qmmp]] # аудиоплеер
+[[+qmmp]] : аудиоплеер
 
-[[+Recoll]] # поиск внутри файлов
+[[+Recoll]] : поиск внутри файлов
 [[+RSync]]
 
 [[+Samba]]
-[[+sed]] # редактор содержимого файлов в консоли
+[[+sed]] : редактор содержимого файлов в консоли
 [[+LLM:Sentence Transformer]]
 [[+Slack]]
 [[+SmartGit]]
-[[+SmartMonTools]] # проверка дисков
+[[+SmartMonTools]] : проверка дисков
 [[+SMPlayer]]
 [[+snap]]
-[[+Snipe-It]] # Inventory portal
-[[+Spectacle]]
+[[+Snipe-It]] : Inventory portal
+[[+Spectacle]] : скриншотер
 [[+ssh]]
-[[+stow]] # a symlink farm manager
-[[+Sublime]]
-[[+Subtitle Composer]]
+[[+stow]] : a symlink farm manager
+[[+Sublime]] : текстовый редактор
+[[+Subtitle Composer]] : редактор субтитров
 [[+SyncThing]]
 
-[[+tar]] # архивы
+[[+tar]] : архивы
 [[+TeamViewer]]
-[[+Telegram]] # мессенджер
-[[+Tellico]]
-[[+Thunderbird]] # почта
-[[+Tor Browser]] # firefox
-[[+Touchegg]] # жесты тачпад
+[[+Telegram]] : мессенджер
+[[+Tellico]] : менеджер коллекций 
+[[+Thunderbird]] : почта
+[[+Tor Browser]] : firefox
+[[+Touchegg]] : жесты тачпад
 
 [[+UEFI]]
 [[+Unetbootin]]
 
-[[+v4l2]] # управление вебкамерой
-[[+VLC]] # видеоплеер
+[[+v4l2]] : управление вебкамерой
+[[+VLC]] : видеоплеер
 [[+vpn]]
-[[+VSCodium]] # IDE
-[[+vsftpd]] # ftp
+[[+VSCodium]] : IDE
+[[+vsftpd]] : ftp
 
 [[+Webdev]]
 [[+wget]]
 [[+whereis]]
-[[+LLM:Whisper]] # нейронная сеть для распознавания речи
+[[+LLM:Whisper]] : нейронная сеть для распознавания речи
 [[+wine]]
 
-[[+xampp]] # локальный веб-сервер
-[[+xclip]] # буфер обмена
+[[+xampp]] : локальный веб-сервер
+[[+xclip]] : буфер обмена
 
-[[+yt-dlp]] # скачивание видео с Youtube
+[[+yt-dlp]] : скачивание видео с Youtube
 
-[[+Документирование кода:Zensical]]
-[[+Zim]] # desktop wiki
-[[+zip]] # архивы
+[[+Zim]] : desktop wiki
+[[+zip]] : архивы
 [[+Zoom]]
 
 [[+Калькуляторы]]
+
+[[+Документирование кода:MkDocs]]
+[[+Документирование кода:Pandoc]]
+[[+Документирование кода:Zensical]]
 
 [[Debian:HowTo:Сделать:Симлинки и хардлинки]]
 [[+Скриншотеры]]
