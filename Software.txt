@@ -75,7 +75,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+mpv]] : видеоплеер
 [[+MyPaint]]
 
-[[+neofetch]]
+[[+neofetch]] : лишняя приблуда
 [[+niri]] : scrollable-tiling Wayland compositor
 [[+ntfs-3g]]
 [[+Nvidia]]
