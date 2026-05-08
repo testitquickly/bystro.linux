@@ -49,7 +49,7 @@ tar -xpJf tor-browser*
 ''Type=Application''
 ''Terminal=false''
 ''Exec=/opt/tor-browser/Browser/start-tor-browser''
-''Icon=/home/mySettings/icons/firefox.png''
+''Icon=/home/icons/firefox.png''
 ''StartupNotify=true''
 ''Categories=Network;WebBrowser;''
 

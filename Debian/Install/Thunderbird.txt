@@ -69,7 +69,7 @@ https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 ''Type=Application''
 ''Terminal=false''
 ''Exec=/opt/thunderbird/thunderbird -p astenix''
-''Icon=/home/mySettings/icons/thunderbird.png''
+''Icon=/home/icons/thunderbird.png''
 ''StartupNotify=true''
 ''Categories=Network;WebBrowser;''
 
