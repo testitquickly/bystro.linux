@@ -14,8 +14,7 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 ===== Установить =====
 
-* [[Debian:Install:SmartGit]]
-* для Manjaro аналогично
+[[Debian:Install:SmartGit]] — для Manjaro аналогично
 
 ===== Связать SmartGit с GitHub =====
 
@@ -146,17 +145,21 @@ Restart required.
 
 ==== ssh-ключи ====
 
-При попытке аутентификации на разных провайдерах git-репозиториев через ssh-ключи скорее всего SmartGit откажется их принять с сообщением «Exhausted Available Authentication Methods». 
+SmartGit по-умолчанию работает со всей криптографией через свой встроенный ssh-клиент. В этом есть преимущества — всё хранится внутри SmartGit. 
 
-Проблема в том, что SmartGit по-умолчанию работает со всей криптографией через встроенный ssh-клиент. В этом есть преимущества, всё хранится внутри SmartGit. Но если эта проблема проявится, надо переключить его настройки на использование системного ssh-клиента:
+Проверить/Настроить:
 
 ''Edit''
 ''> Preferences''
+''> Commands''
 ''> Authentication''
+Переключить на “Use SmartGit as SSH client”
 
-Поставить галочку на «Use system SSH client»
+Теперь если для подключения к какому-нибудь репозиторию нужен ssh-ключ, SmartGit перед пушем сам поднимет окно “SSH Credentials” с запросом «укажите путь к ключу». Учесть, что SmartGit работает только с ключами формата Open SSH.
 
-На своей стороне в
+Есть вероятность, что в разработке доступ к репозиториям будет открыт по ключу другого формата. Тогда надо будет переключиться на использование системного ssh-клиента:
+
+На своей стороне
 
 ''mcedit ~/.ssh/config''
 
@@ -168,12 +171,11 @@ Restart required.
 
 или такое, в зависимости от нужных настроек:
 
-'''
-Host your-ssh-domain.com
-	HostName your-ssh-domain.com
-	Port 22
-	PreferredAuthentications publickey
-	User git
-	IdentityFile ~/.ssh/your-ssh-key.priv.pem
-'''
+''Host your-ssh-domain.com''
+	''HostName your-ssh-domain.com''
+	''Port 22''
+	''PreferredAuthentications publickey''
+	''User git''
+	''IdentityFile ~/.ssh/your-ssh-key.priv.pem''
 
+Но тогда надо будет управлять всеми другими ключами этим методом.
