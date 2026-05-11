@@ -480,7 +480,7 @@ stow_add_folder zim $HOME/.config/zim
 
 === Отдельные переменные ===
 
-Но вот есть несколько ноутбуков с //hostname// вроде ''personalAcer'', ''jobAsus'' и так далее. Можно шарить между ними одинаковые конфиги, но на каждом компьютере могут быть какие-то уникальные настройки, например, цветовая дифференциацию hostname или история команд в Konsole.
+Но вот есть несколько ноутбуков с //hostname// вроде ''personalAcer'', ''jobAsus'' и так далее. Можно шарить между ними одинаковые конфиги, но на каждом компьютере могут быть какие-то уникальные настройки, например, цветовая дифференциацию hostname или история команд в Konsole, или на одном ноуте Debian 12, а на другом Debian 13, и в них уже кардинально разные версии [[Kile]] или [[qmmp]], где настройки разнесены в разные файлы.
 
 Решение: можно сделать отдельные файлы для хранения уникальных настроек для каждого отдельного компьютера, 
 
@@ -525,7 +525,31 @@ stow_add_folder zim $HOME/.config/zim
 ''~/.stw_FOLDER/Lenovo/.config/spectaclerc''
 … etc
 
-Затем на Asus развернуть общий и асусовский пакеты:
+В скрипте ''create_packages.sh'' это выглядит так:
+
+{{{code: lang="sh" linenumbers="True"
+#!/bin/bash
+
+source "$MY_SCRIPTS/stow/functions.fn"
+
+	# перечисление файлов, которые надо добавить в пакеты stow
+	# формат: пакет + полный путь к нужному файлу (их может быть 
+	# несколько в одном пакете)
+
+stow_add_file common $HOME/.bashrc
+stow_add_file common $HOME/.mostrc
+
+stow_add_file $HOSTNAME $HOME/.config/audacity/audacity.cfg
+
+stow_add_file $HOSTNAME $HOME/.local/share/krusader/krbookmarks.xml
+
+stow_add_file $HOSTNAME $HOME/.config/kilerc
+stow_add_folder $HOSTNAME $HOME/.local/share/kile
+
+… etc
+}}}
+
+Затем на Asus развернуть только общий и асусовский пакеты:
 
 ''stow -d ~/.stw_FOLDER -t $HOME common''
 ''stow -d ~/.stw_FOLDER -t $HOME $HOSTNAME''
