@@ -1,10 +1,10 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
-Creation-Date: 2026-05-04T01:04:24+03:00
+Creation-Date: 2026-05-11T23:31:26+03:00
 
 ====== stow ======
 
-[ @console @stow ]
+[ @stow @backup ]
 
 Stow (eng. складировать, упорядочивать) — менеджер симлинков на конфигурационные файлы. Не менеджер файлов, а инструмент управления конфигами, который может собрать все конфиги в отдельном каталоге, хранить у себя дерево каталогов с файлами конфигурации (файловую структуру) и заменить все эти конфиги симлинками (см. [[Debian:HowTo:Сделать:Симлинки и хардлинки]]).
 
@@ -19,6 +19,11 @@ Stow (eng. складировать, упорядочивать) — менед
 Наглядно: https://youtu.be/mEUUNRQdJF8
 
 Полный мануал: https://www.gnu.org/software/stow/manual/stow.html
+
+Однако не все конфиги должны быть идентичными на всех компьютерах. Например, настройка комфортного размера субтитров в [[mpv]] будет отличаться в зависимости от свойств экрана и разрешения и основного размера шрифтов. Постоянно перетирать эти числа в git наскучит быстро. Можно держать какие-то конфиги только локально, не занося их в общий репозиторий — неизбежны потери. Можно сделать отдельные ветки в репозитории — быстро наскучит переносить туда-сюда изменения общего характера. Разумно проверить, какие файлы страдают от разницы в настройках и сделать в stow 
+
+* общие пакеты (bash)
+* отдельные пакеты для каждого компьютера, ориентируясь на его //hostname.// См. далее раздел «**Уникальные конфиги**».
 
 ==== Концепции ====
 
@@ -141,13 +146,15 @@ Stow (eng. складировать, упорядочивать) — менед
 
 === Про битые симлинки ===
 
+== Переименование хранилища stow ==
+
 Предположим, я создал пакеты, развернул их, и в системе появились симлинки на файлы из хранилища stow. А потом я переименовал хранилище stow, и все симлинки в системе на его файлы оказались битыми. Если я решу просто удалить все симлинки пакетов через
 
 ''stow -D audacity bash krusader'' (etc)
 
 …то ничего не произойдет. Битые симлинки stow считает «чужими» (not owned by stow) и не тронет. Решение:
 
-* найти все битые симлинки в своем профиле:
+* найти все битые симлинки (на файлы и на каталоги) в своем профиле:
 
 ''find $HOME -type l -xtype l''
 
@@ -157,6 +164,19 @@ Stow (eng. складировать, упорядочивать) — менед
 
 * перейти в новый каталог stow
 * снова развернуть пакеты stow — все симлинки окажутся на своих местах.
+
+== Удалить симлинки и вернуть обратно оригинальные файлы ==
+
+Предположим, я создал пакеты, развернул их, в системе появились симлинки на файлы из хранилища stow. А потом я решил, что ошибся, что это всё было лишним, и что я хочу вернуть все файлы на место, и чтобы stow-симлинки исчезли.
+
+Это надо сделать вручную: удалить симлинки каждого пакета, затем скопировать все его файлы на место согласно структуре каталогов. Например, удалить пакет ''audacity'':
+
+1. ''stow -D audacity''
+2. ''cp -a ~/.stw_FOLDER/audacity/. $HOME/''
+
+Обратить внимание — там точка, а не астерикс (''*''). Точка означает “всё внутри каталога” и включает и скрытые файлы (.*), и все подкаталоги.
+
+Для автоматизации можно сделать функцию (см. далее).
 
 ==== Пересоздать симлинки (restow) ====
 
@@ -200,75 +220,106 @@ Stow (eng. складировать, упорядочивать) — менед
 Сделать отдельный файл с функциями, например, ''functions.fn'':
 
 {{{code: lang="sh" linenumbers="True"
-stow_main_folder="$HOME/myConfigs/stow"
+# корневой каталог stow-пакетов
+stow_main_folder="$HOME/myConfigs/myStow"
 
-#! добавить в stow файлы
+
+############################################################
+# добавить файл в stow-пакет
+############################################################
 stow_add_file() {
     local package_name="$1"
     local full_path="$2"
 
-    # файл уже является симлинком → уже развернут
-    if [ -L "$full_path" ]; then
-        echo "SKIP: уже есть symlink → $full_path"
-        return 0
-    fi
-
-    # файл отсутствует
-    if [ ! -f "$full_path" ]; then
-        echo "ERROR: файл не найден → $full_path"
+    # проверка аргументов
+    if [ -z "$package_name" ] || [ -z "$full_path" ]; then
+        echo "ERROR: нужны package_name и full_path"
         return 1
     fi
 
-    # абсолютный путь
+    # сразу приводим путь к абсолютному
     full_path="$(realpath "$full_path")"
 
-    # уже внутри stow
+    # защита: работаем только с файлами внутри HOME
+    [[ "$full_path" == "$HOME/"* ]] || {
+        echo "SKIP: файл вне HOME → $full_path"
+        return 0
+    }
+
+    # если уже внутри stow — ничего не делаем
     if [[ "$full_path" == "$stow_main_folder"* ]]; then
-        echo "SKIP: уже в пакете stow → $full_path"
+        echo "SKIP: уже в stow → $full_path"
         return 0
     fi
 
-    local rel="${full_path#$HOME/}"
-    local stow_path="$stow_main_folder/$package_name/$rel"
-
-    # уже существует в stow
-    if [ -f "$stow_path" ]; then
-        echo "SKIP: уже в пакете stow → $package_name/$rel"
-        return 0
-    fi
-
-    mkdir -p "$(dirname "$stow_path")"
-
-    mv "$full_path" "$stow_path"
-
-    echo "Файл добавлен → $package_name/$rel"
-}
-
-
-#! добавить в stow каталог
-stow_add_folder() {
-    local package_name="$1"
-    local full_path="$2"
-
-    if [ -z "$package_name" ] || [ -z "$full_path" ]; then
-        echo "ERROR: команде нужны аргументы" >&2
+    # файл должен существовать (любой тип)
+    if [ ! -e "$full_path" ]; then
+        echo "ERROR: не существует → $full_path"
         return 1
     fi
 
-    if [ ! -d "$full_path" ]; then
-        echo "ERROR: это не каталог → $full_path"
-        return 1
-    fi
-
+    # если это симлинк — пропускаем
     if [ -L "$full_path" ]; then
         echo "SKIP: symlink → $full_path"
         return 0
     fi
 
+    # относительный путь относительно HOME
+    local rel="${full_path#$HOME/}"
+
+    # куда переносим в stow
+    local dest="$stow_main_folder/$package_name/$rel"
+
+    # если уже есть — пропускаем
+    if [ -e "$dest" ]; then
+        echo "SKIP: уже существует в stow → $dest"
+        return 0
+    fi
+
+    mkdir -p "$(dirname "$dest")"
+
+    mv "$full_path" "$dest"
+
+    echo "OK: файл добавлен → $package_name/$rel"
+}
+
+
+############################################################
+# добавить каталог в stow-пакет
+############################################################
+stow_add_folder() {
+    local package_name="$1"
+    local full_path="$2"
+
+    # проверка аргументов
+    if [ -z "$package_name" ] || [ -z "$full_path" ]; then
+        echo "ERROR: нужны package_name и full_path"
+        return 1
+    fi
+
     full_path="$(realpath "$full_path")"
 
+    # только внутри HOME
+    [[ "$full_path" == "$HOME/"* ]] || {
+        echo "SKIP: вне HOME → $full_path"
+        return 0
+    }
+
+    # уже в stow
     if [[ "$full_path" == "$stow_main_folder"* ]]; then
-        echo "SKIP: уже в пакете stow → $full_path"
+        echo "SKIP: уже в stow → $full_path"
+        return 0
+    fi
+
+    # должен существовать и быть каталогом
+    if [ ! -d "$full_path" ]; then
+        echo "ERROR: не каталог → $full_path"
+        return 1
+    fi
+
+    # симлинки не трогаем
+    if [ -L "$full_path" ]; then
+        echo "SKIP: symlink → $full_path"
         return 0
     fi
 
@@ -276,41 +327,94 @@ stow_add_folder() {
     local dest="$stow_main_folder/$package_name/$rel"
 
     if [ -e "$dest" ]; then
-        echo "SKIP: уже в пакете stow → $package_name/$rel"
+        echo "SKIP: уже в stow → $dest"
         return 0
     fi
 
     mkdir -p "$(dirname "$dest")"
+
     mv "$full_path" "$dest"
 
-    echo "Каталог добавлен → $package_name/$rel"
+    echo "OK: каталог добавлен → $package_name/$rel"
 }
 
 
-#! развернуть пакет stow
-stow_run_package() {
+############################################################
+# развернуть один stow-пакет
+############################################################
+stow_deploy_package() {
     local package_name="$1"
+
     local pkg_dir="$stow_main_folder/$package_name"
 
+    # проверка существования пакета
     if [ ! -d "$pkg_dir" ]; then
-        echo -e "ERROR: пакет не найден → $package_name\n"
+        echo "ERROR: пакет не найден → $package_name"
         return 1
     fi
 
+    # проверка что пакет не пустой
     if [ -z "$(find "$pkg_dir" -type f -print -quit)" ]; then
-        echo -e "ERROR: пустой пакет → $package_name\n"
+        echo "ERROR: пустой пакет → $package_name"
         return 1
     fi
 
+    # stow разворачивает пакет
     if stow -d "$stow_main_folder" -t "$HOME" "$package_name"; then
-        echo -e "Пакет успешно развернут → $package_name\n"
-        return 0
+        echo "OK: развернут → $package_name"
     else
-        echo -e "Пакет $package_name не развернут\n"
+        echo "ERROR: не удалось развернуть → $package_name"
         return 1
     fi
 }
 
+
+############################################################
+# развернуть все пакеты stow
+############################################################
+stow_deploy_packages_from_list() {
+
+    # список пакетов генерируется автоматически
+    find "$stow_main_folder" \
+        -mindepth 1 \
+        -maxdepth 1 \
+        -type d \
+        -printf '%f\n' | while IFS= read -r pkg; do
+
+        [ -n "$pkg" ] || continue
+
+        stow_deploy_package "$pkg"
+
+    done
+}
+
+
+############################################################
+# удалить все stow-пакеты (разлинковать)
+############################################################
+stow_undeploy_packages_from_list() {
+
+    # список пакетов
+    find "$stow_main_folder" \
+        -mindepth 1 \
+        -maxdepth 1 \
+        -type d \
+        -printf '%f\n' | while IFS= read -r pkg; do
+
+        [ -n "$pkg" ] || continue
+
+        # удаляем симлинки stow
+        stow -D -d "$stow_main_folder" -t "$HOME" "$pkg"
+
+        # ВАЖНО:
+        # восстановление файлов делаем только если это действительно нужно
+        # иначе можно перезаписать живые конфиги
+        rsync -a "$stow_main_folder/$pkg"/ "$HOME"/
+
+        echo "OK: undeploy → $pkg"
+
+    done
+}
 }}}
 
 Функции отражают подход тестировщика — учтены ситуации, которые могут возникнуть (от случайного передеплоя пакетов stow до ситуаций вроде «нет файла/симлинка») и прописаны внятные алерты.
@@ -352,47 +456,107 @@ stow_add_folder zim $HOME/.config/zim
 
 }}}
 
-Сделать отдельный скрипт для развертывания пакетов stow — ''deploy_packages.sh'':
+Сделать в ~/.bashrc алиас на функцию для развертывания пакетов stow:
 
-{{{code: lang="sh" linenumbers="True"
-#!/bin/bash
+''# -------------------------''
+''# --- Stow''
+''# -------------------------''
+'''
 
-source "$MY_SCRIPTS/stow/functions.fn"
+'''
+''alias stow-addFiles="$MY_SCRIPTS/stow/create_packages.sh" # создать пакеты stow'' 
 
-    # перечисление пакетов stow, которые надо развернуть
-    # формат: название пакета
+''source $MY_SCRIPTS/stow/functions.fn''
+'''
 
-stow_run_package audacity
-stow_run_package bash
-stow_run_package krusader
-stow_run_package spectacle
-stow_run_package vscodium
-stow_run_package kile
-stow_run_package mc
-stow_run_package mpv
-stow_run_package qmmp
-stow_run_package zim
+'''
+''alias stow-deployPackages="stow_deploy_packages_from_list" # развернуть все пакеты stow''
 
-}}}
-
-В ~/.bashrc добавить алиасы:
-
-''alias stowcreate="$MY_SCRIPTS/stow/create_packages.sh" # создать пакеты stow'' 
-''alias stowdeploy="$MY_SCRIPTS/stow/deploy_packages.sh" # развернуть пакеты stow''
+''alias stow-undeployPackages="stow_undeploy_packages_from_list" # удалить все пакеты stow''
 
 ==== Уникальные конфиги ====
 
 Можно [[Debian:HowTo:Сделать:git:Удаленный репозиторий]] для содержимого каталога ''~/stow'', чтобы спокойно обмениваться конфигами между несколькими компьютерами.
 
-Но вот несколько ноутбуков, которые мы различаем по hostname вроде ''personalAcer'', ''jobAsus'' и так далее. Можно шарить между ними одинаковые конфиги, но на каждом компьютере могут быть какие-то уникальные настройки, например, цветовая дифференциацию hostname и посещаемых каталогов в Konsole.
+=== Отдельные переменные ===
 
-Решение: сделать отдельные файлы для хранения уникальных настроек для каждого отдельного компьютера, 
+Но вот есть несколько ноутбуков с //hostname// вроде ''personalAcer'', ''jobAsus'' и так далее. Можно шарить между ними одинаковые конфиги, но на каждом компьютере могут быть какие-то уникальные настройки, например, цветовая дифференциацию hostname или история команд в Konsole.
 
-''~/.stw_FOLDER/hostname_config/personalAcer.config''
-''~/.stw_FOLDER/hostname_config/jobAsus.config'' и etc.
+Решение: можно сделать отдельные файлы для хранения уникальных настроек для каждого отдельного компьютера, 
 
-В файле ~/.bashrc в первых строках объявить переменную:
+''$MY_SCRIPTS/stow/hostnaming/personalAcer.config''
+''$MY_SCRIPTS/stow/hostnaming/jobAsus.config'' 
+и etc.
 
-''source $HOME/.stw_FOLDER/hostname_config/${HOSTNAME}.config''
+А в файле ~/.bashrc в первых строках объявить переменную:
 
-При инициализации профиля будут подтянуты соответствующие уникальные инструкции для каждого компьютера. 
+''source "$MY_SCRIPTS/stow/hostnaming/${HOSTNAME}.config"''
+
+При инициализации профиля будут подтянуты соответствующие уникальные инструкции. 
+
+Учесть, что это удобно только для разделения содержимого каких-то общих переменных. К файлам нужен другой подход.
+
+=== Отдельные структуры файлов ===
+
+Допустим, у меня два ноутбука с условным //hostname// Asus и Lenovo. Надо разделить пакеты между ними и вероятными будущими компьютерами.
+
+== Глобалистский подход ==
+
+Напоминание: в stow пакетом считается каждый подкаталог в ''~/.stw_FOLDER/'', и на этом всё, понятия «подпакет» нет. 
+
+Можно сделать один общий пакет, и отдельные пакеты для каждого компьютера, ориентируясь по его hostname:
+
+''~/.stw_FOLDER/''
+	''├── common/''
+	''├── Asus/''
+	''├── Lenovo/''
+
+И собирать в каждый из них файлы через скрипт ''create_packages.sh'':
+
+''~/.stw_FOLDER/common/.bashrc''
+''~/.stw_FOLDER/common/.mostrc''
+… etc
+''~/.stw_FOLDER/Asus/.config/audacity/audacity.cfg''
+''~/.stw_FOLDER/Asus/.local/share/krusader/krbookmarks.xml''
+''~/.stw_FOLDER/Asus/.config/spectaclerc''
+… etc
+''~/.stw_FOLDER/Lenovo/.config/audacity/audacity.cfg''
+''~/.stw_FOLDER/Lenovo/.local/share/krusader/krbookmarks.xml''
+''~/.stw_FOLDER/Lenovo/.config/spectaclerc''
+… etc
+
+Затем на Asus развернуть общий и асусовский пакеты:
+
+''stow -d ~/.stw_FOLDER -t $HOME common''
+''stow -d ~/.stw_FOLDER -t $HOME $HOSTNAME''
+
+(или одной строкой)
+
+''stow -d ~/.stw_FOLDER -t $HOME common $HOSTNAME''
+
+== Либералистский подход ==
+
+А если я хочу разворачивать на Acer все файлы его пакета, кроме ''~/.stw_FOLDER/Lenovo/.config/audacity/audacity.cfg''? Надо отредактировать скрипт сбора файлов в пакет Acer. А если другой пакет будет мешать? А если на одном компьютере одно, на другом другое… Со временем это редактирование начнет задалбывать.
+
+Решение — собирать файлы в пакеты с составным названием вроде “имя пакета + hostname”:
+
+''~/.stw_FOLDER/common/.bashrc''
+''~/.stw_FOLDER/common/.mostrc''
+
+''~/.stw_FOLDER/audacity-Asus/.config/audacity/audacity.cfg''
+''~/.stw_FOLDER/audacity-Lenovo/.config/audacity/audacity.cfg''
+
+''~/.stw_FOLDER/krusader-Asus/.local/share/krusader/krbookmarks.xml''
+''~/.stw_FOLDER/krusader-Lenovo/.local/share/krusader/krbookmarks.xml''
+
+''~/.stw_FOLDER/spectacle-Asus/.config/spectaclerc''
+''~/.stw_FOLDER/spectacle-Lenovo/.config/spectaclerc''
+… etc
+
+Хорошо, что всё это не надо делать вручную.
+
+И развертывать пакеты уже точечно, например, тут развертывается все, кроме //audacity-***//:
+
+''stow -d ~/.stw_FOLDER -t $HOME common krusader-$HOSTNAME'' ''spectacle-$HOSTNAME''
+
+Первый подход глобально-адекватен, ко второму можно перейти только если первый начнет раздражать.
