@@ -137,7 +137,26 @@ Stow (eng. складировать, упорядочивать) — менед
 
 ''stow -D'' __''НазваниеПакета''__
 
-Ревертим ситуацию — симлинки будут заменены оригинальными файлами.
+Все симлинки в системе на файлы из пакетов stow будут удалены. Файлы в хранилище stow останутся на месте.
+
+=== Про битые симлинки ===
+
+Предположим, я создал пакеты, развернул их, и в системе появились симлинки на файлы из хранилища stow. А потом я переименовал хранилище stow, и все симлинки в системе на его файлы оказались битыми. Если я решу просто удалить все симлинки пакетов через
+
+''stow -D audacity bash krusader'' (etc)
+
+…то ничего не произойдет. Битые симлинки stow считает «чужими» (not owned by stow) и не тронет. Решение:
+
+* найти все битые симлинки в своем профиле:
+
+''find $HOME -type l -xtype l''
+
+Если среди них все можно удалить, тогда:
+
+''find $HOME -type l -xtype l -delete''
+
+* перейти в новый каталог stow
+* снова развернуть пакеты stow — все симлинки окажутся на своих местах.
 
 ==== Пересоздать симлинки (restow) ====
 
@@ -296,7 +315,7 @@ stow_run_package() {
 
 Функции отражают подход тестировщика — учтены ситуации, которые могут возникнуть (от случайного передеплоя пакетов stow до ситуаций вроде «нет файла/симлинка») и прописаны внятные алерты.
 
-Сделать отдельный файл со скриптом, например, ''exec.sh'':
+Сделать отдельный скрипт для сбора файлов в stow — ''create_packages.sh'':
 
 {{{code: lang="sh" linenumbers="True"
 #!/bin/bash
@@ -308,44 +327,58 @@ source "$MY_SCRIPTS/stow/functions.fn"
     # несколько в одном пакете)
 
 stow_add_file audacity $HOME/.config/audacity/audacity.cfg
-stow_run_package audacity
 
 stow_add_file bash $HOME/.bashrc
 stow_add_file bash $HOME/.mostrc
-stow_run_package bash
 
 stow_add_file krusader $HOME/.local/share/krusader/krbookmarks.xml
-stow_run_package krusader
 
 stow_add_file spectacle $HOME/.config/spectaclerc
-stow_run_package spectacle
 
 stow_add_file vscodium $HOME/.config/VSCodium/User/keybindings.json
 stow_add_file vscodium $HOME/.config/VSCodium/User/settings.json
-stow_run_package vscodium
 
 stow_add_file kile $HOME/.config/kilerc
 stow_add_folder kile $HOME/.local/share/kile
-stow_run_package kile
 
 stow_add_folder mc $HOME/.config/mc
 stow_add_folder mc $HOME/.local/share/mc
-stow_run_package mc
 
 stow_add_folder mpv $HOME/.config/mpv
-stow_run_package mpv
 
 stow_add_folder qmmp $HOME/.config/qmmp
-stow_run_package qmmp
 
 stow_add_folder zim $HOME/.config/zim
+
+}}}
+
+Сделать отдельный скрипт для развертывания пакетов stow — ''deploy_packages.sh'':
+
+{{{code: lang="sh" linenumbers="True"
+#!/bin/bash
+
+source "$MY_SCRIPTS/stow/functions.fn"
+
+    # перечисление пакетов stow, которые надо развернуть
+    # формат: название пакета
+
+stow_run_package audacity
+stow_run_package bash
+stow_run_package krusader
+stow_run_package spectacle
+stow_run_package vscodium
+stow_run_package kile
+stow_run_package mc
+stow_run_package mpv
+stow_run_package qmmp
 stow_run_package zim
 
 }}}
 
-В ~/.bashrc добавить алиас:
+В ~/.bashrc добавить алиасы:
 
-''alias stowgo="$MY_SCRIPTS/stow/exec.sh" # создать пакеты stow и применить их''
+''alias stowcreate="$MY_SCRIPTS/stow/create_packages.sh" # создать пакеты stow'' 
+''alias stowdeploy="$MY_SCRIPTS/stow/deploy_packages.sh" # развернуть пакеты stow''
 
 ==== Уникальные конфиги ====
 
