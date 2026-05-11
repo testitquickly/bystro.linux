@@ -24,12 +24,12 @@ Creation-Date: 2026-05-03T19:18:48+03:00
 
 На ноуте:
 
-''ssh-keygen -t ed25519 -f ~/.ssh/id_git''
+''ssh-keygen -t ed25519 -f'' __''каталогХраненияКлючей/названиеКлюча''__
 
 Получить в итоге два файла:
 
-private key → хранится только у клиента (например в файле ''~/.ssh/id_git'', но можно положить его куда угодно)
-public key → лежит на сервере в authorized_keys
+private key → хранится только у себя клиента
+public key → лежит на сервере в ''~/.ssh'' и упомянут в списке ''authorized_keys''. Назовем его “key-for-git”.
 
 ===== Сделать удаленный репозиторий =====
 
@@ -37,7 +37,7 @@ public key → лежит на сервере в authorized_keys
 
 ==== Ограничить доступ по паролю к серверу ====
 
-В файле /etc/ssh/sshd_config отключить доступ по паролю (останется только доступ по ключу):
+В файле ''/etc/ssh/sshd_config'' отключить доступ по паролю (останется только доступ по ключу):
 
 ''PubkeyAuthentication yes''
 ''PasswordAuthentication no''
@@ -45,7 +45,9 @@ public key → лежит на сервере в authorized_keys
 
 ==== Создать репозиторий ====
 
-''mkdir -p ~/git/mySettings.git && cd ~/git/mySettings.git && git init --bare''
+Где угодно, например в ''~/git:''
+
+''mkdir -p ~/git/myConfigs.git && cd ~/git/myConfigs.git && git init --bare''
 
 ==== Изменить права на каталог репозитория ====
 
@@ -66,148 +68,70 @@ x — выполнение
 
 Эта инструкция запрещает shell-доступ на сервер с ключом "для репозитория", с ним будут доступны только git-операции.
 
-''mcedit ~git/.ssh/authorized_keys''
+Создать файл и сразу дать ему права доступа только для своего юзера:
+
+''install -D -m 600 /dev/null ~/git/.ssh/authorized_keys && mcedit ~/git/.ssh/authorized_keys''
 
 Вставить это:
 
-''command="git-shell -c \"$SSH_ORIGINAL_COMMAND\"",no-port-forwarding,no-agent-forwarding,no-X11-forwarding ssh-ed25519 ABC...''
+''command="git-shell -c '$SSH_ORIGINAL_COMMAND'",no-port-forwarding,no-agent-forwarding,no-X11-forwarding'' __''публичныйКлюч''__
 
 Здесь:
 
-command="git-shell -c \"$SSH_ORIGINAL_COMMAND\"" — принудительно запускает git-shell, а не обычный shell
-no-port-forwarding — запрещён проброс портов
-no-agent-forwarding — запрещён SSH-agent forwarding
-no-X11-forwarding — запрещён X11 forwarding
-ssh-ed25519 — тип ключа (алгоритм Ed25519)
-ABC... — сам публичный ключ, закодированный в Base64
+**command** — принудительно запускает git-shell, а не обычный shell
+**no-port-forwarding** — запрещён проброс портов
+**no-agent-forwarding** — запрещён SSH-agent forwarding
+**no-X11-forwarding** — запрещён X11 forwarding
+**публичныйКлюч** — содержимое файла с публичным ключом ssh (“key-for-git”); начинается с ssh-ed25519 (тип ключа; алгоритм Ed25519) и длинная последовательность символов...
 
 ==== На ноуте ====
 
-cd ~/.mySettings
-git init
-git add .
-git commit -m "init"
-git remote add origin user@server:~/git/mySettings.git
-git push -u origin main
+''cd ~/myConfigs''
 
-==== Настройка клиента (~/.ssh/config) ====
+Клонировать репозитории надо в пустой каталог, поэтому весь каталог, в котором будут постоянно находиться файлы репозитория (''~/myConfigs'') надо временно перенести в другое место.
 
-Можно обще, через файл 
+Дальше надо точно знать параметры подключения к своему ''user@server'' — адрес, порт, логин. Мне для подключения надо указать:
 
-''Host mygit''
-	''HostName server_ip''
-	''User youruser''
-	''IdentityFile ~/.ssh/id_git''
+* место хранения ssh ключа для git
+* username
+* host с портом
+* полный путь к месторасположению каталога с репозиторием на сервере
+* название каталога на ноуте, в котором будет лежать репозиторий (''~/myConfigs''):
 
-4) Использование
+''GIT_SSH_COMMAND="ssh -i $MY_KEYS/ssh/key_for_git" git clone ssh://username@host:12345/home/myUsername/git/myConfigs.git ~/myConfigs''
 
-''git remote add origin mygit:~/git/mysettings.git''
+Появляется каталог ''~/myConfigs'' и в нем дежурный подкаталог ''.git''.
 
-Итог:
+Вернуть в ''~/myConfigs'' все файлы, которые надо держать в удаленном репозитории.
 
-обычный SSH остаётся полным (для администрирования)
-git-ключ ограничен только git-shell
-компрометация git-ключа не даёт shell-доступ
+Добавить файл  
 
-А можно очень точно:
+''mcedit ~/myConfigs/.gitignore''
 
-настраивать ~/.ssh/config не обязательно.
+и записать в него минимальный набор каталогов и файлов, которые надо игнорировать.
 
-Можно указывать ключ прямо в команде.
+''# каталоги''
+''.git/''
+''myStow/mc/''
 
-Примеры:
+''# кеши / временные файлы''
+''*.swp''
+''*.swo''
+''*~''
+''*.bak''
+''*.tmp''
 
-git clone
+''# системные файлы''
+''Thumbs.db''
 
-GIT_SSH_COMMAND="ssh -i ~/.ssh/id_git" git clone user@server:~/git/mysettings.git
+''# логи''
+''*.log''
 
-git pull / push
+Commit:
 
-GIT_SSH_COMMAND="ssh -i ~/.ssh/id_git" git pull
-GIT_SSH_COMMAND="ssh -i ~/.ssh/id_git" git push
-
-Технически:
-всё работает без конфигурации клиента
-ключ можно не прописывать глобально
-
-Если с репозиторием взаимодействовать через какой-то софт ([[Software:SmartGit]] или [[Software:VSCodium]]), надо подумать про настройку его внутреннего механизма работы с SSH — встроенный SSH + ключ.
-
-В SmartGit:
-
-Preferences → SSH Client
-Выбрать:
-Built-in SSH или System SSH (лучше System SSH)
-Указать ключ через env-переменную или конфиг
-
-Что-то вроде
-Preferences → Git → SSH
-и указать точное расположение нужного ключа:
-
-''ssh -i ~/.ssh/id_git''
-
-Или можно
-
-~/.ssh/config под репозиторий
-
-Вставить
-
-''Host mygit''
-	''HostName server_ip''
-	''User youruser''
-	''IdentityFile ~/.ssh/id_git''
-
-В SmartGit:
-
-''mygit:~/git/mysettings.git''
-
-Ключ подхватывается автоматически.
-
-==== Собрать в отдельный каталог структуру файлов для stow ====
-
-Внутри stow-каталога ты создаёшь структуру, которая имитирует корень системы:
-
-'''
-mySettings/
-  home/
-	astenix/
-	  newFolder/
-		File.fn
-'''
-
-Затем выполняешь:
-
-'''
-stow -t /home/astenix mySettings
-'''
-
-stow проходит по дереву mysettings
-для каждого файла создаёт симлинк в -t (target)
-утилита создаёт промежуточные директории, если их нет
-и даже не требует, чтобы файл уже существовал в системе. Он просто появится как симлинк вроде такого::
-
-''/home/astenix/newFolder/File.fn -> ~/mysettings/home/astenix/newFolder/File.fn''
-
-А если в /home/astenix/newFolder/File.fn уже есть реальный файл — stow откажется создавать симлинк или потребует разрулить проблему.
-
-источник истины —это каталог mySettings в репозитории (он же сделанный нами каталог stow). Если мы случайно грохнем каталог-источник истины, то все симлинки из него в системе превратятся в тыкву.
-
-===== В файле ~/.bashrc =====
-
-Какие-то настройки вынесены в отдельный файл ''bashrc.local'' 
-Их можно импортировать в ~/.bashrc:
-
-''# общий код''
-''source $HOME/mySettings/bash/bashrc.local''
-
-Если файла не будет — произойдет ошибка и чтение файла будет прервано.
-
-Или так
-
-''# локальные отличия''
-''[ -f $HOME/mySettings/bash/bashrc.local ] && source $HOME/mySettings/bash/bashrc.local''
-
-Тут сперва происходит проверка существования файла, и если его нет, процесс не упадёт.
-
-
+''git add -all''
+''git commit -m "update configs"''
+''git status''
+''git log''
 
 См. также [[Software:git]]
