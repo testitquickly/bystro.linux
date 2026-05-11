@@ -128,7 +128,9 @@ ssh очень требователен к настройкам доступа. 
 
 ''su''
 
-''chown user:sudo /home/mySettings; chmod 700 /home/mySettings; chmod 700 /home/mySettings/keys; chmod 700 /home/mySettings/keys/ssh; chmod 600 /home/server/.ssh/authorized_keys''
+''chown'' __''user''__'':sudo /home/mySettings; chmod 700 /home/mySettings; chmod 700 /home/mySettings/keys; chmod 700 /home/mySettings/keys/ssh; chmod 600 /home/server/.ssh/authorized_keys''
+
+''chown astenix:sudo /home/hub/myKeys/ssh/; chmod 700 /home/hub/myKeys/ssh/; chmod 700 /home/hub/myKeys/ssh/myPersonal; chmod 600 /home/astenix/.ssh/authorized_keys''
 
 Перейти в каталог с принесенным ключем и добавить его в список авторизированных ключей:
 
