@@ -571,6 +571,35 @@ stow_add_folder $HOSTNAME $HOME/.local/share/kile
 
 ''stow -d ~/.stw_FOLDER -t $HOME common $HOSTNAME''
 
+== Важная мелочь ==
+
+На следующем компьютере надо повторить процедуру:
+
+1. собрать файлы из системы в пакеты stow
+2. развернуть пакеты
+
+Но возникнет конфликт: в пакете common уже есть файлы, они пришли в репозиторий с предыдущего компьютера. Stow будет обязан прекратить работу с пакетом common и выдаст алерт:
+
+''WARNING! stowing common would cause conflicts:''
+* ''cannot stow myConfigs/myStow/common/.bashrc over existing target .bashrc since neither a link nor a directory and --adopt not specified''
+* ''cannot stow myConfigs/myStow/common/.mostrc over existing target .mostrc since neither a link nor a directory and --adopt not specified''
+''All operations aborted.''
+''ERROR: не удалось развернуть → common''
+
+Это правильное поведение stow. Эти файлы надо полностью шарить между всеми компьютерами, и они //уже// находятся в репозитории. Дальше надо вручную удалить на своей стороне файлы ''.bashrc'' и ''.mostrc'' — точнее, переименовать их:
+
+''mv $HOME/.bashrc $HOME/.bashrc.bak && mv $HOME/.mostrc $HOME/.mostrc.bak''
+
+и создать вместо них симлинки на файлы в каталоге stow:
+
+''ln -s $HOME/.stw_FOLDER/common/.bashrc && ln -s $HOME/.stw_FOLDER/common/.mostrc''
+
+Или можно сделать всё то же самое принудительно через stow:
+
+''stow --adopt -d $HOME/.stw_FOLDER -t $HOME common''
+
+Рекомендуется прибегать к ''--adopt'' только в безвыходных ситуациях, потому что команда потенциально разрушительна, но в данном случае всё под контролем.
+
 == Либералистский подход ==
 
 А если я хочу разворачивать на Acer все файлы его пакета, кроме ''~/.stw_FOLDER/Lenovo/.config/audacity/audacity.cfg''? Надо отредактировать скрипт сбора файлов в пакет Acer. А если другой пакет будет мешать? А если на одном компьютере одно, на другом другое… Со временем это редактирование начнет задалбывать.
