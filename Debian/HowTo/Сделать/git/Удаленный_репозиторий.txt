@@ -176,17 +176,25 @@ Commit:
 
 ==== Мягкое ограничение некоторых файлов ====
 
-Вероятно, какие-то конфигурационные файлы надо держать в репозитории, но не надо регистрировать каждое их обновление. Пример таких файлов:
+Вероятно, какие-то конфигурационные файлы надо держать в репозитории, но не надо регистрировать каждое их обновление. Например:
 
-''myStow/mc/.local/share/mc/filepos''
-''myStow/mc/.local/share/mc/history''
+''myStow/uss-Asus-Zenbook-17/.local/share/mc/filepos''
+''myStow/uss-Asus-Zenbook-17/.local/share/mc/history''
+
+Полный путь к файлам в репозитории можно проверить через 
+
+''git ls-files''
 
 В git их можно не игнорировать (жестоко выкинуть из индекса), а всего лишь слегка «придушить»:
 
 ''git update-index --skip-worktree'' __''путь от корня репозитория к файлу''__
 
-Полный путь к файлам в репозитории можно проверить через 
+Пример:
 
-''git ls-files''
+перейти в каталог с репозиторием и выполнить
+
+''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.local/share/mc/filepos''
+''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.local/share/mc/history''
+''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.config/mc/panels.ini''
 
 См. также [[Software:git]]
