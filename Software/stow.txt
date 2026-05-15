@@ -188,7 +188,7 @@ Stow (eng. складировать, упорядочивать) — менед
 3. скопировать файлы из пакета в систему (сразу все):
 
 ''for var_folder in kile krusader mc mpv spectacle vscodium zim; do''
-  ''rsync -aL "$HOME/.stw_FOLDER/$var_folder/" "$HOME/"''
+	  ''rsync -aL "$HOME/.stw_FOLDER/$var_folder/" "$HOME/"''
 ''done''
 
 ==== Пересоздать симлинки (restow) ====
