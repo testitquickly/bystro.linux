@@ -99,6 +99,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Todoman]]
 [[+Tor Browser]]
 [[+Touchegg]]
+[[+TypeScript]]
 
 [[+v4l2]]
 [[+vpn]]

@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-15T04:35:11+03:00
+
+====== TypeScript ======
+
+[ @development @TypeScript ]
+
+===== Установить =====
+
+[[Debian:Install:TypeScript]]
+
+===== Использовать =====
+
+Надо знать заранее, что и как делать.
