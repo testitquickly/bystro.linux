@@ -27,3 +27,61 @@ Creation-Date: 2022-03-16T21:22:57+02:00
 Решение: в каталоге с файлами и ‘.git‘ выполнить:
 
 ''git config core.fileMode false''
+
+===== Посмотреть =====
+
+''git status''
+
+Кратко:
+
+''git status -sb''
+
+Последние пять коммитов:
+
+''git reflog -5''
+
+''git log -5''
+
+Компактный лог (всё):
+
+''git log --oneline --graph --decorate --all''
+
+Компактный лог (последние 5):
+
+''git log --oneline --graph --decorate -5''
+
+Список файлов:
+
+''git ls-files''
+
+Ветки и ссылки:
+
+''git branch''
+
+''git branch -a''
+
+Поиск
+
+''git grep text''
+
+''git log --grep="fix"''
+
+''git log -- file''
+
+Конфиг:
+
+''git config --list''
+
+''git config --global --list''
+
+Статистика:
+
+''git shortlog -sn''
+
+''git count-objects -v''
+
+''git log --stat''
+
+
+
+
