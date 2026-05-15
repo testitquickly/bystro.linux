@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-15T04:36:08+03:00
+
+====== TypeScript ======
+
+[ @debian @install @TypeScript ]
+
+===== Глобально =====
+
+''sudo apt update && sudo apt install nodejs npm && sudo npm install -g typescript''
+
+Проверка:
+
+''tsc -v''
+
+===== Локально =====
+
+В каталоге проекта:
+
+''mkdir my-project && cd my-project''
+
+''npm init -y && npm install typescript --save-dev''
+
+После этого в каталоге появляются:
+
+* package.json
+* node_modules/
+* node_modules/.bin/tsc
+
+Проверка локально установленной версии:
+
+''npx tsc -v''
+
+См. далее [[Software:TypeScript]]
