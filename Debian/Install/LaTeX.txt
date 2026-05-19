@@ -90,9 +90,9 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 ==== Добавить в PATH путь к будущим файлам LaTeX ====
 
-Сперва надо решить, куда устанавливать LaTeX. Его файлы можно положить куда угодно, например, в ''/home/hub/.LaTeX/'' или в любой скрытый каталог.
+Сперва надо решить, куда устанавливать LaTeX. Его файлы можно положить куда угодно, например, в ''/home/hub/.LaTeX/''
 
-Из-под своего юзера своем домашнем каталоге отредактировать файл ''.bashrc'' (создать его, если отсутствует):
+Из-под своего юзера своем домашнем каталоге:
 
 ''mcedit ~/.bashrc''
 
@@ -126,17 +126,13 @@ Creation-Date: 2023-12-12T09:37:39+02:00
 
 3. Отредактировать рутовский файл ''.bashrc'' (мне удобно через mcedit, бо Midnight Commander), добавить туда три строки (устанавливать общее ПО лучше в ''/opt''):
 
-'''
-PATH=/home/hub/.LaTeX/bin/x86_64-linux:$PATH
-INFOPATH=/home/hub/.LaTeX/texmf-dist/doc/info:$INFOPATH
-MANPATH=/home/hub/.LaTeX/texmf-dist/doc/man:$MANPATH
-'''
+''PATH=/home/hub/.LaTeX/bin/x86_64-linux:$PATH''
+''INFOPATH=/home/hub/.LaTeX/texmf-dist/doc/info:$INFOPATH''
+''MANPATH=/home/hub/.LaTeX/texmf-dist/doc/man:$MANPATH''
 
 В случае установки на 32-хбитную платформу первая строка будет такой:
 
-'''
-PATH=/home/hub/.LaTeX/bin/i386-linux:$PATH
-'''
+''PATH=/home/hub/.LaTeX/bin/i386-linux:$PATH''
 
 4. Перечитать файл
 
