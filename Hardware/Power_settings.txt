@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-20T06:33:59+03:00
+
+====== Power settings ======
+
+[ @cpu ]
+
+Как снизить потребление электроэнергии для
+
+* материнская плата Gigabyte B650M Gaming X AX
+* процессор AMD Ryzen 7 7700X, 4.5-5.4GHz, 105W со встроенной Radeon Graphics
+
+1)
+Воткнуть в монитор HDMI с материнской платы, а не через видеокарту.
+
+2) 
+Настроить параметры энергопотребления в  UEFI
+
+===== Теория =====
+
+
+
+===== Настройки =====
+
+Вход в BIOS/UEFI по [DEL] :
+
+''> Advanced Mode'' 
+''> Tweaker''
+
+* Опорная частота ЦП: ''100.00 MHz''
+* CPU Ratio mode: ''All Cores''
+* Множитель тактовой частоты ЦП: ''Auto (45.00)''
+* Тактовая частота графического ядра ЦП: ''Auto''
+* Precision Boost Overdrive (PBO): ''80 level 3''
+* Advanced CPU settings:
+	* Global C-state Control: ''Разрешено''
+	* Power Supply Idle Control: ''Low current idle''
+		* PBO: ''Advanced''
+		* PBO Limits: ''Manual''
+		* PBO Scalar: ''1x''
+		* CPU Boost Clock Override: ''Disabled''
+		* Platform Thermal Throttle Ctrl: ''Auto''
+	* GFX Curve Optimizer: ''GFX Curve Optimizer''
+	* GFX Curve Optimizer Sign: ''Negative'' (undervolt)
+	* GFX Curve Optimizer Magnitude: ''0'' (не редактируется)
+* Power Slow SLew Rate: ''средний''
+* Напряжение питания ядрая ЦП: ''Auto''
+* Терминатор ОЗУ: ''Auto''
+* Поддержка CSM: ''Запрещено''
