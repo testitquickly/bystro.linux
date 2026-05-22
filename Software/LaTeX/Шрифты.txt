@@ -396,13 +396,22 @@ JWNNCU+SFSX0800                      Type 1            Custom           yes yes 
 
 //fontconfig// сканирует ''~/.config/fontconfig/conf.d/'' впоисках конфигов, находит там наш конфиг, применяет правила из него, пересобирает базу шрифтов.
 
-В проекте XeLaTeX надо зафиксировать свойства шрифта весьма либерально:
+В проекте XeLaTeX можно или просто объявить шрифт
 
-''\setmainfont{Ysabeau}[''
-  ''UprightFont = *,''
-  ''ItalicFont = * Italic,''
-  ''BoldFont = * Bold,''
-  ''BoldItalicFont = * Bold Italic''
-'']''
+''\newcommand{\mySerifFont}{Ysabeau}''
+''\setmainfont{\mySerifFont}[Script=Cyrillic,Ligatures=TeX,Scale=MatchLowercase]''
+
+Или объявить шрифт и зафиксировать его свойства шрифта весьма либерально:
+
+''\newcommand{\mySerifFont}{Ysabeau}''
+''\setmainfont{\mySerifFont}[''
+	''Script=Cyrillic,''
+	''Ligatures=TeX,''
+	''Scale=MatchLowercase,''
+	''UprightFont = *,''
+	''ItalicFont = * Italic,''
+	''BoldFont = * Bold,''
+	''BoldItalicFont = * Bold Italic''
+	'']''
 
 После объявления ''\setmainfont{Ysabeau}'' XeLaTeX спросит у //fontconfig// перед сборкой pdf: тут вот шрифт Ysabeau указано, а какие у него faces? А тот ответит на основание ранее подхваченных настроек: такие-то… Результат: успешная компиляция pdf.
