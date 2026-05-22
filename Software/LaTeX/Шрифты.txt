@@ -405,4 +405,4 @@ JWNNCU+SFSX0800                      Type 1            Custom           yes yes 
   ''BoldItalicFont = * Bold Italic''
 '']''
 
-После объявления ''\setmainfont{Ysabeau}'' XeLaTeX спросит у //fontconfig// перед сборкой pdf: тут вот шрифт Ysabeau указано, а какие у него faces? А тот ответит на основание ранее подхваченных настроек: такие-то… И успешная компиляция pdf.
+После объявления ''\setmainfont{Ysabeau}'' XeLaTeX спросит у //fontconfig// перед сборкой pdf: тут вот шрифт Ysabeau указано, а какие у него faces? А тот ответит на основание ранее подхваченных настроек: такие-то… Результат: успешная компиляция pdf.
