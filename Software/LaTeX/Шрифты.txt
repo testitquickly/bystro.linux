@@ -14,7 +14,15 @@ Creation-Date: 2025-01-15T14:41:32+02:00
 
 Логично принять правило о том, что в русскоязычном документе нельзя использовать шрифты T1, но на tug.org нет возможности получить только шрифты T2. На самом деле оно и не нужно, в любом случае мы можем использовать только те шрифты, которые установлены в системе. 
 
-Посмотреть все шрифты:
+==== Типы шрифтов ====
+
+3. **OTF (OpenType Font)** — Adobe и Microsoft. Контуры: обычно кубические кривые (CFF/PostScript) или TrueType внутри. Поддерживают лигатуры, альтернативные глифы, кернинг — более современный и функциональный формат шрифтов.
+
+2. **TTF (TrueType Font)** — разработаны Apple/Microsoft. Контуры: квадратичные кривые (quadratic Bézier). Старые, устойчивые, базовый формат. 
+
+1. **Type1 (PostScript Type 1)** — устарели. Старый формат шрифтов Adobe. Векторные контуры (кубические Bézier-кривые), очень стабильны в старых TeX-системах, но устаревший формат, с ограниченными Unicode-возможностями, нет лигатуры, хуже поддержка в современных системах.
+
+===== Посмотреть все шрифты: =====
 
 ''fc-list : family | sort > allFonts.txt && mcedit fonts.txt''
 
@@ -270,3 +278,131 @@ JWNNCU+SFSX0800                      Type 1            Custom           yes yes 
 Или (не факт)
 
 ''pdfdetach -saveall файл.pdf''
+
+===== Нормализация шрифтов =====
+
+В норме LaTeX легко подхватывает шрифты из системы наравне со встроенными (см. ''/home/hub/.LaTeX/texmf-dist/fonts/''). Но есть условие: файлы шрифта должны быть адекватно представлены, чтобы LaTeX мог самостоятельно распознавать и применять их начертания (а также веса и какие там еще есть параметры). А технология шрифтов очень неоднозначна.
+
+Например, шрифт Ysabeau — его распространяют на [[https://github.com/CatharsisFonts/Ysabeau/tree/master/fonts/otf|github]] и в установке LaTeX (см. ''/home/hub/.LaTeX/texmf-dist/fonts/opentype/ysabeau'') в виде множества файлов:
+
+* Ysabeau-BlackItalic.otf
+* Ysabeau-Black.otf
+* Ysabeau-BoldItalic.otf
+* Ysabeau-Bold.otf
+* Ysabeau-ExtraBoldItalic.otf
+* Ysabeau-ExtraBold.otf
+* Ysabeau-ExtraLightItalic.otf
+* Ysabeau-ExtraLight.otf
+* Ysabeau-HairlineItalic.otf
+* Ysabeau-Hairline.otf
+* Ysabeau-Italic.otf
+* Ysabeau-LightItalic.otf
+* Ysabeau-Light.otf
+* Ysabeau-MediumItalic.otf
+* Ysabeau-Medium.otf
+* Ysabeau-Regular.otf
+* Ysabeau-SemiBoldItalic.otf
+* Ysabeau-SemiBold.otf
+* Ysabeau-ThinItalic.otf
+* Ysabeau-Thin.otf
+
+Это просто набор файлов, которые можно буквально скопировать из 
+
+''/home/hub/.LaTeX/texmf-dist/fonts/opentype/ysabeau''
+
+в
+
+''/usr/local/share/fonts/Ysabeau''
+
+Пересобрать кэш шрифтов:
+
+''sudo fc-cache -fsv''
+
+Ок. Но дальше при включении шрифта (fontconfig → XeTeX (fontspec) → xdvipdfmx) XeLaTeX **ОЧЕНЬ** вероятно столкнется с неочевидной сложностью. //fontconfig// раскладывает шрифт на семейства:
+
+* Ysabeau-Regular.otf  → family: Ysabeau
+* Ysabeau-Bold.otf     → family: Ysabeau
+* Ysabeau-Medium.otf   → family: Ysabeau Medium
+* Ysabeau-Light.otf    → family: Ysabeau Light
+
+Часть начертаний считается принадлежащей одному семейству (family) шрифтов, часть — сразу двум отдельным. При сборке проекта в pdf я укажу движку fontspec (система идентификации шрифтов) считать основным шрифтом документа ''\setmainfont{Ysabeau}''. Он начинает это всё собирать:
+
+1. узнать семейство шрифта = “Ysabeau”
+2. получить список faces шрифта по этому family
+3. выстроить схему “internal font family” (TU/Ysabeau)
+
+А дальше проблема: а начертание bold для этого шрифта где? А italic? Если конфликт неразрешимый, при сборке документа получаем ''xdvipdfmx:fatal: Invalid font'' и “No output PDF file written”.
+
+==== Простое решение ====
+
+Принудительно указать свойства шрифта при его объявлении:
+
+''\setmainfont{Ysabeau Regular}[''
+  ''BoldFont = Ysabeau Bold,''
+  ''ItalicFont = Ysabeau Italic,''
+  ''BoldItalicFont = Ysabeau BoldItalic''
+'']''
+
+По-сути, это объявление алиасов. Однако если будет запрошен любой новый стиль шрифта (SemiBold, Light, ExtraBold) — его негде будет взять. Придётся каждый раз вручную искать и добавлять в эту схему укзаания вроде ''BoldFont = Ysabeau SemiBold''. Очень не факт, что по этой схеме будут (адекватно) работать объявления шрифта в стиле \textbf, \textit, \bfseries, потому что всё будет завязано на ручные указания, а не на встроенном font engine. Типографский движок сам должен определять, где что, и делать это при необходимости, через fontspec mapping:
+
+* Regular → normal
+* Bold → Bold
+* Italic → Italic
+* SemiBold / Light 
+
+==== Корректное решение ====
+
+Заставить fontspec использовать одну family шрифта без разбиения на subfamilies, для чего надо в принципе уйти от объявления family alias.
+
+Сделать файл настроек:
+
+''mkdir -p ~/.config/fontconfig/conf.d && mcedit ~/.config/fontconfig/conf.d/10-ysabeau.conf''
+
+Вставить:
+
+''<?xml version="1.0"?>''
+''<fontconfig>''
+  ''<match target="pattern">''
+	''<test name="family">''
+	  ''<string>Ysabeau Light</string>''
+	''</test>''
+	''<edit name="family" mode="assign">''
+	  ''<string>Ysabeau</string>''
+	''</edit>''
+  ''</match>''
+
+  ''<match target="pattern">''
+	''<test name="family">''
+	  ''<string>Ysabeau Medium</string>''
+	''</test>''
+	''<edit name="family" mode="assign">''
+	  ''<string>Ysabeau</string>''
+	''</edit>''
+  ''</match>''
+
+  ''<match target="pattern">''
+	''<test name="family">''
+	  ''<string>Ysabeau SemiBold</string>''
+	''</test>''
+	''<edit name="family" mode="assign">''
+	  ''<string>Ysabeau</string>''
+	''</edit>''
+  ''</match>''
+''</fontconfig>''
+
+Пересобрать кэш шрифтов:
+
+''sudo fc-cache -fsv''
+
+//fontconfig// сканирует ''~/.config/fontconfig/conf.d/'' впоисках конфигов, находит там наш конфиг, применяет правила из него, пересобирает базу шрифтов.
+
+В проекте XeLaTeX надо зафиксировать свойства шрифта весьма либерально:
+
+''\setmainfont{Ysabeau}[''
+  ''UprightFont = *,''
+  ''ItalicFont = * Italic,''
+  ''BoldFont = * Bold,''
+  ''BoldItalicFont = * Bold Italic''
+'']''
+
+После объявления ''\setmainfont{Ysabeau}'' XeLaTeX спросит у //fontconfig// перед сборкой pdf: тут вот шрифт Ysabeau указано, а какие у него faces? А тот ответит на основание ранее подхваченных настроек: такие-то… И успешная компиляция pdf.
