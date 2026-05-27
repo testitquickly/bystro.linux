@@ -1,0 +1,199 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-27T05:57:57+03:00
+
+====== kmscon ======
+
+[ @debian @install @console @kmscon ]
+
+Debian 12:
+
+''sudo apt install kmscon''
+
+В Debian 13 пакет перенесли в бэкпортс:
+
+''echo "deb http://deb.debian.org/debian trixie-backports main" | sudo tee /etc/apt/sources.list.d/backports.list''
+
+''sudo apt update && sudo apt install kmscon''
+
+В системе появится штатный systemd-шаблон для интеграции с TTY: kmsconvt@.service Пусть лежит. Его можно глянуть:
+
+''systemctl cat kmsconvt@.service''
+
+Убедиться в том, что в файле .bash_profile прописан вызов файла .bashrc. Без этой инструкции при логине будет загружаться чистый bash, без всех пользовательских инструкций, алиасов и красивостей:
+
+''mcedit $HOME/.bash_profile''
+
+Вставить это:
+
+''if [ -f ~/.bashrc ]; then''
+	''. ~/.bashrc''
+''fi''
+
+===== Поднять kmscon в tty6 =====
+
+Для компьютера без GUI всё пройдёт гладко — надо знать, какой tty система загружает после старта и сделать для него сервис. На компьютере с действующим KDE с этим делом могут возникнуть мелкие, и уже поэтому раздражающие неудобства — после установки kmscon вместо GUI после загрузки компьютера увидеть не-GUI, а терминал. Поэтому для начала надо поднять kmscon только в терминале tty6 и посмотреть, как оно вообще.
+
+Сделать systemd-сервис для загрузки kmscon в tty6, ведь в tty7 у нас при старте загружается KDE:
+
+''sudo mcedit /etc/systemd/system/kmscon@tty6.service''
+
+Вставить это:
+
+''[Unit]''
+''Description=KMS Console on tty6''
+''After=systemd-user-sessions.service''
+''Conflicts=getty@tty6.service''
+
+''[Service]''
+''ExecStart=/usr/bin/kmscon --vt 6 --login --xkb-layout=us,ru --xkb-options=grp:toggle,grp_led:capslock --xkb-model=pc105 -- /bin/login -p''
+''Restart=on-failure''
+
+''[Install]''
+''WantedBy=getty.target''
+
+Внимание, тут настроено переключение между us, ru по правой клавише Alt (мне так удобно). Для Ctrl+Shift надо указать ''--xkb-options=grp:toggle,grp_led:capslock''
+
+Сохранить, выйти. 
+
+''sudo systemctl daemon-reload''
+
+Проверить, кто владеет tty6:
+
+''ps -t tty6''
+
+Ожидаемый вариант ответа — getty, она же “get tty”, системная программа, которая управляет текстовой консолью до входа пользователя:
+
+''PID  TTY      TIME     CMD''
+''5787 tty6     00:00:00 agetty''
+
+Надо переубедить систему в том, что консоль надо забрать из-под законной власти getty и передать её повстанцам из kmscon. Остановить и задушить getty на tty6: 
+
+''sudo systemctl stop getty@tty6.service''
+
+''sudo systemctl disable --now getty@tty6.service''
+
+''sudo systemctl mask getty@tty6.service''
+
+''systemctl status getty@tty6.service''
+
+Проверить что tty свободен:
+
+''ps -t tty6''
+
+Запустить kmscon. Осторожно, после этой команды tty6 станет активной консолью и произойдет ВНЕЗАПНЫЙ переход в tty6. Это нормально, заодно можно проверить, подхватился ли kmscon — если да, то шрифты терминала должны поменяться на современные (“мягкие”). 
+
+''sudo systemctl enable --now kmscon@tty6.service''
+
+Вернуться через Ctrl+Alt+F7 и продолжить:
+
+''sudo systemctl start kmscon@tty6.service''
+
+''sudo systemctl daemon-reload''
+
+''sudo systemctl status kmscon@tty6.service''
+
+Осознанно переключиться в Ctrl+Alt+6, залогиниться и убедиться в том, что красота в мире есть.
+
+==== Настройка SDDM ====
+
+Однако перед нами всё ещё компьютер, в котором нам всё ещё хочется сразу после загрузки видеть KDE. Но из-за kmscon //очень-очень// вероятно, что после загрузки юзеру будет показан не tty7 с красивым KDE, а мрачный tty6 с красивым шрифтом.
+
+Уточнить, какой ''display-manager'' используется:
+
+''systemctl cat display-manager''
+
+//Description=Simple Desktop Display Manager//. Ок, это SDDM.
+
+Есть два варианта сделать tty7 активной после старта SDDM:
+
+1) 
+Для тех, кто предпочитает [[HowTo:Настроить:Автоматический login в KDE]] (не надо так):
+
+''sudo mcedit /etc/sddm.conf.d/autologin.conf''
+
+Вставить это:
+
+''[Autologin]''
+''User=''__''astenix''__
+''Session=plasma.desktop''
+
+''[General]''
+''MinimumVT=7''
+
+Здесь ''Session=plasma.desktop'' означает X11. Для Wayland надо указать ''plasmawayland.desktop''.
+
+1.1)
+Приказать SDDM переключаться на tty7:
+
+''sudo mcedit /etc/sddm.conf.d/vt.conf''
+
+Вставить это:
+
+''[General]''
+''MinimumVT=7''
+
+Сохраниться, выйти.
+
+Это правильная настройка, но она не будет работать, потому что всё начнет загружаться только после того, как tty7 попадет в фокус; но это не произойдет, ведь фокус будет перехвачен tty6. Поэтому надо добавить более категоричное решение.
+
+1.2) 
+Дополнительная инструкция для загрузки сессии X11 в SDDM:
+
+''sudo mcedit /usr/share/sddm/scripts/Xsetup''
+
+Добавить в конец файла команду
+
+''/usr/bin/chvt 7''
+
+Здесь //chvt// (утилита для переключения виртуальных терминалов, VT) жёстко переключает активный виртуальный терминал на tty7.
+
+Остальное в этом файле, если есть, не трогать. Сохраниться, выйти.
+
+''sudo systemctl daemon-reload''
+
+Применить настройки (рестарт этого сервиса перезапустит пользовательскую сессию, поэтому если есть что-то открытое — сохранить и закрыть):
+
+''sudo systemctl restart display-manager''
+
+''sudo reboot''
+
+2) 
+Для тех, кто кому автологин, как и эти ваши интернеты, вообще не нужон, есть более простое решение:
+
+''sudo mkdir -p /etc/systemd/system/display-manager.service.d''
+
+''sudo mcedit /etc/systemd/system/display-manager.service.d/vt.conf''
+
+Вставить это:
+
+''[Service]''
+''TTYPath=/dev/tty7''
+''TTYReset=yes''
+''TTYVHangup=yes''
+''TTYVTDisallocate=yes''
+
+Здесь строгие, прям жесткие дополнительные указания для systemd-сервиса display-manager.service:
+
+* TTYPath=/dev/tty7 — жёстко привязать сервис к tty7. Systemd уже не сможет выбрать любой свободный VT.
+* TTYReset=yes — при старте сервиса сбосить предыдущее состояние терминала.
+* TTYVHangup=yes — сделать vhangup() перед запуском, чтобы отключить все старые процессы от tty7.
+* TTYVTDisallocate=yes — «освободить» tty7 при остановке сервиса.
+
+Сохраниться, выйти.
+
+''sudo systemctl daemon-reload''
+
+Применить настройки (рестарт этого сервиса перезапустит пользовательскую сессию, поэтому если есть что-то открытое — сохранить и закрыть):
+
+''sudo systemctl restart display-manager''
+
+Обязательно сделать ''sudo reboot'' и убедиться в том, что компьютер загружается, как и прежде.
+
+===== Поднять kmscon в остальных терминалах =====
+
+Если с tty6 всё в порядке, можно запускать kmscon в каждом виртуальном терминале Linux, для этого надо сделать отдельные systemd-сервисы с kmscon для каждого терминала — от второго до шестого (точнее, до пятого, ведь в шестом уже все работает), попутно задушив getty в каждом из них. Седьмая консоль остается работать для сессии пользователя с GUI, но если мы делаем Debian без GUI, то надо сделать сервис и для седьмого терминала.
+
+Онако категорически рекомендуется не заменять //getty// на //kmscon// в ''tty2'', потому что технически //kmscon// — уже не телетайпная консоль, и какие-то инструменты (вроде ''sudo setupcon'') в ней будут недоступны.
+
+См. далее [[HowTo:Настроить:Консольный компьютер]]
