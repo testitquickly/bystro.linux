@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-05-28T16:40:52+03:00
+
+====== upower ======
+
+[ @battery ]
+
+Утилита для возни с батареями ноутбуков.
+
+===== Имя файла батареи =====
+
+''upower -e''
+
+В ответе искать строку с файлом “battery_BAT0”.
+
+===== Состояние батареи =====
+
+Вкратце:
+
+''upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep -E "energy-full|energy-full-design|percentage|capacity"''
+
+Полностью:
+
+''upower -i /org/freedesktop/UPower/devices/battery_BAT0''
+
+===== Износ батареи =====
+
+Смотреть значение “''capacity''” (ёмкость, вместимость).
+
+* 100–90% — почти новая батарея
+* 90–80% — нормальный износ
+* <80% — заметная деградация
+
+Например, upower сообщает такое:
+
+* energy-full: ''66.663 Wh''
+* energy-full-design: ''76 Wh''
+* capacity: ''87,7145%''
+
+В норме значение поля capacity рассчитывается автоматически, но иногда сбоит, и лучше пересчитать всё вручную. Ёмкость считают так: ''energy-full / energy-full-design''
+
+66.663 / 76 ≈ 0.877…
+
+Итого:
+
+* ёмкость: ~87.7%
+* износ: ~12.3% (''100-87,7'')
+
+Норм.
