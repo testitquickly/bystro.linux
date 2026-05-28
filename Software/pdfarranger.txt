@@ -10,7 +10,7 @@ Creation-Date: 2026-03-02T11:30:54+02:00
 
 ===== Установить =====
 
-* [[Debian:Install:pdfarranger]]
+''sudo apt install pdfarranger''
 
 ===== Использовать =====
 
