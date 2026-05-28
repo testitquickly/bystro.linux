@@ -294,7 +294,7 @@ for i in ee уу учше; do alias $i='exit'; done
 
 Если нужна сессия tmux в окне Konsole, лучше сделать алиас:
 
-''alias t='tmux new-session -s main'''
+''alias t='tmux new-session -A -s main'''
 
 ==== Подключение к сессии ====
 
