@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2025-10-17T13:58:40+03:00
+
+====== habr ======
+
+[ @uBlockOrigin @rss @habr ]
+
+Там на глагне очень много всего, тизеры статей и КДПВ, надо долго прокручивать. Можно было бы открывать сайт через m.habr.con, но на десктопной версии происходит принудительное перенаправление на десктопную.
+
+Решения:
+
+* смотреть всё через RSS: https://habr.com/ru/rss/articles/top/daily/?fl=ru
+* в браузере через расширение //User-Agent Switcher// сделать профиль с “''Mozilla/5.0 (Linux; Android 10; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Mobile Safari/537.36''”
+* убрать «лишние» элементы через //uBlock Origin//: “Настройки” → вкладка “Мои фильтры”, вставить 
+
+{{{code: lang="sh" linenumbers="True"
+! Habr — оставить только заголовки + компактная лента
+||habrastorage.org/getpro/habr/branding/$image
+habr.com##.article-snippet > .meta-container
+habr.com##.article-snippet > .lead
+habr.com##.article-snippet > .stats
+habr.com##.blacklist-article-placeholder
+habr.com###promo_block_7 > .tm-block_spacing-bottom.tm-block > .tm-block__body
+habr.com###promo_block_7 > .tm-block_spacing-bottom.tm-block > .tm-block__header
+habr.com###stories_block_4 > .tm-block__header
+habr.com##.tm-articles-list__item-footer > .tm-data-icons_space-big.tm-data-icons
+habr.com##.tm-blockbody_variant-equal.tm-blockbody
+habr.com##.tm-footer__container
+habr.com##.tm-footer-menu__container
+habr.com##.tm-header__feature.header-feature
+habr.com##.tm-section-name
+habr.com##.tm-sexy-sidebar_margin.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-block > .tm-block__body
+habr.com##.tm-sexy-sidebar_stick-top.tm-sexy-sidebar > .tm-block_spacing-bottom.tm-block
+habr.com##.tm-tabs_page-header.tabs
+habr.com##.tm-company-card__top-image-placeholder
+habr.com##.block > .tm-block_spacing-around.tm-block
+habr.com##.block > .tm-block_spacing-bottom.tm-block
+}}}
