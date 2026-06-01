@@ -239,10 +239,10 @@ export EDITOR=mcedit
 
 alias ьс='mc'
 
-for i in ebash уифыр; do alias $i='mcedit ~/.bashrc; source ~/.bashrc'; done
+for i in eb ebash уифыр; do alias $i='mcedit ~/.bashrc; source ~/.bashrc'; done
 
     # exit
-for i in ee уу учше; do alias $i='exit'; done
+for i in q учше; do alias $i='exit'; done
 
 }}}
 

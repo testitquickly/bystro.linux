@@ -16,9 +16,7 @@ Creation-Date: 2023-09-21T20:34:43+03:00
 
 ===== Запаковать каталог =====
 
-'''
-zip -r archivename.zip directory_name
-'''
+''zip -r archivename.zip directory_name''
 
 Можно комбинировать упаковку нескольких определенных каталогов и файлов по-отдельности:
 

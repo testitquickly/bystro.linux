@@ -14,9 +14,7 @@ https://www.torproject.org/download/ — для Linux распространяе
 
 Распаковать архив:
 
-'''
-tar -xpJf tor-browser*
-'''
+''tar -xpJf tor-browser*''
 
 Появится каталог „tor-browser” с файлами браузера внутри. 
 

@@ -12,9 +12,7 @@ https://www.postman.com/downloads/ > снять файл „Linux (x64)”
 
 ===== Разархивировать =====
 
-'''
-tar -xvf postman-linux*
-'''
+''tar -xvf postman-linux*''
 
 Появится каталог ''Postman''.
 

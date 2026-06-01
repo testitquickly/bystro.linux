@@ -8,7 +8,9 @@ Creation-Date: 2022-02-27T04:29:38+02:00
 
 ===== Установить =====
 
-* [[Debian:Install:Krusader]]
+Сперва поставить всякие утилиты; среди них и KGet, затем уже сам krusader:
+
+''sudo aptitude install krename kdiff3 jlha-utils arj unace kget locate krusader''
 
 ===== Сортировка каталогов и файлов =====
 

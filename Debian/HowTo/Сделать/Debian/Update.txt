@@ -10,7 +10,7 @@ Creation-Date: 2022-02-23T00:50:15+02:00
 
 ===== Дежурное обновление системы =====
 
-''sudo apt update && sudo apt upgrade''
+''sudo apt update && sudo apt upgrade -y''
 
 Раньше использовали команду ''apt-get'', сегодня она считается устаревшей.
 

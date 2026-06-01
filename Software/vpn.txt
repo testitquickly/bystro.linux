@@ -8,8 +8,13 @@ Creation-Date: 2023-09-14T11:10:42+03:00
 
 ===== Установить =====
 
-* [[Debian:Install:vpn]]
-* [[Manjaro:Install:vpn]]
+Debian:
+
+''sudo aptitude install openvpn openconnect network-manager-openvpn''
+
+Manjaro:
+
+''sudo pacman -S''  ''openvpn openconnect''
 
 ===== Настроить новое подключение =====
 

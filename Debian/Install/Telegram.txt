@@ -38,9 +38,7 @@ https://desktop.telegram.org/ > скачать „Telegram для Linux 64”
 
 Распаковать:
 
-'''
-tar -xf tsetup*
-'''
+''tar -xf tsetup*''
 
 В каталоге ~/Загрузки появится подкаталог /Telegram с двум исполняемыми файлами внутри. Это AppImage, поэтому можно сразу запустить файл ''Telegram''.
 
@@ -52,9 +50,7 @@ tar -xf tsetup*
 
 ==== Назначить права в каталоге /opt/Telegram ====
 
-'''
-sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
-'''
+''sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram''
 
 ==== Сделать symbolic link на Telegram ====
 
@@ -68,7 +64,7 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 
 Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог ''/opt/Telegram/'' для этого лучшее решение (создать, если таковой отсутствует).
 
-''sudo mv telegram.png /opt/Telegram/''
+''sudo mv telegram.png /opt/Telegram/icons''
 
 === Создать файл „Telegram.desktop” ===
 
@@ -85,7 +81,7 @@ sudo chown -R astenix:sudo /opt/Telegram && sudo chmod 750 /opt/Telegram
 ''Type=Application''
 ''Terminal=false''
 ''Exec=/opt/Telegram/Telegram %U''
-''Icon=/opt/Telegram/telegram.png''
+''Icon=/opt/Telegram/icons/telegram.png''
 ''StartupNotify=true''
 ''Categories=Network;''
 

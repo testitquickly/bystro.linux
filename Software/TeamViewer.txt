@@ -8,5 +8,6 @@ Creation-Date: 2025-06-11T16:23:16+03:00
 
 ===== Установить =====
 
-* [[Debian:Install:TeamViewer]]
+Скачать файл ''*.deb'' c https://www.teamviewer.com/en-cis/download/linux/
 
+''sudo dpkg -i teamviewer*.deb''

@@ -12,7 +12,11 @@ Creation-Date: 2026-02-06T02:28:07+02:00
 
 ===== Установить =====
 
-* [[Debian:Install:EdrawMind]]
+Снять установщик с https://edrawmind.wondershare.com/download.html#linux
+
+Сейчас у них v.13, но софтина для Linux всё ещё v.10 и не факт, что она будет обновляться.
+
+''sudo dpkg -i edrawmind-x86_64.deb''
 
 ===== Настроить =====
 

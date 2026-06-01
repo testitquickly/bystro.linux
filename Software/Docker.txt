@@ -129,4 +129,4 @@ sudo mcedit /etc/docker/daemon.json
 
 ''sudo docker-compose down''
 
-См. [[Snipe-It]]
+См. [[Webdev:Snipe-It]]

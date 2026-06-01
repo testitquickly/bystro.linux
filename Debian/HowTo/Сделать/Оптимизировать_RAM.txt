@@ -60,6 +60,8 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 
 ''UUID=xxxx-xxxx  none  swap  sw,pri=10  0  0''
 
+Сохранить, выйти.
+
 Перечитать fstab
 
 ''systemctl daemon-reload''

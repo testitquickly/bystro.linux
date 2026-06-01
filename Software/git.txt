@@ -12,7 +12,13 @@ Creation-Date: 2022-03-16T21:22:57+02:00
 
 ===== Установить =====
 
-[[Debian:Install:git]]
+Можно установить git в ПОЛНОМ комплекте:
+
+''sudo apt-get install git-all && git version''
+
+Для постоянной работы будет удобно использовать GUI-клиент (мне нравится [[SmartGit]]). Также ничего не запрещает нативно работать с git в консоли или в [[IDE]].
+
+Краткий видеокурс по основам git https://youtube.com/playlist?list=PLDyvV36pndZFHXjXuwA_NywNrVQO0aQqb (Илья Кантор)
 
 ===== Настроить =====
 

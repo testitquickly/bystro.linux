@@ -14,7 +14,7 @@ Creation-Date: 2022-12-17T22:24:54+02:00
 
 ===== Установить =====
 
-[[Debian:Install:SmartGit]] — для Manjaro аналогично
+[[Debian:Install:SmartGit]]. для Manjaro аналогично.
 
 ===== Связать SmartGit с GitHub =====
 

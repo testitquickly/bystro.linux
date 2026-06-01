@@ -6,9 +6,21 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 
 [ @debian @quicksetup ]
 
+Напоминалка о вреде излишней оптимизации: https://wiki.debian.org/DontBreakDebian
+
 ===== Установить базовое ПО =====
 
 Это можно поставить и c установочного диска Debian. 
+
+==== Debian 13 ====
+
+В Debian 13 отключена возможность ставить пакет ''software-properties-common'', потому что он тянет за собой Python-зависимости и сторонние PPA-механизмы, которые могут нарушить стабильность системы. Вместо этого Debian рекомендует использовать apt напрямую (/etc/apt/sources.list и /etc/apt/sources.list.d/) для добавления репозиториев, без PPA (типично для Ubuntu) и скриптов вроде ‘add-apt-repository‘.
+
+Из-под root:
+
+{{{code: lang="sh" linenumbers="True"
+apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b katomic kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaint ncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp smartmontools tar tellico timeshift trash-cli unace unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim -y && sudo apt upgrade -y
+}}}
 
 ==== Debian 12 ====
 
@@ -24,28 +36,18 @@ apt install aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename kr
 apt-add-repository contrib non-free -y && apt update && apt upgrade && apt install rar unrar ethtool gir1.2-gtksource-4 iputils-ping iw smartmontools nvme-cli xdot wakeonlan -y && apt update && apt upgrade
 }}}
 
-==== Debian 13 ====
-
-В Debian 13 отключена возможность ставить пакет ''software-properties-common'', потому что он тянет за собой Python-зависимости и сторонние PPA-механизмы, которые могут нарушить стабильность системы. Вместо этого Debian рекомендует использовать apt напрямую (/etc/apt/sources.list и /etc/apt/sources.list.d/) для добавления репозиториев, без PPA (типично для Ubuntu) и скриптов вроде ‘add-apt-repository‘.
-
-Из-под root:
-
-{{{code: lang="sh" linenumbers="True"
-apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b katomic kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaintncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp rar smartmontools tar tellico timeshifttrash-cli unaceunrar unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim -y && sudo apt upgrade -y
-}}}
-
 ===== Настроить систему =====
 
-* [[Software:Midnight Commander]]
+* [[HowTo:Сделать:Обновить sources.list]]
 * [[HowTo:Сделать:User:Добавить в группу sudo]]
-* [[HowTo:Настроить:Таймаут для sudo]]
 * [[HowTo:Сделать:User:Установить права доступа на каталоги и файлы]]
+* [[Software:Midnight Commander]]
 * [[HowTo:Настроить:GRUB2]]
 * [[HowTo:Удалить:Сервис NetworkManager-wait-online]]
-* [[HowTo:Сделать:Обновить sources.list]]
 * [[HowTo:Сделать:Debian:Update]]
 * [[HowTo:Проверить:Ошибки при загрузке системы]]
 * [[HowTo:Настроить:locale]]
+* [[HowTo:Настроить:Таймаут для sudo]]
 * [[HowTo:Настроить:Обновление времени и даты]]
 * [[HowTo:Настроить:SSD]]
 * [[HowTo:Сделать:Оптимизировать RAM]]
@@ -74,7 +76,7 @@ apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader
 * [[HowTo:Настроить:Внешний вид KDE:Виджет «Календарь событий»]]
 * [[HowTo:Настроить:Внешний вид KDE:Перелистывание окон]]
 * [[HowTo:Настроить:Внешний вид KDE:Колыхание окон]]
-* [[HowTo:Сделать:Тайлинг окон]]
+* [[HowTo:Настроить:Внешний вид KDE:KWin скрипты]]
 * [[HowTo:Настроить:Звук:Виджет «Громкость»]]
 * [[HowTo:Настроить:Звук:Управление громкостью]]
 * [[HowTo:Настроить:Звук:Убрать звуки Plasma]]
@@ -85,6 +87,7 @@ apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader
 * [[Software:Списки задач:ToDo в консоли]]
 * [[HowTo:Настроить:Wi-Fi]]
 * [[HowTo:Настроить:Языки локализации]]
+* [[Hardware:Мышь:Управление клавишами мыши]]
 * [[HowTo:Проверить:Network:Мой IP]]
 * [[HowTo:Проверить:Network:Скорость по LAN]]
 * [[HowTo:Проверить:Состояние батареи ноутбука]]
@@ -99,4 +102,3 @@ apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader
 * [[Install:Sublime]]
 * [[Install:Flatpak]]
 * [[Install:Dropbox]]
-* [[Install:Brave]]

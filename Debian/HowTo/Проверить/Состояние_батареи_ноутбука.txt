@@ -6,9 +6,9 @@ Creation-Date: 2023-02-15T21:10:56+02:00
 
 [ @debian @battery ]
 
-Вся информация о состоянии батареи ноутбука хранится в файлах из ''/sys/class/power_supply/BAT1/''
+Вся информация о состоянии батареи ноутбука хранится в файлах из ''/sys/class/power_supply/BAT0/''
 
-''cat /sys/class/power_supply/BAT1/status && cat /sys/class/power_supply/BAT1/capacity''
+''cat /sys/class/power_supply/BAT0/status && cat /sys/class/power_supply/BAT0/capacity''
 
 Если нет питания от сети, то в этих файлах будет написано что-то другое, вроде Discharged и количество оставшегося заряда.
 
@@ -16,7 +16,7 @@ Creation-Date: 2023-02-15T21:10:56+02:00
 
 вкратце
 
-''upower -i /sys/class/power_supply/BAT1''
+''upower -i /sys/class/power_supply/BAT0''
 
 детально
 
@@ -24,7 +24,7 @@ Creation-Date: 2023-02-15T21:10:56+02:00
 
 Она прочитает содержимое файлов в каталоге и выведет их содержимое в виде перечня параметров.
 
-Также можно узнать, открыта или закрыта крышка ноутбука:
+Также раньше можно было узнать, открыта или закрыта крышка ноутбука:
 
 ''cat /proc/acpi/button/lid/LID0/state''
 

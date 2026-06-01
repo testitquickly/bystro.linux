@@ -6,19 +6,17 @@ Creation-Date: 2023-10-22T23:31:59+03:00
 
 [ @debian @install @firefox ]
 
+В базе есть Firefox ESR - всегда заметно устаревшая версия. Разумно поставить самый новый Firefox.
+
 ===== Скачать архив с установкой =====
 
-с https://www.mozilla.org/ru/firefox/new/ 
+с https://www.mozilla.org/ru/firefox/new/
 
 Обычно он раздаётся в виде файла „''firefox-x.x.xx.tar.bz2''”
 
 ===== Распаковать архив =====
-'''
 
-'''
-''tar -jxvf firefox*''
-
-Появляется каталог „firefox” с файлами браузера внутри. 
+Из него надо достать каталог „firefox” с файлами браузера внутри. 
 
 ===== Переместить файлы в /opt =====
 
@@ -28,7 +26,7 @@ Creation-Date: 2023-10-22T23:31:59+03:00
 
 ===== Дать права своему пользователю на изменения в каталоге /opt/firefox =====
 
-''sudo chown -R astenix:sudo /opt/firefox && sudo chmod 750 /opt/firefox''
+''sudo chown -R'' __''astenix''__'':sudo /opt/firefox && sudo chmod 750 /opt/firefox''
 
 ==== Сделать symbolic link на firefox ====
 

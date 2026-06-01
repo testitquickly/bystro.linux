@@ -17,7 +17,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 
 [[+Cadence]] : роутинг звука через аудиоинтерфейс JACK
 [[+Calibre]] : библиотека
-[[+cmus]]
+[[+cmus]] : консольный аудиоплеер
 
 [[+DaVinci Resolve]] : видеоредактор
 [[+Docker]] : контейнеровоз
@@ -30,6 +30,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Elgato “Stream Deck”]] : клавиатурки с кнопками-экранами
 [[+exiftool]] : метаданные файлов
 
+[[+fastfetch]] : техно-инфо о системе
 [[+FFmpeg]]
 [[+find]] : поиск файлов IRL
 [[+Firefox]]
@@ -60,7 +61,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Konsole]]
 [[+KRunner]]
 [[+Krusader]]
-[[+KWin скрипты]]
+[[+KZones]] : менеджер зон экрана (ручной тайлинг)
 
 [[+LaTeX]]
 [[+LibreOffice]]
@@ -77,7 +78,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+mpv]] : видеоплеер
 [[+MyPaint]]
 
-[[+neofetch]] : лишняя приблуда
 [[+niri]] : scrollable-tiling Wayland compositor
 [[+ntfs-3g]]
 [[+Nvidia]]
@@ -111,7 +111,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+SmartMonTools]] : проверка дисков
 [[+SMPlayer]]
 [[+snap]]
-[[+Snipe-It]] : Inventory portal
 [[+Spectacle]] : скриншотер
 [[+ssh]]
 [[+stow]] : symlink farm manager
@@ -139,13 +138,13 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+VSCodium]] : IDE
 [[+vsftpd]] : ftp
 
-[[+Webdev]]
+[[Webdev]]
 [[+wget]]
 [[+whereis]]
 [[+LLM:Whisper]] : нейронная сеть для распознавания речи
 [[+wine]]
 
-[[+xampp]] : локальный веб-сервер
+[[Webdev:xampp]] : локальный веб-сервер
 [[+xclip]] : буфер обмена
 
 [[+yt-dlp]] : скачивание видео с Youtube
@@ -160,7 +159,6 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Документирование кода:Pandoc]]
 [[+Документирование кода:Zensical]]
 
-[[Debian:HowTo:Сделать:Симлинки и хардлинки]]
 [[+Скриншотеры]]
 [[+Списки задач]]
 	[[+Списки задач:ToDo в консоли]]

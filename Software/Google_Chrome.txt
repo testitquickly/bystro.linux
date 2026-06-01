@@ -8,7 +8,7 @@ Creation-Date: 2024-05-29T11:32:51+03:00
 
 ===== Установить =====
 
-* [[Debian:Install:Google Chrome]]
+[[Debian:Install:Google Chrome]]
 
 ===== Определить путь к каталогам действующего профиля =====
 

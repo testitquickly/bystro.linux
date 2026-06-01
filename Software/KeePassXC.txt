@@ -14,7 +14,15 @@ Creation-Date: 2022-11-17T22:20:43+02:00
 
 ===== Установить =====
 
-* [[Debian:Install:KeePassXC]]
+Для Debian: 
+
+''sudo apt-get install keepassxc''
+
+Другие варианты (flatpak, appimage и др): https://keepassxc.org/download/#linux
+
+==== flatpak ====
+
+''flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo && flatpak install --user flathub org.keepassxc.KeePassXC''
 
 ===== Добавить новое поле =====
 

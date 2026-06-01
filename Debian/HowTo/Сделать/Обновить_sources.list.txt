@@ -8,11 +8,120 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 [[Проверить:Версия и релиз Debian]]
 
+Залогиниться под root:
+
+''su''
+
+''sudo mcedit /etc/apt/sources.list''
+
+Убрать строку с источником "установочный диск".
+
+===== Изменить /etc/apt/sources.list под релиз =====
+
+См. https://wiki.debian.org/SourcesList  — поменялся формат файла с первоисточником ПО. Старый тоже работает, но пора переезжать на новый.
+
+==== Формат deb822 ====
+
+Рекомендуемый формат, в котором используется отдельный файл для каждого источника ПО.
+
+Сделать файл для Debian:
+
+''sudo mcedit /etc/apt/sources.list.d/debian.sources''
+
+ Вставить:
+
+	''# main — свободное ПО''
+	''# contrib — свободное ПО, зависящее от несвободных компонентов. Шрифты.''
+	''# non-free — несвободные пакеты. Проприетарный софт вроде VirtualBox Extension Pack, Steam Runtime и т.п.''
+	''# non-free-firmware — несвободные прошивки''
+	''# В норме достаточно: main contrib non-free-firmware''
+
+''Types: deb''
+''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']]
+''Suites: trixie trixie-updates''
+''Components: main contrib non-free non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+''Types: deb''
+''URIs:'' [[http://security.debian.org/debian-security|''http://security.debian.org/debian-security'']]
+''Suites: trixie-security''
+''Components: main non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+	''# Пакеты из backports ставить так:''
+	''# sudo apt -t trixie-backports install PACKAGE''
+
+''Types: deb''
+''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']]
+''Suites: trixie-backports''
+''Components: main contrib non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+Если надо временно отключить какой-то блок, его можно или полностью закомментировать, или добавить к нему инструкцию. Так можно отключить бэкпорты:
+
+''Types: deb''
+''Enabled: no''
+''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']]
+''Suites: trixie-backports''
+''Components: main contrib non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+Если надо указать несколько источников через пробел, система сама будет дергать данные по первому линку, и если они будут недоступен, то по второму:
+
+''URIs: http://mirror.linux.ro/debian/ http://ftp.de.debian.org/debian/''
+
+Отключить старый файл:
+
+''sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak''
+
+Обновить систему:
+
+''sudo apt update -y && sudo apt upgrade -y''
+
+==== Старый формат ====
+
+''sudo mcedit /etc/apt/sources.list''
+
+Также можно посмотреть список всех репозиториев Debian — https://www.debian.org/mirror/list Всегда есть вероятность, что какой-то из ближайших репозиториев не будет обновлён.
+
+Пример:
+
+''# Main''
+''deb http://mirror.linux.ro/debian/ trixie main non-free-firmware contrib''
+
+''# trixie-updates, to get updates before a point release is made''
+''deb http://mirror.linux.ro/debian/ trixie-updates main non-free-firmware contrib''
+
+''# Security''
+''deb http://security.debian.org/debian-security trixie-security main non-free-firmware''
+
+Лучше явно указывать название релиза, а не глобальное stable — после обновления stable произойдет автоматический апгрейд до нового релиза в статусе stable и это может быть очень неприятным сюрпризом.
+
+Когда всё норм — обновить систему одной командой:
+
+''apt update && apt upgrade -y''
+
+Начиная с Debian 13 предлагается перейти на новый формат sources. Все источники ПО надо держать в отдельных файлах:
+
+''mcedit /etc/apt/sources.list.d/debian.sources''
+
+Вставить:
+
+''Types: deb deb-src''
+''URIs: http://deb.debian.org/debian''
+''Suites: trixie trixie-updates''
+''Components: main non-free-firmware contrib non-free''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+ 
+''Types: deb deb-src''
+''URIs: http://security.debian.org/debian-security''
+''Suites: trixie-security''
+''Components: main non-free-firmware contrib non-free''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
 ===== Выбрать самый быстрый ресурс =====
 
-Или просто указываем основной региональный сервер (http://ftp.md.debian.org/debian/ в моём случае), или же
-
-''sudo aptitude install netselect-apt && sudo netselect-apt''
+''apt install netselect-apt && netselect-apt''
 
 Произойдет пинг трех сотен адресов и будет предложен список из десяти «самых быстрых».
 
@@ -21,36 +130,3 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 Сервер для # SECURITY updates никогда не бывает локальным, его не трогаем.
 
 Утилита netselect-apt сразу создаст в текущем каталоге новый файл "sources.list". Его можно удалить.
-
-===== Изменить /etc/apt/sources.list под релиз =====
-
-''sudo mcedit /etc/apt/sources.list''
-
-Содержимое этого файла при каждом большом обновлении может поменяться. Сперва посмотреть на https://wiki.debian.org/SourcesList
-
-Также можно посмотреть список всех репозиториев Debian — https://www.debian.org/mirror/list Всегда есть вероятность, что какой-то из ближайших репозиториев не будет обновлён.
-
-	Пример для Debian 11 ’bullseye’:
-	
-	'''
-	# MAIN
-	deb http://ftp.md.debian.org/debian/ bullseye main contrib non-free
-	
-	# UPDATES
-	deb http://ftp.md.debian.org/debian/ bullseye-updates main contrib non-free
-	
-	# SECURITY
-	deb http://security.debian.org/debian-security bullseye-security main contrib non-free
-	'''
-
-Лучше явно указывать название релиза, чем глобальное stable — после обновления stable произойдет автоматический апгрейд до нового релиза в статусе stable и это может быть очень неприятным сюрпризом.
-
-Когда всё норм — обновить систему одной командой:
-
-''sudo aptitude update && sudo aptitude upgrade --full-resolver''
-
-Параметр  “--full-resolver” необходим для отмены таймаута при автоматическом разрешение конфликтов зависимостей. 
-
-Если установлены другие пакеты, которые обновляются со своих серверов (например, браузер Brave), то их source.list находится в отдельных файлах каталоге ''/etc/apt/sources.list.d/'' Если их надо удалить, то — удалить соответствующие файлы из этого каталога.
-
-См. настройки для [[+Debian 13]]

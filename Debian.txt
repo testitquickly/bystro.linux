@@ -7,15 +7,12 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 [ @main @debian ]
 
 (1)
-Быстро настроить Debian с KDE Plasma: [[+Setup]]
+Настроить Debian с KDE Plasma: [[+Setup]]
 
 (2)
-Настроить [[Software]]
+Настроить [[Software]] для Debian
 
 (3)
-Настроить [[Hardware]]
-
-(4)
 Общий [[+HowTo]] по командам в системе:
 
 * [[+HowTo:Найти]]
@@ -24,4 +21,5 @@ Creation-Date: 2022-11-11T04:44:18+02:00
 * [[+HowTo:Сделать]]
 * [[+HowTo:Удалить]]
 
-Напоминалка о вреде излишней оптимизации: https://wiki.debian.org/DontBreakDebian
+(4)
+Настроить [[Hardware]]

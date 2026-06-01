@@ -6,7 +6,7 @@ Creation-Date: 2023-10-03T06:46:10+03:00
 
 [ @debian @install @kgpg ]
 
-''sudo aptitude install gpg'' && ''gpg --version''
+''sudo aptitude install gpg && gpg --version''
 
 ===== Если хочется GUI =====
 

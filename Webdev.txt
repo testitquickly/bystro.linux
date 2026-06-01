@@ -7,6 +7,6 @@ Creation-Date: 2024-09-21T17:40:01+03:00
 [ @webdev ]
 
 [[+habr]]
-[[Snipe-It]] : Inventory portal
+[[Software:Snipe-It]] : Inventory portal
 [[+Плагины WordPress]]
 [[+Поднять веб-сервис на localhost]]

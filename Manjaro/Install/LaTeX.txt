@@ -22,9 +22,7 @@ Creation-Date: 2023-02-18T01:20:35+02:00
 
 Добавить в системную переменную PATH путь к установленному LaTeX:
 
-'''
-mcedit ~/.profile
-'''
+''mcedit ~/.profile''
 
 Добавить путь к исполняемым файлам LaTeX в его нижнюю часть:
 
@@ -32,10 +30,8 @@ mcedit ~/.profile
 
 В каталог /usr/local/bin добавить два symbolic links к исполняемым скриптам:
 
-'''
-sudo ln -s /opt/texlive/2019/bin/x86_64-linux/latexmk
-sudo ln -s /opt/texlive/2019/bin/x86_64-linux/bibtex
-'''
+''sudo ln -s /opt/texlive/2019/bin/x86_64-linux/latexmk''
+''sudo ln -s /opt/texlive/2019/bin/x86_64-linux/bibtex''
 
 Restart and enjoy your TeXLive.
 
@@ -106,11 +102,9 @@ which kile
 
 — добавить туда в самом конце три строки:
 
-'''
-PATH=/opt/LaTeX/bin/x86_64-linux:$PATH
-INFOPATH=/opt/LaTeX/texmf-dist/doc/info:$INFOPATH
-MANPATH=/hopt/LaTeX/texmf-dist/doc/man:$MANPATH
-'''
+''PATH=/opt/LaTeX/bin/x86_64-linux:$PATH''
+''INFOPATH=/opt/LaTeX/texmf-dist/doc/info:$INFOPATH''
+''MANPATH=/hopt/LaTeX/texmf-dist/doc/man:$MANPATH''
 
 Чтобы эти изменения применились, надо или «разлогиниться и залогиниться», или выполнить принудительное перечитывание конфигурационных файлов профиля через
 
@@ -140,11 +134,9 @@ MANPATH=/hopt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 	3. Отредактировать рутовский файл ''.bashrc'' (мне удобно через mcedit, бо Midnight Commander), добавить туда три строки:
 
-'''
-PATH=/opt/LaTeX/bin/x86_64-linux:$PATH
-INFOPATH=/opt/LaTeX/texmf-dist/doc/info:$INFOPATH
-MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
-'''
+''PATH=/opt/LaTeX/bin/x86_64-linux:$PATH''
+''INFOPATH=/opt/LaTeX/texmf-dist/doc/info:$INFOPATH''
+''MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH''
 
 Но тут уже точно нужно будет перезагрузить ноутбук целиком.
 
@@ -287,10 +279,8 @@ MANPATH=/opt/LaTeX/texmf-dist/doc/man:$MANPATH
 
 ==== Посмотреть значение каждой переменной LaTeX по-отдельности ====
 
-'''
-kpsewhich -var-value TEXMFHOME
-kpsewhich -var-value TEXMFLOCAL
-'''
+''kpsewhich -var-value TEXMFHOME''
+''kpsewhich -var-value TEXMFLOCAL''
 
 	и так далее при желании.
 

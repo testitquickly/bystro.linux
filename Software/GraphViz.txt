@@ -14,7 +14,11 @@ Creation-Date: 2025-08-11T14:56:29+03:00
 
 ===== Установить =====
 
-* [[Debian:Install:GraphViz]]
+''sudo apt update && sudo apt install graphviz && dot -V''
+
+Ожидаемый ответ:
+
+''dot - graphviz version 2.43.0 (0)''
 
 ===== Использовать =====
 

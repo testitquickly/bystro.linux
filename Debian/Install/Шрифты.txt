@@ -8,9 +8,13 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 См. https://wiki.debian.org/Fonts#Packages
 
-Предварительно важно, чтобы для репозиториев были прописаны параметры ''contrib non-free'', потому что эти шрифты не относятся к свободному ПО. Это можно сделать одной строкой:
+Предварительно важно, чтобы для репозиториев были прописаны параметры ''contrib non-free'', потому что эти шрифты не относятся к свободному ПО. 
+
+В Debian 12 надо было добавить 
  
 ''sudo apt install software-properties-common -y; sudo apt-add-repository contrib non-free -y''
+
+В Debian 13 это уже не нужно.
 
 ===== Установить шрифты Microsoft и IBM =====
 

@@ -257,17 +257,15 @@ Debian 13:
 
 Из некоторых документов можно получить вот такой ответ:
 
-'''
-name                                 type              encoding         emb sub uni object ID
------------------------------------- ----------------- ---------------- --- --- --- ---------
-ABIDJD+SFSX2074                      Type 1            Custom           yes yes yes    398  0
-HKHYHN+SFSS0500                      Type 1            Custom           yes yes yes    399  0
-LQWDQM+SFSO3583                      Type 1            Custom           yes yes yes    400  0
-TRGRAQ+SFSX3583                      Type 1            Custom           yes yes yes    401  0
-UBPHBT+SFTT1440                      Type 1            Custom           yes yes yes    402  0
-CKOVXX+SFCC1200                      Type 1            Custom           yes yes yes    403  0
-JWNNCU+SFSX0800                      Type 1            Custom           yes yes yes    405  0
-'''
+''name                                 type              encoding         emb sub uni object ID''
+''------------------------------------ ----------------- ---------------- --- --- --- ---------''
+''ABIDJD+SFSX2074                      Type 1            Custom           yes yes yes    398  0''
+''HKHYHN+SFSS0500                      Type 1            Custom           yes yes yes    399  0''
+''LQWDQM+SFSO3583                      Type 1            Custom           yes yes yes    400  0''
+''TRGRAQ+SFSX3583                      Type 1            Custom           yes yes yes    401  0''
+''UBPHBT+SFTT1440                      Type 1            Custom           yes yes yes    402  0''
+''CKOVXX+SFCC1200                      Type 1            Custom           yes yes yes    403  0''
+''JWNNCU+SFSX0800                      Type 1            Custom           yes yes yes    405  0''
 
 ===== Извлечь шрифты из pdf =====
 
