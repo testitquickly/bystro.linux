@@ -4,7 +4,7 @@ Creation-Date: 2024-04-18T19:23:47+03:00
 
 ====== about ======
 
-Это инструкции по (уже не совсем) быстрой настройке свежеустановленного [[Debian]] Stable (12 -> 13) с KDE Plasma (5 -> 6) на X11 или Wayland.
+Это инструкции по (уже не совсем) быстрой настройке свежеустановленного [[Debian]] Stable (12 -> 13) с KDE Plasma (5 -> 6) на X11 (или Wayland).
 
 Если кому-то всё это будет полезно, то велком, //this content is distributed in the hope that it will be useful, but without any warranty// ©
 
