@@ -99,8 +99,11 @@ weekNumber=$(date +%V)
     # ординарные экранировать не надо. Также надо экранировать слэши из html.
 
     # Сделать поиск строки по первым символам — clockTimeFormat1='<font size=\"1\" color=\"orange\"> — и заменить всю эту строку моей
+# plasma 6, widget Календарь событий
+sed -E -i "s|^clockTimeFormat1=hh:mm\\\\s$|clockTimeFormat1='<font size=\"1\" color=\"orange\">$weekNumber</font> <font size=\"2\" color=\"#b2b2b2\">'d MMM'</font>' HH:mm|" "$configToUpdate"
 
-sed -E -i "s|^clockTimeFormat1='<font size=\"1\" color=\"orange\">.*|clockTimeFormat1='<font size=\"1\" color=\"orange\">$weekNumber</font> <font size=\"2\" color=\"#b2b2b2\">'d MMM'</font>' HH:mm|" "$configToUpdate"
+# old, Plasma 5, widget Календарь событий
+# sed -E -i "s|^clockTimeFormat1='<font size=\"1\" color=\"orange\">.*|clockTimeFormat1='<font size=\"1\" color=\"orange\">$weekNumber</font> <font size=\"2\" color=\"#b2b2b2\">'d MMM'</font>' HH:mm|" "$configToUpdate"
 
 }}}
 
