@@ -79,10 +79,11 @@ Creation-Date: 2025-03-20T05:27:18+02:00
 15,3 + 7,4 = 22.7
 
 '''
-		total        used        free      shared  buff/cache   available
-Mem:            14Gi       4,6Gi       2,5Gi        60Mi       8,2Gi        10Gi
-Swap:           22Gi          0B        22Gi
+		
 '''
+''total        used        free      shared  buff/cache   available''
+''Mem:            14Gi       4,6Gi       2,5Gi        60Mi       8,2Gi        10Gi''
+''Swap:           22Gi          0B        22Gi''
 
 ===== Перенести /tmp в RAM =====
 

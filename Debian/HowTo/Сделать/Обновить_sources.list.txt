@@ -12,7 +12,7 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 ''su''
 
-''sudo mcedit /etc/apt/sources.list''
+''mcedit /etc/apt/sources.list''
 
 Убрать строку с источником "установочный диск".
 
@@ -26,7 +26,7 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 Сделать файл для Debian:
 
-''sudo mcedit /etc/apt/sources.list.d/debian.sources''
+''mcedit /etc/apt/sources.list.d/debian.sources''
 
  Вставить:
 
@@ -37,16 +37,18 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 	''# В норме достаточно: main contrib non-free-firmware''
 
 ''Types: deb''
-''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']]
+''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']] 
 ''Suites: trixie trixie-updates''
 ''Components: main contrib non-free non-free-firmware''
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+''Enabled: yes''
 
 ''Types: deb''
 ''URIs:'' [[http://security.debian.org/debian-security|''http://security.debian.org/debian-security'']]
 ''Suites: trixie-security''
 ''Components: main non-free-firmware''
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+''Enabled: yes''
 
 	''# Пакеты из backports ставить так:''
 	''# sudo apt -t trixie-backports install PACKAGE''
@@ -56,15 +58,16 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 ''Suites: trixie-backports''
 ''Components: main contrib non-free-firmware''
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+''Enabled: yes''
 
 Если надо временно отключить какой-то блок, его можно или полностью закомментировать, или добавить к нему инструкцию. Так можно отключить бэкпорты:
 
 ''Types: deb''
-''Enabled: no''
 ''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']]
 ''Suites: trixie-backports''
 ''Components: main contrib non-free-firmware''
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+''Enabled: no''
 
 Если надо указать несколько источников через пробел, система сама будет дергать данные по первому линку, и если они будут недоступен, то по второму:
 
@@ -72,11 +75,11 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 
 Отключить старый файл:
 
-''sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak''
+''mv /etc/apt/sources.list /etc/apt/sources.list.bak''
 
 Обновить систему:
 
-''sudo apt update -y && sudo apt upgrade -y''
+''apt update -y && sudo apt upgrade -y''
 
 ==== Старый формат ====
 
