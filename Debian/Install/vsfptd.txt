@@ -12,7 +12,7 @@ Creation-Date: 2023-12-04T22:25:57+02:00
 
 ===== Установить vsftpd =====
 
-''sudo aptitude install vsftpd''
+''sudo apt install vsftpd''
 
 ==== Добавить юзера в группу ’adm’ ====
 

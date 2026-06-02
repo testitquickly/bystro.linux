@@ -26,9 +26,9 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 Это должно произойти по-умолчанию, но иногда это надо сделать вручную.
 
-''su''
+''sudo -i''
 
-''chown root:root /etc/vsftpd.conf && echo -e "\nDone!"''
+''chown root:root /etc/vsftpd.conf && echo -e "\nDone!\n"''
 
 ''exit''
 
@@ -224,40 +224,36 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ===== Несущественные примеры настроек vsftpd =====
 
-'''
-allow_writeable_chroot=YES
-anonymous_enable=NO
-chroot_list_enable=YES
-chroot_list_file=/etc/vsftpd.chroot_list
-chroot_local_user=YES
-connect_from_port_20=YES
-data_connection_timeout=120
-dirmessage_enable=YES
-ftpd_banner=Welcome to FTP service.
-idle_session_timeout=600
-listen_ipv6=NO
-listen=YES
-listen_port=21
-local_enable=YES
-local_umask=002
-pam_service_name=vsftpd
-ssl_enable=NO
-use_localtime=YES
-utf8_filesystem=YES
-write_enable=YES
-'''
+''allow_writeable_chroot=YES''
+''anonymous_enable=NO''
+''chroot_list_enable=YES''
+''chroot_list_file=/etc/vsftpd.chroot_list''
+''chroot_local_user=YES''
+''connect_from_port_20=YES''
+''data_connection_timeout=120''
+''dirmessage_enable=YES''
+''ftpd_banner=Welcome to FTP service.''
+''idle_session_timeout=600''
+''listen_ipv6=NO''
+''listen=YES''
+''listen_port=21''
+''local_enable=YES''
+''local_umask=002''
+''pam_service_name=vsftpd''
+''ssl_enable=NO''
+''use_localtime=YES''
+''utf8_filesystem=YES''
+''write_enable=YES''
 
-# My
-rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
-rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
-secure_chroot_dir=/var/run/vsftpd/empty
+''# My''
+''rsa_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem''
+''rsa_private_key_file=/etc/ssl/private/ssl-cert-snakeoil.key''
+''secure_chroot_dir=/var/run/vsftpd/empty''
 
-'''
-# allow users to write
-# chroot_local_user=YES
-# chroot_list_enable=YES
-# chroot_list_file=/etc/vsftpd.chroot_list
-allow_writeable_chroot=YES
-# user_sub_token=$USER
-# local_root=/home/$USER/
-'''
+''# allow users to write''
+''# chroot_local_user=YES''
+''# chroot_list_enable=YES''
+''# chroot_list_file=/etc/vsftpd.chroot_list''
+''allow_writeable_chroot=YES''
+''# user_sub_token=$USER''
+''# local_root=/home/$USER/''
