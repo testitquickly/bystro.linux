@@ -6,6 +6,30 @@ Creation-Date: 2024-10-28T11:37:47+02:00
 
 [ @smart @nvme ]
 
+Проверить састояние самого nmve: [[Software:SmartMonTools]]
+
+===== Скандиск nvme =====
+
+Определить разделы:
+
+''lsblk -f''
+
+Предположим, что это ''/dev/nvme0n1p2''
+
+Отмонтировать:
+
+''sudo umount /dev/nvme0n1p2''
+
+Проверить на ошибки и если найдутся — сразу починить:
+
+''sudo e2fsck -f -y /dev/nvme0n1p2''
+
+После лечения примонтировать партицию обратно туда, где она была изначально:
+
+''sudo mount /dev/nvme0n1p2 /home/hub''
+
+===== Перепроверить диски =====
+
 При загрузке компьютера могут быть сообщения вроде
 
 ''smartd[874]: Device: /dev/nvme0, number of Error Log entries increased from 13 to 14''

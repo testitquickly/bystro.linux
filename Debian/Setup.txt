@@ -85,6 +85,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 ===== Опциональное =====
 
 * [[Software:Списки задач:ToDo в консоли]]
+* [[HowTo:Настроить:Запуск калькулятора]]
 * [[HowTo:Настроить:Wi-Fi]]
 * [[HowTo:Настроить:Языки локализации]]
 * [[Hardware:Мышь:Управление клавишами мыши]]
