@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-03T17:18:22+03:00
+
+====== Запуск калькулятора ======
+
+[ @kcalc ]
+
+По-умолчанию в системе установлен калькулятор Kcalc. Если на ноуте/клавиатуре есть отдельная кнопка для запуска калькулятора, она отрабатывает обращение к /usr/bin/kcalc
+
+Можно на уровне профиля/системы подменить вызов kcalc на вызов qalculate-qt.
+
+На уровне профиля:
+
+''cat > ~/.local/bin/kcalc <<'EOF'''
+''#!/bin/sh''
+''exec qalculate-qt "$@"''
+''EOF''
+
+''chmod +x ~/.local/bin/kcalc''
+
+На уровне системы:
+
+''sudo mv /usr/bin/kcalc /usr/bin/kcalc.bkp''
+''sudo ln -s /usr/bin/qalculate-qt /usr/bin/kcalc''
