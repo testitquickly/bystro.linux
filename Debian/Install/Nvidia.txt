@@ -37,7 +37,9 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 ===== Обычная установка =====
 
-Согласно  https://wiki.debian.org/NvidiaGraphicsDrivers :
+Можно установить open kernel module через ''sudo apt-get install -y nvidia-open'', а можно и проприетарный  драйвер NVIDIA, разница зависит от железа, на котором всё это будет работать. Между ними даже можно переключаться.
+
+Ставим проприетарный, согласно  https://wiki.debian.org/NvidiaGraphicsDrivers :
 
 ''sudo apt update; sudo apt install nvidia-driver nvidia-settings firmware-misc-nonfree''
 
@@ -122,26 +124,28 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 Если решено ставить CUDA Toolkit отдельно, то сперва надо знать, что эта установка потребует много места на диске с системой. Это решается только установкой CUDA Toolkit через ''run''-файл.
 
-Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — выбрать Linux, архитектуру (x86_64), OS (Debian), версию (12)  и инсталлер runfile (local), скачать предлагаемой командой (взять с сайта, она изменчивая):
+Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — там на выбор:
 
-''wget https://developer.download.nvidia.com/compute/cuda/13.0.2/local_installers/cuda_13.0.2_580.95.05_linux.run''
+* .deb-инсталлер — само всё встанет, куда захочет
+* .run-инсталлер — можно указать, куда положить файлы для cuda. Им нужно много места, поэтому выбираю этот вариант. Выбрать Linux, архитектуру (x86_64), OS (Debian), версию (13)  и инсталлер runfile (local, чтобы выбрать самому, куда это всё установить), скачать предлагаемой командой (взять с сайта, она изменчивая):
 
-Сделать скачанный файл исполняемым:
+''wget https://developer.download.nvidia.com/compute/cuda/13.3.0/local_installers/cuda_13.3.0_610.43.02_linux.run''
 
-''chmod +x cuda*.run''
 
 Установить CUDA Toolkit в отдельный каталог (на отдельном диске):
 
-''sudo ./cuda_*.run --silent --toolkit --installpath=''__''/your_cuda_folder''__
+''sudo sh cuda*.run --silent --toolkit --installpath=''__''/your_cuda_folder''__
 
 ''--silent'' — без дополнительных вопросов; на экран ничего не выводится, надо терпеливо ждать завершения установки
-''--toolkit'' — установить только CUDA Toolkit, без драйверов и компонентов для разработчиков
+''--toolkit'' — установить только исполняемый вариант CUDA Toolkit, без драйверов и компонентов для разработчиков
 
 ==== Настроить переменные окружения ====
 
+Чтобы система знала, где лежат cuda-файлы:
+
 ''mcedit ~/.bashrc''
 
-добавить:
+Добавить:
 
 ''export PATH=''__''/your_cuda_folder''__''/bin:$PATH''
 ''export LD_LIBRARY_PATH=''__''/your_cuda_folder''__''/lib64:$LD_LIBRARY_PATH''
@@ -157,10 +161,10 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 Пример ответа:
 
 ''nvcc: NVIDIA (R) Cuda compiler driver''
-''Copyright (c) 2005-2025 NVIDIA Corporation''
-''Built on Wed_Aug_20_01:58:59_PM_PDT_2025''
-''Cuda compilation tools, release 13.0, V13.0.88''
-''Build cuda_13.0.r13.0/compiler.36424714_0''
+''Copyright (c) 2005-2026 NVIDIA Corporation''
+''Built on Fri_Apr_24_07:22:02_PM_PDT_2026''
+''Cuda compilation tools, release 13.3, V13.3.33''
+''Build cuda_13.3.r13.3/compiler.37862127_0''
 
 Если «команда не найдена» — проверить, что утилита ''nvcc'' действительно находится в __''/your_cuda_folder''__/cuda/bin/ и что PATH указан правильно.
 
