@@ -28,7 +28,7 @@ Creation-Date: 2023-12-04T22:27:54+02:00
 
 ''sudo -i''
 
-''chown root:root /etc/vsftpd.conf && echo -e "\nDone!\n"''
+''chown root:root /etc/vsftpd.conf''
 
 ''exit''
 
