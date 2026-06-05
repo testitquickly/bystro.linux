@@ -10,7 +10,6 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+aptitude]]
 
 [[+Balena etcher]]
-+Brave # браузер
 [[+Bruno]] # для API
 
 [[+Cadence]] # GUI для JACK
@@ -19,8 +18,6 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Docker]]
 [[+Dropbox]]
 
-+Easy Effects
-+EdrawMind # майндмапы
 [[+Elgato “Stream Deck”]]
 [[+exiftool]]
 
@@ -31,10 +28,8 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+FSearch]]
 [[+ftp]]
 
-+git
 [[+Google Chrome]]
 [[+gpg]]
-+GraphViz
 [[+Grub-Customizer]]
 
 [[+hdparm]] # настройка HDD
@@ -44,25 +39,19 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [[+JACK]]
 
-+KeePassXC
 [[+Kile]]
-+KMyMoney
-+Krusader
 
 [[+LaTeX]]
 [[+LibreOffice]]
 
 [[+Mermaid JS]]
-+Midnight Commander
 [[+Minder]] # майндмапы
 [[+MkDocs]]
 
 [[+NodeJS]]
-+ntfs-3g
 [[+Nvidia]]
 
 [[+Obsidian]]
-+OBS studio
 [[+Ollama]]
 [[+OnBoard]]
 [[+OpenShot]]
@@ -75,8 +64,6 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Playwright]]
 [[+Postman]]
 
-+QBittorrent
-
 [[+Qmmp]]
 
 [[+Recoll]]
@@ -85,14 +72,12 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Sentence Transformer]]
 [[+Slack]]
 [[+SmartGit]]
-+SmartMonTools
 [[+Snipe-It]]
 [[+ssh]]
 [[+Sublime]]
 [[+SyncThing]]
 
 [[+Taskwarrior]]
-+TeamViewer
 [[+Telegram]]
 [[+Thunderbird]]
 [[+Todoman]]
@@ -100,8 +85,6 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+Touchegg]]
 [[+TypeScript]]
 
-+v4l2
-+vpn
 [[+VSCodium]]
 [[+vsfptd]]
 
@@ -112,7 +95,6 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+yt-dlp]]
 
 [[+Zensical]]
-+zim
 
 [[+Пакет .rpm в Debian]]
 [[+Пакет из unstable (sid) на Debian testing]]

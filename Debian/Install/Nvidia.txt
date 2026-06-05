@@ -80,6 +80,8 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 Будет установлен пакет //nvidia-kernel-dkms//. 
 
+Записать версию драйвера, который будет установлен. Позже его надо будет проверить на совместимость с драйвером CUDA.
+
 При установке драйвер Nouveau не будет удалён (это и не надо), но он автоматически заблэклистится: появится файл ///etc/modprobe.d/blacklist-nvidia-nouveau.conf// с содержимым «blacklist nouveau»
 
 	Можно (если свербит) ещё добавить файл ''sudo mcedit /etc/modprobe.d/blacklist.conf'' с перечнем всех модулей всех свободных драйверов:
@@ -91,6 +93,30 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 	Но это уже ни на что не повлияет.
 
 ''sudo reboot''
+
+===== Установить драйвер NVIDIA из репозитория NVIDIA =====
+
+''sudo mcedit /etc/apt/sources.list.d/nvidia-cuda.sources''
+
+Вставить:
+
+''Types: deb''
+''URIs:'' [[https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/|''https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/'']]
+''Suites: /''
+''Components:''
+''Signed-By: /usr/share/keyrings/cuda-archive-keyring.gpg''
+
+Установить keyring
+
+''wget'' [[https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb|''https://developer.download.nvidia.com/compute/cuda/repos/debian12/x86_64/cuda-keyring_1.1-1_all.deb'']] ''&& sudo dpkg -i cuda-keyring_1.1-1_all.deb''
+
+Обновить индексы:
+
+''sudo apt update''
+
+Поставить мета-пакет NVIDIA CUDA Driver. В репозитории cuda для Debian 12 он тянет nvidia-driver (актуальная версия из CUDA repo), nvidia-kernel-dkms, libnvidia-*, nvidia-utils…
+
+''sudo apt install cuda-drivers''
 
 ==== Обновить систему ====
 
@@ -118,7 +144,7 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 ''sudo aptitude install nvidia-settings''
 
-===== Установка CUDA Toolkit =====
+===== Установить CUDA Toolkit =====
 
 Сперва надо проверить соответствие установленных драйверов Nvidia и версии CUDA Toolkit — они должны быть синхронизированы. Есть вероятность, что в Debian Stable драйвера для Nvidia будут «более старыми», нежели… Тогда надо установить драйвера через бэкпорт. Но сперва три раза перепровериться и убедиться в том, что новые драйвера нужны.
 
@@ -127,17 +153,33 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 Скачать установщик CUDA с официального сайта https://developer.nvidia.com/cuda-downloads — там на выбор:
 
 * .deb-инсталлер — само всё встанет, куда захочет
-* .run-инсталлер — можно указать, куда положить файлы для cuda. Им нужно много места, поэтому выбираю этот вариант. Выбрать Linux, архитектуру (x86_64), OS (Debian), версию (13)  и инсталлер runfile (local, чтобы выбрать самому, куда это всё установить), скачать предлагаемой командой (взять с сайта, она изменчивая):
+* .run-инсталлер — можно указать, куда положить файлы для cuda. Им нужно много места, поэтому выбираю этот вариант. Выбрать Linux, архитектуру (x86_64), OS (Debian), версию cuda…
 
-''wget https://developer.download.nvidia.com/compute/cuda/13.3.0/local_installers/cuda_13.3.0_610.43.02_linux.run''
+Вот тут надо аккуратнее. Надо смотреть инсталлер runfile (local), чтобы выбрать самому, куда это всё установить. Но сперва надо глянуть в названии файла скрипта установки версию драйверов NVIDIA, для которых он предназначен. Например, файл  ''cuda_13.3.0_''__''610''__''.43.02_linux.run'' — это cuda 13.3 для драйверов NVIDIA __610__. А у меня NVIDIA 550, я на Debian stable, у меня 610 недоступна. Поэтому мне надо выбрать версию cuda 12, и версии лучше выбирать здесь — https://developer.nvidia.com/cuda-toolkit-archive
 
+* скачать runfile предлагаемой командой (взять с сайта, она изменчивая). 
 
-Установить CUDA Toolkit в отдельный каталог (на отдельном диске):
+Скачать скрипт:
 
-''sudo sh cuda*.run --silent --toolkit --installpath=''__''/your_cuda_folder''__
+''wget https://developer.download.nvidia.com/compute/cuda/12.9.2/local_installers/cuda_12.9.2_575.57.08_linux.run''
 
-''--silent'' — без дополнительных вопросов; на экран ничего не выводится, надо терпеливо ждать завершения установки
+Установить CUDA Toolkit в отдельный каталог на отдельном диске:
+
+''sudo sh -x cuda*.run --toolkit --installpath=/your_cuda_folder''
+
+''-x'' — режим verbose, чтобы следить за ходом установки
 ''--toolkit'' — установить только исполняемый вариант CUDA Toolkit, без драйверов и компонентов для разработчиков
+''--silent'' — можно добавить подавление вывода лога установки на экран
+
+ В ходе установки надо будет принять EULA (лицензионное соглашение) и можно будет посмотреть некоторые настройки установки. И если будет “//Installation failed. See log at /var/log/cuda-installer.log for details//” — разбираться и чинить. Например, в настройках CUDA Installer не должна быть отмечена галочка “Driver”.
+
+В инсталляторе может быть предложен 
+
+* Driver NVIDIA другой версии. Если он близок к установленному — можно апгрейднуть (550 > 575), но НЕ ФАКТ, что нужно. Не нужно, бо скрипт свалится с ошибкой.
+* CUDA Toolkit — установка обязательна
+* CUDA Demo Suite — установка НЕобязательна
+* CUDA Documentation — установка НЕобязательна, но не помешает
+* Kernel Objects > nvidia-fs — установка НЕобязательна, это модуль для GPUDirect Storage (GDS), прямого доступа GPU к NVMe / storage без участия CPU, используется в серверных системах.
 
 ==== Настроить переменные окружения ====
 
@@ -156,6 +198,10 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 
 ==== Проверить установку ====
 
+''nvidia-smi''
+
+Посмотреть версии установленного ПО.
+
 ''nvcc --version''
 
 Пример ответа:
@@ -166,6 +212,6 @@ Creation-Date: 2024-12-18T09:26:27+02:00
 ''Cuda compilation tools, release 13.3, V13.3.33''
 ''Build cuda_13.3.r13.3/compiler.37862127_0''
 
-Если «команда не найдена» — проверить, что утилита ''nvcc'' действительно находится в __''/your_cuda_folder''__/cuda/bin/ и что PATH указан правильно.
+Если «команда не найдена» — проверить, что утилита ''nvcc'' действительно находится в __''/your_cuda_folder''__''/cuda/bin/'' и что PATH указан правильно.
 
 См. далее [[Software:Nvidia]]
