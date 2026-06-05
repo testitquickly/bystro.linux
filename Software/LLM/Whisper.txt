@@ -20,7 +20,7 @@ Creation-Date: 2024-11-30T21:46:21+02:00
 
 После Whisper есть смысл обработать транскрибированный текст через [[Sentence Transformer]].
 
-===== Условности =====
+===== Теория =====
 
 Нейросети в работе вообще прожорливы, на большом количестве файлов с применением «большой» модели гудеть кулерами начнёт даже ноутбук, в котором в принципе нет вентиляторов. Разумно начинать с модели „medium” и переходить на более продвинутую только при явной необходимости. Также из сострадания к ресурсам компьютера разумно придирчиво отбирать, какие аудиофайлы действительно //надо// транскрибировать. И в принципе надо сперва настроить то, как Whisper будет использовать CPU (см. файл про его установку). 
 
@@ -279,3 +279,46 @@ FILE="/home/astenix/Аудио/1min.wav"; whisper $FILE --language Russian --mod
 ''FOLDER="/home/astenix/transcribere/input"; for FILE in $FOLDER/*.wav; do echo "Выполняется транскрибирование — $FILE"; whisper "$FILE" --language Russian --model medium --device cuda --output_dir "$(dirname "$FILE")" --output_format vtt > /dev/null 2>&1; done; echo -e "\n\tТранскрибирование завершено.\n"''
 
 В переменной FOLDER не надо указывать закрывающий слэш.
+
+===== Вероятные проблемы =====
+
+Смотрим код ошибки при запуске процесса транскрибирования.
+
+127 — whisper не запущен, не поднялся python virt env
+1 или 2 — вероятно, что-то не запустилось под капотом whisper. Неопределенно, надо копать.
+
+Могут быть проблемы в самом Python — тогда надо сменить версию. Однажды всё решилось переустановкой PyTorch:
+
+Активировать окружение
+''source /''__''полный путь к''__ ''/whisper_env/bin/activate''
+
+Удалить текущий PyTorch
+
+''pip uninstall -y torch torchvision torchaudio''
+
+проверка:
+
+''pip list | grep torch''
+
+Выбрать CUDA-версию PyTorch
+
+Вариант cu121 (рекомендуется)
+
+''pip install torch torchvision torchaudio --index-url'' [[https://download.pytorch.org/whl/cu121|''https://download.pytorch.org/whl/cu121'']]
+
+Вариант cu118 (более совместимый со старыми драйверами)
+
+''pip install torch torchvision torchaudio --index-url'' [[https://download.pytorch.org/whl/cu118|''https://download.pytorch.org/whl/cu118'']]
+
+Проверка установки
+
+''python -c "import torch; print(torch.''__''version''__''); print(torch.version.cuda); print(torch.cuda.is_available())"''
+
+Ожидаемо:
+
+cuda = 12.1 или 11.8
+True
+
+Проверка GPU в PyTorch
+
+''python -c "import torch; print(torch.cuda.get_device_name(0))"''
