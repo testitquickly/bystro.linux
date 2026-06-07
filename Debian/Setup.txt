@@ -38,7 +38,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 
 ===== Настроить систему =====
 
-* [[HowTo:Сделать:Обновить sources.list]]
+* [[HowTo:Сделать:Debian:Обновить sources.list]]
 * [[HowTo:Сделать:User:Добавить в группу sudo]]
 * [[HowTo:Сделать:User:Установить права доступа на каталоги и файлы]]
 * [[Software:Midnight Commander]]

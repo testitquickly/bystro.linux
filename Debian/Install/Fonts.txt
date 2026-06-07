@@ -22,7 +22,7 @@ Creation-Date: 2022-02-22T15:30:20+02:00
 
 ==== Debian 13 ====
 
-Можно свободно установить шрифты от Microsoft, Google или IBM, если в [[HowTo:Сделать:Обновить sources.list]] указано получение ПО из репозиториев через ''contrib non-free''… Например, пакет шрифтов https://packages.debian.org/trixie/fonts-ibm-plex прямо помечен — [contrib]. 
+Можно свободно установить шрифты от Microsoft, Google или IBM, если в [[HowTo:Сделать:Debian:Обновить sources.list]] указано получение ПО из репозиториев через ''contrib non-free''… Например, пакет шрифтов https://packages.debian.org/trixie/fonts-ibm-plex прямо помечен — [contrib]. 
 
 ''sudo apt install fonts-ibm-plex -y; sudo apt install fonts-inter -y; sudo apt install fonts-cantarell -y; sudo apt install ttf-mscorefonts-installer -y; sudo apt install fonts-roboto -y''
 
