@@ -230,4 +230,4 @@ Debian 12:
 ''bind-key -n F12 run-shell 'light -A 10' # up''
 ''bind-key -n C-F12 run-shell 'light -U 10' # down''
 
-См. далее [[HowTo:Настроить:Консольный компьютер]]
+См. далее [[HowTo:Сделать:Консольный компьютер]]
