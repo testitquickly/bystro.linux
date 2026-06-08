@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-09T01:02:19+03:00
+
+====== cuyo ======
+
+[ @debian @game ]
+
+Очень любопытный аналог Tetris. Нужно сперва осознать, как оно устроено.
+
+''sudo apt install cuyo''

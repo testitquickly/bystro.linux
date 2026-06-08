@@ -18,6 +18,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Cadence]] : роутинг звука через аудиоинтерфейс JACK
 [[+Calibre]] : библиотека
 [[+cmus]] : консольный аудиоплеер
+[[+cuyo]] : аналог Tetris
 
 [[+DaVinci Resolve]] : видеоредактор
 [[+Docker]] : контейнеровоз
@@ -25,8 +26,8 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Dropbox]]
 [[+du]] : disk usage
 
-[[+Easy Effects]]
-[[+EdrawMind]]
+[[+Easy Effects]] : управление звуком
+[[+EdrawMind]] : майндмапы
 [[+Elgato “Stream Deck”]] : клавиатурки с кнопками-экранами
 [[+exiftool]] : метаданные файлов
 
@@ -70,6 +71,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+ls]] : list directory contents
 
 [[+Mermaid JS]] : диаграммы из markdown для браузера
+[[+Micro]] : текстовый редактор
 [[+microcode]]
 [[+Midnight Commander]]
 [[+Minder]]
