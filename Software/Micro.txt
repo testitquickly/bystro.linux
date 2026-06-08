@@ -1,0 +1,180 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-08T15:39:47+03:00
+
+====== Micro ======
+
+[ @micro ] 
+
+Текстовый редактор. Не идеальный, но очень близок к этому. Киллер-фича среди всех консольных редакторов — можно передвигать вверх-вниз строки (Alt+Up/Down или назначить свой).
+
+Управляется хоткеями, наследует подход nanо/vim, в одном окне открывает панели, есть плагины и можно тыкать мышкой (удобно пролистывать тексты или перемещать фокус на нужную панельку). 
+
+Не надо использовать Micro вместе с [[Midnight Commander]] — при конфликте хоткеев MC перебьёт Micro. 
+
+===== Установить =====
+
+С https://github.com/micro-editor/micro/releases снять последний релиз, который подходит для системы (например, micro-2.0.15-linux64.tar.gz) и распаковать в ''/opt'' 
+
+В $HOME/.bashrc добавить алиас 
+
+''alias m='/opt/micro/micro' # старт text editor “Micro”''
+
+Для доступа к системному буферу обмена под X11:
+
+''sudo apt install xclip''
+
+Под Wayland установить ''wl-clipboard''
+
+Теперь просто “''m''” откроет пустой редактор Micro. А ”''m file.txt''” откроет file.txt в окне Micro. 
+
+===== Подтянуть свою цветовую схему =====
+
+Напрямую перенести какую-то схему из Kate (Oblivion) в Micro не получится, потому что Kate использует десятки семантических типов подсветки, а micro — гораздо меньше. Можно сделать компромиссный вариант:
+
+''mkdir ~/.config/micro/colorschemes/ && m ~/.config/micro/colorschemes/oblivion.micro''
+
+Вставить это:
+
+''color-link default "#d3d7c1,#201f1f"''
+''color-link comment "#30a100,#201f1f"''
+''color-link identifier "#d3d7c1,#201f1f"''
+''color-link statement "bold #ffffff,#201f1f"''
+''color-link symbol "#eeeeec,#201f1f"''
+''color-link preproc "#ad7fa8,#201f1f"''
+''color-link type "#508ed8,#201f1f"''
+''color-link special "#729fcf,#201f1f"''
+''color-link constant "bold #edd400,#201f1f"''
+''color-link string "#edd400,#201f1f"''
+''color-link char "#ce5c00,#201f1f"''
+''color-link number "#edd400,#201f1f"''
+''color-link statusline "#ffffff,#2e3436"''
+''color-link tabbar "#e0dedb,#302f2f"''
+''color-link line-number "#e0dedb,#201f1f"''
+''color-link current-line-number "#ffffff,#201f1f"''
+''color-link cursor-line "#201f1f,#2e3436"''
+''color-link selection "#eeeeec,#184880"''
+''color-link error "#e85848,#201f1f"''
+
+Два цвета в каждой строке это текст (foreground) и фон (background). Можно подобрать подсветку строки, в которой находится курсор через 
+''color-link cursor-line "…,…"''
+
+Затем выбрать эту схему:
+
+''> set colorscheme oblivion''
+
+===== Управление =====
+
+==== Открыть строку ввода команд редактору ====
+
+''Ctrl-e'' и набрать нужную команду (например ''help'').
+
+Посмотреть список доступных команд — [Tab].
+
+В прицнипе всё автодополнение по [Tab] — или команд, или доступных опций для какой-то команды, или перечисление каталогов/файлов при поиске нужного.
+
+==== Пролистать уже введенные команды ====
+
+''Ctrl-e >'' клавиша [Up]
+
+Сохранить: ''Ctrl-s'' 
+
+Поменять цветовую схему: ''Ctrl+e > set colorscheme''
+
+==== Открыть файл ====
+
+''Ctrl+e > filename.txt''
+
+или 
+
+''Ctrl+o'' 
+
+Учесть, что если в консоли уже был открыт [[Midnight Commander]], свернут и после него открыт Micro, то на ''Ctrl+o'' отреагирует MC (развернется), и окно редактора просто закроется, изменения будут потеряны.
+
+Можно начать набирать первые символы, затем [Tab]
+
+==== Открыть панели ====
+
+* вертикально: ''Ctrl+e > vsplit''
+* горизонтально: ''Ctrl+e > hsplit''
+
+Автокомплит по [Tab] срабатывает после ''> vs…''
+
+Переключиться между панелями: ''Ctrl-w''
+
+Осторожно, ''Ctrl-q'' закрывает панели без подтверждения, если в файле не было изменений.
+
+Открыть в другой панели какой-то файл: 
+
+''Ctrl+e > vsplit filename.txt''
+
+или назначить свои хоткеи на открытие панелей.
+
+==== Вкладки ====
+
+* Открыть новую: ''Ctrl-t''
+* Переключиться по вкладкам вправо: ''Alt-,''
+* Влево: ''Alt-.''
+
+Работает только на англоязычной раскладке.
+
+==== Строки ====
+
+* Передвинуть строку вверх: ''Alt-[Up]''
+* Вниз: ''Alt-[Down]''
+
+==== Функциональные клавиши ====
+
+Работают не во всех терминалах.
+
+F1 	Open help
+F2 	Save
+F3 	Find
+F4 	Quit
+F7 	Find
+F10 	Quit
+
+==== Выход ====
+
+''Ctrl-q''
+
+===== Горячие клавиши =====
+
+''mcedit ~/.config/micro/bindings.json''
+
+Пример:
+
+''{''
+	''"Ctrl-y": "Undo",''
+	''"Ctrl-z": "Redo"''
+''}''
+
+Можно назначить команду:
+
+''{''
+	''"Alt-p": "command:pwd"''
+''}''
+
+Можно назначить цепочку команд:
+
+''{''
+	''"Alt-s": "Save,Quit"''
+''}''
+
+Есть большой [[https://github.com/micro-editor/micro/blob/master/runtime/help/keybindings.md#bindable-actions-and-bindable-keys|список]] команд, которые можно связать с горячими клавишами. Там же список клавиш и сочетаний клавиш, на которые можно навесить команды. Аккуратно соотнести команды/клавиши в редакторе с клавишами в [[tmux]] или [[Midnight Commander]], чтобы не перекрыли друг друга.
+
+===== Хэлп =====
+
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/help.md|main help]]
+
+Встроенный хэлп открывается по ''Ctrl-g'' или по ''Ctrl-e > help'' (то есть, вызвать диалог, набрать “help”, ввод). 
+
+Глянуть всё:
+
+* общий [[https://github.com/micro-editor/micro/tree/master/runtime/help/tutorial.md|tutorial]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/keybindings.md|keybindings]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/commands.md|commands]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/colors.md|colors]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/options.md|options]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/plugins.md|plugins]]
+
