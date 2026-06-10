@@ -164,10 +164,10 @@ Cм. инструкцию https://github.com/testitquickly/bystro.linux/wiki/%D0
 * <Actions>/NotebookView/apply_format_bullet_list = ''Ctrl+*''
 * <Actions>/NotebookView/apply_format_numbered_list = ''Ctrl+#''
 
-Ненумерованный список:
+Ненумерованный список
 
 * выделить строки, 
-* применить ''Ctrl+Shift+8''
+* применить ''Ctrl+Shift+8'':
 
 Нумерованный список:
 
