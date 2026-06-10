@@ -27,3 +27,13 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 и скачивать видео так:
 
 ''yv https://www.youtube.com/watch?v=V-J6hep_y4o''
+
+===== Выгрузить плэйлист с Youtube =====
+
+У меня в «Смотреть позже» собралось 1450 вхождений.
+
+''yt-dlp --cookies-from-browser firefox \''
+	''--flat-playlist \''
+	''--print "%(channel)s | %(title)s | %(webpage_url)s" \''
+	''"https://www.youtube.com/playlist?list=WL" \''
+	''> youtube_WL.txt''
