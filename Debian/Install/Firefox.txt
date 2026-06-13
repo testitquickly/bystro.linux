@@ -11,39 +11,41 @@ Creation-Date: 2023-10-22T23:31:59+03:00
 1. заморозить пакет ''firefox-esr''
 2. переименовать файл его вызова
 
-Если сперва не заморозить пакет, то при его обновлении будет переписан и его файл вызова.
-
 ''sudo apt-mark hold firefox-esr''
 
-Отныне обновления игнорируют пакет основного Firefox, и если им действительно не пользоваться, то всё норм. Можно было бы удалить, но он утянет за собой много других пакетов, что порушит систему. Проверить, какие еще пакеты заморожены:
+Обновления будут игнорировать пакет Firefox ESR. Проверить, какие еще пакеты заморожены: ''apt-mark showhold''
 
-''apt-mark showhold''
+Убрать с глаз системы файл запуска Firefox ESR:
 
 ''sudo mv /usr/share/applications/firefox-esr.desktop /usr/share/applications/firefox-esr.desktop.disabled''
 
-Больше никто не увидит приложение “Firefox ESR”, в том числе и [[Software:KRunner]]
+Приложение “Firefox ESR” должно исчезнуть из Меню приложений и из вызова [[Software:KRunner]]
 
-===== Скачать архив с установкой =====
+===== Установить Firefox в /opt =====
+
+==== Скачать архив с установкой ====
 
 с https://www.mozilla.org/ru/firefox/new/
 
 Обычно он раздаётся в виде файла „''firefox-x.x.xx.tar.bz2''”
 
-===== Распаковать архив =====
+==== Распаковать архив ====
 
 Из него надо достать каталог „firefox” с файлами браузера внутри. 
 
-===== Переместить файлы в /opt =====
+==== Переместить файлы в /opt ====
 
 Разумно держать весь «сторонний» софт в одном месте, поэтому  
 
 ''sudo mv firefox /opt''
 
-===== Дать права своему пользователю на изменения в каталоге /opt/firefox =====
+==== Дать права своему пользователю на изменения в каталоге /opt/firefox ====
 
 ''sudo chown -R'' __''astenix''__'':sudo /opt/firefox && sudo chmod 750 /opt/firefox''
 
-==== Сделать symbolic link на firefox ====
+==== Сделать symlink на firefox ====
+
+Этого достаточно для запуска Firefox из CLI.
 
 Для установки нового Firefox только для своего пользователя:
 
@@ -64,47 +66,6 @@ Creation-Date: 2023-10-22T23:31:59+03:00
 Создать новый симлинк:
 
 ''cd /usr/bin/ && sudo ln -s /opt/firefox/firefox''
-
-==== Сделать ярлык для запуска ====
-
-Скачать из сети картинку логотипа файл условно "firefox.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
-
-Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог ''/opt/firefox/icons/'' для этого лучшее решение (создать, если таковой отсутствует).
-
-''sudo mv firefox.png /opt/firefox/icons/''
-
-=== Создать файл „firefox.desktop” ===
-
-Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
-
-''mcedit ~/.local/share/applications/firefox.desktop''
-
-Вставить в него условно такой набор букв:
-
-''[Desktop Entry]''
-''Encoding=UTF-8''
-''Name=Firefox''
-''Comment=opt''
-''Type=Application''
-''Terminal=false''
-''Exec=/opt/firefox/firefox -p astenix''
-''Icon=/opt/firefox/icons/firefox.png''
-''StartupNotify=true''
-''Categories=Network;WebBrowser;''
-
-[F2] > [Esc] > [Esc]
-
-=== Сделать файл исполняемым ===
-
-''chmod u+x ~/.local/share/applications/firefox.desktop''
-
-== Сделать ярлык для запуска — для всех пользователей ==
-
-Для этого “As a root” надо будет создать файл ''firefox.desktop'' в ''/usr/share/applications/'':
-
-''sudo touch /usr/share/applications/firefox.desktop''
-
-Если нужен ярлык только для одного юзера, то можно сразу создать его в ''/~/.local/share/applications''
 
 ==== Запустить браузер из консоли ====
 
@@ -131,12 +92,112 @@ Creation-Date: 2023-10-22T23:31:59+03:00
 
 	Установить нужные компоненты.
 
-Когда запустится:
-1. Зайти в свой аккаунт Firefox, если есть
-2. Проверить, что “automatic updates are enabled”.
-3. Закрыть браузер и проверить, что он запускается через ярлык из меню приложений (он должен появиться в раздел Интернет).
+===== Добавить Firefox в Меню приложений =====
 
-Установить spellchecker для румынского (или любого другого нужного) языка — https://addons.mozilla.org/ru/firefox/addon/romanian-spellchecking-diction/
+==== Сделать иконку ====
+
+Скачать из сети картинку логотипа файл условно "firefox.png". Размер любой, но понадобится не больше 62 пикселей, поэтому громадные картинки не нужны.
+
+Положить его куда-нибудь, где он будет находиться постоянно. Возможно, каталог ''/opt/firefox/icons/'' для этого лучшее решение (создать, если таковой отсутствует).
+
+''sudo mv firefox.png /opt/firefox/icons/''
+
+==== Создать файл „firefox.desktop” ====
+
+Положить его куда-нибудь, где его ничего не тронет и откуда он будет подтянут в общее меню приложений.
+
+''mcedit ~/.local/share/applications/firefox.desktop''
+
+Вставить в него условно такой набор букв:
+
+''[Desktop Entry]''
+''Categories=Network;WebBrowser;''
+''Comment=/opt''
+''Exec=/opt/firefox/firefox -p'' __''astenix''__ ''%u''
+''Icon=/opt/firefox/icons/firefox.png''
+''MimeType=text/html;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;''
+''Name=Firefox''
+''StartupNotify=true''
+''Terminal=false''
+''Type=Application''
+
+[F2] > [Esc] > [Esc]
+
+==== Прописать файлу атрибуты ====
+
+''chmod 644 ~/.local/share/applications/firefox.desktop''
+
+Если надо запускать приложение через файл *.desktop из Dolphin, тогда файл надо сделать rwx (744), но для файлов в каталоге ''applications/'' это не нужно.
+
+=== Сделать ярлык для запуска — для всех пользователей ===
+
+Для этого “As a root” надо будет создать файл ''firefox.desktop'' в ''/usr/share/applications/'':
+
+''sudo touch /usr/share/applications/firefox.desktop''
+
+Если нужен ярлык только для одного юзера, то можно сразу создать его в ''~/.local/share/applications''
+
+==== Назначить файл «представителем браузера» ====
+
+Надо настроить внутренние механизмы KDE, иначе он начнет постоянно создавать в ''applications'' «свой» ярлык для отдельного профиля браузера (вроде ''~/.local/share/applicationsuserapp-Firefox-ENGLQ3.desktop'') и упрямо считать его «основным браузером». 
+
+Простейшее решение — удалить файл со всеми настройками вроде «//*.mkv открывать через mpv//», что настраивается в 
+
+''Параметры системы''
+''> Приложения и окна''
+''> Приложения по умолчанию''
+''> Приложения по умолчанию''
+
+и в 
+
+''Параметры системы''
+''> Приложения и окна''
+''> Приложения по умолчанию''
+''> Привязки файлов''
+
+Соппсно:
+
+''rm ~/.config/mimeapps.list''
+
+''xdg-settings set default-web-browser firefox.desktop''
+
+'''
+kwriteconfig5 --file kdeglobals --group General --key BrowserApplication firefox.desktop
+'''
+
+Проверка:
+
+''xdg-settings get default-web-browser''
+
+Ждем в ответ:
+
+''firefox.desktop''
+
+Проверить поочередно. Все эти команды должны вернуть ''firefox.desktop'':
+
+''xdg-settings get default-web-browser''
+''xdg-mime query default text/html''
+''xdg-mime query default x-scheme-handler/http''
+''xdg-mime query default x-scheme-handler/https''
+
+Заглянуть в
+
+''Параметры системы''
+''> Приложения и окна''
+''> Приложения по умолчанию''
+''> Привязки файлов''
+''> text''
+''> html''
+
+Первым приложением для открытия html должен быть Firefox.
+
+Удалить «мусорные» файлы запуска, если есть:
+
+''rm -f ~/.local/share/applications/userapp-Firefox-*.desktop''
+
+Если в системе остаётся установленным Firefox ESR, то его .desktop-файл (''firefox-esr.desktop'' или что-то аналогичное) тоже лучше удалить или переименовать, иначе KDE может снова предлагать его как альтернативный браузер.
+
+А если при запуске браузера появится вопрос «Установить его браузером по-умолчанию?» — нажать отмену, потому что браузер и так уже по-умолчанию повсюду назначен, и теребить внутренние механизмы KDE уже незачем.
 
 ===== Установить новую версию браузера =====
 
