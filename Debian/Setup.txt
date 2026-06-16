@@ -19,8 +19,10 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install aptitude 0ad audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b katomic kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaint ncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp smartmontools tar tellico timeshift trash-cli unace unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim -y && sudo apt upgrade -y
+apt install aptitude audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaint ncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp smartmontools tar tellico timeshift trash-cli unace unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim 0ad katomic cuyo -y && sudo apt upgrade -y
 }}}
+
+В конце списка иры: ''0ad'', ''katomic'', ''cuyo''
 
 ==== Debian 12 ====
 
@@ -77,6 +79,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Настроить:Внешний вид KDE:Перелистывание окон]]
 * [[HowTo:Настроить:Внешний вид KDE:Колыхание окон]]
 * [[HowTo:Настроить:Внешний вид KDE:KWin скрипты]]
+* [[HowTo:Настроить:Внешний вид KDE:Разные обои на виртуальных столах]]
 * [[HowTo:Настроить:Звук:Виджет «Громкость»]]
 * [[HowTo:Настроить:Звук:Управление громкостью]]
 * [[HowTo:Настроить:Звук:Убрать звуки Plasma]]
