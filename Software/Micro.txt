@@ -266,10 +266,10 @@ F10 	Quit
 	''"Alt-Up": "None",''
 	''"Alt-Down": "None",''
    ''"Ctrl-Up": "MoveLinesUp",''
-   ''"Ctrl-Down": "MoveLinesDown",''
-   ''"Ctrl-Insert": "DeleteLine",''
-   ''"Ctrl-Left": "PreviousTab",''
-   ''"Ctrl-Right": "NextTab"''
+	''"Ctrl-Down": "MoveLinesDown",''
+	''"Ctrl-Insert": "DeleteLine",''
+	''"Ctrl-Left": "PreviousTab",''
+	''"Ctrl-Right": "NextTab"''
 ''}''
 
 Можно назначить команду:
