@@ -4,7 +4,7 @@ Creation-Date: 2025-06-23T06:57:41+03:00
 
 ====== Виджет «Календарь событий» ======
 
-[ @calendar @widget @shortcuts ]
+[ @kde @calendar @widget @shortcuts ]
 
 		//NOTICE// 
 Этот виджет ещё не работает в “Plasma 6”. Есть его неофициальный порт — [[Install:Виджет «Календарь событий»]]

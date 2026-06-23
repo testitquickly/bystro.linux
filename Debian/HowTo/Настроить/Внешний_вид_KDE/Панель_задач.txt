@@ -4,7 +4,7 @@ Creation-Date: 2022-02-22T15:17:00+02:00
 
 ====== Панель задач ======
 
-[ @toolbar @copy @window @virtual_desktops @fonts @time @calendar @погода @shortcuts ]
+[ @kde @toolbar @copy @window @virtual_desktops @fonts @time @calendar @погода @shortcuts ]
 
 ===== Заменить виджет «Меню запуска приложений» =====
 
