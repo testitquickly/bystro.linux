@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-06-23T19:29:32+03:00
+
+====== Компиляция pdf через скрипт ======
+
+[ @latex @pdf ]
+
+===== Список файлов с настройками =====
+
+[[~/myConfigs/myScripts/laTeX/XeLaTeX-build-pdf.sh]]
+[[~/myConfigs/myScripts/laTeX/variables.var]]
+[[~/myConfigs/myScripts/laTeX/functions/FindProjectRoot.fn]]
+
+===== Список файлов в проекте =====
+
+content/
+images/
+metafiles/
+my_scripts/
+styles/
+main.tex
+pdf-title.var
+***.kilepr
