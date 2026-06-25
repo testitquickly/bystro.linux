@@ -19,18 +19,18 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 Дальновидно сделать алиас для yt-dlp в ''~/.bashrc'':
 
 	''# audio''
-''alias ya='echo -e "\n\tSTART\n" && /usr/local/bin/yt-dlp --config-location /home/mySettings/myScripts/youtube/download_audio'''
+''alias ya="/usr/local/bin/yt-dlp --config-location $MY_SCRIPTS/youtube/download_audio" # скачать аудио из видеоролика в mp3''
 
 	''# video''
-''alias yv='echo -e "\n\tSTART\n" && /usr/local/bin/yt-dlp --config-location /home/mySettings/myScripts/youtube/download_video'''
+''alias yv="/usr/local/bin/yt-dlp --config-location $MY_SCRIPTS/youtube/download_video" # скачать видеоролик''
 
-и скачивать видео так:
+и скачивать видео через алиас:
 
 ''yv https://www.youtube.com/watch?v=V-J6hep_y4o''
 
 ===== Выгрузить плэйлист с Youtube =====
 
-У меня в «Смотреть позже» собралось 1450 вхождений.
+У меня в плейлисте «Смотреть позже» собралось 1450 вхождений. Можно скачать все ссылка на видео из этого плейлиста через yt-dlp в .txt и ещё тонко подкрутить имя и ссылку на видео:
 
 ''yt-dlp --cookies-from-browser firefox \''
 	''--flat-playlist \''
