@@ -122,7 +122,7 @@ x — выполнение
 
 ''touch README''
 
-==== На ноуте ====
+===== На ноуте =====
 
 ''cd ~/myConfigs''
 
@@ -140,11 +140,13 @@ x — выполнение
 
 Появляется каталог ''~/myConfigs'' и в нем дежурный подкаталог ''.git''.
 
+==== Настроить .gitignore ====
+
 Добавить файл
 
 ''mcedit ~/myConfigs/.gitignore''
 
-и записать в него минимальный набор каталогов и файлов, которые надо игнорировать.
+и записать в него минимальный набор каталогов и файлов, которые НЕ НАДО брать в репозиторий:
 
 ''# каталоги''
 ''abc/''
@@ -174,40 +176,32 @@ Commit:
 ''git push origin master''
 ''git status & git log''
 
-==== Мягкое ограничение некоторых файлов ====
+==== Настроить skip-worktree ====
 
-Вероятно, какие-то конфигурационные файлы надо держать в репозитории, но не надо регистрировать каждое их обновление. Например:
+Вероятно, какие-то (например, конфигурационные) файлы надо держать в репозитории, но не надо регистрировать каждое их обновление. Например:
 
 ''myStow/uss-Asus-Zenbook-17/.local/share/mc/filepos''
 ''myStow/uss-Asus-Zenbook-17/.local/share/mc/history'' 
 …etc
 
+В git их можно не пихать в игнор (т.е, жестоко выкинуть из индекса), а всего лишь слегка «придушить». Файлы останутся в репозитории, но изменения в них больше не будут регистрироваться.
+
+''git update-index --skip-worktree'' __''путь от корня репозитория к файлу''__
+
 Полный путь к файлам в репозитории можно проверить через 
 
 ''git ls-files''
 
-В git их можно не пихать в игнор (т.е, жестоко выкинуть из индекса), а всего лишь слегка «придушить»:
+Но очевидно удобнее будет просто зайти в каталог с нужными файлами и придушить их по указанию их имени:
 
-''git update-index --skip-worktree'' __''путь от корня репозитория к файлу''__
-
-Файлы останутся в репозитории, но изменения в них больше не будут регистрироваться.
-
-Пример:
-
-1. перейти в каталог с репозиторием 
-2. и выполнить ''--skip-worktree''
-
-''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.local/share/mc/filepos''
-''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.local/share/mc/history''
-''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.config/mc/panels.ini''
-''git update-index --skip-worktree myStow/uss-Asus-Zenbook-17/.config/mc/ini''
+''git update-index --skip-worktree'' __''файл''__
 
 Показать все файлы с skip-worktree:
 
 ''git ls-files -v | grep '^S'''
 
-Если надо снять skip-worktree:
+Если надо снять ограничивающий skip-worktree:
 
-''git update-index --no-skip-worktree myStow/uss-Asus-Zenbook-17/.local/share/mc/filepos''
+''git update-index --no-skip-worktree'' __''файл''__
 
 См. также [[Software:git]]
