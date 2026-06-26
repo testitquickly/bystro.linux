@@ -30,7 +30,7 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 
 [[+Google Chrome]]
 [[+gpg]]
-[[+Grub-Customizer]]
+[[+grub-customizer]]
 
 [[+hdparm]] # настройка HDD
 [[+hplip]] # принтеры HP
@@ -40,6 +40,8 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+JACK]]
 
 [[+Kile]]
+
+[[+kmscon]]
 
 [[+LaTeX]]
 [[+LibreOffice]]
@@ -95,6 +97,8 @@ Creation-Date: 2023-09-11T20:19:42+03:00
 [[+yt-dlp]]
 
 [[+Zensical]]
+
+[[+Виджет «Календарь событий»]]
 
 [[+Пакет .rpm в Debian]]
 [[+Пакет из unstable (sid) на Debian testing]]

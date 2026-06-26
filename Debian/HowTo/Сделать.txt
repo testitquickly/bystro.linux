@@ -8,12 +8,16 @@ Creation-Date: 2024-10-23T12:30:23+03:00
 
 [[+cd eject]]
 
-[[+Debian:Update]]
 [[+Debian:Downgrade]]
-[[+Debian:Reinstall]]
 [[+Debian:Live Debian на USB]]
+[[+Debian:Reinstall]]
+[[+Debian:Update]]
+[[+Debian:Обновить sources.list]]
 
-[[+Mount AND umount iso files]]
+[[+git:Локальный репозиторий]]
+[[+git:Удаленный репозиторий]]
+
+[[+mount AND umount iso files]]
 
 [[+reboot]]
 
@@ -59,14 +63,15 @@ Creation-Date: 2024-10-23T12:30:23+03:00
 [[+Использовать выходные данные одной команды при вызове другой]]
 [[+Исправить битые пакеты (held)]]
 
-[[+Debian:Обновить sources.list]]
+[[+Компьютер без GUI]]
+
 [[+Объединить все файлы из подкаталогов]]
 [[+Объединить несколько файлов в один]]
-[[+Откатить обновление программы]]
 [[+Оптимизировать RAM]]
 [[+Откатить обновление программы]]
 [[+Отформатировать HDD]]
 [[+Очистить кэш]]
+[[+Debian:Обновить sources.list]]
 
 [[+Перезагрузить Plasma]]
 [[+Переименовать hostname]]

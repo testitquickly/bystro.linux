@@ -55,14 +55,14 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Сделать:Оптимизировать RAM]]
 * [[Install:Fonts]]
 
-===== Настроить консоль =====
+==== Настроить консоль ====
 
 * [[Software:Konsole]]
 * [[Software:ls]]
 * [[HowTo:Настроить:Удаление файлов в консоли]]
 * [[HowTo:Настроить:Кодировка и размер шрифта в консоли]]
 
-===== Настроить оформление KDE =====
+==== Настроить оформление KDE ====
 
 * [[HowTo:Сделать:Поменять пароль в кошельке kdewallet]]
 * [[HowTo:Настроить:Пути к системным каталогам в профиле]]
@@ -86,7 +86,7 @@ apt-add-repository contrib non-free -y && apt update && apt upgrade && apt insta
 * [[HowTo:Настроить:Звук:Убрать звуки Plasma]]
 * [[HowTo:Сделать:Звук:Удалить speech-dispatcher]]
 
-===== Опциональное =====
+==== Опциональное ====
 
 * [[Software:Списки задач:ToDo в консоли]]
 * [[HowTo:Настроить:Запуск калькулятора]]

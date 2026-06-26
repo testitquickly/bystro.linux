@@ -10,7 +10,7 @@ Creation-Date: 2024-10-17T12:56:11+03:00
 
 ===== Установить =====
 
-* [[Debian:Install:Grub-Customizer]]
+* [[Install:grub-customizer]]
 * [[Manjaro:Install:Grub-Customizer]]
 
 Запустить, ставить галочки.
