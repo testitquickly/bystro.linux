@@ -163,7 +163,11 @@ sed -E -i "s|^clockTimeFormat1=hh:mm\\\\s$|clockTimeFormat1='<font size=\"1\" co
 
 И надо установить ''kdepim'' (KDE Personal Information Management):
 
-''sudo aptitude install kalendar kdepim''
+''sudo aptitude install kalendar kdepim'' 
+
+Вероятно, еще будет нужен
+
+''sudo apt install kaccounts-integration''
 
 Галочки
 

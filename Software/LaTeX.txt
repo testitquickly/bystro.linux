@@ -68,3 +68,14 @@ Creation-Date: 2023-02-18T01:13:33+02:00
 
 [[+Получить заголовок текущего раздела]]
 [[+Републикация части текста на разных страницах]]
+
+==== Выбрать что отобразить ====
+
+''\newcommand{\textA}{Показать текст «а».}''
+''\newcommand{\textB}{Показать текст «б».}''
+''% \let\displayText\textA''
+''\let\displayText\textB''
+
+''\begin{document}''
+
+''\displayText''

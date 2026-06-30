@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.6
 Creation-Date: 2022-03-21T18:56:36+02:00
 
-====== blame ======
+====== Процессы при загрузке системы ======
 
 [ @console @systemd ]
 
@@ -46,14 +46,12 @@ Creation-Date: 2022-03-21T18:56:36+02:00
 
 Пример ответа:
 
-'''
-graphical.target @11.665s
-└─multi-user.target @11.665s
-  └─exim4.service @11.478s +187ms
-    └─network-online.target @11.476s
-      └─NetworkManager-wait-online.service @3.112s +8.362s
-        └─NetworkManager.service @3.005s +105ms
-'''
+''graphical.target @11.665s''
+''└─multi-user.target @11.665s''
+  ''└─exim4.service @11.478s +187ms''
+	''└─network-online.target @11.476s''
+	  ''└─NetworkManager-wait-online.service @3.112s +8.362s''
+		''└─NetworkManager.service @3.005s +105ms''
 
 ==== В графике ====
 

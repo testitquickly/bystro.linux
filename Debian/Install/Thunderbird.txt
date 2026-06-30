@@ -91,6 +91,4 @@ https://www.thunderbird.net/ru/download/ > скачать архив tar.gz
 
 Добавить новый профиль, запустить, убедиться в том, что всё норм.
 
-===== Настройки Thunderbird =====
-
-[[Software:Thunderbird]]
+См. настройки [[Software:Thunderbird]]
