@@ -4,7 +4,7 @@ Creation-Date: 2022-02-23T21:19:33+02:00
 
 ====== Перекодировать тэги mp3 в Unicode ======
 
-[ @mp3 @sound @kid3 ]
+[ @mp3 @sound @kid3 @EasyTAG ]
 
 Чтобы сконвертировать тэги в универсальный Unicode
 
@@ -30,4 +30,4 @@ Creation-Date: 2022-02-23T21:19:33+02:00
 '''
 ''find /home/astenix/Музыка/_Библиотэка Музыки/ -iname "*.mp3" -print0 | xargs -0 mid3iconv -e CP1251 -d --remove-v1''
 
-Также с тэгами можно работать через программу ''Kid3''
+Также с тэгами в mp3 можно работать через программу ''Kid3'' или ''EasyTAG'' (Gnome).

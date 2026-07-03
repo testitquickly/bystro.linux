@@ -19,7 +19,7 @@ Creation-Date: 2023-02-18T01:28:38+02:00
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install acpi aptitude audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaint ncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp smartmontools tar tellico timeshift trash-cli unace unzip vlc vsftpd wakeonlan wget xdot xsensors xz-utils zim 0ad katomic cuyo -y && sudo apt upgrade -y
+apt install acpi aptitude audacity bzip2 curl easyeffects ethtool evince fbreader htop gdu gir1.2-gtksource-4 gzip iputils-ping iw k3b kdiff3 keepassxc kget kmymoney krename krita krusader make mc most mpv mypaint ncompress libasound2-plugins network-manager-openvpn nfs-common nvme-cli onboard openconnect openssh-client openssh-server openvpn p7zip-full qalculate-gtk qbittorrent qmmp smartmontools tar tellico timeshift trash-cli unace unzip vlc vsftpd wakeonlan wget xdot xdotool xsensors xz-utils zim 0ad katomic cuyo -y && sudo apt upgrade -y
 }}}
 
 В конце списка необязательные игры: ''0ad'', ''katomic'', ''cuyo''
@@ -29,7 +29,7 @@ apt install acpi aptitude audacity bzip2 curl easyeffects ethtool evince fbreade
 Из-под root:
 
 {{{code: lang="sh" linenumbers="True"
-apt install acpi aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename krusader make mc most mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico trash-cli vlc vsftpd wget xsensors zim 
+apt install acpi aptitude audacity curl fbreader gdu kdiff3 keepassxc kget krename krusader make mc most mpv network-manager-openvpn nfs-common onboard openconnect openssh-client openssh-server openvpn qalculate-gtk qbittorrent qmmp software-properties-common tellico trash-cli vlc vsftpd wget xsensors xdotool zim 
 }}}
 
 После установки ''software-properties-common'' можно расширить доступный набор пакетов в sources.list (тоже только из-под root):
