@@ -1,0 +1,134 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-07-03T09:50:14+03:00
+
+====== Подключить календарь через Google OAuth ======
+
+[ @google @oauth ]
+
+===== Сделать проект в Google Cloud =====
+
+Тут слегка сумбурно, но…
+
+Надо прикинуться разработчиком и создать в https://console.cloud.google.com условный проект приложения, под который будут выданы ключи для авторизации.
+
+OAuth token grant rate limit is 10,000 grants per day. The per day token grant rate resets every day.
+
+В проекте надо включить и настроить только один сервис API/Service Details > Google Calendar API 
+
+Ключи для этого сервиса генерируются в API/Service Details > Credentials
+
+OAuth 2.0 Client IDs — дать ему условное имя “Desktop client 1”. Там жебудут предоставлены нужные нам Client ID и Client secret.
+
+На странице Google Auth Platform / Branding надо дать проекту имя (myGCalendarKDE).
+
+В разделе Audience надо добавить своего юзера в качестве test user для этого проекта. Verification is not required since your app is configured with a Testing publishing status.
+
+Дальше нужно будет в настройках виджета указать эти Client ID и Client secret и пройти авторизацию на доступ к календарю из-под своего аккаунта — увидеть предупреждение о том, что это тестовое окружение и продолжить.
+
+===== Перенести хранение ключей в kwallet =====
+
+Вероятнее всего, по-умолчанию хранение ключей Google OAuth будет передано gnome-keyring, и при каждом включении компьютера надо будет вводить пароль еще и для разблокировки gnome-keyring. 
+
+Проверить:
+
+''busctl --user list | grep secrets''
+
+Ответ: 
+
+''org.freedesktop.secrets       1427 gnome-keyring-d astenix :1.17         user@1000.service -       -''
+
+Если в календаре важные данные, то это норм. Если нет, можно перенести хранение ключей из gnome-keyring в kwallet, в котором можно задать/убрать пароль к бумажнику (см. [[Сделать:Поменять пароль в кошельке kdewallet]]), и вообще хорошо держать все пароли в одном месте.
+
+==== «Использовать бумажник KDE в качестве интерфейса Secret Service» ====
+
+Открыть управление бумажником kwallet
+
+''Настройка''
+''> Настроить «Бумажник»''
+''> Параметры бумажника''
+''> Secret Service''
+
+Должна стоять галочка «Использовать бумажник KDE в качестве интерфейса Secret Service»
+
+Если такой опции нет:
+
+''mcedit ~/.config/kwalletrc''
+
+Включить настройку:
+
+''[org.freedesktop.secrets]''
+''enabled=true''
+
+Reboot.
+
+Проверить:
+
+''busctl --user list | grep kwallet''
+
+Нужен ответ вроде 
+
+''org.freedesktop.impl.portal.desktop.kwallet    2314 kwalletd6       astenix :1.78         user@1000.service -       -''
+
+==== Отключить gnome-keyring ====
+
+Остановить сервисы:
+
+''systemctl --user stop gnome-keyring-daemon.service''
+''systemctl --user disable gnome-keyring-daemon.service''
+
+Вероятно, тут будет запущен тематический сервис — его тоже надо остановить:
+
+''systemctl --user stop gnome-keyring-daemon.socket''
+
+эти не факт, что будут, но на всякий случай:
+
+''systemctl --user stop gnome-keyring-secrets.service''
+''systemctl --user disable gnome-keyring-secrets.service''
+
+''systemctl --user stop gnome-keyring-pkcs11.service''
+''systemctl --user disable gnome-keyring-pkcs11.service''
+
+''systemctl --user stop gnome-keyring-ssh.service''
+''systemctl --user disable gnome-keyring-pkcs11.service''
+
+Запретить автозапуск:
+
+''systemctl --user mask gnome-keyring-daemon.socket''
+''systemctl --user mask gnome-keyring-daemon.service''
+''systemctl --user mask gnome-keyring-secrets.service''
+''systemctl --user mask gnome-keyring-pkcs11.service''
+''systemctl --user mask gnome-keyring-ssh.service''
+
+Проверить autostart:
+
+''ls /etc/xdg/autostart | grep keyring''
+''ls ~/.config/autostart | grep keyring''
+
+Если там есть файлы “gnome-keyring*.desktop” — их надо удалить (или закомментировать внутри них параметр Exec, если надо их сохранить).
+
+Ребут.
+
+==== Подключение аккаунта календаря ====
+
+Настроить виджет «Календарь событий»:
+
+''> Google Calendar''
+''> убедиться в том, что в полях Client ID и Client Secret указаны нужные данные.''
+''> [Login (Auto) - Add Account]''
+
+Откроется окно браузера с сервисом виджета календаря, который поднят на локалхосте — ''http://127.0.0.1:53682/''
+
+''> Получить authorization code, вернуться в окно настройки виджета и вставить код в поле''
+''> [Update Selected]''
+''> Проставить галочки для календарей, которые должны отображаться''
+
+В kwallet к этому моменту уже должен появиться каталог “Secret Service”, в котором есть раздел “Пароли”, и там есть параметр “plasma-applet-eventcalendar google-account refresh_token”, который и отвечает за авторизацию в гуглокалендаре.
+
+Проверить:
+
+''busctl --user list | grep secrets''
+
+Ожидаем:
+
+''org.freedesktop.secrets     2306 kwalletd6…''

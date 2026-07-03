@@ -169,6 +169,8 @@ sed -E -i "s|^clockTimeFormat1=hh:mm\\\\s$|clockTimeFormat1='<font size=\"1\" co
 
 ''sudo apt install kaccounts-integration''
 
+И скорее всего, нужно будет [[+Подключить календарь через Google OAuth]]
+
 Галочки
 
 * Показать календарь
