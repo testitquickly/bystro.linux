@@ -34,7 +34,7 @@ Debian 13:
 ''$(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \''
 ''sudo tee /etc/apt/sources.list.d/docker.list > /dev/null''
 
-Установить сам Docker:
+Установить сам Docker вместе с несколькими плагинами:
 
 ''sudo apt update && sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin''
 
@@ -48,7 +48,7 @@ Debian 13:
 
 ''sudo usermod -aG docker $USER''
 
-$USER — это переменная окружения, содержить текущего пользователя.
+$USER — это переменная окружения, в ней имя действующего пользователя.
 
 Перезагрузить компьютер.
 

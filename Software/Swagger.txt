@@ -1,0 +1,56 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-08-02T20:38:43+03:00
+
+====== Swagger ======
+
+[ @docker @swagger @api ]
+
+===== Установить =====
+
+Через [[Docker]] Compose. Сделать каталог и в нем управляющий файл:
+
+''mkdir -p $HOME/workspace/Swagger/; mcedit $HOME/workspace/Swagger/docker-compose.yml''
+
+В файл записать это (без табов, только пробелы):
+
+{{{code: lang="sh" linenumbers="True"
+services:
+  swagger:
+    image: swaggerapi/swagger-ui
+    container_name: swagger
+    ports:
+      - "8081:8080"
+    environment:
+      SWAGGER_JSON: /spec/openapi.yaml
+    volumes:
+      - ./:/spec:ro
+    restart: unless-stopped
+
+}}}
+
+Перейти в каталог Swagger с файлом ''docker-compose.yml'':
+
+''cd $HOME/workspace/Swagger/''
+
+Убедиться в том, что сервис Docker запущен (запустить явно, если нет):
+
+''systemctl is-active docker''
+
+или
+
+''systemctl status docker''
+
+Если надо поднять:
+
+''sudo systemctl start docker''
+
+Запустить в этом каталоге:
+
+''docker compose up -d''
+
+===== Пример алиасов для включения и отключения =====
+
+''alias swg='sudo systemctl start docker && cd /home/astenix/workspace/Swagger && docker compose up -d && timeout 60 bash -c "until curl -s -o /dev/null -w \"%{http_code}\"'' [[http://localhost:8081|''http://localhost:8081'']] ''| grep -qE \"2|3\"; do sleep 1; done" && if [ $? -eq 0 ]; then firefox -p astenix --new-window'' [[http://localhost:8081|''http://localhost:8081'']]''; else echo "Отключение по таймауту (Swagger не запустился за 60 секунд)"; fi && echo -e "\n'' [[http://localhost:8081|''http://localhost:8081'']] ''\n"' # старт докер Swagger''
+
+''alias swg-="cd /home/astenix/workspace/Swagger && docker compose down && sudo systemctl stop docker.service && sudo systemctl stop docker.socket && systemctl is-active docker || true && echo -e '\nДокер Swagger погашен\n'" # стоп докер Swagger''
