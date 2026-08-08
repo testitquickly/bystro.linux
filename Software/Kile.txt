@@ -306,6 +306,15 @@ Location of TeX documentation (учесть свой путь), например
 
 =Ctrl+Enter (оно же Return)
 
+=== Вставить \newpage ===
+
+''Настройка'' 
+''> Комбинации клавиш''
+''> Kile''
+''> Новая страница — \newpage''
+
+=Shift+Enter (оно же Return)
+
 === Вставить файл (input) ===
 
 ''Настройка'' 
