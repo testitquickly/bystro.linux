@@ -37,3 +37,55 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 	''--print "%(channel)s | %(title)s | %(webpage_url)s" \''
 	''"https://www.youtube.com/playlist?list=WL" \''
 	''> youtube_WL.txt''
+
+===== Выбрать размер файла =====
+
+В настройках обычно указано скачивать файлы с большим разрешением. Есть вероятность, что видеоролик в принципе будет низкого разрешения, тогда yt сообщит, что не может его скачать. Но при этом он может дать подсказку: 
+
+ ''Requested format is not available. Use --list-formats for a list of available formats''
+
+Проверить:
+
+''yv --list-formats'' [[https://www.youtube.com/watch?v=sKp70tBqUXc|''https://www.youtube.com/watch?v=sKp70tBqUXc'']]
+
+В ответ получим что-то такое:
+
+''[info] Available formats for sKp70tBqUXc:''
+''ID      EXT   RESOLUTION FPS CH │   FILESIZE  TBR PROTO │ VCODEC         VBR ACODEC      ABR ASR MORE INFO''
+''────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────''
+''sb1     mhtml 48x27        1    │                 mhtml │ images                                 storyboard''
+''sb0     mhtml 100x45       1    │                 mhtml │ images                                 storyboard''
+''233     mp4   audio only        │                 m3u8  │ audio only         unknown             [en] Default, low''
+''234     mp4   audio only        │                 m3u8  │ audio only         unknown             [en] Default, high''
+''139-drc m4a   audio only      2 │  793.16KiB  49k https │ audio only         mp4a.40.5   49k 22k [en] low, DRC, m4a_dash''
+''249-drc webm  audio only      2 │  853.25KiB  53k https │ audio only         opus        53k 48k [en] low, DRC, webm_dash''
+''250-drc webm  audio only      2 │    1.07MiB  67k https │ audio only         opus        67k 48k [en] low, DRC, webm_dash''
+''139     m4a   audio only      2 │  793.15KiB  49k https │ audio only         mp4a.40.5   49k 22k [en] low, m4a_dash''
+''249     webm  audio only      2 │  836.05KiB  52k https │ audio only         opus        52k 48k [en] low, webm_dash''
+''250     webm  audio only      2 │    1.04MiB  65k https │ audio only         opus        65k 48k [en] low, webm_dash''
+''140-drc m4a   audio only      2 │    2.05MiB 130k https │ audio only         mp4a.40.2  130k 44k [en] medium, DRC, m4a_dash''
+''251-drc webm  audio only      2 │    2.21MiB 140k https │ audio only         opus       140k 48k [en] medium, DRC, webm_dash''
+''140     m4a   audio only      2 │    2.05MiB 130k https │ audio only         mp4a.40.2  130k 44k [en] medium, m4a_dash''
+''251     webm  audio only      2 │    2.21MiB 139k https │ audio only         opus       139k 48k [en] medium, webm_dash''
+''602     mp4   256x128     15    │ ~  1.34MiB  84k m3u8  │ vp09.00.10.08  84k video only''
+''269     mp4   256x128     30    │ ~  2.34MiB 147k m3u8  │ avc1.4D400C   147k video only''
+''160     mp4   256x128     30    │  952.92KiB  59k https │ avc1.4d400c    59k video only          144p, mp4_dash''
+''603     mp4   256x128     30    │ ~  2.92MiB 184k m3u8  │ vp09.00.11.08 184k video only''
+''278     webm  256x128     30    │    1.30MiB  82k https │ vp9            82k video only          144p, webm_dash''
+''394     mp4   256x128     30    │    1.14MiB  72k https │ av01.0.00M.08  72k video only          144p, mp4_dash''
+''229     mp4   320x144     30    │ ~  2.71MiB 171k m3u8  │ avc1.4D400C   171k video only''
+''133     mp4   320x144     30    │    1.33MiB  84k https │ avc1.4d400c    84k video only          144p, mp4_dash''
+''604     mp4   320x144     30    │ ~  2.37MiB 149k m3u8  │ vp09.00.20.08 149k video only''
+''242     webm  320x144     30    │    1.18MiB  74k https │ vp9            74k video only          144p, webm_dash''
+''395     mp4   320x144     30    │    1.72MiB 109k https │ av01.0.00M.08 109k video only          144p, mp4_dash''
+
+Ок. Исходное видео очень низкого разрешения, максимум 320×144.
+
+Можно скачать, указав параметр по id (первая колонка): 
+
+''yv -f 604'' [[https://www.youtube.com/watch?v=sKp70tBqUXc|''https://www.youtube.com/watch?v=sKp70tBqUXc'']]
+
+Или только аудио:
+
+''yv -f 140'' [[https://www.youtube.com/watch?v=sKp70tBqUXc|''https://www.youtube.com/watch?v=sKp70tBqUXc'']]
+
