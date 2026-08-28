@@ -12,19 +12,74 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 
 ===== Установить =====
 
-* [[Debian:Install:yt-dlp]]
+[[Debian:Install:yt-dlp]]
 
-===== Настроить =====
+===== Сделать скрипт для скачивания видео =====
 
-Дальновидно сделать алиас для yt-dlp в ''~/.bashrc'':
+{{{code: lang="sh" linenumbers="True"
+    # Full manual https://github.com/ytdl-org/youtube-dl/blob/master/README.md
 
-	''# audio''
-''alias ya="/usr/local/bin/yt-dlp --config-location $MY_SCRIPTS/youtube/download_audio" # скачать аудио из видеоролика в mp3''
+# === Start ===
+
+--js-runtimes node:/usr/bin/node
+
+# === VIDEO FORMAT ===
+
+    # Download mp4 format available but no bigger than %number_set%
+--format '[height<=2000][ext=mp4]' # Сюда попадает 1080
+#--format '[height<=720][ext=mp4]'
+#--format '[height<=480][ext=mp4]'
+#--format '[height<=360][ext=mp4]'
+
+    # Do not use the Last-modified header to set
+    # the file modification time
+--no-mtime
+
+    # Download only the video, if the URL refers to a video and a playlist.
+    # Это не мешает скачивать плейлисты по отдельным линкам,
+    # но помогает на накачать лишнего.
+--no-playlist
+
+# === DOWNLOADING ===
+
+    # Save all videos under /home/astenix/Видео/
+        # KISS, and don't use spaces in folder names.
+    # AND set filename simple, with ID of their youtube uploader.
+    # НЕВОЗМОЖНО СКАЧИВАТЬ В КАТАЛОГИ С ПРОБЕЛАМИ В НАЗВАНИИ
+-o $HOME/Видео/'[%(uploader)s] %(title)s.%(ext)s'
+
+    # Do not overwrite files if already available
+--no-overwrites
+
+# === FILENAMES ====
+
+--trim-filenames 175
+
+# раньше было '%s', затем yt-dlp потребовало использовать '%q', 
+# потому что %s слишком опасно для команд в --exec
+# А еще пришлось убрать лишние кавычки
+--exec "bash $MY_SCRIPTS/youtube/normalize_title.sh %(filepath)q"
+
+    # (НЕ НАДО) Restrict filenames to only ASCII characters, and avoid "&" and spaces
+    # in filenames - но тогда все слова будут разделены _ подчеркиванием
+# --restrict-filenames
+
+# === ON SITE ===
+
+    # At youtube
+--mark-watched
+
+
+}}}
+
+В строке 42 поменять путь к скрипту нормализации заголовка скачанного файла (если такой используется).
+
+Сделать алиас для этого скрипта в ''~/.bashrc'':
 
 	''# video''
 ''alias yv="/usr/local/bin/yt-dlp --config-location $MY_SCRIPTS/youtube/download_video" # скачать видеоролик''
 
-и скачивать видео через алиас:
+и скачивать все видео через алиас “''yv”'':
 
 ''yv https://www.youtube.com/watch?v=V-J6hep_y4o''
 
@@ -38,17 +93,19 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 	''"https://www.youtube.com/playlist?list=WL" \''
 	''> youtube_WL.txt''
 
-===== Выбрать размер файла =====
+===== Скачать видео и аудио по-отдельности =====
 
-В настройках обычно указано скачивать файлы с большим разрешением. Есть вероятность, что видеоролик в принципе будет низкого разрешения, тогда yt сообщит, что не может его скачать. Но при этом он может дать подсказку: 
+В настройках скачивания разумно указать большое разрешение файлов. 
+
+Всегда есть вероятность, что какой-то видеоролик в принципе невозможно скачать. Но иногда его невозможно скачать только потому, что я хочу mp4, а оригинальное видео было сделано (и залито на Youtube) в другом формате. Или исходное видео очень низкого разрешения. Во всех этих случаях yt-dlp сообщит, что не может скачать запрошенное видео, но при этом он может дать общую подсказку: 
 
  ''Requested format is not available. Use --list-formats for a list of available formats''
 
-Проверить:
+Проверить доступные форматы:
 
 ''yv --list-formats'' [[https://www.youtube.com/watch?v=sKp70tBqUXc|''https://www.youtube.com/watch?v=sKp70tBqUXc'']]
 
-В ответ получим что-то такое:
+В ответ получим такую таблицу:
 
 ''[info] Available formats for sKp70tBqUXc:''
 ''ID      EXT   RESOLUTION FPS CH │   FILESIZE  TBR PROTO │ VCODEC         VBR ACODEC      ABR ASR MORE INFO''
@@ -79,13 +136,34 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 ''242     webm  320x144     30    │    1.18MiB  74k https │ vp9            74k video only          144p, webm_dash''
 ''395     mp4   320x144     30    │    1.72MiB 109k https │ av01.0.00M.08 109k video only          144p, mp4_dash''
 
-Ок. Исходное видео очень низкого разрешения, максимум 320×144.
+Ок. В данном случае исходное видео очень низкого разрешения, максимум 320×144. Но бывает, что можно скачать видео в mp4 FullHD с 60 fps, но без аудио. Пример:
 
-Можно скачать, указав параметр по id (первая колонка): 
+''299 mp4   1920x1080   60    │  250.58MiB 1791k https │ avc1.64002a   1791k video only          1080p60, mp4_dash''
+
+Есть смысл сделать алиас для проверки доступных форматов видео, например:
+
+''alias yvf="/usr/local/bin/yt-dlp --list-formats" # таблица доступных форматов видеоисточника''
+
+==== Решение ====
+
+1) 
+
+Можно скачать файл с видео (см. параметр ''video only'' в указанной строке), указав параметр по id (первая колонка): 
 
 ''yv -f 604'' [[https://www.youtube.com/watch?v=sKp70tBqUXc|''https://www.youtube.com/watch?v=sKp70tBqUXc'']]
 
-Или только аудио:
+2) 
+
+И файл с аудио:
 
 ''yv -f 140'' [[https://www.youtube.com/watch?v=sKp70tBqUXc|''https://www.youtube.com/watch?v=sKp70tBqUXc'']]
 
+Иногда есть возможность выбрать кодек аудио, потому что mp4 это всего лишь контейнер, звук внутри может быть ''opus'' или ''aac''. Мы предпочитаем ''aac''.
+
+3)
+
+В общем, скачали два файла, назовем их условно ''01.mp4'' и ''01.m4a''. Их можно соединить или через ПО для монтажа видео ([[DaVinci Resolve]]), или в консоли через [[FFmpeg]]:
+
+''ffmpeg -i 01.mp4 -i 01.m4a -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac 02.mp4''
+
+Получить файл ''02.mp4'', смотреть.
