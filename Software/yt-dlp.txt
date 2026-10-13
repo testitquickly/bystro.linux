@@ -171,3 +171,7 @@ Creation-Date: 2024-08-19T23:20:56+03:00
 ''ffmpeg -i *.mp4 -i *.m4a -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac 02.mp4''
 
 Подождать, получить файл ''02.mp4''.
+
+===== Скачать отрезок видео =====
+
+''yt-dlp --download-sections "*01:23:45-01:35:00" URL_videofile''
