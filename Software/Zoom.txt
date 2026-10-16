@@ -43,7 +43,7 @@ https://zoom.us/download?os=linux
 
 ''scratch=$(mktemp -d)''
 
-Команда ''mktemp'' - создает временные файлы и каталоги с рэндомным названием вроде «''tmp.NaWPylCHV6''» в /tmp/.
+Команда ''mktemp'' - создает в /tmp/ временные файлы и каталоги с рэндомным названием вроде «''tmp.NaWPylCHV6''».
 
 С флагом ''-d'': создать директорию. Без флагов: создать файл.
 
@@ -67,7 +67,7 @@ https://zoom.us/download?os=linux
 
 ===== Установить ещё несколько штук =====
 
-без которых Zoom не заработает.
+без которых Zoom не заработает (но это не факт, со временем они могут отвалиться):
 
 ''sudo aptitude install libegl1-mesa libgl1-mesa-glx libxcb-xtest0 desktop-file-utils''
 
