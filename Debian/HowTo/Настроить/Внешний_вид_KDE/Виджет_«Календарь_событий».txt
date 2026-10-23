@@ -9,9 +9,7 @@ Creation-Date: 2025-06-23T06:57:41+03:00
 		//NOTICE// 
 Оригинальный виджет не был портирован в “Plasma 6”. Есть его неофициальный порт — [[Install:Виджет «Календарь событий»]]
 
-Если нужно будут сложности с подключением google-календаря, можно перейти на более стандартный виджет «Цифровые часы». Он не такой проработанный, события календаря в нём отображаются только для определенного дня (выбрать кликом), глянуть что там будет завтра-послезавтра там невозможно. 
-
-Можно использовать связки из виджетов «Цифровые часы» и «Simple Plasma Agenda» (не в трее, а на рабочем столе), который работает с календарями из PIM/Akonadi. 
+Аналог — виджет «Цифровые часы». Он не такой проработанный, события календаря в нём отображаются только для определенного дня, который надо выбрать кликом. На рабочем столе можно использовать связку из виджетов «Цифровые часы» и «Simple Plasma Agenda», который работает с календарями из PIM/Akonadi. 
 
 ==== Заменить в трее часы на «Календарь событий» ====
 
@@ -102,7 +100,7 @@ weekNumber=$(date +%V)
 
     # Сделать поиск строки по первым символам — clockTimeFormat1='<font size=\"1\" color=\"orange\"> — и заменить всю эту строку моей
 # plasma 6, widget Календарь событий
-sed -E -i "s|^clockTimeFormat1=.*$|clockTimeFormat1='<font size=\"1\" color=\"orange\">$weekNumber</font> <font size=\"2\" color=\"#b2b2b2\">'dd.MM'</font>' HH:mm|" "$configToUpdate"
+sed -E -i "s|^clockTimeFormat1=.*$|clockTimeFormat1='<font size=\"1\" color=\"orange\">$weekNumber</font> <font size=\"2\" color=\"#b2b2b2\">'dd MMM'</font>' HH:mm|" "$configToUpdate"
 
 # old, Plasma 5, widget Календарь событий
 # sed -E -i "s|^clockTimeFormat1='<font size=\"1\" color=\"orange\">.*|clockTimeFormat1='<font size=\"1\" color=\"orange\">$weekNumber</font> <font size=\"2\" color=\"#b2b2b2\">'d MMM'</font>' HH:mm|" "$configToUpdate"
