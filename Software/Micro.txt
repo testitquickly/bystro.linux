@@ -62,6 +62,56 @@ Creation-Date: 2026-06-08T15:39:47+03:00
 ''Ctrl+E'' 
 ''set softwrap true''
 
+===== Горячие клавиши =====
+
+''mcedit ~/.config/micro/bindings.json''
+
+Это строгий JSON, комментарии (// или /* */) не поддерживаются, любые строки кроме JSON вызовут ошибку загрузки биндингов. После последнего вхождения запятой быть не должно.
+
+Пример — отменить дефолтные хоткеи передвижения строк через Alt+Up/Down и назначить это всё на Ctrl+Up/Down:
+
+''{''
+	''"Alt-Up": "None",''
+	''"Alt-Down": "None",''
+	''"Ctrl-Up": "MoveLinesUp",''
+	''"Ctrl-Down": "MoveLinesDown",''
+	''"Ctrl-Insert": "DeleteLine",''
+	''"Ctrl-Left": "PreviousTab",''
+	''"Ctrl-Right": "NextTab",''
+	''"Ctrl-R": "command-edit:replace"''
+''}''
+
+Можно назначить команду:
+
+''{''
+	''"Alt-p": "command:pwd"''
+''}''
+
+Можно назначить цепочку команд:
+
+''{''
+	''"Alt-s": "Save,Quit"''
+''}''
+
+Есть большой [[https://github.com/micro-editor/micro/blob/master/runtime/help/keybindings.md#bindable-actions-and-bindable-keys|список]] команд, которые можно связать с горячими клавишами. Там же список клавиш и сочетаний клавиш, на которые можно навесить команды. Аккуратно соотнести команды/клавиши в редакторе с клавишами в [[tmux]] или [[Midnight Commander]], чтобы не перекрыли друг друга.
+
+ После редактирования файла с кейбиндингами Micro надо перезапустить полностью.
+
+===== Хэлп =====
+
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/help.md|main help]]
+
+Встроенный хэлп открывается по ''Ctrl-g'' или по ''Ctrl-e > help'' (то есть, вызвать диалог, набрать “help”, ввод). 
+
+Глянуть всё:
+
+* общий [[https://github.com/micro-editor/micro/tree/master/runtime/help/tutorial.md|tutorial]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/keybindings.md|keybindings]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/commands.md|commands]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/colors.md|colors]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/options.md|options]]
+* [[https://github.com/micro-editor/micro/tree/master/runtime/help/plugins.md|plugins]]
+
 ===== Подтянуть свою цветовую схему =====
 
 Напрямую перенести какую-то схему из Kate (Oblivion) в Micro не получится, потому что Kate использует десятки семантических типов подсветки, а micro — гораздо меньше. Можно сделать компромиссный вариант:
@@ -234,30 +284,23 @@ Creation-Date: 2026-06-08T15:39:47+03:00
 
 ==== Замена текста ====
 
-Открыть поиск:
+Открыть управляющую строку (у меня Ctrl+E) и написать
 
-''Ctrl+F''
+* слово ”replace”
+* что искать
+* на что заменить
 
-Переключиться на замену:
+''replace auth hutor''
 
-''Ctrl+R''
+Регистр букв эта автозамена игнорирует.
 
-В строке ввода (внизу):
-
-* ввести то, что надо заменить
-* [Tab]
-* ввести то, на что надо заменить
-* подтверждение замены: ''Enter''
-
-Для замены всех вхождений:
-
-''Alt+A''
-
-(или Esc, затем A — зависит от терминала)
+Можно назначить вызов автозамены на горячую клавишу вроде ''"Ctrl-R": "command-edit:replace"'', тогда при её нажатии в рабочей строке сразу появится слово ''replace.''
 
 Можно сделать автозамену по тексту из командной строки (работает не во всех сборках micro одинаково; похоже на sed, но не sed):
 
 ''micro file.txt +':%s/old/new/g'''
+
+В каком-то смысле проще скопировать нужные абзацы и перенести их в Kate, где с автозаменой всё более наглядно… 
 
 ==== Функциональные клавиши ====
 
@@ -306,52 +349,8 @@ F10 	Quit
 * **filemanager** — хэлпа нет; вызывается по команде ''tree''; возможен только просмотра файлов в текущем каталоге; переключения нет; открывать файлы надо через ''Ctrl+o''
 * **bookmark** — перехватывает сочетания клавиш, надо настраивать…
 
-===== Горячие клавиши =====
+===== Если закрыл окно с открытым файлом =====
 
-''mcedit ~/.config/micro/bindings.json''
+Например, был открыт [[Midnight Commander]], в нём был открыт файл на редактирование. Ctrl+O, MC свернут/развернут — файл исчез… 
 
-Это строгий JSON, комментарии (// или /* */) не поддерживаются, любые строки кроме JSON вызовут ошибку загрузки биндингов. После последнего вхождения запятой быть не должно.
-
-Пример — отменить дефолтные хоткеи передвижения строк через Alt+Up/Down и назначить это всё на Ctrl+Up/Down:
-
-''{''
-	''"Alt-Up": "None",''
-	''"Alt-Down": "None",''
-   ''"Ctrl-Up": "MoveLinesUp",''
-	''"Ctrl-Down": "MoveLinesDown",''
-	''"Ctrl-Insert": "DeleteLine",''
-	''"Ctrl-Left": "PreviousTab",''
-	''"Ctrl-Right": "NextTab"''
-''}''
-
-Можно назначить команду:
-
-''{''
-	''"Alt-p": "command:pwd"''
-''}''
-
-Можно назначить цепочку команд:
-
-''{''
-	''"Alt-s": "Save,Quit"''
-''}''
-
-Есть большой [[https://github.com/micro-editor/micro/blob/master/runtime/help/keybindings.md#bindable-actions-and-bindable-keys|список]] команд, которые можно связать с горячими клавишами. Там же список клавиш и сочетаний клавиш, на которые можно навесить команды. Аккуратно соотнести команды/клавиши в редакторе с клавишами в [[tmux]] или [[Midnight Commander]], чтобы не перекрыли друг друга.
-
- После редактирования файла с кейбиндингами Micro надо перезапустить полностью.
-
-===== Хэлп =====
-
-* [[https://github.com/micro-editor/micro/tree/master/runtime/help/help.md|main help]]
-
-Встроенный хэлп открывается по ''Ctrl-g'' или по ''Ctrl-e > help'' (то есть, вызвать диалог, набрать “help”, ввод). 
-
-Глянуть всё:
-
-* общий [[https://github.com/micro-editor/micro/tree/master/runtime/help/tutorial.md|tutorial]]
-* [[https://github.com/micro-editor/micro/tree/master/runtime/help/keybindings.md|keybindings]]
-* [[https://github.com/micro-editor/micro/tree/master/runtime/help/commands.md|commands]]
-* [[https://github.com/micro-editor/micro/tree/master/runtime/help/colors.md|colors]]
-* [[https://github.com/micro-editor/micro/tree/master/runtime/help/options.md|options]]
-* [[https://github.com/micro-editor/micro/tree/master/runtime/help/plugins.md|plugins]]
-
+Смотреть в ''$HOME/.config/micro/backups'' — скорее всего, там будет копия открытого файла. 
