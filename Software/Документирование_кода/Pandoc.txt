@@ -82,3 +82,11 @@ docs/project.epub: $(shell cat docs/index.txt)
 }}}
 
 PDF и ePub по проекту готовы.
+
+===== Экспорт из odt в md =====
+
+''pandoc *.odt -o output.md''
+
+С экспортом изображений: 
+
+''pandoc *.odt -o output.md --extract-media=media''
