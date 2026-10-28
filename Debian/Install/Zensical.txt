@@ -37,6 +37,28 @@ Creation-Date: 2026-03-29T00:58:04+02:00
 
 ''zensical serve''
 
- Открыть в браузере ''http://localhost:8000''
+Открыть в браузере ''http://localhost:8000''
+
+==== То же компактно ====
+
+Будет поднят в каталоге ''docs-site''
+
+''mkdir docs-site && cd docs-site''
+
+''python3 -m venv .venv''
+
+''source .venv/bin/activate''
+
+''pip install zensical''
+
+''zensical new .''
+
+Положить в каталог ''docs-site/docs'' файлы *.md и запустить сервер Zensical:
+
+''zensical serve''
+
+Открыть в браузере ''http://localhost:8000''
+
+При изменении в файлах *.md изменения будут автоматически отображаться на сайте.
 
 Настройка: [[Software:Документирование кода:Zensical]]
