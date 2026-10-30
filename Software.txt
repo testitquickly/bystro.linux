@@ -18,6 +18,7 @@ Creation-Date: 2022-03-18T00:01:41+02:00
 [[+Calibre]] : библиотека
 [[+Clockify]] : таймер (веб-сервис) 
 [[+cmus]] : консольный аудиоплеер
+[[+Codex]] : cli для OpenAI
 [[+cuyo]] : аналог Tetris
 
 [[+DaVinci Resolve]] : видеоредактор
