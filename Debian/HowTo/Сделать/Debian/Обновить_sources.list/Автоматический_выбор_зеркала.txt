@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-11-02T09:50:56+02:00
+
+====== Автоматический выбор зеркала ======
+
+[ @debian @apt @mirror ]
+
+Предположим, я хочу получать обновления с сервера в MD. Если он будет недоступен — будем искать обновления на сервере в RO. А если и он будет недоступен — простучим сервер в DE. 
+
+===== Сделать список зеркал =====
+
+У APT есть штатная возможность проверять по списку несколько зеркал через ''apt-transport-mirror''.
+
+Важно: между url и уровнем приоритета должен быть таб, который тут представлен символом ''\t''. Нужен sudo или root правом записи в ''/etc/apt/'':
+
+''printf 'http://ftp.md.debian.org/debian/\tpriority:1\nhttp://mirror.linux.ro/debian/\tpriority:2\nhttp://ftp.de.debian.org/debian/\tpriority:3\n' |''
+  ''sudo tee /etc/apt/debian-mirrors.txt >/dev/null''
+
+Появится файл ''debian-mirrors.txt''
+
+===== Отредактировать sources =====
+
+''mcedit /etc/apt/sources.list.d/debian.sources''
+
+Пример финального конфига:
+
+''Types: deb''
+''URIs:'' [[http://security.debian.org/debian-security|''http://security.debian.org/debian-security'']]
+''Suites: trixie-security''
+''Components: main non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+''Types: deb''
+''URIs: mirror+''[[file:/etc/apt/debian-mirrors.txt|''file:/etc/apt/debian-mirrors.txt'']]
+''Suites: trixie trixie-updates''
+''Components: main contrib non-free non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+''Types: deb''
+''URIs: mirror+''[[file:/etc/apt/debian-mirrors.txt|''file:/etc/apt/debian-mirrors.txt'']]
+''Suites: trixie-backports''
+''Components: main contrib non-free-firmware''
+''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
+
+Обязательно:
+
+''sudo apt update''

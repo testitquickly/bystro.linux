@@ -37,16 +37,16 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 	''# В норме достаточно: main contrib non-free-firmware''
 
 ''Types: deb''
-''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']] 
-''Suites: trixie trixie-updates''
-''Components: main contrib non-free non-free-firmware''
+''URIs:'' [[http://security.debian.org/debian-security|''http://security.debian.org/debian-security'']]
+''Suites: trixie-security''
+''Components: main non-free-firmware''
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
 ''Enabled: yes''
 
 ''Types: deb''
-''URIs:'' [[http://security.debian.org/debian-security|''http://security.debian.org/debian-security'']]
-''Suites: trixie-security''
-''Components: main non-free-firmware''
+''URIs:'' [[http://mirror.linux.ro/debian/|''http://mirror.linux.ro/debian/'']] 
+''Suites: trixie trixie-updates''
+''Components: main contrib non-free non-free-firmware''
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
 ''Enabled: yes''
 
@@ -69,9 +69,11 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 ''Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg''
 ''Enabled: no''
 
-Если надо указать несколько источников через пробел, система сама будет дергать данные по первому линку, и если они будут недоступен, то по второму:
+Если надо указать несколько источников через пробел, система будет дергать данные по первому линку, затем по второму:
 
 ''URIs: http://mirror.linux.ro/debian/ http://ftp.de.debian.org/debian/''
+
+Можно отдельно настроить приоритет зеркал, чтобы не пинговать оба сразу: [[+Автоматический выбор зеркала]]
 
 Отключить старый файл:
 
@@ -133,4 +135,3 @@ Creation-Date: 2022-02-21T23:32:31+02:00
 Сервер для # SECURITY updates никогда не бывает локальным, его не трогаем.
 
 Утилита netselect-apt сразу создаст в текущем каталоге новый файл "sources.list". Его можно удалить.
-
