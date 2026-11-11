@@ -16,10 +16,8 @@ Creation-Date: 2023-02-05T22:35:25+02:00
 
 ===== Вариант 1 =====
 
-'''
-pkill plasmashell
-nohup plasmashell >/dev/null 2>&1 &
-'''
+''pkill plasmashell''
+''nohup plasmashell >/dev/null 2>&1 &''
 
 То же самое, что и откровенное прерывание и новый запуск процесса plasmashell, но не блокирует терминал.
 
