@@ -43,6 +43,18 @@ Advanced
 
 Рестарт браузера.
 
+===== Detach Tab =====
+
+Перенести вкладку в отдельное окно можно тремя способами:
+
+1. Ухватить её курсором и дёрнуть вбок или вниз.
+2. Правой кнопкой по вкладке > Переместить вкладку > Переместить в новое окно
+3. ''Ctrl+L'' — фокус в адресную строку; ''Shift+Tab'' (обратное направление) — нажимать до тех пор, пока фокус не переключится на текущую вкладку, в зависимости от панели инструментов может потребоваться несколько нажатий, например четыре; ''Shift+F10'' — открыть контекстное меню > Переместить вкладку > Переместить в новое окно
+
+Одним нажатием сочетания клавиш: расширение Detach Tab — https://addons.mozilla.org/ru/firefox/addon/detach-tab/ 
+
+Настраивается на странице управления расширением, вкладка «Настройки». Удобно назначить Detach на ''Ctrl+Shift+Right'', а Reattach не нужен.
+
 ===== Enhancer for YouTube =====
 
 https://www.mrfdev.com/enhancer-for-youtube
@@ -55,7 +67,7 @@ https://www.mrfdev.com/enhancer-for-youtube
 > Скрыть рекомендации
 > Скрыть Shorts
 
-===== KeePassXC =====
+===== KeePassXC-Browser =====
 
 https://addons.mozilla.org/ru/firefox/addon/keepassxc-browser/reviews/
 
@@ -69,20 +81,21 @@ https://addons.mozilla.org/ru/firefox/addon/open-with/
 
 ''/usr/bin/brave-browser-stable --profile-directory="Profile 2"'' 
 
+===== Perfect Home =====
+
+https://addons.mozilla.org/ru/firefox/addon/perfect-home/
+
+Раньше был Quick Dial — https://addons.mozilla.org/ru/firefox/addon/quick-dial/reviews/ — но современные настройки Firefox запрещают сразу выводить подобные расширения на первой же вкладке при открытии браузера, поэтому содержимое QuickDial открывается только в новой вкладке, то есть, во второй открываемой. Стало дико неудобно.
+
 ===== PrintFriendly =====
 
 https://addons.mozilla.org/ru/firefox/addon/print-friendly-pdf/reviews/
 
 Экспорт содержимого страницы в pdf без лишнего оформления. Можно удалять отдельные блоки информации перед сохранением.
 
-===== Quick Dial =====
-
-https://addons.mozilla.org/ru/firefox/addon/quick-dial/reviews/
-
-Настройки Firefox запрещают сразу выводить подобные расширения на первой же вкладке при открытии браузера, поэтому содержимое QuickDial открывается только в новой вкладке, то есть, во второй открываемой.
-
 ===== uBlock Origin =====
 
 https://addons.mozilla.org/ru/firefox/addon/ublock-origin/reviews/
 
 См. пример [[Webdev:habr]]
+
