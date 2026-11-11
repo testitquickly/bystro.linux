@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2026-11-06T15:33:53+02:00
+
+====== Скорость извне ======
+
+[ @network @speed @netflix ]
+
+Есть проект https://github.com/ddo/fast/ — аналог сайта fast.com для консоли. Суть та же — пинг к серверам Netflix.
+
+Проверить страницу релизов: https://github.com/ddo/fast/releases
+
+Перейти в каталог, в котором будет лежать этот скрипт.
+
+Скачать файл:
+
+''curl -L https://github.com/ddo/fast/releases/download/v0.0.4/fast_linux_amd64 -o fast''
+
+Сделать файл исполняемым:
+
+''chmod +x fast''
+
+Вызвать: 
+
+''./fast''
+
+Есть смысл сделать алиас в файле .bashrc и проверить своё соединение:
+
+''sudo ethtool "$(ip route show default | awk '{print $5; exit}')" | awk '/Speed:/ {speed=$0; next} {lines=lines $0 "\n"} END {print speed "\n\n\n" lines}'''
+
+Тут информация о максимальной пропускной способности (Speed) будет представлена в первой же строке.

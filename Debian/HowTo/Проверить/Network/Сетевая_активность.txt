@@ -8,9 +8,7 @@ Creation-Date: 2025-10-11T09:38:41+03:00
 
 Если ещё не установлено: 
 
-'''
-sudo apt install nethogs
-'''
+''sudo apt install nethogs''
 
 Запуск:
 
